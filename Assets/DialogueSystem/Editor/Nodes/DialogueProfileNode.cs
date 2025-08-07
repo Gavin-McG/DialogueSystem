@@ -12,6 +12,8 @@ namespace DialogueSystem.Editor
     [Serializable]
     public class DialogueProfileNode : GenericObjectNode<DialogueProfile>
     {
+        protected override string OutputPortName => "Profile";
+
         public override DialogueObject CreateDialogueObject()
         {
             var obj = base.CreateDialogueObject();
@@ -20,12 +22,6 @@ namespace DialogueSystem.Editor
                 profile.name = profile.displayName + " Profile";
             
             return obj;
-        }
-
-        protected override void OnDefinePorts(IPortDefinitionContext context)
-        {
-            base.OnDefinePorts(context);
-            DialogueGraphUtility.DefineProfileOutputPort(context);
         }
     }
     

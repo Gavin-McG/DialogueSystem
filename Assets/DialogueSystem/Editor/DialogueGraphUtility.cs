@@ -14,12 +14,10 @@ namespace DialogueSystem.Editor
     {
         public const string NextPortName = "next";
         public const string PreviousPortName = "previous";
-        public const string ProfilePortName = "profile";
         public const string EventPortName = "event";
 
         public const string NextPortDefaultDisplayName = "Next";
         public const string PreviousPortDefaultDisplayName = "Previous";
-        public const string ProfilePortDefaultDisplayName = "Profile";
         
         public static DialogueObject GetObject(IDialogueObjectNode dialogueObjectNode,
             Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict)
@@ -133,28 +131,13 @@ namespace DialogueSystem.Editor
                 .WithDisplayName("Event")
                 .Build();
         }
-
-        public static void DefineProfileInputPort(Node.IPortDefinitionContext context)
-        {
-            context.AddInputPort<DialogueProfile>(ProfilePortName)
-                .WithDisplayName(ProfilePortDefaultDisplayName)
-                .WithConnectorUI(PortConnectorUI.Circle)
-                .Build();
-        }
         
-        public static void DefineProfileOutputPort(Node.IPortDefinitionContext context)
-        {
-            context.AddOutputPort<DialogueProfile>(ProfilePortName)
-                .WithDisplayName(ProfilePortDefaultDisplayName)
-                .WithConnectorUI(PortConnectorUI.Circle)
-                .Build();
-        }
 
         public static T GetDialogueObjectValueOrNull<T>(INode node, string portName,
             Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict) where T : DialogueObject
         {
             //get port for object
-            var port = GetInputPortOrNull(node, portName);
+            var port = GetInputPortByName(node, portName);
             if (port == null) return null;
             
             //try to get profile value from connected variable
@@ -178,47 +161,49 @@ namespace DialogueSystem.Editor
             }
         }
 
-        public static DialogueProfile GetProfileValueOrNull(INode node,
-            Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict)
-        {
-            return GetDialogueObjectValueOrNull<DialogueProfile>(node, ProfilePortName, dialogueDict);
-        }
-
         public static T GetOptionValueOrDefault<T>(Node node, string optionName)
         {
             return node.GetNodeOptionByName(optionName)
                 .TryGetValue<T>(out var value) ? value : default(T);
         }
-        
-        public static IPort GetInputPortOrNull(INode node, string portName)
-        {
-            var ports = node.GetInputPorts()
-                .Where(port => port.name == portName)
-                .ToList();
-            return (ports.Count == 1) ? ports[0] : null;
-        }
 
-        public static IPort GetOutputPortOrNull(INode node, string portName)
+        public static IPort GetInputPortByName(INode node, string portName)
         {
-            var ports = node.GetOutputPorts()
-                .Where(port => port.name == portName)
-                .ToList();
-            return (ports.Count == 1) ? ports[0] : null;
+            try
+            {
+                return node.GetInputPortByName(portName);
+            }
+            catch (KeyNotFoundException e)
+            {
+                return null;
+            }
+        }
+        
+        public static IPort GetOutputPortByName(INode node, string portName)
+        {
+            try
+            {
+                return node.GetOutputPortByName(portName);
+            }
+            catch (KeyNotFoundException e)
+            {
+                return null;
+            }
         }
 
         public static IPort GetNextPortOrNull(INode node)
         {
-            return GetOutputPortOrNull(node, NextPortName);
+           return GetOutputPortByName(node, NextPortName);
         }
         
         public static IPort GetEventPortOrNull(INode node)
         {
-            return GetOutputPortOrNull(node, EventPortName);
+            return GetOutputPortByName(node, EventPortName);
         }
 
         public static List<DialogueEvent> GetEvents(INode node)
         {
-            var eventPort = node.GetOutputPortByName(EventPortName);
+            var eventPort = GetEventPortOrNull(node);
 
             var connectedEventPorts = new List<IPort>();
             eventPort.GetConnectedPorts(connectedEventPorts);

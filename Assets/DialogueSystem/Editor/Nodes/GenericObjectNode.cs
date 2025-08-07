@@ -12,6 +12,8 @@ namespace DialogueSystem.Editor
     
     public abstract class GenericObjectNode<T> : Node, IDialogueReferenceNode where T : DialogueObject
     {
+        protected virtual string OutputPortName => typeof(T).Name;
+        
         protected override void OnDefineOptions(INodeOptionDefinition context)
         {
             DialogueGraphUtility.DefineFieldOptions<T>(context);
@@ -20,6 +22,10 @@ namespace DialogueSystem.Editor
         protected override void OnDefinePorts(IPortDefinitionContext context)
         {
             DialogueGraphUtility.DefineFieldPorts<T>(context);
+            
+            context.AddOutputPort<T>(nameof(T))
+                .WithDisplayName(OutputPortName)
+                .Build();
         }
 
         public virtual DialogueObject CreateDialogueObject()
