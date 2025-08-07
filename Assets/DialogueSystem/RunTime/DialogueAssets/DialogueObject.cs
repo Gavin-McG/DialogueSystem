@@ -2,7 +2,7 @@
 
 namespace DialogueSystem.Runtime
 {
-    public class DialogueObject : ScriptableObject
+    public abstract class DialogueObject : ScriptableObject
     {
         
     }
