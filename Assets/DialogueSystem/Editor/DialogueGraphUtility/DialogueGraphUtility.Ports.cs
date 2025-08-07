@@ -6,6 +6,13 @@ namespace DialogueSystem.Editor
 {
     public static partial class DialogueGraphUtility
     {
+        public const string NextPortName = "next";
+        public const string PreviousPortName = "previous";
+        public const string EventPortName = "event";
+
+        public const string NextPortDefaultDisplayName = "Next";
+        public const string PreviousPortDefaultDisplayName = "Previous";
+        
         public static void DefineNodeInputPort(Node.IPortDefinitionContext context)
         {
             context.AddInputPort(PreviousPortName)
@@ -82,11 +89,6 @@ namespace DialogueSystem.Editor
         public static IPort GetNextPortOrNull(INode node)
         {
             return GetOutputPortByName(node, NextPortName);
-        }
-        
-        public static IPort GetEventPortOrNull(INode node)
-        {
-            return GetOutputPortByName(node, EventPortName);
         }
         
         public static T GetOptionValueOrDefault<T>(Node node, string optionName)

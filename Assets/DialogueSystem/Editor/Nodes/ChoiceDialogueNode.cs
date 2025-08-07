@@ -8,7 +8,7 @@ using UnityEngine;
 namespace DialogueSystem.Editor
 {
     [Serializable]
-    public class ChoiceDialogueNode : ContextNode, IDialogueReferenceNode
+    public class ChoiceDialogueNode : ContextNode, IDialogueTraceNode
     {
         private const string TimeOutPortDisplayName = "TimeOut";
         
@@ -25,7 +25,6 @@ namespace DialogueSystem.Editor
             DialogueGraphUtility.DefineFieldPorts<DialogueChoiceParams>(context);
 
             DialogueGraphUtility.DefineNodeOutputPort(context, TimeOutPortDisplayName);
-            DialogueGraphUtility.DefineEventOutputPort(context);
         }
 
         public DialogueObject CreateDialogueObject()

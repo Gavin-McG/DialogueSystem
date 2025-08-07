@@ -9,7 +9,7 @@ namespace DialogueSystem.Editor
 {
     
     [Serializable]
-    public class BasicDialogueNode : Node, IDialogueReferenceNode
+    public class BasicDialogueNode : Node, IDialogueTraceNode
     {
         
         protected override void OnDefineOptions(INodeOptionDefinition context)
@@ -23,7 +23,6 @@ namespace DialogueSystem.Editor
             DialogueGraphUtility.DefineFieldPorts<DialogueBaseParams>(context);
             
             DialogueGraphUtility.DefineNodeOutputPort(context);
-            DialogueGraphUtility.DefineEventOutputPort(context);
         }
 
         public DialogueObject CreateDialogueObject()

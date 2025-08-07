@@ -8,7 +8,7 @@ namespace DialogueSystem.Editor
 {
     [Serializable]
     [UseWithContext(typeof(ChoiceDialogueNode))]
-    public class ChoiceOptionNode : BlockNode, IDialogueReferenceNode
+    public class ChoiceOptionNode : BlockNode, IDialogueTraceNode
     {
         private const string PromptOptionName = "prompt";
         
@@ -22,8 +22,6 @@ namespace DialogueSystem.Editor
         protected override void OnDefinePorts(IPortDefinitionContext context)
         {
             DialogueGraphUtility.DefineNodeOutputPort(context);
-            
-            DialogueGraphUtility.DefineEventOutputPort(context);
         }
 
         public DialogueObject CreateDialogueObject()

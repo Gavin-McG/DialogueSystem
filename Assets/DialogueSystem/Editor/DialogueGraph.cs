@@ -30,7 +30,6 @@ namespace DialogueSystem.Editor
             MultipleBeginCheck(infos);
             MultipleOutputCheck(infos);
             VerifyContextTypes(infos);
-            VerifyConnectionTypes(infos);
         }
 
         private bool MultipleBeginCheck(GraphLogger infos)
@@ -65,15 +64,19 @@ namespace DialogueSystem.Editor
             foreach (var node in nodes)
             {
                 //Get Next port if it exists
-                var port = DialogueGraphUtility.GetNextPortOrNull(node);
-                if (port == null) continue;
+                var nextPort = DialogueGraphUtility.GetNextPortOrNull(node);
+                if (nextPort == null) continue;
                 
                 List<IPort> connectedPorts = new();
-                port.GetConnectedPorts(connectedPorts);
+                nextPort.GetConnectedPorts(connectedPorts);
 
-                if (connectedPorts.Count <= 1) continue;
+                var tracePorts = connectedPorts
+                    .Select(port => port.GetNode())
+                    .OfType<IDialogueTraceNode>().ToList();
+
+                if (tracePorts.Count <= 1) continue;
                 
-                infos.LogError($"A Next Dialogue Port cannot exceed more than 1 Connection. ", node);
+                infos.LogError($"A Next Dialogue Port cannot exceed more than 1 trace Connection. ", node);
                 passedCheck = false;
             }
 
@@ -104,48 +107,6 @@ namespace DialogueSystem.Editor
                     if (block is ConditionalNode) continue;
                     
                     infos.LogError($"Conditional BlockNode '{block}' is not a {nameof(ConditionalNode)}.", block);
-                    passedCheck = false;
-                }
-            }
-            
-            return passedCheck;
-        }
-
-        private bool VerifyConnectionTypes(GraphLogger infos)
-        {
-            var passedCheck = true;
-            
-            var nodes = GetNodes().ToList();
-            foreach (var node in nodes)
-            {
-                var port = DialogueGraphUtility.GetNextPortOrNull(node);
-                if (port == null) continue;
-                
-                List<IPort> connectedPorts = new();
-                port.GetConnectedPorts(connectedPorts);
-
-                foreach (var connectedport in connectedPorts)
-                {
-                    if (connectedport.name == DialogueGraphUtility.PreviousPortName) continue;
-                    
-                    infos.LogError($"Port \"{port.displayName}\" is connected to a port of an incorrect type \"{connectedport.displayName}\".", node);
-                    passedCheck = false;
-                }
-            }
-            
-            foreach (var node in nodes)
-            {
-                var port = DialogueGraphUtility.GetEventPortOrNull(node);
-                if (port == null) continue;
-                
-                List<IPort> connectedPorts = new();
-                port.GetConnectedPorts(connectedPorts);
-
-                foreach (var connectedport in connectedPorts)
-                {
-                    if (connectedport.name == DialogueGraphUtility.EventPortName) continue;
-                    
-                    infos.LogError($"Port \"{port.displayName}\" is connected to a port of an incorrect type \"{connectedport.displayName}\".", node);
                     passedCheck = false;
                 }
             }

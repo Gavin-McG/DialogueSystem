@@ -12,13 +12,6 @@ namespace DialogueSystem.Editor
 
     public static partial class DialogueGraphUtility
     {
-        public const string NextPortName = "next";
-        public const string PreviousPortName = "previous";
-        public const string EventPortName = "event";
-
-        public const string NextPortDefaultDisplayName = "Next";
-        public const string PreviousPortDefaultDisplayName = "Previous";
-        
         public static DialogueObject GetObject(IDialogueObjectNode dialogueObjectNode,
             Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict)
         {
@@ -114,7 +107,7 @@ namespace DialogueSystem.Editor
 
         public static List<DialogueEvent> GetEvents(INode node)
         {
-            var eventPort = GetEventPortOrNull(node);
+            var eventPort = GetNextPortOrNull(node);
 
             var connectedEventPorts = new List<IPort>();
             eventPort.GetConnectedPorts(connectedEventPorts);

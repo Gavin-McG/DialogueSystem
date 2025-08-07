@@ -8,7 +8,7 @@ using UnityEngine;
 namespace DialogueSystem.Editor
 {
     [Serializable]
-    public class BeginDialogueNode : Node, IDialogueReferenceNode
+    public class BeginDialogueNode : Node, IDialogueTraceNode
     {
         
         protected override void OnDefinePorts(IPortDefinitionContext context)

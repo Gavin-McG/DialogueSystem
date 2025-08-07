@@ -7,7 +7,7 @@ using Unity.GraphToolkit.Editor;
 namespace DialogueSystem.Editor
 {
     
-    public abstract class RedirectNode : ContextNode, IDialogueReferenceNode
+    public abstract class RedirectNode : ContextNode, IDialogueTraceNode
     {
         private const string DefaultPortDisplayName = "Default";
 
@@ -18,7 +18,6 @@ namespace DialogueSystem.Editor
             DialogueGraphUtility.DefineNodeInputPort(context);
 
             DialogueGraphUtility.DefineNodeOutputPort(context, DefaultPortDisplayName);
-            DialogueGraphUtility.DefineEventOutputPort(context);
         }
         
         public abstract DialogueObject CreateDialogueObject();

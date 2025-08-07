@@ -5,7 +5,7 @@ namespace DialogueSystem.Runtime
     [CreateAssetMenu(fileName = "Dialogue Profile", menuName = "Dialogue System/Dialogue Profile")]
     public class DialogueProfile : DialogueObject
     {
-        public static class Styles
+        private static class Styles
         {
             public const string CharacterNameTooltip =
                 "Name of character. Used to identify duplicate character on other side";
