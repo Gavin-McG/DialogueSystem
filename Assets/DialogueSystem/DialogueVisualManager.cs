@@ -39,24 +39,24 @@ public class DialogueVisualManager : MonoBehaviour
         dialogueManager.endDialogue.RemoveListener(HideDialogue);
     }
 
-    private void DisplayDialogue(DialogueDetails dialogueDetails)
+    private void DisplayDialogue(DialogueParams dialogueParams)
     {
         dialogueEnabled = true;
         dialogueUI.SetActive(true);
         
-        mainText.text = dialogueDetails.text;
+        mainText.text = dialogueParams.baseParams.text;
         timeStarted = Time.time;
 
-        if (dialogueDetails.isChoice)
+        if (dialogueParams.choiceParams != null)
         {
             continueUI.SetActive(false);
             choicesUI.SetActive(true);
             
-            var choiceCount = Mathf.Min(dialogueDetails.choicePrompts.Count, optionButtons.Count);
+            var choiceCount = Mathf.Min(dialogueParams.choicePrompts.Count, optionButtons.Count);
             for (var i = 0; i < choiceCount; i++)
             {
                 optionButtons[i].button.gameObject.SetActive(true);
-                optionButtons[i].text.text = dialogueDetails.choicePrompts[i];
+                optionButtons[i].text.text = dialogueParams.choicePrompts[i];
             }
 
             for (var i = choiceCount; i < optionButtons.Count; i++)
@@ -71,9 +71,9 @@ public class DialogueVisualManager : MonoBehaviour
         }
         
         EndTimeLimit();
-        if (dialogueDetails.hasTimeLimit)
+        if (dialogueParams.choiceParams!=null && dialogueParams.choiceParams.hasTimeLimit)
         {
-            timeLimitCoroutine = StartCoroutine(TimeLimitRoutine(dialogueDetails.timeLimitDuration));
+            timeLimitCoroutine = StartCoroutine(TimeLimitRoutine(dialogueParams.choiceParams.timeLimitDuration));
         }
     }
 

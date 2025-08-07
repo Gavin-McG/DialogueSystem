@@ -1,5 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Text.RegularExpressions;
 using DialogueSystem.Runtime;
 using Unity.GraphToolkit.Editor;
 using UnityEngine;
@@ -147,11 +150,11 @@ namespace DialogueSystem.Editor
                 .Build();
         }
 
-        public static DialogueProfile GetProfileValueOrNull(INode node,
-            Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict)
+        public static T GetDialogueObjectValueOrNull<T>(INode node, string portName,
+            Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict) where T : DialogueObject
         {
-            //get port for profile
-            var port = GetInputPortOrNull(node, ProfilePortName);
+            //get port for object
+            var port = GetInputPortOrNull(node, portName);
             if (port == null) return null;
             
             //try to get profile value from connected variable
@@ -162,17 +165,23 @@ namespace DialogueSystem.Editor
             {
                 case null:
                     //try to get value assigned directly if no connected node
-                    return port.TryGetValue(out DialogueProfile attachedProfile) ? attachedProfile : null;
+                    return port.TryGetValue(out T attachedObject) ? attachedObject : null;
                 case IVariableNode variableNode:
                     //return value assigned from variable node
                     return variableNode.variable
-                        .TryGetDefaultValue(out DialogueProfile varProfile) ? varProfile : null;
-                case DialogueProfileNode profileNode:
+                        .TryGetDefaultValue(out T varObject) ? varObject : null;
+                case GenericObjectNode<T> objectNode:
                     //return created profile object from profile node
-                    return GetObjectFromNode<DialogueProfile>(profileNode, dialogueDict);
+                    return GetObjectFromNode<T>(objectNode, dialogueDict);
                 default:
                     return null;
             }
+        }
+
+        public static DialogueProfile GetProfileValueOrNull(INode node,
+            Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict)
+        {
+            return GetDialogueObjectValueOrNull<DialogueProfile>(node, ProfilePortName, dialogueDict);
         }
 
         public static T GetOptionValueOrDefault<T>(Node node, string optionName)
@@ -224,6 +233,124 @@ namespace DialogueSystem.Editor
                 }
             }
             return events;
+        }
+        
+        public static IEnumerable<FieldInfo> GetOptionFields<T>()
+        {
+            var flags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
+            return typeof(T).GetFields(flags).Where(field =>
+            {
+                bool isPublic = field.IsPublic && field.GetCustomAttribute<NonSerializedAttribute>() == null;
+                bool isSerializedPrivate = !field.IsPublic && field.GetCustomAttribute<SerializeField>() != null;
+                bool isHidden = field.GetCustomAttribute<HideInInspector>() != null;
+                bool isPort = field.GetCustomAttribute<DialoguePortAttribute>() != null && typeof(DialogueObject).IsAssignableFrom(field.FieldType);
+
+                return (isPublic || isSerializedPrivate) && !isHidden && !isPort;
+            });
+        }
+        
+        public static IEnumerable<FieldInfo> GetPortFields<T>()
+        {
+            var flags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
+            return typeof(T).GetFields(flags).Where(field =>
+            {
+                bool isPublic = field.IsPublic && field.GetCustomAttribute<NonSerializedAttribute>() == null;
+                bool isSerializedPrivate = !field.IsPublic && field.GetCustomAttribute<SerializeField>() != null;
+                bool isHidden = field.GetCustomAttribute<HideInInspector>() != null;
+                bool isPort = field.GetCustomAttribute<DialoguePortAttribute>() != null && typeof(DialogueObject).IsAssignableFrom(field.FieldType);
+
+                return (isPublic || isSerializedPrivate) && !isHidden && isPort;
+            });
+        }
+
+        public static void DefineFieldOptions<T>(INodeOptionDefinition context)
+        {
+            var fields = DialogueGraphUtility.GetOptionFields<T>();
+            foreach (var field in fields)
+            {
+                var fieldName = field.Name;
+                var fieldType = field.FieldType;
+                var displayName = Regex.Replace(field.Name, "(?<!^)([A-Z])", " $1");
+                displayName = char.ToUpper(displayName[0]) + displayName.Substring(1);
+
+                var tooltipAttribute = field.GetCustomAttribute<TooltipAttribute>();
+                var tooltip = tooltipAttribute?.tooltip;
+
+                context.AddNodeOption(fieldName, fieldType, displayName, tooltip);
+            }
+        }
+
+        public static void DefineFieldPorts<T>(Node.IPortDefinitionContext context)
+        {
+            var fields = DialogueGraphUtility.GetPortFields<T>();
+            foreach (var field in fields)
+            {
+                var fieldName = field.Name;
+                var fieldType = field.FieldType;
+                var displayName = Regex.Replace(field.Name, "(?<!^)([A-Z])", " $1");
+                displayName = char.ToUpper(displayName[0]) + displayName.Substring(1);
+
+                context.AddInputPort(fieldName)
+                    .WithDataType(fieldType)
+                    .WithDisplayName(displayName)
+                    .Build();
+            }
+        }
+
+        public static void AssignFromFieldOptions<T>(Node node, ref T obj) where T : class
+        {
+            var fields = DialogueGraphUtility.GetOptionFields<T>();
+            foreach (var field in fields)
+            {
+                var option = node.GetNodeOptionByName(field.Name);
+                if (option == null)
+                    continue;
+
+                var fieldType = field.FieldType;
+
+                var tryGetValueMethod = typeof(INodeOption)
+                    .GetMethod(nameof(INodeOption.TryGetValue))?
+                    .MakeGenericMethod(fieldType);
+
+                object[] parameters = { null };
+                bool success = (bool)tryGetValueMethod.Invoke(option, parameters);
+
+                if (success)
+                {
+                    field.SetValue(obj, parameters[0]);
+                }
+                else
+                {
+                    field.SetValue(obj, fieldType.IsValueType ? Activator.CreateInstance(fieldType) : null);
+                }
+            }
+        }
+
+        public static void AssignFromFieldPorts<T>(Node node, 
+            Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict, ref T obj) where T : class
+        {
+            var fields = DialogueGraphUtility.GetPortFields<T>();
+            foreach (var field in fields)
+            {
+                var fieldType = field.FieldType;
+                
+                var getDialogueObjectMethod = typeof(DialogueGraphUtility)
+                    .GetMethod(nameof(GetDialogueObjectValueOrNull))?
+                    .MakeGenericMethod(fieldType);
+                
+                object[] parameters = { node, field.Name, dialogueDict };
+                
+                var value = getDialogueObjectMethod?.Invoke(null, parameters);
+                
+                field.SetValue(obj, value);
+            }
+        }
+
+        public static void AssignFromNode<T>(Node node,
+            Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict, ref T obj) where T : class
+        {
+            AssignFromFieldOptions(node, ref obj);
+            AssignFromFieldPorts(node, dialogueDict, ref obj);
         }
     }
 

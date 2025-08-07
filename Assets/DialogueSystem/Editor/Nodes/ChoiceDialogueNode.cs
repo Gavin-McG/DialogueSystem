@@ -8,33 +8,21 @@ using UnityEngine;
 namespace DialogueSystem.Editor
 {
     [Serializable]
-    public class ChoiceDialogueNode : ContextNode, IDialogueTraceNode
+    public class ChoiceDialogueNode : ContextNode, IDialogueReferenceNode
     {
-        private const string TextOptionName = "text";
-        private const string HasTimeLimitOptionName = "hasTimeLimit";
-        private const string TimeLimitDurationOptionName = "timeLimitDuration";
         private const string TimeOutPortDisplayName = "TimeOut";
-        
         
         protected override void OnDefineOptions(INodeOptionDefinition context)
         {
-            context.AddNodeOption<string>(TextOptionName, "Text",
-                tooltip: "Display text for this dialogue",
-                defaultValue: "Text");
-            
-            context.AddNodeOption<bool>(HasTimeLimitOptionName, "Has Time Limit",
-                tooltip: "Determines whether a Time limit is present for the option.",
-                defaultValue: false);
-            
-            context.AddNodeOption<float>(TimeLimitDurationOptionName, "Time Limit Duration",
-                tooltip: "Amount of Time the user has to make a choice",
-                defaultValue: 10f);
+            DialogueGraphUtility.DefineFieldOptions<DialogueBaseParams>(context);
+            DialogueGraphUtility.DefineFieldOptions<DialogueChoiceParams>(context);
         }
 
         protected override void OnDefinePorts(IPortDefinitionContext context)
         {
             DialogueGraphUtility.DefineNodeInputPort(context);
-            DialogueGraphUtility.DefineProfileInputPort(context);
+            DialogueGraphUtility.DefineFieldPorts<DialogueBaseParams>(context);
+            DialogueGraphUtility.DefineFieldPorts<DialogueChoiceParams>(context);
 
             DialogueGraphUtility.DefineNodeOutputPort(context, TimeOutPortDisplayName);
             DialogueGraphUtility.DefineEventOutputPort(context);
@@ -45,12 +33,11 @@ namespace DialogueSystem.Editor
             var dialogue = ScriptableObject.CreateInstance<ChoiceDialogue>();
             dialogue.name = "Choice Dialogue";
             
-            dialogue.text = 
-                DialogueGraphUtility.GetOptionValueOrDefault<string>(this, TextOptionName);
-            dialogue.hasTimeLimit = 
-                DialogueGraphUtility.GetOptionValueOrDefault<bool>(this, HasTimeLimitOptionName);
-            dialogue.timeLimitDuration = 
-                DialogueGraphUtility.GetOptionValueOrDefault<float>(this, TimeLimitDurationOptionName);
+            dialogue.baseParams ??= new DialogueBaseParams();
+            dialogue.choiceParams ??= new DialogueChoiceParams();
+            
+            DialogueGraphUtility.AssignFromFieldOptions(this, ref dialogue.baseParams);
+            DialogueGraphUtility.AssignFromFieldOptions(this, ref dialogue.choiceParams);
             
             return dialogue;
         }
@@ -59,8 +46,11 @@ namespace DialogueSystem.Editor
         {
             var dialogue = DialogueGraphUtility.GetObject<ChoiceDialogue>(this, dialogueDict);
             var timeOutObject = DialogueGraphUtility.GetConnectedDialogue(this, dialogueDict);
+            
+            DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref dialogue.baseParams);
+            DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref dialogue.choiceParams);
+            
             dialogue.defaultDialogue = timeOutObject;
-            dialogue.profile = DialogueGraphUtility.GetProfileValueOrNull(this, dialogueDict);
             dialogue.events = DialogueGraphUtility.GetEvents(this);
 
             var optionNodes = blockNodes.ToList();

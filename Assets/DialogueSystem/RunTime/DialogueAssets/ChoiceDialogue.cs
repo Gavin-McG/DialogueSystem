@@ -8,10 +8,8 @@ namespace DialogueSystem.Runtime
     public class ChoiceDialogue : DialogueTrace, IDialogueOutput
     {
         public DialogueTrace defaultDialogue;
-        public DialogueProfile profile;
-        public string text;
-        public bool hasTimeLimit = false;
-        public float timeLimitDuration = 0;
+        public DialogueBaseParams baseParams;
+        public DialogueChoiceParams choiceParams;
         public List<ChoiceOption> options;
         
 
@@ -27,16 +25,13 @@ namespace DialogueSystem.Runtime
             return options[context.choice];
         }
 
-        public DialogueDetails GetDialogueDetails()
+        public DialogueParams GetDialogueDetails()
         {
-            return new DialogueDetails()
+            return new DialogueParams()
             {
-                profile = profile,
-                text = text,
-                isChoice = true,
+                baseParams = baseParams,
+                choiceParams = choiceParams,
                 choicePrompts = options.Select((option => option.prompt)).ToList(),
-                hasTimeLimit = hasTimeLimit,
-                timeLimitDuration = timeLimitDuration
             };
         }
     }

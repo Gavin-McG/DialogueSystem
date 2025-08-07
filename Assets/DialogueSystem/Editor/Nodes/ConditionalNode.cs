@@ -5,7 +5,7 @@ using Unity.GraphToolkit.Editor;
 namespace DialogueSystem.Editor
 {
 
-    public abstract class ConditionalNode : BlockNode, IDialogueTraceNode
+    public abstract class ConditionalNode : BlockNode, IDialogueReferenceNode
     {
         private const string WeightOptionName = "Weight";
         

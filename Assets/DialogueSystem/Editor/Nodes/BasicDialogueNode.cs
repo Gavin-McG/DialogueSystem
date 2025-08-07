@@ -9,21 +9,18 @@ namespace DialogueSystem.Editor
 {
     
     [Serializable]
-    public class BasicDialogueNode : Node, IDialogueTraceNode
+    public class BasicDialogueNode : Node, IDialogueReferenceNode
     {
-        private const string TextOptionName = "text";
         
         protected override void OnDefineOptions(INodeOptionDefinition context)
         {
-            context.AddNodeOption<string>(TextOptionName, "Text",
-                tooltip: "Display text for this dialogue",
-                defaultValue: "Text");
+            DialogueGraphUtility.DefineFieldOptions<DialogueBaseParams>(context);
         }
 
         protected override void OnDefinePorts(IPortDefinitionContext context)
         {
             DialogueGraphUtility.DefineNodeInputPort(context);
-            DialogueGraphUtility.DefineProfileInputPort(context);
+            DialogueGraphUtility.DefineFieldPorts<DialogueBaseParams>(context);
             
             DialogueGraphUtility.DefineNodeOutputPort(context);
             DialogueGraphUtility.DefineEventOutputPort(context);
@@ -33,8 +30,10 @@ namespace DialogueSystem.Editor
         {
             var dialogue = ScriptableObject.CreateInstance<BasicDialogue>();
             dialogue.name = "Basic Dialogue";
+            
+            dialogue.baseParams ??= new DialogueBaseParams();
 
-            dialogue.text = DialogueGraphUtility.GetOptionValueOrDefault<string>(this, TextOptionName);
+            DialogueGraphUtility.AssignFromFieldOptions(this, ref dialogue.baseParams);
             
             return dialogue;
         }
@@ -44,8 +43,9 @@ namespace DialogueSystem.Editor
             var dialogue = DialogueGraphUtility.GetObject<BasicDialogue>(this, dialogueDict);
             var dialogueTrace = DialogueGraphUtility.GetConnectedDialogue(this, dialogueDict);
             
+            DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref dialogue.baseParams);
+            
             dialogue.nextDialogue = dialogueTrace;
-            dialogue.profile = DialogueGraphUtility.GetProfileValueOrNull(this, dialogueDict);
             dialogue.events = DialogueGraphUtility.GetEvents(this);
         }
     }

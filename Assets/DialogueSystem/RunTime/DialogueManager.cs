@@ -9,7 +9,7 @@ namespace DialogueSystem.Runtime
     {
         [HideInInspector] public UnityEvent<DialogueAsset> beginDialogue = new();
         [HideInInspector] public UnityEvent<AdvanceDialogueContext> advanceDialogue = new();
-        public UnityEvent<DialogueDetails> displayDialogue = new();
+        public UnityEvent<DialogueParams> displayDialogue = new();
         public UnityEvent endDialogue = new();
         
         private DialogueTrace currentDialogue;

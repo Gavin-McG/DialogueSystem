@@ -55,8 +55,8 @@ namespace DialogueSystem.Editor
             }
             
             //assign references between nodes
-            var dialogueTraceNodes = dialogueObjectNodes.OfType<IDialogueTraceNode>();
-            foreach (var node in dialogueTraceNodes)
+            var dialogueReferencNodes = dialogueObjectNodes.OfType<IDialogueReferenceNode>();
+            foreach (var node in dialogueReferencNodes)
             {
                 node.AssignObjectReferences(nodeDict);
             }

@@ -24,6 +24,7 @@ namespace DialogueSystem.Editor
 
         protected override void OnDefinePorts(IPortDefinitionContext context)
         {
+            base.OnDefinePorts(context);
             DialogueGraphUtility.DefineProfileOutputPort(context);
         }
     }

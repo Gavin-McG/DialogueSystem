@@ -10,66 +10,32 @@ using UnityEngine;
 namespace DialogueSystem.Editor
 {
     
-    public abstract class GenericObjectNode<T> : Node, IDialogueObjectNode where T : DialogueObject
+    public abstract class GenericObjectNode<T> : Node, IDialogueReferenceNode where T : DialogueObject
     {
+        protected override void OnDefineOptions(INodeOptionDefinition context)
+        {
+            DialogueGraphUtility.DefineFieldOptions<T>(context);
+        }
+
+        protected override void OnDefinePorts(IPortDefinitionContext context)
+        {
+            DialogueGraphUtility.DefineFieldPorts<T>(context);
+        }
+
         public virtual DialogueObject CreateDialogueObject()
         {
             var obj = ScriptableObject.CreateInstance<T>();
 
-            foreach (var field in GetSerializableFields())
-            {
-                var option = GetNodeOptionByName(field.Name);
-                if (option == null)
-                    continue;
-
-                var fieldType = field.FieldType;
-
-                var tryGetValueMethod = typeof(INodeOption).GetMethod(nameof(INodeOption.TryGetValue))?
-                    .MakeGenericMethod(fieldType);
-
-                object[] parameters = { null };
-                bool success = (bool)tryGetValueMethod.Invoke(option, parameters);
-
-                if (success)
-                {
-                    field.SetValue(obj, parameters[0]);
-                }
-                else
-                {
-                    field.SetValue(obj, fieldType.IsValueType ? Activator.CreateInstance(fieldType) : null);
-                }
-            }
+            DialogueGraphUtility.AssignFromFieldOptions(this, ref obj);
 
             return obj;
         }
 
-        protected override void OnDefineOptions(INodeOptionDefinition context)
+        public void AssignObjectReferences(Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict)
         {
-            foreach (var field in GetSerializableFields())
-            {
-                var fieldName = field.Name;
-                var fieldType = field.FieldType;
-                var displayName = Regex.Replace(field.Name, "(?<!^)([A-Z])", " $1");
-                displayName = char.ToUpper(displayName[0]) + displayName.Substring(1);
-
-                var tooltipAttribute = field.GetCustomAttribute<TooltipAttribute>();
-                var tooltip = tooltipAttribute?.tooltip;
-
-                context.AddNodeOption(fieldName, fieldType, displayName, tooltip);
-            }
-        }
-
-        private static IEnumerable<FieldInfo> GetSerializableFields()
-        {
-            var flags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
-            return typeof(T).GetFields(flags).Where(field =>
-            {
-                bool isPublic = field.IsPublic && field.GetCustomAttribute<NonSerializedAttribute>() == null;
-                bool isSerializedPrivate = !field.IsPublic && field.GetCustomAttribute<SerializeField>() != null;
-                bool isHidden = field.GetCustomAttribute<HideInInspector>() != null;
-
-                return (isPublic || isSerializedPrivate) && !isHidden;
-            });
+            var obj = DialogueGraphUtility.GetObjectFromNode<T>(this, dialogueDict);
+            
+            DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref obj);
         }
     }
 

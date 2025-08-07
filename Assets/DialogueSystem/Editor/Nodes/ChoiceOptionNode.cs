@@ -8,7 +8,7 @@ namespace DialogueSystem.Editor
 {
     [Serializable]
     [UseWithContext(typeof(ChoiceDialogueNode))]
-    public class ChoiceOptionNode : BlockNode, IDialogueTraceNode
+    public class ChoiceOptionNode : BlockNode, IDialogueReferenceNode
     {
         private const string PromptOptionName = "prompt";
         
