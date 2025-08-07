@@ -31,9 +31,7 @@ namespace DialogueSystem.Runtime
         
         [Tooltip(Styles.RightSideTooltip)]
         public bool rightSide;
-
-        [DialoguePort]
-        public DialogueProfile bestFreind;
+        
     }
 
 }

@@ -561,13 +561,11 @@ MonoBehaviour:
           - displayName
           - sprite
           - rightSide
-          - bestFreind
           m_ValueList:
           - rid: 5684132244273758316
           - rid: 5684132244273758317
           - rid: 5684132244273758318
           - rid: 5684132244273758319
-          - rid: 5684132244273758320
         m_InputPortInfos:
           expandedPortsById:
             m_KeyList: []
@@ -599,10 +597,6 @@ MonoBehaviour:
       type: {class: 'Constant`1[[System.Boolean, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
       data:
         m_Value: 0
-    - rid: 5684132244273758320
-      type: {class: 'Constant`1[[DialogueSystem.Runtime.DialogueProfile, DialogueSystem.Runtime]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
-      data:
-        m_Value: {fileID: 0}
     - rid: 5684132244273758321
       type: {class: DialogueProfileNode, ns: DialogueSystem.Editor, asm: DialogueSystem.Editor}
       data: 
