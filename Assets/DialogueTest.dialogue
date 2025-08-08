@@ -991,7 +991,7 @@ MonoBehaviour:
           serializedVersion: 2
           Hash: e6740972ced805310d071bb99ff35794
         m_Version: 2
-        m_Position: {x: 1132.7501, y: 361.1}
+        m_Position: {x: 1097.1001, y: 359.95}
         m_Title: DSEventNodeInt
         m_Tooltip: 
         m_NodePreviewModel:

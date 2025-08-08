@@ -70,6 +70,10 @@ namespace DialogueSystem.Editor
                 var fieldName = field.Name;
                 var fieldType = field.FieldType;
                 var displayName = FieldNameToDisplayName(fieldName);
+                
+                var dialoguePortAttribute = field.GetCustomAttribute<DialoguePortAttribute>();
+                if (dialoguePortAttribute.DisplayName != null) 
+                    displayName = dialoguePortAttribute.DisplayName;
 
                 context.AddInputPort(fieldName)
                     .WithDataType(fieldType)
