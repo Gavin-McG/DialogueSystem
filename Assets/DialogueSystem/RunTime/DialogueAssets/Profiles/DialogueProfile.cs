@@ -37,6 +37,8 @@ namespace DialogueSystem.Runtime
         public enum Mood { Happy, Sad, Mad, Horny }
 
         public Mood mood;
+
+        public DialogueProfile bestFriend;
     }
 
     
@@ -46,6 +48,7 @@ namespace DialogueSystem.Runtime
         public Color color;
         public int size;
         public Icon icon;
+        public DialogueProfile previousOwner;
     }
 
     [System.Serializable]

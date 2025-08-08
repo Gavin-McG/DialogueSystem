@@ -29,19 +29,27 @@ namespace DialogueSystem.Editor
         }
     }
 
-    public abstract class DSEventNode<T> : DSEventNode, IDialogueObjectNode
+    public abstract class DSEventNode<T> : DSEventNode, IDialogueReferenceNode
     {
         protected override void OnDefineOptions(INodeOptionDefinition context)
         {
             context.AddNodeOption<DSEvent<T>>(EventOptionName, "Event",
                 tooltip: "Event object to be acted upon when Dialogue is passed", defaultValue: null);
             
-            DialogueGraphUtility.DefineFieldOptions<T>(context);
+            DialogueGraphUtility.DefineFieldOptions<DSEventReference<T>>(context);
         }
-        
-        private T GetValueOption()
+
+        protected override void OnDefinePorts(IPortDefinitionContext context)
         {
-            return DialogueGraphUtility.AssignFromFieldOptions<T>(this);
+            base.OnDefinePorts(context);
+            
+            DialogueGraphUtility.DefineFieldPorts<DSEventReference<T>>(context);
+
+        }
+
+        private DSEventReference<T> GetValueOption()
+        {
+            return DialogueGraphUtility.AssignFromFieldOptions<DSEventReference<T>>(this);
         }
 
         private DSEvent<T> GetEventOption()
@@ -51,13 +59,19 @@ namespace DialogueSystem.Editor
 
         protected void AssignEventReferenceValues(DSEventReference<T> eventReference)
         {
-            eventReference.value = GetValueOption();
+            DialogueGraphUtility.AssignFromFieldOptions(this, ref eventReference);
             eventReference.dialogueEvent = GetEventOption();
 
             eventReference.name = "Event Reference";
         }
 
         public abstract DialogueObject CreateDialogueObject();
+
+        public void AssignObjectReferences(Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict)
+        {
+            var obj = DialogueGraphUtility.GetObjectFromNode<DSEventReference<T>>(this, dialogueDict);
+            DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref obj);
+        }
 
         public override DSEventCaller GetEvent(Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict)
         {

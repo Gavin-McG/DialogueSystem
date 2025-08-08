@@ -46,19 +46,6 @@ namespace DialogueSystem.Editor
             return SupportedNodeOptionTypes.Contains(type)
                    || type.IsEnum;
         }
-        
-        private static IEnumerable<FieldInfo> GetPortFields<T>()
-        {
-            return typeof(T).GetFields(FieldFlags).Where(field =>
-            {
-                bool isPublic = field.IsPublic && field.GetCustomAttribute<NonSerializedAttribute>() == null;
-                bool isSerializedPrivate = !field.IsPublic && field.GetCustomAttribute<SerializeField>() != null;
-                bool isHidden = field.GetCustomAttribute<HideInInspector>() != null;
-                bool isPort = field.GetCustomAttribute<DialoguePortAttribute>() != null && typeof(DialogueObject).IsAssignableFrom(field.FieldType);
-
-                return (isPublic || isSerializedPrivate) && !isHidden && isPort;
-            });
-        }
 
         private static string FieldNameToDisplayName(string fieldName)
         {
@@ -79,6 +66,111 @@ namespace DialogueSystem.Editor
             }
 
             return string.Join(".", parts);
+        }
+        
+        public static IEnumerable<(string path, FieldInfo fieldInfo, Type parentType)> GetOptionFieldsRecursive(
+            Type type, 
+            string parentPath = "", 
+            HashSet<Type> ancestorTypes = null)
+        {
+            ancestorTypes ??= new HashSet<Type>();
+    
+            // Add current type to ancestor chain
+            if (!ancestorTypes.Add(type))
+            {
+                // Type already encountered in this chain — avoid infinite recursion
+                yield break;
+            }
+
+            var fields = type.GetFields(FieldFlags);
+
+            foreach (var field in fields)
+            {
+                bool isPublic = field.IsPublic && field.GetCustomAttribute<NonSerializedAttribute>() == null;
+                bool isSerializedPrivate = !field.IsPublic && field.GetCustomAttribute<SerializeField>() != null;
+                bool isHidden = field.GetCustomAttribute<HideInInspector>() != null;
+                bool isPort = typeof(DialogueObject).IsAssignableFrom(field.FieldType);
+
+                if (!(isPublic || isSerializedPrivate) || isHidden || isPort)
+                    continue;
+
+                string fullPath = string.IsNullOrEmpty(parentPath) ? field.Name : $"{parentPath}{FieldSeperator}{field.Name}";
+
+                yield return (fullPath, field, type);
+
+                var fieldType = field.FieldType;
+                if (!IsBasicSupportedType(fieldType) &&
+                    !fieldType.IsPrimitive &&
+                    !typeof(UnityEngine.Object).IsAssignableFrom(fieldType) &&
+                    !fieldType.IsArray)
+                {
+                    // Pass a copy of ancestorTypes for recursion, 
+                    // or use the same set if you remove type after recursion (see below)
+                    foreach (var subField in GetOptionFieldsRecursive(fieldType, fullPath, ancestorTypes))
+                        yield return subField;
+                }
+            }
+
+            // Remove current type to allow sibling branches to explore it
+            ancestorTypes.Remove(type);
+        }
+        
+        public static IEnumerable<(string path, FieldInfo fieldInfo, Type parentType)> GetOptionFieldsRecursive<T>()
+        {
+            return GetOptionFieldsRecursive(typeof(T));
+        }
+        
+        public static IEnumerable<(string path, FieldInfo fieldInfo, Type parentType)> GetPortFieldsRecursive(
+            Type type, 
+            string parentPath = "", 
+            HashSet<Type> ancestorTypes = null)
+        {
+            ancestorTypes ??= new HashSet<Type>();
+    
+            // Add current type to ancestor chain
+            if (!ancestorTypes.Add(type))
+            {
+                // Type already encountered in this chain — avoid infinite recursion
+                yield break;
+            }
+
+            var fields = type.GetFields(FieldFlags);
+
+            foreach (var field in fields)
+            {
+                bool isPublic = field.IsPublic && field.GetCustomAttribute<NonSerializedAttribute>() == null;
+                bool isSerializedPrivate = !field.IsPublic && field.GetCustomAttribute<SerializeField>() != null;
+                bool isHidden = field.GetCustomAttribute<HideInInspector>() != null;
+                bool isPort = typeof(DialogueObject).IsAssignableFrom(field.FieldType);
+                
+                string fullPath = string.IsNullOrEmpty(parentPath) ? field.Name : $"{parentPath}{FieldSeperator}{field.Name}";
+
+                if ((isPublic || isSerializedPrivate) && !isHidden && isPort)
+                {
+                    yield return (fullPath, field, type);
+                    continue;
+                }
+
+                var fieldType = field.FieldType;
+                if (!IsBasicSupportedType(fieldType) &&
+                    !fieldType.IsPrimitive &&
+                    !typeof(UnityEngine.Object).IsAssignableFrom(fieldType) &&
+                    !fieldType.IsArray)
+                {
+                    // Pass a copy of ancestorTypes for recursion, 
+                    // or use the same set if you remove type after recursion (see below)
+                    foreach (var subField in GetPortFieldsRecursive(fieldType, fullPath, ancestorTypes))
+                        yield return subField;
+                }
+            }
+
+            // Remove current type to allow sibling branches to explore it
+            ancestorTypes.Remove(type);
+        }
+        
+        public static IEnumerable<(string path, FieldInfo fieldInfo, Type parentType)> GetPortFieldsRecursive<T>()
+        {
+            return GetPortFieldsRecursive(typeof(T));
         }
 
         public static void DefineFieldOptions<T>(INodeOptionDefinition context)
@@ -105,19 +197,16 @@ namespace DialogueSystem.Editor
 
         public static void DefineFieldPorts<T>(Node.IPortDefinitionContext context)
         {
-            var fields = GetPortFields<T>();
-            foreach (var field in fields)
-            {
-                var fieldName = field.Name;
-                var fieldType = field.FieldType;
-                var displayName = FieldNameToDisplayName(fieldName);
-                
-                var dialoguePortAttribute = field.GetCustomAttribute<DialoguePortAttribute>();
-                if (dialoguePortAttribute.DisplayName != null) 
-                    displayName = dialoguePortAttribute.DisplayName;
+            var type = typeof(T);
+            
+            var fields = GetPortFieldsRecursive(type);
 
-                context.AddInputPort(fieldName)
-                    .WithDataType(fieldType)
+            foreach (var (path, field, _) in fields)
+            {
+                var displayName = FieldNameToDisplayName(path);
+                
+                context.AddInputPort(path)
+                    .WithDataType(field.FieldType)
                     .WithDisplayName(displayName)
                     .Build();
             }
@@ -260,78 +349,30 @@ namespace DialogueSystem.Editor
             }
         }
 
-        public static void AssignFromFieldPorts<T>(Node node, 
-            Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict, ref T obj) where T : class
+        public static T AssignFromFieldPorts<T>(Node node, 
+            Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict, ref T obj)
         {
-            var fields = DialogueGraphUtility.GetPortFields<T>();
-            foreach (var field in fields)
+            var fields = GetPortFieldsRecursive<T>();
+            foreach (var (path, field, _) in fields)
             {
-                var fieldType = field.FieldType;
+                var port = node.GetInputPortByName(path);
+                if (port == null)
+                    continue;
                 
+                var fieldType = field.FieldType;
                 var getDialogueObjectMethod = typeof(DialogueGraphUtility)
                     .GetMethod(nameof(GetDialogueObjectValueOrNull))?
                     .MakeGenericMethod(fieldType);
                 
-                object[] parameters = { node, field.Name, dialogueDict };
-                
-                var value = getDialogueObjectMethod?.Invoke(null, parameters);
-                
-                field.SetValue(obj, value);
+                object[] parameters = { node, path, dialogueDict };
+                object valueToAssign = getDialogueObjectMethod?.Invoke(port, parameters);
+
+                SetNestedFieldValue(obj, path.Split(FieldSeperator), valueToAssign);
             }
+            
+            return obj;
         }
         
         
-        public static IEnumerable<(string path, FieldInfo fieldInfo, Type parentType)> GetOptionFieldsRecursive(
-            Type type, 
-            string parentPath = "", 
-            HashSet<Type>? ancestorTypes = null)
-        {
-            ancestorTypes ??= new HashSet<Type>();
-    
-            // Add current type to ancestor chain
-            if (!ancestorTypes.Add(type))
-            {
-                // Type already encountered in this chain — avoid infinite recursion
-                yield break;
-            }
-
-            var fields = type.GetFields(FieldFlags);
-
-            foreach (var field in fields)
-            {
-                bool isPublic = field.IsPublic && field.GetCustomAttribute<NonSerializedAttribute>() == null;
-                bool isSerializedPrivate = !field.IsPublic && field.GetCustomAttribute<SerializeField>() != null;
-                bool isHidden = field.GetCustomAttribute<HideInInspector>() != null;
-                bool isPort = field.GetCustomAttribute<DialoguePortAttribute>() != null && typeof(DialogueObject).IsAssignableFrom(field.FieldType);
-
-                if (!(isPublic || isSerializedPrivate) || isHidden || isPort)
-                    continue;
-
-                string fullPath = string.IsNullOrEmpty(parentPath) ? field.Name : $"{parentPath}{FieldSeperator}{field.Name}";
-
-                yield return (fullPath, field, type);
-
-                var fieldType = field.FieldType;
-                if (!IsBasicSupportedType(fieldType) &&
-                    !fieldType.IsPrimitive &&
-                    !fieldType.IsEnum &&
-                    !typeof(UnityEngine.Object).IsAssignableFrom(fieldType) &&
-                    !fieldType.IsArray)
-                {
-                    // Pass a copy of ancestorTypes for recursion, 
-                    // or use the same set if you remove type after recursion (see below)
-                    foreach (var subField in GetOptionFieldsRecursive(fieldType, fullPath, ancestorTypes))
-                        yield return subField;
-                }
-            }
-
-            // Remove current type to allow sibling branches to explore it
-            ancestorTypes.Remove(type);
-        }
-
-        public static IEnumerable<(string path, FieldInfo fieldInfo, Type parentType)> GetOptionFieldsRecursive<T>()
-        {
-            return GetOptionFieldsRecursive(typeof(T));
-        }
     }
 }
