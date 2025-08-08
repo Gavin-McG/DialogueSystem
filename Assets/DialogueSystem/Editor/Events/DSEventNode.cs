@@ -55,6 +55,8 @@ namespace DialogueSystem.Editor
         {
             eventReference.value = GetValueOption();
             eventReference.dialogueEvent = GetEventOption();
+
+            eventReference.name = "Event Reference";
         }
 
         public abstract DialogueObject CreateDialogueObject();
