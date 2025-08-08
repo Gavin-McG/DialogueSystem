@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using DialogueSystem.Runtime;
 using Unity.GraphToolkit.Editor;
+using UnityEditor;
 using UnityEditor.AssetImporters;
 using UnityEngine;
 
@@ -19,6 +20,9 @@ namespace DialogueSystem.Editor
                 Debug.LogError($"Failed to load dialogue graph object: {ctx.assetPath}");
                 return;
             }
+
+            //Get texture for asset
+            var assetTexture = Resources.Load<Texture2D>("DialogueGraphTexture");
 
             
             //get list of all IDialogueObject nodes (including block nodes)
@@ -44,7 +48,7 @@ namespace DialogueSystem.Editor
                 
                 if (dialogueObject is DialogueAsset asset)
                 {
-                    ctx.AddObjectToAsset("Main", asset);
+                    ctx.AddObjectToAsset("Main", asset, assetTexture);
                     ctx.SetMainObject(asset);
                 }
                 else 
