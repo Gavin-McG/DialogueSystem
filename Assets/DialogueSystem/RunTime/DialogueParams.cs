@@ -8,7 +8,6 @@ namespace DialogueSystem.Runtime
     public class DialogueBaseParams
     {
         public string text;
-        [DialoguePort] 
         public DialogueProfile profile;
     }
 
