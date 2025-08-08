@@ -72,7 +72,7 @@ MonoBehaviour:
           x: -115
           y: 258
           width: 1968
-          height: 1181
+          height: 1223
         m_GraphElementMetaData:
         - m_Guid:
             m_Value0: 11253604363410713799
@@ -717,6 +717,10 @@ MonoBehaviour:
           - shirt/color
           - shirt/size
           - shirt
+          - mood
+          - shirt/icon
+          - shirt/icon/color
+          - shirt/icon/sprite
           m_ValueList:
           - rid: 5684132244273758316
           - rid: 5684132244273758317
@@ -725,6 +729,10 @@ MonoBehaviour:
           - rid: 5684132264287404099
           - rid: 5684132264287404100
           - rid: 5684132264287404105
+          - rid: 5684132267108073533
+          - rid: 5684132267108073534
+          - rid: 5684132267108073535
+          - rid: 5684132267108073536
         m_InputPortInfos:
           expandedPortsById:
             m_KeyList: []
@@ -1502,11 +1510,11 @@ MonoBehaviour:
     - rid: 5684132264287404099
       type: {class: 'Constant`1[[UnityEngine.Color, UnityEngine.CoreModule]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
       data:
-        m_Value: {r: 0, g: 0, b: 0, a: 0}
+        m_Value: {r: 0.9254902, g: 0, b: 0.028653694, a: 0}
     - rid: 5684132264287404100
       type: {class: 'Constant`1[[System.Int32, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
       data:
-        m_Value: 0
+        m_Value: 4
     - rid: 5684132264287404101
       type: {class: UserNodeModelImp, ns: Unity.GraphToolkit.Editor.Implementation, asm: Unity.GraphToolkit.Editor}
       data:
@@ -1562,6 +1570,9 @@ MonoBehaviour:
         m_Value:
           color: {r: 0, g: 0, b: 0, a: 0}
           size: 0
+          icon:
+            color: {r: 0, g: 0, b: 0, a: 0}
+            sprite: {fileID: 0}
     - rid: 5684132264287404106
       type: {class: UserNodeModelImp, ns: Unity.GraphToolkit.Editor.Implementation, asm: Unity.GraphToolkit.Editor}
       data:
@@ -1583,10 +1594,16 @@ MonoBehaviour:
           - eventObject
           - color
           - size
+          - icon
+          - icon/color
+          - icon/sprite
           m_ValueList:
           - rid: 5684132264287404107
           - rid: 5684132264287404108
           - rid: 5684132264287404109
+          - rid: 5684132267108073537
+          - rid: 5684132267108073538
+          - rid: 5684132267108073539
         m_InputPortInfos:
           expandedPortsById:
             m_KeyList: []
@@ -1609,11 +1626,11 @@ MonoBehaviour:
     - rid: 5684132264287404108
       type: {class: 'Constant`1[[UnityEngine.Color, UnityEngine.CoreModule]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
       data:
-        m_Value: {r: 0, g: 0, b: 0, a: 0}
+        m_Value: {r: 0.05724919, g: 1, b: 0, a: 0}
     - rid: 5684132264287404109
       type: {class: 'Constant`1[[System.Int32, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
       data:
-        m_Value: 0
+        m_Value: 7
     - rid: 5684132264287404110
       type: {class: DSEventNodeShirt, ns: DialogueSystem.Editor, asm: DialogueSystem.Editor}
       data: 
@@ -1649,3 +1666,42 @@ MonoBehaviour:
           m_PortDirection: 1
           m_PortOrientation: 0
           m_Title: 
+    - rid: 5684132267108073533
+      type: {class: EnumConstant, ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
+      data:
+        m_Value:
+          m_EnumType:
+            m_Identification: DialogueSystem.Runtime.DialogueProfile+Mood, DialogueSystem.Runtime,
+              Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+          m_Value: 0
+        m_EnumType:
+          m_Identification: DialogueSystem.Runtime.DialogueProfile+Mood, DialogueSystem.Runtime,
+            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    - rid: 5684132267108073534
+      type: {class: 'Constant`1[[DialogueSystem.Runtime.Icon, DialogueSystem.Runtime]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
+      data:
+        m_Value:
+          color: {r: 0, g: 0, b: 0, a: 0}
+          sprite: {fileID: 0}
+    - rid: 5684132267108073535
+      type: {class: 'Constant`1[[UnityEngine.Color, UnityEngine.CoreModule]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
+      data:
+        m_Value: {r: 1, g: 1, b: 1, a: 0}
+    - rid: 5684132267108073536
+      type: {class: 'Constant`1[[UnityEngine.Sprite, UnityEngine.CoreModule]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
+      data:
+        m_Value: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    - rid: 5684132267108073537
+      type: {class: 'Constant`1[[DialogueSystem.Runtime.Icon, DialogueSystem.Runtime]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
+      data:
+        m_Value:
+          color: {r: 0, g: 0, b: 0, a: 0}
+          sprite: {fileID: 0}
+    - rid: 5684132267108073538
+      type: {class: 'Constant`1[[UnityEngine.Color, UnityEngine.CoreModule]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
+      data:
+        m_Value: {r: 0.8712125, g: 1, b: 0, a: 0}
+    - rid: 5684132267108073539
+      type: {class: 'Constant`1[[UnityEngine.Sprite, UnityEngine.CoreModule]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
+      data:
+        m_Value: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}

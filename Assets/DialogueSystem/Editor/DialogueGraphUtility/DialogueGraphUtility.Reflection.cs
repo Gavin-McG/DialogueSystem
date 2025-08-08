@@ -47,19 +47,6 @@ namespace DialogueSystem.Editor
                    || type.IsEnum;
         }
         
-        private static IEnumerable<FieldInfo> GetOptionFields<T>()
-        {
-            return typeof(T).GetFields(FieldFlags).Where(field =>
-            {
-                bool isPublic = field.IsPublic && field.GetCustomAttribute<NonSerializedAttribute>() == null;
-                bool isSerializedPrivate = !field.IsPublic && field.GetCustomAttribute<SerializeField>() != null;
-                bool isHidden = field.GetCustomAttribute<HideInInspector>() != null;
-                bool isPort = field.GetCustomAttribute<DialoguePortAttribute>() != null && typeof(DialogueObject).IsAssignableFrom(field.FieldType);
-
-                return (isPublic || isSerializedPrivate) && !isHidden && !isPort;
-            });
-        }
-        
         private static IEnumerable<FieldInfo> GetPortFields<T>()
         {
             return typeof(T).GetFields(FieldFlags).Where(field =>
@@ -118,7 +105,7 @@ namespace DialogueSystem.Editor
 
         public static void DefineFieldPorts<T>(Node.IPortDefinitionContext context)
         {
-            var fields = DialogueGraphUtility.GetPortFields<T>();
+            var fields = GetPortFields<T>();
             foreach (var field in fields)
             {
                 var fieldName = field.Name;
@@ -133,6 +120,40 @@ namespace DialogueSystem.Editor
                     .WithDataType(fieldType)
                     .WithDisplayName(displayName)
                     .Build();
+            }
+        }
+        
+        private static void SetNestedFieldValue(object root, string[] pathParts, object value)
+        {
+            object current = root;
+            var stack = new Stack<(object parent, FieldInfo field)>();
+
+            // Traverse down to the target field
+            for (int i = 0; i < pathParts.Length - 1; i++)
+            {
+                var field = current.GetType().GetField(pathParts[i], FieldFlags);
+                var fieldValue = field.GetValue(current);
+
+                if (fieldValue == null)
+                {
+                    fieldValue = Activator.CreateInstance(field.FieldType);
+                    field.SetValue(current, fieldValue);
+                }
+
+                stack.Push((current, field));
+                current = fieldValue;
+            }
+
+            // Set the final field
+            var finalField = current.GetType().GetField(pathParts[^1], FieldFlags);
+            finalField?.SetValue(current, value);
+
+            // Reassign structs back up the chain
+            while (stack.Count > 0)
+            {
+                var (parent, field) = stack.Pop();
+                field.SetValue(parent, current);
+                current = parent;
             }
         }
 
@@ -160,10 +181,9 @@ namespace DialogueSystem.Editor
                 return (T)(type.IsValueType ? Activator.CreateInstance(type) : null);
             }
 
-            // Create new instance for both class and struct types
             obj = Activator.CreateInstance(typeof(T));
 
-            var fields = DialogueGraphUtility.GetOptionFieldsRecursive<T>();
+            var fields = GetOptionFieldsRecursive<T>();
             foreach (var (path, field, _) in fields)
             {
                 var option = node.GetNodeOptionByName(path);
@@ -178,25 +198,11 @@ namespace DialogueSystem.Editor
                 object[] parameters = { null };
                 bool success = (bool)(tryGetValue?.Invoke(option, parameters) ?? false);
 
-                // Traverse to target object (deep field support)
-                object target = obj;
-                string[] parts = path.Split(FieldSeperator);
-                for (int i = 0; i < parts.Length - 1; i++)
-                {
-                    var info = target.GetType().GetField(parts[i], FieldFlags);
-                    var val = info.GetValue(target);
-                    if (val == null)
-                    {
-                        val = Activator.CreateInstance(info.FieldType);
-                        info.SetValue(target, val);
-                    }
-                    target = val;
-                }
-
-                var targetField = target.GetType().GetField(parts.Last(), FieldFlags);
-                targetField?.SetValue(target, success
+                var valueToAssign = success
                     ? parameters[0]
-                    : fieldType.IsValueType ? Activator.CreateInstance(fieldType) : null);
+                    : fieldType.IsValueType ? Activator.CreateInstance(fieldType) : null;
+
+                SetNestedFieldValue(obj, path.Split(FieldSeperator), valueToAssign);
             }
 
             return (T)obj;
@@ -231,7 +237,7 @@ namespace DialogueSystem.Editor
             if (obj == null)
                 obj = ScriptableObject.CreateInstance<T>();
 
-            var fields = DialogueGraphUtility.GetOptionFieldsRecursive<T>();
+            var fields = GetOptionFieldsRecursive<T>();
             foreach (var (path, field, _) in fields)
             {
                 var option = node.GetNodeOptionByName(path);
@@ -246,25 +252,11 @@ namespace DialogueSystem.Editor
                 object[] parameters = { null };
                 bool success = (bool)(tryGetValue?.Invoke(option, parameters) ?? false);
 
-                // Traverse to target object
-                object target = obj;
-                string[] parts = path.Split(FieldSeperator);
-                for (int i = 0; i < parts.Length - 1; i++)
-                {
-                    var info = target.GetType().GetField(parts[i], FieldFlags);
-                    var val = info.GetValue(target);
-                    if (val == null)
-                    {
-                        val = Activator.CreateInstance(info.FieldType);
-                        info.SetValue(target, val);
-                    }
-                    target = val;
-                }
-
-                var targetField = target.GetType().GetField(parts.Last(), FieldFlags);
-                targetField?.SetValue(target, success
+                var valueToAssign = success
                     ? parameters[0]
-                    : fieldType.IsValueType ? Activator.CreateInstance(fieldType) : null);
+                    : fieldType.IsValueType ? Activator.CreateInstance(fieldType) : null;
+
+                SetNestedFieldValue(obj, path.Split(FieldSeperator), valueToAssign);
             }
         }
 
@@ -289,8 +281,20 @@ namespace DialogueSystem.Editor
         }
         
         
-        public static IEnumerable<(string path, FieldInfo fieldInfo, Type parentType)> GetOptionFieldsRecursive(Type type, string parentPath = "")
+        public static IEnumerable<(string path, FieldInfo fieldInfo, Type parentType)> GetOptionFieldsRecursive(
+            Type type, 
+            string parentPath = "", 
+            HashSet<Type>? ancestorTypes = null)
         {
+            ancestorTypes ??= new HashSet<Type>();
+    
+            // Add current type to ancestor chain
+            if (!ancestorTypes.Add(type))
+            {
+                // Type already encountered in this chain — avoid infinite recursion
+                yield break;
+            }
+
             var fields = type.GetFields(FieldFlags);
 
             foreach (var field in fields)
@@ -307,16 +311,22 @@ namespace DialogueSystem.Editor
 
                 yield return (fullPath, field, type);
 
-                if (!IsBasicSupportedType(field.FieldType) &&
-                    !field.FieldType.IsPrimitive &&
-                    !field.FieldType.IsEnum &&
-                    !typeof(UnityEngine.Object).IsAssignableFrom(field.FieldType) &&
-                    !field.FieldType.IsArray)
+                var fieldType = field.FieldType;
+                if (!IsBasicSupportedType(fieldType) &&
+                    !fieldType.IsPrimitive &&
+                    !fieldType.IsEnum &&
+                    !typeof(UnityEngine.Object).IsAssignableFrom(fieldType) &&
+                    !fieldType.IsArray)
                 {
-                    foreach (var subField in GetOptionFieldsRecursive(field.FieldType, fullPath))
+                    // Pass a copy of ancestorTypes for recursion, 
+                    // or use the same set if you remove type after recursion (see below)
+                    foreach (var subField in GetOptionFieldsRecursive(fieldType, fullPath, ancestorTypes))
                         yield return subField;
                 }
             }
+
+            // Remove current type to allow sibling branches to explore it
+            ancestorTypes.Remove(type);
         }
 
         public static IEnumerable<(string path, FieldInfo fieldInfo, Type parentType)> GetOptionFieldsRecursive<T>()

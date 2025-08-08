@@ -33,6 +33,10 @@ namespace DialogueSystem.Runtime
         public bool rightSide;
         
         public Shirt shirt;
+        
+        public enum Mood { Happy, Sad, Mad, Horny }
+
+        public Mood mood;
     }
 
     
@@ -41,5 +45,13 @@ namespace DialogueSystem.Runtime
     {
         public Color color;
         public int size;
+        public Icon icon;
+    }
+
+    [System.Serializable]
+    public struct Icon
+    {
+        public Color color;
+        public Sprite sprite;
     }
 }

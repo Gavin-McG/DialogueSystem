@@ -9,6 +9,14 @@ public class ExampleDialogueDispatch : MonoBehaviour
     [SerializeField] private DialogueAsset asset;
     [SerializeField] private DSEvent dialogueEvent;
     [SerializeField] private DSEventString dialogueIntEvent;
+    [SerializeField] private TestClass testClass;
+
+    [Serializable]
+    public class TestClass
+    {
+        public int value;
+        public TestClass instance;
+    }
     
     private void OnEnable()
     {
