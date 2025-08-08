@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 namespace DialogueSystem.Runtime
 {
-    [CreateAssetMenu(fileName = "DialogueEvent", menuName = "Dialogue System/Dialogue Event")]
+    [CreateAssetMenu(fileName = "DialogueEvent", menuName = "Dialogue System/Event/Dialogue Event")]
     public class DSEvent : DSEventCaller
     {
         [SerializeField] private UnityEvent dialogueEvent = new UnityEvent();

@@ -2185,7 +2185,7 @@ MonoBehaviour:
   manager: {fileID: 1558601579}
   asset: {fileID: -6979533126094156877, guid: 48147cf5917a4f045ac00a4cb968c5ba, type: 3}
   dialogueEvent: {fileID: 11400000, guid: 887c22d8987923044b037ba5300cce27, type: 2}
-  dialogueIntEvent: {fileID: 11400000, guid: 105306f2d9962c8479f5a22ad0385776, type: 2}
+  dialogueIntEvent: {fileID: 11400000, guid: d1fd1bd9229a2de458418f4496123ee2, type: 2}
 --- !u!1 &1836243705
 GameObject:
   m_ObjectHideFlags: 0

@@ -42,6 +42,7 @@ MonoBehaviour:
         - rid: 5684132244273758428
         - rid: 5684132244273758435
         - rid: 5684132244273758448
+        - rid: 5684132264287404091
         m_GraphWireModels:
         - rid: 5684132137619947719
         - rid: 5684132244273758306
@@ -55,6 +56,7 @@ MonoBehaviour:
         - rid: 5684132244273758432
         - rid: 5684132244273758438
         - rid: 5684132244273758452
+        - rid: 5684132264287404095
         m_GraphStickyNoteModels: []
         m_GraphPlacematModels: []
         m_GraphVariableModels: []
@@ -65,9 +67,9 @@ MonoBehaviour:
         m_LastKnownBounds:
           serializedVersion: 2
           x: -96
-          y: 277
-          width: 2193
-          height: 605
+          y: 258
+          width: 1949
+          height: 820
         m_GraphElementMetaData:
         - m_Guid:
             m_Value0: 11253604363410713799
@@ -277,6 +279,22 @@ MonoBehaviour:
             Hash: 07dfc9867c409980040c10e8f5a134bb
           m_Category: 2
           m_Index: 11
+        - m_Guid:
+            m_Value0: 12771287192647030691
+            m_Value1: 14137156450723834279
+          m_HashGuid:
+            serializedVersion: 2
+            Hash: a3d7385a09ba3cb1a72984dbe34431c4
+          m_Category: 0
+          m_Index: 12
+        - m_Guid:
+            m_Value0: 7239562928686233541
+            m_Value1: 2603940452650920653
+          m_HashGuid:
+            serializedVersion: 2
+            Hash: c5f76d7520187864cd2a87a00b0e2324
+          m_Category: 2
+          m_Index: 12
         m_EntryPoint:
           rid: 5684132137619947711
         m_Graph:
@@ -343,7 +361,7 @@ MonoBehaviour:
           serializedVersion: 2
           Hash: c91cb951a6ea139544524a298e61cf2f
         m_Version: 2
-        m_Position: {x: 285.7535, y: 277.01083}
+        m_Position: {x: 291.00055, y: 257.77176}
         m_Title: 
         m_Tooltip: 
         m_NodePreviewModel:
@@ -903,7 +921,7 @@ MonoBehaviour:
           serializedVersion: 2
           Hash: 1db7ae09fdb749c2352781d70c6526e9
         m_Version: 2
-        m_Position: {x: 1556.9265, y: 499.23596}
+        m_Position: {x: 1572.0493, y: 493.94293}
         m_Title: 
         m_Tooltip: 
         m_NodePreviewModel:
@@ -978,7 +996,7 @@ MonoBehaviour:
           serializedVersion: 2
           Hash: 2b10fb5bda8029ef34071b568761ed1d
         m_Version: 2
-        m_Position: {x: 1105.1503, y: 739.45013}
+        m_Position: {x: 1099.1011, y: 689.5447}
         m_Title: 
         m_Tooltip: 
         m_NodePreviewModel:
@@ -1027,7 +1045,7 @@ MonoBehaviour:
           serializedVersion: 2
           Hash: e6740972ced805310d071bb99ff35794
         m_Version: 2
-        m_Position: {x: 1097.1001, y: 359.95}
+        m_Position: {x: 1097.8562, y: 388.68347}
         m_Title: DSEventNodeInt
         m_Tooltip: 
         m_NodePreviewModel:
@@ -1140,7 +1158,7 @@ MonoBehaviour:
           serializedVersion: 2
           Hash: 613bd1c51e89906ce76cd51251d49490
         m_Version: 2
-        m_Position: {x: 1567.1412, y: 739.67615}
+        m_Position: {x: 1573.9464, y: 772.19037}
         m_Title: DSEventNodeInt
         m_Tooltip: 
         m_NodePreviewModel:
@@ -1221,7 +1239,7 @@ MonoBehaviour:
           serializedVersion: 2
           Hash: 3dc09d635321232d04038ad9d2994dfe
         m_Version: 2
-        m_Position: {x: 1557.1566, y: 345.19354}
+        m_Position: {x: 1574.548, y: 364.85327}
         m_Title: DSEventNode
         m_Tooltip: 
         m_NodePreviewModel:
@@ -1296,7 +1314,7 @@ MonoBehaviour:
           serializedVersion: 2
           Hash: be3fc0109d8ba5941f3e475ae5484007
         m_Version: 2
-        m_Position: {x: 1851.5002, y: 593.4001}
+        m_Position: {x: 1573.2394, y: 623.6458}
         m_Title: DSEventNodeInt
         m_Tooltip: 
         m_NodePreviewModel:
@@ -1363,6 +1381,87 @@ MonoBehaviour:
           m_NodeModelHashGuid:
             serializedVersion: 2
             Hash: be3fc0109d8ba5941f3e475ae5484007
+          m_UniqueId: event
+          m_PortDirection: 1
+          m_PortOrientation: 0
+          m_Title: 
+    - rid: 5684132264287404091
+      type: {class: UserNodeModelImp, ns: Unity.GraphToolkit.Editor.Implementation, asm: Unity.GraphToolkit.Editor}
+      data:
+        m_Guid:
+          m_Value0: 12771287192647030691
+          m_Value1: 14137156450723834279
+        m_HashGuid:
+          serializedVersion: 2
+          Hash: a3d7385a09ba3cb1a72984dbe34431c4
+        m_Version: 2
+        m_Position: {x: 1576.42, y: 936.33}
+        m_Title: 
+        m_Tooltip: 
+        m_NodePreviewModel:
+          rid: -2
+        m_State: 0
+        m_InputConstantsById:
+          m_KeyList:
+          - eventObject
+          - value
+          m_ValueList:
+          - rid: 5684132264287404092
+          - rid: 5684132264287404093
+        m_InputPortInfos:
+          expandedPortsById:
+            m_KeyList: []
+            m_ValueList: 
+        m_OutputPortInfos:
+          expandedPortsById:
+            m_KeyList: []
+            m_ValueList: 
+        m_Collapsed: 0
+        m_CurrentModeIndex: 0
+        m_ElementColor:
+          m_Color: {r: 0, g: 0, b: 0, a: 0}
+          m_HasUserColor: 0
+        m_Node:
+          rid: 5684132264287404094
+    - rid: 5684132264287404092
+      type: {class: 'Constant`1[[DialogueSystem.Runtime.DSEvent`1[[System.String, mscorlib]], DialogueSystem.Runtime]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
+      data:
+        m_Value: {fileID: 11400000, guid: d1fd1bd9229a2de458418f4496123ee2, type: 2}
+    - rid: 5684132264287404093
+      type: {class: 'Constant`1[[System.String, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
+      data:
+        m_Value: Adam!
+    - rid: 5684132264287404094
+      type: {class: DSEventNodeString, ns: DialogueSystem.Editor, asm: DialogueSystem.Editor}
+      data: 
+    - rid: 5684132264287404095
+      type: {class: WireModel, ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
+      data:
+        m_Guid:
+          m_Value0: 7239562928686233541
+          m_Value1: 2603940452650920653
+        m_HashGuid:
+          serializedVersion: 2
+          Hash: c5f76d7520187864cd2a87a00b0e2324
+        m_Version: 2
+        m_FromPortReference:
+          m_NodeModelGuid:
+            m_Value0: 3970749381527711154
+            m_Value1: 17879873866814603022
+          m_NodeModelHashGuid:
+            serializedVersion: 2
+            Hash: b2ad0f4a86ef1a370e3f46dc8c1222f8
+          m_UniqueId: next
+          m_PortDirection: 2
+          m_PortOrientation: 0
+          m_Title: Next
+        m_ToPortReference:
+          m_NodeModelGuid:
+            m_Value0: 12771287192647030691
+            m_Value1: 14137156450723834279
+          m_NodeModelHashGuid:
+            serializedVersion: 2
+            Hash: a3d7385a09ba3cb1a72984dbe34431c4
           m_UniqueId: event
           m_PortDirection: 1
           m_PortOrientation: 0
