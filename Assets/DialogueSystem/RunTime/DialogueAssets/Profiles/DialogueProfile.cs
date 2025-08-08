@@ -32,6 +32,14 @@ namespace DialogueSystem.Runtime
         [Tooltip(Styles.RightSideTooltip)]
         public bool rightSide;
         
+        public Shirt shirt;
     }
 
+    
+    [System.Serializable]
+    public class Shirt
+    {
+        public Color color;
+        public int size;
+    }
 }

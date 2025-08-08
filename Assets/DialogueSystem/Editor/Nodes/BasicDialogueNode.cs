@@ -30,9 +30,7 @@ namespace DialogueSystem.Editor
             var dialogue = ScriptableObject.CreateInstance<BasicDialogue>();
             dialogue.name = "Basic Dialogue";
             
-            dialogue.baseParams ??= new DialogueBaseParams();
-
-            DialogueGraphUtility.AssignFromFieldOptions(this, ref dialogue.baseParams);
+            dialogue.baseParams = DialogueGraphUtility.AssignFromFieldOptions<DialogueBaseParams>(this);
             
             return dialogue;
         }

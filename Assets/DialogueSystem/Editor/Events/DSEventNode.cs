@@ -31,19 +31,17 @@ namespace DialogueSystem.Editor
 
     public abstract class DSEventNode<T> : DSEventNode, IDialogueObjectNode
     {
-        private const string ValueOptionName = "value";
-        
         protected override void OnDefineOptions(INodeOptionDefinition context)
         {
             context.AddNodeOption<DSEvent<T>>(EventOptionName, "Event",
                 tooltip: "Event object to be acted upon when Dialogue is passed", defaultValue: null);
             
-            context.AddNodeOption<T>(ValueOptionName, "Value");
+            DialogueGraphUtility.DefineFieldOptions<T>(context);
         }
         
         private T GetValueOption()
         {
-            return DialogueGraphUtility.GetOptionValueOrDefault<T>(this, ValueOptionName);
+            return DialogueGraphUtility.AssignFromFieldOptions<T>(this);
         }
 
         private DSEvent<T> GetEventOption()

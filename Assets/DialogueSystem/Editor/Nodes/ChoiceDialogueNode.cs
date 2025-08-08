@@ -32,11 +32,8 @@ namespace DialogueSystem.Editor
             var dialogue = ScriptableObject.CreateInstance<ChoiceDialogue>();
             dialogue.name = "Choice Dialogue";
             
-            dialogue.baseParams ??= new DialogueBaseParams();
-            dialogue.choiceParams ??= new DialogueChoiceParams();
-            
-            DialogueGraphUtility.AssignFromFieldOptions(this, ref dialogue.baseParams);
-            DialogueGraphUtility.AssignFromFieldOptions(this, ref dialogue.choiceParams);
+            dialogue.baseParams = DialogueGraphUtility.AssignFromFieldOptions<DialogueBaseParams>(this);
+            dialogue.choiceParams = DialogueGraphUtility.AssignFromFieldOptions<DialogueChoiceParams>(this);
             
             return dialogue;
         }
