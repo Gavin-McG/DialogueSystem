@@ -7,7 +7,7 @@ namespace DialogueSystem.Runtime
 
     public abstract class DialogueTrace : DialogueObject
     {
-        public List<DialogueEvent> events;
+        public List<DSEventCaller> events;
         
         public abstract DialogueTrace GetNextDialogue(AdvanceDialogueContext context);
 
@@ -15,7 +15,7 @@ namespace DialogueSystem.Runtime
         {
             foreach (var dialogueEvent in events)
             {
-                dialogueEvent.dialogueEvent.Invoke();
+                dialogueEvent.Invoke();
             }
         }
     }

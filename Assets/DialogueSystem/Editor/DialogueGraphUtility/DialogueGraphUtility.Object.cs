@@ -105,7 +105,7 @@ namespace DialogueSystem.Editor
             }
         }
 
-        public static List<DialogueEvent> GetEvents(INode node)
+        public static List<DSEventCaller> GetEvents(INode node, Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict)
         {
             var eventPort = GetNextPortOrNull(node);
 
@@ -113,12 +113,14 @@ namespace DialogueSystem.Editor
             eventPort.GetConnectedPorts(connectedEventPorts);
             var eventNodes = connectedEventPorts.Select(port => port.GetNode());
 
-            var events = new List<DialogueEvent>();
+            var events = new List<DSEventCaller>();
             foreach (var eventNode in eventNodes)
             {
-                if (eventNode is DialogueEventNode dialogueEventNode && dialogueEventNode.GetEvent())
+                if (eventNode is DSEventNode dialogueEventNode)
                 {
-                    events.Add(dialogueEventNode.GetEvent());
+                    var dialogueEventCaller = dialogueEventNode.GetEvent(dialogueDict);
+                    if (dialogueEventCaller)
+                        events.Add(dialogueEventCaller);
                 }
             }
             return events;

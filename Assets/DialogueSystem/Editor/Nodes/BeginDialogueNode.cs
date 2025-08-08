@@ -32,7 +32,7 @@ namespace DialogueSystem.Editor
             var dialogueObject = DialogueGraphUtility.GetConnectedTrace(this, dialogueDict);
             
             asset.nextDialogue = dialogueObject;
-            asset.events = DialogueGraphUtility.GetEvents(this);
+            asset.events = DialogueGraphUtility.GetEvents(this, dialogueDict);
         }
     }
 

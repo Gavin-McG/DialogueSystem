@@ -34,7 +34,7 @@ namespace DialogueSystem.Editor
             var optionObject = DialogueGraphUtility.GetConnectedTrace(this, dialogueDict);
             
             option.nextDialogue = optionObject;
-            option.events = DialogueGraphUtility.GetEvents(this);
+            option.events = DialogueGraphUtility.GetEvents(this, dialogueDict);
         }
 
         protected T GetOptionValueOrDefault<T>(string optionName)

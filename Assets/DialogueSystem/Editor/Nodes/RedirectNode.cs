@@ -27,7 +27,7 @@ namespace DialogueSystem.Editor
             var dialogue = DialogueGraphUtility.GetObject<Redirect>(this, dialogueDict);
             var defaultObject = DialogueGraphUtility.GetConnectedTrace(this, dialogueDict);
             dialogue.defaultDialogue = defaultObject;
-            dialogue.events = DialogueGraphUtility.GetEvents(this);
+            dialogue.events = DialogueGraphUtility.GetEvents(this, dialogueDict);
 
             var optionNodes = blockNodes.ToList();
             dialogue.options = new List<ConditionalOption>();

@@ -50,7 +50,7 @@ namespace DialogueSystem.Editor
             DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref dialogue.choiceParams);
             
             dialogue.defaultDialogue = timeOutObject;
-            dialogue.events = DialogueGraphUtility.GetEvents(this);
+            dialogue.events = DialogueGraphUtility.GetEvents(this, dialogueDict);
 
             var optionNodes = blockNodes.ToList();
             dialogue.options = new List<ChoiceOption>();

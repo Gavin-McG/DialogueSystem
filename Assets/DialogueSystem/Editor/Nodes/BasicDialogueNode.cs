@@ -20,9 +20,9 @@ namespace DialogueSystem.Editor
         protected override void OnDefinePorts(IPortDefinitionContext context)
         {
             DialogueGraphUtility.DefineNodeInputPort(context);
-            DialogueGraphUtility.DefineFieldPorts<DialogueBaseParams>(context);
-            
             DialogueGraphUtility.DefineNodeOutputPort(context);
+
+            DialogueGraphUtility.DefineFieldPorts<DialogueBaseParams>(context);
         }
 
         public DialogueObject CreateDialogueObject()
@@ -45,7 +45,7 @@ namespace DialogueSystem.Editor
             DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref dialogue.baseParams);
             
             dialogue.nextDialogue = dialogueTrace;
-            dialogue.events = DialogueGraphUtility.GetEvents(this);
+            dialogue.events = DialogueGraphUtility.GetEvents(this, dialogueDict);
         }
     }
 
