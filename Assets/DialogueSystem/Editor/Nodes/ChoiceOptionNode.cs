@@ -37,7 +37,7 @@ namespace DialogueSystem.Editor
         public void AssignObjectReferences(Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict)
         {
             var option = DialogueGraphUtility.GetObject<ChoiceOption>(this, dialogueDict);
-            var optionObject = DialogueGraphUtility.GetConnectedDialogue(this, dialogueDict);
+            var optionObject = DialogueGraphUtility.GetConnectedTrace(this, dialogueDict);
             
             option.nextDialogue = optionObject;
             option.events = DialogueGraphUtility.GetEvents(this);

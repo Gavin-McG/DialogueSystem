@@ -29,7 +29,7 @@ namespace DialogueSystem.Editor
         public void AssignObjectReferences(Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict)
         {
             var asset = DialogueGraphUtility.GetObject<DialogueAsset>(this, dialogueDict);
-            var dialogueObject = DialogueGraphUtility.GetConnectedDialogue(this, dialogueDict);
+            var dialogueObject = DialogueGraphUtility.GetConnectedTrace(this, dialogueDict);
             
             asset.nextDialogue = dialogueObject;
             asset.events = DialogueGraphUtility.GetEvents(this);

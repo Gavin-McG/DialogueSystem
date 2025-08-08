@@ -25,7 +25,7 @@ namespace DialogueSystem.Editor
         public void AssignObjectReferences(Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict)
         {
             var dialogue = DialogueGraphUtility.GetObject<Redirect>(this, dialogueDict);
-            var defaultObject = DialogueGraphUtility.GetConnectedDialogue(this, dialogueDict);
+            var defaultObject = DialogueGraphUtility.GetConnectedTrace(this, dialogueDict);
             dialogue.defaultDialogue = defaultObject;
             dialogue.events = DialogueGraphUtility.GetEvents(this);
 

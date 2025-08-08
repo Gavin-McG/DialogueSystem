@@ -44,7 +44,7 @@ namespace DialogueSystem.Editor
         public void AssignObjectReferences(Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict)
         {
             var dialogue = DialogueGraphUtility.GetObject<ChoiceDialogue>(this, dialogueDict);
-            var timeOutObject = DialogueGraphUtility.GetConnectedDialogue(this, dialogueDict);
+            var timeOutObject = DialogueGraphUtility.GetConnectedTrace(this, dialogueDict);
             
             DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref dialogue.baseParams);
             DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref dialogue.choiceParams);

@@ -40,7 +40,7 @@ namespace DialogueSystem.Editor
         public void AssignObjectReferences(Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict)
         {
             var dialogue = DialogueGraphUtility.GetObject<BasicDialogue>(this, dialogueDict);
-            var dialogueTrace = DialogueGraphUtility.GetConnectedDialogue(this, dialogueDict);
+            var dialogueTrace = DialogueGraphUtility.GetConnectedTrace(this, dialogueDict);
             
             DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref dialogue.baseParams);
             

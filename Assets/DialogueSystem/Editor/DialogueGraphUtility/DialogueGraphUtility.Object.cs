@@ -40,39 +40,39 @@ namespace DialogueSystem.Editor
             return  GetObject<T>(dialogueObjectNode, dialogueDict);
         }
 
-        public static DialogueObject GetConnectedObject(INode node, string portName,
+        public static DialogueObject GetConnectedTrace(INode node, string portName,
             Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict)
         {
-            var dialogueObjectNode = GetConnectedObjectNode(node, portName);
+            var dialogueObjectNode = GetConnectedTraceNode(node, portName);
             if (dialogueObjectNode == null) return null;
             return GetObject(dialogueObjectNode, dialogueDict);
         }
 
-        public static T GetConnectedObject<T>(INode node, string portName,
+        public static T GetConnectedTrace<T>(INode node, string portName,
             Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict) where T : DialogueObject
         {
-            var dialogueObject = GetConnectedObject(node, portName, dialogueDict);
+            var dialogueObject = GetConnectedTrace(node, portName, dialogueDict);
             return (dialogueObject is T objectAsT) ? objectAsT : null;
         }
 
-        private static IDialogueObjectNode GetConnectedObjectNode(INode node, string portName)
+        private static IDialogueTraceNode GetConnectedTraceNode(INode node, string portName)
         {
             var port = node.GetOutputPortByName(portName);
-            var connectedPort = port?.firstConnectedPort;
-            var connectedNode = connectedPort?.GetNode();
-
-            if (connectedNode is IDialogueObjectNode dialogueObjectNode)
-            {
-                return dialogueObjectNode;
-            }
             
-            return null;
+            var connectedPorts = new List<IPort>();
+            port.GetConnectedPorts(connectedPorts);
+            
+            var connectedNode = connectedPorts
+                .Select(conectedPort => conectedPort.GetNode())
+                .OfType<IDialogueTraceNode>()
+                .FirstOrDefault();
+            return connectedNode;
         }
 
-        public static DialogueTrace GetConnectedDialogue(INode node, 
+        public static DialogueTrace GetConnectedTrace(INode node, 
             Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict)
         {
-            var dialogueObject = GetConnectedObject(node, NextPortName, dialogueDict);
+            var dialogueObject = GetConnectedTrace(node, NextPortName, dialogueDict);
             return dialogueObject is DialogueTrace dialogueTrace ? dialogueTrace : null;
         }
         
