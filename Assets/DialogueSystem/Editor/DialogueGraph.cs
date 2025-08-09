@@ -32,6 +32,27 @@ namespace DialogueSystem.Editor
             VerifyContextTypes(infos);
         }
 
+        private IEnumerable<INode> GetAllNodes()
+        {
+            //return all nodes / contextNodes
+            var nodes = GetNodes();
+            foreach (var node in nodes)
+            {
+                yield return node;
+            }
+            
+            //return all blockNodes
+            var contextNodes = GetNodes().OfType<ContextNode>();
+            foreach (var contextNode in contextNodes)
+            {
+                var blockNodes = contextNode.blockNodes;
+                foreach (var blockNode in blockNodes)
+                {
+                    yield return blockNode;
+                }
+            }
+        }
+
         private bool MultipleBeginCheck(GraphLogger infos)
         {
             var passedCheck = true;
@@ -60,7 +81,7 @@ namespace DialogueSystem.Editor
         {
             var passedCheck = true;
             
-            var nodes = GetNodes().ToList();
+            var nodes = GetAllNodes().ToList();
             foreach (var node in nodes)
             {
                 //Get Next port if it exists
