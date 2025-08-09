@@ -8,7 +8,7 @@ public class ExampleDialogueDispatch : MonoBehaviour
     [SerializeField] private DialogueManager manager;
     [SerializeField] private DialogueAsset asset;
     [SerializeField] private DSEvent dialogueEvent;
-    [SerializeField] private DSEventString dialogueIntEvent;
+    [SerializeField] private DSEventInt dialogueIntEvent;
     [SerializeField] private TestClass testClass;
 
     [Serializable]
@@ -22,7 +22,7 @@ public class ExampleDialogueDispatch : MonoBehaviour
     {
         StartCoroutine(DispatchRoutine());
         dialogueEvent.AddListener(() => Debug.Log("You Win!"));
-        dialogueIntEvent.AddListener((string v) => Debug.Log(v));
+        dialogueIntEvent.AddListener((v) => Debug.Log(v));
     }
 
     IEnumerator DispatchRoutine()
