@@ -14,14 +14,14 @@ namespace DialogueSystem.ExampleInterface
         private readonly Dictionary<UnityAction<int>, List<UnityAction>> storedChoiceListeners = new();
 
         
-        public void SetBasicDialogue(DialogueParams dialogueParams)
+        public void SetContinueButton(DialogueParams dialogueParams)
         {
             DisableChoices();
             continueUI.Enable();
         }
 
         
-        public void SetChoiceDialogue(DialogueParams dialogueParams)
+        public void SetChoiceButtons(DialogueParams dialogueParams)
         {
             for (int i=0; i<choices.Count; i++)
             {

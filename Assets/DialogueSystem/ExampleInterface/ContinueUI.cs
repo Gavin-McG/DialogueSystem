@@ -1,6 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace DialogueSystem.ExampleInterface
@@ -9,16 +10,20 @@ namespace DialogueSystem.ExampleInterface
     {
         [SerializeField] private GameObject continueUI;
         [SerializeField] private Button continueButton;
+        [SerializeField] private InputActionReference continueAction;
 
         public void Disable()
         {
             continueUI.SetActive(false);
+            continueAction.action.started -= TriggerButton;
         }
 
         public void Enable()
         {
             continueUI.SetActive(true);
+            continueAction.action.started += TriggerButton;
         }
+        
         
         public void AddListener(UnityAction call)
         {
@@ -33,6 +38,11 @@ namespace DialogueSystem.ExampleInterface
         public void RemoveAllListeners()
         {
             continueButton.onClick.RemoveAllListeners();
+        }
+
+        private void TriggerButton(InputAction.CallbackContext context)
+        {
+            continueButton.onClick.Invoke();
         }
     }
 }

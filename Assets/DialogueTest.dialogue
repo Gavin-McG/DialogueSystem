@@ -330,7 +330,7 @@ MonoBehaviour:
     - rid: 5684132137619947714
       type: {class: 'Constant`1[[System.String, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
       data:
-        m_Value: Choose
+        m_Value: Choose whichever option you think is best
     - rid: 5684132137619947715
       type: {class: 'Constant`1[[System.Boolean, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
       data:

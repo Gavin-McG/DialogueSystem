@@ -1,10 +1,6 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using DialogueSystem.Runtime;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace DialogueSystem.ExampleInterface
 {
@@ -15,17 +11,22 @@ namespace DialogueSystem.ExampleInterface
 
         [Header("UI References")] [SerializeField]
         private GameObject dialogueUI;
-        [SerializeField] private TextMeshProUGUI mainText;
+        [SerializeField] private MainTextUI mainTextUI;
         [SerializeField] private ChoiceUIManager choiceUIManager;
+        [SerializeField] private TimeLimitUI timeLimitUI;
 
         private bool dialogueEnabled = false;
-        private Coroutine timeLimitCoroutine;
+        private DialogueParams currentParams;
         private float timeStarted;
 
         private void OnEnable()
         {
             dialogueManager.displayDialogue.AddListener(DisplayDialogue);
             dialogueManager.endDialogue.AddListener(HideDialogue);
+            
+            mainTextUI.completedText.AddListener(BeginChoiceTimer);
+            
+            timeLimitUI.timeLimitExpired.AddListener(TimeExpired);
             
             choiceUIManager.AddChoiceListener(ChoicePressed);
             choiceUIManager.AddContinueListener(ContinuePressed);
@@ -36,6 +37,10 @@ namespace DialogueSystem.ExampleInterface
             dialogueManager.displayDialogue.RemoveListener(DisplayDialogue);
             dialogueManager.endDialogue.RemoveListener(HideDialogue);
             
+            mainTextUI.completedText.RemoveListener(BeginChoiceTimer);
+
+            timeLimitUI.timeLimitExpired.RemoveListener(TimeExpired);
+            
             choiceUIManager.RemoveChoiceListener(ChoicePressed);
             choiceUIManager.RemoveContinueListener(ContinuePressed);
         }
@@ -44,35 +49,45 @@ namespace DialogueSystem.ExampleInterface
         {
             dialogueEnabled = true;
             dialogueUI.SetActive(true);
+            currentParams = dialogueParams;
 
-            mainText.text = dialogueParams.baseParams.text;
+            mainTextUI.SetText(currentParams.baseParams.text);
             timeStarted = Time.time;
             EndTimeLimit();
-
-            switch (dialogueParams.dialogueType)
+    
+            switch (currentParams.dialogueType)
             {
-                case DialogueParams.DialogueType.Basic: DisplayBasicDialogue(dialogueParams); break;
-                case DialogueParams.DialogueType.Choice: DisplayChoiceDialogue(dialogueParams); break;
+                case DialogueParams.DialogueType.Basic: DisplayBasicDialogue(); break;
+                case DialogueParams.DialogueType.Choice: DisplayChoiceDialogue(); break;
                 default: break;
             }
         }
 
-        private void DisplayBasicDialogue(DialogueParams dialogueParams)
+        private void DisplayBasicDialogue()
         {
-            choiceUIManager.SetBasicDialogue(dialogueParams);
+            choiceUIManager.SetContinueButton(currentParams);
         }
 
-        private void DisplayChoiceDialogue(DialogueParams dialogueParams)
+        private void DisplayChoiceDialogue()
         {
-            choiceUIManager.SetChoiceDialogue(dialogueParams);
-            if (dialogueParams.choiceParams.hasTimeLimit)
+            choiceUIManager.SetContinueButton(currentParams);
+        }
+
+        private void BeginChoiceTimer()
+        {
+            if (currentParams.dialogueType == DialogueParams.DialogueType.Choice)
             {
-                timeLimitCoroutine = StartCoroutine(TimeLimitRoutine(dialogueParams.choiceParams.timeLimitDuration));
+                choiceUIManager.SetChoiceButtons(currentParams);
+                if (currentParams.choiceParams.hasTimeLimit)
+                {
+                    timeLimitUI.StartTimer(currentParams.choiceParams.timeLimitDuration);
+                }
             }
         }
 
         private void ChoicePressed(int index)
         {
+            EndTimeLimit();
             dialogueManager.advanceDialogue.Invoke(new AdvanceDialogueContext()
             {
                 choice = index,
@@ -83,11 +98,28 @@ namespace DialogueSystem.ExampleInterface
 
         private void ContinuePressed()
         {
+            if (mainTextUI.textState == MainTextUI.TextState.Scrolling)
+            {
+                mainTextUI.CompleteText();
+            }
+            else if (mainTextUI.textState == MainTextUI.TextState.Completed)
+            {
+                dialogueManager.advanceDialogue.Invoke(new AdvanceDialogueContext()
+                {
+                    choice = -1,
+                    inputDelay = Time.time - timeStarted,
+                    timedOut = false
+                });
+            }
+        }
+
+        private void TimeExpired()
+        {
             dialogueManager.advanceDialogue.Invoke(new AdvanceDialogueContext()
             {
-                choice = -1,
-                inputDelay = Time.time - timeStarted,
-                timedOut = false
+                choice = 0,
+                inputDelay = currentParams.choiceParams.timeLimitDuration,
+                timedOut = true,
             });
         }
 
@@ -103,34 +135,9 @@ namespace DialogueSystem.ExampleInterface
             Debug.Log(t.ToString() + " Completed");
         }
 
-        IEnumerator TimeLimitRoutine(float timeLimitDuration)
-        {
-            float time = 0;
-            while (time < timeLimitDuration)
-            {
-                float t = time / timeLimitDuration;
-
-                UpdateTimeLimit(t);
-
-                time += Time.deltaTime;
-                yield return null;
-            }
-
-            dialogueManager.advanceDialogue.Invoke(new AdvanceDialogueContext()
-            {
-                choice = 0,
-                inputDelay = timeLimitDuration,
-                timedOut = true,
-            });
-        }
-
         private void EndTimeLimit()
         {
-            if (timeLimitCoroutine != null)
-            {
-                StopCoroutine(timeLimitCoroutine);
-                timeLimitCoroutine = null;
-            }
+            timeLimitUI.Disable();
         }
     }
 }
