@@ -6,7 +6,10 @@ namespace DialogueSystem.Runtime
     
     public class DialogueAsset : DialogueTrace
     {
-        public DialogueTrace nextDialogue;
+        [HideInDialogueGraph] public DialogueTrace nextDialogue;
+
+        [Multiline, Tooltip("(Optional) description of dialogue purpose/contents")]
+        public string dialogueDescription;
         
         public override DialogueTrace GetNextDialogue(AdvanceDialogueContext context)
         {

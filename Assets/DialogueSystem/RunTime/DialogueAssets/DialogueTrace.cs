@@ -7,7 +7,7 @@ namespace DialogueSystem.Runtime
 
     public abstract class DialogueTrace : DialogueObject
     {
-        public List<DSEventCaller> events;
+        [HideInDialogueGraph] public List<DSEventCaller> events;
         
         public abstract DialogueTrace GetNextDialogue(AdvanceDialogueContext context);
 

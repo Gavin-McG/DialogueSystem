@@ -54,14 +54,6 @@ namespace DialogueSystem.Editor
                 .Build();
         }
         
-        public static void DefineEventOutputPort(Node.IPortDefinitionContext context)
-        {
-            context.AddOutputPort(EventPortName)
-                .WithConnectorUI(PortConnectorUI.Circle)
-                .WithDisplayName("Event")
-                .Build();
-        }
-        
         private static IPort GetInputPortByName(INode node, string portName)
         {
             try

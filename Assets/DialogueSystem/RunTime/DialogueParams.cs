@@ -21,10 +21,12 @@ namespace DialogueSystem.Runtime
     [Serializable]
     public class DialogueParams
     {
+        public enum DialogueType { Basic, Choice }
+        
+        public DialogueType dialogueType;
         public DialogueBaseParams baseParams = new DialogueBaseParams();
         public DialogueChoiceParams choiceParams = null;
         public List<string> choicePrompts = new List<string>();
         
     }
-
 }

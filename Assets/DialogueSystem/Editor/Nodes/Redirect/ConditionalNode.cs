@@ -57,11 +57,6 @@ namespace DialogueSystem.Editor
             option.nextDialogue = nextTrace;
             option.events = DialogueGraphUtility.GetEvents(this, dialogueDict);
         }
-
-        protected T GetOptionValueOrDefault<T>(string optionName)
-        {
-            return DialogueGraphUtility.GetOptionValueOrDefault<T>(this, optionName);
-        }
     }
 
 }

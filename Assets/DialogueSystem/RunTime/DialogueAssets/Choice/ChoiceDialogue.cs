@@ -29,6 +29,7 @@ namespace DialogueSystem.Runtime
         {
             return new DialogueParams()
             {
+                dialogueType = DialogueParams.DialogueType.Choice,
                 baseParams = baseParams,
                 choiceParams = choiceParams,
                 choicePrompts = options.Select((option => option.prompt)).ToList(),

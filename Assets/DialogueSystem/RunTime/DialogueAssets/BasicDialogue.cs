@@ -18,6 +18,7 @@ namespace DialogueSystem.Runtime
         {
             return new DialogueParams()
             {
+                dialogueType = DialogueParams.DialogueType.Basic,
                 baseParams = baseParams
             };
         }
