@@ -19,6 +19,8 @@ namespace DialogueSystem.Runtime
             public const string RightSideTooltip =
                 "Whether character is on right or left Side";
         }
+        
+        public enum Side { Right, Left }
 
         [Tooltip(Styles.CharacterNameTooltip)]
         public string characterName;
@@ -30,6 +32,6 @@ namespace DialogueSystem.Runtime
         public Sprite sprite;
         
         [Tooltip(Styles.RightSideTooltip)]
-        public bool rightSide;
+        public Side side;
     }
 }

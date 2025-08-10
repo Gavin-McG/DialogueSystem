@@ -14,6 +14,7 @@ namespace DialogueSystem.ExampleInterface
         [SerializeField] private MainTextUI mainTextUI;
         [SerializeField] private ChoiceUIManager choiceUIManager;
         [SerializeField] private TimeLimitUI timeLimitUI;
+        [SerializeField] private ProfileUIManager profileUIManager;
 
         private bool dialogueEnabled = false;
         private DialogueParams currentParams;
@@ -54,6 +55,11 @@ namespace DialogueSystem.ExampleInterface
             mainTextUI.SetText(currentParams.baseParams.text);
             timeStarted = Time.time;
             EndTimeLimit();
+
+            if (dialogueParams.baseParams.profile)
+            {
+                profileUIManager.IntroduceProfile(currentParams.baseParams.profile);
+            }
     
             switch (currentParams.dialogueType)
             {
