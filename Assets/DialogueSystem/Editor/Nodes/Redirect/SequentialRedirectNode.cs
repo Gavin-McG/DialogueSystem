@@ -11,7 +11,7 @@ namespace  DialogueSystem.Editor
     [Serializable]
     public class SequentialRedirectNode : RedirectNode
     {
-        public override bool UsesWeight => true;
+        public override bool UsesWeight => false;
         
         public override DialogueObject CreateDialogueObject()
         {
