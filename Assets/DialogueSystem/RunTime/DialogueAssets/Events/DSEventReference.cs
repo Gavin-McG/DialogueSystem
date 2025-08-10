@@ -4,7 +4,7 @@ namespace DialogueSystem.Runtime
 {
     public class DSEventReference<T> : DSEventCaller
     {
-        [SerializeField, HideInInspector] public DSEvent<T> dialogueEvent;
+        [SerializeField, HideInDialogueGraph] public DSEvent<T> dialogueEvent;
         [SerializeField] public T value;
 
         public override void Invoke()

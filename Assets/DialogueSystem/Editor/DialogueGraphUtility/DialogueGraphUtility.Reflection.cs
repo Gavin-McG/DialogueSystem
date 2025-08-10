@@ -88,7 +88,8 @@ namespace DialogueSystem.Editor
             {
                 bool isPublic = field.IsPublic && field.GetCustomAttribute<NonSerializedAttribute>() == null;
                 bool isSerializedPrivate = !field.IsPublic && field.GetCustomAttribute<SerializeField>() != null;
-                bool isHidden = field.GetCustomAttribute<HideInInspector>() != null;
+                bool isHidden = field.GetCustomAttribute<HideInInspector>() != null ||
+                                field.GetCustomAttribute<HideInDialogueGraphAttribute>() != null;
                 bool isPort = typeof(DialogueObject).IsAssignableFrom(field.FieldType);
 
                 if (!(isPublic || isSerializedPrivate) || isHidden || isPort)
@@ -140,7 +141,8 @@ namespace DialogueSystem.Editor
             {
                 bool isPublic = field.IsPublic && field.GetCustomAttribute<NonSerializedAttribute>() == null;
                 bool isSerializedPrivate = !field.IsPublic && field.GetCustomAttribute<SerializeField>() != null;
-                bool isHidden = field.GetCustomAttribute<HideInInspector>() != null;
+                bool isHidden = field.GetCustomAttribute<HideInInspector>() != null ||
+                                field.GetCustomAttribute<HideInDialogueGraphAttribute>() != null;
                 bool isPort = typeof(DialogueObject).IsAssignableFrom(field.FieldType);
                 
                 string fullPath = string.IsNullOrEmpty(parentPath) ? field.Name : $"{parentPath}{FieldSeperator}{field.Name}";
