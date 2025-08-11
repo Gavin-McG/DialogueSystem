@@ -12,12 +12,12 @@ namespace DialogueSystem.Editor
     {
         protected override void OnDefineOptions(INodeOptionDefinition context)
         {
-            DialogueGraphUtility.DefineFieldOptions<DialogueGraphSettings>(context);
+            DialogueGraphUtility.DefineFieldOptions<DialogueSettings>(context);
         }
 
         protected override void OnDefinePorts(IPortDefinitionContext context)
         {
-            DialogueGraphUtility.DefineFieldPorts<DialogueGraphSettings>(context);
+            DialogueGraphUtility.DefineFieldPorts<DialogueSettings>(context);
             DialogueGraphUtility.DefineNodeOutputPort(context);
         }
 
@@ -26,7 +26,7 @@ namespace DialogueSystem.Editor
             var asset = ScriptableObject.CreateInstance<DialogueAsset>();
             asset.name = "Dialogue Asset";
             
-            asset.settings = DialogueGraphUtility.AssignFromFieldOptions<DialogueGraphSettings>(this);
+            asset.settings = DialogueGraphUtility.AssignFromFieldOptions<DialogueSettings>(this);
             
             return asset;
         }

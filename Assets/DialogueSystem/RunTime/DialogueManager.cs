@@ -7,50 +7,31 @@ namespace DialogueSystem.Runtime
 
     public class DialogueManager : MonoBehaviour
     {
-        [HideInInspector] public UnityEvent<DialogueAsset> beginDialogue = new();
-        [HideInInspector] public UnityEvent<AdvanceDialogueContext> advanceDialogue = new();
-        public UnityEvent<DialogueParams> displayDialogue = new();
-        public UnityEvent endDialogue = new();
+        [HideInInspector] public UnityEvent<DialogueSettings> beginDialogueEvent = new();
         
         private DialogueTrace currentDialogue;
 
-        private void OnEnable()
-        {
-            beginDialogue.AddListener(BeginDialogue);
-            advanceDialogue.AddListener(AdvanceDialogue);
-        }
-
-        private void OnDisable()
-        {
-            beginDialogue.RemoveListener(BeginDialogue);
-            advanceDialogue.RemoveListener(AdvanceDialogue);
-        }
-
-        private void BeginDialogue(DialogueAsset dialogueAsset)
+        public void BeginDialogue(DialogueAsset dialogueAsset)
         {
             if (currentDialogue != null) return;
             currentDialogue = dialogueAsset;
-            
-            AdvanceDialogue(new AdvanceDialogueContext());
+            beginDialogueEvent.Invoke(dialogueAsset.settings);
         }
 
-        private void AdvanceDialogue(AdvanceDialogueContext context)
+        public DialogueParams GetNextDialogue(AdvanceDialogueContext context)
         {
             do {
                 currentDialogue.InvokeEvents();
                 currentDialogue = currentDialogue.GetNextDialogue(context);
             } while (currentDialogue != null && currentDialogue is not IDialogueOutput);
             
-            
             if (currentDialogue is IDialogueOutput outputDialogue)
-            {
-                displayDialogue.Invoke(outputDialogue.GetDialogueDetails());
-            }
-            else
-            {
-                endDialogue.Invoke();
-            }
+                return outputDialogue.GetDialogueDetails();
+            
+            return null;
         }
+        
+        public DialogueParams GetNextDialogue() => GetNextDialogue(new  AdvanceDialogueContext());
     }
     
 

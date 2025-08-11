@@ -17,13 +17,13 @@ namespace DialogueSystem.ExampleInterface
         [SerializeField] private ProfileUIManager profileUIManager;
 
         private bool dialogueEnabled = false;
+        private DialogueSettings currentSettings;
         private DialogueParams currentParams;
         private float timeStarted;
 
         private void OnEnable()
         {
-            dialogueManager.displayDialogue.AddListener(DisplayDialogue);
-            dialogueManager.endDialogue.AddListener(HideDialogue);
+            dialogueManager.beginDialogueEvent.AddListener(BeginDialogue);
             
             mainTextUI.completedText.AddListener(BeginChoiceTimer);
             
@@ -35,8 +35,7 @@ namespace DialogueSystem.ExampleInterface
 
         private void OnDisable()
         {
-            dialogueManager.displayDialogue.RemoveListener(DisplayDialogue);
-            dialogueManager.endDialogue.RemoveListener(HideDialogue);
+            dialogueManager.beginDialogueEvent.RemoveListener(BeginDialogue);
             
             mainTextUI.completedText.RemoveListener(BeginChoiceTimer);
 
@@ -46,8 +45,20 @@ namespace DialogueSystem.ExampleInterface
             choiceUIManager.RemoveContinueListener(ContinuePressed);
         }
 
+        private void BeginDialogue(DialogueSettings dialogueSettings)
+        {
+            currentSettings = dialogueSettings;
+            DisplayDialogue(dialogueManager.GetNextDialogue());
+        }
+
         private void DisplayDialogue(DialogueParams dialogueParams)
         {
+            if (dialogueParams == null)
+            {
+                HideDialogue();
+                return;
+            }
+            
             dialogueEnabled = true;
             dialogueUI.SetActive(true);
             currentParams = dialogueParams;
@@ -94,12 +105,12 @@ namespace DialogueSystem.ExampleInterface
         private void ChoicePressed(int index)
         {
             EndTimeLimit();
-            dialogueManager.advanceDialogue.Invoke(new AdvanceDialogueContext()
+            DisplayDialogue(dialogueManager.GetNextDialogue(new AdvanceDialogueContext()
             {
                 choice = index,
                 inputDelay = Time.time - timeStarted,
                 timedOut = false
-            });
+            }));
         }
 
         private void ContinuePressed()
@@ -110,23 +121,23 @@ namespace DialogueSystem.ExampleInterface
             }
             else if (mainTextUI.textState == MainTextUI.TextState.Completed)
             {
-                dialogueManager.advanceDialogue.Invoke(new AdvanceDialogueContext()
+                DisplayDialogue(dialogueManager.GetNextDialogue(new AdvanceDialogueContext()
                 {
                     choice = -1,
                     inputDelay = Time.time - timeStarted,
                     timedOut = false
-                });
+                }));
             }
         }
 
         private void TimeExpired()
         {
-            dialogueManager.advanceDialogue.Invoke(new AdvanceDialogueContext()
+            DisplayDialogue(dialogueManager.GetNextDialogue(new AdvanceDialogueContext()
             {
                 choice = 0,
                 inputDelay = currentParams.choiceParams.timeLimitDuration,
                 timedOut = true,
-            });
+            }));
         }
 
         private void HideDialogue()
@@ -134,11 +145,6 @@ namespace DialogueSystem.ExampleInterface
             dialogueEnabled = false;
             dialogueUI.SetActive(false);
             EndTimeLimit();
-        }
-
-        private void UpdateTimeLimit(float t)
-        {
-            Debug.Log(t.ToString() + " Completed");
         }
 
         private void EndTimeLimit()

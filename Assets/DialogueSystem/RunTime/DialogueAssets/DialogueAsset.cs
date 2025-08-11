@@ -8,7 +8,7 @@ namespace DialogueSystem.Runtime
     {
         public DialogueTrace nextDialogue;
 
-        public DialogueGraphSettings settings;
+        public DialogueSettings settings;
         
         public override DialogueTrace GetNextDialogue(AdvanceDialogueContext context)
         {

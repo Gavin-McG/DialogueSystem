@@ -9,14 +9,6 @@ public class ExampleDialogueDispatch : MonoBehaviour
     [SerializeField] private DialogueAsset asset;
     [SerializeField] private DSEvent dialogueEvent;
     [SerializeField] private DSEventInt dialogueIntEvent;
-    [SerializeField] private TestClass testClass;
-
-    [Serializable]
-    public class TestClass
-    {
-        public int value;
-        public TestClass instance;
-    }
     
     private void OnEnable()
     {
@@ -29,6 +21,6 @@ public class ExampleDialogueDispatch : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         
-        manager.beginDialogue.Invoke(asset);
+        manager.BeginDialogue(asset);
     }
 }
