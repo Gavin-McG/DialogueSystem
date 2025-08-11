@@ -26,10 +26,10 @@ namespace DialogueSystem.ExampleInterface
             for (int i=0; i<choices.Count; i++)
             {
                 var choice = choices[i];
-                var prompt = dialogueParams.choicePrompts.ElementAtOrDefault(i);
+                var optionParams = dialogueParams.choicePrompts.ElementAtOrDefault(i);
                 
-                if (prompt == null) choice.Disable();
-                else choice.SetText(prompt);
+                if (optionParams == null) choice.Disable();
+                else choice.SetText(optionParams.prompt);
             }
 
             if (dialogueParams.choicePrompts.Count > choices.Count)

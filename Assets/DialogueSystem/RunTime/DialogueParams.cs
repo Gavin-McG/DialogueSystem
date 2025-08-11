@@ -26,7 +26,6 @@ namespace DialogueSystem.Runtime
         public DialogueType dialogueType;
         public DialogueBaseParams baseParams = new DialogueBaseParams();
         public DialogueChoiceParams choiceParams = null;
-        public List<string> choicePrompts = new List<string>();
-        
+        public List<OptionParams> choicePrompts = new();
     }
 }

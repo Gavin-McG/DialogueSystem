@@ -6,7 +6,7 @@ namespace DialogueSystem.Runtime
     public class ChoiceOption : DialogueTrace
     {
         public DialogueTrace nextDialogue;
-        public string prompt;
+        public OptionParams optionParams;
         
         public override DialogueTrace GetNextDialogue(AdvanceDialogueContext context)
         {

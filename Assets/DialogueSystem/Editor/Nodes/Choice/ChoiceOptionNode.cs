@@ -10,26 +10,24 @@ namespace DialogueSystem.Editor
     [UseWithContext(typeof(ChoiceDialogueNode))]
     public class ChoiceOptionNode : BlockNode, IDialogueTraceNode
     {
-        private const string PromptOptionName = "prompt";
-        
         protected override void OnDefineOptions(INodeOptionDefinition context)
         {
-            context.AddNodeOption<string>(PromptOptionName, "Prompt",
-                tooltip: "Text corresponding to the response option", 
-                defaultValue: "Response");
+            DialogueGraphUtility.DefineFieldOptions<OptionParams>(context);
         }
 
         protected override void OnDefinePorts(IPortDefinitionContext context)
         {
             DialogueGraphUtility.DefineNodeOutputPort(context);
+            
+            DialogueGraphUtility.DefineFieldPorts<OptionParams>(context);
         }
 
         public DialogueObject CreateDialogueObject()
         {
             var option = ScriptableObject.CreateInstance<ChoiceOption>();
             option.name = "Choice Option";
-            
-            option.prompt = DialogueGraphUtility.GetOptionValueOrDefault<string>(this, PromptOptionName);
+
+            option.optionParams = DialogueGraphUtility.AssignFromFieldOptions<OptionParams>(this);
             
             return option;
         }
@@ -38,6 +36,8 @@ namespace DialogueSystem.Editor
         {
             var option = DialogueGraphUtility.GetObject<ChoiceOption>(this, dialogueDict);
             var optionObject = DialogueGraphUtility.GetConnectedTrace(this, dialogueDict);
+
+            DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref option.optionParams);
             
             option.nextDialogue = optionObject;
             option.events = DialogueGraphUtility.GetEvents(this, dialogueDict);
