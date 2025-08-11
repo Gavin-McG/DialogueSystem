@@ -7,7 +7,7 @@ namespace DialogueSystem.Runtime
     public class BasicDialogue : DialogueTrace, IDialogueOutput
     {
         public DialogueTrace nextDialogue;
-        public DialogueBaseParams baseParams;
+        public BaseParams baseParams;
         
         public override DialogueTrace GetNextDialogue(AdvanceDialogueContext context)
         {

@@ -14,15 +14,15 @@ namespace DialogueSystem.Editor
         
         protected override void OnDefineOptions(INodeOptionDefinition context)
         {
-            DialogueGraphUtility.DefineFieldOptions<DialogueBaseParams>(context);
-            DialogueGraphUtility.DefineFieldOptions<DialogueChoiceParams>(context);
+            DialogueGraphUtility.DefineFieldOptions<BaseParams>(context);
+            DialogueGraphUtility.DefineFieldOptions<ChoiceParams>(context);
         }
 
         protected override void OnDefinePorts(IPortDefinitionContext context)
         {
             DialogueGraphUtility.DefineNodeInputPort(context);
-            DialogueGraphUtility.DefineFieldPorts<DialogueBaseParams>(context);
-            DialogueGraphUtility.DefineFieldPorts<DialogueChoiceParams>(context);
+            DialogueGraphUtility.DefineFieldPorts<BaseParams>(context);
+            DialogueGraphUtility.DefineFieldPorts<ChoiceParams>(context);
 
             DialogueGraphUtility.DefineNodeOutputPort(context, TimeOutPortDisplayName);
         }
@@ -32,8 +32,8 @@ namespace DialogueSystem.Editor
             var dialogue = ScriptableObject.CreateInstance<ChoiceDialogue>();
             dialogue.name = "Choice Dialogue";
             
-            dialogue.baseParams = DialogueGraphUtility.AssignFromFieldOptions<DialogueBaseParams>(this);
-            dialogue.choiceParams = DialogueGraphUtility.AssignFromFieldOptions<DialogueChoiceParams>(this);
+            dialogue.baseParams = DialogueGraphUtility.AssignFromFieldOptions<BaseParams>(this);
+            dialogue.choiceParams = DialogueGraphUtility.AssignFromFieldOptions<ChoiceParams>(this);
             
             return dialogue;
         }

@@ -14,7 +14,7 @@ namespace DialogueSystem.Editor
         
         protected override void OnDefineOptions(INodeOptionDefinition context)
         {
-            DialogueGraphUtility.DefineFieldOptions<DialogueBaseParams>(context);
+            DialogueGraphUtility.DefineFieldOptions<BaseParams>(context);
         }
 
         protected override void OnDefinePorts(IPortDefinitionContext context)
@@ -22,7 +22,7 @@ namespace DialogueSystem.Editor
             DialogueGraphUtility.DefineNodeInputPort(context);
             DialogueGraphUtility.DefineNodeOutputPort(context);
 
-            DialogueGraphUtility.DefineFieldPorts<DialogueBaseParams>(context);
+            DialogueGraphUtility.DefineFieldPorts<BaseParams>(context);
         }
 
         public DialogueObject CreateDialogueObject()
@@ -30,7 +30,7 @@ namespace DialogueSystem.Editor
             var dialogue = ScriptableObject.CreateInstance<BasicDialogue>();
             dialogue.name = "Basic Dialogue";
             
-            dialogue.baseParams = DialogueGraphUtility.AssignFromFieldOptions<DialogueBaseParams>(this);
+            dialogue.baseParams = DialogueGraphUtility.AssignFromFieldOptions<BaseParams>(this);
             
             return dialogue;
         }

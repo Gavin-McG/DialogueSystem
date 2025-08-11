@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
@@ -193,7 +194,11 @@ namespace DialogueSystem.Editor
                 var tooltip = tooltipAttribute?.tooltip;
                 var displayName = FieldNameToDisplayName(path);
 
-                context.AddNodeOption(path, field.FieldType, displayName, tooltip);
+                var attributes = field.GetCustomAttributes().ToArray();
+                var defaultValue = field.GetCustomAttribute<DefaultValueAttribute>()?.Value;
+
+                context.AddNodeOption(path, field.FieldType, displayName, tooltip,
+                    attributes: attributes, defaultValue: defaultValue);
             }
         }
 
@@ -206,11 +211,19 @@ namespace DialogueSystem.Editor
             foreach (var (path, field, _) in fields)
             {
                 var displayName = FieldNameToDisplayName(path);
-                
-                context.AddInputPort(path)
+
+                var builder = context.AddInputPort(path)
                     .WithDataType(field.FieldType)
-                    .WithDisplayName(displayName)
-                    .Build();
+                    .WithDisplayName(displayName);
+                    
+                var defaultValueAttribute = field.GetCustomAttribute<DefaultValueAttribute>();
+                if (defaultValueAttribute != null)
+                {
+                    builder.WithDefaultValue(defaultValueAttribute.Value);
+                    Debug.Log(defaultValueAttribute.Value?.ToString());
+                }
+
+                builder.Build();
             }
         }
         

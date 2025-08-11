@@ -64,7 +64,7 @@ MonoBehaviour:
           serializedVersion: 2
           x: -63
           y: 58
-          width: 1831
+          width: 1829
           height: 1002
         m_GraphElementMetaData:
         - m_Guid:
@@ -380,7 +380,7 @@ MonoBehaviour:
           m_KeyList:
           - prompt
           m_ValueList:
-          - rid: 5684132137619947724
+          - rid: 5684132318355390531
         m_InputPortInfos:
           expandedPortsById:
             m_KeyList: []
@@ -398,10 +398,6 @@ MonoBehaviour:
           rid: 5684132137619947713
         m_Node:
           rid: 5684132137619947725
-    - rid: 5684132137619947724
-      type: {class: 'Constant`1[[System.String, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
-      data:
-        m_Value: Response 1
     - rid: 5684132137619947725
       type: {class: ChoiceOptionNode, ns: DialogueSystem.Editor, asm: DialogueSystem.Editor}
       data: 
@@ -425,7 +421,7 @@ MonoBehaviour:
           m_KeyList:
           - prompt
           m_ValueList:
-          - rid: 5684132137619947741
+          - rid: 5684132318355390532
         m_InputPortInfos:
           expandedPortsById:
             m_KeyList: []
@@ -443,10 +439,6 @@ MonoBehaviour:
           rid: 5684132137619947713
         m_Node:
           rid: 5684132137619947742
-    - rid: 5684132137619947741
-      type: {class: 'Constant`1[[System.String, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
-      data:
-        m_Value: Response 2
     - rid: 5684132137619947742
       type: {class: ChoiceOptionNode, ns: DialogueSystem.Editor, asm: DialogueSystem.Editor}
       data: 
@@ -1322,3 +1314,11 @@ MonoBehaviour:
         m_EnumType:
           m_Identification: DialogueSystem.Runtime.DialogueProfile+Side, DialogueSystem.Runtime,
             Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    - rid: 5684132318355390531
+      type: {class: 'Constant`1[[System.String, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
+      data:
+        m_Value: Response 1
+    - rid: 5684132318355390532
+      type: {class: 'Constant`1[[System.String, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
+      data:
+        m_Value: Response 2
