@@ -21,7 +21,7 @@ namespace DialogueSystem.ExampleInterface
         {
             profileUI.SetActive(true);
             profileImage.sprite = profile.sprite;
-            profileText.text = profile.name;
+            profileText.text = profile.displayName;
         }
     }
 }
