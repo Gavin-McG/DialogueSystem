@@ -40,7 +40,7 @@ namespace DialogueSystem.Editor
             return  GetObject<T>(dialogueObjectNode, dialogueDict);
         }
 
-        public static DialogueObject GetConnectedTrace(INode node, string portName,
+        private static DialogueObject GetConnectedTrace(INode node, string portName,
             Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict)
         {
             var dialogueObjectNode = GetConnectedTraceNode(node, portName);
@@ -48,7 +48,7 @@ namespace DialogueSystem.Editor
             return GetObject(dialogueObjectNode, dialogueDict);
         }
 
-        public static T GetConnectedTrace<T>(INode node, string portName,
+        private static T GetConnectedTrace<T>(INode node, string portName,
             Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict) where T : DialogueObject
         {
             var dialogueObject = GetConnectedTrace(node, portName, dialogueDict);
