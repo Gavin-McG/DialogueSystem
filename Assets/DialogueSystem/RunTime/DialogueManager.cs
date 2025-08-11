@@ -13,7 +13,12 @@ namespace DialogueSystem.Runtime
 
         public void BeginDialogue(DialogueAsset dialogueAsset)
         {
-            if (currentDialogue != null) return;
+            if (currentDialogue != null)
+            {
+                Debug.LogWarning($"Attempted to begin dialogue \"{dialogueAsset.name}\" while dialogue was already playing");
+                return;
+            }
+            
             currentDialogue = dialogueAsset;
             beginDialogueEvent.Invoke(dialogueAsset.settings);
         }
