@@ -13,7 +13,7 @@ namespace  DialogueSystem.Editor
     {
         public override bool UsesWeight => false;
         
-        public override DialogueObject CreateDialogueObject()
+        public override ScriptableObject CreateDialogueObject()
         {
             var redirect = ScriptableObject.CreateInstance<SequentialRedirect>();
             redirect.name = "Sequential Redirect Dialogue";

@@ -21,7 +21,7 @@ namespace DialogueSystem.Editor
             DialogueGraphUtility.DefineNodeOutputPort(context);
         }
 
-        public DialogueObject CreateDialogueObject()
+        public ScriptableObject CreateDialogueObject()
         {
             var asset = ScriptableObject.CreateInstance<DialogueAsset>();
             asset.name = "Dialogue Asset";
@@ -31,7 +31,7 @@ namespace DialogueSystem.Editor
             return asset;
         }
 
-        public void AssignObjectReferences(Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict)
+        public void AssignObjectReferences(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
         {
             var asset = DialogueGraphUtility.GetObject<DialogueAsset>(this, dialogueDict);
             var dialogueObject = DialogueGraphUtility.GetConnectedTrace(this, dialogueDict);

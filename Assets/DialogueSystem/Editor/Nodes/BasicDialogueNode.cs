@@ -25,7 +25,7 @@ namespace DialogueSystem.Editor
             DialogueGraphUtility.DefineFieldPorts<BaseParams>(context);
         }
 
-        public DialogueObject CreateDialogueObject()
+        public ScriptableObject CreateDialogueObject()
         {
             var dialogue = ScriptableObject.CreateInstance<BasicDialogue>();
             dialogue.name = "Basic Dialogue";
@@ -35,7 +35,7 @@ namespace DialogueSystem.Editor
             return dialogue;
         }
         
-        public void AssignObjectReferences(Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict)
+        public void AssignObjectReferences(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
         {
             var dialogue = DialogueGraphUtility.GetObject<BasicDialogue>(this, dialogueDict);
             var dialogueTrace = DialogueGraphUtility.GetConnectedTrace(this, dialogueDict);

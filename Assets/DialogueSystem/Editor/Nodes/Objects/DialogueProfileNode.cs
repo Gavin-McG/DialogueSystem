@@ -14,7 +14,7 @@ namespace DialogueSystem.Editor
     {
         protected override string OutputPortName => "Profile";
 
-        public override DialogueObject CreateDialogueObject()
+        public override ScriptableObject CreateDialogueObject()
         {
             var obj = base.CreateDialogueObject();
             

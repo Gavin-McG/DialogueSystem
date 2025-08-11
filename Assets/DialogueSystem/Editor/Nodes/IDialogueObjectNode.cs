@@ -9,7 +9,7 @@ namespace DialogueSystem.Editor
 
     public interface IDialogueObjectNode
     {
-        public DialogueObject CreateDialogueObject();
+        public ScriptableObject CreateDialogueObject();
 
     }
 

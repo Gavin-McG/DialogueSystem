@@ -10,7 +10,7 @@ using UnityEngine;
 namespace DialogueSystem.Editor
 {
     
-    public abstract class GenericObjectNode<T> : Node, IDialogueReferenceNode where T : DialogueObject
+    public abstract class GenericObjectNode<T> : Node, IDialogueReferenceNode where T : ScriptableObject
     {
         protected virtual string OutputPortName => typeof(T).Name;
         
@@ -28,7 +28,7 @@ namespace DialogueSystem.Editor
                 .Build();
         }
 
-        public virtual DialogueObject CreateDialogueObject()
+        public virtual ScriptableObject CreateDialogueObject()
         {
             var obj = ScriptableObject.CreateInstance<T>();
 
@@ -37,7 +37,7 @@ namespace DialogueSystem.Editor
             return obj;
         }
 
-        public void AssignObjectReferences(Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict)
+        public void AssignObjectReferences(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
         {
             var obj = DialogueGraphUtility.GetObjectFromNode<T>(this, dialogueDict);
             

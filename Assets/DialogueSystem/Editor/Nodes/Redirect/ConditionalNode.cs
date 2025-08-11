@@ -8,8 +8,8 @@ namespace DialogueSystem.Editor
 
     public abstract class ConditionalNode : BlockNode, IDialogueTraceNode
     {
-        public abstract DialogueObject CreateDialogueObject();
-        public abstract void AssignObjectReferences(Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict);
+        public abstract ScriptableObject CreateDialogueObject();
+        public abstract void AssignObjectReferences(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict);
     }
 
     public abstract class ConditionalNode<T> : ConditionalNode
@@ -37,7 +37,7 @@ namespace DialogueSystem.Editor
             DialogueGraphUtility.DefineFieldOptions<T>(context);
         }
 
-        public override DialogueObject CreateDialogueObject()
+        public override ScriptableObject CreateDialogueObject()
         {
             var option = ScriptableObject.CreateInstance<T>();
             option.name = "Conditional Option";
@@ -47,7 +47,7 @@ namespace DialogueSystem.Editor
             return option;
         }
 
-        public override void AssignObjectReferences(Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict)
+        public override void AssignObjectReferences(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
         {
             var option = DialogueGraphUtility.GetObject<T>(this, dialogueDict);
             var nextTrace = DialogueGraphUtility.GetConnectedTrace(this, dialogueDict);

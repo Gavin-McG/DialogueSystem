@@ -3,7 +3,7 @@ using UnityEngine;
 namespace DialogueSystem.Runtime
 {
     [CreateAssetMenu(fileName = "Dialogue Profile", menuName = "Dialogue System/Dialogue Profile")]
-    public class DialogueProfile : DialogueObject
+    public class DialogueProfile : ScriptableObject
     {
         private static class Styles
         {

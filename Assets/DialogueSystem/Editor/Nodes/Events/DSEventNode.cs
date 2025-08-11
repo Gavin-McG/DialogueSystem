@@ -23,7 +23,7 @@ namespace DialogueSystem.Editor
             DialogueGraphUtility.DefineEventInputPort(context);
         }
 
-        public virtual DSEventCaller GetEvent(Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict)
+        public virtual DSEventCaller GetEvent(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
         {
             return DialogueGraphUtility.GetOptionValueOrDefault<DSEvent>(this, EventOptionName);
         }
@@ -62,7 +62,7 @@ namespace DialogueSystem.Editor
             eventReference.name = "Event Reference";
         }
 
-        public DialogueObject CreateDialogueObject()
+        public ScriptableObject CreateDialogueObject()
         {
             var eventReference = ScriptableObject.CreateInstance<TReference>();
             AssignEventReferenceValues(eventReference);
@@ -70,13 +70,13 @@ namespace DialogueSystem.Editor
             return eventReference;
         }
 
-        public void AssignObjectReferences(Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict)
+        public void AssignObjectReferences(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
         {
             var obj = DialogueGraphUtility.GetObjectFromNode<TReference>(this, dialogueDict);
             DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref obj);
         }
 
-        public override DSEventCaller GetEvent(Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict)
+        public override DSEventCaller GetEvent(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
         {
             return DialogueGraphUtility.GetObjectFromNode<TReference>(this, dialogueDict);
         }

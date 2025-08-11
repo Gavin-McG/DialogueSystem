@@ -91,7 +91,7 @@ namespace DialogueSystem.Editor
                 bool isSerializedPrivate = !field.IsPublic && field.GetCustomAttribute<SerializeField>() != null;
                 bool isHidden = field.GetCustomAttribute<HideInInspector>() != null ||
                                 field.GetCustomAttribute<HideInDialogueGraphAttribute>() != null;
-                bool isPort = typeof(DialogueObject).IsAssignableFrom(field.FieldType);
+                bool isPort = typeof(ScriptableObject).IsAssignableFrom(field.FieldType);
 
                 if (!(isPublic || isSerializedPrivate) || isHidden || isPort)
                     continue;
@@ -144,7 +144,7 @@ namespace DialogueSystem.Editor
                 bool isSerializedPrivate = !field.IsPublic && field.GetCustomAttribute<SerializeField>() != null;
                 bool isHidden = field.GetCustomAttribute<HideInInspector>() != null ||
                                 field.GetCustomAttribute<HideInDialogueGraphAttribute>() != null;
-                bool isPort = typeof(DialogueObject).IsAssignableFrom(field.FieldType);
+                bool isPort = typeof(ScriptableObject).IsAssignableFrom(field.FieldType);
                 
                 string fullPath = string.IsNullOrEmpty(parentPath) ? field.Name : $"{parentPath}{FieldSeperator}{field.Name}";
 
@@ -365,7 +365,7 @@ namespace DialogueSystem.Editor
         }
 
         public static T AssignFromFieldPorts<T>(Node node, 
-            Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict, ref T obj)
+            Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict, ref T obj)
         {
             var fields = GetPortFieldsRecursive<T>();
             foreach (var (path, field, _) in fields)

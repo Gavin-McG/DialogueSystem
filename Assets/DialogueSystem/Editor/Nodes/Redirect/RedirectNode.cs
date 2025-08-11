@@ -2,6 +2,7 @@
 using System.Linq;
 using DialogueSystem.Runtime;
 using Unity.GraphToolkit.Editor;
+using UnityEngine;
 
 
 namespace DialogueSystem.Editor
@@ -20,9 +21,9 @@ namespace DialogueSystem.Editor
             DialogueGraphUtility.DefineNodeOutputPort(context, DefaultPortDisplayName);
         }
         
-        public abstract DialogueObject CreateDialogueObject();
+        public abstract ScriptableObject CreateDialogueObject();
 
-        public void AssignObjectReferences(Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict)
+        public void AssignObjectReferences(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
         {
             var dialogue = DialogueGraphUtility.GetObject<Redirect>(this, dialogueDict);
             var defaultObject = DialogueGraphUtility.GetConnectedTrace(this, dialogueDict);

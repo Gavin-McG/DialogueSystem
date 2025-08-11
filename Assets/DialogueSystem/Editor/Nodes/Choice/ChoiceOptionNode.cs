@@ -22,7 +22,7 @@ namespace DialogueSystem.Editor
             DialogueGraphUtility.DefineFieldPorts<OptionParams>(context);
         }
 
-        public DialogueObject CreateDialogueObject()
+        public ScriptableObject CreateDialogueObject()
         {
             var option = ScriptableObject.CreateInstance<ChoiceOption>();
             option.name = "Choice Option";
@@ -32,7 +32,7 @@ namespace DialogueSystem.Editor
             return option;
         }
 
-        public void AssignObjectReferences(Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict)
+        public void AssignObjectReferences(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
         {
             var option = DialogueGraphUtility.GetObject<ChoiceOption>(this, dialogueDict);
             var optionObject = DialogueGraphUtility.GetConnectedTrace(this, dialogueDict);

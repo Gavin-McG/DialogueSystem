@@ -5,7 +5,7 @@ using UnityEngine;
 namespace DialogueSystem.Runtime
 {
 
-    public abstract class DialogueTrace : DialogueObject
+    public abstract class DialogueTrace : ScriptableObject
     {
         public List<DSEventCaller> events;
         

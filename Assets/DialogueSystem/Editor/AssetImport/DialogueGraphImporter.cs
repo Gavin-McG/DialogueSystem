@@ -39,7 +39,7 @@ namespace DialogueSystem.Editor
             }
             
             //Create objects for each node
-            var nodeDict = new Dictionary<IDialogueObjectNode, DialogueObject>();
+            var nodeDict = new Dictionary<IDialogueObjectNode, ScriptableObject>();
             int nonMainAssetCount = 0;
             foreach (var objectNode in dialogueObjectNodes) 
             {

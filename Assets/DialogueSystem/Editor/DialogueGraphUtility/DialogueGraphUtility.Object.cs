@@ -12,36 +12,36 @@ namespace DialogueSystem.Editor
 
     public static partial class DialogueGraphUtility
     {
-        public static DialogueObject GetObject(IDialogueObjectNode dialogueObjectNode,
-            Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict)
+        public static ScriptableObject GetObject(IDialogueObjectNode dialogueObjectNode,
+            Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
         {
             var dialogueObject = dialogueDict.GetValueOrDefault(dialogueObjectNode);
             return dialogueObject;
         }
 
         public static T GetObject<T>(IDialogueObjectNode dialogueObjectNode,
-            Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict) where T : DialogueObject
+            Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict) where T : ScriptableObject
         {
             var dialogueObject = GetObject(dialogueObjectNode, dialogueDict);
             return (dialogueObject is T objectAsT) ? objectAsT : null;
         }
         
-        public static DialogueObject GetObjectFromNode(INode node,
-            Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict)
+        public static ScriptableObject GetObjectFromNode(INode node,
+            Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
         {
             if (node is not IDialogueObjectNode dialogueObjectNode) return null;
             return  GetObject(dialogueObjectNode, dialogueDict);
         }
         
         public static T GetObjectFromNode<T>(INode node,
-            Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict) where T : DialogueObject
+            Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict) where T : ScriptableObject
         {
             if (node is not IDialogueObjectNode dialogueObjectNode) return null;
             return  GetObject<T>(dialogueObjectNode, dialogueDict);
         }
 
-        private static DialogueObject GetConnectedTrace(INode node, string portName,
-            Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict)
+        private static ScriptableObject GetConnectedTrace(INode node, string portName,
+            Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
         {
             var dialogueObjectNode = GetConnectedTraceNode(node, portName);
             if (dialogueObjectNode == null) return null;
@@ -49,7 +49,7 @@ namespace DialogueSystem.Editor
         }
 
         private static T GetConnectedTrace<T>(INode node, string portName,
-            Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict) where T : DialogueObject
+            Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict) where T : ScriptableObject
         {
             var dialogueObject = GetConnectedTrace(node, portName, dialogueDict);
             return (dialogueObject is T objectAsT) ? objectAsT : null;
@@ -70,7 +70,7 @@ namespace DialogueSystem.Editor
         }
 
         public static DialogueTrace GetConnectedTrace(INode node, 
-            Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict)
+            Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
         {
             var dialogueObject = GetConnectedTrace(node, NextPortName, dialogueDict);
             return dialogueObject is DialogueTrace dialogueTrace ? dialogueTrace : null;
@@ -78,7 +78,7 @@ namespace DialogueSystem.Editor
         
 
         public static T GetDialogueObjectValueOrNull<T>(INode node, string portName,
-            Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict) where T : DialogueObject
+            Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict) where T : ScriptableObject
         {
             //get port for object
             var port = GetInputPortByName(node, portName);
@@ -105,7 +105,7 @@ namespace DialogueSystem.Editor
             }
         }
 
-        public static List<DSEventCaller> GetEvents(INode node, Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict)
+        public static List<DSEventCaller> GetEvents(INode node, Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
         {
             var eventPort = GetNextPortOrNull(node);
 

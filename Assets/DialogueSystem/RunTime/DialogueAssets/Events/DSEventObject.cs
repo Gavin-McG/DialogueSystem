@@ -3,7 +3,7 @@
 namespace DialogueSystem.Runtime
 {
     
-    public abstract class DSEventObject : DialogueObject
+    public abstract class DSEventObject : ScriptableObject
     {
         public abstract void RemoveAllListeners();
     }

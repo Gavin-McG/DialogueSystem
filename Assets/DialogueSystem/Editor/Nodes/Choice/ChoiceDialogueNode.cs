@@ -27,7 +27,7 @@ namespace DialogueSystem.Editor
             DialogueGraphUtility.DefineNodeOutputPort(context, TimeOutPortDisplayName);
         }
 
-        public DialogueObject CreateDialogueObject()
+        public ScriptableObject CreateDialogueObject()
         {
             var dialogue = ScriptableObject.CreateInstance<ChoiceDialogue>();
             dialogue.name = "Choice Dialogue";
@@ -38,7 +38,7 @@ namespace DialogueSystem.Editor
             return dialogue;
         }
         
-        public void AssignObjectReferences(Dictionary<IDialogueObjectNode, DialogueObject> dialogueDict)
+        public void AssignObjectReferences(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
         {
             var dialogue = DialogueGraphUtility.GetObject<ChoiceDialogue>(this, dialogueDict);
             var timeOutObject = DialogueGraphUtility.GetConnectedTrace(this, dialogueDict);
