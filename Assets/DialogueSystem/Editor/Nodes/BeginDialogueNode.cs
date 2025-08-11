@@ -12,12 +12,12 @@ namespace DialogueSystem.Editor
     {
         protected override void OnDefineOptions(INodeOptionDefinition context)
         {
-            DialogueGraphUtility.DefineFieldOptions<DialogueAsset>(context);
+            DialogueGraphUtility.DefineFieldOptions<DialogueGraphSettings>(context);
         }
 
         protected override void OnDefinePorts(IPortDefinitionContext context)
         {
-            DialogueGraphUtility.DefineFieldPorts<DialogueAsset>(context);
+            DialogueGraphUtility.DefineFieldPorts<DialogueGraphSettings>(context);
             DialogueGraphUtility.DefineNodeOutputPort(context);
         }
 
@@ -26,7 +26,7 @@ namespace DialogueSystem.Editor
             var asset = ScriptableObject.CreateInstance<DialogueAsset>();
             asset.name = "Dialogue Asset";
             
-            DialogueGraphUtility.AssignFromFieldOptions(this, ref asset);
+            asset.settings = DialogueGraphUtility.AssignFromFieldOptions<DialogueGraphSettings>(this);
             
             return asset;
         }
@@ -36,7 +36,7 @@ namespace DialogueSystem.Editor
             var asset = DialogueGraphUtility.GetObject<DialogueAsset>(this, dialogueDict);
             var dialogueObject = DialogueGraphUtility.GetConnectedTrace(this, dialogueDict);
             
-            DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref asset);
+            DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref asset.settings);
             
             asset.nextDialogue = dialogueObject;
             asset.events = DialogueGraphUtility.GetEvents(this, dialogueDict);
