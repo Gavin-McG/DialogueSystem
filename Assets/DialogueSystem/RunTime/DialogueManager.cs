@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,10 +8,25 @@ namespace DialogueSystem.Runtime
 
     public class DialogueManager : MonoBehaviour
     {
+        private static readonly Dictionary<string, object> insertValues = new();
+        
         [HideInInspector] public UnityEvent<DialogueSettings> beginDialogueEvent = new();
 
         private DialogueAsset currentDialogue;
         private DialogueTrace currentTrace;
+
+        public static void SetValue(string valueName, object value)
+        {
+            insertValues[valueName] = value;
+        }
+
+        public static object GetValue(string valueName)
+        {
+            if (insertValues.TryGetValue(valueName, out var value))
+                return value;
+
+            return $"{{{valueName} NOT FOUND}}";
+        }
 
         public void BeginDialogue(DialogueAsset dialogueAsset)
         {
