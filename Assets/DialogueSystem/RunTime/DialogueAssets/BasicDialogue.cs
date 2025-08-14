@@ -14,7 +14,7 @@ namespace DialogueSystem.Runtime
             return nextDialogue;
         }
 
-        public DialogueParams GetDialogueDetails()
+        public DialogueParams GetDialogueDetails(AdvanceDialogueContext context, DialogueManager manager)
         {
             return new DialogueParams()
             {

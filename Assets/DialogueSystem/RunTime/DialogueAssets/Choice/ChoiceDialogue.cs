@@ -25,14 +25,16 @@ namespace DialogueSystem.Runtime
             return options[context.choice];
         }
 
-        public DialogueParams GetDialogueDetails()
+        public DialogueParams GetDialogueDetails(AdvanceDialogueContext context, DialogueManager manager)
         {
             return new DialogueParams()
             {
                 dialogueType = DialogueParams.DialogueType.Choice,
                 baseParams = baseParams,
                 choiceParams = choiceParams,
-                choicePrompts = options.Select(option => option.optionParams).ToList()
+                choicePrompts = options
+                    .Where(option => option.DisplayChoice(context, manager))
+                    .Select(option => option.optionParams).ToList()
             };
         }
     }

@@ -83,7 +83,7 @@ namespace DialogueSystem.Runtime
 
             if (currentTrace is IDialogueOutput outputDialogue)
             {
-                var details = new DialogueParams(outputDialogue.GetDialogueDetails());
+                var details = new DialogueParams(outputDialogue.GetDialogueDetails(context, this));
                 Debug.Log(details.baseParams.text);
                 details.baseParams.Text = ReplaceValues(details.baseParams.Text);
                 return details;

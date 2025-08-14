@@ -3,15 +3,17 @@ using UnityEngine;
 
 namespace DialogueSystem.Runtime
 {
-    public class ChoiceOption : DialogueTrace
+    public abstract class ChoiceOption : DialogueTrace
     {
-        public DialogueTrace nextDialogue;
-        public OptionParams optionParams;
+        [HideInDialogueGraph] public DialogueTrace nextDialogue;
+        [HideInDialogueGraph] public OptionParams optionParams;
         
         public override DialogueTrace GetNextDialogue(AdvanceDialogueContext context, DialogueManager manager)
         {
             return nextDialogue;
         }
+
+        public abstract bool DisplayChoice(AdvanceDialogueContext context, DialogueManager manager);
     }
 
 }

@@ -5,7 +5,7 @@ namespace DialogueSystem.Runtime
 
     public interface IDialogueOutput
     {
-        public DialogueParams GetDialogueDetails();
+        public DialogueParams GetDialogueDetails(AdvanceDialogueContext context, DialogueManager manager);
     }
 
 }

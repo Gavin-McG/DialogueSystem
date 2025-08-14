@@ -3,14 +3,16 @@ using DialogueSystem.Runtime;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-[Serializable]
-public class RandomConditionalOption : ConditionalOption
+namespace DialogueSystem.Default.Conditionals
 {
-    public float chance = 0.5f;
-
-    public override bool EvaluateCondition(AdvanceDialogueContext context, DialogueManager manager)
+    public class RandomConditionalOption : ConditionalOption
     {
-        return Random.Range(0f, 1f) < chance;
+        public float chance = 0.5f;
+
+        public override bool EvaluateCondition(AdvanceDialogueContext context, DialogueManager manager)
+        {
+            return Random.Range(0f, 1f) < chance;
+        }
     }
 }
 

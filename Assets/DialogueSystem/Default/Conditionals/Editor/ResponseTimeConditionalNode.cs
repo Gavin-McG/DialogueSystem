@@ -2,6 +2,8 @@
 using DialogueSystem.Editor;
 using Unity.GraphToolkit.Editor;
 
-[Serializable]
-[UseWithContext(typeof(RedirectNode))]
-public class ResponseTimeConditionalNode : ConditionalNode<ResponseTimeConditionalOption> {}
+namespace DialogueSystem.Default.Conditionals.Editor
+{
+    [Serializable, UseWithContext(typeof(RedirectNode))]
+    public class ResponseTimeConditionalNode : ConditionalNode<ResponseTimeConditionalOption> {}
+}
