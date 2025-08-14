@@ -10,10 +10,20 @@ namespace DialogueSystem.Runtime
     {
         public enum DialogueType { Basic, Choice }
         
-        public DialogueType dialogueType;
+        public DialogueType dialogueType = DialogueType.Basic;
         public BaseParams baseParams = new BaseParams();
-        public ChoiceParams choiceParams = null;
+        public ChoiceParams choiceParams = new  ChoiceParams();
         public List<OptionParams> choicePrompts = new();
+        
+        public DialogueParams() {}
+
+        public DialogueParams(DialogueParams copyObj)
+        {
+            dialogueType = copyObj.dialogueType;
+            baseParams = new BaseParams(copyObj.baseParams);
+            choiceParams = new ChoiceParams(copyObj.choiceParams);
+            choicePrompts = copyObj.choicePrompts;
+        }
     }
     
 }

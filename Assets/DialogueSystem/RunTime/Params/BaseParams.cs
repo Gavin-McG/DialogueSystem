@@ -8,19 +8,21 @@ namespace DialogueSystem.Runtime
     [Serializable]
     public class BaseParams
     {
-        [SerializeField] private string text;
+        public string text;
         public DialogueProfile profile;
-
-        public string Text => ReplaceValues(text);
         
-        public static string ReplaceValues(string input)
+        public string Text { get => text; set => text = value; }
+
+        public BaseParams()
         {
-            return Regex.Replace(input, @"\{(.*?)\}", match =>
-            {
-                string key = match.Groups[1].Value;
-                object value = DialogueManager.GetValue(key);
-                return value?.ToString() ?? "";
-            });
+            text = string.Empty;
+            profile = null;
+        }
+        
+        public BaseParams(BaseParams copyObj)
+        {
+            text = new string(copyObj.text);
+            profile = copyObj.profile;
         }
     }
 }

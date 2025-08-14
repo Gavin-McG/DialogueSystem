@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,24 +9,34 @@ namespace DialogueSystem.Runtime
 
     public class DialogueManager : MonoBehaviour
     {
-        private static readonly Dictionary<string, object> insertValues = new();
+        private readonly Dictionary<string, object> insertValues = new();
         
         [HideInInspector] public UnityEvent<DialogueSettings> beginDialogueEvent = new();
 
         private DialogueAsset currentDialogue;
         private DialogueTrace currentTrace;
 
-        public static void SetValue(string valueName, object value)
+        public void SetValue(string valueName, object value)
         {
             insertValues[valueName] = value;
         }
 
-        public static object GetValue(string valueName)
+        public object GetValue(string valueName)
         {
             if (insertValues.TryGetValue(valueName, out var value))
                 return value;
 
-            return $"{{{valueName} NOT FOUND}}";
+            return $"{{No Value \"{valueName}\"}}";
+        }
+        
+        public string ReplaceValues(string input)
+        {
+            return Regex.Replace(input, @"\{(.*?)\}", match =>
+            {
+                string key = match.Groups[1].Value;
+                object value = GetValue(key);
+                return value?.ToString() ?? "";
+            });
         }
 
         public void BeginDialogue(DialogueAsset dialogueAsset)
@@ -47,9 +58,14 @@ namespace DialogueSystem.Runtime
                 currentTrace.InvokeEvents();
                 currentTrace = currentTrace.GetNextDialogue(context);
             } while (currentTrace != null && currentTrace is not IDialogueOutput);
-            
+
             if (currentTrace is IDialogueOutput outputDialogue)
-                return outputDialogue.GetDialogueDetails();
+            {
+                var details = new DialogueParams(outputDialogue.GetDialogueDetails());
+                Debug.Log(details.baseParams.text);
+                details.baseParams.Text = ReplaceValues(details.baseParams.Text);
+                return details;
+            }
             
             EndDialogue();
             return null;

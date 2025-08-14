@@ -63,7 +63,7 @@ namespace DialogueSystem.ExampleInterface
             dialogueUI.SetActive(true);
             currentParams = dialogueParams;
 
-            mainTextUI.SetText(currentParams.baseParams.Text);
+            mainTextUI.SetText(currentParams.baseParams.text);
             timeStarted = Time.time;
             EndTimeLimit();
 

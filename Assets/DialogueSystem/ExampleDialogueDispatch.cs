@@ -17,9 +17,9 @@ public class ExampleDialogueDispatch : MonoBehaviour
         dialogueIntEvent.AddListener((v) =>
         {
             Debug.Log(v);
-            DialogueManager.SetValue("choice", v);
+            manager.SetValue("choice", v);
         });
-        DialogueManager.SetValue("score", 120);
+        manager.SetValue("score", 120);
     }
 
     IEnumerator DispatchRoutine()
