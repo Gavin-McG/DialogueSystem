@@ -8,7 +8,7 @@ public class ResponseTimeConditionalOption : ConditionalOption
     public ComparisonMode mode;
     public float time;
     
-    public override bool EvaluateCondition(AdvanceDialogueContext context)
+    public override bool EvaluateCondition(AdvanceDialogueContext context, DialogueManager manager)
     {
         switch (mode)
         {

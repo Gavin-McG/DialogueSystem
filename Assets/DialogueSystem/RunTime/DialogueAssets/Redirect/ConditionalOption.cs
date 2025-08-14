@@ -8,12 +8,12 @@ namespace DialogueSystem.Runtime
         [HideInDialogueGraph] public DialogueTrace nextDialogue;
         [HideInDialogueGraph] public float weight = 1;
 
-        public override DialogueTrace GetNextDialogue(AdvanceDialogueContext context)
+        public override DialogueTrace GetNextDialogue(AdvanceDialogueContext context, DialogueManager manager)
         {
             return nextDialogue;
         }
 
-        public abstract bool EvaluateCondition(AdvanceDialogueContext context);
+        public abstract bool EvaluateCondition(AdvanceDialogueContext context, DialogueManager manager);
     }
 
 }

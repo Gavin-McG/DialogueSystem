@@ -6,11 +6,11 @@ namespace DialogueSystem.Runtime
 
     public class SequentialRedirect : Redirect
     {
-        public override DialogueTrace GetNextDialogue(AdvanceDialogueContext context)
+        public override DialogueTrace GetNextDialogue(AdvanceDialogueContext context, DialogueManager manager)
         {
             foreach (var option in options)
             {
-                if (option.EvaluateCondition(context)) return option;
+                if (option.EvaluateCondition(context, manager)) return option;
             }
             return defaultDialogue;
         }

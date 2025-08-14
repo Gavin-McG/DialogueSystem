@@ -19,7 +19,7 @@ namespace DialogueSystem.Runtime
             public enum Operation { Add, Remove, RemoveAll }
         }
         
-        public abstract DialogueTrace GetNextDialogue(AdvanceDialogueContext context);
+        public abstract DialogueTrace GetNextDialogue(AdvanceDialogueContext context, DialogueManager manager);
 
         public void InvokeEvents()
         {

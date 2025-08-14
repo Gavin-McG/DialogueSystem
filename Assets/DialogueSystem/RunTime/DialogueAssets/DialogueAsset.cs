@@ -10,7 +10,7 @@ namespace DialogueSystem.Runtime
         public DialogueSettings settings;
         public List<DSEventCaller> endEvents = new List<DSEventCaller>();
         
-        public override DialogueTrace GetNextDialogue(AdvanceDialogueContext context)
+        public override DialogueTrace GetNextDialogue(AdvanceDialogueContext context, DialogueManager manager)
         {
             return nextDialogue;
         }

@@ -78,7 +78,7 @@ namespace DialogueSystem.Runtime
             do {
                 currentTrace.InvokeEvents();
                 currentTrace.ModifyKeywords(this);
-                currentTrace = currentTrace.GetNextDialogue(context);
+                currentTrace = currentTrace.GetNextDialogue(context, this);
             } while (currentTrace != null && currentTrace is not IDialogueOutput);
 
             if (currentTrace is IDialogueOutput outputDialogue)
