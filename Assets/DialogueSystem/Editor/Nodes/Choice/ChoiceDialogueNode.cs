@@ -42,13 +42,13 @@ namespace DialogueSystem.Editor
         {
             var dialogue = DialogueGraphUtility.GetObject<ChoiceDialogue>(this, dialogueDict);
             var timeOutObject = DialogueGraphUtility.GetConnectedTrace(this, dialogueDict);
+            dialogue.defaultDialogue = timeOutObject;
+            
+            DialogueGraphUtility.AssignKeywordAndEventReferences(this, dialogue, dialogueDict);
             
             DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref dialogue.baseParams);
             DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref dialogue.choiceParams);
             
-            dialogue.defaultDialogue = timeOutObject;
-            dialogue.events = DialogueGraphUtility.GetEvents(this, dialogueDict);
-
             var optionNodes = blockNodes.ToList();
             dialogue.options = new List<ChoiceOption>();
             foreach (var optionNode in optionNodes)

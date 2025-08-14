@@ -39,11 +39,11 @@ namespace DialogueSystem.Editor
         {
             var dialogue = DialogueGraphUtility.GetObject<BasicDialogue>(this, dialogueDict);
             var dialogueTrace = DialogueGraphUtility.GetConnectedTrace(this, dialogueDict);
+            dialogue.nextDialogue = dialogueTrace;
+            
+            DialogueGraphUtility.AssignKeywordAndEventReferences(this, dialogue, dialogueDict);
             
             DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref dialogue.baseParams);
-            
-            dialogue.nextDialogue = dialogueTrace;
-            dialogue.events = DialogueGraphUtility.GetEvents(this, dialogueDict);
         }
     }
 

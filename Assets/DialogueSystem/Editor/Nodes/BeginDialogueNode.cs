@@ -39,12 +39,12 @@ namespace DialogueSystem.Editor
         {
             var asset = DialogueGraphUtility.GetObject<DialogueAsset>(this, dialogueDict);
             var dialogueObject = DialogueGraphUtility.GetConnectedTrace(this, dialogueDict);
+            asset.nextDialogue = dialogueObject;
+
+            DialogueGraphUtility.AssignKeywordAndEventReferences(this, asset, dialogueDict);
+            asset.endEvents = DialogueGraphUtility.GetEvents(this, dialogueDict, EndEventPortName);
             
             DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref asset.settings);
-            
-            asset.nextDialogue = dialogueObject;
-            asset.events = DialogueGraphUtility.GetEvents(this, dialogueDict);
-            asset.endEvents = DialogueGraphUtility.GetEvents(this, dialogueDict, EndEventPortName);
         }
     }
 

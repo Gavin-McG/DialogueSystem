@@ -51,11 +51,11 @@ namespace DialogueSystem.Editor
         {
             var option = DialogueGraphUtility.GetObject<T>(this, dialogueDict);
             var nextTrace = DialogueGraphUtility.GetConnectedTrace(this, dialogueDict);
+            option.nextDialogue = nextTrace;
+            
+            DialogueGraphUtility.AssignKeywordAndEventReferences(this, option, dialogueDict);
             
             DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref option);
-            
-            option.nextDialogue = nextTrace;
-            option.events = DialogueGraphUtility.GetEvents(this, dialogueDict);
         }
     }
 

@@ -36,11 +36,11 @@ namespace DialogueSystem.Editor
         {
             var option = DialogueGraphUtility.GetObject<ChoiceOption>(this, dialogueDict);
             var optionObject = DialogueGraphUtility.GetConnectedTrace(this, dialogueDict);
+            option.nextDialogue = optionObject;
+            
+            DialogueGraphUtility.AssignKeywordAndEventReferences(this, option, dialogueDict);
 
             DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref option.optionParams);
-            
-            option.nextDialogue = optionObject;
-            option.events = DialogueGraphUtility.GetEvents(this, dialogueDict);
         }
     }
 

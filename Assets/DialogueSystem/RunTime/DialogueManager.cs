@@ -10,6 +10,7 @@ namespace DialogueSystem.Runtime
     public class DialogueManager : MonoBehaviour
     {
         private readonly Dictionary<string, object> insertValues = new();
+        private readonly HashSet<string> keywords = new();
         
         [HideInInspector] public UnityEvent<DialogueSettings> beginDialogueEvent = new();
 
@@ -38,6 +39,26 @@ namespace DialogueSystem.Runtime
                 return value?.ToString() ?? "";
             });
         }
+        
+        public void AddKeyword(string keyword)
+        {
+            keywords.Add(keyword);
+        }
+
+        public void RemoveKeyword(string keyword)
+        {
+            keywords.Remove(keyword);
+        }
+        
+        public void ClearKeywords()
+        {
+            keywords.Clear();
+        }
+
+        public bool IsKeywordDefined(string keyword)
+        {
+            return keywords.Contains(keyword);
+        }
 
         public void BeginDialogue(DialogueAsset dialogueAsset)
         {
@@ -56,6 +77,7 @@ namespace DialogueSystem.Runtime
         {
             do {
                 currentTrace.InvokeEvents();
+                currentTrace.ModifyKeywords(this);
                 currentTrace = currentTrace.GetNextDialogue(context);
             } while (currentTrace != null && currentTrace is not IDialogueOutput);
 
@@ -78,6 +100,7 @@ namespace DialogueSystem.Runtime
             if (currentDialogue == null) return;
             
             currentDialogue.InvokeEndEvents();
+            ClearKeywords();
             
             currentDialogue = null;
             currentTrace = null;

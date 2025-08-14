@@ -110,21 +110,50 @@ namespace DialogueSystem.Editor
         {
             var eventPort = GetOutputPortByName(node, portName);
 
-            var connectedEventPorts = new List<IPort>();
-            eventPort.GetConnectedPorts(connectedEventPorts);
-            var eventNodes = connectedEventPorts.Select(port => port.GetNode());
+            var connectedPorts = new List<IPort>();
+            eventPort.GetConnectedPorts(connectedPorts);
+            var connectedNodes = connectedPorts.Select(port => port.GetNode());
 
             var events = new List<DSEventCaller>();
-            foreach (var eventNode in eventNodes)
+            foreach (var connectedNode in connectedNodes)
             {
-                if (eventNode is DSEventNode dialogueEventNode)
+                if (connectedNode is DSEventNode eventNode)
                 {
-                    var dialogueEventCaller = dialogueEventNode.GetEvent(dialogueDict);
+                    var dialogueEventCaller = eventNode.GetEvent(dialogueDict);
                     if (dialogueEventCaller)
                         events.Add(dialogueEventCaller);
                 }
             }
             return events;
+        }
+        
+        public static List<DialogueTrace.KeywordEntry> GetKeywords(INode node, 
+            Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict, string portName=NextPortName)
+        {
+            var eventPort = GetOutputPortByName(node, portName);
+
+            var connectedPorts = new List<IPort>();
+            eventPort.GetConnectedPorts(connectedPorts);
+            var connectedNodes = connectedPorts.Select(port => port.GetNode());
+
+            var keywords = new List<DialogueTrace.KeywordEntry>();
+            foreach (var connectedNode in connectedNodes)
+            {
+                if (connectedNode is ModifyKeyWordNode keyWordNode)
+                {
+                    var keywordEntry = keyWordNode.GetEntry();
+                    if (keywordEntry != null)
+                        keywords.Add(keywordEntry);
+                }
+            }
+            return keywords;
+        }
+
+        public static void AssignKeywordAndEventReferences(INode node, DialogueTrace dialogueTrace,
+            Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
+        {
+            dialogueTrace.events = GetEvents(node, dialogueDict);
+            dialogueTrace.keywords = GetKeywords(node, dialogueDict);
         }
     }
 
