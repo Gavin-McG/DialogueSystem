@@ -6,44 +6,62 @@ namespace DialogueSystem.Editor
 {
     public static partial class DialogueGraphUtility
     {
-        public const string NextPortName = "next";
-        public const string PreviousPortName = "previous";
-        public const string EventPortName = "event";
+        private const string NextPortName = "next";
+        private const string PreviousPortName = "previous";
+        private const string EventPortName = "event";
 
-        public const string NextPortDefaultDisplayName = "Next";
-        public const string PreviousPortDefaultDisplayName = "Previous";
+        private const string NextPortDefaultDisplayName = "Next";
+        private const string PreviousPortDefaultDisplayName = "Previous";
+        
+        
+        public static void DefineBasicInputPort(Node.IPortDefinitionContext context, string portName)
+        {
+            context.AddInputPort(portName)
+                .WithConnectorUI(PortConnectorUI.Arrowhead)
+                .Build();
+        }
+        
+        public static void DefineBasicInputPort(Node.IPortDefinitionContext context, string portName, string displayName)
+        {
+            context.AddInputPort(portName)
+                .WithDisplayName(displayName)
+                .WithConnectorUI(PortConnectorUI.Arrowhead)
+                .Build();
+        }
         
         public static void DefineNodeInputPort(Node.IPortDefinitionContext context)
         {
-            context.AddInputPort(PreviousPortName)
-                .WithDisplayName(PreviousPortDefaultDisplayName)
-                .WithConnectorUI(PortConnectorUI.Arrowhead)
-                .Build();
+            DefineBasicInputPort(context, PreviousPortName, PreviousPortDefaultDisplayName);
         }
         
         public static void DefineNodeInputPort(Node.IPortDefinitionContext context, string displayName)
         {
-            context.AddInputPort(PreviousPortName)
-                .WithDisplayName(displayName)
+            DefineBasicInputPort(context, PreviousPortName, displayName);
+        }
+        
+        public static void DefineBasicOutputPort(Node.IPortDefinitionContext context, string portName)
+        {
+            context.AddOutputPort(portName)
                 .WithConnectorUI(PortConnectorUI.Arrowhead)
                 .Build();
         }
 
-        
-        public static void DefineNodeOutputPort(Node.IPortDefinitionContext context)
+        public static void DefineBasicOutputPort(Node.IPortDefinitionContext context, string portName, string displayName)
         {
-            context.AddOutputPort(NextPortName)
-                .WithDisplayName(NextPortDefaultDisplayName)
+            context.AddOutputPort(portName)
+                .WithDisplayName(displayName)
                 .WithConnectorUI(PortConnectorUI.Arrowhead)
                 .Build();
         }
         
+        public static void DefineNodeOutputPort(Node.IPortDefinitionContext context)
+        {
+            DefineBasicOutputPort(context, NextPortName, NextPortDefaultDisplayName);
+        }
+        
         public static void DefineNodeOutputPort(Node.IPortDefinitionContext context, string displayName)
         {
-            context.AddOutputPort(NextPortName)
-                .WithDisplayName(displayName)
-                .WithConnectorUI(PortConnectorUI.Arrowhead)
-                .Build();
+            DefineBasicOutputPort(context, NextPortName, displayName);
         }
         
         public static void DefineEventInputPort(Node.IPortDefinitionContext context)

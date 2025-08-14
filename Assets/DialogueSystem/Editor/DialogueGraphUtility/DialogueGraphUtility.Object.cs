@@ -105,9 +105,10 @@ namespace DialogueSystem.Editor
             }
         }
 
-        public static List<DSEventCaller> GetEvents(INode node, Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
+        public static List<DSEventCaller> GetEvents(INode node, 
+            Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict, string portName=NextPortName)
         {
-            var eventPort = GetNextPortOrNull(node);
+            var eventPort = GetOutputPortByName(node, portName);
 
             var connectedEventPorts = new List<IPort>();
             eventPort.GetConnectedPorts(connectedEventPorts);
@@ -125,7 +126,6 @@ namespace DialogueSystem.Editor
             }
             return events;
         }
-        
     }
 
 }

@@ -10,6 +10,9 @@ namespace DialogueSystem.Editor
     [Serializable]
     public class BeginDialogueNode : Node, IDialogueTraceNode
     {
+        private const string EndEventPortName = "endEvents";
+        private const string EndEventPortDisplayName = "End Events";
+        
         protected override void OnDefineOptions(INodeOptionDefinition context)
         {
             DialogueGraphUtility.DefineFieldOptions<DialogueSettings>(context);
@@ -19,6 +22,7 @@ namespace DialogueSystem.Editor
         {
             DialogueGraphUtility.DefineFieldPorts<DialogueSettings>(context);
             DialogueGraphUtility.DefineNodeOutputPort(context);
+            DialogueGraphUtility.DefineBasicOutputPort(context, EndEventPortName, EndEventPortDisplayName);
         }
 
         public ScriptableObject CreateDialogueObject()
@@ -40,6 +44,7 @@ namespace DialogueSystem.Editor
             
             asset.nextDialogue = dialogueObject;
             asset.events = DialogueGraphUtility.GetEvents(this, dialogueDict);
+            asset.endEvents = DialogueGraphUtility.GetEvents(this, dialogueDict, EndEventPortName);
         }
     }
 

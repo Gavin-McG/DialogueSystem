@@ -8,8 +8,9 @@ namespace DialogueSystem.Runtime
     public class DialogueManager : MonoBehaviour
     {
         [HideInInspector] public UnityEvent<DialogueSettings> beginDialogueEvent = new();
-        
-        private DialogueTrace currentDialogue;
+
+        private DialogueAsset currentDialogue;
+        private DialogueTrace currentTrace;
 
         public void BeginDialogue(DialogueAsset dialogueAsset)
         {
@@ -20,23 +21,35 @@ namespace DialogueSystem.Runtime
             }
             
             currentDialogue = dialogueAsset;
+            currentTrace = dialogueAsset;
             beginDialogueEvent.Invoke(dialogueAsset.settings);
         }
 
         public DialogueParams GetNextDialogue(AdvanceDialogueContext context)
         {
             do {
-                currentDialogue.InvokeEvents();
-                currentDialogue = currentDialogue.GetNextDialogue(context);
-            } while (currentDialogue != null && currentDialogue is not IDialogueOutput);
+                currentTrace.InvokeEvents();
+                currentTrace = currentTrace.GetNextDialogue(context);
+            } while (currentTrace != null && currentTrace is not IDialogueOutput);
             
-            if (currentDialogue is IDialogueOutput outputDialogue)
+            if (currentTrace is IDialogueOutput outputDialogue)
                 return outputDialogue.GetDialogueDetails();
             
+            EndDialogue();
             return null;
         }
         
-        public DialogueParams GetNextDialogue() => GetNextDialogue(new  AdvanceDialogueContext());
+        public DialogueParams GetNextDialogue() => GetNextDialogue(new AdvanceDialogueContext());
+
+        public void EndDialogue()
+        {
+            if (currentDialogue == null) return;
+            
+            currentDialogue.InvokeEndEvents();
+            
+            currentDialogue = null;
+            currentTrace = null;
+        }
     }
     
 
