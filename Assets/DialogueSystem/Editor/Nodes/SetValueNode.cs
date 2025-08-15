@@ -5,11 +5,11 @@ using Unity.GraphToolkit.Editor;
 namespace DialogueSystem.Editor
 {
     [Serializable]
-    public class ModifyKeyWordNode : Node
+    public class SetValueNode : Node
     {
         protected override void OnDefineOptions(INodeOptionDefinition context)
         {
-            DialogueGraphUtility.DefineFieldOptions<Keywords.KeywordEntry>(context);
+            DialogueGraphUtility.DefineFieldOptions<Values.ValueEntry>(context);
         }
 
         protected override void OnDefinePorts(IPortDefinitionContext context)
@@ -17,9 +17,9 @@ namespace DialogueSystem.Editor
             DialogueGraphUtility.DefineNodeInputPort(context, "");
         }
 
-        public Keywords.KeywordEntry GetEntry()
+        public Values.ValueEntry GetEntry()
         {
-            var newEntry = DialogueGraphUtility.AssignFromFieldOptions<Keywords.KeywordEntry>(this);
+            var newEntry = DialogueGraphUtility.AssignFromFieldOptions<Values.ValueEntry>(this);
             return newEntry;
         }
     }

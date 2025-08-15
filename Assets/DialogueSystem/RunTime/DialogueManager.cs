@@ -77,15 +77,13 @@ namespace DialogueSystem.Runtime
         public DialogueParams GetNextDialogue(AdvanceDialogueContext context)
         {
             do {
-                currentTrace.InvokeEvents();
-                currentTrace.ModifyKeywords(this);
+                currentTrace.RunOperations(this);
                 currentTrace = currentTrace.GetNextDialogue(context, this);
             } while (currentTrace != null && currentTrace is not IDialogueOutput);
 
             if (currentTrace is IDialogueOutput outputDialogue)
             {
                 var details = new DialogueParams(outputDialogue.GetDialogueDetails(context, this));
-                Debug.Log(details.baseParams.text);
                 details.baseParams.Text = ReplaceValues(details.baseParams.Text);
                 return details;
             }

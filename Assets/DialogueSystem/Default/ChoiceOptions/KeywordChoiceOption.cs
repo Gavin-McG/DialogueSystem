@@ -5,8 +5,8 @@ namespace DialogueSystem.Default.ChoiceOptions
 {
     public class KeywordChoiceOption : ChoiceOption
     {
-        public Keywords.DefineRule rule;
         public string keyword;
+        public Keywords.DefineRule rule;
         
         public override bool EvaluateCondition(AdvanceDialogueContext context, DialogueManager manager)
         {
