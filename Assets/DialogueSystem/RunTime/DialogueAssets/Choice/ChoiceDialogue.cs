@@ -33,7 +33,7 @@ namespace DialogueSystem.Runtime
                 baseParams = baseParams,
                 choiceParams = choiceParams,
                 choicePrompts = options
-                    .Where(option => option.DisplayChoice(context, manager))
+                    .Where(option => option.EvaluateCondition(context, manager))
                     .Select(option => option.optionParams).ToList()
             };
         }

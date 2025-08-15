@@ -3,17 +3,9 @@ using UnityEngine;
 namespace DialogueSystem.Runtime
 {
 
-    public abstract class ConditionalOption : DialogueTrace
+    public abstract class ConditionalOption : Option
     {
-        [HideInDialogueGraph] public DialogueTrace nextDialogue;
         [HideInDialogueGraph] public float weight = 1;
-
-        public override DialogueTrace GetNextDialogue(AdvanceDialogueContext context, DialogueManager manager)
-        {
-            return nextDialogue;
-        }
-
-        public abstract bool EvaluateCondition(AdvanceDialogueContext context, DialogueManager manager);
     }
 
 }

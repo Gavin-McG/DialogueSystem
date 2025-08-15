@@ -8,7 +8,7 @@ namespace DialogueSystem.Default.ChoiceOptions
         public Keywords.DefineRule rule;
         public string keyword;
         
-        public override bool DisplayChoice(AdvanceDialogueContext context, DialogueManager manager)
+        public override bool EvaluateCondition(AdvanceDialogueContext context, DialogueManager manager)
         {
             return Keywords.EvaluateKeyword(rule, keyword, manager); 
         }

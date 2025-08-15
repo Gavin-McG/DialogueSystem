@@ -4,7 +4,7 @@ namespace DialogueSystem.Default.ChoiceOptions.Editor
 {
     public class BasicChoiceOption : ChoiceOption
     {
-        public override bool DisplayChoice(AdvanceDialogueContext context, DialogueManager manager)
+        public override bool EvaluateCondition(AdvanceDialogueContext context, DialogueManager manager)
         {
             return true;
         }
