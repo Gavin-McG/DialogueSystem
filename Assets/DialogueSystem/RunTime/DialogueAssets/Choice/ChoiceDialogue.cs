@@ -18,23 +18,31 @@ namespace DialogueSystem.Runtime
             if (context.timedOut) 
                 return defaultDialogue;
             
-            if (context.choice >= options.Count)
-            {
+            if (context.choice >= manager.optionIndexes.Count)
                 throw new System.Exception("Choice out of range");
-            }
-            return options[context.choice];
+            
+            int optionIndex = manager.optionIndexes[context.choice];
+            return options[optionIndex];
         }
 
         public DialogueParams GetDialogueDetails(AdvanceDialogueContext context, DialogueManager manager)
         {
+            // Get both the option and its original index
+            var filteredOptions = options
+                .Select((option, index) => (option, index))
+                .Where(x => x.option.EvaluateCondition(context, manager))
+                .ToList();
+
+            // Store the indexes in the manager
+            manager.optionIndexes = filteredOptions.Select(x => x.index).ToList();
+
+            // Build the choice prompts from the filtered options
             return new DialogueParams()
             {
                 dialogueType = DialogueParams.DialogueType.Choice,
                 baseParams = baseParams,
                 choiceParams = choiceParams,
-                choicePrompts = options
-                    .Where(option => option.EvaluateCondition(context, manager))
-                    .Select(option => option.optionParams).ToList()
+                choicePrompts = filteredOptions.Select(x => x.option.optionParams).ToList()
             };
         }
     }

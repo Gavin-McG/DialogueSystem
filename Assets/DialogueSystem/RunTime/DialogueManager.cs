@@ -16,6 +16,7 @@ namespace DialogueSystem.Runtime
 
         private DialogueAsset currentDialogue;
         private DialogueTrace currentTrace;
+        [HideInInspector] public List<int> optionIndexes;
 
         public void SetValue(string valueName, object value)
         {
