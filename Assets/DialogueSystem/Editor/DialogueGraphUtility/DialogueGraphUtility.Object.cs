@@ -105,78 +105,34 @@ namespace DialogueSystem.Editor
             }
         }
 
-        public static List<DSEventCaller> GetEvents(INode node, 
+        public static List<T> GetDataType<T>(INode node, 
             Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict, string portName=NextPortName)
         {
-            var eventPort = GetOutputPortByName(node, portName);
+            var port = GetOutputPortByName(node, portName);
 
             var connectedPorts = new List<IPort>();
-            eventPort.GetConnectedPorts(connectedPorts);
+            port.GetConnectedPorts(connectedPorts);
             var connectedNodes = connectedPorts.Select(port => port.GetNode());
 
-            var events = new List<DSEventCaller>();
+            var result = new List<T>();
             foreach (var connectedNode in connectedNodes)
             {
-                if (connectedNode is DSEventNode eventNode)
+                if (connectedNode is IDataNode<T> eventNode)
                 {
-                    var dialogueEventCaller = eventNode.GetEvent(dialogueDict);
-                    if (dialogueEventCaller)
-                        events.Add(dialogueEventCaller);
+                    var data = eventNode.GetData(dialogueDict);
+                    if (data != null)
+                        result.Add(data);
                 }
             }
-            return events;
-        }
-        
-        public static List<Keywords.KeywordEntry> GetKeywordEntries(INode node, 
-            Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict, string portName=NextPortName)
-        {
-            var eventPort = GetOutputPortByName(node, portName);
-
-            var connectedPorts = new List<IPort>();
-            eventPort.GetConnectedPorts(connectedPorts);
-            var connectedNodes = connectedPorts.Select(port => port.GetNode());
-
-            var keywords = new List<Keywords.KeywordEntry>();
-            foreach (var connectedNode in connectedNodes)
-            {
-                if (connectedNode is ModifyKeyWordNode keyWordNode)
-                {
-                    var keywordEntry = keyWordNode.GetEntry();
-                    if (keywordEntry != null)
-                        keywords.Add(keywordEntry);
-                }
-            }
-            return keywords;
-        }
-        
-        public static List<Values.ValueEntry> GetValueEntries(INode node, 
-            Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict, string portName=NextPortName)
-        {
-            var eventPort = GetOutputPortByName(node, portName);
-
-            var connectedPorts = new List<IPort>();
-            eventPort.GetConnectedPorts(connectedPorts);
-            var connectedNodes = connectedPorts.Select(port => port.GetNode());
-
-            var keywords = new List<Values.ValueEntry>();
-            foreach (var connectedNode in connectedNodes)
-            {
-                if (connectedNode is SetValueNode valueNode)
-                {
-                    var valueEntry = valueNode.GetEntry();
-                    if (valueEntry != null)
-                        keywords.Add(valueEntry);
-                }
-            }
-            return keywords;
+            return result;
         }
 
         public static void AssignKeywordAndEventReferences(INode node, DialogueTrace dialogueTrace,
             Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
         {
-            dialogueTrace.events = GetEvents(node, dialogueDict);
-            dialogueTrace.keywords = GetKeywordEntries(node, dialogueDict);
-            dialogueTrace.values = GetValueEntries(node, dialogueDict);
+            dialogueTrace.events = GetDataType<DSEventCaller>(node, dialogueDict);
+            dialogueTrace.keywords = GetDataType<Keywords.KeywordEntry>(node, dialogueDict);
+            dialogueTrace.values = GetDataType<Values.ValueEntry>(node, dialogueDict);
         }
     }
 

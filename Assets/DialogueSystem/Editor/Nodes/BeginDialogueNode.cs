@@ -42,7 +42,7 @@ namespace DialogueSystem.Editor
             asset.nextDialogue = dialogueObject;
 
             DialogueGraphUtility.AssignKeywordAndEventReferences(this, asset, dialogueDict);
-            asset.endEvents = DialogueGraphUtility.GetEvents(this, dialogueDict, EndEventPortName);
+            asset.endEvents = DialogueGraphUtility.GetDataType<DSEventCaller>(this, dialogueDict, EndEventPortName);
             
             DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref asset.settings);
         }

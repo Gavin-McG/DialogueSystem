@@ -8,7 +8,7 @@ using UnityEngine.Events;
 namespace DialogueSystem.Editor
 {
     [Serializable]
-    public class DSEventNode : Node
+    public class DSEventNode : Node, IDataNode<DSEventCaller>
     {
         protected const string EventOptionName = "eventObject";
         
@@ -23,7 +23,7 @@ namespace DialogueSystem.Editor
             DialogueGraphUtility.DefineEventInputPort(context);
         }
 
-        public virtual DSEventCaller GetEvent(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
+        public virtual DSEventCaller GetData(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
         {
             return DialogueGraphUtility.GetOptionValueOrDefault<DSEvent>(this, EventOptionName);
         }
@@ -76,7 +76,7 @@ namespace DialogueSystem.Editor
             DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref obj);
         }
 
-        public override DSEventCaller GetEvent(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
+        public override DSEventCaller GetData(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
         {
             return DialogueGraphUtility.GetObjectFromNode<TReference>(this, dialogueDict);
         }
