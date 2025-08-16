@@ -9,7 +9,7 @@ namespace DialogueSystem.Runtime
     {
         public List<DSEventCaller> events;
         public List<Keywords.KeywordEntry> keywords;
-        public List<Values.ValueEntry> values;
+        public List<ValueSetter> values;
         
         public abstract DialogueTrace GetNextDialogue(AdvanceDialogueContext context, DialogueManager manager);
 
@@ -46,7 +46,7 @@ namespace DialogueSystem.Runtime
         {
             foreach (var entry in values)
             {
-                manager.SetValue(entry.valueName, entry.value);
+                entry.SetValue(manager);
             }
         }
     }

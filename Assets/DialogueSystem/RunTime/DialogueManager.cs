@@ -31,7 +31,7 @@ namespace DialogueSystem.Runtime
             return $"{{No Value \"{valueName}\"}}";
         }
         
-        public string ReplaceValues(string input)
+        private string ReplaceValues(string input)
         {
             return Regex.Replace(input, @"\{(.*?)\}", match =>
             {

@@ -6,13 +6,6 @@ namespace DialogueSystem.Runtime
     {
         public enum Operation { Equal, NotEqual, GreaterThan, GreaterThanOrEqualTo, LessThan, LessThanOrEqualTo }
 
-        [Serializable]
-        public class ValueEntry
-        {
-            public string valueName;
-            public float value;
-        }
-
         public static bool EvaluateValue(Operation operation, string valueName, float compValue, DialogueManager manager)
         {
             object value = manager.GetValue(valueName);
@@ -38,11 +31,6 @@ namespace DialogueSystem.Runtime
                 case Operation.LessThanOrEqualTo: return floatValue <= compValue;
                 default: return false;
             }
-        }
-
-        public static void SetValue(ValueEntry entry, DialogueManager manager)
-        {
-            manager.SetValue(entry.valueName, entry.value);
         }
     }
 }

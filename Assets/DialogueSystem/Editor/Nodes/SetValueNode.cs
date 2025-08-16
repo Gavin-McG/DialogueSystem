@@ -7,11 +7,12 @@ using UnityEngine;
 namespace DialogueSystem.Editor
 {
     [Serializable]
-    public class SetValueNode : Node, IDataNode<Values.ValueEntry>
+    public abstract class SetValueNode<T> : Node, IDialogueObjectNode, IDataNode<ValueSetter>
+        where T : ValueSetter
     {
         protected override void OnDefineOptions(INodeOptionDefinition context)
         {
-            DialogueGraphUtility.DefineFieldOptions<Values.ValueEntry>(context);
+            DialogueGraphUtility.DefineFieldOptions<T>(context);
         }
 
         protected override void OnDefinePorts(IPortDefinitionContext context)
@@ -19,10 +20,17 @@ namespace DialogueSystem.Editor
             DialogueGraphUtility.DefineNodeInputPort(context, "");
         }
 
-        public Values.ValueEntry GetData(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
+        public ScriptableObject CreateDialogueObject()
         {
-            var newEntry = DialogueGraphUtility.AssignFromFieldOptions<Values.ValueEntry>(this);
-            return newEntry;
+            T valueSetter = ScriptableObject.CreateInstance<T>();
+            DialogueGraphUtility.AssignFromFieldOptions(this, ref valueSetter);
+            return valueSetter;
+        }
+
+        public ValueSetter GetData(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
+        {
+            T setter = DialogueGraphUtility.GetObjectFromNode<T>(this, dialogueDict);
+            return setter;
         }
     }
 }
