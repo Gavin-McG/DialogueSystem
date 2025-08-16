@@ -1313,7 +1313,7 @@ MonoBehaviour:
           - rid: 5684132407209099265
           - rid: 5684132407209099267
           - rid: 5684132409674563681
-          - rid: 5684132409674563685
+          - rid: 5684132452800921659
         m_InputPortInfos:
           expandedPortsById:
             m_KeyList: []
@@ -1368,7 +1368,7 @@ MonoBehaviour:
           - rid: 5684132407209099270
           - rid: 5684132407209099272
           - rid: 5684132409674563682
-          - rid: 5684132409674563686
+          - rid: 5684132452800921660
         m_InputPortInfos:
           expandedPortsById:
             m_KeyList: []
@@ -1427,7 +1427,7 @@ MonoBehaviour:
           - rid: 5684132407209099336
           - rid: 5684132407209099338
           - rid: 5684132409674563683
-          - rid: 5684132409674563687
+          - rid: 5684132452800921661
         m_InputPortInfos:
           expandedPortsById:
             m_KeyList: []
@@ -2035,7 +2035,7 @@ MonoBehaviour:
           - rid: 5684132409674563647
           - rid: 5684132409674563649
           - rid: 5684132409674563684
-          - rid: 5684132409674563688
+          - rid: 5684132452800921662
         m_InputPortInfos:
           expandedPortsById:
             m_KeyList: []
@@ -2244,22 +2244,6 @@ MonoBehaviour:
       type: {class: 'Constant`1[[System.Collections.Generic.List`1[[DialogueSystem.Runtime.Keywords/KeywordEntry, DialogueSystem.Runtime]], mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
       data:
         m_Value: []
-    - rid: 5684132409674563685
-      type: {class: 'Constant`1[[System.Collections.Generic.List`1[[DialogueSystem.Runtime.Values/ValueEntry, DialogueSystem.Runtime]], mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
-      data:
-        m_Value: []
-    - rid: 5684132409674563686
-      type: {class: 'Constant`1[[System.Collections.Generic.List`1[[DialogueSystem.Runtime.Values/ValueEntry, DialogueSystem.Runtime]], mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
-      data:
-        m_Value: []
-    - rid: 5684132409674563687
-      type: {class: 'Constant`1[[System.Collections.Generic.List`1[[DialogueSystem.Runtime.Values/ValueEntry, DialogueSystem.Runtime]], mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
-      data:
-        m_Value: []
-    - rid: 5684132409674563688
-      type: {class: 'Constant`1[[System.Collections.Generic.List`1[[DialogueSystem.Runtime.Values/ValueEntry, DialogueSystem.Runtime]], mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
-      data:
-        m_Value: []
     - rid: 5684132409674563689
       type: {class: UserNodeModelImp, ns: Unity.GraphToolkit.Editor.Implementation, asm: Unity.GraphToolkit.Editor}
       data:
@@ -2390,12 +2374,8 @@ MonoBehaviour:
           rid: -2
         m_State: 0
         m_InputConstantsById:
-          m_KeyList:
-          - valueName
-          - value
-          m_ValueList:
-          - rid: 5684132409674563696
-          - rid: 5684132409674563697
+          m_KeyList: []
+          m_ValueList: []
         m_InputPortInfos:
           expandedPortsById:
             m_KeyList: []
@@ -2410,18 +2390,7 @@ MonoBehaviour:
           m_Color: {r: 0, g: 0, b: 0, a: 0}
           m_HasUserColor: 0
         m_Node:
-          rid: 5684132409674563698
-    - rid: 5684132409674563696
-      type: {class: 'Constant`1[[System.String, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
-      data:
-        m_Value: score
-    - rid: 5684132409674563697
-      type: {class: 'Constant`1[[System.Single, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
-      data:
-        m_Value: 69
-    - rid: 5684132409674563698
-      type: {class: SetValueNode, ns: DialogueSystem.Editor, asm: DialogueSystem.Editor}
-      data: 
+          rid: -2
     - rid: 5684132409674563699
       type: {class: WireModel, ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
       data:
@@ -2542,3 +2511,19 @@ MonoBehaviour:
           m_PortDirection: 1
           m_PortOrientation: 0
           m_Title: 
+    - rid: 5684132452800921659
+      type: {class: 'Constant`1[[System.Collections.Generic.List`1[[DialogueSystem.Runtime.ValueSetter, DialogueSystem.Runtime]], mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
+      data:
+        m_Value: []
+    - rid: 5684132452800921660
+      type: {class: 'Constant`1[[System.Collections.Generic.List`1[[DialogueSystem.Runtime.ValueSetter, DialogueSystem.Runtime]], mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
+      data:
+        m_Value: []
+    - rid: 5684132452800921661
+      type: {class: 'Constant`1[[System.Collections.Generic.List`1[[DialogueSystem.Runtime.ValueSetter, DialogueSystem.Runtime]], mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
+      data:
+        m_Value: []
+    - rid: 5684132452800921662
+      type: {class: 'Constant`1[[System.Collections.Generic.List`1[[DialogueSystem.Runtime.ValueSetter, DialogueSystem.Runtime]], mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
+      data:
+        m_Value: []
