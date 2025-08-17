@@ -9,7 +9,7 @@ namespace DialogueSystem.Runtime
     {
         [SerializeReference] public List<DSEventReference> events;
         public List<Keywords.KeywordEntry> keywords;
-        public List<ValueSetter> values;
+        [SerializeReference] public List<Values.ValueEntry> values;
         
         public abstract DialogueTrace GetNextDialogue(AdvanceDialogueContext context, DialogueManager manager);
 

@@ -132,7 +132,7 @@ namespace DialogueSystem.Editor
         {
             dialogueTrace.events = GetDataType<DSEventReference>(node, dialogueDict);
             dialogueTrace.keywords = GetDataType<Keywords.KeywordEntry>(node, dialogueDict);
-            dialogueTrace.values = GetDataType<ValueSetter>(node, dialogueDict);
+            dialogueTrace.values = GetDataType<Values.ValueEntry>(node, dialogueDict);
         }
     }
 

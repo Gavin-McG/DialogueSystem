@@ -6,5 +6,5 @@ using Unity.GraphToolkit.Editor;
 namespace DialogueSystem.Default.Editor
 {
     [Serializable, UseWithGraph(typeof(DialogueGraph))]
-    public class ValueSetterNodeString : ValueSetterNode<ValueSetterString> {}
+    public class ValueSetterNodeString : ValueSetterNode<string> {}
 }

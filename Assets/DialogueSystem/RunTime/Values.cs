@@ -6,6 +6,25 @@ namespace DialogueSystem.Runtime
     {
         public enum Operation { Equal, NotEqual, GreaterThan, GreaterThanOrEqualTo, LessThan, LessThanOrEqualTo }
 
+        [Serializable]
+        public abstract class ValueEntry
+        {
+            public string valueName;
+            
+            public abstract void SetValue(DialogueManager manager);
+        }
+
+        [Serializable]
+        public class ValueEntry<T> : ValueEntry
+        {
+            public T value;
+
+            public override void SetValue(DialogueManager manager)
+            {
+                manager.SetValue(valueName, value);
+            }
+        }
+
         public static bool EvaluateValue(Operation operation, string valueName, float compValue, DialogueManager manager)
         {
             object value = manager.GetValue(valueName);
