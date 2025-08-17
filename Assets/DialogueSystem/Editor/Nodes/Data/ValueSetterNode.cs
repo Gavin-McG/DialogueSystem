@@ -7,7 +7,7 @@ using UnityEngine;
 namespace DialogueSystem.Editor
 {
     [Serializable]
-    public abstract class SetValueNode<T> : Node, IDialogueObjectNode, IDataNode<ValueSetter>
+    public abstract class ValueSetterNode<T> : Node, IDialogueObjectNode, IDataNode<ValueSetter>
         where T : ValueSetter
     {
         protected override void OnDefineOptions(INodeOptionDefinition context)
