@@ -7,7 +7,7 @@ namespace DialogueSystem.Runtime
 
     public abstract class DialogueTrace : ScriptableObject
     {
-        public List<DSEventCaller> events;
+        [SerializeReference] public List<DSEventReference> events;
         public List<Keywords.KeywordEntry> keywords;
         public List<ValueSetter> values;
         

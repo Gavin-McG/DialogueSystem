@@ -4,11 +4,11 @@ using UnityEngine.Events;
 namespace DialogueSystem.Runtime
 {
     [CreateAssetMenu(fileName = "DialogueEvent", menuName = "Dialogue System/Events/Dialogue Event")]
-    public class DSEvent : DSEventCaller
+    public class DSEvent : DSEventObject
     {
         [SerializeField] private UnityEvent dialogueEvent = new UnityEvent();
 
-        public override void Invoke()
+        public void Invoke()
         {
             dialogueEvent.Invoke();
         }

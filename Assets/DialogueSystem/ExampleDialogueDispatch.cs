@@ -10,6 +10,7 @@ public class ExampleDialogueDispatch : MonoBehaviour
     [SerializeField] private DialogueAsset asset;
     [SerializeField] private DSEvent dialogueEvent;
     [SerializeField] private DSEventInt dialogueIntEvent;
+    [SerializeField] private DSEventString dialogueStringEvent;
     
     private void OnEnable()
     {
@@ -20,6 +21,7 @@ public class ExampleDialogueDispatch : MonoBehaviour
             Debug.Log(v);
             manager.SetValue("choice", v);
         });
+        dialogueStringEvent.AddListener((v) => Debug.Log(v));
         manager.SetValue("score", 120);
     }
 

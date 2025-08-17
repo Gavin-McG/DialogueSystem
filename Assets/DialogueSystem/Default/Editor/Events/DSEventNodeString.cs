@@ -6,5 +6,5 @@ using Unity.GraphToolkit.Editor;
 namespace DialogueSystem.Default.Editor
 {
     [Serializable, UseWithGraph(typeof(DialogueGraph))]
-    public class DSEventNodeString : DSEventNode<string, DSEventString, DSEventStringReference> {}
+    public class DSEventNodeString : DSEventNode<string, DSEventString> {}
 }

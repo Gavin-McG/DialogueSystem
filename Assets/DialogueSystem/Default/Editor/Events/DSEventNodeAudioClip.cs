@@ -7,5 +7,5 @@ using UnityEngine;
 namespace DialogueSystem.Default.Editor
 {
     [Serializable, UseWithGraph(typeof(DialogueGraph))]
-    public class DSEventNodeAudioClip : DSEventNode<AudioClip, DSEventAudioClip, DSEventAudioClipReference> {}
+    public class DSEventNodeAudioClip : DSEventNode<AudioClip, DSEventAudioClip> {}
 }

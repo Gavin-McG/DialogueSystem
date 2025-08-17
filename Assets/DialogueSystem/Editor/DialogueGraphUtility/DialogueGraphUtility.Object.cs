@@ -130,7 +130,7 @@ namespace DialogueSystem.Editor
         public static void AssignKeywordAndEventReferences(INode node, DialogueTrace dialogueTrace,
             Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
         {
-            dialogueTrace.events = GetDataType<DSEventCaller>(node, dialogueDict);
+            dialogueTrace.events = GetDataType<DSEventReference>(node, dialogueDict);
             dialogueTrace.keywords = GetDataType<Keywords.KeywordEntry>(node, dialogueDict);
             dialogueTrace.values = GetDataType<ValueSetter>(node, dialogueDict);
         }

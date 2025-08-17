@@ -1,7 +1,27 @@
-﻿namespace DialogueSystem.Runtime
+﻿using System;
+
+namespace DialogueSystem.Runtime
 {
-    public abstract class DSEventCaller : DSEventObject
+    [Serializable]
+    public class DSEventCaller : DSEventReference
     {
-        public abstract void Invoke();
+        public DSEvent dialogueEvent;
+
+        public override void Invoke()
+        {
+            dialogueEvent.Invoke();
+        }
+    }
+
+    [Serializable]
+    public class DSEventCaller<T> : DSEventReference
+    {
+        public DSEvent<T> dialogueEvent;
+        public T value;
+
+        public override void Invoke()
+        {
+            dialogueEvent.Invoke(value);
+        }
     }
 }
