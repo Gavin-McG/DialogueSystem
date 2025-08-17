@@ -1,0 +1,21 @@
+{
+    "name": "DialogueSystem.Default.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:1f691f0daaecd1548b4d0967c7848ed6",
+        "GUID:094f0effa80313f46983f79ddae72693",
+        "GUID:bc632ad672aa601488180aa514cce9ac",
+        "GUID:70ef9a24f4cfc4aec911c1414e3f90ad"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

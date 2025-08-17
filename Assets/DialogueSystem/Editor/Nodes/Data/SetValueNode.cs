@@ -22,15 +22,15 @@ namespace DialogueSystem.Editor
 
         public ScriptableObject CreateDialogueObject()
         {
-            T valueSetter = ScriptableObject.CreateInstance<T>();
+            var valueSetter = ScriptableObject.CreateInstance<T>();
             DialogueGraphUtility.AssignFromFieldOptions(this, ref valueSetter);
             return valueSetter;
         }
 
         public ValueSetter GetData(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
         {
-            T setter = DialogueGraphUtility.GetObjectFromNode<T>(this, dialogueDict);
-            return setter;
+            var valueSetter = DialogueGraphUtility.GetObjectFromNode<T>(this, dialogueDict);
+            return valueSetter;
         }
     }
 }
