@@ -25,9 +25,7 @@ namespace DialogueSystem.Editor
 
         protected override void OnDefineOptions(INodeOptionDefinition context)
         {
-            if (contextNode == null) Debug.Log("No ref");
-            
-            if (contextNode is RedirectNode redirectNode && redirectNode.UsesWeight)
+            if (contextNode==null || contextNode is RedirectNode redirectNode && redirectNode.UsesWeight)
             {
                 context.AddNodeOption<float>(WeightOptionName, "Weight",
                     tooltip: "Percent probablility for this option to be chosen on evaluation",

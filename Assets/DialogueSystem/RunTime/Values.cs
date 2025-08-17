@@ -5,7 +5,7 @@ namespace DialogueSystem.Runtime
 {
     public static class Values
     {
-        public enum Operation { Equal, NotEqual, GreaterThan, GreaterThanOrEqualTo, LessThan, LessThanOrEqualTo }
+        public enum CompOperation { Equal, NotEqual, GreaterThan, GreaterThanOrEqualTo, LessThan, LessThanOrEqualTo }
 
         [Serializable]
         public abstract class ValueEntry
@@ -55,23 +55,23 @@ namespace DialogueSystem.Runtime
             return 0;
         }
 
-        public static bool CompareNumericValue(Operation operation, string valueName, float compValue, DialogueManager manager)
+        public static bool CompareNumericValue(CompOperation compOperation, string valueName, float compValue, DialogueManager manager)
         {
             float value = GetNumericValue(valueName, manager);
 
-            switch (operation)
+            switch (compOperation)
             {
-                case Operation.Equal: return value == compValue;
-                case Operation.NotEqual: return value != compValue;
-                case Operation.GreaterThan: return value > compValue;
-                case Operation.GreaterThanOrEqualTo: return value >= compValue;
-                case Operation.LessThan: return value < compValue;
-                case Operation.LessThanOrEqualTo: return value <= compValue;
+                case CompOperation.Equal: return value == compValue;
+                case CompOperation.NotEqual: return value != compValue;
+                case CompOperation.GreaterThan: return value > compValue;
+                case CompOperation.GreaterThanOrEqualTo: return value >= compValue;
+                case CompOperation.LessThan: return value < compValue;
+                case CompOperation.LessThanOrEqualTo: return value <= compValue;
                 default: return false;
             }
         }
 
-        public static bool ValueEquals<T>(Operation operation, string valueName, T compValue, DialogueManager manager)
+        public static bool ValueEquals<T>(string valueName, T compValue, DialogueManager manager)
         {
             object value = manager.GetValue(valueName);
             

@@ -2,7 +2,7 @@
 
 namespace DialogueSystem.Default.Runtime
 {
-    public class ValueCompOption : ChoiceOption
+    public class ValueCompConditional : ConditionalOption
     {
         public string valueName;
         public Values.CompOperation operation;
