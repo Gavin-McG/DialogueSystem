@@ -9,14 +9,13 @@ namespace DialogueSystem.Runtime
         [Serializable]
         public abstract class ValueEntry
         {
-            public string valueName;
-            
             public abstract void SetValue(DialogueManager manager);
         }
 
         [Serializable]
         public class ValueEntry<T> : ValueEntry
         {
+            public string valueName;
             public T value;
 
             public override void SetValue(DialogueManager manager)
