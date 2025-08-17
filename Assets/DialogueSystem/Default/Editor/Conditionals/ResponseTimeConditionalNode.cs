@@ -6,5 +6,5 @@ using Unity.GraphToolkit.Editor;
 namespace DialogueSystem.Default.Editor
 {
     [Serializable, UseWithContext(typeof(SequentialRedirectNode), typeof(RandomRedirectNode))]
-    public class ResponseTimeConditionalNode : ConditionalNode<ResponseTimeConditionalOption> {}
+    public class ResponseTimeConditionalNode : ConditionalNode<ResponseTimeConditional> {}
 }

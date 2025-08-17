@@ -2,7 +2,7 @@
 
 namespace DialogueSystem.Default.Runtime
 {
-    public class ValueChoiceOption : ChoiceOption
+    public class ValueCompOption : ChoiceOption
     {
         public string valueName;
         public Values.Operation operation;
@@ -10,7 +10,7 @@ namespace DialogueSystem.Default.Runtime
 
         public override bool EvaluateCondition(AdvanceDialogueContext context, DialogueManager manager)
         {
-            return Values.EvaluateValue(operation, valueName, compValue, manager);
+            return Values.CompareNumericValue(operation, valueName, compValue, manager);
         }
     }
 }

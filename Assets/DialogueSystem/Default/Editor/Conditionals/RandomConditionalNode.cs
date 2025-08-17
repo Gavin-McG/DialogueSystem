@@ -6,7 +6,7 @@ using Unity.GraphToolkit.Editor;
 namespace DialogueSystem.Default.Editor
 {
     [Serializable, UseWithContext(typeof(SequentialRedirectNode), typeof(RandomRedirectNode))]
-    public class RandomConditionalNode : ConditionalNode<RandomConditionalOption> {}
+    public class RandomConditionalNode : ConditionalNode<RandomConditional> {}
 }
     
 

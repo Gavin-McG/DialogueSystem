@@ -2,7 +2,7 @@
 
 namespace DialogueSystem.Default.Runtime
 {
-    public class ResponseTimeConditionalOption : ConditionalOption
+    public class ResponseTimeConditional : ConditionalOption
     {
         public enum ComparisonMode
         {
