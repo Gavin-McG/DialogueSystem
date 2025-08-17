@@ -23,7 +23,10 @@ namespace DialogueSystem.Editor
         public ScriptableObject CreateDialogueObject()
         {
             var valueSetter = ScriptableObject.CreateInstance<T>();
+            valueSetter.name = "Value Setter";
+            
             DialogueGraphUtility.AssignFromFieldOptions(this, ref valueSetter);
+            
             return valueSetter;
         }
 

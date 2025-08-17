@@ -906,18 +906,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b018be248ad23647a6cfdb5411e86bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: DialogueSystem.Runtime::DialogueSystem.Runtime.DialogueManager
-  beginDialogue:
+  beginDialogueEvent:
     m_PersistentCalls:
       m_Calls: []
-  advanceDialogue:
-    m_PersistentCalls:
-      m_Calls: []
-  displayDialogue:
-    m_PersistentCalls:
-      m_Calls: []
-  endDialogue:
-    m_PersistentCalls:
-      m_Calls: []
+  optionIndexes: 
 --- !u!4 &846746980
 Transform:
   m_ObjectHideFlags: 0
@@ -2166,11 +2158,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ExampleDialogueDispatch
   manager: {fileID: 846746979}
-  asset: {fileID: -6979533126094156877, guid: 48147cf5917a4f045ac00a4cb968c5ba, type: 3}
+  asset: {fileID: -6979533126094156877, guid: c77888b5d5f82714b84fe2ec11b612b6, type: 3}
   dialogueEvent: {fileID: 11400000, guid: 887c22d8987923044b037ba5300cce27, type: 2}
   dialogueIntEvent: {fileID: 11400000, guid: a0a185eecba1f5a4cbae3a534c6ad889, type: 2}
-  testClass:
-    value: 0
 --- !u!4 &2118796500
 Transform:
   m_ObjectHideFlags: 0
