@@ -6,7 +6,8 @@ namespace DialogueSystem.Runtime
     public static class Values
     {
         public enum CompOperation { Equal, NotEqual, GreaterThan, GreaterThanOrEqualTo, LessThan, LessThanOrEqualTo }
-
+        public enum Operation { Add, Subtract, Multiply, Divide }
+        
         [Serializable]
         public abstract class ValueEntry
         {
@@ -14,7 +15,7 @@ namespace DialogueSystem.Runtime
         }
 
         [Serializable]
-        public class ValueEntry<T> : ValueEntry
+        public class ValueSetter<T> : ValueEntry
         {
             public string valueName;
             public T value;
@@ -22,6 +23,20 @@ namespace DialogueSystem.Runtime
             public override void SetValue(DialogueManager manager)
             {
                 manager.SetValue(valueName, value);
+            }
+        }
+
+        [Serializable]
+        public class ValueModifier : ValueEntry
+        {
+            public string valueName;
+            public Operation operation;
+            public float otherValue;
+
+            public override void SetValue(DialogueManager manager)
+            {
+                float newValue = OperateNumericValue(operation, valueName, otherValue, manager);
+                manager.SetValue(valueName, newValue);
             }
         }
 
@@ -76,6 +91,21 @@ namespace DialogueSystem.Runtime
             object value = manager.GetValue(valueName);
             
             return value.Equals(compValue);
+        }
+
+        public static float OperateNumericValue(Operation operation, string valueName, float otherValue,
+            DialogueManager manager)
+        {
+            float value = GetNumericValue(valueName, manager);
+
+            switch (operation)
+            {
+                case Operation.Add: return value + otherValue;
+                case Operation.Subtract: return value - otherValue;
+                case Operation.Multiply: return value * otherValue;
+                case Operation.Divide: return value / otherValue;
+                default: return 0;
+            }
         }
     }
 }
