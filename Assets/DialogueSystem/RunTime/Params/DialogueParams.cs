@@ -13,12 +13,26 @@ namespace DialogueSystem.Runtime
     {
         public enum DialogueType { Basic, Choice }
         
-        public DialogueType dialogueType = DialogueType.Basic;
-        public BaseParams baseParams;
-        public ChoiceParams choiceParams;
-        public List<OptionParams> options = new();
-        
-        public DialogueParams() {}
+        public DialogueType dialogueType;
+        private BaseParams baseParams;
+        private ChoiceParams choiceParams;
+        private List<OptionParams> options;
+
+        public DialogueParams(BaseParams baseParams)
+        {
+            dialogueType = DialogueType.Basic;
+            this.baseParams = baseParams;
+            choiceParams = null;
+            options = null;
+        }
+
+        public DialogueParams(BaseParams baseParams, ChoiceParams choiceParams, List<OptionParams> options)
+        {
+            this.dialogueType = DialogueType.Choice;
+            this.baseParams = baseParams;
+            this.choiceParams = choiceParams;
+            this.options = options;
+        }
 
         public DialogueParams(DialogueParams copyObj)
         {

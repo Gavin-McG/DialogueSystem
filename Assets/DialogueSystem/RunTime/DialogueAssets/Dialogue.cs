@@ -16,11 +16,7 @@ namespace DialogueSystem.Runtime
 
         public DialogueParams GetDialogueDetails(AdvanceDialogueContext context, DialogueManager manager)
         {
-            return new DialogueParams()
-            {
-                dialogueType = DialogueParams.DialogueType.Basic,
-                baseParams = baseParams
-            };
+            return new DialogueParams(baseParams);
         }
     }
 

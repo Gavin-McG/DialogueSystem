@@ -37,13 +37,8 @@ namespace DialogueSystem.Runtime
             manager.optionIndexes = filteredOptions.Select(x => x.index).ToList();
 
             // Build the choice prompts from the filtered options
-            return new DialogueParams()
-            {
-                dialogueType = DialogueParams.DialogueType.Choice,
-                baseParams = baseParams,
-                choiceParams = choiceParams,
-                options = filteredOptions.Select(x => x.option.optionParams).ToList()
-            };
+            return new DialogueParams(baseParams, choiceParams, 
+                filteredOptions.Select(x => x.option.optionParams).ToList());
         }
     }
 
