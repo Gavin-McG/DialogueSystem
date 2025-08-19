@@ -16,16 +16,16 @@ namespace DialogueSystem.Runtime
 
         public void RunOperations(DialogueManager manager)
         {
-            InvokeEvents();
+            InvokeEvents(manager);
             ModifyKeywords(manager);
             ModifyValues(manager);
         }
 
-        private void InvokeEvents()
+        private void InvokeEvents(DialogueManager manager)
         {
             foreach (var dialogueEvent in events)
             {
-                dialogueEvent.Invoke();
+                dialogueEvent.Invoke(manager);
             }
         }
 

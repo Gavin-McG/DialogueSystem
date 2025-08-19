@@ -31,8 +31,8 @@ namespace DialogueSystem.Runtime
         public void ClearKeywords(KeywordScope scope) => _keywordContext.ClearKeywords(scope);
         #endregion
 
+        
         #region VALUES
-
         public void DefineValue(string valueName, object value, ValueScope scope = ValueScope.Manager) => _valueContext.DefineValue(valueName, value, scope);
         public void UndefineValue(string valueName, ValueScope scope = ValueScope.Manager) => _valueContext.UndefineValue(valueName, scope);
         public bool IsValueDefined(string valueName) => _valueContext.IsValueDefined(valueName);
@@ -40,7 +40,6 @@ namespace DialogueSystem.Runtime
         public T GetValue<T>(string valueName) => _valueContext.GetValue<T>(valueName);
         public ValueScope GetValueScope(string valueName) => _valueContext.GetValueScope(valueName);
         public void ClearValues(ValueScope scope) => _valueContext.ClearValues(scope);
-
         #endregion
 
         public void BeginDialogue(DialogueAsset dialogueAsset)

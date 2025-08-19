@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using DialogueSystem.Runtime;
 using Unity.GraphToolkit.Editor;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace DialogueSystem.Editor
 {

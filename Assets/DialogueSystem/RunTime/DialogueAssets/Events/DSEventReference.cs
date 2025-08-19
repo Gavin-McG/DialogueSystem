@@ -7,5 +7,7 @@ namespace DialogueSystem.Runtime
     public abstract class DSEventReference
     {
         public abstract void Invoke();
+        
+        public abstract void Invoke(DialogueManager manager);
     }
 }
