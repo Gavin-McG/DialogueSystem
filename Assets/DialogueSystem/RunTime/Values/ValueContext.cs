@@ -121,8 +121,8 @@ namespace DialogueSystem.Runtime.Values
         {
             //clear global if scope is global
             //TODO - assign all other KeyWordContexts to clear when global is cleared
-            //if (scope == KeywordScope.Global)
-                //GlobalKeywordStore.Instance.Clear();
+            if (scope == ValueScope.Global)
+                GlobalValueStore.Instance.Clear();
             
             //clear all scopes <= to the cleared scope
             foreach (var kvp in _values)
