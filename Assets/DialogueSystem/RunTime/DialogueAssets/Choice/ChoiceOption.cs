@@ -5,7 +5,7 @@ namespace DialogueSystem.Runtime
 {
     public abstract class ChoiceOption : Option
     {
-        [HideInDialogueGraph] public OptionParams optionParams;
+        [HideInDialogueGraph, SerializeReference] public OptionParams optionParams;
     }
 
 }

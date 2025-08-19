@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using DialogueSystem.Default.Runtime;
 using DialogueSystem.Runtime;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -21,18 +23,18 @@ namespace DialogueSystem.ExampleInterface
         }
 
         
-        public void SetChoiceButtons(DialogueParams dialogueParams)
+        public void SetChoiceButtons(List<DefaultOptionParams> options)
         {
             for (int i=0; i<choices.Count; i++)
             {
                 var choice = choices[i];
-                var optionParams = dialogueParams.choicePrompts.ElementAtOrDefault(i);
+                var optionParams = options.ElementAtOrDefault(i);
                 
                 if (optionParams == null) choice.Disable();
-                else choice.SetText(optionParams.prompt);
+                else choice.SetText(optionParams.text);
             }
 
-            if (dialogueParams.choicePrompts.Count > choices.Count)
+            if (options.Count > choices.Count)
             {
                 Debug.LogWarning("Could not display all Dialogue Choice options - Too few ChoiceUI");
             }

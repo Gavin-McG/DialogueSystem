@@ -1,5 +1,6 @@
 using System.Collections;
-using DialogueSystem.Default.Editor.Params;
+using System.Collections.Generic;
+using DialogueSystem.Default.Runtime;
 using DialogueSystem.Runtime;
 using UnityEngine;
 
@@ -18,10 +19,13 @@ namespace DialogueSystem.ExampleInterface
         [SerializeField] private ProfileUIManager profileUIManager;
 
         private bool dialogueEnabled = false;
+        
         private DialogueSettings currentSettings;
         private DialogueParams currentParams;
         private DefaultBaseParams baseParams;
         private DefaultChoiceParams choiceParams;
+        private List<DefaultOptionParams> optionParams;
+        
         private float timeStarted;
 
         private void OnEnable()
@@ -68,8 +72,9 @@ namespace DialogueSystem.ExampleInterface
             currentParams = dialogueParams;
             baseParams = dialogueParams.GetBaseParams<DefaultBaseParams>();
             choiceParams = dialogueParams.GetChoiceParams<DefaultChoiceParams>();
+            optionParams = dialogueParams.GetOptions<DefaultOptionParams>();
 
-            mainTextUI.SetText(currentParams.baseParams.text);
+            mainTextUI.SetText(baseParams.text);
             timeStarted = Time.time;
             EndTimeLimit();
 
@@ -100,7 +105,7 @@ namespace DialogueSystem.ExampleInterface
         {
             if (currentParams.dialogueType == DialogueParams.DialogueType.Choice)
             {
-                choiceUIManager.SetChoiceButtons(currentParams);
+                choiceUIManager.SetChoiceButtons(optionParams);
                 if (choiceParams.hasTimeLimit)
                 {
                     timeLimitUI.StartTimer(choiceParams.timeLimitDuration);

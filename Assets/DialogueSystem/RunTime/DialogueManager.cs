@@ -40,16 +40,6 @@ namespace DialogueSystem.Runtime
         public T GetValue<T>(string valueName) => _valueContext.GetValue<T>(valueName);
         public ValueScope GetValueScope(string valueName) => _valueContext.GetValueScope(valueName);
         public void ClearValues(ValueScope scope) => _valueContext.ClearValues(scope);
-        
-        private string ReplaceValues(string input)
-        {
-            return Regex.Replace(input, @"\{(.*?)\}", match =>
-            {
-                string key = match.Groups[1].Value;
-                object value = GetValue(key);
-                return value?.ToString() ?? "";
-            });
-        }
 
         #endregion
 
@@ -79,7 +69,7 @@ namespace DialogueSystem.Runtime
             if (currentTrace is IDialogueOutput outputDialogue)
             {
                 var details = new DialogueParams(outputDialogue.GetDialogueDetails(context, this));
-                details.baseParams.Text = ReplaceValues(details.baseParams.Text);
+                details.ReplaceValues(_valueContext);
                 return details;
             }
             
@@ -98,7 +88,7 @@ namespace DialogueSystem.Runtime
 
             var dialogueOutput = (IDialogueOutput)currentTrace;
             var details = new DialogueParams(dialogueOutput.GetDialogueDetails(previousContext, this));
-            details.baseParams.Text = ReplaceValues(details.baseParams.Text);
+            details.ReplaceValues(_valueContext);
             return details;
         }
         

@@ -6,5 +6,5 @@ using Unity.GraphToolkit.Editor;
 namespace DialogueSystem.Default.Editor
 {
     [Serializable, UseWithContext(typeof(DefaultChoiceDialogueNode))]
-    public class KeywordOptionNode : ChoiceOptionNode<KeywordOption> {}
+    public class KeywordOptionNode : ChoiceOptionNode<DefaultOptionParams, KeywordOption> {}
 }

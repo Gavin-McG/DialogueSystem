@@ -37,6 +37,7 @@ MonoBehaviour:
         - rid: 5684132513812054119
         - rid: 5684132513812054128
         - rid: 5684132513812054136
+        - rid: 5684132518849675326
         m_GraphWireModels:
         - rid: 5684132513812054085
         - rid: 5684132513812054093
@@ -45,6 +46,7 @@ MonoBehaviour:
         - rid: 5684132513812054124
         - rid: 5684132513812054132
         - rid: 5684132513812054140
+        - rid: 5684132518849675331
         m_GraphStickyNoteModels: []
         m_GraphPlacematModels: []
         m_GraphVariableModels: []
@@ -54,10 +56,10 @@ MonoBehaviour:
         m_LocalSubgraphs: []
         m_LastKnownBounds:
           serializedVersion: 2
-          x: 319
-          y: 120
-          width: 2081
-          height: 679
+          x: 312
+          y: 32
+          width: 2088
+          height: 767
         m_GraphElementMetaData:
         - m_Guid:
             m_Value0: 15175240233174750742
@@ -171,6 +173,22 @@ MonoBehaviour:
             Hash: 6c087559c2a802c4300f0655b2975c4f
           m_Category: 2
           m_Index: 6
+        - m_Guid:
+            m_Value0: 6409858531441831040
+            m_Value1: 10404270663934855306
+          m_HashGuid:
+            serializedVersion: 2
+            Hash: 80ec189b5f64f4588ac8da6e0b656390
+          m_Category: 0
+          m_Index: 7
+        - m_Guid:
+            m_Value0: 18066102258415167848
+            m_Value1: 5153806213862307551
+          m_HashGuid:
+            serializedVersion: 2
+            Hash: 68e9b72449b0b7fadfb6760a72ff8547
+          m_Category: 2
+          m_Index: 7
         m_EntryPoint:
           rid: 5684132513812054078
         m_Graph:
@@ -200,7 +218,7 @@ MonoBehaviour:
           serializedVersion: 2
           Hash: 16d69817974899d284f5529fb0bc2ac7
         m_Version: 2
-        m_Position: {x: 318.58298, y: 255.08533}
+        m_Position: {x: 312.30698, y: 253.53522}
         m_Title: 
         m_Tooltip: 
         m_NodePreviewModel:
@@ -489,12 +507,12 @@ MonoBehaviour:
           - events
           - keywords
           - values
-          - prompt
+          - text
           m_ValueList:
           - rid: 5684132513812054101
           - rid: 5684132513812054102
           - rid: 5684132513812054103
-          - rid: 5684132513812054104
+          - rid: 5684132518849675323
         m_InputPortInfos:
           expandedPortsById:
             m_KeyList: []
@@ -522,10 +540,6 @@ MonoBehaviour:
     - rid: 5684132513812054103
       type: {class: 'Constant`1[[System.Collections.Generic.List`1[[DialogueSystem.Runtime.Values.ValueEditor, DialogueSystem.Runtime.Values]], mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
       data: 
-    - rid: 5684132513812054104
-      type: {class: 'Constant`1[[System.String, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
-      data:
-        m_Value: Minecraft
     - rid: 5684132513812054105
       type: {class: BasicOptionNode, ns: DialogueSystem.Default.Editor, asm: DialogueSystem.Default.Editor}
       data: 
@@ -550,12 +564,12 @@ MonoBehaviour:
           - events
           - keywords
           - values
-          - prompt
+          - text
           m_ValueList:
           - rid: 5684132513812054107
           - rid: 5684132513812054108
           - rid: 5684132513812054109
-          - rid: 5684132513812054110
+          - rid: 5684132518849675324
         m_InputPortInfos:
           expandedPortsById:
             m_KeyList: []
@@ -583,10 +597,6 @@ MonoBehaviour:
     - rid: 5684132513812054109
       type: {class: 'Constant`1[[System.Collections.Generic.List`1[[DialogueSystem.Runtime.Values.ValueEditor, DialogueSystem.Runtime.Values]], mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
       data: 
-    - rid: 5684132513812054110
-      type: {class: 'Constant`1[[System.String, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
-      data:
-        m_Value: Valorant
     - rid: 5684132513812054111
       type: {class: BasicOptionNode, ns: DialogueSystem.Default.Editor, asm: DialogueSystem.Default.Editor}
       data: 
@@ -611,12 +621,12 @@ MonoBehaviour:
           - events
           - keywords
           - values
-          - prompt
+          - text
           m_ValueList:
           - rid: 5684132513812054113
           - rid: 5684132513812054114
           - rid: 5684132513812054115
-          - rid: 5684132513812054116
+          - rid: 5684132518849675325
         m_InputPortInfos:
           expandedPortsById:
             m_KeyList: []
@@ -644,10 +654,6 @@ MonoBehaviour:
     - rid: 5684132513812054115
       type: {class: 'Constant`1[[System.Collections.Generic.List`1[[DialogueSystem.Runtime.Values.ValueEditor, DialogueSystem.Runtime.Values]], mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
       data: 
-    - rid: 5684132513812054116
-      type: {class: 'Constant`1[[System.String, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
-      data:
-        m_Value: Terraria
     - rid: 5684132513812054117
       type: {class: BasicOptionNode, ns: DialogueSystem.Default.Editor, asm: DialogueSystem.Default.Editor}
       data: 
@@ -958,3 +964,109 @@ MonoBehaviour:
           m_PortDirection: 1
           m_PortOrientation: 0
           m_Title: Previous
+    - rid: 5684132518849675323
+      type: {class: 'Constant`1[[System.String, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
+      data:
+        m_Value: Terraria
+    - rid: 5684132518849675324
+      type: {class: 'Constant`1[[System.String, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
+      data:
+        m_Value: Valorant
+    - rid: 5684132518849675325
+      type: {class: 'Constant`1[[System.String, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
+      data:
+        m_Value: '{bestGame}'
+    - rid: 5684132518849675326
+      type: {class: UserNodeModelImp, ns: Unity.GraphToolkit.Editor.Implementation, asm: Unity.GraphToolkit.Editor}
+      data:
+        m_Guid:
+          m_Value0: 6409858531441831040
+          m_Value1: 10404270663934855306
+        m_HashGuid:
+          serializedVersion: 2
+          Hash: 80ec189b5f64f4588ac8da6e0b656390
+        m_Version: 2
+        m_Position: {x: 639.13043, y: 32.17392}
+        m_Title: 
+        m_Tooltip: 
+        m_NodePreviewModel:
+          rid: -2
+        m_State: 0
+        m_InputConstantsById:
+          m_KeyList:
+          - valueName
+          - scope
+          - value
+          m_ValueList:
+          - rid: 5684132518849675327
+          - rid: 5684132518849675328
+          - rid: 5684132518849675329
+        m_InputPortInfos:
+          expandedPortsById:
+            m_KeyList: []
+            m_ValueList: 
+        m_OutputPortInfos:
+          expandedPortsById:
+            m_KeyList: []
+            m_ValueList: 
+        m_Collapsed: 0
+        m_CurrentModeIndex: 0
+        m_ElementColor:
+          m_Color: {r: 0, g: 0, b: 0, a: 0}
+          m_HasUserColor: 0
+        m_Node:
+          rid: 5684132518849675330
+    - rid: 5684132518849675327
+      type: {class: 'Constant`1[[System.String, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
+      data:
+        m_Value: bestGame
+    - rid: 5684132518849675328
+      type: {class: EnumConstant, ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
+      data:
+        m_Value:
+          m_EnumType:
+            m_Identification: DialogueSystem.Runtime.Values.ValueScope, DialogueSystem.Runtime.Values,
+              Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+          m_Value: 1
+        m_EnumType:
+          m_Identification: DialogueSystem.Runtime.Values.ValueScope, DialogueSystem.Runtime.Values,
+            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    - rid: 5684132518849675329
+      type: {class: 'Constant`1[[System.String, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
+      data:
+        m_Value: Minecraft
+    - rid: 5684132518849675330
+      type: {class: ValueSetterNodeString, ns: DialogueSystem.Default.Editor, asm: DialogueSystem.Default.Editor}
+      data: 
+    - rid: 5684132518849675331
+      type: {class: WireModel, ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
+      data:
+        m_Guid:
+          m_Value0: 18066102258415167848
+          m_Value1: 5153806213862307551
+        m_HashGuid:
+          serializedVersion: 2
+          Hash: 68e9b72449b0b7fadfb6760a72ff8547
+        m_Version: 2
+        m_FromPortReference:
+          m_NodeModelGuid:
+            m_Value0: 15175240233174750742
+            m_Value1: 14351490629342786948
+          m_NodeModelHashGuid:
+            serializedVersion: 2
+            Hash: 16d69817974899d284f5529fb0bc2ac7
+          m_UniqueId: next
+          m_PortDirection: 2
+          m_PortOrientation: 0
+          m_Title: Next
+        m_ToPortReference:
+          m_NodeModelGuid:
+            m_Value0: 6409858531441831040
+            m_Value1: 10404270663934855306
+          m_NodeModelHashGuid:
+            serializedVersion: 2
+            Hash: 80ec189b5f64f4588ac8da6e0b656390
+          m_UniqueId: previous
+          m_PortDirection: 1
+          m_PortOrientation: 0
+          m_Title: 

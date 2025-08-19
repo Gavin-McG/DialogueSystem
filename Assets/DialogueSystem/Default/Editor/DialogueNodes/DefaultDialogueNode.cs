@@ -1,5 +1,5 @@
 ﻿using System;
-using DialogueSystem.Default.Editor.Params;
+using DialogueSystem.Default.Runtime;
 using DialogueSystem.Editor;
 using Unity.GraphToolkit.Editor;
 

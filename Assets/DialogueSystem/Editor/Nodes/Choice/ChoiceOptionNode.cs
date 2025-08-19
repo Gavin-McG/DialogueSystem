@@ -6,50 +6,47 @@ using UnityEngine;
 
 namespace DialogueSystem.Editor
 {
-    public abstract class ChoiceOptionNode : BlockNode, IDialogueTraceNode
-    {
-        public abstract ScriptableObject CreateDialogueObject();
-        public abstract void AssignObjectReferences(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict);
-    }
  
-    public abstract class ChoiceOptionNode<T> : ChoiceOptionNode
-        where T : ChoiceOption
+    public abstract class ChoiceOptionNode<TOptionParams, TChoiceOption> : BlockNode, IDialogueTraceNode
+        where TOptionParams : OptionParams
+        where TChoiceOption : ChoiceOption
     {
         protected override void OnDefineOptions(INodeOptionDefinition context)
         {
-            DialogueGraphUtility.DefineFieldOptions<T>(context);
-            DialogueGraphUtility.DefineFieldOptions<OptionParams>(context);
+            DialogueGraphUtility.DefineFieldOptions<TChoiceOption>(context);
+            DialogueGraphUtility.DefineFieldOptions<TOptionParams>(context);
         }
 
         protected override void OnDefinePorts(IPortDefinitionContext context)
         {
             DialogueGraphUtility.DefineNodeOutputPort(context);
             
-            DialogueGraphUtility.DefineFieldPorts<T>(context);
-            DialogueGraphUtility.DefineFieldPorts<OptionParams>(context);
+            DialogueGraphUtility.DefineFieldPorts<TChoiceOption>(context);
+            DialogueGraphUtility.DefineFieldPorts<TOptionParams>(context);
         }
 
-        public override ScriptableObject CreateDialogueObject()
+        public ScriptableObject CreateDialogueObject()
         {
-            var option = ScriptableObject.CreateInstance<T>();
+            var option = ScriptableObject.CreateInstance<TChoiceOption>();
             option.name = "Choice Option";
 
-            DialogueGraphUtility.AssignFromFieldOptions<T>(this, ref option);
-            option.optionParams = DialogueGraphUtility.AssignFromFieldOptions<OptionParams>(this);
+            DialogueGraphUtility.AssignFromFieldOptions<TChoiceOption>(this, ref option);
+            option.optionParams = DialogueGraphUtility.AssignFromFieldOptions<TOptionParams>(this);
             
             return option;
         }
 
-        public override void AssignObjectReferences(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
+        public void AssignObjectReferences(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
         {
-            var option = DialogueGraphUtility.GetObject<T>(this, dialogueDict);
+            var option = DialogueGraphUtility.GetObject<TChoiceOption>(this, dialogueDict);
             var optionObject = DialogueGraphUtility.GetConnectedTrace(this, dialogueDict);
             option.nextDialogue = optionObject;
             
             DialogueGraphUtility.AssignKeywordAndEventReferences(this, option, dialogueDict);
 
             DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref option);
-            DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref option.optionParams);
+            var optionParams = (TOptionParams)option.optionParams;
+            DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref optionParams);
         }
     }
 

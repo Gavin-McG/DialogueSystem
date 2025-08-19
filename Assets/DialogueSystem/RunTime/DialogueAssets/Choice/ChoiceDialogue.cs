@@ -42,7 +42,7 @@ namespace DialogueSystem.Runtime
                 dialogueType = DialogueParams.DialogueType.Choice,
                 baseParams = baseParams,
                 choiceParams = choiceParams,
-                choicePrompts = filteredOptions.Select(x => x.option.optionParams).ToList()
+                options = filteredOptions.Select(x => x.option.optionParams).ToList()
             };
         }
     }

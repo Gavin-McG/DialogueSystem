@@ -1,5 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+using DialogueSystem.Runtime.Values;
 using UnityEngine;
 
 namespace DialogueSystem.Runtime
@@ -13,16 +16,16 @@ namespace DialogueSystem.Runtime
         public DialogueType dialogueType = DialogueType.Basic;
         public BaseParams baseParams;
         public ChoiceParams choiceParams;
-        public List<OptionParams> choicePrompts = new();
+        public List<OptionParams> options = new();
         
         public DialogueParams() {}
 
         public DialogueParams(DialogueParams copyObj)
         {
             dialogueType = copyObj.dialogueType;
-            baseParams = copyObj.baseParams?.GetCopy();
-            choiceParams = copyObj.choiceParams?.GetCopy();
-            choicePrompts = copyObj.choicePrompts;
+            baseParams = copyObj.baseParams?.Clone();
+            choiceParams = copyObj.choiceParams?.Clone();
+            options = copyObj.options.Select(option => option.Clone()).ToList();
         }
 
         public T GetBaseParams<T>() where T : BaseParams
@@ -35,6 +38,32 @@ namespace DialogueSystem.Runtime
         {
             if (choiceParams is T tChoiceParams) return tChoiceParams;
             return null;
+        }
+
+        public List<T> GetOptions<T>() where T : OptionParams
+        {
+            return options
+                .OfType<T>()
+                .ToList();
+        }
+
+        internal void ReplaceValues(IValueContext context)
+        {
+            baseParams.Text = ReplaceTextValues(context, baseParams.Text);
+            options = options?.Select(option => {
+                option.Text = ReplaceTextValues(context, option.Text);
+                return option;
+            }).ToList();
+        }
+
+        public static string ReplaceTextValues(IValueContext context, string text)
+        {
+            return Regex.Replace(text, @"\{(.*?)\}", match =>
+            {
+                string key = match.Groups[1].Value;
+                object value = context.GetValue(key);
+                return value?.ToString() ?? "";
+            });
         }
     }
     

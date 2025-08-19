@@ -12,6 +12,6 @@ namespace DialogueSystem.Runtime
         
         public string Text { get => text; set => text = value; }
 
-        public abstract BaseParams GetCopy();
+        public abstract BaseParams Clone();
     }
 }

@@ -5,9 +5,12 @@ using UnityEngine;
 namespace DialogueSystem.Runtime
 {
     [Serializable]
-    public class OptionParams
+    public abstract class OptionParams
     {
-        [DefaultValue("Response")]
-        public string prompt;
+        public string text;
+        
+        public string Text { get => text; set => text = value; }
+        
+        public abstract OptionParams Clone();
     }
 }

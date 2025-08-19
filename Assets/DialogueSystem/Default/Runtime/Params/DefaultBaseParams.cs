@@ -1,12 +1,12 @@
 ﻿using DialogueSystem.Runtime;
 
-namespace DialogueSystem.Default.Editor.Params
+namespace DialogueSystem.Default.Runtime
 {
     public class DefaultBaseParams : BaseParams
     {
         public DialogueProfile profile;
 
-        public override BaseParams GetCopy() => new DefaultBaseParams()
+        public override BaseParams Clone() => new DefaultBaseParams()
         {
             text = new string(text),
             profile = profile,
