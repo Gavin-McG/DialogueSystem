@@ -19,10 +19,10 @@ public class ExampleDialogueDispatch : MonoBehaviour
         dialogueIntEvent.AddListener((v) =>
         {
             Debug.Log(v);
-            manager.SetValue("choice", v);
+            manager.DefineValue("choice", v);
         });
         dialogueStringEvent.AddListener((v) => Debug.Log(v));
-        manager.SetValue("score", 120);
+        manager.DefineValue("score", 120);
     }
 
     IEnumerator DispatchRoutine()

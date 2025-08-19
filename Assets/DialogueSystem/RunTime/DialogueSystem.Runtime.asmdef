@@ -2,7 +2,8 @@
     "name": "DialogueSystem.Runtime",
     "rootNamespace": "",
     "references": [
-        "GUID:00b4c4ab46a13fd4285a0495a2367e14"
+        "GUID:00b4c4ab46a13fd4285a0495a2367e14",
+        "GUID:cac3d8e7be59f9844a7112219e80faba"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

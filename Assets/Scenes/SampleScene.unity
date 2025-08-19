@@ -2158,7 +2158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ExampleDialogueDispatch
   manager: {fileID: 846746979}
-  asset: {fileID: -6979533126094156877, guid: 86eccd8e5984e74429e31c18ee26d1b9, type: 3}
+  asset: {fileID: -6979533126094156877, guid: d62a7ca4badd6c74f9b29e9a3e8fdb4f, type: 3}
   dialogueEvent: {fileID: 11400000, guid: 887c22d8987923044b037ba5300cce27, type: 2}
   dialogueIntEvent: {fileID: 11400000, guid: a0a185eecba1f5a4cbae3a534c6ad889, type: 2}
   dialogueStringEvent: {fileID: 11400000, guid: 59e8a87777f8647498c4dd3004d6a222, type: 2}

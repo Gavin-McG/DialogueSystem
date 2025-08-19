@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using DialogueSystem.Runtime;
+using DialogueSystem.Runtime.Values;
 using Unity.GraphToolkit.Editor;
 using UnityEngine;
 
 namespace DialogueSystem.Editor
 {
-    public abstract class ValueSetterNode<T> : Node, IDataNode<Values.ValueEditor>
+    public abstract class ValueSetterNode<T> : Node, IDataNode<ValueEditor>
     {
         protected override void OnDefineOptions(INodeOptionDefinition context)
         {
-            DialogueGraphUtility.DefineFieldOptions<Values.ValueSetter<T>>(context);
+            DialogueGraphUtility.DefineFieldOptions<ValueSetter<T>>(context);
         }
 
         protected override void OnDefinePorts(IPortDefinitionContext context)
@@ -18,9 +19,9 @@ namespace DialogueSystem.Editor
             DialogueGraphUtility.DefineNodeInputPort(context, "");
         }
 
-        public Values.ValueEditor GetData(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
+        public ValueEditor GetData(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
         {
-            var valueEntry = DialogueGraphUtility.AssignFromFieldOptions<Values.ValueSetter<T>>(this);
+            var valueEntry = DialogueGraphUtility.AssignFromFieldOptions<ValueSetter<T>>(this);
             return valueEntry;
         }
     }
