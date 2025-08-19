@@ -1,9 +1,7 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using System.Text.RegularExpressions;
 using DialogueSystem.Runtime;
+using DialogueSystem.Runtime.Keywords;
 using Unity.GraphToolkit.Editor;
 using UnityEngine;
 
@@ -131,8 +129,8 @@ namespace DialogueSystem.Editor
             Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
         {
             dialogueTrace.events = GetDataType<DSEventReference>(node, dialogueDict);
-            dialogueTrace.keywords = GetDataType<Keywords.KeywordEntry>(node, dialogueDict);
-            dialogueTrace.values = GetDataType<Values.ValueEntry>(node, dialogueDict);
+            dialogueTrace.keywords = GetDataType<KeywordEditor>(node, dialogueDict);
+            dialogueTrace.values = GetDataType<Values.ValueEditor>(node, dialogueDict);
         }
     }
 

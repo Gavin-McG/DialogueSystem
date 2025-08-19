@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using DialogueSystem.Runtime;
+using DialogueSystem.Runtime.Keywords;
 using Unity.GraphToolkit.Editor;
 using UnityEngine;
 
 namespace DialogueSystem.Editor
 {
     [Serializable]
-    public class ModifyKeyWordNode : Node, IDataNode<Keywords.KeywordEntry>
+    public class ModifyKeyWordNode : Node, IDataNode<KeywordEditor>
     {
         protected override void OnDefineOptions(INodeOptionDefinition context)
         {
-            DialogueGraphUtility.DefineFieldOptions<Keywords.KeywordEntry>(context);
+            DialogueGraphUtility.DefineFieldOptions<KeywordEditor>(context);
         }
 
         protected override void OnDefinePorts(IPortDefinitionContext context)
@@ -19,10 +20,10 @@ namespace DialogueSystem.Editor
             DialogueGraphUtility.DefineNodeInputPort(context, "");
         }
 
-        public Keywords.KeywordEntry GetData(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
+        public KeywordEditor GetData(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
         {
-            var newEntry = DialogueGraphUtility.AssignFromFieldOptions<Keywords.KeywordEntry>(this);
-            return newEntry;
+            var newEditor = DialogueGraphUtility.AssignFromFieldOptions<KeywordEditor>(this);
+            return newEditor;
         }
     }
 }

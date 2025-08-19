@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace DialogueSystem.Editor
 {
-    public abstract class ValueSetterNode<T> : Node, IDataNode<Values.ValueEntry>
+    public abstract class ValueSetterNode<T> : Node, IDataNode<Values.ValueEditor>
     {
         protected override void OnDefineOptions(INodeOptionDefinition context)
         {
@@ -18,7 +18,7 @@ namespace DialogueSystem.Editor
             DialogueGraphUtility.DefineNodeInputPort(context, "");
         }
 
-        public Values.ValueEntry GetData(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
+        public Values.ValueEditor GetData(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
         {
             var valueEntry = DialogueGraphUtility.AssignFromFieldOptions<Values.ValueSetter<T>>(this);
             return valueEntry;

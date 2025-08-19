@@ -9,13 +9,13 @@ namespace DialogueSystem.Runtime
         public enum Operation { Add, Subtract, Multiply, Divide }
         
         [Serializable]
-        public abstract class ValueEntry
+        public abstract class ValueEditor
         {
             public abstract void SetValue(DialogueManager manager);
         }
 
         [Serializable]
-        public class ValueSetter<T> : ValueEntry
+        public class ValueSetter<T> : ValueEditor
         {
             public string valueName;
             public T value;
@@ -27,7 +27,7 @@ namespace DialogueSystem.Runtime
         }
 
         [Serializable]
-        public class ValueModifier : ValueEntry
+        public class ValueModifier : ValueEditor
         {
             public string valueName;
             public Operation operation;

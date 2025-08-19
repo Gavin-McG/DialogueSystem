@@ -1,22 +1,32 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
+using DialogueSystem.Runtime.Keywords;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace DialogueSystem.Runtime
 {
 
-    public class DialogueManager : MonoBehaviour
+    public class DialogueManager : MonoBehaviour, IKeywordContext
     {
+        private readonly KeywordContext _keywordContext = new KeywordContext();
+        
         private readonly Dictionary<string, object> insertValues = new();
-        private readonly HashSet<string> keywords = new();
         
         [HideInInspector] public UnityEvent<DialogueSettings> beginDialogueEvent = new();
 
         private DialogueAsset currentDialogue;
         private DialogueTrace currentTrace;
         [HideInInspector] public List<int> optionIndexes;
+        
+        #region KEYWORDS
+        public void DefineKeyword(string keyword, KeywordScope scope) => _keywordContext.DefineKeyword(keyword, scope);
+        public void UndefineKeyword(string keyword, KeywordScope scope) => _keywordContext.UndefineKeyword(keyword, scope);
+        public bool IsKeywordDefined(string keyword) => _keywordContext.IsKeywordDefined(keyword);
+        public void ClearKeywords(KeywordScope scope) => _keywordContext.ClearKeywords(scope);
+        #endregion
 
         public void SetValue(string valueName, object value)
         {
@@ -41,25 +51,7 @@ namespace DialogueSystem.Runtime
             });
         }
         
-        public void AddKeyword(string keyword)
-        {
-            keywords.Add(keyword);
-        }
-
-        public void RemoveKeyword(string keyword)
-        {
-            keywords.Remove(keyword);
-        }
         
-        public void ClearKeywords()
-        {
-            keywords.Clear();
-        }
-
-        public bool IsKeywordDefined(string keyword)
-        {
-            return keywords.Contains(keyword);
-        }
 
         public void BeginDialogue(DialogueAsset dialogueAsset)
         {
@@ -85,6 +77,7 @@ namespace DialogueSystem.Runtime
             {
                 var details = new DialogueParams(outputDialogue.GetDialogueDetails(context, this));
                 details.baseParams.Text = ReplaceValues(details.baseParams.Text);
+                ClearKeywords(KeywordScope.Single);
                 return details;
             }
             
@@ -99,7 +92,7 @@ namespace DialogueSystem.Runtime
             if (currentDialogue == null) return;
             
             currentDialogue.InvokeEndEvents();
-            ClearKeywords();
+            ClearKeywords(KeywordScope.Dialogue);
             
             currentDialogue = null;
             currentTrace = null;

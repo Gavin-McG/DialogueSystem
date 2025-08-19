@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DialogueSystem.Runtime.Keywords;
 using UnityEngine;
 
 namespace DialogueSystem.Runtime
@@ -8,8 +9,8 @@ namespace DialogueSystem.Runtime
     public abstract class DialogueTrace : ScriptableObject
     {
         [SerializeReference] public List<DSEventReference> events;
-        public List<Keywords.KeywordEntry> keywords;
-        [SerializeReference] public List<Values.ValueEntry> values;
+        public List<KeywordEditor> keywords;
+        [SerializeReference] public List<Values.ValueEditor> values;
         
         public abstract DialogueTrace GetNextDialogue(AdvanceDialogueContext context, DialogueManager manager);
 
@@ -32,13 +33,7 @@ namespace DialogueSystem.Runtime
         {
             foreach (var entry in keywords)
             {
-                switch (entry.operation)
-                {
-                    case Keywords.Operation.Add: manager.AddKeyword(entry.keyword); break;
-                    case Keywords.Operation.Remove: manager.RemoveKeyword(entry.keyword); break;
-                    case Keywords.Operation.RemoveAll: manager.ClearKeywords(); break;
-                    default: break;
-                }
+                entry.Apply(manager);
             }
         }
 
