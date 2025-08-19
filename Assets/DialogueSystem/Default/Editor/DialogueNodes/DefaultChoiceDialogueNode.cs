@@ -1,0 +1,10 @@
+﻿using System;
+using DialogueSystem.Default.Editor.Params;
+using DialogueSystem.Editor;
+using Unity.GraphToolkit.Editor;
+
+namespace DialogueSystem.Default.Editor
+{
+    [Serializable, UseWithGraph(typeof(DialogueGraph))]
+    public class DefaultChoiceDialogueNode : ChoiceDialogueNode<DefaultBaseParams, DefaultChoiceParams> {}
+}

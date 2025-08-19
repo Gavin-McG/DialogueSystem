@@ -29,7 +29,6 @@ namespace DialogueSystem.Editor
         {
             MultipleBeginCheck(infos);
             MultipleOutputCheck(infos);
-            VerifyContextTypes(infos);
         }
 
         private IEnumerable<INode> GetAllNodes()
@@ -101,37 +100,6 @@ namespace DialogueSystem.Editor
                 passedCheck = false;
             }
 
-            return passedCheck;
-        }
-
-        private bool VerifyContextTypes(GraphLogger infos)
-        {
-            var passedCheck = true;
-
-            var choiceNodes = GetNodes().OfType<ChoiceDialogueNode>().ToList();
-            foreach (var node in choiceNodes)
-            {
-                foreach (var block in node.blockNodes)
-                {
-                    if (block is ChoiceOptionNode) continue;
-                    
-                    infos.LogError($"Choice BlockNode '{block}' is not a {nameof(ChoiceOptionNode)}.", block);
-                    passedCheck = false;
-                }
-            }
-            
-            var redirectNodes = GetNodes().OfType<SequentialRedirectNode>().ToList();
-            foreach (var node in redirectNodes)
-            {
-                foreach (var block in node.blockNodes)
-                {
-                    if (block is ConditionalNode) continue;
-                    
-                    infos.LogError($"Conditional BlockNode '{block}' is not a {nameof(ConditionalNode)}.", block);
-                    passedCheck = false;
-                }
-            }
-            
             return passedCheck;
         }
     }

@@ -5,6 +5,6 @@ using Unity.GraphToolkit.Editor;
 
 namespace DialogueSystem.Default.Editor
 {
-    [Serializable, UseWithContext(typeof(ChoiceDialogueNode))]
+    [Serializable, UseWithContext(typeof(DefaultChoiceDialogueNode))]
     public class BasicOptionNode : ChoiceOptionNode<BasicOption> {}
 }

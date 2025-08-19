@@ -8,7 +8,7 @@ namespace DialogueSystem.Runtime
     {
         public DialogueTrace nextDialogue;
         public DialogueSettings settings;
-        public List<DSEventCaller> endEvents = new List<DSEventCaller>();
+        [SerializeReference] public List<DSEventCaller> endEvents = new();
         
         public override DialogueTrace GetNextDialogue(AdvanceDialogueContext context, DialogueManager manager)
         {

@@ -8,8 +8,8 @@ namespace DialogueSystem.Runtime
     public class ChoiceDialogue : DialogueTrace, IDialogueOutput
     {
         public DialogueTrace defaultDialogue;
-        public BaseParams baseParams;
-        public ChoiceParams choiceParams;
+        [SerializeReference] public BaseParams baseParams;
+        [SerializeReference] public ChoiceParams choiceParams;
         public List<ChoiceOption> options;
         
 

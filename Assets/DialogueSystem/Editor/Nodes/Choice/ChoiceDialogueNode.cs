@@ -8,21 +8,23 @@ using UnityEngine;
 namespace DialogueSystem.Editor
 {
     [Serializable]
-    public class ChoiceDialogueNode : ContextNode, IDialogueTraceNode
+    public abstract class ChoiceDialogueNode<TBaseParams, TChoiceParams> : ContextNode, IDialogueTraceNode
+    where TBaseParams : BaseParams
+    where TChoiceParams : ChoiceParams
     {
         private const string TimeOutPortDisplayName = "TimeOut";
         
         protected override void OnDefineOptions(INodeOptionDefinition context)
         {
-            DialogueGraphUtility.DefineFieldOptions<BaseParams>(context);
-            DialogueGraphUtility.DefineFieldOptions<ChoiceParams>(context);
+            DialogueGraphUtility.DefineFieldOptions<TBaseParams>(context);
+            DialogueGraphUtility.DefineFieldOptions<TChoiceParams>(context);
         }
 
         protected override void OnDefinePorts(IPortDefinitionContext context)
         {
             DialogueGraphUtility.DefineNodeInputPort(context);
-            DialogueGraphUtility.DefineFieldPorts<BaseParams>(context);
-            DialogueGraphUtility.DefineFieldPorts<ChoiceParams>(context);
+            DialogueGraphUtility.DefineFieldPorts<TBaseParams>(context);
+            DialogueGraphUtility.DefineFieldPorts<TChoiceParams>(context);
 
             DialogueGraphUtility.DefineNodeOutputPort(context, TimeOutPortDisplayName);
         }
@@ -32,8 +34,8 @@ namespace DialogueSystem.Editor
             var dialogue = ScriptableObject.CreateInstance<ChoiceDialogue>();
             dialogue.name = "Choice Dialogue";
             
-            dialogue.baseParams = DialogueGraphUtility.AssignFromFieldOptions<BaseParams>(this);
-            dialogue.choiceParams = DialogueGraphUtility.AssignFromFieldOptions<ChoiceParams>(this);
+            dialogue.baseParams = DialogueGraphUtility.AssignFromFieldOptions<TBaseParams>(this);
+            dialogue.choiceParams = DialogueGraphUtility.AssignFromFieldOptions<TChoiceParams>(this);
             
             return dialogue;
         }
@@ -46,8 +48,10 @@ namespace DialogueSystem.Editor
             
             DialogueGraphUtility.AssignKeywordAndEventReferences(this, dialogue, dialogueDict);
             
-            DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref dialogue.baseParams);
-            DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref dialogue.choiceParams);
+            var baseParams = (TBaseParams)dialogue.baseParams;
+            DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref baseParams);
+            var choiceParams = (TChoiceParams)dialogue.choiceParams;
+            DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref choiceParams);
             
             var optionNodes = blockNodes.ToList();
             dialogue.options = new List<ChoiceOption>();

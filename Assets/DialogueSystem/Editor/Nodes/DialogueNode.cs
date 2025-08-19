@@ -9,12 +9,13 @@ namespace DialogueSystem.Editor
 {
     
     [Serializable]
-    public class BasicDialogueNode : Node, IDialogueTraceNode
+    public abstract class DialogueNode<TBaseParams> : Node, IDialogueTraceNode
+    where TBaseParams : BaseParams
     {
         
         protected override void OnDefineOptions(INodeOptionDefinition context)
         {
-            DialogueGraphUtility.DefineFieldOptions<BaseParams>(context);
+            DialogueGraphUtility.DefineFieldOptions<TBaseParams>(context);
         }
 
         protected override void OnDefinePorts(IPortDefinitionContext context)
@@ -22,28 +23,29 @@ namespace DialogueSystem.Editor
             DialogueGraphUtility.DefineNodeInputPort(context);
             DialogueGraphUtility.DefineNodeOutputPort(context);
 
-            DialogueGraphUtility.DefineFieldPorts<BaseParams>(context);
+            DialogueGraphUtility.DefineFieldPorts<TBaseParams>(context);
         }
 
         public ScriptableObject CreateDialogueObject()
         {
-            var dialogue = ScriptableObject.CreateInstance<BasicDialogue>();
+            var dialogue = ScriptableObject.CreateInstance<Dialogue>();
             dialogue.name = "Basic Dialogue";
             
-            dialogue.baseParams = DialogueGraphUtility.AssignFromFieldOptions<BaseParams>(this);
+            dialogue.baseParams = DialogueGraphUtility.AssignFromFieldOptions<TBaseParams>(this);
             
             return dialogue;
         }
         
         public void AssignObjectReferences(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
         {
-            var dialogue = DialogueGraphUtility.GetObject<BasicDialogue>(this, dialogueDict);
+            var dialogue = DialogueGraphUtility.GetObject<Dialogue>(this, dialogueDict);
             var dialogueTrace = DialogueGraphUtility.GetConnectedTrace(this, dialogueDict);
             dialogue.nextDialogue = dialogueTrace;
             
             DialogueGraphUtility.AssignKeywordAndEventReferences(this, dialogue, dialogueDict);
             
-            DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref dialogue.baseParams);
+            var baseParams = (TBaseParams)dialogue.baseParams;
+            DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref baseParams);
         }
     }
 

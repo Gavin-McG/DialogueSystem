@@ -1,4 +1,5 @@
 using System.Collections;
+using DialogueSystem.Default.Editor.Params;
 using DialogueSystem.Runtime;
 using UnityEngine;
 
@@ -19,6 +20,8 @@ namespace DialogueSystem.ExampleInterface
         private bool dialogueEnabled = false;
         private DialogueSettings currentSettings;
         private DialogueParams currentParams;
+        private DefaultBaseParams baseParams;
+        private DefaultChoiceParams choiceParams;
         private float timeStarted;
 
         private void OnEnable()
@@ -61,15 +64,18 @@ namespace DialogueSystem.ExampleInterface
             
             dialogueEnabled = true;
             dialogueUI.SetActive(true);
+            
             currentParams = dialogueParams;
+            baseParams = dialogueParams.GetBaseParams<DefaultBaseParams>();
+            choiceParams = dialogueParams.GetChoiceParams<DefaultChoiceParams>();
 
             mainTextUI.SetText(currentParams.baseParams.text);
             timeStarted = Time.time;
             EndTimeLimit();
 
-            if (dialogueParams.baseParams.profile)
+            if (baseParams.profile)
             {
-                profileUIManager.IntroduceProfile(currentParams.baseParams.profile);
+                profileUIManager.IntroduceProfile(baseParams.profile);
             }
     
             switch (currentParams.dialogueType)
@@ -95,9 +101,9 @@ namespace DialogueSystem.ExampleInterface
             if (currentParams.dialogueType == DialogueParams.DialogueType.Choice)
             {
                 choiceUIManager.SetChoiceButtons(currentParams);
-                if (currentParams.choiceParams.hasTimeLimit)
+                if (choiceParams.hasTimeLimit)
                 {
-                    timeLimitUI.StartTimer(currentParams.choiceParams.timeLimitDuration);
+                    timeLimitUI.StartTimer(choiceParams.timeLimitDuration);
                 }
             }
         }
@@ -135,7 +141,7 @@ namespace DialogueSystem.ExampleInterface
             DisplayDialogue(dialogueManager.GetNextDialogue(new AdvanceDialogueContext()
             {
                 choice = 0,
-                inputDelay = currentParams.choiceParams.timeLimitDuration,
+                inputDelay = choiceParams.timeLimitDuration,
                 timedOut = true,
             }));
         }

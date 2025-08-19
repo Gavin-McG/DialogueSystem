@@ -11,8 +11,8 @@ namespace DialogueSystem.Runtime
         public enum DialogueType { Basic, Choice }
         
         public DialogueType dialogueType = DialogueType.Basic;
-        public BaseParams baseParams = new BaseParams();
-        public ChoiceParams choiceParams = new  ChoiceParams();
+        public BaseParams baseParams;
+        public ChoiceParams choiceParams;
         public List<OptionParams> choicePrompts = new();
         
         public DialogueParams() {}
@@ -20,9 +20,21 @@ namespace DialogueSystem.Runtime
         public DialogueParams(DialogueParams copyObj)
         {
             dialogueType = copyObj.dialogueType;
-            baseParams = new BaseParams(copyObj.baseParams);
-            choiceParams = new ChoiceParams(copyObj.choiceParams);
+            baseParams = copyObj.baseParams?.GetCopy();
+            choiceParams = copyObj.choiceParams?.GetCopy();
             choicePrompts = copyObj.choicePrompts;
+        }
+
+        public T GetBaseParams<T>() where T : BaseParams
+        {
+            if (baseParams is T tBaseParams) return tBaseParams;
+            return null;
+        }
+
+        public T GetChoiceParams<T>() where T : ChoiceParams
+        {
+            if (choiceParams is T tChoiceParams) return tChoiceParams;
+            return null;
         }
     }
     

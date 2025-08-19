@@ -4,10 +4,10 @@ using UnityEngine;
 namespace DialogueSystem.Runtime
 {
 
-    public class BasicDialogue : DialogueTrace, IDialogueOutput
+    public class Dialogue : DialogueTrace, IDialogueOutput
     {
         public DialogueTrace nextDialogue;
-        public BaseParams baseParams;
+        [SerializeReference] public BaseParams baseParams;
         
         public override DialogueTrace GetNextDialogue(AdvanceDialogueContext context, DialogueManager manager)
         {
