@@ -103,8 +103,34 @@ namespace DialogueSystem.Editor
         
         public static T GetOptionValueOrDefault<T>(Node node, string optionName)
         {
-            return node.GetNodeOptionByName(optionName)
-                .TryGetValue<T>(out var value) ? value : default(T);
+            var option = node.GetNodeOptionByName(optionName);
+            if (option == null) return default(T);
+            
+            return option.TryGetValue<T>(out var value) ? value : default(T);
+        }
+        
+        public static T GetPortValueOrDefault<T>(INode node, string portName)
+        {
+            //get port for object
+            var port = GetInputPortByName(node, portName);
+            if (port == null) return default;
+            
+            //try to get object value from connected variable
+            var connectedPort = port?.firstConnectedPort;
+            var connectedNode = connectedPort?.GetNode();
+
+            switch (connectedNode)
+            {
+                case null:
+                    //try to get value assigned directly if no connected node
+                    return port.TryGetValue(out T attachedObject) ? attachedObject : default;
+                case IVariableNode variableNode:
+                    //return value assigned from variable node
+                    return variableNode.variable
+                        .TryGetDefaultValue(out T varObject) ? varObject : default;
+                default:
+                    return default;
+            }
         }
     }
 }

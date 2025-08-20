@@ -83,7 +83,7 @@ namespace DialogueSystem.Editor
             var port = GetInputPortByName(node, portName);
             if (port == null) return null;
             
-            //try to get profile value from connected variable
+            //try to get object value from connected variable
             var connectedPort = port?.firstConnectedPort;
             var connectedNode = connectedPort?.GetNode();
 
@@ -97,7 +97,7 @@ namespace DialogueSystem.Editor
                     return variableNode.variable
                         .TryGetDefaultValue(out T varObject) ? varObject : null;
                 case GenericObjectNode<T> objectNode:
-                    //return created profile object from profile node
+                    //return created object from profile node
                     return GetObjectFromNode<T>(objectNode, dialogueDict);
                 default:
                     return null;
@@ -121,6 +121,7 @@ namespace DialogueSystem.Editor
                     var data = eventNode.GetData(dialogueDict);
                     if (data != null)
                         result.Add(data);
+                    else Debug.LogWarning($"Node {connectedNode} has no data");
                 }
             }
             return result;
