@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace DialogueSystem.Editor
 {
-    public class GeneralEventTestNode : Node, IDataNode<DSEventReference>
+    public class EventNode : Node, IDataNode<DSEventReference>
     {
         private const string EventOptionName = "eventObject";
         private const string ValuePortName = "value";
@@ -46,8 +46,23 @@ namespace DialogueSystem.Editor
 
             Type selectedType = GetEventGenericType(eventObject);
             if (selectedType == null)
-                return null;
+                return GetNonTypedReference(eventObject);
+            else
+            {
+                return GetTypedReference(eventObject, selectedType);
+            }
+        }
 
+        public DSEventReference GetNonTypedReference(DSEventObject eventObject)
+        {
+            return new DSEventCaller()
+            {
+                dialogueEvent = (DSEvent)eventObject
+            };
+        }
+
+        public DSEventReference GetTypedReference(DSEventObject eventObject, Type selectedType)
+        {
             // Build generic type DSEventCaller<T>
             Type callerType = typeof(DSEventCaller<>).MakeGenericType(selectedType);
 

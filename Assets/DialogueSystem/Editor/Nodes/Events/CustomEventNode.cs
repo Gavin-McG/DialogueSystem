@@ -7,7 +7,7 @@ using UnityEngine;
 namespace DialogueSystem.Editor
 {
     [Serializable]
-    public class DSEventNode : Node, IDataNode<DSEventReference>
+    public class CustomEventNode : Node, IDataNode<DSEventReference>
     {
         protected const string EventOptionName = "eventObject";
         
@@ -33,7 +33,7 @@ namespace DialogueSystem.Editor
         }
     }
 
-    public abstract class DSEventNode<T, TEvent> : DSEventNode
+    public abstract class CustomEventNode<T, TEvent> : CustomEventNode
         where TEvent : DSEvent<T>
     {
         protected override void OnDefineOptions(INodeOptionDefinition context)
