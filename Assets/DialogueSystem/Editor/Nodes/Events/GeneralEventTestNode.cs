@@ -10,87 +10,82 @@ namespace DialogueSystem.Editor
     public class GeneralEventTestNode : Node, IDataNode<DSEventReference>
     {
         private const string EventOptionName = "eventObject";
-        private const string TypeOptionName = "type";
         private const string ValuePortName = "value";
-        
-        private enum EventTypes {
-            String,
-            Int,
-            Float,
-            Bool,
-            Vector2,
-            Vector3,
-            Vector4,
-            GameObject,
-            AudioClip,
-        }
-        
-        private readonly Dictionary<EventTypes, Type> _typeDict = new Dictionary<EventTypes, Type>()
-        {
-            { EventTypes.String, typeof(string)},
-            { EventTypes.Int, typeof(int)},
-            { EventTypes.Float, typeof(float)},
-            { EventTypes.Bool, typeof(bool)},
-            { EventTypes.Vector2, typeof(Vector2)},
-            { EventTypes.Vector3, typeof(Vector3)},
-            { EventTypes.Vector4, typeof(Vector4)},
-            { EventTypes.GameObject, typeof(GameObject)},
-            { EventTypes.AudioClip, typeof(AudioClip)},
-        };
-        
+
         protected override void OnDefineOptions(INodeOptionDefinition context)
         {
             context.AddNodeOption(EventOptionName, typeof(DSEventObject), "Event");
-            context.AddNodeOption(TypeOptionName, typeof(EventTypes), "Type");
         }
 
         protected override void OnDefinePorts(IPortDefinitionContext context)
         {
-            EventTypes type = DialogueGraphUtility.GetOptionValueOrDefault<EventTypes>(this, TypeOptionName);
-            Type eventType = _typeDict[type];
-            if (eventType != null) context.AddInputPort(ValuePortName)
-                .WithDataType(eventType)
-                .WithDisplayName("Value")
-                .Delayed()
-                .Build();
-            
+            // Try to get the event object
+            DSEventObject eventObject = DialogueGraphUtility.GetOptionValueOrDefault<DSEventObject>(this, EventOptionName);
+
+            if (eventObject != null)
+            {
+                Type valueType = GetEventGenericType(eventObject);
+                if (valueType != null)
+                {
+                    context.AddInputPort(ValuePortName)
+                        .WithDataType(valueType)
+                        .WithDisplayName("Value")
+                        .Delayed()
+                        .Build();
+                }
+            }
+
             DialogueGraphUtility.DefineEventInputPort(context);
         }
 
         public DSEventReference GetData(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
         {
             DSEventObject eventObject = DialogueGraphUtility.GetOptionValueOrDefault<DSEventObject>(this, EventOptionName);
-            EventTypes typeOption = DialogueGraphUtility.GetOptionValueOrDefault<EventTypes>(this, TypeOptionName);
-            Type selectedType = _typeDict[typeOption];
-
             if (eventObject == null)
-            {
                 return null;
-            }
+
+            Type selectedType = GetEventGenericType(eventObject);
+            if (selectedType == null)
+                return null;
 
             // Build generic type DSEventCaller<T>
-            Type eventType = typeof(DSEvent<>).MakeGenericType(selectedType);
             Type callerType = typeof(DSEventCaller<>).MakeGenericType(selectedType);
 
-            // Ensure eventObject is of that type
-            if (!eventType.IsInstanceOfType(eventObject))
-                return null;
-
-            // Get the value using reflection (generic method call)
+            // Get the port value dynamically
             MethodInfo getPortValue = typeof(DialogueGraphUtility)
                 .GetMethod(nameof(DialogueGraphUtility.GetPortValueOrDefault))
                 .MakeGenericMethod(selectedType);
 
             object value = getPortValue.Invoke(null, new object[] { this, ValuePortName });
 
-            // Create new instance of DSEventCaller<T>
+            // Create caller instance
             object newCaller = Activator.CreateInstance(callerType);
 
-            // Copy over dialogueEvent and value fields
+            // Assign fields
             callerType.GetField("dialogueEvent")?.SetValue(newCaller, eventObject);
             callerType.GetField("value")?.SetValue(newCaller, value);
 
             return (DSEventReference)newCaller;
+        }
+
+        /// <summary>
+        /// Gets the T from a DSEvent&lt;T&gt; instance.
+        /// </summary>
+        private static Type GetEventGenericType(DSEventObject eventObject)
+        {
+            Type type = eventObject.GetType();
+
+            // Walk up inheritance chain until we find DSEvent<T>
+            while (type != null && type != typeof(object))
+            {
+                if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(DSEvent<>))
+                {
+                    return type.GetGenericArguments()[0];
+                }
+                type = type.BaseType;
+            }
+
+            return null;
         }
     }
 }

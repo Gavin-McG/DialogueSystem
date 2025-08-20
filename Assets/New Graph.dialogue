@@ -45,7 +45,7 @@ MonoBehaviour:
           serializedVersion: 2
           x: 282
           y: 231
-          width: 583
+          width: 596
           height: 259
         m_GraphElementMetaData:
         - m_Guid:
@@ -152,12 +152,10 @@ MonoBehaviour:
         m_State: 0
         m_InputConstantsById:
           m_KeyList:
-          - type
           - value
           - eventObject
           m_ValueList:
-          - rid: 5684132526070693991
-          - rid: 5684132526070694005
+          - rid: 5684132539118649403
           - rid: 5684132526070694001
         m_InputPortInfos:
           expandedPortsById:
@@ -174,24 +172,13 @@ MonoBehaviour:
           m_HasUserColor: 0
         m_Node:
           rid: 5684132526070693992
-    - rid: 5684132526070693991
-      type: {class: EnumConstant, ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
-      data:
-        m_Value:
-          m_EnumType:
-            m_Identification: DialogueSystem.Editor.GeneralEventTestNode+EventTypes,
-              DialogueSystem.Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-          m_Value: 1
-        m_EnumType:
-          m_Identification: DialogueSystem.Editor.GeneralEventTestNode+EventTypes,
-            DialogueSystem.Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
     - rid: 5684132526070693992
       type: {class: GeneralEventTestNode, ns: DialogueSystem.Editor, asm: DialogueSystem.Editor}
       data: 
     - rid: 5684132526070694001
       type: {class: 'Constant`1[[DialogueSystem.Runtime.DSEventObject, DialogueSystem.Runtime]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
       data:
-        m_Value: {fileID: 11400000, guid: 45963f3e1ff80214494d17ff9e258758, type: 2}
+        m_Value: {fileID: 11400000, guid: 59e8a87777f8647498c4dd3004d6a222, type: 2}
     - rid: 5684132526070694003
       type: {class: WireModel, ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
       data:
@@ -224,7 +211,7 @@ MonoBehaviour:
           m_PortDirection: 1
           m_PortOrientation: 0
           m_Title: 
-    - rid: 5684132526070694005
-      type: {class: 'Constant`1[[System.Int32, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
+    - rid: 5684132539118649403
+      type: {class: 'Constant`1[[System.String, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
       data:
-        m_Value: 3247
+        m_Value: 
