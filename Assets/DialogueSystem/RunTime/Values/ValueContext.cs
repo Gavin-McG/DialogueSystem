@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace DialogueSystem.Runtime.Values
@@ -8,13 +9,16 @@ namespace DialogueSystem.Runtime.Values
     {
         private readonly Dictionary<ValueScope, Dictionary<string, object>> _values = new();
         
+        private IEnumerable<ValueScope> LocalScopes => Enum.GetValues(typeof(ValueScope))
+            .Cast<ValueScope>()
+            .Where(x => x != ValueScope.Global);
+        
         public ValueContext()
         {
             //initialize dictionary for each non-global scope
-            foreach (ValueScope scope in Enum.GetValues(typeof(ValueScope)))
+            foreach (ValueScope scope in LocalScopes)
             {
-                if (scope != ValueScope.Global)
-                    _values.Add(scope, new Dictionary<string, object>());
+                _values.Add(scope, new Dictionary<string, object>());
             }
         }
 
@@ -61,15 +65,15 @@ namespace DialogueSystem.Runtime.Values
 
         public object GetValue(string valueName)
         {
+            //check local scopes
+            foreach (var scope in LocalScopes)
+            {
+                if (_values[scope].TryGetValue(valueName, out var value)) return value;
+            }
+            
             //check global scope
             if (GlobalValueStore.Instance.IsDefined(valueName)) 
                 return GlobalValueStore.Instance.GetValue(valueName);
-            
-            //check local scopes
-            foreach (var kvp in _values)
-            {
-                if (kvp.Value.TryGetValue(valueName, out var value)) return value;
-            }
             
             //valueName not found
             return null;
@@ -77,30 +81,57 @@ namespace DialogueSystem.Runtime.Values
         
         public T GetValue<T>(string valueName)
         {
-            //check global scope
-            if (GlobalValueStore.Instance.IsDefined<T>(valueName)) 
-                return GlobalValueStore.Instance.GetValue<T>(valueName);
+            bool foundLowerScope = GlobalValueStore.Instance.IsDefined(valueName);
+            Type lowestType = null;
             
-            //check local scopes
-            bool foundHigherScope = GlobalValueStore.Instance.IsDefined(valueName);
-            foreach (var kvp in _values)
+            // check local scopes
+            foreach (var scope in LocalScopes)
             {
-                if (!kvp.Value.TryGetValue(valueName, out var value)) continue;
-                
+                if (!_values[scope].TryGetValue(valueName, out var value)) 
+                    continue;
+
+                // Record the actual type the first time we encounter this value name
+                if (lowestType == null)
+                    lowestType = value?.GetType();
+
                 if (value is T tValue)
                 {
-                    if (foundHigherScope)
-                        Debug.LogWarning($"Returning \"{valueName}\" value of lower scope to provide correct value Type");
-                    
+                    if (foundLowerScope)
+                    {
+                        Debug.LogWarning(
+                            $"Lowest scope of \"{valueName}\" contained value of type {lowestType?.FullName ?? "null"} " +
+                            $"but requested type is {typeof(T).FullName}. Returning higher scope value instead."
+                        );
+                    }
                     return tValue;
                 }
-                foundHigherScope = true;
+
+                // Mark that we found the name, but type did not match
+                foundLowerScope = true;
             }
-            
-            //correct type of valueName not found
-            if (foundHigherScope)
-                Debug.LogWarning($"\"{valueName}\" was of incorrect Type");
-            
+
+            // check global scope
+            if (GlobalValueStore.Instance.IsDefined<T>(valueName))
+            {
+                if (foundLowerScope)
+                {
+                    Debug.LogWarning(
+                        $"Lowest scope of \"{valueName}\" contained value of type {lowestType?.FullName ?? "null"} " +
+                        $"but requested type is {typeof(T).FullName}. Returning global scope value instead."
+                    );
+                }
+                return GlobalValueStore.Instance.GetValue<T>(valueName);
+            }
+
+            // correct type of valueName not found
+            if (foundLowerScope)
+            {
+                Debug.LogWarning(
+                    $"Value \"{valueName}\" was found in lowest scope as type {lowestType?.FullName ?? "null"}, " +
+                    $"but requested type is {typeof(T).FullName}. Returning default value."
+                );
+            }
+
             return default;
         }
 
