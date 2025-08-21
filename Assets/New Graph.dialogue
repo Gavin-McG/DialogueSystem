@@ -418,7 +418,7 @@ MonoBehaviour:
     - rid: 5684132558268530819
       type: {class: 'Constant`1[[System.Int32, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
       data:
-        m_Value: 50
+        m_Value: 60
     - rid: 5684132558268530820
       type: {class: UserNodeModelImp, ns: Unity.GraphToolkit.Editor.Implementation, asm: Unity.GraphToolkit.Editor}
       data:

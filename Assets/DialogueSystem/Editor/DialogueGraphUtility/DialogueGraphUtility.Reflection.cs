@@ -10,12 +10,15 @@ using UnityEngine;
 
 namespace DialogueSystem.Editor
 {
-    public static partial class DialogueGraphUtility
+    internal static partial class DialogueGraphUtility
     {
+        // BindingFlags to use when reflecting fields for node option/port generation
         private const BindingFlags FieldFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
 
-        private const string FieldSeperator = "/";
-        
+        // Character to separate nested field names when building paths
+        private const string FieldSeparator = "/";
+
+        // Types that the Graph Toolkit inspector natively supports as editable options
         private static readonly HashSet<Type> SupportedNodeOptionTypes = new()
         {
             typeof(long),
@@ -41,19 +44,27 @@ namespace DialogueSystem.Editor
             typeof(RectInt),
             typeof(BoundsInt)
         };
-        
+
+        /// <summary>
+        /// Checks if a type is directly supported by the Graph Toolkit inspector 
+        /// (primitives, UnityEngine types, or enums).
+        /// </summary>
         private static bool IsBasicSupportedType(Type type)
         {
             return SupportedNodeOptionTypes.Contains(type)
                    || type.IsEnum;
         }
 
+        /// <summary>
+        /// Converts a field path (with separators) into a human-readable display name.
+        /// Example: "stats/maxHealth" → "Stats.Max Health"
+        /// </summary>
         private static string FieldNameToDisplayName(string fieldName)
         {
-            // Replace separator with dot
-            var displayName = fieldName.Replace(FieldSeperator, ".");
+            // Replace path separators with dots for readability
+            var displayName = fieldName.Replace(FieldSeparator, ".");
 
-            // Add spaces before capital letters (camelCase to "camel Case")
+            // Insert spaces before uppercase letters for camelCase → "camel Case"
             displayName = Regex.Replace(displayName, "(?<!^)([A-Z])", " $1");
 
             // Capitalize the first letter of each dot-separated section
@@ -68,20 +79,28 @@ namespace DialogueSystem.Editor
 
             return string.Join(".", parts);
         }
-        
-        public static IEnumerable<(string path, FieldInfo fieldInfo, Type parentType)> GetOptionFieldsRecursive(
-            Type type, 
-            string parentPath = "", 
+
+        /// <summary>
+        /// Recursively retrieves all fields of <paramref name="type"/> that should be
+        /// exposed as node *options* (non-ScriptableObject fields).
+        /// </summary>
+        /// <remarks>
+        /// - Public fields are included unless marked [NonSerialized].
+        /// - Private fields are included if marked [SerializeField].
+        /// - Fields marked [HideInInspector] or [HideInDialogueGraph] are skipped.
+        /// - ScriptableObject fields are skipped (they are handled as ports instead).
+        /// - Recursion stops if a type repeats in the ancestry chain (avoids infinite loops).
+        /// </remarks>
+        private static IEnumerable<(string path, FieldInfo fieldInfo, Type parentType)> GetOptionFieldsRecursive(
+            Type type,
+            string parentPath = "",
             HashSet<Type> ancestorTypes = null)
         {
             ancestorTypes ??= new HashSet<Type>();
-    
-            // Add current type to ancestor chain
+
+            // If type has already been visited in this recursion branch, stop (prevents infinite recursion on cyclic references)
             if (!ancestorTypes.Add(type))
-            {
-                // Type already encountered in this chain — avoid infinite recursion
                 yield break;
-            }
 
             var fields = type.GetFields(FieldFlags);
 
@@ -93,48 +112,57 @@ namespace DialogueSystem.Editor
                                 field.GetCustomAttribute<HideInDialogueGraphAttribute>() != null;
                 bool isPort = typeof(ScriptableObject).IsAssignableFrom(field.FieldType);
 
+                // Skip anything that shouldn't be an option
                 if (!(isPublic || isSerializedPrivate) || isHidden || isPort)
                     continue;
 
-                string fullPath = string.IsNullOrEmpty(parentPath) ? field.Name : $"{parentPath}{FieldSeperator}{field.Name}";
+                // Construct full field path (parent/child/...)
+                string fullPath = string.IsNullOrEmpty(parentPath)
+                    ? field.Name
+                    : $"{parentPath}{FieldSeparator}{field.Name}";
 
                 yield return (fullPath, field, type);
 
+                // Recurse into nested complex types
                 var fieldType = field.FieldType;
                 if (!IsBasicSupportedType(fieldType) &&
                     !fieldType.IsPrimitive &&
                     !typeof(UnityEngine.Object).IsAssignableFrom(fieldType) &&
                     !fieldType.IsArray)
                 {
-                    // Pass a copy of ancestorTypes for recursion, 
-                    // or use the same set if you remove type after recursion (see below)
                     foreach (var subField in GetOptionFieldsRecursive(fieldType, fullPath, ancestorTypes))
                         yield return subField;
                 }
             }
 
-            // Remove current type to allow sibling branches to explore it
+            // Remove current type so sibling branches can explore it again
             ancestorTypes.Remove(type);
         }
-        
-        public static IEnumerable<(string path, FieldInfo fieldInfo, Type parentType)> GetOptionFieldsRecursive<T>()
+
+        // (T overload just forwards to above method)
+        private static IEnumerable<(string path, FieldInfo fieldInfo, Type parentType)> GetOptionFieldsRecursive<T>()
         {
             return GetOptionFieldsRecursive(typeof(T));
         }
-        
-        public static IEnumerable<(string path, FieldInfo fieldInfo, Type parentType)> GetPortFieldsRecursive(
-            Type type, 
-            string parentPath = "", 
+
+        /// <summary>
+        /// Recursively retrieves all fields of <paramref name="type"/> that should be
+        /// exposed as node *ports* (ScriptableObject fields).
+        /// </summary>
+        /// <remarks>
+        /// Logic is nearly identical to <see cref="GetOptionFieldsRecursive"/>, except:
+        /// - Only ScriptableObject fields are included.
+        /// - Other complex fields are still traversed in case they contain nested ScriptableObjects.
+        /// </remarks>
+        private static IEnumerable<(string path, FieldInfo fieldInfo, Type parentType)> GetPortFieldsRecursive(
+            Type type,
+            string parentPath = "",
             HashSet<Type> ancestorTypes = null)
         {
             ancestorTypes ??= new HashSet<Type>();
-    
-            // Add current type to ancestor chain
+
             if (!ancestorTypes.Add(type))
-            {
-                // Type already encountered in this chain — avoid infinite recursion
                 yield break;
-            }
 
             var fields = type.GetFields(FieldFlags);
 
@@ -145,88 +173,48 @@ namespace DialogueSystem.Editor
                 bool isHidden = field.GetCustomAttribute<HideInInspector>() != null ||
                                 field.GetCustomAttribute<HideInDialogueGraphAttribute>() != null;
                 bool isPort = typeof(ScriptableObject).IsAssignableFrom(field.FieldType);
-                
-                string fullPath = string.IsNullOrEmpty(parentPath) ? field.Name : $"{parentPath}{FieldSeperator}{field.Name}";
 
+                string fullPath = string.IsNullOrEmpty(parentPath)
+                    ? field.Name
+                    : $"{parentPath}{FieldSeparator}{field.Name}";
+
+                // Ports are only ScriptableObject fields
                 if ((isPublic || isSerializedPrivate) && !isHidden && isPort)
                 {
                     yield return (fullPath, field, type);
                     continue;
                 }
 
+                // Traverse into nested types to find inner ScriptableObject fields
                 var fieldType = field.FieldType;
                 if (!IsBasicSupportedType(fieldType) &&
                     !fieldType.IsPrimitive &&
                     !typeof(UnityEngine.Object).IsAssignableFrom(fieldType) &&
                     !fieldType.IsArray)
                 {
-                    // Pass a copy of ancestorTypes for recursion, 
-                    // or use the same set if you remove type after recursion (see below)
                     foreach (var subField in GetPortFieldsRecursive(fieldType, fullPath, ancestorTypes))
                         yield return subField;
                 }
             }
 
-            // Remove current type to allow sibling branches to explore it
             ancestorTypes.Remove(type);
         }
-        
-        public static IEnumerable<(string path, FieldInfo fieldInfo, Type parentType)> GetPortFieldsRecursive<T>()
+
+        // (T overload just forwards to above method)
+        private static IEnumerable<(string path, FieldInfo fieldInfo, Type parentType)> GetPortFieldsRecursive<T>()
         {
             return GetPortFieldsRecursive(typeof(T));
         }
 
-        public static void DefineFieldOptions<T>(INodeOptionDefinition context)
-        {
-            var type = typeof(T);
-
-            if (IsBasicSupportedType(type))
-            {
-                context.AddNodeOption("value", type, FieldNameToDisplayName("value"));
-                return;
-            }
-
-            var fields = GetOptionFieldsRecursive<T>();
-
-            foreach (var (path, field, _) in fields)
-            {
-                var tooltipAttribute = field.GetCustomAttribute<TooltipAttribute>();
-                var tooltip = tooltipAttribute?.tooltip;
-                var displayName = FieldNameToDisplayName(path);
-
-                var attributes = field.GetCustomAttributes().ToArray();
-                var defaultValue = field.GetCustomAttribute<DefaultValueAttribute>()?.Value;
-
-                context.AddNodeOption(path, field.FieldType, displayName, tooltip,
-                    attributes: attributes, defaultValue: defaultValue);
-            }
-        }
-
-        public static void DefineFieldPorts<T>(Node.IPortDefinitionContext context)
-        {
-            var type = typeof(T);
-            
-            var fields = GetPortFieldsRecursive(type);
-
-            foreach (var (path, field, _) in fields)
-            {
-                var displayName = FieldNameToDisplayName(path);
-
-                var builder = context.AddInputPort(path)
-                    .WithDataType(field.FieldType)
-                    .WithDisplayName(displayName);
-                    
-                var defaultValueAttribute = field.GetCustomAttribute<DefaultValueAttribute>();
-                if (defaultValueAttribute != null)
-                {
-                    builder.WithDefaultValue(defaultValueAttribute.Value);
-                    Debug.Log(defaultValueAttribute.Value?.ToString());
-                }
-
-                builder.Build();
-            }
-        }
-        
+        /// <summary>
+        /// Traverses the object hierarchy along <paramref name="pathParts"/> 
+        /// and assigns the final field with <paramref name="value"/>.
+        /// </summary>
+        /// <remarks>
+        /// - Intermediate null objects are auto-created using <see cref="Activator.CreateInstance"/>.
+        /// - If the hierarchy contains structs, they are reassigned upwards 
+        ///   after modification to ensure the value changes stick.
+        /// </remarks>
         private static void SetNestedFieldValue(object root, string[] pathParts, object value)
         {
             object current = root;
@@ -252,7 +240,7 @@ namespace DialogueSystem.Editor
             var finalField = current.GetType().GetField(pathParts[^1], FieldFlags);
             finalField?.SetValue(current, value);
 
-            // Reassign structs back up the chain
+            // If structs were encountered, push the modified value back up the chain
             while (stack.Count > 0)
             {
                 var (parent, field) = stack.Pop();
@@ -261,6 +249,86 @@ namespace DialogueSystem.Editor
             }
         }
 
+        /// <summary>
+        /// Define node *options* for all eligible fields of type <typeparamref name="T"/>.
+        /// </summary>
+        /// <remarks>
+        /// - Simple supported types get a single "value" option.  
+        /// - Complex types are expanded into multiple options (one per field).  
+        /// - Tooltip, default value, and custom attributes are forwarded if present.  
+        /// </remarks>
+        public static void DefineFieldOptions<T>(INodeOptionDefinition context)
+        {
+            var type = typeof(T);
+
+            if (IsBasicSupportedType(type))
+            {
+                context.AddNodeOption("value", type, FieldNameToDisplayName("value"));
+                return;
+            }
+
+            var fields = GetOptionFieldsRecursive<T>();
+
+            foreach (var (path, field, _) in fields)
+            {
+                var tooltipAttribute = field.GetCustomAttribute<TooltipAttribute>();
+                var tooltip = tooltipAttribute?.tooltip;
+                var displayName = FieldNameToDisplayName(path);
+
+                var attributes = field.GetCustomAttributes().ToArray();
+                var defaultValue = field.GetCustomAttribute<DefaultValueAttribute>()?.Value;
+
+                // Each field becomes an editable option in the inspector
+                context.AddNodeOption(path, field.FieldType, displayName, tooltip,
+                    attributes: attributes, defaultValue: defaultValue);
+            }
+        }
+
+        /// <summary>
+        /// Define node *ports* for all eligible ScriptableObject fields of type <typeparamref name="T"/>.
+        /// </summary>
+        /// <remarks>
+        /// - Ports are input connections, not simple editable values.  
+        /// - Each ScriptableObject field creates a new port.  
+        /// - If a field has a [DefaultValue] attribute, it is assigned to the port.  
+        /// </remarks>
+        public static void DefineFieldPorts<T>(Node.IPortDefinitionContext context)
+        {
+            var type = typeof(T);
+
+            var fields = GetPortFieldsRecursive(type);
+
+            foreach (var (path, field, _) in fields)
+            {
+                var displayName = FieldNameToDisplayName(path);
+
+                var builder = context.AddInputPort(path)
+                    .WithDataType(field.FieldType)
+                    .WithDisplayName(displayName);
+
+                var defaultValueAttribute = field.GetCustomAttribute<DefaultValueAttribute>();
+                if (defaultValueAttribute != null)
+                {
+                    builder.WithDefaultValue(defaultValueAttribute.Value);
+
+                    // Helpful for debugging, but could be removed in production
+                    Debug.Log(defaultValueAttribute.Value?.ToString());
+                }
+
+                builder.Build();
+            }
+        }
+
+        /// <summary>
+        /// Creates a new instance of <typeparamref name="T"/> and assigns values
+        /// from a node's defined options.
+        /// </summary>
+        /// <remarks>
+        /// - If <typeparamref name="T"/> is a simple supported type, a single "value" option is used.  
+        /// - Otherwise, a new instance of <typeparamref name="T"/> is created via reflection, 
+        ///   and each option is assigned to the corresponding field (nested fields included).  
+        /// - Reflection is used to call <c>INodeOption.TryGetValue&lt;T&gt;</c> dynamically.  
+        /// </remarks>
         public static T AssignFromFieldOptions<T>(Node node)
         {
             var type = typeof(T);
@@ -272,6 +340,7 @@ namespace DialogueSystem.Editor
                 if (option == null)
                     return (T)(obj ?? default(T));
 
+                // Dynamically call INodeOption.TryGetValue<T>
                 var tryGetValue = typeof(INodeOption)
                     .GetMethod(nameof(INodeOption.TryGetValue))
                     ?.MakeGenericMethod(type);
@@ -282,9 +351,11 @@ namespace DialogueSystem.Editor
                     return (T)parameters[0];
                 }
 
+                // If no value, fall back to default instance
                 return (T)(type.IsValueType ? Activator.CreateInstance(type) : null);
             }
 
+            // Create new instance for complex type
             obj = Activator.CreateInstance(typeof(T));
 
             var fields = GetOptionFieldsRecursive<T>();
@@ -295,6 +366,8 @@ namespace DialogueSystem.Editor
                     continue;
 
                 var fieldType = field.FieldType;
+
+                // Reflection call to TryGetValue<fieldType>
                 var tryGetValue = typeof(INodeOption)
                     .GetMethod(nameof(INodeOption.TryGetValue))
                     ?.MakeGenericMethod(fieldType);
@@ -304,14 +377,26 @@ namespace DialogueSystem.Editor
 
                 var valueToAssign = success
                     ? parameters[0]
-                    : fieldType.IsValueType ? Activator.CreateInstance(fieldType) : null;
+                    : fieldType.IsValueType
+                        ? Activator.CreateInstance(fieldType)
+                        : null;
 
-                SetNestedFieldValue(obj, path.Split(FieldSeperator), valueToAssign);
+                SetNestedFieldValue(obj, path.Split(FieldSeparator), valueToAssign);
             }
 
             return (T)obj;
         }
-        
+
+        /// <summary>
+        /// Updates an existing ScriptableObject instance of type <typeparamref name="T"/>
+        /// using node options.
+        /// </summary>
+        /// <remarks>
+        /// - If <typeparamref name="T"/> is a simple supported type, only the "value" option is used.  
+        /// - If no object exists yet, a new ScriptableObject is created.  
+        /// - Reflection is again used to safely extract values from node options.  
+        /// - Fields are set recursively using <see cref="SetNestedFieldValue"/>.  
+        /// </remarks>
         public static void AssignFromFieldOptions<T>(Node node, ref T obj) where T : ScriptableObject
         {
             var type = typeof(T);
@@ -349,6 +434,7 @@ namespace DialogueSystem.Editor
                     continue;
 
                 var fieldType = field.FieldType;
+
                 var tryGetValue = typeof(INodeOption)
                     .GetMethod(nameof(INodeOption.TryGetValue))
                     ?.MakeGenericMethod(fieldType);
@@ -358,13 +444,25 @@ namespace DialogueSystem.Editor
 
                 var valueToAssign = success
                     ? parameters[0]
-                    : fieldType.IsValueType ? Activator.CreateInstance(fieldType) : null;
+                    : fieldType.IsValueType
+                        ? Activator.CreateInstance(fieldType)
+                        : null;
 
-                SetNestedFieldValue(obj, path.Split(FieldSeperator), valueToAssign);
+                SetNestedFieldValue(obj, path.Split(FieldSeparator), valueToAssign);
             }
         }
 
-        public static T AssignFromFieldPorts<T>(Node node, 
+        /// <summary>
+        /// Updates an existing ScriptableObject instance of type <typeparamref name="T"/>
+        /// using connected *ports* (instead of options).
+        /// </summary>
+        /// <remarks>
+        /// - Ports represent ScriptableObject references, not raw values.  
+        /// - Each port is looked up via <see cref="GetDialogueObjectValueOrNull"/>.  
+        /// - The retrieved object is then assigned into the corresponding field.  
+        /// - Fields are set recursively using <see cref="SetNestedFieldValue"/>.  
+        /// </remarks>
+        public static void AssignFromFieldPorts<T>(Node node,
             Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict, ref T obj)
         {
             var fields = GetPortFieldsRecursive<T>();
@@ -373,21 +471,19 @@ namespace DialogueSystem.Editor
                 var port = node.GetInputPortByName(path);
                 if (port == null)
                     continue;
-                
+
                 var fieldType = field.FieldType;
+
+                // Dynamically call GetDialogueObjectValueOrNull<fieldType>
                 var getDialogueObjectMethod = typeof(DialogueGraphUtility)
                     .GetMethod(nameof(GetDialogueObjectValueOrNull))?
                     .MakeGenericMethod(fieldType);
-                
+
                 object[] parameters = { node, path, dialogueDict };
                 object valueToAssign = getDialogueObjectMethod?.Invoke(port, parameters);
 
-                SetNestedFieldValue(obj, path.Split(FieldSeperator), valueToAssign);
+                SetNestedFieldValue(obj, path.Split(FieldSeparator), valueToAssign);
             }
-            
-            return obj;
         }
-        
-        
     }
 }

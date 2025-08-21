@@ -8,10 +8,15 @@ using UnityEngine;
 
 namespace DialogueSystem.Editor
 {
+    /// <author>Gavin McGinness</author>
+    /// <date>2025-08-21</date>
+    
+    /// <summary>
+    /// Custom Importer for the DialogueGraph, expected by the Graph Toolkit
+    /// </summary>
     [ScriptedImporter(1, DialogueGraph.AssetExtension)]
-    public class DialogueGraphImporter : ScriptedImporter
+    internal class DialogueGraphImporter : ScriptedImporter
     {
-        
         public override void OnImportAsset(AssetImportContext ctx)
         {
             var graph = GraphDatabase.LoadGraphForImporter<DialogueGraph>(ctx.assetPath);

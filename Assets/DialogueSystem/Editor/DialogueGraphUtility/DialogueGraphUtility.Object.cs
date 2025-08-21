@@ -8,109 +8,171 @@ using UnityEngine;
 
 namespace DialogueSystem.Editor
 {
-
-    public static partial class DialogueGraphUtility
+    /// <author>Gavin McGinness</author>
+    /// <date>2025-08-21</date>
+    
+    /// <summary>
+    /// Helper functions that are commonly used within the DialogueGraph Editor
+    /// </summary>
+    internal static partial class DialogueGraphUtility
     {
-        public static ScriptableObject GetObject(IDialogueObjectNode dialogueObjectNode,
+        /* ─────────────────────────────────────────────
+         * OBJECT RETRIEVAL METHODS
+         * ───────────────────────────────────────────── */
+
+        /// <summary>
+        /// Get the ScriptableObject associated with a given IDialogueObjectNode
+        /// </summary>
+        public static ScriptableObject GetObject(
+            IDialogueObjectNode dialogueObjectNode,
             Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
         {
-            var dialogueObject = dialogueDict.GetValueOrDefault(dialogueObjectNode);
-            return dialogueObject;
+            return dialogueDict.GetValueOrDefault(dialogueObjectNode);
         }
 
-        public static T GetObject<T>(IDialogueObjectNode dialogueObjectNode,
-            Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict) where T : ScriptableObject
+        /// <summary>
+        /// Get the ScriptableObject associated with a given IDialogueObjectNode as type T
+        /// </summary>
+        public static T GetObject<T>(
+            IDialogueObjectNode dialogueObjectNode,
+            Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
+            where T : ScriptableObject
         {
             var dialogueObject = GetObject(dialogueObjectNode, dialogueDict);
-            return (dialogueObject is T objectAsT) ? objectAsT : null;
-        }
-        
-        public static ScriptableObject GetObjectFromNode(INode node,
-            Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
-        {
-            if (node is not IDialogueObjectNode dialogueObjectNode) return null;
-            return  GetObject(dialogueObjectNode, dialogueDict);
-        }
-        
-        public static T GetObjectFromNode<T>(INode node,
-            Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict) where T : ScriptableObject
-        {
-            if (node is not IDialogueObjectNode dialogueObjectNode) return null;
-            return  GetObject<T>(dialogueObjectNode, dialogueDict);
+            return dialogueObject is T objectAsT ? objectAsT : null;
         }
 
-        private static ScriptableObject GetConnectedTrace(INode node, string portName,
+        /// <summary>
+        /// Get the ScriptableObject associated with a given INode
+        /// </summary>
+        public static ScriptableObject GetObjectFromNode(
+            INode node,
             Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
         {
-            var dialogueObjectNode = GetConnectedTraceNode(node, portName);
-            if (dialogueObjectNode == null) return null;
+            if (node is not IDialogueObjectNode dialogueObjectNode) return null;
             return GetObject(dialogueObjectNode, dialogueDict);
         }
 
-        private static T GetConnectedTrace<T>(INode node, string portName,
-            Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict) where T : ScriptableObject
+        /// <summary>
+        /// Get the ScriptableObject associated with a given INode as type T
+        /// </summary>
+        public static T GetObjectFromNode<T>(
+            INode node,
+            Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
+            where T : ScriptableObject
         {
-            var dialogueObject = GetConnectedTrace(node, portName, dialogueDict);
-            return (dialogueObject is T objectAsT) ? objectAsT : null;
+            if (node is not IDialogueObjectNode dialogueObjectNode) return null;
+            return GetObject<T>(dialogueObjectNode, dialogueDict);
         }
 
+        /* ─────────────────────────────────────────────
+         * TRACE RETRIEVAL METHODS
+         * ───────────────────────────────────────────── */
+
+        /// <summary>
+        /// Gets the DialogueTrace object of a connected IDialogueTraceNode
+        /// </summary>
+        private static ScriptableObject GetConnectedTrace(
+            INode node,
+            string portName,
+            Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
+        {
+            var dialogueObjectNode = GetConnectedTraceNode(node, portName);
+            return dialogueObjectNode == null ? null : GetObject(dialogueObjectNode, dialogueDict);
+        }
+
+        /// <summary>
+        /// Gets the DialogueTrace object of a connected IDialogueTraceNode as type T
+        /// </summary>
+        private static T GetConnectedTrace<T>(
+            INode node,
+            string portName,
+            Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
+            where T : ScriptableObject
+        {
+            var dialogueObject = GetConnectedTrace(node, portName, dialogueDict);
+            return dialogueObject is T objectAsT ? objectAsT : null;
+        }
+
+        /// <summary>
+        /// Gets the IDialogueTraceNode which is connected to a given port
+        /// </summary>
         private static IDialogueTraceNode GetConnectedTraceNode(INode node, string portName)
         {
             var port = node.GetOutputPortByName(portName);
-            
+
             var connectedPorts = new List<IPort>();
             port.GetConnectedPorts(connectedPorts);
-            
-            var connectedNode = connectedPorts
-                .Select(conectedPort => conectedPort.GetNode())
+
+            return connectedPorts
+                .Select(connectedPort => connectedPort.GetNode())
                 .OfType<IDialogueTraceNode>()
                 .FirstOrDefault();
-            return connectedNode;
         }
 
-        public static DialogueTrace GetConnectedTrace(INode node, 
+        /// <summary>
+        /// Gets the DialogueTrace from the connected IDialogueTraceNode from the "Next" port
+        /// </summary>
+        public static DialogueTrace GetConnectedTrace(
+            INode node,
             Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
         {
             var dialogueObject = GetConnectedTrace(node, NextPortName, dialogueDict);
             return dialogueObject is DialogueTrace dialogueTrace ? dialogueTrace : null;
         }
-        
 
-        public static T GetDialogueObjectValueOrNull<T>(INode node, string portName,
-            Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict) where T : ScriptableObject
+        /* ─────────────────────────────────────────────
+         * PORT VALUE RETRIEVAL METHODS
+         * ───────────────────────────────────────────── */
+
+        /// <summary>
+        /// Gets a ScriptableObject of type T from a port. 
+        /// Object can be retrieved via assignment, IVariableNode, or GenericObjectNode
+        /// </summary>
+        public static T GetDialogueObjectValueOrNull<T>(
+            INode node,
+            string portName,
+            Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
+            where T : ScriptableObject
         {
-            //get port for object
+            // Get port for object
             var port = GetInputPortByName(node, portName);
             if (port == null) return null;
-            
-            //try to get object value from connected variable
-            var connectedPort = port?.firstConnectedPort;
+
+            // Try to get object value from connected variable
+            var connectedPort = port.firstConnectedPort;
             var connectedNode = connectedPort?.GetNode();
 
             switch (connectedNode)
             {
                 case null:
-                    //try to get value assigned directly if no connected node
                     return port.TryGetValue(out T attachedObject) ? attachedObject : null;
                 case IVariableNode variableNode:
-                    //return value assigned from variable node
-                    return variableNode.variable
-                        .TryGetDefaultValue(out T varObject) ? varObject : null;
+                    return variableNode.variable.TryGetDefaultValue(out T varObject) ? varObject : null;
                 case GenericObjectNode<T> objectNode:
-                    //return created object from profile node
                     return GetObjectFromNode<T>(objectNode, dialogueDict);
                 default:
                     return null;
             }
         }
 
-        public static List<T> GetDataType<T>(INode node, 
-            Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict, string portName=NextPortName)
+        /* ─────────────────────────────────────────────
+         * DATA RETRIEVAL & ASSIGNMENT METHODS
+         * ───────────────────────────────────────────── */
+
+        /// <summary>
+        /// Gets a List of data connected to an output node from nodes of IDataNode of type T
+        /// </summary>
+        private static List<T> GetDataType<T>(
+            INode node,
+            Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict,
+            string portName = NextPortName)
         {
             var port = GetOutputPortByName(node, portName);
 
             var connectedPorts = new List<IPort>();
             port.GetConnectedPorts(connectedPorts);
+
             var connectedNodes = connectedPorts.Select(port => port.GetNode());
 
             var result = new List<T>();
@@ -121,19 +183,26 @@ namespace DialogueSystem.Editor
                     var data = eventNode.GetData(dialogueDict);
                     if (data != null)
                         result.Add(data);
-                    else Debug.LogWarning($"Node {connectedNode} has no data");
+                    else
+                        Debug.LogWarning($"Node {connectedNode} has no data");
                 }
             }
+
             return result;
         }
 
-        public static void AssignDialogueData(INode node, DialogueData data,
-            Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict, string portName=NextPortName)
+        /// <summary>
+        /// Assigns the Event, Keyword, and Value Data connected to a given port
+        /// </summary>
+        public static void AssignDialogueData(
+            INode node,
+            DialogueData data,
+            Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict,
+            string portName = NextPortName)
         {
             data.events = GetDataType<DSEventReference>(node, dialogueDict, portName);
             data.keywords = GetDataType<KeywordEditor>(node, dialogueDict, portName);
             data.values = GetDataType<ValueEditor>(node, dialogueDict, portName);
         }
     }
-
 }
