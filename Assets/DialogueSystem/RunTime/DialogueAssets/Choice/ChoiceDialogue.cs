@@ -13,7 +13,7 @@ namespace DialogueSystem.Runtime
         public List<ChoiceOption> options;
         
 
-        public override DialogueTrace GetNextDialogue(AdvanceDialogueContext context, DialogueManager manager)
+        protected override DialogueTrace GetNextDialogue(AdvanceDialogueContext context, DialogueManager manager)
         {
             if (context.timedOut) 
                 return defaultDialogue;

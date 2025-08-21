@@ -9,7 +9,7 @@ namespace DialogueSystem.Runtime
         public DialogueTrace nextDialogue;
         [SerializeReference] public BaseParams baseParams;
         
-        public override DialogueTrace GetNextDialogue(AdvanceDialogueContext context, DialogueManager manager)
+        protected override DialogueTrace GetNextDialogue(AdvanceDialogueContext context, DialogueManager manager)
         {
             return nextDialogue;
         }

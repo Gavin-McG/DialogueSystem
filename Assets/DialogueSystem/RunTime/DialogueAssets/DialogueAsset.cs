@@ -8,19 +8,16 @@ namespace DialogueSystem.Runtime
     {
         public DialogueTrace nextDialogue;
         public DialogueSettings settings;
-        [SerializeReference] public List<DSEventCaller> endEvents = new();
+        public DialogueData endData = new();
         
-        public override DialogueTrace GetNextDialogue(AdvanceDialogueContext context, DialogueManager manager)
+        protected override DialogueTrace GetNextDialogue(AdvanceDialogueContext context, DialogueManager manager)
         {
             return nextDialogue;
         }
-        
-        public void InvokeEndEvents()
+
+        public void RunEndOperations(DialogueManager manager)
         {
-            foreach (var dialogueEvent in endEvents)
-            {
-                dialogueEvent.Invoke();
-            }
+            endData.RunOperations(manager);
         }
     }
 

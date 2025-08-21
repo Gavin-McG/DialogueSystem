@@ -4,7 +4,7 @@
     {
         [HideInDialogueGraph] public DialogueTrace nextDialogue;
 
-        public override DialogueTrace GetNextDialogue(AdvanceDialogueContext context, DialogueManager manager)
+        protected override DialogueTrace GetNextDialogue(AdvanceDialogueContext context, DialogueManager manager)
         {
             return nextDialogue;
         }

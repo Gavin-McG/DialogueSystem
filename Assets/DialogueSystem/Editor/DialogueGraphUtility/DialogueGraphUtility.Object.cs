@@ -127,12 +127,12 @@ namespace DialogueSystem.Editor
             return result;
         }
 
-        public static void AssignKeywordAndEventReferences(INode node, DialogueTrace dialogueTrace,
-            Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
+        public static void AssignDialogueData(INode node, DialogueData data,
+            Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict, string portName=NextPortName)
         {
-            dialogueTrace.events = GetDataType<DSEventReference>(node, dialogueDict);
-            dialogueTrace.keywords = GetDataType<KeywordEditor>(node, dialogueDict);
-            dialogueTrace.values = GetDataType<ValueEditor>(node, dialogueDict);
+            data.events = GetDataType<DSEventReference>(node, dialogueDict, portName);
+            data.keywords = GetDataType<KeywordEditor>(node, dialogueDict, portName);
+            data.values = GetDataType<ValueEditor>(node, dialogueDict, portName);
         }
     }
 

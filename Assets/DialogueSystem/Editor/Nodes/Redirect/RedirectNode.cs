@@ -29,7 +29,7 @@ namespace DialogueSystem.Editor
             var defaultObject = DialogueGraphUtility.GetConnectedTrace(this, dialogueDict);
             dialogue.defaultDialogue = defaultObject;
             
-            DialogueGraphUtility.AssignKeywordAndEventReferences(this, dialogue, dialogueDict);
+            DialogueGraphUtility.AssignDialogueData(this, dialogue.data, dialogueDict);
 
             var optionNodes = blockNodes.ToList();
             dialogue.options = new List<ConditionalOption>();

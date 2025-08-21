@@ -42,7 +42,7 @@ namespace DialogueSystem.Editor
             var optionObject = DialogueGraphUtility.GetConnectedTrace(this, dialogueDict);
             option.nextDialogue = optionObject;
             
-            DialogueGraphUtility.AssignKeywordAndEventReferences(this, option, dialogueDict);
+            DialogueGraphUtility.AssignDialogueData(this, option.data, dialogueDict);
 
             DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref option);
             var optionParams = (TOptionParams)option.optionParams;

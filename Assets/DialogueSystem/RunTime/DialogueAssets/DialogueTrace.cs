@@ -8,42 +8,15 @@ namespace DialogueSystem.Runtime
 
     public abstract class DialogueTrace : ScriptableObject
     {
-        [SerializeReference] public List<DSEventReference> events;
-        public List<KeywordEditor> keywords;
-        [SerializeReference] public List<Values.ValueEditor> values;
+        [SerializeField] public DialogueData data = new();
+
+        public DialogueTrace AdvanceDialogue(AdvanceDialogueContext context, DialogueManager manager)
+        {
+            data.RunOperations(manager);
+            return GetNextDialogue(context, manager);
+        }
         
-        public abstract DialogueTrace GetNextDialogue(AdvanceDialogueContext context, DialogueManager manager);
-
-        public void RunOperations(DialogueManager manager)
-        {
-            InvokeEvents(manager);
-            ModifyKeywords(manager);
-            ModifyValues(manager);
-        }
-
-        private void InvokeEvents(DialogueManager manager)
-        {
-            foreach (var dialogueEvent in events)
-            {
-                dialogueEvent.Invoke(manager);
-            }
-        }
-
-        private void ModifyKeywords(DialogueManager manager)
-        {
-            foreach (var entry in keywords)
-            {
-                entry.Apply(manager);
-            }
-        }
-
-        private void ModifyValues(DialogueManager manager)
-        {
-            foreach (var entry in values)
-            {
-                entry.SetValue(manager);
-            }
-        }
+        protected abstract DialogueTrace GetNextDialogue(AdvanceDialogueContext context, DialogueManager manager);
     }
 
 }

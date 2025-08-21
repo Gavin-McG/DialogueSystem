@@ -55,7 +55,7 @@ namespace DialogueSystem.ExampleInterface
         private void BeginDialogue(DialogueSettings dialogueSettings)
         {
             currentSettings = dialogueSettings;
-            DisplayDialogue(dialogueManager.GetNextDialogue());
+            DisplayDialogue(dialogueManager.AdvanceDialogue());
         }
 
         private void DisplayDialogue(DialogueParams dialogueParams)
@@ -116,7 +116,7 @@ namespace DialogueSystem.ExampleInterface
         private void ChoicePressed(int index)
         {
             EndTimeLimit();
-            DisplayDialogue(dialogueManager.GetNextDialogue(new AdvanceDialogueContext()
+            DisplayDialogue(dialogueManager.AdvanceDialogue(new AdvanceDialogueContext()
             {
                 choice = index,
                 inputDelay = Time.time - timeStarted,
@@ -132,7 +132,7 @@ namespace DialogueSystem.ExampleInterface
             }
             else if (mainTextUI.textState == MainTextUI.TextState.Completed)
             {
-                DisplayDialogue(dialogueManager.GetNextDialogue(new AdvanceDialogueContext()
+                DisplayDialogue(dialogueManager.AdvanceDialogue(new AdvanceDialogueContext()
                 {
                     choice = -1,
                     inputDelay = Time.time - timeStarted,
@@ -143,7 +143,7 @@ namespace DialogueSystem.ExampleInterface
 
         private void TimeExpired()
         {
-            DisplayDialogue(dialogueManager.GetNextDialogue(new AdvanceDialogueContext()
+            DisplayDialogue(dialogueManager.AdvanceDialogue(new AdvanceDialogueContext()
             {
                 choice = 0,
                 inputDelay = choiceParams.timeLimitDuration,

@@ -55,14 +55,13 @@ namespace DialogueSystem.Runtime
             beginDialogueEvent.Invoke(dialogueAsset.settings);
         }
 
-        public DialogueParams GetNextDialogue(AdvanceDialogueContext context)
+        public DialogueParams AdvanceDialogue(AdvanceDialogueContext context)
         {
             ClearKeywords(KeywordScope.Single);
             current = this;
             
             do {
-                currentTrace.RunOperations(this);
-                currentTrace = currentTrace.GetNextDialogue(context, this);
+                currentTrace = currentTrace.AdvanceDialogue(context, this);
             } while (currentTrace != null && currentTrace is not IDialogueOutput);
 
             if (currentTrace is IDialogueOutput outputDialogue)
@@ -76,7 +75,7 @@ namespace DialogueSystem.Runtime
             return null;
         }
         
-        public DialogueParams GetNextDialogue() => GetNextDialogue(new AdvanceDialogueContext());
+        public DialogueParams AdvanceDialogue() => AdvanceDialogue(new AdvanceDialogueContext());
 
         public DialogueParams RefreshDialogue()
         {
@@ -95,7 +94,7 @@ namespace DialogueSystem.Runtime
         {
             if (currentDialogue == null) return;
             
-            currentDialogue.InvokeEndEvents();
+            currentDialogue.RunEndOperations(this);
             ClearKeywords(KeywordScope.Dialogue);
             
             currentDialogue = null;

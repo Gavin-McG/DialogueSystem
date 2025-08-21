@@ -42,7 +42,7 @@ namespace DialogueSystem.Editor
             var dialogueTrace = DialogueGraphUtility.GetConnectedTrace(this, dialogueDict);
             dialogue.nextDialogue = dialogueTrace;
             
-            DialogueGraphUtility.AssignKeywordAndEventReferences(this, dialogue, dialogueDict);
+            DialogueGraphUtility.AssignDialogueData(this, dialogue.data, dialogueDict);
             
             var baseParams = (TBaseParams)dialogue.baseParams;
             DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref baseParams);

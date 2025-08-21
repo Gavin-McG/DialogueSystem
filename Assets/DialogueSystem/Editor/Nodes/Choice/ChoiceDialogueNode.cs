@@ -46,7 +46,7 @@ namespace DialogueSystem.Editor
             var timeOutObject = DialogueGraphUtility.GetConnectedTrace(this, dialogueDict);
             dialogue.defaultDialogue = timeOutObject;
             
-            DialogueGraphUtility.AssignKeywordAndEventReferences(this, dialogue, dialogueDict);
+            DialogueGraphUtility.AssignDialogueData(this, dialogue.data, dialogueDict);
             
             var baseParams = (TBaseParams)dialogue.baseParams;
             DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref baseParams);

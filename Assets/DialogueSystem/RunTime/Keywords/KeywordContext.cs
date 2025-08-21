@@ -1,19 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DialogueSystem.Runtime.Keywords
 {
     public class KeywordContext : IKeywordContext
     {
         private readonly Dictionary<KeywordScope, HashSet<string>> _keywords = new();
+        
+        private IEnumerable<KeywordScope> LocalScopes => Enum.GetValues(typeof(KeywordScope))
+            .Cast<KeywordScope>()
+            .Where(x => x != KeywordScope.Global);
 
         public KeywordContext()
         {
             //initialize hashSet for each non-global scope
-            foreach (KeywordScope scope in Enum.GetValues(typeof(KeywordScope)))
+            foreach (KeywordScope scope in LocalScopes)
             {
-                if (scope != KeywordScope.Global)
-                    _keywords.Add(scope, new HashSet<string>());
+                _keywords.Add(scope, new HashSet<string>());
             }
         }
 

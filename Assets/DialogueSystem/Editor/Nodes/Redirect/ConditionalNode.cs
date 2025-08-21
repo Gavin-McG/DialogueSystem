@@ -51,7 +51,7 @@ namespace DialogueSystem.Editor
             var nextTrace = DialogueGraphUtility.GetConnectedTrace(this, dialogueDict);
             option.nextDialogue = nextTrace;
             
-            DialogueGraphUtility.AssignKeywordAndEventReferences(this, option, dialogueDict);
+            DialogueGraphUtility.AssignDialogueData(this, option.data, dialogueDict);
             
             DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref option);
         }

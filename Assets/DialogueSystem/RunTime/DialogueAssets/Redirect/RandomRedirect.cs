@@ -6,7 +6,7 @@ namespace DialogueSystem.Runtime
 {
     public class RandomRedirect : Redirect
     {
-        public override DialogueTrace GetNextDialogue(AdvanceDialogueContext context, DialogueManager manager)
+        protected override DialogueTrace GetNextDialogue(AdvanceDialogueContext context, DialogueManager manager)
         {
             var validOptions = options
                 .Where(option => option.EvaluateCondition(context, manager))

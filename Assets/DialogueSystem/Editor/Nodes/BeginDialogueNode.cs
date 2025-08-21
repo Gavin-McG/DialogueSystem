@@ -41,8 +41,8 @@ namespace DialogueSystem.Editor
             var dialogueObject = DialogueGraphUtility.GetConnectedTrace(this, dialogueDict);
             asset.nextDialogue = dialogueObject;
 
-            DialogueGraphUtility.AssignKeywordAndEventReferences(this, asset, dialogueDict);
-            asset.endEvents = DialogueGraphUtility.GetDataType<DSEventCaller>(this, dialogueDict, EndEventPortName);
+            DialogueGraphUtility.AssignDialogueData(this, asset.data, dialogueDict);
+            DialogueGraphUtility.AssignDialogueData(this, asset.endData, dialogueDict, EndEventPortName);
             
             DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref asset.settings);
         }
