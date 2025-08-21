@@ -62,6 +62,14 @@ namespace DialogueSystem.Editor
                 dialogue.options.Add(choiceObject);
             }
         }
+        
+        public void DisplayErrors(GraphLogger infos)
+        {
+            DialogueGraphUtility.MultipleOutputsCheck(this, infos);
+            DialogueGraphUtility.CheckPreviousConnection((INode)this, infos);
+            
+            DialogueGraphUtility.HasOptionsCheck(this, infos);
+        }
     }
 
 }

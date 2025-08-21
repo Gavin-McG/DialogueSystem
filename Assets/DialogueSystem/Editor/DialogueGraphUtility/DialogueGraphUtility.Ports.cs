@@ -8,7 +8,7 @@ namespace DialogueSystem.Editor
     {
         private const string NextPortName = "next";
         private const string PreviousPortName = "previous";
-        private const string EventPortName = "event";
+        private const string DataPortName = "data";
 
         private const string NextPortDefaultDisplayName = "Next";
         private const string PreviousPortDefaultDisplayName = "Previous";
@@ -64,9 +64,9 @@ namespace DialogueSystem.Editor
             DefineBasicOutputPort(context, NextPortName, displayName);
         }
         
-        public static void DefineEventInputPort(Node.IPortDefinitionContext context)
+        public static void DefineDataInputPort(Node.IPortDefinitionContext context)
         {
-            context.AddInputPort(EventPortName)
+            context.AddInputPort(DataPortName)
                 .WithConnectorUI(PortConnectorUI.Circle)
                 .WithDisplayName("")
                 .Build();

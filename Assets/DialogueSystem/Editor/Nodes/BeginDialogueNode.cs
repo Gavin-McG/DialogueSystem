@@ -46,6 +46,22 @@ namespace DialogueSystem.Editor
             
             DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref asset.settings);
         }
+
+        public void DisplayErrors(GraphLogger infos)
+        {
+            DialogueGraphUtility.MultipleOutputsCheck(this, infos);
+            DialogueGraphUtility.CheckPreviousConnection((INode)this, infos);
+            
+            EndEventCheck(this, infos);
+        }
+
+        public void EndEventCheck(INode node, GraphLogger infos)
+        {
+            int traceCount = DialogueGraphUtility.GetConnectedTraceCount(node, EndEventPortName);
+            
+            if (traceCount > 0)
+                infos.LogError("Cannot Connect Dialogue Trace to End Events Port", node);
+        }
     }
 
 }

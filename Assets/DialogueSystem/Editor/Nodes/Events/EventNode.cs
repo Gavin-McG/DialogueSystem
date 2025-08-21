@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace DialogueSystem.Editor
 {
-    public class EventNode : Node, IDataNode<DSEventReference>
+    public class EventNode : Node, IDataNode<DSEventReference>, IErrorNode
     {
         private const string EventOptionName = "eventObject";
         private const string ValuePortName = "value";
@@ -35,7 +35,7 @@ namespace DialogueSystem.Editor
                 }
             }
 
-            DialogueGraphUtility.DefineEventInputPort(context);
+            DialogueGraphUtility.DefineDataInputPort(context);
         }
 
         public DSEventReference GetData(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
@@ -101,6 +101,14 @@ namespace DialogueSystem.Editor
             }
 
             return null;
+        }
+
+        public void DisplayErrors(GraphLogger infos)
+        {
+            var eventObject = DialogueGraphUtility.GetOptionValueOrDefault<DSEventObject>(this, EventOptionName);
+            if (eventObject == null)
+                infos.LogWarning("EventNode must have a Event Object Assigned", this);
+            
         }
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace DialogueSystem.Editor
 {
-    public abstract class CustomEventNode<T, TEvent> : Node, IDataNode<DSEventReference>
+    public abstract class CustomEventNode<T, TEvent> : Node, IDataNode<DSEventReference>, IErrorNode
         where TEvent : DSEvent<T>
     {
         private const string EventOptionName = "eventObject";
@@ -21,7 +21,7 @@ namespace DialogueSystem.Editor
 
         protected override void OnDefinePorts(IPortDefinitionContext context)
         {
-            DialogueGraphUtility.DefineEventInputPort(context);
+            DialogueGraphUtility.DefineDataInputPort(context);
             
             DialogueGraphUtility.DefineFieldPorts<T>(context);
         }
@@ -35,6 +35,13 @@ namespace DialogueSystem.Editor
                 dialogueEvent = dialogueEvent,
                 value = value
             };
+        }
+        
+        public void DisplayErrors(GraphLogger infos)
+        {
+            var eventObject = DialogueGraphUtility.GetOptionValueOrDefault<TEvent>(this, EventOptionName);
+            if (eventObject == null)
+                infos.LogWarning("EventNode must have a Event Object Assigned", this);
             
         }
     }

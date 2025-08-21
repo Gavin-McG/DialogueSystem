@@ -17,7 +17,7 @@ namespace DialogueSystem.Editor
 
         protected override void OnDefinePorts(IPortDefinitionContext context)
         {
-            DialogueGraphUtility.DefineNodeInputPort(context, "");
+            DialogueGraphUtility.DefineDataInputPort(context);
         }
 
         public KeywordEditor GetData(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)

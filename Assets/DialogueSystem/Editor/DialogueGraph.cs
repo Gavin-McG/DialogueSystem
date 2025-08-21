@@ -28,7 +28,12 @@ namespace DialogueSystem.Editor
         private void CheckGraphErrors(GraphLogger infos)
         {
             MultipleBeginCheck(infos);
-            MultipleOutputCheck(infos);
+
+            var errorNodes = GetNodes().OfType<IErrorNode>();
+            foreach (var node in errorNodes)
+            {
+                node.DisplayErrors(infos);
+            }
         }
 
         private IEnumerable<INode> GetAllNodes()
@@ -73,33 +78,6 @@ namespace DialogueSystem.Editor
                     break;
             }
             
-            return passedCheck;
-        }
-
-        private bool MultipleOutputCheck(GraphLogger infos)
-        {
-            var passedCheck = true;
-            
-            var nodes = GetAllNodes().ToList();
-            foreach (var node in nodes)
-            {
-                //Get Next port if it exists
-                var nextPort = DialogueGraphUtility.GetNextPortOrNull(node);
-                if (nextPort == null) continue;
-                
-                List<IPort> connectedPorts = new();
-                nextPort.GetConnectedPorts(connectedPorts);
-
-                var tracePorts = connectedPorts
-                    .Select(port => port.GetNode())
-                    .OfType<IDialogueTraceNode>().ToList();
-
-                if (tracePorts.Count <= 1) continue;
-                
-                infos.LogError($"A Next Dialogue Port cannot exceed more than 1 trace Connection. ", node);
-                passedCheck = false;
-            }
-
             return passedCheck;
         }
     }

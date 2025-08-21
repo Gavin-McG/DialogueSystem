@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace DialogueSystem.Editor
 {
-    public class ValueSetterNode : Node, IDataNode<ValueEditor>
+    public class ValueSetterNode : Node, IDataNode<ValueEditor>, IErrorNode
     {
         private const string ValueNameOptionName = "valueName";
         private const string ValueScopeOptionName = "scope";
@@ -60,7 +60,7 @@ namespace DialogueSystem.Editor
                 .Delayed()
                 .Build();
             
-            DialogueGraphUtility.DefineNodeInputPort(context, "");
+            DialogueGraphUtility.DefineDataInputPort(context);
         }
 
         public ValueEditor GetData(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
@@ -91,6 +91,13 @@ namespace DialogueSystem.Editor
             setterType.GetField("value")?.SetValue(setterInstance, value);
 
             return (ValueEditor)setterInstance;
+        }
+
+        public void DisplayErrors(GraphLogger infos)
+        {
+            var valueName = DialogueGraphUtility.GetOptionValueOrDefault<string>(this, ValueNameOptionName);
+            if (string.IsNullOrEmpty(valueName))
+                infos.LogWarning("Value should have a non-empty name", this);
         }
     }
 }
