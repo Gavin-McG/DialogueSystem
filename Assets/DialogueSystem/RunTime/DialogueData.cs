@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using DialogueSystem.Runtime.Keywords;
+using DialogueSystem.Runtime.Values;
 using UnityEngine;
 
 namespace DialogueSystem.Runtime
@@ -10,13 +11,13 @@ namespace DialogueSystem.Runtime
     {
         [SerializeReference] public List<DSEventReference> events;
         public List<KeywordEditor> keywords;
-        [SerializeReference] public List<Values.ValueEditor> values;
+        [SerializeReference] public List<ValueEditor> values;
         
         public void RunOperations(DialogueManager manager)
         {
-            InvokeEvents(manager);
             ModifyKeywords(manager);
             ModifyValues(manager);
+            InvokeEvents(manager);
         }
 
         private void InvokeEvents(DialogueManager manager)

@@ -9,20 +9,11 @@ public class ExampleDialogueDispatch : MonoBehaviour
     [SerializeField] private DialogueManager manager;
     [SerializeField] private DialogueAsset asset;
     [SerializeField] private DSEvent dialogueEvent;
-    [SerializeField] private DSEventInt dialogueIntEvent;
-    [SerializeField] private DSEventString dialogueStringEvent;
     
     private void OnEnable()
     {
         StartCoroutine(DispatchRoutine());
-        dialogueEvent.AddListener(() => Debug.Log("You Win!"));
-        dialogueIntEvent.AddListener((v) =>
-        {
-            Debug.Log(v);
-            manager.DefineValue("choice", v);
-        });
-        dialogueStringEvent.AddListener((v) => Debug.Log(v));
-        manager.DefineValue("score", 120);
+        dialogueEvent.AddListener(() => Debug.Log(manager.GetValue("MyValue2")));
     }
 
     IEnumerator DispatchRoutine()

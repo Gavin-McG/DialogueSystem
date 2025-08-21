@@ -23,7 +23,7 @@ namespace DialogueSystem.Runtime
             dialogueType = DialogueType.Basic;
             this.baseParams = baseParams;
             choiceParams = null;
-            options = null;
+            options = new List<OptionParams>();
         }
 
         public DialogueParams(BaseParams baseParams, ChoiceParams choiceParams, List<OptionParams> options)
@@ -39,7 +39,7 @@ namespace DialogueSystem.Runtime
             dialogueType = copyObj.dialogueType;
             baseParams = copyObj.baseParams?.Clone();
             choiceParams = copyObj.choiceParams?.Clone();
-            options = copyObj.options.Select(option => option.Clone()).ToList();
+            options = copyObj.options?.Select(option => option.Clone()).ToList();
         }
 
         public T GetBaseParams<T>() where T : BaseParams
