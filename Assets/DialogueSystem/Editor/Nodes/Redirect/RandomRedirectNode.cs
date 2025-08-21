@@ -4,9 +4,14 @@ using UnityEngine;
 
 namespace DialogueSystem.Editor
 {
+    /// <author>Gavin McGinness</author>
+    /// <date>2025-08-21</date>
     
+    /// <summary>
+    /// Type of <see cref="RedirectNode"/> which evaluates all conditions and randomizes output by assigned weight.
+    /// </summary>
     [Serializable]
-    public class RandomRedirectNode : RedirectNode
+    public sealed class RandomRedirectNode : RedirectNode
     {
         public override bool UsesWeight => true;
 

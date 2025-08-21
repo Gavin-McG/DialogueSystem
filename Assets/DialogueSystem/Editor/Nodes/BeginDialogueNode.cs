@@ -7,18 +7,25 @@ using UnityEngine;
 
 namespace DialogueSystem.Editor
 {
+    /// <author>Gavin McGinness</author>
+    /// <date>2025-08-21</date>
+    
+    /// <summary>
+    /// Node which represents the beginning of a dialogue interaction.
+    /// Has options corresponding to <see cref="DialogueSettings"/> 
+    /// </summary>
     [Serializable]
-    public class BeginDialogueNode : Node, IDialogueTraceNode
+    internal class BeginDialogueNode : Node, IDialogueTraceNode
     {
         private const string EndEventPortName = "endEvents";
         private const string EndEventPortDisplayName = "End Events";
         
-        protected override void OnDefineOptions(INodeOptionDefinition context)
+        protected sealed override void OnDefineOptions(INodeOptionDefinition context)
         {
             DialogueGraphUtility.DefineFieldOptions<DialogueSettings>(context);
         }
 
-        protected override void OnDefinePorts(IPortDefinitionContext context)
+        protected sealed override void OnDefinePorts(IPortDefinitionContext context)
         {
             DialogueGraphUtility.DefineFieldPorts<DialogueSettings>(context);
             DialogueGraphUtility.DefineNodeOutputPort(context);
@@ -55,7 +62,7 @@ namespace DialogueSystem.Editor
             EndEventCheck(this, infos);
         }
 
-        public void EndEventCheck(INode node, GraphLogger infos)
+        private void EndEventCheck(INode node, GraphLogger infos)
         {
             int traceCount = DialogueGraphUtility.GetConnectedTraceCount(node, EndEventPortName);
             

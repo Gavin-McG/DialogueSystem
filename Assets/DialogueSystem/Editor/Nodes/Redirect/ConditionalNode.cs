@@ -5,25 +5,25 @@ using UnityEngine;
 
 namespace DialogueSystem.Editor
 {
-
-    public abstract class ConditionalNode : BlockNode, IDialogueTraceNode
-    {
-        public abstract ScriptableObject CreateDialogueObject();
-        public abstract void AssignObjectReferences(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict);
-    }
-
-    public abstract class ConditionalNode<T> : ConditionalNode
+    /// <author>Gavin McGinness</author>
+    /// <date>2025-08-21</date>
+    
+    /// <summary>
+    /// Base class for conditional BlockNodes to be assigned onto Redirect nodes.
+    /// </summary>
+    /// <typeparam name="T">Type of conditional which the node will represent</typeparam>
+    public abstract class ConditionalNode<T> : BlockNode, IDialogueTraceNode
     where T : ConditionalOption
     {
         private const string WeightOptionName = "Weight";
         
-        protected override void OnDefinePorts(IPortDefinitionContext context)
+        protected sealed override void OnDefinePorts(IPortDefinitionContext context)
         {
             DialogueGraphUtility.DefineFieldPorts<T>(context);
             DialogueGraphUtility.DefineNodeOutputPort(context);
         }
 
-        protected override void OnDefineOptions(INodeOptionDefinition context)
+        protected sealed override void OnDefineOptions(INodeOptionDefinition context)
         {
             if (contextNode==null || contextNode is RedirectNode redirectNode && redirectNode.UsesWeight)
             {
@@ -35,7 +35,7 @@ namespace DialogueSystem.Editor
             DialogueGraphUtility.DefineFieldOptions<T>(context);
         }
 
-        public override ScriptableObject CreateDialogueObject()
+        public ScriptableObject CreateDialogueObject()
         {
             var option = ScriptableObject.CreateInstance<T>();
             option.name = "Conditional Option";
@@ -45,7 +45,7 @@ namespace DialogueSystem.Editor
             return option;
         }
 
-        public override void AssignObjectReferences(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
+        public void AssignObjectReferences(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
         {
             var option = DialogueGraphUtility.GetObject<T>(this, dialogueDict);
             var nextTrace = DialogueGraphUtility.GetConnectedTrace(this, dialogueDict);

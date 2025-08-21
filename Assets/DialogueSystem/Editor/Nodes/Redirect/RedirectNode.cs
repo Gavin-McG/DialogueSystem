@@ -7,14 +7,19 @@ using UnityEngine;
 
 namespace DialogueSystem.Editor
 {
+    /// <author>Gavin McGinness</author>
+    /// <date>2025-08-21</date>
     
+    /// <summary>
+    /// Base Class for Redirect Context Nodes. Redirect nodes are responsible for containing <see cref="ConditionalNode{T}"/> 
+    /// </summary>
     public abstract class RedirectNode : ContextNode, IDialogueTraceNode
     {
         private const string DefaultPortDisplayName = "Default";
 
         public abstract bool UsesWeight { get; }
         
-        protected override void OnDefinePorts(IPortDefinitionContext context)
+        protected sealed override void OnDefinePorts(IPortDefinitionContext context)
         {
             DialogueGraphUtility.DefineNodeInputPort(context);
 

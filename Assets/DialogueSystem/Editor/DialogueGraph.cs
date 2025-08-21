@@ -7,10 +7,17 @@ using UnityEngine;
 
 namespace DialogueSystem.Editor
 {
+    /// <author>Gavin McGinness</author>
+    /// <date>2025-08-21</date>
+    
+    /// <summary>
+    /// Graph Toolkit class for the Dialogue Graph interface.
+    /// Handles errors/warning pertaining to the graph as a whole
+    /// </summary>
 
     [Graph(AssetExtension)]
     [Serializable]
-    public class DialogueGraph : Graph
+    public sealed class DialogueGraph : Graph
     {
         public const string AssetExtension = "dialogue";
 

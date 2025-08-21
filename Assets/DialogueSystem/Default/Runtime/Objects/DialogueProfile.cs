@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace DialogueSystem.Runtime
+namespace DialogueSystem.Default.Runtime
 {
     [CreateAssetMenu(fileName = "Dialogue Profile", menuName = "Dialogue System/Dialogue Profile")]
     public class DialogueProfile : ScriptableObject

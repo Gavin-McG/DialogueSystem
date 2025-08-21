@@ -1,4 +1,5 @@
-﻿using DialogueSystem.Runtime;
+﻿using DialogueSystem.Default.Runtime;
+using DialogueSystem.Runtime;
 using UnityEngine;
 
 namespace DialogueSystem.ExampleInterface

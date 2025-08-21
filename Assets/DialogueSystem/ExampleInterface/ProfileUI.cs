@@ -1,7 +1,6 @@
-﻿using DialogueSystem.Runtime;
+﻿using DialogueSystem.Default.Runtime;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace DialogueSystem.ExampleInterface

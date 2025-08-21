@@ -9,17 +9,23 @@ using UnityEngine;
 
 namespace DialogueSystem.Editor
 {
+    /// <author>Gavin McGinness</author>
+    /// <date>2025-08-21</date>
     
+    /// <summary>
+    /// Generic Base Class for Nodes which can create scriptableObject.
+    /// </summary>
+    /// <typeparam name="T">Type of scriptableObject to create</typeparam>
     public abstract class GenericObjectNode<T> : Node, IDialogueReferenceNode where T : ScriptableObject
     {
-        protected virtual string OutputPortName => typeof(T).Name;
+        private static string OutputPortName => typeof(T).Name;
         
-        protected override void OnDefineOptions(INodeOptionDefinition context)
+        protected sealed override void OnDefineOptions(INodeOptionDefinition context)
         {
             DialogueGraphUtility.DefineFieldOptions<T>(context);
         }
 
-        protected override void OnDefinePorts(IPortDefinitionContext context)
+        protected sealed override void OnDefinePorts(IPortDefinitionContext context)
         {
             DialogueGraphUtility.DefineFieldPorts<T>(context);
             
@@ -28,11 +34,12 @@ namespace DialogueSystem.Editor
                 .Build();
         }
 
-        public virtual ScriptableObject CreateDialogueObject()
+        public ScriptableObject CreateDialogueObject()
         {
             var obj = ScriptableObject.CreateInstance<T>();
 
             DialogueGraphUtility.AssignFromFieldOptions(this, ref obj);
+            obj.name = OutputPortName;
 
             return obj;
         }
