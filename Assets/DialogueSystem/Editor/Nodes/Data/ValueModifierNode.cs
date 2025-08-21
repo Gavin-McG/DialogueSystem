@@ -7,8 +7,14 @@ using UnityEngine;
 
 namespace DialogueSystem.Editor
 {
+    /// <author>Gavin McGinness</author>
+    /// <date>2025-08-21</date>
+    
+    /// <summary>
+    /// Node for performing operations on existing numeric values. 
+    /// </summary>
     [Serializable]
-    public class ValueModifierNode : Node, IDataNode<ValueEditor>
+    internal class ValueModifierNode : Node, IDataNode<ValueEditor>
     {
         protected override void OnDefineOptions(INodeOptionDefinition context)
         {

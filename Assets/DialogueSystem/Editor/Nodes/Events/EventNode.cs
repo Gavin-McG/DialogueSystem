@@ -7,7 +7,15 @@ using UnityEngine;
 
 namespace DialogueSystem.Editor
 {
-    public class EventNode : Node, IDataNode<DSEventReference>, IErrorNode
+    /// <author>Gavin McGinness</author>
+    /// <date>2025-08-21</date>
+    
+    /// <summary>
+    /// Node used to define where/how events are called in a graph.
+    /// Defines a port based on the type parameter T of the assigned DSEvent 
+    /// </summary>
+    [Serializable]
+    internal class EventNode : Node, IDataNode<DSEventReference>, IErrorNode
     {
         private const string EventOptionName = "eventObject";
         private const string ValuePortName = "value";
@@ -82,10 +90,7 @@ namespace DialogueSystem.Editor
 
             return (DSEventReference)newCaller;
         }
-
-        /// <summary>
-        /// Gets the T from a DSEvent&lt;T&gt; instance.
-        /// </summary>
+        
         private static Type GetEventGenericType(DSEventObject eventObject)
         {
             Type type = eventObject.GetType();

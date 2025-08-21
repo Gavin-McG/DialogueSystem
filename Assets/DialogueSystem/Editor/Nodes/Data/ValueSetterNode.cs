@@ -8,7 +8,14 @@ using UnityEngine;
 
 namespace DialogueSystem.Editor
 {
-    public class ValueSetterNode : Node, IDataNode<ValueEditor>, IErrorNode
+    /// <author>Gavin McGinness</author>
+    /// <date>2025-08-21</date>
+    
+    /// <summary>
+    /// Node for setting a value from a set of pre-defined existing types. 
+    /// </summary>
+    [Serializable]
+    internal class ValueSetterNode : Node, IDataNode<ValueEditor>, IErrorNode
     {
         private const string ValueNameOptionName = "valueName";
         private const string ValueScopeOptionName = "scope";
@@ -43,8 +50,6 @@ namespace DialogueSystem.Editor
         
         protected override void OnDefineOptions(INodeOptionDefinition context)
         {
-            //DialogueGraphUtility.DefineFieldOptions<ValueSetter<T>>(context);
-            
             context.AddNodeOption(ValueNameOptionName, typeof(string), "Value Name", defaultValue:"MyValue");
             context.AddNodeOption(ValueScopeOptionName, typeof(ValueScope), "Scope", defaultValue:ValueScope.Dialogue);
             context.AddNodeOption(ValueTypeOptionName, typeof(ValueTypes), "Value Type", defaultValue:ValueTypes.String);

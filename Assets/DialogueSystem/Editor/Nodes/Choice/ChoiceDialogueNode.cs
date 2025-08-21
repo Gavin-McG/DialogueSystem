@@ -7,20 +7,27 @@ using UnityEngine;
 
 namespace DialogueSystem.Editor
 {
-    [Serializable]
+    /// <author>Gavin McGinness</author>
+    /// <date>2025-08-21</date>
+    
+    /// <summary>
+    /// Generic Base Class for Choice Dialogue Nodes. 
+    /// </summary>
+    /// <typeparam name="TBaseParams">Type of <see cref="BaseParams"/> to be used by the node</typeparam>
+    /// <typeparam name="TChoiceParams">Type of <see cref="ChoiceParams"/> to be used by the node</typeparam>
     public abstract class ChoiceDialogueNode<TBaseParams, TChoiceParams> : ContextNode, IDialogueTraceNode
     where TBaseParams : BaseParams
     where TChoiceParams : ChoiceParams
     {
         private const string TimeOutPortDisplayName = "TimeOut";
         
-        protected override void OnDefineOptions(INodeOptionDefinition context)
+        protected sealed override void OnDefineOptions(INodeOptionDefinition context)
         {
             DialogueGraphUtility.DefineFieldOptions<TBaseParams>(context);
             DialogueGraphUtility.DefineFieldOptions<TChoiceParams>(context);
         }
 
-        protected override void OnDefinePorts(IPortDefinitionContext context)
+        protected sealed override void OnDefinePorts(IPortDefinitionContext context)
         {
             DialogueGraphUtility.DefineNodeInputPort(context);
             DialogueGraphUtility.DefineFieldPorts<TBaseParams>(context);

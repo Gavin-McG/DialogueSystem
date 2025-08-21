@@ -7,8 +7,14 @@ using UnityEngine;
 
 namespace DialogueSystem.Editor
 {
+    /// <author>Gavin McGinness</author>
+    /// <date>2025-08-21</date>
+    
+    /// <summary>
+    /// Node to add/remove/removeall keyword(s). 
+    /// </summary>
     [Serializable]
-    public class ModifyKeyWordNode : Node, IDataNode<KeywordEditor>
+    internal class ModifyKeyWordNode : Node, IDataNode<KeywordEditor>
     {
         protected override void OnDefineOptions(INodeOptionDefinition context)
         {
