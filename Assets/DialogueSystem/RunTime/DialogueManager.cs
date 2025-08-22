@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
 using DialogueSystem.Runtime.Keywords;
 using DialogueSystem.Runtime.Values;
 using UnityEngine;
@@ -9,8 +7,16 @@ using UnityEngine.Events;
 
 namespace DialogueSystem.Runtime
 {
-
-    public class DialogueManager : MonoBehaviour, IKeywordContext, IValueContext
+    /// <author>Gavin McGinness</author>
+    /// <date>2025-08-21</date>
+    
+    /// <summary>
+    /// Primary Component for operating the Backend of the Dialogue System.
+    /// Primary functions are <see cref="BeginDialogue"/> and <see cref="AdvanceDialogue(DialogueSystem.Runtime.AdvanceDialogueContext)"/>.
+    /// <see cref="EndDialogue"/> Is only to be used when ending an interaction prematurely.
+    /// Also provides interfaces for values and keywords
+    /// </summary>
+    public sealed class DialogueManager : MonoBehaviour, IKeywordContext, IValueContext
     {
         public static DialogueManager current;
         
@@ -19,9 +25,9 @@ namespace DialogueSystem.Runtime
         
         [HideInInspector] public UnityEvent<DialogueSettings> beginDialogueEvent = new();
 
-        private DialogueAsset currentDialogue;
-        private DialogueTrace currentTrace;
-        private AdvanceDialogueContext previousContext;
+        private DialogueAsset _currentDialogue;
+        private DialogueTrace _currentTrace;
+        private AdvanceDialogueContext _previousContext;
         [HideInInspector] public List<int> optionIndexes;
         
         #region KEYWORDS
@@ -30,7 +36,6 @@ namespace DialogueSystem.Runtime
         public bool IsKeywordDefined(string keyword) => _keywordContext.IsKeywordDefined(keyword);
         public void ClearKeywords(KeywordScope scope) => _keywordContext.ClearKeywords(scope);
         #endregion
-
         
         #region VALUES
         public void DefineValue(string valueName, object value, ValueScope scope = ValueScope.Manager) => _valueContext.DefineValue(valueName, value, scope);
@@ -42,29 +47,36 @@ namespace DialogueSystem.Runtime
         public void ClearValues(ValueScope scope) => _valueContext.ClearValues(scope);
         #endregion
 
+        /// <summary>
+        /// Begin a dialogue using the DialogueAsset to be started
+        /// </summary>
         public void BeginDialogue(DialogueAsset dialogueAsset)
         {
-            if (currentDialogue != null)
+            if (_currentDialogue != null)
             {
                 Debug.LogWarning($"Attempted to begin dialogue \"{dialogueAsset.name}\" while dialogue was already playing");
                 return;
             }
             
-            currentDialogue = dialogueAsset;
-            currentTrace = dialogueAsset;
+            _currentDialogue = dialogueAsset;
+            _currentTrace = dialogueAsset;
             beginDialogueEvent.Invoke(dialogueAsset.settings);
         }
 
+        /// <summary>
+        /// Retrieve the next dialogue using context about the user's interaction.
+        /// Returns null if end of dialogue is reached.
+        /// </summary>
         public DialogueParams AdvanceDialogue(AdvanceDialogueContext context)
         {
             ClearKeywords(KeywordScope.Single);
             current = this;
             
             do {
-                currentTrace = currentTrace.AdvanceDialogue(context, this);
-            } while (currentTrace != null && currentTrace is not IDialogueOutput);
+                _currentTrace = _currentTrace.AdvanceDialogue(context, this);
+            } while (_currentTrace != null && _currentTrace is not IDialogueOutput);
 
-            if (currentTrace is IDialogueOutput outputDialogue)
+            if (_currentTrace is IDialogueOutput outputDialogue)
             {
                 var details = new DialogueParams(outputDialogue.GetDialogueDetails(context, this));
                 details.ReplaceValues(_valueContext);
@@ -75,30 +87,42 @@ namespace DialogueSystem.Runtime
             return null;
         }
         
+        /// <summary>
+        /// Retrieve the next dialogue using default context.
+        /// Primarily used to get the first dialogue.
+        /// Returns null if end of dialogue is reached.
+        /// </summary>
         public DialogueParams AdvanceDialogue() => AdvanceDialogue(new AdvanceDialogueContext());
 
+        /// <summary>
+        /// Retrieve the information about the current dialogue again.
+        /// Used if you want to account for changes in conditional choice options
+        /// </summary>
         public DialogueParams RefreshDialogue()
         {
-            if (currentDialogue != null)
+            if (_currentDialogue != null)
             {
                 throw new Exception($"Attempted to refresh dialogue while dialogue was not playing");
             }
 
-            var dialogueOutput = (IDialogueOutput)currentTrace;
-            var details = new DialogueParams(dialogueOutput.GetDialogueDetails(previousContext, this));
+            var dialogueOutput = (IDialogueOutput)_currentTrace;
+            var details = new DialogueParams(dialogueOutput.GetDialogueDetails(_previousContext, this));
             details.ReplaceValues(_valueContext);
             return details;
         }
         
+        /// <summary>
+        /// Prematurely end dialogue
+        /// </summary>
         public void EndDialogue()
         {
-            if (currentDialogue == null) return;
+            if (_currentDialogue == null) return;
             
-            currentDialogue.RunEndOperations(this);
+            _currentDialogue.RunEndOperations(this);
             ClearKeywords(KeywordScope.Dialogue);
             
-            currentDialogue = null;
-            currentTrace = null;
+            _currentDialogue = null;
+            _currentTrace = null;
         }
     }
     

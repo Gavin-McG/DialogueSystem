@@ -7,70 +7,76 @@ using UnityEngine;
 
 namespace DialogueSystem.Runtime
 {
-
+    /// <author>Gavin McGinness</author>
+    /// <date>2025-08-21</date>
+    
+    /// <summary>
+    /// Class used to provide data from the backend of the Dialogue system to the UI.
+    /// Uses Getter functions to retrieve params of your derived type
+    /// </summary>
     [Serializable]
-    public class DialogueParams
+    public sealed class DialogueParams
     {
         public enum DialogueType { Basic, Choice }
         
         public DialogueType dialogueType;
-        private BaseParams baseParams;
-        private ChoiceParams choiceParams;
-        private List<OptionParams> options;
+        private BaseParams _baseParams;
+        private ChoiceParams _choiceParams;
+        private List<OptionParams> _options;
 
         public DialogueParams(BaseParams baseParams)
         {
             dialogueType = DialogueType.Basic;
-            this.baseParams = baseParams;
-            choiceParams = null;
-            options = new List<OptionParams>();
+            this._baseParams = baseParams;
+            _choiceParams = null;
+            _options = new List<OptionParams>();
         }
 
         public DialogueParams(BaseParams baseParams, ChoiceParams choiceParams, List<OptionParams> options)
         {
             this.dialogueType = DialogueType.Choice;
-            this.baseParams = baseParams;
-            this.choiceParams = choiceParams;
-            this.options = options;
+            this._baseParams = baseParams;
+            this._choiceParams = choiceParams;
+            this._options = options;
         }
 
         public DialogueParams(DialogueParams copyObj)
         {
             dialogueType = copyObj.dialogueType;
-            baseParams = copyObj.baseParams?.Clone();
-            choiceParams = copyObj.choiceParams?.Clone();
-            options = copyObj.options?.Select(option => option.Clone()).ToList();
+            _baseParams = copyObj._baseParams?.Clone();
+            _choiceParams = copyObj._choiceParams?.Clone();
+            _options = copyObj._options?.Select(option => option.Clone()).ToList();
         }
 
         public T GetBaseParams<T>() where T : BaseParams
         {
-            if (baseParams is T tBaseParams) return tBaseParams;
+            if (_baseParams is T tBaseParams) return tBaseParams;
             return null;
         }
 
         public T GetChoiceParams<T>() where T : ChoiceParams
         {
-            if (choiceParams is T tChoiceParams) return tChoiceParams;
+            if (_choiceParams is T tChoiceParams) return tChoiceParams;
             return null;
         }
 
         public List<T> GetOptions<T>() where T : OptionParams
         {
-            return options
+            return _options
                 .OfType<T>()
                 .ToList();
         }
 
         internal void ReplaceValues(IValueContext context)
         {
-            baseParams.Text = ReplaceTextValues(context, baseParams.Text);
-            options = options?.Select(option => {
+            _baseParams.Text = ReplaceTextValues(context, _baseParams.Text);
+            _options = _options?.Select(option => {
                 option.Text = ReplaceTextValues(context, option.Text);
                 return option;
             }).ToList();
         }
 
-        public static string ReplaceTextValues(IValueContext context, string text)
+        internal static string ReplaceTextValues(IValueContext context, string text)
         {
             return Regex.Replace(text, @"\{(.*?)\}", match =>
             {

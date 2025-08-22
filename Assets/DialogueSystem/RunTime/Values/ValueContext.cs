@@ -5,6 +5,12 @@ using UnityEngine;
 
 namespace DialogueSystem.Runtime.Values
 {
+    /// <author>Gavin McGinness</author>
+    /// <date>2025-08-21</date>
+    
+    /// <summary>
+    /// Primary class for storing and managing values
+    /// </summary>
     public class ValueContext : IValueContext
     {
         private readonly Dictionary<ValueScope, Dictionary<string, object>> _values = new();

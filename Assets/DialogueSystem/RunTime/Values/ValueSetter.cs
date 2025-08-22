@@ -3,8 +3,14 @@ using System.ComponentModel;
 
 namespace DialogueSystem.Runtime.Values
 {
+    /// <author>Gavin McGinness</author>
+    /// <date>2025-08-21</date>
+    
+    /// <summary>
+    /// ValueEditor representing the assignment of a value
+    /// </summary>
     [Serializable]
-    public class ValueSetter<T> : ValueEditor
+    public sealed class ValueSetter<T> : ValueEditor
     {
         [DefaultValue("MyValue")]
         public string valueName;

@@ -2,7 +2,13 @@
 
 namespace DialogueSystem.Runtime.Values
 {
-    public class GlobalValueStore
+    /// <author>Gavin McGinness</author>
+    /// <date>2025-08-21</date>
+    
+    /// <summary>
+    /// Singleton class used to store the current global values
+    /// </summary>
+    internal class GlobalValueStore
     {
         private static GlobalValueStore _instance;
         public static GlobalValueStore Instance => _instance ??= new GlobalValueStore();

@@ -3,6 +3,12 @@ using System.ComponentModel;
 
 namespace DialogueSystem.Runtime.Keywords
 {
+    /// <author>Gavin McGinness</author>
+    /// <date>2025-08-21</date>
+    
+    /// <summary>
+    /// Class representing a specific modification to a IKeywordContext
+    /// </summary>
     [Serializable]
     public class KeywordEditor
     {

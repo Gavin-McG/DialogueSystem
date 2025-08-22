@@ -4,6 +4,12 @@ using System.Linq;
 
 namespace DialogueSystem.Runtime.Keywords
 {
+    /// <author>Gavin McGinness</author>
+    /// <date>2025-08-21</date>
+    
+    /// <summary>
+    /// Primary class for storing and managing keywords
+    /// </summary>
     public class KeywordContext : IKeywordContext
     {
         private readonly Dictionary<KeywordScope, HashSet<string>> _keywords = new();

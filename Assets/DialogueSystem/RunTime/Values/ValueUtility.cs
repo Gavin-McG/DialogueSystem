@@ -3,6 +3,12 @@ using UnityEngine;
 
 namespace DialogueSystem.Runtime.Values
 {
+    /// <author>Gavin McGinness</author>
+    /// <date>2025-08-21</date>
+    
+    /// <summary>
+    /// static class for value-related helper functions
+    /// </summary>
     public static class ValueUtility
     {
         public static float GetNumericValue(string valueName, IValueContext context)

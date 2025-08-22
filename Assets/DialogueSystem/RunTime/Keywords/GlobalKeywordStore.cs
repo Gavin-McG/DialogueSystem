@@ -2,7 +2,13 @@
 
 namespace DialogueSystem.Runtime.Keywords
 {
-    public class GlobalKeywordStore
+    /// <author>Gavin McGinness</author>
+    /// <date>2025-08-21</date>
+    
+    /// <summary>
+    /// Singleton class used to store the current global keywords
+    /// </summary>
+    internal class GlobalKeywordStore
     {
         private static GlobalKeywordStore _instance;
         public static GlobalKeywordStore Instance => _instance ??= new GlobalKeywordStore();

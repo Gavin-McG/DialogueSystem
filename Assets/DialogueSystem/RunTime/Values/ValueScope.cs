@@ -1,5 +1,11 @@
 ﻿namespace DialogueSystem.Runtime.Values
 {
+    /// <author>Gavin McGinness</author>
+    /// <date>2025-08-21</date>
+    
+    /// <summary>
+    /// Enum for levels of value scopes
+    /// </summary>
     public enum ValueScope
     {
         Single = 0, 

@@ -2,8 +2,14 @@
 
 namespace DialogueSystem.Runtime.Values
 {
+    /// <author>Gavin McGinness</author>
+    /// <date>2025-08-21</date>
+    
+    /// <summary>
+    /// ValueEditor which performs a mathematical operation on a numeric value
+    /// </summary>
     [Serializable]
-    public class ValueModifier : ValueEditor
+    public sealed class ValueModifier : ValueEditor
     {
         public string valueName;
         public ValueOperation operation;

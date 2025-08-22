@@ -5,6 +5,12 @@ using UnityEngine;
 
 namespace DialogueSystem.Runtime
 {
+    /// <author>Gavin McGinness</author>
+    /// <date>2025-08-21</date>
+    
+    /// <summary>
+    /// Base class representing the Base parameters shared by choice and regular dialogue
+    /// </summary>
     [Serializable]
     public abstract class BaseParams
     {

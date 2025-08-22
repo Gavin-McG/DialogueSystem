@@ -2,6 +2,12 @@
 
 namespace DialogueSystem.Runtime.Keywords
 {
+    /// <author>Gavin McGinness</author>
+    /// <date>2025-08-21</date>
+    
+    /// <summary>
+    /// static class for keyword-related helper functions
+    /// </summary>
     public static class KeywordUtility
     {
         
