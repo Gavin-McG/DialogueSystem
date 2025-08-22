@@ -2,6 +2,12 @@
 
 namespace DialogueSystem.Runtime
 {
+    /// <author>Gavin McGinness</author>
+    /// <date>2025-08-21</date>
+    
+    /// <summary>
+    /// class Holding information for a call to a non-types DSEvent
+    /// </summary>
     [Serializable]
     public class DSEventCaller : DSEventReference
     {
@@ -18,6 +24,12 @@ namespace DialogueSystem.Runtime
         }
     }
 
+    /// <author>Gavin McGinness</author>
+    /// <date>2025-08-21</date>
+    
+    /// <summary>
+    /// class Holding information for a call to a non-types DSEvent
+    /// </summary>
     [Serializable]
     public class DSEventCaller<T> : DSEventReference
     {

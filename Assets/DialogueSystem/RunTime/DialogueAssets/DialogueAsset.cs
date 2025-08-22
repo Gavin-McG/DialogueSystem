@@ -3,8 +3,13 @@ using UnityEngine;
 
 namespace DialogueSystem.Runtime
 {
+    /// <author>Gavin McGinness</author>
+    /// <date>2025-08-21</date>
     
-    public class DialogueAsset : DialogueTrace
+    /// <summary>
+    /// ScriptableObject representing the main asset of a DialogueGraph and the first Trace when starting a dialogue
+    /// </summary>
+    public sealed class DialogueAsset : DialogueTrace
     {
         public DialogueTrace nextDialogue;
         public DialogueSettings settings;

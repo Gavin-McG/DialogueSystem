@@ -4,7 +4,13 @@ using UnityEngine;
 
 namespace DialogueSystem.Runtime
 {
-    public class RandomRedirect : Redirect
+    /// <author>Gavin McGinness</author>
+    /// <date>2025-08-21</date>
+    
+    /// <summary>
+    /// Redirect Object that evaluates all conditions and selects randomly based on weight values.
+    /// </summary>
+    public sealed class RandomRedirect : Redirect
     {
         protected override DialogueTrace GetNextDialogue(AdvanceDialogueContext context, DialogueManager manager)
         {

@@ -3,8 +3,13 @@ using UnityEngine;
 
 namespace DialogueSystem.Runtime
 {
-
-    public class SequentialRedirect : Redirect
+    /// <author>Gavin McGinness</author>
+    /// <date>2025-08-21</date>
+    
+    /// <summary>
+    /// Redirect Object that evaluates conditions until the first pass
+    /// </summary>
+    public sealed class SequentialRedirect : Redirect
     {
         protected override DialogueTrace GetNextDialogue(AdvanceDialogueContext context, DialogueManager manager)
         {

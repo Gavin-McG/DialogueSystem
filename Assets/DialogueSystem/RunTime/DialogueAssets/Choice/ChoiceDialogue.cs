@@ -4,8 +4,13 @@ using UnityEngine;
 
 namespace DialogueSystem.Runtime
 {
-
-    public class ChoiceDialogue : DialogueTrace, IDialogueOutput
+    /// <author>Gavin McGinness</author>
+    /// <date>2025-08-21</date>
+    
+    /// <summary>
+    /// Scriptable Object representing a Choice Dialogue
+    /// </summary>
+    public sealed class ChoiceDialogue : DialogueTrace, IDialogueOutput
     {
         public DialogueTrace defaultDialogue;
         [SerializeReference] public BaseParams baseParams;

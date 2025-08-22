@@ -4,14 +4,23 @@ using UnityEngine.Events;
 
 namespace DialogueSystem.Runtime
 {
+    /// <author>Gavin McGinness</author>
+    /// <date>2025-08-21</date>
+    
+    /// <summary>
+    /// Scriptable Object representing a non-typed Dialogue Event
+    /// </summary>
     [CreateAssetMenu(fileName = "DialogueEvent", menuName = "Dialogue System/Events/Dialogue Event")]
-    public class DSEvent : DSEventObject
+    public sealed class DSEvent : DSEventObject
     {
         [SerializeField] private UnityEvent dialogueEvent = new UnityEvent();
 
         // List of manager-specific listeners
         private readonly Dictionary<DialogueManager, UnityEvent> managerEvents = new Dictionary<DialogueManager, UnityEvent>();
 
+        /// <summary>
+        /// Invoke Event for all listeners
+        /// </summary>
         public void Invoke()
         {
             // Invoke general listeners
@@ -22,6 +31,10 @@ namespace DialogueSystem.Runtime
                 evt.Invoke();
         }
 
+        /// <summary>
+        /// Invoke Event for all global listeners.
+        /// Listeners assigned with a manager will only be called if the provided manager matches
+        /// </summary>
         public void Invoke(DialogueManager manager)
         {
             // Always invoke general listeners
@@ -32,11 +45,17 @@ namespace DialogueSystem.Runtime
                 evt.Invoke();
         }
 
+        /// <summary>
+        /// Add a global listener
+        /// </summary>
         public void AddListener(UnityAction call)
         {
             dialogueEvent.AddListener(call);
         }
 
+        /// <summary>
+        /// Add a manager-specific listener
+        /// </summary>
         public void AddListener(DialogueManager manager, UnityAction call)
         {
             if (!managerEvents.TryGetValue(manager, out var evt))
@@ -47,11 +66,17 @@ namespace DialogueSystem.Runtime
             evt.AddListener(call);
         }
 
+        /// <summary>
+        /// Remove a Global listener
+        /// </summary>
         public void RemoveListener(UnityAction call)
         {
             dialogueEvent.RemoveListener(call);
         }
 
+        /// <summary>
+        /// Remove a manager-specific listener
+        /// </summary>
         public void RemoveListener(DialogueManager manager, UnityAction call)
         {
             if (managerEvents.TryGetValue(manager, out var evt))
@@ -60,6 +85,9 @@ namespace DialogueSystem.Runtime
             }
         }
 
+        /// <summary>
+        /// Remove all global and manager-specific listeners
+        /// </summary>
         public override void RemoveAllListeners()
         {
             dialogueEvent.RemoveAllListeners();
@@ -67,12 +95,21 @@ namespace DialogueSystem.Runtime
         }
     }
 
+    /// <author>Gavin McGinness</author>
+    /// <date>2025-08-21</date>
+    
+    /// <summary>
+    /// abstract class for Scriptable Object representing a typed Dialogue Event
+    /// </summary>
     public abstract class DSEvent<T> : DSEventObject
     {
         [SerializeField] private UnityEvent<T> dialogueEvent = new UnityEvent<T>();
 
         private readonly Dictionary<DialogueManager, UnityEvent<T>> managerEvents = new Dictionary<DialogueManager, UnityEvent<T>>();
 
+        /// <summary>
+        /// Invoke Event for all listeners
+        /// </summary>
         public void Invoke(T value)
         {
             dialogueEvent.Invoke(value);
@@ -81,6 +118,10 @@ namespace DialogueSystem.Runtime
                 evt.Invoke(value);
         }
 
+        /// <summary>
+        /// Invoke Event for all global listeners.
+        /// Listeners assigned with a manager will only be called if the provided manager matches
+        /// </summary>
         public void Invoke(DialogueManager manager, T value)
         {
             // Always invoke general listeners
@@ -90,11 +131,17 @@ namespace DialogueSystem.Runtime
                 evt.Invoke(value);
         }
 
+        /// <summary>
+        /// Add a global listener
+        /// </summary>
         public void AddListener(UnityAction<T> call)
         {
             dialogueEvent.AddListener(call);
         }
 
+        /// <summary>
+        /// Add a manager-specific listener
+        /// </summary>
         public void AddListener(DialogueManager manager, UnityAction<T> call)
         {
             if (!managerEvents.TryGetValue(manager, out var evt))
@@ -105,11 +152,17 @@ namespace DialogueSystem.Runtime
             evt.AddListener(call);
         }
 
+        /// <summary>
+        /// Remove a Global listener
+        /// </summary>
         public void RemoveListener(UnityAction<T> call)
         {
             dialogueEvent.RemoveListener(call);
         }
 
+        /// <summary>
+        /// Remove a manager-specific listener
+        /// </summary>
         public void RemoveListener(DialogueManager manager, UnityAction<T> call)
         {
             if (managerEvents.TryGetValue(manager, out var evt))
@@ -118,6 +171,9 @@ namespace DialogueSystem.Runtime
             }
         }
 
+        /// <summary>
+        /// Remove all global and manager-specific listeners
+        /// </summary>
         public override void RemoveAllListeners()
         {
             dialogueEvent.RemoveAllListeners();

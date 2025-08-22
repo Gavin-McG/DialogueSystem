@@ -3,8 +3,13 @@ using UnityEngine;
 
 namespace DialogueSystem.Runtime
 {
-
-    public class Dialogue : DialogueTrace, IDialogueOutput
+    /// <author>Gavin McGinness</author>
+    /// <date>2025-08-21</date>
+    
+    /// <summary>
+    /// ScriptableObject representing a regular dialogue
+    /// </summary>
+    public sealed class Dialogue : DialogueTrace, IDialogueOutput
     {
         public DialogueTrace nextDialogue;
         [SerializeReference] public BaseParams baseParams;

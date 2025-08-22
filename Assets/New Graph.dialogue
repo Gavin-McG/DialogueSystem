@@ -441,7 +441,7 @@ MonoBehaviour:
           - profile
           m_ValueList:
           - rid: 5684132558268530822
-          - rid: 5684132558268530823
+          - rid: 5684132558268530852
         m_InputPortInfos:
           expandedPortsById:
             m_KeyList: []
@@ -493,10 +493,6 @@ MonoBehaviour:
       type: {class: 'Constant`1[[System.String, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
       data:
         m_Value: 
-    - rid: 5684132558268530823
-      type: {class: 'Constant`1[[DialogueSystem.Runtime.DialogueProfile, DialogueSystem.Runtime]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
-      data:
-        m_Value: {fileID: 0}
     - rid: 5684132558268530824
       type: {class: DefaultDialogueNode, ns: DialogueSystem.Default.Editor, asm: DialogueSystem.Default.Editor}
       data: 
@@ -554,7 +550,7 @@ MonoBehaviour:
           - profile
           m_ValueList:
           - rid: 5684132558268530828
-          - rid: 5684132558268530829
+          - rid: 5684132558268530853
         m_InputPortInfos:
           expandedPortsById:
             m_KeyList: []
@@ -606,10 +602,6 @@ MonoBehaviour:
       type: {class: 'Constant`1[[System.String, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
       data:
         m_Value: '{MyValue2}'
-    - rid: 5684132558268530829
-      type: {class: 'Constant`1[[DialogueSystem.Runtime.DialogueProfile, DialogueSystem.Runtime]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
-      data:
-        m_Value: {fileID: 0}
     - rid: 5684132558268530830
       type: {class: DefaultDialogueNode, ns: DialogueSystem.Default.Editor, asm: DialogueSystem.Default.Editor}
       data: 
@@ -688,3 +680,11 @@ MonoBehaviour:
           m_PortDirection: 1
           m_PortOrientation: 0
           m_Title: 
+    - rid: 5684132558268530852
+      type: {class: 'Constant`1[[DialogueSystem.Default.Runtime.DialogueProfile, DialogueSystem.Default.Runtime]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
+      data:
+        m_Value: {fileID: 0}
+    - rid: 5684132558268530853
+      type: {class: 'Constant`1[[DialogueSystem.Default.Runtime.DialogueProfile, DialogueSystem.Default.Runtime]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
+      data:
+        m_Value: {fileID: 0}
