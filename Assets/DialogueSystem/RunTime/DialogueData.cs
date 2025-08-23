@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using WolverineSoft.DialogueSystem.Runtime.Keywords;
-using WolverineSoft.DialogueSystem.Runtime.Values;
+using WolverineSoft.DialogueSystem.Keywords;
+using WolverineSoft.DialogueSystem.Values;
 
-namespace WolverineSoft.DialogueSystem.Runtime
+namespace WolverineSoft.DialogueSystem
 {
     /// <author>Gavin McGinness</author>
     /// <date>2025-08-21</date>

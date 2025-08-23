@@ -1,6 +1,6 @@
-﻿using WolverineSoft.DialogueSystem.Runtime;
+﻿using WolverineSoft.DialogueSystem;
 using UnityEngine;
-using WolverineSoft.DialogueSystem.Default.Runtime;
+using WolverineSoft.DialogueSystem.Default;
 
 namespace WolverineSoft.DialogueSystem.ExampleInterface
 {

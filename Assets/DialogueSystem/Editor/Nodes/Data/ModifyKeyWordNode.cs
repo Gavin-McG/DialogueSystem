@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using WolverineSoft.DialogueSystem.Runtime;
+using WolverineSoft.DialogueSystem;
 using Unity.GraphToolkit.Editor;
 using UnityEngine;
-using WolverineSoft.DialogueSystem.Runtime.Keywords;
+using WolverineSoft.DialogueSystem.Keywords;
 
 namespace WolverineSoft.DialogueSystem.Editor
 {

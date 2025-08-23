@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEngine;
-using WolverineSoft.DialogueSystem.Runtime.Values;
+using WolverineSoft.DialogueSystem.Values;
 
-namespace WolverineSoft.DialogueSystem.Runtime
+namespace WolverineSoft.DialogueSystem
 {
     /// <author>Gavin McGinness</author>
     /// <date>2025-08-21</date>

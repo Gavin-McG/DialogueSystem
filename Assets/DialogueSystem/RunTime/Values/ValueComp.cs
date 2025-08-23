@@ -1,4 +1,4 @@
-﻿namespace WolverineSoft.DialogueSystem.Runtime.Values
+﻿namespace WolverineSoft.DialogueSystem.Values
 {
     /// <author>Gavin McGinness</author>
     /// <date>2025-08-21</date>

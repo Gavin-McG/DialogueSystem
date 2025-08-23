@@ -1,9 +1,9 @@
 using System;
 using UnityEngine;
-using WolverineSoft.DialogueSystem.Runtime;
+using WolverineSoft.DialogueSystem;
 using Random = UnityEngine.Random;
 
-namespace WolverineSoft.DialogueSystem.Default.Runtime
+namespace WolverineSoft.DialogueSystem.Default
 {
     public class RandomConditional : Option
     {

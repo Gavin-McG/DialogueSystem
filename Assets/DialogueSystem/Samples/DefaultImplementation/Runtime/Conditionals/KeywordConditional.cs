@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ComponentModel;
-using WolverineSoft.DialogueSystem.Runtime;
-using WolverineSoft.DialogueSystem.Runtime.Keywords;
+using WolverineSoft.DialogueSystem;
+using WolverineSoft.DialogueSystem.Keywords;
 
-namespace WolverineSoft.DialogueSystem.Default.Runtime
+namespace WolverineSoft.DialogueSystem.Default
 {
     public class KeywordConditional : Option
     {

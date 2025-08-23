@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.GraphToolkit.Editor;
 using UnityEngine;
-using WolverineSoft.DialogueSystem.Runtime;
-using WolverineSoft.DialogueSystem.Runtime.Keywords;
-using WolverineSoft.DialogueSystem.Runtime.Values;
+using WolverineSoft.DialogueSystem;
+using WolverineSoft.DialogueSystem.Keywords;
+using WolverineSoft.DialogueSystem.Values;
 
 namespace WolverineSoft.DialogueSystem.Editor
 {

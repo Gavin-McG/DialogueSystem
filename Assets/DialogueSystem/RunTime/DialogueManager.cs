@@ -2,17 +2,17 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using WolverineSoft.DialogueSystem.Runtime.Keywords;
-using WolverineSoft.DialogueSystem.Runtime.Values;
+using WolverineSoft.DialogueSystem.Keywords;
+using WolverineSoft.DialogueSystem.Values;
 
-namespace WolverineSoft.DialogueSystem.Runtime
+namespace WolverineSoft.DialogueSystem
 {
     /// <author>Gavin McGinness</author>
     /// <date>2025-08-21</date>
     
     /// <summary>
     /// Primary Component for operating the Backend of the Dialogue System.
-    /// Primary functions are <see cref="BeginDialogue"/> and <see cref="AdvanceDialogue(DialogueSystem.Runtime.AdvanceDialogueContext)"/>.
+    /// Primary functions are <see cref="BeginDialogue"/> and <see cref="AdvanceDialogue(AdvanceDialogueContext)"/>.
     /// <see cref="EndDialogue"/> Is only to be used when ending an interaction prematurely.
     /// Also provides interfaces for values and keywords
     /// </summary>

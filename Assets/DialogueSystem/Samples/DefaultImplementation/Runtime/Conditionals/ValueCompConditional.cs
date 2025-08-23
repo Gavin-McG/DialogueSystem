@@ -1,7 +1,6 @@
-﻿using WolverineSoft.DialogueSystem.Runtime;
-using WolverineSoft.DialogueSystem.Runtime.Values;
+﻿using WolverineSoft.DialogueSystem.Values;
 
-namespace WolverineSoft.DialogueSystem.Default.Runtime
+namespace WolverineSoft.DialogueSystem.Default
 {
     public class ValueCompConditional : Option
     {

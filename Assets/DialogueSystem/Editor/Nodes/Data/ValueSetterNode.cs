@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
-using WolverineSoft.DialogueSystem.Runtime;
+using WolverineSoft.DialogueSystem;
 using Unity.GraphToolkit.Editor;
 using UnityEngine;
-using WolverineSoft.DialogueSystem.Runtime.Values;
+using WolverineSoft.DialogueSystem.Values;
 
 namespace WolverineSoft.DialogueSystem.Editor
 {

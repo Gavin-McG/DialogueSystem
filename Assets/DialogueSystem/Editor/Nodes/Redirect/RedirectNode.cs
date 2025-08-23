@@ -2,7 +2,7 @@
 using System.Linq;
 using Unity.GraphToolkit.Editor;
 using UnityEngine;
-using WolverineSoft.DialogueSystem.Runtime;
+using WolverineSoft.DialogueSystem;
 
 
 namespace WolverineSoft.DialogueSystem.Editor

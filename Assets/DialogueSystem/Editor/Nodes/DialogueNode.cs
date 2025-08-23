@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.GraphToolkit.Editor;
 using UnityEditor;
 using UnityEngine;
-using WolverineSoft.DialogueSystem.Runtime;
+using WolverineSoft.DialogueSystem;
 
 namespace WolverineSoft.DialogueSystem.Editor
 {

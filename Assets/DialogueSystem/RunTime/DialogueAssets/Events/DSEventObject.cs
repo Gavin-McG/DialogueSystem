@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace WolverineSoft.DialogueSystem.Runtime
+namespace WolverineSoft.DialogueSystem
 {
     /// <author>Gavin McGinness</author>
     /// <date>2025-08-21</date>

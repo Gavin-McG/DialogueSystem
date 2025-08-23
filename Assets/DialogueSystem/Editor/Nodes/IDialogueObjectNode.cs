@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using WolverineSoft.DialogueSystem.Runtime;
+using WolverineSoft.DialogueSystem;
 using UnityEngine;
 using Unity.GraphToolkit.Editor;
 

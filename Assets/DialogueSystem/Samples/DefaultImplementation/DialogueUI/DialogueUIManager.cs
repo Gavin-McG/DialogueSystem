@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using WolverineSoft.DialogueSystem.Default.Runtime;
-using WolverineSoft.DialogueSystem.Runtime;
+using WolverineSoft.DialogueSystem.Default;
+using WolverineSoft.DialogueSystem;
 
 namespace WolverineSoft.DialogueSystem.ExampleInterface
 {

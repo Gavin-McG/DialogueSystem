@@ -1,7 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using WolverineSoft.DialogueSystem.Default.Runtime;
+using WolverineSoft.DialogueSystem.Default;
 
 namespace WolverineSoft.DialogueSystem.ExampleInterface
 {

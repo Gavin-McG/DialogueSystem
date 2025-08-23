@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
-using WolverineSoft.DialogueSystem.Default.Runtime;
-using WolverineSoft.DialogueSystem.Runtime;
+using WolverineSoft.DialogueSystem.Default;
+using WolverineSoft.DialogueSystem;
 using UnityEngine;
 
 public class ExampleDialogueDispatch : MonoBehaviour
