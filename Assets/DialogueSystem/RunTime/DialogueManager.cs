@@ -20,10 +20,11 @@ namespace DialogueSystem.Runtime
     {
         public static DialogueManager current;
         
+        //Event invoked when dialogue is Began
+        public readonly UnityEvent StartedDialogue = new();
+        
         private readonly KeywordContext _keywordContext = new KeywordContext();
         private readonly ValueContext _valueContext = new ValueContext();
-        
-        [HideInInspector] public UnityEvent<DialogueSettings> beginDialogueEvent = new();
 
         private DialogueAsset _currentDialogue;
         private DialogueTrace _currentTrace;
@@ -60,7 +61,20 @@ namespace DialogueSystem.Runtime
             
             _currentDialogue = dialogueAsset;
             _currentTrace = dialogueAsset;
-            beginDialogueEvent.Invoke(dialogueAsset.settings);
+            StartedDialogue.Invoke();
+        }
+
+        /// <summary>
+        /// Gets the Dialogue Settings for the current dialogue
+        /// </summary>
+        public T GetSettings<T>() where T : DialogueSettings
+        {
+            //null if no dialogue is active
+            if (_currentDialogue == null) return null;
+            
+            var settings = _currentDialogue.settings;
+            if (settings is T tSettings) return tSettings;
+            return null;
         }
 
         /// <summary>

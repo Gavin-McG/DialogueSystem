@@ -52,10 +52,10 @@ MonoBehaviour:
         m_LocalSubgraphs: []
         m_LastKnownBounds:
           serializedVersion: 2
-          x: 306
-          y: 232
-          width: 1497
-          height: 373
+          x: 172
+          y: 242
+          width: 1629
+          height: 349
         m_GraphElementMetaData:
         - m_Guid:
             m_Value0: 13590106601680875948
@@ -217,7 +217,7 @@ MonoBehaviour:
           serializedVersion: 2
           Hash: 0fbb7d0fd50ff2476175eb5e3babf71d
         m_Version: 2
-        m_Position: {x: 644.81195, y: 418.13892}
+        m_Position: {x: 621.81195, y: 404.3389}
         m_Title: ValueSetterNode
         m_Tooltip: 
         m_NodePreviewModel:
@@ -354,7 +354,7 @@ MonoBehaviour:
           serializedVersion: 2
           Hash: 21bf7a00fcc9f632b12ddfc42af8450d
         m_Version: 2
-        m_Position: {x: 649.75653, y: 241.21553}
+        m_Position: {x: 613.75653, y: 251.21553}
         m_Title: 
         m_Tooltip: 
         m_NodePreviewModel:
@@ -385,7 +385,7 @@ MonoBehaviour:
     - rid: 5684132558268530822
       type: {class: 'Constant`1[[System.String, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
       data:
-        m_Value: 
+        m_Value: fdsfsfsdfs
     - rid: 5684132558268530824
       type: {class: DefaultDialogueNode, ns: DialogueSystem.Default.Editor, asm: DialogueSystem.Default.Editor}
       data: 
@@ -591,7 +591,7 @@ MonoBehaviour:
           serializedVersion: 2
           Hash: 22179af76b5bb6c75b19cd28acfd1d97
         m_Version: 2
-        m_Position: {x: 306.07172, y: 231.82953}
+        m_Position: {x: 172.20215, y: 248.74258}
         m_Title: 
         m_Tooltip: 
         m_NodePreviewModel:
@@ -599,11 +599,11 @@ MonoBehaviour:
         m_State: 0
         m_InputConstantsById:
           m_KeyList:
-          - testField
           - dialogueDescription
+          - testField
           m_ValueList:
-          - rid: 5684132591421882428
           - rid: 5684132591421882429
+          - rid: 5684132591421882475
         m_InputPortInfos:
           expandedPortsById:
             m_KeyList: []
@@ -619,14 +619,10 @@ MonoBehaviour:
           m_HasUserColor: 0
         m_Node:
           rid: 5684132591421882430
-    - rid: 5684132591421882428
-      type: {class: 'Constant`1[[System.Boolean, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
-      data:
-        m_Value: 0
     - rid: 5684132591421882429
       type: {class: 'Constant`1[[System.String, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
       data:
-        m_Value: 
+        m_Value: asd
     - rid: 5684132591421882430
       type: {class: DefaultBeginNode, ns: DialogueSystem.Default.Editor, asm: DialogueSystem.Default.Editor}
       data: 
@@ -694,3 +690,7 @@ MonoBehaviour:
           m_PortDirection: 1
           m_PortOrientation: 0
           m_Title: 
+    - rid: 5684132591421882475
+      type: {class: 'Constant`1[[System.Boolean, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
+      data:
+        m_Value: 0

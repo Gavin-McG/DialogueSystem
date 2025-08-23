@@ -12,7 +12,7 @@ namespace DialogueSystem.Runtime
     public sealed class DialogueAsset : DialogueTrace
     {
         public DialogueTrace nextDialogue;
-        public DialogueSettings settings;
+        [SerializeReference] public DialogueSettings settings;
         public DialogueData endData = new();
         
         protected override DialogueTrace GetNextDialogue(AdvanceDialogueContext context, DialogueManager manager)

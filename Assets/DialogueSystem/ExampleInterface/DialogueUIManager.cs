@@ -20,7 +20,7 @@ namespace DialogueSystem.ExampleInterface
 
         private bool dialogueEnabled = false;
         
-        private DialogueSettings currentSettings;
+        private DefaultDialogueSettings currentSettings;
         private DialogueParams currentParams;
         private DefaultBaseParams baseParams;
         private DefaultChoiceParams choiceParams;
@@ -30,7 +30,7 @@ namespace DialogueSystem.ExampleInterface
 
         private void OnEnable()
         {
-            dialogueManager.beginDialogueEvent.AddListener(BeginDialogue);
+            dialogueManager.StartedDialogue.AddListener(BeginDialogue);
             
             mainTextUI.completedText.AddListener(BeginChoiceTimer);
             
@@ -42,7 +42,7 @@ namespace DialogueSystem.ExampleInterface
 
         private void OnDisable()
         {
-            dialogueManager.beginDialogueEvent.RemoveListener(BeginDialogue);
+            dialogueManager.StartedDialogue.RemoveListener(BeginDialogue);
             
             mainTextUI.completedText.RemoveListener(BeginChoiceTimer);
 
@@ -52,9 +52,10 @@ namespace DialogueSystem.ExampleInterface
             choiceUIManager.RemoveContinueListener(ContinuePressed);
         }
 
-        private void BeginDialogue(DialogueSettings dialogueSettings)
+        private void BeginDialogue()
         {
-            currentSettings = dialogueSettings;
+            currentSettings = dialogueManager.GetSettings<DefaultDialogueSettings>();
+            if (currentSettings.testField) Debug.Log("Hello");
             DisplayDialogue(dialogueManager.AdvanceDialogue());
         }
 

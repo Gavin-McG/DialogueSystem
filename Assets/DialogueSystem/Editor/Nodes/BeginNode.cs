@@ -51,7 +51,8 @@ namespace DialogueSystem.Editor
             DialogueGraphUtility.AssignDialogueData(this, asset.data, dialogueDict);
             DialogueGraphUtility.AssignDialogueData(this, asset.endData, dialogueDict, EndEventPortName);
             
-            DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref asset.settings);
+            var settings = (T)asset.settings;
+            DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref settings);
         }
 
         public void DisplayErrors(GraphLogger infos)
