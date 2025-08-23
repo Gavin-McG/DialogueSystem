@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DialogueSystem.Runtime.Keywords
+namespace WolverineSoft.DialogueSystem.Runtime.Keywords
 {
     /// <author>Gavin McGinness</author>
     /// <date>2025-08-21</date>

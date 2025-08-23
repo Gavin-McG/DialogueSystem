@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using UnityEngine;
 
-namespace DialogueSystem.Runtime
+namespace WolverineSoft.DialogueSystem.Runtime
 {
     /// <author>Gavin McGinness</author>
     /// <date>2025-08-21</date>

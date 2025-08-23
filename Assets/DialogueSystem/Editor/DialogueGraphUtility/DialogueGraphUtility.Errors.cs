@@ -2,7 +2,7 @@
 using System.Linq;
 using Unity.GraphToolkit.Editor;
 
-namespace DialogueSystem.Editor
+namespace WolverineSoft.DialogueSystem.Editor
 {
     internal static partial class DialogueGraphUtility
     {

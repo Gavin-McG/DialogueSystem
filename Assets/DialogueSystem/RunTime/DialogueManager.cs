@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
-using DialogueSystem.Runtime.Keywords;
-using DialogueSystem.Runtime.Values;
 using UnityEngine;
 using UnityEngine.Events;
+using WolverineSoft.DialogueSystem.Runtime.Keywords;
+using WolverineSoft.DialogueSystem.Runtime.Values;
 
-namespace DialogueSystem.Runtime
+namespace WolverineSoft.DialogueSystem.Runtime
 {
     /// <author>Gavin McGinness</author>
     /// <date>2025-08-21</date>

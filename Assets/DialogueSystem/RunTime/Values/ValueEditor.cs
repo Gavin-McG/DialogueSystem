@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DialogueSystem.Runtime.Values
+namespace WolverineSoft.DialogueSystem.Runtime.Values
 {
     /// <author>Gavin McGinness</author>
     /// <date>2025-08-21</date>

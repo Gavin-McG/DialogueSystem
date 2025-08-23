@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using DialogueSystem.Runtime;
+using WolverineSoft.DialogueSystem.Runtime;
 using Unity.GraphToolkit.Editor;
 using UnityEngine;
 
-namespace DialogueSystem.Editor
+namespace WolverineSoft.DialogueSystem.Editor
 {
     /// <author>Gavin McGinness</author>
     /// <date>2025-08-21</date>

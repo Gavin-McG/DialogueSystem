@@ -1,6 +1,6 @@
 ﻿using Unity.GraphToolkit.Editor;
 
-namespace DialogueSystem.Editor
+namespace WolverineSoft.DialogueSystem.Editor
 {
     /// <author>Gavin McGinness</author>
     /// <date>2025-08-21</date>

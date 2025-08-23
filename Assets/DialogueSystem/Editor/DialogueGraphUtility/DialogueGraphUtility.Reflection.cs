@@ -4,11 +4,11 @@ using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using DialogueSystem.Runtime;
 using Unity.GraphToolkit.Editor;
 using UnityEngine;
+using WolverineSoft.DialogueSystem.Runtime;
 
-namespace DialogueSystem.Editor
+namespace WolverineSoft.DialogueSystem.Editor
 {
     internal static partial class DialogueGraphUtility
     {
