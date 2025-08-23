@@ -48,24 +48,39 @@ namespace WolverineSoft.DialogueSystem.Runtime
             _options = copyObj._options?.Select(option => option.Clone()).ToList();
         }
 
+        /// <summary>
+        /// Returns the Base Parameters of the dialogue as type T
+        /// </summary>
         public T GetBaseParams<T>() where T : BaseParams
         {
             if (_baseParams is T tBaseParams) return tBaseParams;
             return null;
         }
 
+        /// <summary>
+        /// Returns the Choice Parameters of the dialogue as type T
+        /// </summary>
         public T GetChoiceParams<T>() where T : ChoiceParams
         {
             if (_choiceParams is T tChoiceParams) return tChoiceParams;
             return null;
         }
-
+        
+        /// <summary>
+        /// Returns the Options Parameters of the dialogue as type T
+        /// </summary>
         public List<T> GetOptions<T>() where T : OptionParams
         {
             return _options
                 .OfType<T>()
                 .ToList();
         }
+        
+        //get getters
+        public Type GetBaseParamsType() => _baseParams?.GetType();
+        public Type GetChoiceParamsType() => _choiceParams?.GetType();
+        public Type GetOptionsType() => _options?.FirstOrDefault()?.GetType();
+        
 
         internal void ReplaceValues(IValueContext context)
         {

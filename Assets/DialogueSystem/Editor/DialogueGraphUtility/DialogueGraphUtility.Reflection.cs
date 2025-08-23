@@ -59,7 +59,7 @@ namespace WolverineSoft.DialogueSystem.Editor
         /// Converts a field path (with separators) into a human-readable display name.
         /// Example: "stats/maxHealth" → "Stats.Max Health"
         /// </summary>
-        private static string FieldNameToDisplayName(string fieldName)
+        public static string FieldNameToDisplayName(string fieldName)
         {
             // Replace path separators with dots for readability
             var displayName = fieldName.Replace(FieldSeparator, ".");
