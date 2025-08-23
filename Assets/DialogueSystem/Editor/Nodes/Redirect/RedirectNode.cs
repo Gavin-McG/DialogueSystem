@@ -37,10 +37,10 @@ namespace WolverineSoft.DialogueSystem.Editor
             DialogueGraphUtility.AssignDialogueData(this, dialogue.data, dialogueDict);
 
             var optionNodes = blockNodes.ToList();
-            dialogue.options = new List<ConditionalOption>();
+            dialogue.options = new List<Option>();
             foreach (var optionNode in optionNodes)
             {
-                var choiceObject = DialogueGraphUtility.GetObjectFromNode<ConditionalOption>(
+                var choiceObject = DialogueGraphUtility.GetObjectFromNode<Option>(
                     optionNode , dialogueDict);
                 dialogue.options.Add(choiceObject);
             }

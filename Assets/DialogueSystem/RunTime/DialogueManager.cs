@@ -20,7 +20,7 @@ namespace WolverineSoft.DialogueSystem.Runtime
     {
         public static DialogueManager current;
         
-        //Event invoked when dialogue is Began
+        //Event invoked when dialogue is started
         public readonly UnityEvent StartedDialogue = new();
         
         private readonly KeywordContext _keywordContext = new KeywordContext();
@@ -47,6 +47,36 @@ namespace WolverineSoft.DialogueSystem.Runtime
         public ValueScope GetValueScope(string valueName) => _valueContext.GetValueScope(valueName);
         public void ClearValues(ValueScope scope) => _valueContext.ClearValues(scope);
         #endregion
+        
+        #region SETTINGS
+        
+        /// <summary>
+        /// Gets type of current Dialogue Settings
+        /// </summary>
+        public Type GetSettingsType() => _currentDialogue?.settings.GetType();
+
+        /// <summary>
+        /// Gets the Dialogue Settings for the current dialogue
+        /// </summary>
+        public DialogueSettings GetSettings()
+        {
+            return _currentDialogue?.settings;
+        }
+        
+        /// <summary>
+        /// Gets the Dialogue Settings for the current dialogue
+        /// </summary>
+        public T GetSettings<T>() where T : DialogueSettings
+        {
+            //null if no dialogue is active
+            if (_currentDialogue == null) return null;
+            
+            var settings = _currentDialogue.settings;
+            if (settings is T tSettings) return tSettings;
+            return null;
+        }
+        
+        #endregion
 
         /// <summary>
         /// Begin a dialogue using the DialogueAsset to be started
@@ -62,19 +92,6 @@ namespace WolverineSoft.DialogueSystem.Runtime
             _currentDialogue = dialogueAsset;
             _currentTrace = dialogueAsset;
             StartedDialogue.Invoke();
-        }
-
-        /// <summary>
-        /// Gets the Dialogue Settings for the current dialogue
-        /// </summary>
-        public T GetSettings<T>() where T : DialogueSettings
-        {
-            //null if no dialogue is active
-            if (_currentDialogue == null) return null;
-            
-            var settings = _currentDialogue.settings;
-            if (settings is T tSettings) return tSettings;
-            return null;
         }
 
         /// <summary>

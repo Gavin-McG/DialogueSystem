@@ -15,7 +15,7 @@ namespace WolverineSoft.DialogueSystem.Runtime
         public DialogueTrace defaultDialogue;
         [SerializeReference] public BaseParams baseParams;
         [SerializeReference] public ChoiceParams choiceParams;
-        public List<ChoiceOption> options;
+        public List<Option> options;
         
 
         protected override DialogueTrace GetNextDialogue(AdvanceDialogueContext context, DialogueManager manager)

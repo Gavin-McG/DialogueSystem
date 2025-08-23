@@ -5,8 +5,8 @@ namespace WolverineSoft.DialogueSystem.Default.Runtime
 {
     public class DefaultOptionParams : OptionParams
     {
-        [DefaultValue("Response")]
-
+        public bool grayOut;
+        
         public override OptionParams Clone() => new DefaultOptionParams()
         {
             text = new string(text),

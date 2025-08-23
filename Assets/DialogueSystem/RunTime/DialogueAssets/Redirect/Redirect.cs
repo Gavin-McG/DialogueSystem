@@ -11,6 +11,6 @@ namespace WolverineSoft.DialogueSystem.Runtime
     public abstract class Redirect : DialogueTrace
     {
         public DialogueTrace defaultDialogue;
-        public List<ConditionalOption> options;
+        public List<Option> options;
     }
 }

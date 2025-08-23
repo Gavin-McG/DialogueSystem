@@ -5,6 +5,6 @@ using WolverineSoft.DialogueSystem.Editor;
 
 namespace WolverineSoft.DialogueSystem.Default.Editor
 {
-    [Serializable, UseWithContext(typeof(SequentialRedirectNode), typeof(RandomRedirectNode))]
-    public class KeywordConditionalNode : ConditionalNode<KeywordConditional> {}
+    [Serializable, UseWithContext(typeof(DefaultChoiceNode), typeof(SequentialRedirectNode), typeof(RandomRedirectNode))]
+    public class BasicOptionNode : OptionNode<BasicOption> {}
 }

@@ -15,9 +15,10 @@ namespace WolverineSoft.DialogueSystem.Editor
     /// </summary>
     /// <typeparam name="TBaseParams">Type of <see cref="BaseParams"/> to be used by the node</typeparam>
     /// <typeparam name="TChoiceParams">Type of <see cref="ChoiceParams"/> to be used by the node</typeparam>
-    public abstract class ChoiceNode<TBaseParams, TChoiceParams> : ContextNode, IDialogueTraceNode
+    public abstract class ChoiceNode<TBaseParams, TChoiceParams, TOptionParams> : ContextNode, IDialogueTraceNode
     where TBaseParams : BaseParams
     where TChoiceParams : ChoiceParams
+    where TOptionParams : OptionParams
     {
         private const string TimeOutPortDisplayName = "TimeOut";
         
@@ -61,10 +62,10 @@ namespace WolverineSoft.DialogueSystem.Editor
             DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref choiceParams);
             
             var optionNodes = blockNodes.ToList();
-            dialogue.options = new List<ChoiceOption>();
+            dialogue.options = new List<Option>();
             foreach (var optionNode in optionNodes)
             {
-                var choiceObject = DialogueGraphUtility.GetObjectFromNode<ChoiceOption>(
+                var choiceObject = DialogueGraphUtility.GetObjectFromNode<Option>(
                     optionNode , dialogueDict);
                 dialogue.options.Add(choiceObject);
             }

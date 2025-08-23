@@ -5,7 +5,7 @@ using WolverineSoft.DialogueSystem.Runtime.Keywords;
 
 namespace WolverineSoft.DialogueSystem.Default.Runtime
 {
-    public class KeywordConditional : ConditionalOption
+    public class KeywordConditional : Option
     {
         [DefaultValue("MyKeyword")]
         public string keyword;

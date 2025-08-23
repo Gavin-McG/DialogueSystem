@@ -3,7 +3,7 @@ using WolverineSoft.DialogueSystem.Runtime.Values;
 
 namespace WolverineSoft.DialogueSystem.Default.Runtime
 {
-    public class ValueCompConditional : ConditionalOption
+    public class ValueCompConditional : Option
     {
         public string valueName;
         public ValueComp comp;

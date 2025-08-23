@@ -6,5 +6,5 @@ using WolverineSoft.DialogueSystem.Editor;
 namespace WolverineSoft.DialogueSystem.Default.Editor
 {
     [Serializable, UseWithGraph(typeof(DialogueGraph))]
-    public class DefaultChoiceNode : ChoiceNode<DefaultBaseParams, DefaultChoiceParams> {}
+    public class DefaultChoiceNode : ChoiceNode<DefaultBaseParams, DefaultChoiceParams, DefaultOptionParams> {}
 }

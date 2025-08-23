@@ -135,7 +135,7 @@ namespace WolverineSoft.DialogueSystem.ExampleInterface
             {
                 DisplayDialogue(dialogueManager.AdvanceDialogue(new AdvanceDialogueContext()
                 {
-                    choice = -1,
+                    choice = 0,
                     inputDelay = Time.time - timeStarted,
                     timedOut = false
                 }));

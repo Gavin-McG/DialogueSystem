@@ -2,7 +2,7 @@
 
 namespace WolverineSoft.DialogueSystem.Default.Runtime
 {
-    public class BasicOption : ChoiceOption
+    public class BasicOption : Option
     {
         public override bool EvaluateCondition(AdvanceDialogueContext context, DialogueManager manager)
         {

@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 
 namespace WolverineSoft.DialogueSystem.Default.Runtime
 {
-    public class RandomConditional : ConditionalOption
+    public class RandomConditional : Option
     {
         public float chance = 0.5f;
 

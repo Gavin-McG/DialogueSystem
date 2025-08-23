@@ -49,7 +49,7 @@ namespace WolverineSoft.DialogueSystem.ExampleInterface
         IEnumerator DisplayTextRoutine()
         {
             int letterCount = 0;
-            while (letterCount < currentText.Length)
+            while (letterCount <= currentText.Length)
             {
                 string substring = currentText.Substring(0, letterCount);
                 mainText.text = substring;

@@ -2,7 +2,7 @@
 
 namespace WolverineSoft.DialogueSystem.Default.Runtime
 {
-    public class ResponseTimeConditional : ConditionalOption
+    public class ResponseTimeConditional : Option
     {
         public enum ComparisonMode
         {

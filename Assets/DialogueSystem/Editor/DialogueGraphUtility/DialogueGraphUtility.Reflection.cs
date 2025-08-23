@@ -257,10 +257,8 @@ namespace WolverineSoft.DialogueSystem.Editor
         /// - Complex types are expanded into multiple options (one per field).  
         /// - Tooltip, default value, and custom attributes are forwarded if present.  
         /// </remarks>
-        public static void DefineFieldOptions<T>(Node.IOptionDefinitionContext context)
+        public static void DefineFieldOptions(Node.IOptionDefinitionContext context, Type type)
         {
-            var type = typeof(T);
-
             if (IsBasicSupportedType(type))
             {
                 context.AddOption("value", type)
@@ -269,7 +267,7 @@ namespace WolverineSoft.DialogueSystem.Editor
                 return;
             }
 
-            var fields = GetOptionFieldsRecursive<T>();
+            var fields = GetOptionFieldsRecursive(type);
 
             foreach (var (path, field, _) in fields)
             {
@@ -286,6 +284,9 @@ namespace WolverineSoft.DialogueSystem.Editor
                     .WithDefaultValue(defaultValue);
             }
         }
+        
+        public static void DefineFieldOptions<T>(Node.IOptionDefinitionContext context) =>
+            DefineFieldOptions(context, typeof(T));
 
         /// <summary>
         /// Define node *ports* for all eligible ScriptableObject fields of type <typeparamref name="T"/>.
@@ -295,10 +296,8 @@ namespace WolverineSoft.DialogueSystem.Editor
         /// - Each ScriptableObject field creates a new port.  
         /// - If a field has a [DefaultValue] attribute, it is assigned to the port.  
         /// </remarks>
-        public static void DefineFieldPorts<T>(Node.IPortDefinitionContext context)
+        public static void DefineFieldPorts(Node.IPortDefinitionContext context, Type type)
         {
-            var type = typeof(T);
-
             var fields = GetPortFieldsRecursive(type);
 
             foreach (var (path, field, _) in fields)
@@ -321,6 +320,9 @@ namespace WolverineSoft.DialogueSystem.Editor
                 builder.Build();
             }
         }
+        
+        public static void DefineFieldPorts<T>(Node.IPortDefinitionContext context) => 
+            DefineFieldPorts(context, typeof(T));
 
         /// <summary>
         /// Creates a new instance of <typeparamref name="T"/> and assigns values
@@ -332,16 +334,15 @@ namespace WolverineSoft.DialogueSystem.Editor
         ///   and each option is assigned to the corresponding field (nested fields included).  
         /// - Reflection is used to call <c>INodeOption.TryGetValue&lt;T&gt;</c> dynamically.  
         /// </remarks>
-        public static T AssignFromFieldOptions<T>(Node node)
+        public static object AssignFromFieldOptions(Node node, Type type)
         {
-            var type = typeof(T);
-            object obj = default(T);
+            object obj = type.IsValueType ? Activator.CreateInstance(type) : null;
 
             if (IsBasicSupportedType(type))
             {
                 var option = node.GetNodeOptionByName("value");
                 if (option == null)
-                    return (T)(obj ?? default(T));
+                    return obj;
 
                 // Dynamically call INodeOption.TryGetValue<T>
                 var tryGetValue = typeof(INodeOption)
@@ -351,17 +352,16 @@ namespace WolverineSoft.DialogueSystem.Editor
                 object[] parameters = { null };
                 if ((bool)(tryGetValue?.Invoke(option, parameters) ?? false))
                 {
-                    return (T)parameters[0];
+                    return parameters[0];
                 }
 
-                // If no value, fall back to default instance
-                return (T)(type.IsValueType ? Activator.CreateInstance(type) : null);
+                return obj;
             }
 
-            // Create new instance for complex type
-            obj = Activator.CreateInstance(typeof(T));
+            // Create new instance for complex type if needed
+            obj = Activator.CreateInstance(type);
 
-            var fields = GetOptionFieldsRecursive<T>();
+            var fields = GetOptionFieldsRecursive(type);
             foreach (var (path, field, _) in fields)
             {
                 var option = node.GetNodeOptionByName(path);
@@ -370,7 +370,6 @@ namespace WolverineSoft.DialogueSystem.Editor
 
                 var fieldType = field.FieldType;
 
-                // Reflection call to TryGetValue<fieldType>
                 var tryGetValue = typeof(INodeOption)
                     .GetMethod(nameof(INodeOption.TryGetValue))
                     ?.MakeGenericMethod(fieldType);
@@ -387,7 +386,12 @@ namespace WolverineSoft.DialogueSystem.Editor
                 SetNestedFieldValue(obj, path.Split(FieldSeparator), valueToAssign);
             }
 
-            return (T)obj;
+            return obj;
+        }
+
+        public static T AssignFromFieldOptions<T>(Node node)
+        {
+            return (T)AssignFromFieldOptions(node, typeof(T));
         }
 
         /// <summary>
@@ -465,10 +469,12 @@ namespace WolverineSoft.DialogueSystem.Editor
         /// - The retrieved object is then assigned into the corresponding field.  
         /// - Fields are set recursively using <see cref="SetNestedFieldValue"/>.  
         /// </remarks>
-        public static void AssignFromFieldPorts<T>(Node node,
-            Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict, ref T obj)
+        public static object AssignFromFieldPorts(Node node,
+            Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict,
+            object obj,
+            Type objType)
         {
-            var fields = GetPortFieldsRecursive<T>();
+            var fields = GetPortFieldsRecursive(objType);
             foreach (var (path, field, _) in fields)
             {
                 var port = node.GetInputPortByName(path);
@@ -479,14 +485,22 @@ namespace WolverineSoft.DialogueSystem.Editor
 
                 // Dynamically call GetDialogueObjectValueOrNull<fieldType>
                 var getDialogueObjectMethod = typeof(DialogueGraphUtility)
-                    .GetMethod(nameof(GetDialogueObjectValueOrNull))?
-                    .MakeGenericMethod(fieldType);
+                    .GetMethod(nameof(GetDialogueObjectValueOrNull))
+                    ?.MakeGenericMethod(fieldType);
 
                 object[] parameters = { node, path, dialogueDict };
                 object valueToAssign = getDialogueObjectMethod?.Invoke(port, parameters);
 
                 SetNestedFieldValue(obj, path.Split(FieldSeparator), valueToAssign);
             }
+            return obj;
+        }
+
+        public static void AssignFromFieldPorts<T>(Node node,
+            Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict,
+            ref T obj)
+        {
+            obj = (T)AssignFromFieldPorts(node, dialogueDict, obj, typeof(T));
         }
     }
 }

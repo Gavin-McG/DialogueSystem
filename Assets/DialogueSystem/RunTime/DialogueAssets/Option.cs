@@ -1,4 +1,6 @@
-﻿namespace WolverineSoft.DialogueSystem.Runtime
+﻿using UnityEngine;
+
+namespace WolverineSoft.DialogueSystem.Runtime
 {
     /// <author>Gavin McGinness</author>
     /// <date>2025-08-21</date>
@@ -9,6 +11,8 @@
     public abstract class Option : DialogueTrace
     {
         [HideInDialogueGraph] public DialogueTrace nextDialogue;
+        [HideInDialogueGraph, SerializeReference] public OptionParams optionParams;
+        [HideInDialogueGraph] public float weight = 1;
 
         protected override DialogueTrace GetNextDialogue(AdvanceDialogueContext context, DialogueManager manager)
         {
