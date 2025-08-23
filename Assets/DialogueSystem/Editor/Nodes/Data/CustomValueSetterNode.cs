@@ -17,7 +17,7 @@ namespace WolverineSoft.DialogueSystem.Editor
     /// <typeparam name="T">Type that the node will assign values to</typeparam>
     public abstract class CustomValueSetterNode<T> : Node, IDataNode<ValueEditor>
     {
-        protected sealed override void OnDefineOptions(INodeOptionDefinition context)
+        protected sealed override void OnDefineOptions(IOptionDefinitionContext context)
         {
             DialogueGraphUtility.DefineFieldOptions<ValueSetter<T>>(context);
         }

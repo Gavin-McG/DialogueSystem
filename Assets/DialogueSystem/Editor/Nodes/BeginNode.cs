@@ -20,7 +20,7 @@ namespace WolverineSoft.DialogueSystem.Editor
         private const string EndEventPortName = "endEvents";
         private const string EndEventPortDisplayName = "End Events";
         
-        protected sealed override void OnDefineOptions(INodeOptionDefinition context)
+        protected sealed override void OnDefineOptions(IOptionDefinitionContext context)
         {
             DialogueGraphUtility.DefineFieldOptions<T>(context);
         }

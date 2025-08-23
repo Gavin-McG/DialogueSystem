@@ -20,9 +20,9 @@ namespace WolverineSoft.DialogueSystem.Editor
         private const string EventOptionName = "eventObject";
         private const string ValuePortName = "value";
 
-        protected override void OnDefineOptions(INodeOptionDefinition context)
+        protected override void OnDefineOptions(IOptionDefinitionContext context)
         {
-            context.AddNodeOption(EventOptionName, typeof(DSEventObject), "Event");
+            DialogueGraphUtility.AddNodeOption(context, EventOptionName, typeof(DSEventObject), "Event");
         }
 
         protected override void OnDefinePorts(IPortDefinitionContext context)

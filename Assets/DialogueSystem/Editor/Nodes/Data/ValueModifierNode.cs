@@ -16,7 +16,7 @@ namespace WolverineSoft.DialogueSystem.Editor
     [Serializable]
     internal class ValueModifierNode : Node, IDataNode<ValueEditor>
     {
-        protected override void OnDefineOptions(INodeOptionDefinition context)
+        protected override void OnDefineOptions(IOptionDefinitionContext context)
         {
             DialogueGraphUtility.DefineFieldOptions<ValueModifier>(context);
         }

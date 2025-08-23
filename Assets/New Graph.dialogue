@@ -390,7 +390,7 @@ MonoBehaviour:
           - rid: 5684132591421882497
           - rid: 5684132591421882498
           - rid: 5684132591421882499
-          - rid: 5684132591421882500
+          - rid: 5684132591421882715
         m_InputPortInfos:
           expandedPortsById:
             m_KeyList: []
@@ -428,14 +428,10 @@ MonoBehaviour:
           m_EnumType:
             m_Identification: WolverineSoft.DialogueSystem.Editor.ValueSetterNode+ValueTypes,
               DialogueSystem.Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-          m_Value: 0
+          m_Value: 2
         m_EnumType:
           m_Identification: WolverineSoft.DialogueSystem.Editor.ValueSetterNode+ValueTypes,
             DialogueSystem.Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-    - rid: 5684132591421882500
-      type: {class: 'Constant`1[[System.String, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
-      data:
-        m_Value: 60
     - rid: 5684132591421882501
       type: {class: ValueSetterNode, ns: WolverineSoft.DialogueSystem.Editor, asm: DialogueSystem.Editor}
       data: 
@@ -565,3 +561,7 @@ MonoBehaviour:
           m_PortDirection: 1
           m_PortOrientation: 0
           m_Title: 
+    - rid: 5684132591421882715
+      type: {class: 'Constant`1[[System.Single, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
+      data:
+        m_Value: 0

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Unity.GraphToolkit.Editor;
 
@@ -207,6 +208,24 @@ namespace WolverineSoft.DialogueSystem.Editor
                 default:
                     return default;
             }
+        }
+
+
+        public static INodeOption AddNodeOption(Node.IOptionDefinitionContext context, 
+            string optionName, Type type, string displayName=null, object defaultValue=null, string tooltip=null)
+        {
+            var builder = context.AddOption(optionName, type);
+                
+            if (displayName != null)
+                builder = builder.WithDisplayName(displayName);
+                    
+            if (defaultValue != null)
+                builder = builder.WithDefaultValue(defaultValue);
+            
+            if (tooltip != null)
+                builder = builder.WithTooltip(tooltip);
+            
+            return builder.Build();
         }
     }
 }

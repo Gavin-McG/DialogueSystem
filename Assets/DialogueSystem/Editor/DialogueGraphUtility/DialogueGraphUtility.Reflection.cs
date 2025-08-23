@@ -257,13 +257,15 @@ namespace WolverineSoft.DialogueSystem.Editor
         /// - Complex types are expanded into multiple options (one per field).  
         /// - Tooltip, default value, and custom attributes are forwarded if present.  
         /// </remarks>
-        public static void DefineFieldOptions<T>(INodeOptionDefinition context)
+        public static void DefineFieldOptions<T>(Node.IOptionDefinitionContext context)
         {
             var type = typeof(T);
 
             if (IsBasicSupportedType(type))
             {
-                context.AddNodeOption("value", type, FieldNameToDisplayName("value"));
+                context.AddOption("value", type)
+                    .WithDisplayName(FieldNameToDisplayName("value"))
+                    .Build();
                 return;
             }
 
@@ -275,12 +277,13 @@ namespace WolverineSoft.DialogueSystem.Editor
                 var tooltip = tooltipAttribute?.tooltip;
                 var displayName = FieldNameToDisplayName(path);
 
-                var attributes = field.GetCustomAttributes().ToArray();
                 var defaultValue = field.GetCustomAttribute<DefaultValueAttribute>()?.Value;
 
                 // Each field becomes an editable option in the inspector
-                context.AddNodeOption(path, field.FieldType, displayName, tooltip,
-                    attributes: attributes, defaultValue: defaultValue);
+                context.AddOption(path, field.FieldType)
+                    .WithDisplayName(displayName)
+                    .WithTooltip(tooltip)
+                    .WithDefaultValue(defaultValue);
             }
         }
 

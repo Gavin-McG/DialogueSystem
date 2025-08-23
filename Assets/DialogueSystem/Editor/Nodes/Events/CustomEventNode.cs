@@ -20,10 +20,11 @@ namespace WolverineSoft.DialogueSystem.Editor
     {
         private const string EventOptionName = "eventObject";
         
-        protected sealed override void OnDefineOptions(INodeOptionDefinition context)
+        protected sealed override void OnDefineOptions(IOptionDefinitionContext context)
         {
-            context.AddNodeOption<TEvent>(EventOptionName, "Event",
-                tooltip: "Event object to be acted upon when Dialogue is passed", defaultValue: null);
+            DialogueGraphUtility.AddNodeOption(context, 
+                EventOptionName, typeof(TEvent), "Event",
+                tooltip: "Event object to be acted upon when Dialogue is passed");
             
             DialogueGraphUtility.DefineFieldOptions<T>(context);
         }

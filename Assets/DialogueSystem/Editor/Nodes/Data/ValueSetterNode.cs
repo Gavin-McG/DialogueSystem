@@ -48,11 +48,14 @@ namespace WolverineSoft.DialogueSystem.Editor
             { ValueTypes.AudioClip, typeof(AudioClip)},
         };
         
-        protected override void OnDefineOptions(INodeOptionDefinition context)
+        protected override void OnDefineOptions(IOptionDefinitionContext context)
         {
-            context.AddNodeOption(ValueNameOptionName, typeof(string), "Value Name", defaultValue:"MyValue");
-            context.AddNodeOption(ValueScopeOptionName, typeof(ValueScope), "Scope", defaultValue:ValueScope.Dialogue);
-            context.AddNodeOption(ValueTypeOptionName, typeof(ValueTypes), "Value Type", defaultValue:ValueTypes.String);
+            DialogueGraphUtility.AddNodeOption(context, 
+                ValueNameOptionName, typeof(string), "Value Name", defaultValue:"MyValue");
+            DialogueGraphUtility.AddNodeOption(context, 
+                ValueScopeOptionName, typeof(ValueScope), "Scope", defaultValue:ValueScope.Dialogue);
+            DialogueGraphUtility.AddNodeOption(context, 
+                ValueTypeOptionName, typeof(ValueTypes), "Value Type", defaultValue:ValueTypes.String);
         }
 
         protected override void OnDefinePorts(IPortDefinitionContext context)

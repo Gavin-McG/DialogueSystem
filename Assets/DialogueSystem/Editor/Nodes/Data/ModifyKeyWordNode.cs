@@ -16,7 +16,7 @@ namespace WolverineSoft.DialogueSystem.Editor
     [Serializable]
     internal class ModifyKeyWordNode : Node, IDataNode<KeywordEditor>
     {
-        protected override void OnDefineOptions(INodeOptionDefinition context)
+        protected override void OnDefineOptions(IOptionDefinitionContext context)
         {
             DialogueGraphUtility.DefineFieldOptions<KeywordEditor>(context);
         }

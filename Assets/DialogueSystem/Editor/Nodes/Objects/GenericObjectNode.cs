@@ -20,7 +20,7 @@ namespace WolverineSoft.DialogueSystem.Editor
     {
         private static string OutputPortName => typeof(T).Name;
         
-        protected sealed override void OnDefineOptions(INodeOptionDefinition context)
+        protected sealed override void OnDefineOptions(IOptionDefinitionContext context)
         {
             DialogueGraphUtility.DefineFieldOptions<T>(context);
         }

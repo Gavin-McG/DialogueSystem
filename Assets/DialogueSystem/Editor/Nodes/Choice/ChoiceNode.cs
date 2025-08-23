@@ -21,7 +21,7 @@ namespace WolverineSoft.DialogueSystem.Editor
     {
         private const string TimeOutPortDisplayName = "TimeOut";
         
-        protected sealed override void OnDefineOptions(INodeOptionDefinition context)
+        protected sealed override void OnDefineOptions(IOptionDefinitionContext context)
         {
             DialogueGraphUtility.DefineFieldOptions<TBaseParams>(context);
             DialogueGraphUtility.DefineFieldOptions<TChoiceParams>(context);

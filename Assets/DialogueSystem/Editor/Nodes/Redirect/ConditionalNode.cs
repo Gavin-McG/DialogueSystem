@@ -23,13 +23,13 @@ namespace WolverineSoft.DialogueSystem.Editor
             DialogueGraphUtility.DefineNodeOutputPort(context);
         }
 
-        protected sealed override void OnDefineOptions(INodeOptionDefinition context)
+        protected sealed override void OnDefineOptions(IOptionDefinitionContext context)
         {
             if (contextNode==null || contextNode is RedirectNode redirectNode && redirectNode.UsesWeight)
             {
-                context.AddNodeOption<float>(WeightOptionName, "Weight",
-                    tooltip: "Percent probablility for this option to be chosen on evaluation",
-                    defaultValue: 0.5f);
+                DialogueGraphUtility.AddNodeOption(context, 
+                    WeightOptionName, typeof(float), "Weight", 0.5f,
+                    tooltip: "Percent probablility for this option to be chosen on evaluation");
             }
             
             DialogueGraphUtility.DefineFieldOptions<T>(context);

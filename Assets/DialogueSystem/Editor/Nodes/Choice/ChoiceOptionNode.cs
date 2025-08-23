@@ -18,7 +18,7 @@ namespace WolverineSoft.DialogueSystem.Editor
         where TOptionParams : OptionParams
         where TChoiceOption : ChoiceOption
     {
-        protected sealed override void OnDefineOptions(INodeOptionDefinition context)
+        protected sealed override void OnDefineOptions(IOptionDefinitionContext context)
         {
             DialogueGraphUtility.DefineFieldOptions<TChoiceOption>(context);
             DialogueGraphUtility.DefineFieldOptions<TOptionParams>(context);

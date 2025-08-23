@@ -19,7 +19,7 @@ namespace WolverineSoft.DialogueSystem.Editor
     where TBaseParams : BaseParams
     {
         
-        protected sealed override void OnDefineOptions(INodeOptionDefinition context)
+        protected sealed override void OnDefineOptions(IOptionDefinitionContext context)
         {
             DialogueGraphUtility.DefineFieldOptions<TBaseParams>(context);
         }
