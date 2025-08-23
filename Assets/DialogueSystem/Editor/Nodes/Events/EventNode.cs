@@ -22,27 +22,22 @@ namespace WolverineSoft.DialogueSystem.Editor
 
         protected override void OnDefineOptions(IOptionDefinitionContext context)
         {
-            DialogueGraphUtility.AddNodeOption(context, EventOptionName, typeof(DSEventObject), "Event");
-        }
-
-        protected override void OnDefinePorts(IPortDefinitionContext context)
-        {
-            // Try to get the event object
-            DSEventObject eventObject = DialogueGraphUtility.GetOptionValueOrDefault<DSEventObject>(this, EventOptionName);
-
+            var eventOption = DialogueGraphUtility.AddNodeOption(context, EventOptionName, typeof(DSEventObject), "Event");
+            
+            //add option for event value
+            eventOption.TryGetValue(out DSEventObject eventObject);
             if (eventObject != null)
             {
                 Type valueType = GetEventGenericType(eventObject);
                 if (valueType != null)
                 {
-                    context.AddInputPort(ValuePortName)
-                        .WithDataType(valueType)
-                        .WithDisplayName("Value")
-                        .Delayed()
-                        .Build();
+                    DialogueGraphUtility.AddNodeOption(context, ValuePortName, valueType, "Value");
                 }
             }
+        }
 
+        protected override void OnDefinePorts(IPortDefinitionContext context)
+        {
             DialogueGraphUtility.DefineDataInputPort(context);
         }
 

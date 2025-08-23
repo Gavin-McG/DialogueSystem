@@ -20,7 +20,7 @@ namespace WolverineSoft.DialogueSystem.Editor
         private const string ValueNameOptionName = "valueName";
         private const string ValueScopeOptionName = "scope";
         private const string ValueTypeOptionName = "valueType";
-        private const string ValuePortName = "value";
+        private const string ValueOptionName = "value";
         
         private enum ValueTypes
         {
@@ -54,20 +54,17 @@ namespace WolverineSoft.DialogueSystem.Editor
                 ValueNameOptionName, typeof(string), "Value Name", defaultValue:"MyValue");
             DialogueGraphUtility.AddNodeOption(context, 
                 ValueScopeOptionName, typeof(ValueScope), "Scope", defaultValue:ValueScope.Dialogue);
-            DialogueGraphUtility.AddNodeOption(context, 
+            var valueTypeOption = DialogueGraphUtility.AddNodeOption(context, 
                 ValueTypeOptionName, typeof(ValueTypes), "Value Type", defaultValue:ValueTypes.String);
+            
+            //set value option based on selected value type
+            valueTypeOption.TryGetValue(out ValueTypes valueType);
+            var optionType = _typeDict[valueType];
+            DialogueGraphUtility.AddNodeOption(context, ValueOptionName, optionType, "Value");
         }
 
         protected override void OnDefinePorts(IPortDefinitionContext context)
         {
-            ValueTypes valueType = DialogueGraphUtility.GetOptionValueOrDefault<ValueTypes>(this, ValueTypeOptionName);
-            Type portType = _typeDict[valueType];
-            context.AddInputPort(ValuePortName)
-                .WithDisplayName("Value")
-                .WithDataType(portType)
-                .Delayed()
-                .Build();
-            
             DialogueGraphUtility.DefineDataInputPort(context);
         }
 
@@ -84,10 +81,10 @@ namespace WolverineSoft.DialogueSystem.Editor
 
             // Get the input port value for that type dynamically
             MethodInfo getPortValue = typeof(DialogueGraphUtility)
-                .GetMethod(nameof(DialogueGraphUtility.GetPortValueOrDefault))
+                .GetMethod(nameof(DialogueGraphUtility.GetOptionValueOrDefault))
                 .MakeGenericMethod(selectedType);
 
-            object value = getPortValue.Invoke(null, new object[] { this, ValuePortName });
+            object value = getPortValue.Invoke(null, new object[] { this, ValueOptionName });
 
             // Build a ValueSetter<T> for the correct type
             Type setterType = typeof(ValueSetter<>).MakeGenericType(selectedType);
