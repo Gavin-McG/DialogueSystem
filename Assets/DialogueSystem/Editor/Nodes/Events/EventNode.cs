@@ -18,7 +18,7 @@ namespace WolverineSoft.DialogueSystem.Editor
     internal class EventNode : Node, IDataNode<DSEventReference>, IErrorNode
     {
         private const string EventOptionName = "eventObject";
-        private const string ValuePortName = "value";
+        private const string ValueOptionName = "value";
 
         protected override void OnDefineOptions(IOptionDefinitionContext context)
         {
@@ -31,7 +31,7 @@ namespace WolverineSoft.DialogueSystem.Editor
                 Type valueType = GetEventGenericType(eventObject);
                 if (valueType != null)
                 {
-                    DialogueGraphUtility.AddNodeOption(context, ValuePortName, valueType, "Value");
+                    DialogueGraphUtility.AddNodeOption(context, ValueOptionName, valueType, "Value");
                 }
             }
         }
@@ -74,7 +74,7 @@ namespace WolverineSoft.DialogueSystem.Editor
                 .GetMethod(nameof(DialogueGraphUtility.GetPortValueOrDefault))
                 .MakeGenericMethod(selectedType);
 
-            object value = getPortValue.Invoke(null, new object[] { this, ValuePortName });
+            object value = getPortValue.Invoke(null, new object[] { this, ValueOptionName });
 
             // Create caller instance
             object newCaller = Activator.CreateInstance(callerType);
