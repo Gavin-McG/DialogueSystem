@@ -11,9 +11,9 @@ namespace WolverineSoft.DialogueSystem.Values
     /// </summary>
     public static class ValueUtility
     {
-        public static float GetNumericValue(string valueName, IValueContext context)
+        public static float GetNumericValue(ValueSO valueSO, IValueContext context)
         {
-            object value = context.GetValue(valueName);
+            object value = context.GetValue(valueSO);
 
             switch (value)
             {
@@ -32,9 +32,9 @@ namespace WolverineSoft.DialogueSystem.Values
             }
         }
 
-        public static bool CompareNumericValue(ValueComp compOperation, string valueName, float compValue, IValueContext context)
+        public static bool CompareNumericValue(ValueComp compOperation, ValueSO valueSO, float compValue, IValueContext context)
         {
-            float value = GetNumericValue(valueName, context);
+            float value = GetNumericValue(valueSO, context);
 
             switch (compOperation)
             {
@@ -48,9 +48,9 @@ namespace WolverineSoft.DialogueSystem.Values
             }
         }
 
-        public static bool ValueEquals<T>(string valueName, T compValue, IValueContext context)
+        public static bool ValueEquals<T>(ValueSO valueSO, T compValue, IValueContext context)
         {
-            object value = context.GetValue(valueName);
+            object value = context.GetValue(valueSO);
             
             return value.Equals(compValue);
         }

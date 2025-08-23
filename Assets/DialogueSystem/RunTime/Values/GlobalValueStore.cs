@@ -13,16 +13,16 @@ namespace WolverineSoft.DialogueSystem.Values
         private static GlobalValueStore _instance;
         public static GlobalValueStore Instance => _instance ??= new GlobalValueStore();
         
-        private readonly Dictionary<string, object> _globalValues = new();
+        private readonly Dictionary<ValueSO, object> _globalValues = new();
         
-        public void Define(string valueName, object value) => _globalValues.Add(valueName, value);
-        public void Undefine(string valueName) => _globalValues.Remove(valueName);
-        public bool IsDefined(string valueName) => _globalValues.ContainsKey(valueName);
-        public bool IsDefined<T>(string valueName) => _globalValues.ContainsKey(valueName) && _globalValues[valueName] is T;
-        public object GetValue(string valueName) => _globalValues.GetValueOrDefault(valueName);
-        public T GetValue<T>(string valueName)
+        public void Define(ValueSO valueSO, object value) => _globalValues.Add(valueSO, value);
+        public void Undefine(ValueSO valueSO) => _globalValues.Remove(valueSO);
+        public bool IsDefined(ValueSO valueSO) => _globalValues.ContainsKey(valueSO);
+        public bool IsDefined<T>(ValueSO valueSO) => _globalValues.ContainsKey(valueSO) && _globalValues[valueSO] is T;
+        public object GetValue(ValueSO valueSO) => _globalValues.GetValueOrDefault(valueSO);
+        public T GetValue<T>(ValueSO valueSO)
         {
-            _globalValues.TryGetValue(valueName, out var value);
+            _globalValues.TryGetValue(valueSO, out var value);
             return value is T tValue ? tValue : default;
         }
         public void Clear() => _globalValues.Clear();

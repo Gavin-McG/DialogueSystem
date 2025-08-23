@@ -39,12 +39,14 @@ namespace WolverineSoft.DialogueSystem
         #endregion
         
         #region VALUES
-        public void DefineValue(string valueName, object value, ValueScope scope = ValueScope.Manager) => _valueContext.DefineValue(valueName, value, scope);
-        public void UndefineValue(string valueName, ValueScope scope = ValueScope.Manager) => _valueContext.UndefineValue(valueName, scope);
-        public bool IsValueDefined(string valueName) => _valueContext.IsValueDefined(valueName);
+        public void DefineValue(ValueSO valueSO, object value, ValueScope scope = ValueScope.Manager) => _valueContext.DefineValue(valueSO, value, scope);
+        public void UndefineValue(ValueSO valueSO, ValueScope scope = ValueScope.Manager) => _valueContext.UndefineValue(valueSO, scope);
+        public bool IsValueDefined(ValueSO valueSO) => _valueContext.IsValueDefined(valueSO);
+        public object GetValue(ValueSO valueSO) => _valueContext.GetValue(valueSO);
+        public T GetValue<T>(ValueSO valueSO) => _valueContext.GetValue<T>(valueSO);
         public object GetValue(string valueName) => _valueContext.GetValue(valueName);
         public T GetValue<T>(string valueName) => _valueContext.GetValue<T>(valueName);
-        public ValueScope GetValueScope(string valueName) => _valueContext.GetValueScope(valueName);
+        public ValueScope GetValueScope(ValueSO valueSO) => _valueContext.GetValueScope(valueSO);
         public void ClearValues(ValueScope scope) => _valueContext.ClearValues(scope);
         #endregion
         

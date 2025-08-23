@@ -9,34 +9,44 @@
     public interface IValueContext
     {
         /// <summary>
-        /// Defines (or redefines) a value with the given name in the specified scope.
+        /// Defines (or redefines) a value in the specified scope.
         /// </summary>
-        public void DefineValue(string valueName, object value, ValueScope scope = ValueScope.Manager);
+        public void DefineValue(ValueSO valueSO, object value, ValueScope scope = ValueScope.Manager);
 
         /// <summary>
-        /// Removes a value definition for the given name in the specified scope.
+        /// Removes a value definition in the specified scope.
         /// </summary>
-        public void UndefineValue(string valueName, ValueScope scope = ValueScope.Manager);
+        public void UndefineValue(ValueSO valueSO, ValueScope scope = ValueScope.Manager);
 
         /// <summary>
-        /// Checks if a value with the given name is currently defined in any scope.
+        /// Checks if a value with the defined in any scope.
         /// </summary>
-        public bool IsValueDefined(string valueName);
+        public bool IsValueDefined(ValueSO valueSO);
 
         /// <summary>
-        /// Retrieves the stored value by name as an object.
+        /// Retrieves the stored value as an object.
+        /// </summary>
+        public object GetValue(ValueSO valueSO);
+
+        /// <summary>
+        /// Retrieves the stored value, cast to the specified type.
+        /// </summary>
+        public T GetValue<T>(ValueSO valueSO);
+
+        /// <summary>
+        /// Retrieves the stored value by name
         /// </summary>
         public object GetValue(string valueName);
-
+        
         /// <summary>
-        /// Retrieves the stored value by name, cast to the specified type.
+        /// Retrieves the stored value by name, cast to the specified type
         /// </summary>
         public T GetValue<T>(string valueName);
 
         /// <summary>
         /// Gets the scope in which the given value name is defined.
         /// </summary>
-        public ValueScope GetValueScope(string valueName);
+        public ValueScope GetValueScope(ValueSO valueSO);
 
         /// <summary>
         /// Clears all values defined at or below the given scope.

@@ -2,15 +2,15 @@
 
 namespace WolverineSoft.DialogueSystem.Default
 {
-    public class ValueCompConditional : Option
+    public class ValueCompOption : Option
     {
-        public string valueName;
+        public ValueSO valueSO;
         public ValueComp comp;
         public float compValue;
 
         public override bool EvaluateCondition(AdvanceDialogueContext context, DialogueManager manager)
         {
-            return ValueUtility.CompareNumericValue(comp, valueName, compValue, manager);
+            return ValueUtility.CompareNumericValue(comp, valueSO, compValue, manager);
         }
     }
 }

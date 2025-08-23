@@ -12,8 +12,7 @@ namespace WolverineSoft.DialogueSystem.Values
     [Serializable]
     public sealed class ValueSetter<T> : ValueEditor
     {
-        [DefaultValue("MyValue")]
-        public string valueName;
+        public ValueSO valueSO;
 
         [DefaultValue(ValueScope.Dialogue)]
         public ValueScope scope;
@@ -22,7 +21,7 @@ namespace WolverineSoft.DialogueSystem.Values
 
         public override void SetValue(IValueContext context)
         {
-            context.DefineValue(valueName, value, scope);
+            context.DefineValue(valueSO, value, scope);
         }
     }
 }

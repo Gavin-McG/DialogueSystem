@@ -16,9 +16,16 @@ namespace WolverineSoft.DialogueSystem.Editor
     [Serializable]
     internal class ValueModifierNode : Node, IDataNode<ValueEditor>
     {
+        private const string ValueSOOptionName = "valueSO";
+        private const string OperationOptionName = "operation";
+        private const string OtherValueOptionName = "otherValue";
+        
         protected override void OnDefineOptions(IOptionDefinitionContext context)
         {
-            DialogueGraphUtility.DefineFieldOptions<ValueModifier>(context);
+            DialogueGraphUtility.AddNodeOption(context, ValueSOOptionName, typeof(ValueSO), "ValueSO");
+            DialogueGraphUtility.AddNodeOption(context, OperationOptionName, typeof(ValueOperation), "Operation");
+            DialogueGraphUtility.AddNodeOption(context, OtherValueOptionName, typeof(float), "Other Value");
+            
         }
 
         protected override void OnDefinePorts(IPortDefinitionContext context)
@@ -28,7 +35,11 @@ namespace WolverineSoft.DialogueSystem.Editor
 
         public ValueEditor GetData(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
         {
-            var valueEntry = DialogueGraphUtility.AssignFromFieldOptions<ValueModifier>(this);
+            var valueEntry = new ValueModifier();
+            valueEntry.valueSO = DialogueGraphUtility.GetOptionValueOrDefault<ValueSO>(this, ValueSOOptionName);
+            valueEntry.operation = DialogueGraphUtility.GetOptionValueOrDefault<ValueOperation>(this, OperationOptionName);
+            valueEntry.otherValue = DialogueGraphUtility.GetOptionValueOrDefault<float>(this, OtherValueOptionName);
+            
             return valueEntry;
         }
     }

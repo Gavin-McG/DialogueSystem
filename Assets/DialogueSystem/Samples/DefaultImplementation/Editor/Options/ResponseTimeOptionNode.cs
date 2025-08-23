@@ -6,5 +6,5 @@ using WolverineSoft.DialogueSystem.Editor;
 namespace WolverineSoft.DialogueSystem.Default.Editor
 {
     [Serializable, UseWithContext(typeof(DefaultChoiceNode), typeof(SequentialRedirectNode), typeof(RandomRedirectNode))]
-    public class KeywordConditionalNode : OptionNode<KeywordConditional> {}
+    public class ResponseTimeOptionNode : OptionNode<ResponseTimeOption> {}
 }

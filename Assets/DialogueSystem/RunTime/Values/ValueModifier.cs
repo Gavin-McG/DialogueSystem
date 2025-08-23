@@ -11,20 +11,20 @@ namespace WolverineSoft.DialogueSystem.Values
     [Serializable]
     public sealed class ValueModifier : ValueEditor
     {
-        public string valueName;
+        public ValueSO valueSO;
         public ValueOperation operation;
         public float otherValue;
 
         public override void SetValue(IValueContext context)
         {
             float newValue = OperateNumericValue(context);
-            ValueScope scope = context.GetValueScope(valueName);
-            context.DefineValue(valueName, newValue, scope);
+            ValueScope scope = context.GetValueScope(valueSO);
+            context.DefineValue(valueSO, newValue, scope);
         }
         
         public float OperateNumericValue(IValueContext context)
         {
-            float value = ValueUtility.GetNumericValue(valueName, context);
+            float value = ValueUtility.GetNumericValue(valueSO, context);
 
             switch (operation)
             {

@@ -17,7 +17,7 @@ namespace WolverineSoft.DialogueSystem.Editor
     [Serializable]
     internal class ValueSetterNode : Node, IDataNode<ValueEditor>, IErrorNode
     {
-        private const string ValueNameOptionName = "valueName";
+        private const string ValueSOOptionName = "valueSO";
         private const string ValueScopeOptionName = "scope";
         private const string ValueTypeOptionName = "valueType";
         private const string ValueOptionName = "value";
@@ -51,7 +51,7 @@ namespace WolverineSoft.DialogueSystem.Editor
         protected override void OnDefineOptions(IOptionDefinitionContext context)
         {
             DialogueGraphUtility.AddNodeOption(context, 
-                ValueNameOptionName, typeof(string), "Value Name", defaultValue:"MyValue");
+                ValueSOOptionName, typeof(ValueSO), "ValueSO");
             DialogueGraphUtility.AddNodeOption(context, 
                 ValueScopeOptionName, typeof(ValueScope), "Scope", defaultValue:ValueScope.Dialogue);
             var valueTypeOption = DialogueGraphUtility.AddNodeOption(context, 
@@ -71,7 +71,7 @@ namespace WolverineSoft.DialogueSystem.Editor
         public ValueEditor GetData(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
         {
             // Get user selections from options
-            string valueName = DialogueGraphUtility.GetOptionValueOrDefault<string>(this, ValueNameOptionName);
+            ValueSO valueSO = DialogueGraphUtility.GetOptionValueOrDefault<ValueSO>(this, ValueSOOptionName);
             ValueScope scope = DialogueGraphUtility.GetOptionValueOrDefault<ValueScope>(this, ValueScopeOptionName);
             ValueTypes valueType = DialogueGraphUtility.GetOptionValueOrDefault<ValueTypes>(this, ValueTypeOptionName);
 
@@ -91,7 +91,7 @@ namespace WolverineSoft.DialogueSystem.Editor
             object setterInstance = Activator.CreateInstance(setterType);
 
             // Assign fields
-            setterType.GetField("valueName")?.SetValue(setterInstance, valueName);
+            setterType.GetField("valueSO")?.SetValue(setterInstance, valueSO);
             setterType.GetField("scope")?.SetValue(setterInstance, scope);
             setterType.GetField("value")?.SetValue(setterInstance, value);
 
@@ -100,9 +100,9 @@ namespace WolverineSoft.DialogueSystem.Editor
 
         public void DisplayErrors(GraphLogger infos)
         {
-            var valueName = DialogueGraphUtility.GetOptionValueOrDefault<string>(this, ValueNameOptionName);
-            if (string.IsNullOrEmpty(valueName))
-                infos.LogWarning("Value should have a non-empty name", this);
+            var valueSO = DialogueGraphUtility.GetOptionValueOrDefault<ValueSO>(this, ValueSOOptionName);
+            if (valueSO==null)
+                infos.LogWarning("Value should not be null", this);
         }
     }
 }
