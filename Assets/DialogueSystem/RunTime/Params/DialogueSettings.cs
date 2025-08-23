@@ -7,10 +7,11 @@ namespace DialogueSystem.Runtime
     /// <date>2025-08-21</date>
     
     /// <summary>
-    /// Setting displayed on the BeginDialogueNode. Provided via the <see cref="DialogueManager"/> beginDialogue Event
+    /// Base class representing the Settings for an overall interaction.
+    /// Provided via the <see cref="DialogueManager"/>
     /// </summary>
     [Serializable]
-    public class DialogueSettings
+    public abstract class DialogueSettings
     {
         [Multiline, Tooltip("(Optional) description of dialogue purpose/contents")]
         public string dialogueDescription;

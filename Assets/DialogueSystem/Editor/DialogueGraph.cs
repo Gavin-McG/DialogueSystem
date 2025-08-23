@@ -68,7 +68,7 @@ namespace DialogueSystem.Editor
         {
             var passedCheck = true;
             
-            var beginDialogueNodes = GetNodes().OfType<BeginDialogueNode>().ToList();
+            var beginDialogueNodes = GetNodes().OfType<IBeginNode>().ToList();
             switch (beginDialogueNodes.Count)
             {
                 case 0:
@@ -78,7 +78,7 @@ namespace DialogueSystem.Editor
                 case > 1:
                     foreach (var beginDialogueNode in beginDialogueNodes.Skip(1))
                     {
-                        infos.LogWarning($"DialogueGraph only supports one {nameof(BeginDialogueNode)} by graph. " +
+                        infos.LogWarning($"DialogueGraph only supports one {nameof(IBeginNode)} by graph. " +
                                          "Only the first created one will be used.", beginDialogueNode);
                     }
                     passedCheck = false;

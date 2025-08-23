@@ -5,6 +5,6 @@ using Unity.GraphToolkit.Editor;
 
 namespace DialogueSystem.Default.Editor
 {
-    [Serializable, UseWithContext(typeof(DefaultChoiceDialogueNode))]
+    [Serializable, UseWithContext(typeof(DefaultChoiceNode))]
     public class ValueCompOptionNode : ChoiceOptionNode<DefaultOptionParams, ValueCompOption> {}
 }

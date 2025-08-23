@@ -14,20 +14,20 @@ namespace DialogueSystem.Editor
     /// Node which represents the beginning of a dialogue interaction.
     /// Has options corresponding to <see cref="DialogueSettings"/> 
     /// </summary>
-    [Serializable]
-    internal class BeginDialogueNode : Node, IDialogueTraceNode
+    public abstract class BeginNode<T> : Node, IDialogueTraceNode, IBeginNode
+    where T : DialogueSettings
     {
         private const string EndEventPortName = "endEvents";
         private const string EndEventPortDisplayName = "End Events";
         
         protected sealed override void OnDefineOptions(INodeOptionDefinition context)
         {
-            DialogueGraphUtility.DefineFieldOptions<DialogueSettings>(context);
+            DialogueGraphUtility.DefineFieldOptions<T>(context);
         }
 
         protected sealed override void OnDefinePorts(IPortDefinitionContext context)
         {
-            DialogueGraphUtility.DefineFieldPorts<DialogueSettings>(context);
+            DialogueGraphUtility.DefineFieldPorts<T>(context);
             DialogueGraphUtility.DefineNodeOutputPort(context);
             DialogueGraphUtility.DefineBasicOutputPort(context, EndEventPortName, EndEventPortDisplayName);
         }
@@ -37,7 +37,7 @@ namespace DialogueSystem.Editor
             var asset = ScriptableObject.CreateInstance<DialogueAsset>();
             asset.name = "Dialogue Asset";
             
-            asset.settings = DialogueGraphUtility.AssignFromFieldOptions<DialogueSettings>(this);
+            asset.settings = DialogueGraphUtility.AssignFromFieldOptions<T>(this);
             
             return asset;
         }

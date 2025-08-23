@@ -15,7 +15,7 @@ namespace DialogueSystem.Editor
     /// </summary>
     /// <typeparam name="TBaseParams">Type of <see cref="BaseParams"/> to be used by the node</typeparam>
     /// <typeparam name="TChoiceParams">Type of <see cref="ChoiceParams"/> to be used by the node</typeparam>
-    public abstract class ChoiceDialogueNode<TBaseParams, TChoiceParams> : ContextNode, IDialogueTraceNode
+    public abstract class ChoiceNode<TBaseParams, TChoiceParams> : ContextNode, IDialogueTraceNode
     where TBaseParams : BaseParams
     where TChoiceParams : ChoiceParams
     {
