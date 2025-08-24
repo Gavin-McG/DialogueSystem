@@ -13,7 +13,6 @@ public class ExampleDialogueDispatch : MonoBehaviour
     private void OnEnable()
     {
         StartCoroutine(DispatchRoutine());
-        dialogueEvent.AddListener(() => Debug.Log(manager.GetValue("MyValue2")));
     }
 
     IEnumerator DispatchRoutine()

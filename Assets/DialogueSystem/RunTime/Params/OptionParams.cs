@@ -5,17 +5,17 @@ using UnityEngine;
 namespace WolverineSoft.DialogueSystem
 {
     /// <author>Gavin McGinness</author>
-    /// <date>2025-08-21</date>
+    /// <date>2025-08-24</date>
     
     /// <summary>
     /// Base class representing the parameters used by choice options
     /// </summary>
     [Serializable]
-    public abstract class OptionParams
+    public abstract class OptionParams : TextParams
     {
-        public string text;
+        public OptionParams() {}
         
-        public string Text { get => text; set => text = value; }
+        protected OptionParams(OptionParams other) : base(other) {}
         
         public abstract OptionParams Clone();
     }

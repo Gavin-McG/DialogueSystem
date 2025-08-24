@@ -5,11 +5,14 @@ namespace WolverineSoft.DialogueSystem.Default
     public class DefaultBaseParams : BaseParams
     {
         public DialogueProfile profile;
-
-        public override BaseParams Clone() => new DefaultBaseParams()
+        
+        public DefaultBaseParams() {}
+        
+        protected DefaultBaseParams(DefaultBaseParams other) : base(other)
         {
-            text = new string(text),
-            profile = profile,
-        };
+            profile = other.profile;
+        }
+
+        public override BaseParams Clone() => new DefaultBaseParams(this);
     }
 }

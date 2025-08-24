@@ -8,24 +8,23 @@ using WolverineSoft.DialogueSystem.Values;
 namespace WolverineSoft.DialogueSystem.Editor
 {
     /// <author>Gavin McGinness</author>
-    /// <date>2025-08-21</date>
+    /// <date>2025-08-24</date>
     
     /// <summary>
     /// Node for performing operations on existing numeric values. 
     /// </summary>
     [Serializable]
-    internal class ValueModifierNode : Node, IDataNode<ValueEditor>
+    internal class ValueModifierNode : Node, IDataNode<ValueEditor>, IErrorNode
     {
-        private const string ValueSOOptionName = "valueSO";
-        private const string OperationOptionName = "operation";
-        private const string OtherValueOptionName = "otherValue";
-        
+        private INodeOption _valueSOOption;
+        private INodeOption _operationOption;
+        private INodeOption _otherValueOption;
+
         protected override void OnDefineOptions(IOptionDefinitionContext context)
         {
-            DialogueGraphUtility.AddNodeOption(context, ValueSOOptionName, typeof(ValueSO), "ValueSO");
-            DialogueGraphUtility.AddNodeOption(context, OperationOptionName, typeof(ValueOperation), "Operation");
-            DialogueGraphUtility.AddNodeOption(context, OtherValueOptionName, typeof(float), "Other Value");
-            
+            _valueSOOption = DialogueGraphUtility.AddNodeOption(context, "valueSO", typeof(ValueSO));
+            _operationOption = DialogueGraphUtility.AddNodeOption(context, "Operation", typeof(ValueSO.ValueOperation));
+            _otherValueOption = DialogueGraphUtility.AddNodeOption(context, "Other Value", typeof(float));
         }
 
         protected override void OnDefinePorts(IPortDefinitionContext context)
@@ -36,11 +35,19 @@ namespace WolverineSoft.DialogueSystem.Editor
         public ValueEditor GetData(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
         {
             var valueEntry = new ValueModifier();
-            valueEntry.valueSO = DialogueGraphUtility.GetOptionValueOrDefault<ValueSO>(this, ValueSOOptionName);
-            valueEntry.operation = DialogueGraphUtility.GetOptionValueOrDefault<ValueOperation>(this, OperationOptionName);
-            valueEntry.otherValue = DialogueGraphUtility.GetOptionValueOrDefault<float>(this, OtherValueOptionName);
-            
+
+            _valueSOOption.TryGetValue(out valueEntry.valueSO);
+            _operationOption.TryGetValue(out valueEntry.operation);
+            _otherValueOption.TryGetValue(out valueEntry.otherValue);
+
             return valueEntry;
+        }
+        
+        public void DisplayErrors(GraphLogger infos)
+        {
+            _valueSOOption.TryGetValue(out ValueSO valueSO);
+            if (valueSO==null)
+                infos.LogWarning("Value should not be null", this);
         }
     }
 }

@@ -6,18 +6,18 @@ using UnityEngine;
 namespace WolverineSoft.DialogueSystem
 {
     /// <author>Gavin McGinness</author>
-    /// <date>2025-08-21</date>
+    /// <date>2025-08-24</date>
     
     /// <summary>
     /// Base class representing the Base parameters shared by choice and regular dialogue
     /// </summary>
     [Serializable]
-    public abstract class BaseParams
+    public abstract class BaseParams : TextParams
     {
-        public string text;
+        public BaseParams() {}
         
-        public string Text { get => text; set => text = value; }
-
+        protected BaseParams(BaseParams other) : base(other) {}
+        
         public abstract BaseParams Clone();
     }
 }

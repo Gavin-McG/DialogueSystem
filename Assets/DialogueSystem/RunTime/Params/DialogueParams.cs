@@ -8,7 +8,7 @@ using WolverineSoft.DialogueSystem.Values;
 namespace WolverineSoft.DialogueSystem
 {
     /// <author>Gavin McGinness</author>
-    /// <date>2025-08-21</date>
+    /// <date>2025-08-24</date>
     
     /// <summary>
     /// Class used to provide data from the backend of the Dialogue system to the UI.
@@ -80,25 +80,11 @@ namespace WolverineSoft.DialogueSystem
         public Type GetBaseParamsType() => _baseParams?.GetType();
         public Type GetChoiceParamsType() => _choiceParams?.GetType();
         public Type GetOptionsType() => _options?.FirstOrDefault()?.GetType();
-        
 
-        internal void ReplaceValues(IValueContext context)
+        public void ReplaceValues(IValueContext context)
         {
-            _baseParams.Text = ReplaceTextValues(context, _baseParams.Text);
-            _options = _options?.Select(option => {
-                option.Text = ReplaceTextValues(context, option.Text);
-                return option;
-            }).ToList();
-        }
-
-        internal static string ReplaceTextValues(IValueContext context, string text)
-        {
-            return Regex.Replace(text, @"\{(.*?)\}", match =>
-            {
-                string key = match.Groups[1].Value;
-                object value = context.GetValue(key);
-                return value?.ToString() ?? "";
-            });
+            _baseParams.ReplaceText(context);
+            _options.ForEach(option => option.ReplaceText(context));
         }
     }
     

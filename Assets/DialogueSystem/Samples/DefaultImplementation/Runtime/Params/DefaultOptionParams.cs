@@ -7,9 +7,13 @@ namespace WolverineSoft.DialogueSystem.Default
     {
         public bool grayOut;
         
-        public override OptionParams Clone() => new DefaultOptionParams()
+        public DefaultOptionParams() {}
+
+        protected DefaultOptionParams(DefaultOptionParams other) : base(other)
         {
-            text = new string(text),
-        };
+            grayOut = other.grayOut;
+        }
+
+        public override OptionParams Clone() => new DefaultOptionParams(this);
     }
 }

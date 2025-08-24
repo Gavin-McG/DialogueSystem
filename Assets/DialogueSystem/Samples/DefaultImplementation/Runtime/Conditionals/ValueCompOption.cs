@@ -5,12 +5,13 @@ namespace WolverineSoft.DialogueSystem.Default
     public class ValueCompOption : Option
     {
         public ValueSO valueSO;
-        public ValueComp comp;
+        public ValueSO.ValueComp comp;
         public float compValue;
 
         public override bool EvaluateCondition(AdvanceDialogueContext context, DialogueManager manager)
         {
-            return ValueUtility.CompareNumericValue(comp, valueSO, compValue, manager);
+            valueSO.TryCompareValue(manager, comp, compValue, out var result);
+            return result;
         }
     }
 }

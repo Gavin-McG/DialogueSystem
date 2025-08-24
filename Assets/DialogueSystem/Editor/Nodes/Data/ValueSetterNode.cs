@@ -9,7 +9,7 @@ using WolverineSoft.DialogueSystem.Values;
 namespace WolverineSoft.DialogueSystem.Editor
 {
     /// <author>Gavin McGinness</author>
-    /// <date>2025-08-21</date>
+    /// <date>2025-08-24</date>
     
     /// <summary>
     /// Node for setting a value from a set of pre-defined existing types. 
@@ -17,10 +17,10 @@ namespace WolverineSoft.DialogueSystem.Editor
     [Serializable]
     internal class ValueSetterNode : Node, IDataNode<ValueEditor>, IErrorNode
     {
-        private const string ValueSOOptionName = "valueSO";
-        private const string ValueScopeOptionName = "scope";
-        private const string ValueTypeOptionName = "valueType";
-        private const string ValueOptionName = "value";
+        private INodeOption _valueSOOption;
+        private INodeOption _valueScopeOption;
+        private INodeOption _valueTypeOption;
+        private INodeOption _valueOption;
         
         private enum ValueTypes
         {
@@ -47,20 +47,28 @@ namespace WolverineSoft.DialogueSystem.Editor
             { ValueTypes.GameObject, typeof(GameObject)}, 
             { ValueTypes.AudioClip, typeof(AudioClip)},
         };
+
+        private Type GetValueType()
+        {
+            if (_valueTypeOption.TryGetValue(out ValueTypes valueType) && 
+                _typeDict.TryGetValue(valueType, out Type result))
+            {
+                return result;
+            }
+
+            return null;
+        }
         
         protected override void OnDefineOptions(IOptionDefinitionContext context)
         {
-            DialogueGraphUtility.AddNodeOption(context, 
-                ValueSOOptionName, typeof(ValueSO), "ValueSO");
-            DialogueGraphUtility.AddNodeOption(context, 
-                ValueScopeOptionName, typeof(ValueScope), "Scope", defaultValue:ValueScope.Dialogue);
-            var valueTypeOption = DialogueGraphUtility.AddNodeOption(context, 
-                ValueTypeOptionName, typeof(ValueTypes), "Value Type", defaultValue:ValueTypes.String);
+            _valueSOOption = DialogueGraphUtility.AddNodeOption(context, "ValueSO", typeof(ValueSO));
+            _valueScopeOption = DialogueGraphUtility.AddNodeOption(context, "Scope", typeof(ValueSO.ValueScope));
+            _valueTypeOption = DialogueGraphUtility.AddNodeOption(context, "Value Type", typeof(ValueTypes));
             
             //set value option based on selected value type
-            valueTypeOption.TryGetValue(out ValueTypes valueType);
-            var optionType = _typeDict[valueType];
-            DialogueGraphUtility.AddNodeOption(context, ValueOptionName, optionType, "Value");
+            Type selectedType = GetValueType();
+            if (selectedType != null)
+                _valueOption = DialogueGraphUtility.AddNodeOption(context, "Value", selectedType);
         }
 
         protected override void OnDefinePorts(IPortDefinitionContext context)
@@ -71,22 +79,12 @@ namespace WolverineSoft.DialogueSystem.Editor
         public ValueEditor GetData(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
         {
             // Get user selections from options
-            ValueSO valueSO = DialogueGraphUtility.GetOptionValueOrDefault<ValueSO>(this, ValueSOOptionName);
-            ValueScope scope = DialogueGraphUtility.GetOptionValueOrDefault<ValueScope>(this, ValueScopeOptionName);
-            ValueTypes valueType = DialogueGraphUtility.GetOptionValueOrDefault<ValueTypes>(this, ValueTypeOptionName);
-
-            // Resolve actual type from enum
-            if (!_typeDict.TryGetValue(valueType, out Type selectedType))
-                return null;
-
-            // Get the input port value for that type dynamically
-            MethodInfo getPortValue = typeof(DialogueGraphUtility)
-                .GetMethod(nameof(DialogueGraphUtility.GetOptionValueOrDefault))
-                .MakeGenericMethod(selectedType);
-
-            object value = getPortValue.Invoke(null, new object[] { this, ValueOptionName });
+            _valueSOOption.TryGetValue<ValueSO>(out var valueSO);
+            _valueScopeOption.TryGetValue<ValueSO.ValueScope>(out var scope);
+            _valueOption.TryGetValue(out object value);
 
             // Build a ValueSetter<T> for the correct type
+            Type selectedType = GetValueType();
             Type setterType = typeof(ValueSetter<>).MakeGenericType(selectedType);
             object setterInstance = Activator.CreateInstance(setterType);
 
@@ -100,7 +98,7 @@ namespace WolverineSoft.DialogueSystem.Editor
 
         public void DisplayErrors(GraphLogger infos)
         {
-            var valueSO = DialogueGraphUtility.GetOptionValueOrDefault<ValueSO>(this, ValueSOOptionName);
+            _valueSOOption.TryGetValue(out ValueSO valueSO);
             if (valueSO==null)
                 infos.LogWarning("Value should not be null", this);
         }

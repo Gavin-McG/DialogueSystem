@@ -4,7 +4,7 @@ using System.ComponentModel;
 namespace WolverineSoft.DialogueSystem.Values
 {
     /// <author>Gavin McGinness</author>
-    /// <date>2025-08-21</date>
+    /// <date>2025-08-24</date>
     
     /// <summary>
     /// ValueEditor representing the assignment of a value
@@ -14,14 +14,14 @@ namespace WolverineSoft.DialogueSystem.Values
     {
         public ValueSO valueSO;
 
-        [DefaultValue(ValueScope.Dialogue)]
-        public ValueScope scope;
+        [DefaultValue(ValueSO.ValueScope.Dialogue)]
+        public ValueSO.ValueScope scope;
         
         public T value;
 
         public override void SetValue(IValueContext context)
         {
-            context.DefineValue(valueSO, value, scope);
+            valueSO.SetValue(context, scope, value);
         }
     }
 }

@@ -8,7 +8,7 @@ using WolverineSoft.DialogueSystem.Values;
 namespace WolverineSoft.DialogueSystem
 {
     /// <author>Gavin McGinness</author>
-    /// <date>2025-08-21</date>
+    /// <date>2025-08-24</date>
     
     /// <summary>
     /// Primary Component for operating the Backend of the Dialogue System.
@@ -24,7 +24,6 @@ namespace WolverineSoft.DialogueSystem
         public readonly UnityEvent StartedDialogue = new();
         
         private readonly KeywordContext _keywordContext = new KeywordContext();
-        private readonly ValueContext _valueContext = new ValueContext();
 
         private DialogueAsset _currentDialogue;
         private DialogueTrace _currentTrace;
@@ -36,18 +35,6 @@ namespace WolverineSoft.DialogueSystem
         public void UndefineKeyword(string keyword, KeywordScope scope) => _keywordContext.UndefineKeyword(keyword, scope);
         public bool IsKeywordDefined(string keyword) => _keywordContext.IsKeywordDefined(keyword);
         public void ClearKeywords(KeywordScope scope) => _keywordContext.ClearKeywords(scope);
-        #endregion
-        
-        #region VALUES
-        public void DefineValue(ValueSO valueSO, object value, ValueScope scope = ValueScope.Manager) => _valueContext.DefineValue(valueSO, value, scope);
-        public void UndefineValue(ValueSO valueSO, ValueScope scope = ValueScope.Manager) => _valueContext.UndefineValue(valueSO, scope);
-        public bool IsValueDefined(ValueSO valueSO) => _valueContext.IsValueDefined(valueSO);
-        public object GetValue(ValueSO valueSO) => _valueContext.GetValue(valueSO);
-        public T GetValue<T>(ValueSO valueSO) => _valueContext.GetValue<T>(valueSO);
-        public object GetValue(string valueName) => _valueContext.GetValue(valueName);
-        public T GetValue<T>(string valueName) => _valueContext.GetValue<T>(valueName);
-        public ValueScope GetValueScope(ValueSO valueSO) => _valueContext.GetValueScope(valueSO);
-        public void ClearValues(ValueScope scope) => _valueContext.ClearValues(scope);
         #endregion
         
         #region SETTINGS
@@ -112,7 +99,7 @@ namespace WolverineSoft.DialogueSystem
             if (_currentTrace is IDialogueOutput outputDialogue)
             {
                 var details = new DialogueParams(outputDialogue.GetDialogueDetails(context, this));
-                details.ReplaceValues(_valueContext);
+                details.ReplaceValues(this);
                 return details;
             }
             
@@ -140,7 +127,7 @@ namespace WolverineSoft.DialogueSystem
 
             var dialogueOutput = (IDialogueOutput)_currentTrace;
             var details = new DialogueParams(dialogueOutput.GetDialogueDetails(_previousContext, this));
-            details.ReplaceValues(_valueContext);
+            details.ReplaceValues(this);
             return details;
         }
         
