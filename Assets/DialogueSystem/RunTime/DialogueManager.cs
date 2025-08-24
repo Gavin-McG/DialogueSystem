@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using WolverineSoft.DialogueSystem.Keywords;
 using WolverineSoft.DialogueSystem.Values;
 
 namespace WolverineSoft.DialogueSystem
@@ -16,26 +15,17 @@ namespace WolverineSoft.DialogueSystem
     /// <see cref="EndDialogue"/> Is only to be used when ending an interaction prematurely.
     /// Also provides interfaces for values and keywords
     /// </summary>
-    public sealed class DialogueManager : MonoBehaviour, IKeywordContext, IValueContext
+    public sealed class DialogueManager : MonoBehaviour, IValueContext
     {
         public static DialogueManager current;
         
         //Event invoked when dialogue is started
         public readonly UnityEvent StartedDialogue = new();
         
-        private readonly KeywordContext _keywordContext = new KeywordContext();
-
         private DialogueAsset _currentDialogue;
         private DialogueTrace _currentTrace;
         private AdvanceDialogueContext _previousContext;
         [HideInInspector] public List<int> optionIndexes;
-        
-        #region KEYWORDS
-        public void DefineKeyword(string keyword, KeywordScope scope) => _keywordContext.DefineKeyword(keyword, scope);
-        public void UndefineKeyword(string keyword, KeywordScope scope) => _keywordContext.UndefineKeyword(keyword, scope);
-        public bool IsKeywordDefined(string keyword) => _keywordContext.IsKeywordDefined(keyword);
-        public void ClearKeywords(KeywordScope scope) => _keywordContext.ClearKeywords(scope);
-        #endregion
         
         #region SETTINGS
         
@@ -89,7 +79,6 @@ namespace WolverineSoft.DialogueSystem
         /// </summary>
         public DialogueParams AdvanceDialogue(AdvanceDialogueContext context)
         {
-            ClearKeywords(KeywordScope.Single);
             current = this;
             
             do {
@@ -139,7 +128,6 @@ namespace WolverineSoft.DialogueSystem
             if (_currentDialogue == null) return;
             
             _currentDialogue.RunEndOperations(this);
-            ClearKeywords(KeywordScope.Dialogue);
             
             _currentDialogue = null;
             _currentTrace = null;

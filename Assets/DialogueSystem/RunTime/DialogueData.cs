@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using WolverineSoft.DialogueSystem.Keywords;
 using WolverineSoft.DialogueSystem.Values;
 
 namespace WolverineSoft.DialogueSystem
@@ -17,13 +16,11 @@ namespace WolverineSoft.DialogueSystem
     public class DialogueData
     {
         [SerializeReference] public List<DSEventReference> events;
-        public List<KeywordEditor> keywords;
         [SerializeReference] public List<ValueEditor> values;
         
         //Applies all changes that this instance represents
         public void RunOperations(DialogueManager manager)
         {
-            ModifyKeywords(manager);
             ModifyValues(manager);
             InvokeEvents(manager);
         }
@@ -33,14 +30,6 @@ namespace WolverineSoft.DialogueSystem
             foreach (var dialogueEvent in events)
             {
                 dialogueEvent.Invoke(manager);
-            }
-        }
-
-        private void ModifyKeywords(DialogueManager manager)
-        {
-            foreach (var entry in keywords)
-            {
-                entry.Apply(manager);
             }
         }
 

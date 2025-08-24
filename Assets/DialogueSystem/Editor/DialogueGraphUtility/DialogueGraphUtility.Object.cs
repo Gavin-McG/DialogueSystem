@@ -3,7 +3,6 @@ using System.Linq;
 using Unity.GraphToolkit.Editor;
 using UnityEngine;
 using WolverineSoft.DialogueSystem;
-using WolverineSoft.DialogueSystem.Keywords;
 using WolverineSoft.DialogueSystem.Values;
 
 namespace WolverineSoft.DialogueSystem.Editor
@@ -201,7 +200,6 @@ namespace WolverineSoft.DialogueSystem.Editor
             string portName = NextPortName)
         {
             data.events = GetDataType<DSEventReference>(node, dialogueDict, portName);
-            data.keywords = GetDataType<KeywordEditor>(node, dialogueDict, portName);
             data.values = GetDataType<ValueEditor>(node, dialogueDict, portName);
         }
     }
