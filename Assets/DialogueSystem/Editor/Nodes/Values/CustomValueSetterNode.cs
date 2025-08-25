@@ -15,7 +15,7 @@ namespace WolverineSoft.DialogueSystem.Editor
     /// Used for assigning value options which aren't natively supported by Graph Toolkit / <see cref="ValueSetterNode"/> 
     /// </summary>
     /// <typeparam name="T">Type that the node will assign values to</typeparam>
-    public abstract class CustomValueSetterNode<T> : Node, IDataNode<ValueEditor>
+    public abstract class CustomValueSetterNode<T> : Node, IInputDataNode<ValueEditor>
     {
         protected sealed override void OnDefineOptions(IOptionDefinitionContext context)
         {
@@ -24,10 +24,10 @@ namespace WolverineSoft.DialogueSystem.Editor
 
         protected sealed override void OnDefinePorts(IPortDefinitionContext context)
         {
-            DialogueGraphUtility.DefineDataInputPort(context);
+            DialogueGraphUtility.AddDataInputPort(context);
         }
 
-        public ValueEditor GetData()
+        public ValueEditor GetInputData()
         {
             var valueEntry = DialogueGraphUtility.AssignFromFieldOptions<ValueSetter<T>>(this);
             return valueEntry;

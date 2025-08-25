@@ -7,158 +7,72 @@ namespace WolverineSoft.DialogueSystem.Editor
 {
     internal static partial class DialogueGraphUtility
     {
-        private const string NextPortName = "next";
-        private const string PreviousPortName = "previous";
-        private const string DataPortName = "data";
+        private const string NextPortName = "Next";
+        private const string PreviousPortName = "Previous";
+        private const string DataPortName = "Data";
+        
+        public static IPort AddInputPort(Node.IPortDefinitionContext context, string portName, Type type=null, string displayName = null, PortConnectorUI portUI=PortConnectorUI.Circle, object defaultValue = null) 
+        {
+            var builder = context.AddInputPort(portName)
+                .WithConnectorUI(portUI);
+            
+            if (displayName != null)
+                builder = builder.WithDisplayName(displayName);
 
-        private const string NextPortDefaultDisplayName = "Next";
-        private const string PreviousPortDefaultDisplayName = "Previous";
-        
-        /// <summary>
-        /// Defines a basic input port with an arrowhead connector.
-        /// </summary>
-        /// <remarks>
-        /// - Minimal helper for creating a single input port by name.  
-        /// - The port has no custom display name unless explicitly set.  
-        /// </remarks>
-        public static void DefineBasicInputPort(Node.IPortDefinitionContext context, string portName)
-        {
-            context.AddInputPort(portName)
-                .WithConnectorUI(PortConnectorUI.Arrowhead)
-                .Build();
+            if (type != null)
+            {
+                var typedBuilder = builder.WithDataType(type);
+                if (defaultValue != null)
+                    typedBuilder.WithDefaultValue(defaultValue);
+                return typedBuilder.Build();
+            }
+            
+            return builder.Build();
         }
-        
-        /// <summary>
-        /// Defines a basic input port with an arrowhead connector and a custom display name.
-        /// </summary>
-        public static void DefineBasicInputPort(Node.IPortDefinitionContext context, string portName, string displayName)
+        public static IPort AddOutputPort(Node.IPortDefinitionContext context, string portName, Type type=null, string displayName = null, PortConnectorUI portUI=PortConnectorUI.Circle) 
         {
-            context.AddInputPort(portName)
-                .WithDisplayName(displayName)
-                .WithConnectorUI(PortConnectorUI.Arrowhead)
-                .Build();
-        }
-        
-        /// <summary>
-        /// Defines the standard "previous" input port for dialogue nodes.
-        /// </summary>
-        /// <remarks>
-        /// Uses the constant <c>PreviousPortName</c> and the default display name <c>PreviousPortDefaultDisplayName</c>.
-        /// </remarks>
-        public static void DefineNodeInputPort(Node.IPortDefinitionContext context)
-        {
-            DefineBasicInputPort(context, PreviousPortName, PreviousPortDefaultDisplayName);
-        }
-        
-        /// <summary>
-        /// Defines the standard "previous" input port with a custom display name.
-        /// </summary>
-        public static void DefineNodeInputPort(Node.IPortDefinitionContext context, string displayName)
-        {
-            DefineBasicInputPort(context, PreviousPortName, displayName);
-        }
-        
-        /// <summary>
-        /// Defines a basic output port with an arrowhead connector.
-        /// </summary>
-        /// <remarks>
-        /// - Minimal helper for creating a single output port by name.  
-        /// - The port has no custom display name unless explicitly set.  
-        /// </remarks>
-        public static void DefineBasicOutputPort(Node.IPortDefinitionContext context, string portName)
-        {
-            context.AddOutputPort(portName)
-                .WithConnectorUI(PortConnectorUI.Arrowhead)
-                .Build();
+            var builder = context.AddOutputPort(portName)
+                .WithConnectorUI(portUI);
+            
+            if (displayName != null)
+                builder = builder.WithDisplayName(displayName);
+
+            if (type != null)
+            {
+                var typedBuilder = builder.WithDataType(type);
+                return typedBuilder.Build();
+            }
+            
+            return builder.Build();
         }
 
-        /// <summary>
-        /// Defines a basic output port with an arrowhead connector and a custom display name.
-        /// </summary>
-        public static void DefineBasicOutputPort(Node.IPortDefinitionContext context, string portName, string displayName)
-        {
-            context.AddOutputPort(portName)
-                .WithDisplayName(displayName)
-                .WithConnectorUI(PortConnectorUI.Arrowhead)
-                .Build();
-        }
+        public static IPort AddNextPort(Node.IPortDefinitionContext context, string portName = NextPortName) =>
+            AddOutputPort(context, portName, portUI: PortConnectorUI.Arrowhead);
+        public static IPort AddPreviousPort(Node.IPortDefinitionContext context, string portName = PreviousPortName) =>
+            AddInputPort(context, portName, portUI: PortConnectorUI.Arrowhead);
+        public static IPort AddDataInputPort(Node.IPortDefinitionContext context, string portName = DataPortName) => 
+            AddInputPort(context, portName);
         
-        /// <summary>
-        /// Defines the standard "next" output port for dialogue nodes.
-        /// </summary>
-        /// <remarks>
-        /// Uses the constant <c>NextPortName</c> and the default display name <c>NextPortDefaultDisplayName</c>.
-        /// </remarks>
-        public static void DefineNodeOutputPort(Node.IPortDefinitionContext context)
-        {
-            DefineBasicOutputPort(context, NextPortName, NextPortDefaultDisplayName);
-        }
-        
-        /// <summary>
-        /// Defines the standard "next" output port with a custom display name.
-        /// </summary>
-        public static void DefineNodeOutputPort(Node.IPortDefinitionContext context, string displayName)
-        {
-            DefineBasicOutputPort(context, NextPortName, displayName);
-        }
-        
-        /// <summary>
-        /// Defines a dedicated data input port for <c>IDataNode</c> connections.
-        /// </summary>
-        /// <remarks>
-        /// - Uses a circular connector UI to differentiate it from standard dialogue flow ports.  
-        /// - The display name is hidden (empty string).  
-        /// </remarks>
-        public static void DefineDataInputPort(Node.IPortDefinitionContext context)
-        {
-            context.AddInputPort(DataPortName)
-                .WithConnectorUI(PortConnectorUI.Circle)
-                .WithDisplayName("")
-                .Build();
-        }
-        
-        /// <summary>
-        /// Safely retrieves an input port by name without throwing if it doesn't exist.
-        /// </summary>
-        /// <remarks>
-        /// - Wraps <c>INode.GetInputPortByName</c> in a <c>try/catch</c>.  
-        /// - Returns <c>null</c> instead of propagating <c>KeyNotFoundException</c>.  
-        /// </remarks>
+
         private static IPort GetInputPortByName(INode node, string portName)
         {
-            try
-            {
+            try {
                 return node.GetInputPortByName(portName);
-            }
-            catch (KeyNotFoundException)
-            {
+            } catch (KeyNotFoundException) {
                 return null;
             }
         }
         
-        /// <summary>
-        /// Safely retrieves an output port by name without throwing if it doesn't exist.
-        /// </summary>
         private static IPort GetOutputPortByName(INode node, string portName)
         {
-            try
-            {
-                return node.GetOutputPortByName(portName);
-            }
-            catch (KeyNotFoundException)
-            {
+            try {
+                return node.GetInputPortByName(portName);
+            } catch (KeyNotFoundException) {
                 return null;
             }
         }
-
-        /// <summary>
-        /// Retrieves the standard "next" dialogue port from a node.
-        /// </summary>
-        /// <returns>The "next" output port, or <c>null</c> if it does not exist.</returns>
-        public static IPort GetNextPortOrNull(INode node)
-        {
-            return GetOutputPortByName(node, NextPortName);
-        }
+        
+        
         
         /// <summary>
         /// Retrieves the value assigned to a node option, or a default if unavailable.

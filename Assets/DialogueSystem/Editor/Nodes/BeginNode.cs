@@ -14,11 +14,14 @@ namespace WolverineSoft.DialogueSystem.Editor
     /// Node which represents the beginning of a dialogue interaction.
     /// Has options corresponding to <see cref="DialogueSettings"/> 
     /// </summary>
-    public abstract class BeginNode<T> : Node, IDialogueTraceNode, IBeginNode
+    public abstract class BeginNode<T> : Node, IDialogueTraceNode, IBeginNode, IInputDataNode<DialogueTrace>
     where T : DialogueSettings
     {
-        private const string EndEventPortName = "endEvents";
-        private const string EndEventPortDisplayName = "End Events";
+        private const string EndEventPortName = "End Events";
+        
+        private IPort _nextPort;
+        private IPort _endPort;
+        private DialogueAsset _asset;
         
         protected sealed override void OnDefineOptions(IOptionDefinitionContext context)
         {
@@ -28,32 +31,34 @@ namespace WolverineSoft.DialogueSystem.Editor
         protected sealed override void OnDefinePorts(IPortDefinitionContext context)
         {
             DialogueGraphUtility.DefineFieldPorts<T>(context);
-            DialogueGraphUtility.DefineNodeOutputPort(context);
-            DialogueGraphUtility.DefineBasicOutputPort(context, EndEventPortName, EndEventPortDisplayName);
+            
+            _nextPort = DialogueGraphUtility.AddNextPort(context);
+            _endPort = DialogueGraphUtility.AddNextPort(context, EndEventPortName);
         }
 
         public ScriptableObject CreateDialogueObject()
         {
-            var asset = ScriptableObject.CreateInstance<DialogueAsset>();
-            asset.name = "Dialogue Asset";
+            _asset = ScriptableObject.CreateInstance<DialogueAsset>();
+            _asset.name = "Dialogue Asset";
             
-            asset.settings = DialogueGraphUtility.AssignFromFieldOptions<T>(this);
+            _asset.settings = DialogueGraphUtility.AssignFromFieldOptions<T>(this);
             
-            return asset;
+            return _asset;
         }
 
-        public void AssignObjectReferences(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
+        public void AssignObjectReferences()
         {
-            var asset = DialogueGraphUtility.GetObject<DialogueAsset>(this, dialogueDict);
-            var dialogueObject = DialogueGraphUtility.GetConnectedTrace(this, dialogueDict);
-            asset.nextDialogue = dialogueObject;
+            var dialogueObject = DialogueGraphUtility.GetTrace(_nextPort);
+            _asset.nextDialogue = dialogueObject;
 
-            DialogueGraphUtility.AssignDialogueData(this, asset.data);
-            DialogueGraphUtility.AssignDialogueData(this, asset.endData, EndEventPortName);
+            DialogueGraphUtility.AssignDialogueData(_asset.data, _nextPort);
+            DialogueGraphUtility.AssignDialogueData(_asset.endData, _endPort);
             
-            var settings = (T)asset.settings;
-            DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref settings);
+            var settings = (T)_asset.settings;
+            DialogueGraphUtility.AssignFromFieldPorts(this, ref settings);
         }
+
+        public DialogueTrace GetInputData() => _asset;
 
         public void DisplayErrors(GraphLogger infos)
         {

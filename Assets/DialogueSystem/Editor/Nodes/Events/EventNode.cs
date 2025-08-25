@@ -15,7 +15,7 @@ namespace WolverineSoft.DialogueSystem.Editor
     /// Defines a port based on the type parameter T of the assigned DSEvent 
     /// </summary>
     [Serializable]
-    internal class EventNode : Node, IDataNode<DSEventReference>, IErrorNode
+    internal class EventNode : Node, IInputDataNode<DSEventReference>, IErrorNode
     {
         private INodeOption _eventOption;
         private INodeOption _valueOption;
@@ -38,10 +38,10 @@ namespace WolverineSoft.DialogueSystem.Editor
 
         protected override void OnDefinePorts(IPortDefinitionContext context)
         {
-            DialogueGraphUtility.DefineDataInputPort(context);
+            DialogueGraphUtility.AddDataInputPort(context);
         }
 
-        public DSEventReference GetData()
+        public DSEventReference GetInputData()
         {
             _eventOption.TryGetValue(out DSEventObject eventObject);
             if (eventObject == null)

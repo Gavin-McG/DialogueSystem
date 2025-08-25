@@ -15,12 +15,12 @@ namespace WolverineSoft.DialogueSystem.Editor
     /// Handles logic for displaying node options from redirect weights,
     /// option parameters, and option fields.
     /// </summary>
-    public abstract class OptionNode<T> : InitializeNode, IDialogueTraceNode, IDataNode<Option>
+    public abstract class OptionNode<T> : InitializeNode, IDialogueTraceNode, IInputDataNode<Option>
         where T : Option
     {
-        private const string WeightOptionName = "Weight";
-
         private INodeOption _textOption;
+        private INodeOption _weightOption;
+        private IPort _nextPort;
         private readonly List<IPort> _valuePorts = new();
         private T _option;
         
@@ -31,9 +31,6 @@ namespace WolverineSoft.DialogueSystem.Editor
         
         protected sealed override void OnDefineInitializedOptions(IOptionDefinitionContext context)
         {
-            // Always add a "Text" option
-            _textOption = DialogueGraphUtility.AddNodeOption(context, "Text", typeof(string));
-
             // Conditional options depending on node type
             if (contextNode is RedirectNode redirectNode)
                 DefineRedirectOptions(redirectNode, context);
@@ -46,7 +43,7 @@ namespace WolverineSoft.DialogueSystem.Editor
 
         protected sealed override void OnDefinePorts(IPortDefinitionContext context)
         {
-            DialogueGraphUtility.DefineNodeOutputPort(context);
+            _nextPort = DialogueGraphUtility.AddNextPort(context);
             
             // Define ports for optionParams
             if (contextNode is not RedirectNode)
@@ -75,17 +72,13 @@ namespace WolverineSoft.DialogueSystem.Editor
         // Options & Ports
         // ───────────────────────────────────────────────
         
-        private static void DefineRedirectOptions(RedirectNode redirect, IOptionDefinitionContext context)
+        private void DefineRedirectOptions(RedirectNode redirect, IOptionDefinitionContext context)
         {
             // Redirect nodes may require a weight option
             if (redirect.UsesWeight)
             {
-                DialogueGraphUtility.AddNodeOption(
-                    context,
-                    WeightOptionName,
-                    typeof(float),
-                    displayName: "Weight",
-                    defaultValue: 0.5f,
+                _weightOption = DialogueGraphUtility.AddNodeOption(context, "Weight", 
+                    typeof(float), defaultValue: 0.5f,
                     tooltip: "Percent probability for this option to be chosen during evaluation"
                 );
             }
@@ -93,6 +86,8 @@ namespace WolverineSoft.DialogueSystem.Editor
 
         private void DefineChoiceOptions(IOptionDefinitionContext context)
         {
+            _textOption = DialogueGraphUtility.AddNodeOption(context, "Text", typeof(string));
+
             if (TryGetOptionParamType(out Type optionParamsType))
             {
                 DialogueGraphUtility.DefineFieldOptions(context, optionParamsType);
@@ -149,15 +144,16 @@ namespace WolverineSoft.DialogueSystem.Editor
                     this, optionParamsType
                 );
             }
+            
+            // Assign text parameter
+            _textOption.TryGetValue(out obj.optionParams.text);
         }
 
-        private void AssignFromChoicePorts(ref T obj, Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
+        private void AssignFromChoicePorts(ref T obj)
         {
             if (TryGetOptionParamType(out Type optionParamsType))
             {
-                obj.optionParams = (OptionParams)DialogueGraphUtility.AssignFromFieldPorts(
-                    this, dialogueDict, obj.optionParams, optionParamsType
-                );
+                obj.optionParams = (OptionParams)DialogueGraphUtility.AssignFromFieldPorts(this, obj.optionParams, optionParamsType);
             }
         }
         
@@ -173,28 +169,25 @@ namespace WolverineSoft.DialogueSystem.Editor
 
             // Redirect nodes may need weight assignment
             if (contextNode is RedirectNode redirectNode && redirectNode.UsesWeight)
-                _option.weight = DialogueGraphUtility.GetOptionValueOrDefault<float>(this, WeightOptionName);
-            else
+                _weightOption.TryGetValue(out _option.weight);
+            else if (contextNode is not RedirectNode)
                 AssignFromChoiceOptions(ref _option);
 
             // Assign from option fields
             DialogueGraphUtility.AssignFromFieldOptions(this, ref _option);
 
-            // Assign text parameter
-            _textOption.TryGetValue(out _option.optionParams.text);
-
             return _option;
         }
 
-        public void AssignObjectReferences(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
+        public void AssignObjectReferences()
         {
             // Set next dialogue
-            _option.nextDialogue = DialogueGraphUtility.GetConnectedTrace(this, dialogueDict);
+            _option.nextDialogue = DialogueGraphUtility.GetTrace(_nextPort);
 
             if (contextNode is not RedirectNode)
-                AssignFromChoicePorts(ref _option, dialogueDict);
+                AssignFromChoicePorts(ref _option);
 
-            DialogueGraphUtility.AssignDialogueData(this, _option.data);
+            DialogueGraphUtility.AssignDialogueData(_option.data, _nextPort);
 
             // Assign values for each {bracket} in the text
             foreach (var valuePort in _valuePorts)
@@ -205,10 +198,10 @@ namespace WolverineSoft.DialogueSystem.Editor
             }
 
             // Assign from option fields
-            DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref _option);
+            DialogueGraphUtility.AssignFromFieldPorts(this, ref _option);
         }
 
-        public Option GetData()
+        public Option GetInputData()
         {
             return _option;
         }

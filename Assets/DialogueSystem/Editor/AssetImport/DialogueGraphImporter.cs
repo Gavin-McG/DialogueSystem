@@ -44,12 +44,10 @@ namespace WolverineSoft.DialogueSystem.Editor
             }
             
             //Create objects for each node
-            var nodeDict = new Dictionary<IDialogueObjectNode, ScriptableObject>();
             int nonMainAssetCount = 0;
-            foreach (var objectNode in dialogueObjectNodes) 
+            foreach (var objectNode in dialogueObjectNodes)
             {
                 var dialogueObject = objectNode.CreateDialogueObject();
-                nodeDict.Add(objectNode, dialogueObject);
                 
                 if (dialogueObject is DialogueAsset asset)
                 {
@@ -67,7 +65,7 @@ namespace WolverineSoft.DialogueSystem.Editor
             var dialogueReferencNodes = dialogueObjectNodes.OfType<IDialogueReferenceNode>();
             foreach (var node in dialogueReferencNodes)
             {
-                node.AssignObjectReferences(nodeDict);
+                node.AssignObjectReferences();
             }
         }
     }

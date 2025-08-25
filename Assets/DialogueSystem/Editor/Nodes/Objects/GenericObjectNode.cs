@@ -46,9 +46,9 @@ namespace WolverineSoft.DialogueSystem.Editor
             return _object;
         }
 
-        public void AssignObjectReferences(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
+        public void AssignObjectReferences()
         {
-            DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref _object);
+            DialogueGraphUtility.AssignFromFieldPorts(this, ref _object);
         }
     }
 

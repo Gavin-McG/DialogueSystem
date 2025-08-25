@@ -16,10 +16,11 @@ namespace WolverineSoft.DialogueSystem.Editor
     /// </summary>
     /// <typeparam name="TBaseParams">Type of <see cref="BaseParams"/> to be used by the node</typeparam>
     [Serializable]
-    public abstract class DialogueNode<TBaseParams> : Node, IDialogueTraceNode
+    public abstract class DialogueNode<TBaseParams> : Node, IDialogueTraceNode, IInputDataNode<DialogueTrace>
     where TBaseParams : BaseParams
     {
         private INodeOption _textOption;
+        private IPort _nextPort;
         private readonly List<IPort> _valuePorts = new();
         private Dialogue _dialogue;
         
@@ -32,8 +33,8 @@ namespace WolverineSoft.DialogueSystem.Editor
         protected sealed override void OnDefinePorts(IPortDefinitionContext context)
         {
             // Next/Previous Port
-            DialogueGraphUtility.DefineNodeInputPort(context);
-            DialogueGraphUtility.DefineNodeOutputPort(context);
+            DialogueGraphUtility.AddPreviousPort(context);
+            _nextPort = DialogueGraphUtility.AddNextPort(context);
             
             // Param specific ports
             DialogueGraphUtility.DefineFieldPorts<TBaseParams>(context);
@@ -62,10 +63,10 @@ namespace WolverineSoft.DialogueSystem.Editor
             return _dialogue;
         }
         
-        public void AssignObjectReferences(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
+        public void AssignObjectReferences()
         {
             // Assign next dialogue
-            var dialogueTrace = DialogueGraphUtility.GetConnectedTrace(this, dialogueDict);
+            var dialogueTrace = DialogueGraphUtility.GetTrace(_nextPort);
             _dialogue.nextDialogue = dialogueTrace;
 
             // Assign valueSOs
@@ -75,12 +76,14 @@ namespace WolverineSoft.DialogueSystem.Editor
             }
             
             // Assign events & valueEditors
-            DialogueGraphUtility.AssignDialogueData(this, _dialogue.data);
+            DialogueGraphUtility.AssignDialogueData(_dialogue.data, _nextPort);
             
             // assign BaseParams from ports
             var baseParams = (TBaseParams)_dialogue.baseParams;
-            DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref baseParams);
+            DialogueGraphUtility.AssignFromFieldPorts(this, ref baseParams);
         }
+        
+        public DialogueTrace GetInputData() => _dialogue;
     }
 
 }

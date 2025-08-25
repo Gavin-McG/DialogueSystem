@@ -15,7 +15,7 @@ namespace WolverineSoft.DialogueSystem.Editor
     /// </summary>
     /// <typeparam name="T">value type of the Event</typeparam>
     /// <typeparam name="TEvent">type of the Event</typeparam>
-    public abstract class CustomEventNode<T, TEvent> : Node, IDataNode<DSEventReference>, IErrorNode
+    public abstract class CustomEventNode<T, TEvent> : Node, IInputDataNode<DSEventReference>, IErrorNode
         where TEvent : DSEvent<T>
     {
         private INodeOption _eventOption;
@@ -28,11 +28,11 @@ namespace WolverineSoft.DialogueSystem.Editor
 
         protected sealed override void OnDefinePorts(IPortDefinitionContext context)
         {
-            DialogueGraphUtility.DefineDataInputPort(context);
+            DialogueGraphUtility.AddDataInputPort(context);
             DialogueGraphUtility.DefineFieldPorts<T>(context);
         }
         
-        public DSEventReference GetData()
+        public DSEventReference GetInputData()
         {
             _eventOption.TryGetValue(out TEvent dialogueEvent);
             T value = DialogueGraphUtility.AssignFromFieldOptions<T>(this);

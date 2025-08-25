@@ -13,17 +13,19 @@ namespace WolverineSoft.DialogueSystem.Editor
     /// <summary>
     /// Base Class for Redirect Context Nodes. Redirect nodes are responsible for containing <see cref="ConditionalNode{T}"/> 
     /// </summary>
-    public abstract class RedirectNode : ContextNode, IDialogueTraceNode
+    public abstract class RedirectNode : ContextNode, IDialogueTraceNode, IInputDataNode<DialogueTrace>
     {
         private const string DefaultPortDisplayName = "Default";
+
+        private IPort _nextPort;
         private Redirect _redirect;
 
         public abstract bool UsesWeight { get; }
         
         protected sealed override void OnDefinePorts(IPortDefinitionContext context)
         {
-            DialogueGraphUtility.DefineNodeInputPort(context);
-            DialogueGraphUtility.DefineNodeOutputPort(context, DefaultPortDisplayName);
+            DialogueGraphUtility.AddPreviousPort(context);
+            _nextPort = DialogueGraphUtility.AddNextPort(context, DefaultPortDisplayName);
         }
         
         public abstract Redirect CreateRedirectObject();
@@ -34,25 +36,26 @@ namespace WolverineSoft.DialogueSystem.Editor
             return _redirect;
         }
         
-        public void AssignObjectReferences(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
+        public void AssignObjectReferences()
         {
             // Set Default nextDialogue for redirect
-            var defaultObject = DialogueGraphUtility.GetConnectedTrace(this, dialogueDict);
+            var defaultObject = DialogueGraphUtility.GetTrace(_nextPort);
             _redirect.defaultDialogue = defaultObject;
             
             // Assign Events and ValueEditors
-            DialogueGraphUtility.AssignDialogueData(this, _redirect.data);
+            DialogueGraphUtility.AssignDialogueData(_redirect.data, _nextPort);
 
             // Assign Options
-            var optionNodes = blockNodes.ToList();
+            var optionNodes = blockNodes.ToList().OfType<IInputDataNode<Option>>();
             _redirect.options = new List<Option>();
             foreach (var optionNode in optionNodes)
             {
-                var choiceObject = DialogueGraphUtility.GetObjectFromNode<Option>(
-                    optionNode , dialogueDict);
+                var choiceObject = optionNode.GetInputData();
                 _redirect.options.Add(choiceObject);
             }
         }
+
+        public DialogueTrace GetInputData() => _redirect;
         
         public void DisplayErrors(GraphLogger infos)
         {

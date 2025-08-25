@@ -16,13 +16,14 @@ namespace WolverineSoft.DialogueSystem.Editor
     /// </summary>
     /// <typeparam name="TBaseParams">Type of <see cref="BaseParams"/> to be used by the node</typeparam>
     /// <typeparam name="TChoiceParams">Type of <see cref="ChoiceParams"/> to be used by the node</typeparam>
-    public abstract class ChoiceNode<TBaseParams, TChoiceParams, TOptionParams> : ContextNode, IDialogueTraceNode
+    public abstract class ChoiceNode<TBaseParams, TChoiceParams, TOptionParams> : ContextNode, IDialogueTraceNode, IInputDataNode<DialogueTrace>
     where TBaseParams : BaseParams
     where TChoiceParams : ChoiceParams
     where TOptionParams : OptionParams
     {
         private const string TimeOutPortDisplayName = "TimeOut";
 
+        private IPort _nextPort;
         private INodeOption _textOption;
         private readonly List<IPort> _valuePorts = new();
         private ChoiceDialogue _dialogue;
@@ -39,8 +40,8 @@ namespace WolverineSoft.DialogueSystem.Editor
         protected sealed override void OnDefinePorts(IPortDefinitionContext context)
         {
             // Next/Previous Port
-            DialogueGraphUtility.DefineNodeInputPort(context);
-            DialogueGraphUtility.DefineNodeOutputPort(context, TimeOutPortDisplayName);
+            DialogueGraphUtility.AddPreviousPort(context);
+            _nextPort = DialogueGraphUtility.AddNextPort(context, TimeOutPortDisplayName);
             
             // Define ports for BaseParams and choiceParams
             DialogueGraphUtility.DefineFieldPorts<TBaseParams>(context);
@@ -71,14 +72,14 @@ namespace WolverineSoft.DialogueSystem.Editor
             return _dialogue;
         }
         
-        public void AssignObjectReferences(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
+        public void AssignObjectReferences()
         {
             // Assign default next dialogue
-            var timeOutObject = DialogueGraphUtility.GetConnectedTrace(this, dialogueDict);
+            var timeOutObject = DialogueGraphUtility.GetTrace(_nextPort);
             _dialogue.defaultDialogue = timeOutObject;
             
             // Assign events & valueEditors
-            DialogueGraphUtility.AssignDialogueData(this, _dialogue.data);
+            DialogueGraphUtility.AssignDialogueData(_dialogue.data, _nextPort);
             
             // Assign valueSOs
             foreach (var valuePort in _valuePorts)
@@ -88,19 +89,21 @@ namespace WolverineSoft.DialogueSystem.Editor
             
             // Assign BaseParams from ports
             var baseParams = (TBaseParams)_dialogue.baseParams;
-            DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref baseParams);
+            DialogueGraphUtility.AssignFromFieldPorts(this, ref baseParams);
             var choiceParams = (TChoiceParams)_dialogue.choiceParams;
-            DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref choiceParams);
+            DialogueGraphUtility.AssignFromFieldPorts(this, ref choiceParams);
             
-            // Assign node Options from 
-            var optionNodes = blockNodes.ToList().OfType<IDataNode<Option>>();
+            // Assign Options
+            var optionNodes = blockNodes.ToList().OfType<IInputDataNode<Option>>();
             _dialogue.options = new List<Option>();
             foreach (var optionNode in optionNodes)
             {
-                var choiceObject = optionNode.GetData();
+                var choiceObject = optionNode.GetInputData();
                 _dialogue.options.Add(choiceObject);
             }
         }
+
+        public DialogueTrace GetInputData() => _dialogue;
         
         public void DisplayErrors(GraphLogger infos)
         {

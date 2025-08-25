@@ -15,6 +15,6 @@ namespace WolverineSoft.DialogueSystem.Editor
         /// <summary>
         /// Method that is used to assign ScriptableObject references
         /// </summary>
-        void AssignObjectReferences(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict);
+        void AssignObjectReferences();
     }
 }

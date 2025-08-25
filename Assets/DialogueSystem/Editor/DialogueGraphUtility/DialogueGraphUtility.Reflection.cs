@@ -469,10 +469,7 @@ namespace WolverineSoft.DialogueSystem.Editor
         /// - The retrieved object is then assigned into the corresponding field.  
         /// - Fields are set recursively using <see cref="SetNestedFieldValue"/>.  
         /// </remarks>
-        public static object AssignFromFieldPorts(Node node,
-            Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict,
-            object obj,
-            Type objType)
+        public static object AssignFromFieldPorts(Node node, object obj, Type objType)
         {
             var fields = GetPortFieldsRecursive(objType);
             foreach (var (path, field, _) in fields)
@@ -488,7 +485,7 @@ namespace WolverineSoft.DialogueSystem.Editor
                     .GetMethod(nameof(GetDialogueObjectValueOrNull))
                     ?.MakeGenericMethod(fieldType);
 
-                object[] parameters = { node, path, dialogueDict };
+                object[] parameters = { node, path };
                 object valueToAssign = getDialogueObjectMethod?.Invoke(port, parameters);
 
                 SetNestedFieldValue(obj, path.Split(FieldSeparator), valueToAssign);
@@ -496,11 +493,9 @@ namespace WolverineSoft.DialogueSystem.Editor
             return obj;
         }
 
-        public static void AssignFromFieldPorts<T>(Node node,
-            Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict,
-            ref T obj)
+        public static void AssignFromFieldPorts<T>(Node node, ref T obj)
         {
-            obj = (T)AssignFromFieldPorts(node, dialogueDict, obj, typeof(T));
+            obj = (T)AssignFromFieldPorts(node, obj, typeof(T));
         }
     }
 }

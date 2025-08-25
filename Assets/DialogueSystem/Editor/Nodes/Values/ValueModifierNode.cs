@@ -14,7 +14,7 @@ namespace WolverineSoft.DialogueSystem.Editor
     /// Node for performing operations on existing numeric values. 
     /// </summary>
     [Serializable]
-    internal class ValueModifierNode : Node, IDataNode<ValueEditor>, IErrorNode
+    internal class ValueModifierNode : Node, IInputDataNode<ValueEditor>, IErrorNode
     {
         private INodeOption _valueSOOption;
         private INodeOption _operationOption;
@@ -29,10 +29,10 @@ namespace WolverineSoft.DialogueSystem.Editor
 
         protected override void OnDefinePorts(IPortDefinitionContext context)
         {
-            DialogueGraphUtility.DefineDataInputPort(context);
+            DialogueGraphUtility.AddDataInputPort(context);
         }
 
-        public ValueEditor GetData()
+        public ValueEditor GetInputData()
         {
             var valueEntry = new ValueModifier();
 

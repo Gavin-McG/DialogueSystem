@@ -15,7 +15,7 @@ namespace WolverineSoft.DialogueSystem.Editor
     /// Node for setting a value from a set of pre-defined existing types. 
     /// </summary>
     [Serializable]
-    internal class ValueSetterNode : Node, IDataNode<ValueEditor>, IErrorNode
+    internal class ValueSetterNode : Node, IInputDataNode<ValueEditor>, IErrorNode
     {
         private INodeOption _valueSOOption;
         private INodeOption _valueScopeOption;
@@ -73,10 +73,10 @@ namespace WolverineSoft.DialogueSystem.Editor
 
         protected override void OnDefinePorts(IPortDefinitionContext context)
         {
-            DialogueGraphUtility.DefineDataInputPort(context);
+            DialogueGraphUtility.AddDataInputPort(context);
         }
 
-        public ValueEditor GetData()
+        public ValueEditor GetInputData()
         {
             // Get user selections from options
             _valueSOOption.TryGetValue<ValueSO>(out var valueSO);
