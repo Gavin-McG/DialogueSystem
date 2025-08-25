@@ -77,7 +77,7 @@ MonoBehaviour:
           serializedVersion: 2
           x: 334.2857
           y: -172
-          width: 3078.286
+          width: 3129.143
           height: 1086.2856
         m_GraphElementMetaData:
         - m_Guid:
@@ -1594,7 +1594,7 @@ MonoBehaviour:
           - Value
           m_ValueList:
           - rid: 5684132633524568306
-          - rid: 5684132633524568308
+          - rid: 6376729317225005213
         m_InputPortInfos:
           expandedPortsById:
             m_KeyList: []
@@ -1613,14 +1613,10 @@ MonoBehaviour:
     - rid: 5684132633524568306
       type: {class: 'Constant`1[[WolverineSoft.DialogueSystem.DSEventObject, DialogueSystem.Runtime]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
       data:
-        m_Value: {fileID: 11400000, guid: 45963f3e1ff80214494d17ff9e258758, type: 2}
+        m_Value: {fileID: 11400000, guid: 4202de3cd76c15445886d4cae14f3513, type: 2}
     - rid: 5684132633524568307
       type: {class: EventNode, ns: WolverineSoft.DialogueSystem.Editor, asm: DialogueSystem.Editor}
       data: 
-    - rid: 5684132633524568308
-      type: {class: 'Constant`1[[System.Int32, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
-      data:
-        m_Value: 0
     - rid: 5684132633524568312
       type: {class: UserNodeModelImp, ns: Unity.GraphToolkit.Editor.Implementation, asm: Unity.GraphToolkit.Editor}
       data:
@@ -2271,3 +2267,6 @@ MonoBehaviour:
           m_PortDirection: 1
           m_PortOrientation: 0
           m_Title: Profile
+    - rid: 6376729317225005213
+      type: {class: 'Constant`1[[System.ValueTuple`2[[System.String, mscorlib],[System.String, mscorlib]], mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
+      data: 

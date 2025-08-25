@@ -51,8 +51,9 @@ namespace WolverineSoft.DialogueSystem.Editor
             DialogueGraphUtility.AssignDialogueData(_asset.data, _nextPort);
             DialogueGraphUtility.AssignDialogueData(_asset.endData, _endPort);
             
-            var settings = (T)_asset.settings;
+            var settings = Activator.CreateInstance<T>();
             DialogueGraphUtility.AssignFromNode(this, ref settings);
+            _asset.settings = settings;
         }
 
         public DialogueTrace GetInputData() => _asset;

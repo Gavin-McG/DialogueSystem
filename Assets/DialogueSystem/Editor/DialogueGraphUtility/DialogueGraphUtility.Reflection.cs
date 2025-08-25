@@ -115,7 +115,7 @@ namespace WolverineSoft.DialogueSystem.Editor
         }
 
 
-        private static IEnumerable<(string path, FieldInfo fieldInfo, Type parentType)> GetTypeFieldsRecursive(
+        private static IEnumerable<(string path, FieldInfo fieldInfo)> GetTypeFieldsRecursive(
             Type type,
             string parentPath = "",
             HashSet<Type> ancestorTypes = null)
@@ -137,7 +137,7 @@ namespace WolverineSoft.DialogueSystem.Editor
 
                 if (IsBasicSupportedType(field.FieldType))
                 {
-                    yield return (fullPath, field, type);
+                    yield return (fullPath, field);
                 }
                 else
                 {
@@ -152,12 +152,12 @@ namespace WolverineSoft.DialogueSystem.Editor
             ancestorTypes.Remove(type);
         }
         
-        public static IEnumerable<(string path, FieldInfo fieldInfo, Type parentType)> GetOptionFields(Type type) =>
+        public static IEnumerable<(string path, FieldInfo fieldInfo)> GetOptionFields(Type type) =>
             GetTypeFieldsRecursive(type).Where(entry => 
                 !entry.fieldInfo.IsDefined(typeof(DialoguePortAttribute), false)
             );
         
-        public static IEnumerable<(string path, FieldInfo fieldInfo, Type parentType)> GetPortFields(Type type) =>
+        public static IEnumerable<(string path, FieldInfo fieldInfo)> GetPortFields(Type type) =>
             GetTypeFieldsRecursive(type).Where(entry => 
                 entry.fieldInfo.IsDefined(typeof(DialoguePortAttribute), false)
             );
@@ -210,7 +210,7 @@ namespace WolverineSoft.DialogueSystem.Editor
 
             var fields = GetOptionFields(type);
 
-            foreach (var (path, field, _) in fields)
+            foreach (var (path, field) in fields)
             {
                 var displayName = FieldNameToDisplayName(path);
                 var defaultValue = field.GetCustomAttribute<DefaultValueAttribute>()?.Value;
@@ -231,7 +231,7 @@ namespace WolverineSoft.DialogueSystem.Editor
         {
             var fields = GetPortFields(type);
 
-            foreach (var (path, field, _) in fields)
+            foreach (var (path, field) in fields)
             {
                 var displayName = FieldNameToDisplayName(path);
                 var defaultValue = field.GetCustomAttribute<DefaultValueAttribute>()?.Value;
@@ -259,7 +259,7 @@ namespace WolverineSoft.DialogueSystem.Editor
             }
             
             var fields = GetOptionFields(type);
-            foreach (var (path, field, _) in fields)
+            foreach (var (path, field) in fields)
             {
                 var option = node.GetNodeOptionByName(path);
                 if (option == null) continue;
@@ -276,7 +276,7 @@ namespace WolverineSoft.DialogueSystem.Editor
             Type type = typeof(T);
         
             var fields = GetPortFields(type);
-            foreach (var (path, field, _) in fields)
+            foreach (var (path, field) in fields)
             {
                 var port = node.GetInputPortByName(path);
                 if (port == null) continue;
