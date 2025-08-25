@@ -8,7 +8,7 @@ using WolverineSoft.DialogueSystem.Values;
 namespace WolverineSoft.DialogueSystem.Editor
 {
     /// <author>Gavin McGinness</author>
-    /// <date>2025-08-21</date>
+    /// <date>2025-08-24</date>
     
     /// <summary>
     /// Helper functions that are commonly used within the DialogueGraph Editor
@@ -42,8 +42,8 @@ namespace WolverineSoft.DialogueSystem.Editor
                     return port.TryGetValue(out T attachedObject) ? attachedObject : null;
                 case IVariableNode variableNode:
                     return variableNode.variable.TryGetDefaultValue(out T varObject) ? varObject : null;
-                // case GenericObjectNode<T> objectNode:
-                //     return GetObjectFromNode<T>(objectNode, dialogueDict);
+                case IOutputDataNode<T> dataNode:
+                    return dataNode.GetOutputData();
                 default:
                     return null;
             }

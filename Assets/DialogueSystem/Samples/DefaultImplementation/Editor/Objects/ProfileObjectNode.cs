@@ -6,6 +6,6 @@ using WolverineSoft.DialogueSystem.Editor;
 namespace WolverineSoft.DialogueSystem.Default.Editor
 {
     [Serializable, UseWithGraph(typeof(DialogueGraph))]
-    public class DialogueProfileNode : GenericObjectNode<DialogueProfile> {}
+    public class ProfileObjectNode : CustomObjectNode<DialogueProfile> {}
     
 }

@@ -16,7 +16,8 @@ namespace WolverineSoft.DialogueSystem.Editor
     /// Generic Base Class for Nodes which can create scriptableObject.
     /// </summary>
     /// <typeparam name="T">Type of scriptableObject to create</typeparam>
-    public abstract class GenericObjectNode<T> : Node, IDialogueReferenceNode where T : ScriptableObject
+    public abstract class CustomObjectNode<T> : Node, IDialogueReferenceNode, IOutputDataNode<T>
+        where T : ScriptableObject
     {
         private T _object;
         
@@ -50,6 +51,8 @@ namespace WolverineSoft.DialogueSystem.Editor
         {
             DialogueGraphUtility.AssignFromFieldPorts(this, ref _object);
         }
+
+        public T GetOutputData() => _object;
     }
 
 }
