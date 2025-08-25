@@ -27,7 +27,7 @@ namespace WolverineSoft.DialogueSystem.Editor
         protected sealed override void OnDefineOptions(IOptionDefinitionContext context)
         {
             _textOption = DialogueGraphUtility.AddNodeOption(context, "Text", typeof(string));
-            DialogueGraphUtility.DefineFieldOptions<TBaseParams>(context);
+            DialogueGraphUtility.AddTypeOptions<TBaseParams>(context);
         }
 
         protected sealed override void OnDefinePorts(IPortDefinitionContext context)
@@ -37,7 +37,7 @@ namespace WolverineSoft.DialogueSystem.Editor
             _nextPort = DialogueGraphUtility.AddNextPort(context);
             
             // Param specific ports
-            DialogueGraphUtility.DefineFieldPorts<TBaseParams>(context);
+            DialogueGraphUtility.AddTypePorts<TBaseParams>(context);
             
             // Create input ports for each {bracket} in the text
             _textOption.TryGetValue(out string text);
@@ -55,11 +55,6 @@ namespace WolverineSoft.DialogueSystem.Editor
             // Create dialogue asset
             _dialogue = ScriptableObject.CreateInstance<Dialogue>();
             _dialogue.name = "Basic Dialogue";
-            
-            // Assign dialogue fields from options
-            _dialogue.baseParams = DialogueGraphUtility.AssignFromFieldOptions<TBaseParams>(this);
-            _textOption.TryGetValue(out _dialogue.baseParams.text);
-            
             return _dialogue;
         }
         
@@ -68,19 +63,21 @@ namespace WolverineSoft.DialogueSystem.Editor
             // Assign next dialogue
             var dialogueTrace = DialogueGraphUtility.GetTrace(_nextPort);
             _dialogue.nextDialogue = dialogueTrace;
-
-            // Assign valueSOs
-            foreach (var valuePort in _valuePorts)
-            {
-                _dialogue.baseParams.values.Add(DialogueGraphUtility.GetPortValueOrDefault<ValueSO>(this, valuePort.name));
-            }
             
             // Assign events & valueEditors
             DialogueGraphUtility.AssignDialogueData(_dialogue.data, _nextPort);
             
-            // assign BaseParams from ports
-            var baseParams = (TBaseParams)_dialogue.baseParams;
-            DialogueGraphUtility.AssignFromFieldPorts(this, ref baseParams);
+            // Assign BaseParams
+            var baseParams = Activator.CreateInstance<TBaseParams>();
+            DialogueGraphUtility.AssignFromNode(this, ref baseParams);
+            _dialogue.baseParams = baseParams;
+            _textOption.TryGetValue(out _dialogue.baseParams.text);
+            
+            // Assign other BaseParam values
+            foreach (var valuePort in _valuePorts)
+            {
+                _dialogue.baseParams.values.Add(DialogueGraphUtility.GetPortValueOrDefault<ValueSO>(this, valuePort.name));
+            }
         }
         
         public DialogueTrace GetInputData() => _dialogue;

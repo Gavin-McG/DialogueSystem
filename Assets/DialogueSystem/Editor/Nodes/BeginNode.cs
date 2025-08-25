@@ -25,12 +25,12 @@ namespace WolverineSoft.DialogueSystem.Editor
         
         protected sealed override void OnDefineOptions(IOptionDefinitionContext context)
         {
-            DialogueGraphUtility.DefineFieldOptions<T>(context);
+            DialogueGraphUtility.AddTypeOptions<T>(context);
         }
 
         protected sealed override void OnDefinePorts(IPortDefinitionContext context)
         {
-            DialogueGraphUtility.DefineFieldPorts<T>(context);
+            DialogueGraphUtility.AddTypePorts<T>(context);
             
             _nextPort = DialogueGraphUtility.AddNextPort(context);
             _endPort = DialogueGraphUtility.AddNextPort(context, EndEventPortName);
@@ -40,9 +40,6 @@ namespace WolverineSoft.DialogueSystem.Editor
         {
             _asset = ScriptableObject.CreateInstance<DialogueAsset>();
             _asset.name = "Dialogue Asset";
-            
-            _asset.settings = DialogueGraphUtility.AssignFromFieldOptions<T>(this);
-            
             return _asset;
         }
 
@@ -55,7 +52,7 @@ namespace WolverineSoft.DialogueSystem.Editor
             DialogueGraphUtility.AssignDialogueData(_asset.endData, _endPort);
             
             var settings = (T)_asset.settings;
-            DialogueGraphUtility.AssignFromFieldPorts(this, ref settings);
+            DialogueGraphUtility.AssignFromNode(this, ref settings);
         }
 
         public DialogueTrace GetInputData() => _asset;

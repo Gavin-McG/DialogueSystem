@@ -33,8 +33,8 @@ namespace WolverineSoft.DialogueSystem.Editor
             _textOption = DialogueGraphUtility.AddNodeOption(context, "Text", typeof(string));
             
             // Define options for BaseParams and choiceParams
-            DialogueGraphUtility.DefineFieldOptions<TBaseParams>(context);
-            DialogueGraphUtility.DefineFieldOptions<TChoiceParams>(context);
+            DialogueGraphUtility.AddTypeOptions<TBaseParams>(context);
+            DialogueGraphUtility.AddTypeOptions<TChoiceParams>(context);
         }
 
         protected sealed override void OnDefinePorts(IPortDefinitionContext context)
@@ -44,8 +44,8 @@ namespace WolverineSoft.DialogueSystem.Editor
             _nextPort = DialogueGraphUtility.AddNextPort(context, TimeOutPortDisplayName);
             
             // Define ports for BaseParams and choiceParams
-            DialogueGraphUtility.DefineFieldPorts<TBaseParams>(context);
-            DialogueGraphUtility.DefineFieldPorts<TChoiceParams>(context);
+            DialogueGraphUtility.AddTypePorts<TBaseParams>(context);
+            DialogueGraphUtility.AddTypePorts<TChoiceParams>(context);
             
             // Create input ports for each {bracket} in the text
             _textOption.TryGetValue(out string text);
@@ -64,11 +64,6 @@ namespace WolverineSoft.DialogueSystem.Editor
             _dialogue = ScriptableObject.CreateInstance<ChoiceDialogue>();
             _dialogue.name = "Choice Dialogue";
             
-            // Assign dialogue fields from options
-            _dialogue.baseParams = DialogueGraphUtility.AssignFromFieldOptions<TBaseParams>(this);
-            _textOption.TryGetValue(out _dialogue.baseParams.text);
-            _dialogue.choiceParams = DialogueGraphUtility.AssignFromFieldOptions<TChoiceParams>(this);
-            
             return _dialogue;
         }
         
@@ -81,17 +76,22 @@ namespace WolverineSoft.DialogueSystem.Editor
             // Assign events & valueEditors
             DialogueGraphUtility.AssignDialogueData(_dialogue.data, _nextPort);
             
-            // Assign valueSOs
+            // Assign BaseParams
+            var baseParams = Activator.CreateInstance<TBaseParams>();
+            DialogueGraphUtility.AssignFromNode(this, ref baseParams);
+            _dialogue.baseParams = baseParams;
+            
+            // Assign other BaseParam values
+            _textOption.TryGetValue(out _dialogue.baseParams.text);
             foreach (var valuePort in _valuePorts)
             {
                 _dialogue.baseParams.values.Add(DialogueGraphUtility.GetPortValueOrDefault<ValueSO>(this, valuePort.name));
             }
             
-            // Assign BaseParams from ports
-            var baseParams = (TBaseParams)_dialogue.baseParams;
-            DialogueGraphUtility.AssignFromFieldPorts(this, ref baseParams);
-            var choiceParams = (TChoiceParams)_dialogue.choiceParams;
-            DialogueGraphUtility.AssignFromFieldPorts(this, ref choiceParams);
+            // Assign ChoiceParams
+            var choiceParams = Activator.CreateInstance<TChoiceParams>();
+            DialogueGraphUtility.AssignFromNode(this, ref choiceParams);
+            _dialogue.choiceParams = choiceParams;
             
             // Assign Options
             var optionNodes = blockNodes.ToList().OfType<IInputDataNode<Option>>();

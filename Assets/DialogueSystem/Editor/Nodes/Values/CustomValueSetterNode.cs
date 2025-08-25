@@ -19,17 +19,20 @@ namespace WolverineSoft.DialogueSystem.Editor
     {
         protected sealed override void OnDefineOptions(IOptionDefinitionContext context)
         {
-            DialogueGraphUtility.DefineFieldOptions<ValueSetter<T>>(context);
+            DialogueGraphUtility.AddTypeOptions<ValueSetter<T>>(context);
         }
 
         protected sealed override void OnDefinePorts(IPortDefinitionContext context)
         {
             DialogueGraphUtility.AddDataInputPort(context);
+            
+            DialogueGraphUtility.AddTypePorts<ValueSetter<T>>(context);
         }
 
         public ValueEditor GetInputData()
         {
-            var valueEntry = DialogueGraphUtility.AssignFromFieldOptions<ValueSetter<T>>(this);
+            ValueSetter<T> valueEntry = null;
+            DialogueGraphUtility.AssignFromNode<ValueSetter<T>>(this, ref valueEntry);
             return valueEntry;
         }
     }

@@ -23,19 +23,20 @@ namespace WolverineSoft.DialogueSystem.Editor
         protected sealed override void OnDefineOptions(IOptionDefinitionContext context)
         {
             _eventOption = DialogueGraphUtility.AddNodeOption(context, "Event", typeof(TEvent));
-            DialogueGraphUtility.DefineFieldOptions<T>(context);
+            DialogueGraphUtility.AddTypeOptions<T>(context);
         }
 
         protected sealed override void OnDefinePorts(IPortDefinitionContext context)
         {
             DialogueGraphUtility.AddDataInputPort(context);
-            DialogueGraphUtility.DefineFieldPorts<T>(context);
+            DialogueGraphUtility.AddTypePorts<T>(context);
         }
         
         public DSEventReference GetInputData()
         {
             _eventOption.TryGetValue(out TEvent dialogueEvent);
-            T value = DialogueGraphUtility.AssignFromFieldOptions<T>(this);
+            T value = default(T);
+            DialogueGraphUtility.AssignFromNode(this, ref value);
             return new DSEventCaller<T>()
             {
                 dialogueEvent = dialogueEvent,

@@ -25,12 +25,12 @@ namespace WolverineSoft.DialogueSystem.Editor
         
         protected sealed override void OnDefineOptions(IOptionDefinitionContext context)
         {
-            DialogueGraphUtility.DefineFieldOptions<T>(context);
+            DialogueGraphUtility.AddTypeOptions<T>(context);
         }
 
         protected sealed override void OnDefinePorts(IPortDefinitionContext context)
         {
-            DialogueGraphUtility.DefineFieldPorts<T>(context);
+            DialogueGraphUtility.AddTypePorts<T>(context);
             
             context.AddOutputPort<T>(nameof(T))
                 .WithDisplayName(ObjectName)
@@ -40,16 +40,13 @@ namespace WolverineSoft.DialogueSystem.Editor
         public ScriptableObject CreateDialogueObject()
         {
             _object = ScriptableObject.CreateInstance<T>();
-
-            DialogueGraphUtility.AssignFromFieldOptions(this, ref _object);
             _object.name = ObjectName;
-
             return _object;
         }
 
         public void AssignObjectReferences()
         {
-            DialogueGraphUtility.AssignFromFieldPorts(this, ref _object);
+            DialogueGraphUtility.AssignFromNode(this, ref _object);
         }
 
         public T GetOutputData() => _object;

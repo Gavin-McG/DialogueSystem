@@ -38,7 +38,7 @@ namespace WolverineSoft.DialogueSystem.Editor
                 DefineChoiceOptions(context);
 
             // Options from the Option's fields
-            DialogueGraphUtility.DefineFieldOptions<T>(context);
+            DialogueGraphUtility.AddTypeOptions<T>(context);
         }
 
         protected sealed override void OnDefinePorts(IPortDefinitionContext context)
@@ -50,7 +50,7 @@ namespace WolverineSoft.DialogueSystem.Editor
                 DefineChoicePorts(context);
 
             // Ports from the Option's fields
-            DialogueGraphUtility.DefineFieldPorts<T>(context);
+            DialogueGraphUtility.AddTypePorts<T>(context);
 
             // Create input ports for each {bracket} in the text
             if (_textOption?.TryGetValue(out string text) ?? false)
@@ -90,7 +90,7 @@ namespace WolverineSoft.DialogueSystem.Editor
 
             if (TryGetOptionParamType(out Type optionParamsType))
             {
-                DialogueGraphUtility.DefineFieldOptions(context, optionParamsType);
+                DialogueGraphUtility.AddTypeOptions(context, optionParamsType);
             }
         }
 
@@ -98,7 +98,7 @@ namespace WolverineSoft.DialogueSystem.Editor
         {
             if (TryGetOptionParamType(out Type optionParamsType))
             {
-                DialogueGraphUtility.DefineFieldPorts(context, optionParamsType);
+                DialogueGraphUtility.AddTypePorts(context, optionParamsType);
             }
         }
         
@@ -135,26 +135,19 @@ namespace WolverineSoft.DialogueSystem.Editor
         // ───────────────────────────────────────────────
         // Assignment Helpers
         // ───────────────────────────────────────────────
-        
-        private void AssignFromChoiceOptions(ref T obj)
+
+        private void AssignChoiceFields()
         {
             if (TryGetOptionParamType(out Type optionParamsType))
             {
-                obj.optionParams = (OptionParams)DialogueGraphUtility.AssignFromFieldOptions(
-                    this, optionParamsType
-                );
+                object optionParams = null;
+                DialogueGraphUtility.AssignFromNodeNonGeneric(this, optionParamsType, ref optionParams);
+                if (_option == null) Debug.Log(2);
+                _option.optionParams = (OptionParams)optionParams;
             }
             
             // Assign text parameter
-            _textOption.TryGetValue(out obj.optionParams.text);
-        }
-
-        private void AssignFromChoicePorts(ref T obj)
-        {
-            if (TryGetOptionParamType(out Type optionParamsType))
-            {
-                obj.optionParams = (OptionParams)DialogueGraphUtility.AssignFromFieldPorts(this, obj.optionParams, optionParamsType);
-            }
+            _textOption.TryGetValue(out _option.optionParams.text);
         }
         
         
@@ -166,16 +159,6 @@ namespace WolverineSoft.DialogueSystem.Editor
         {
             _option = ScriptableObject.CreateInstance<T>();
             _option.name = DialogueGraphUtility.FieldNameToDisplayName(typeof(T).Name);
-
-            // Redirect nodes may need weight assignment
-            if (contextNode is RedirectNode redirectNode && redirectNode.UsesWeight)
-                _weightOption.TryGetValue(out _option.weight);
-            else if (contextNode is not RedirectNode)
-                AssignFromChoiceOptions(ref _option);
-
-            // Assign from option fields
-            DialogueGraphUtility.AssignFromFieldOptions(this, ref _option);
-
             return _option;
         }
 
@@ -183,10 +166,17 @@ namespace WolverineSoft.DialogueSystem.Editor
         {
             // Set next dialogue
             _option.nextDialogue = DialogueGraphUtility.GetTrace(_nextPort);
+            
+            // Assign from option fields
+            DialogueGraphUtility.AssignFromNode(this, ref _option);
 
-            if (contextNode is not RedirectNode)
-                AssignFromChoicePorts(ref _option);
+            // Assign choice/redirect specific parameters
+            if (contextNode is RedirectNode redirectNode && redirectNode.UsesWeight)
+                _weightOption.TryGetValue(out _option.weight);
+            else if (contextNode is not RedirectNode)
+                AssignChoiceFields();
 
+            // Assign Events and Values
             DialogueGraphUtility.AssignDialogueData(_option.data, _nextPort);
 
             // Assign values for each {bracket} in the text
@@ -196,9 +186,6 @@ namespace WolverineSoft.DialogueSystem.Editor
                     DialogueGraphUtility.GetPortValueOrDefault<ValueSO>(this, valuePort.name)
                 );
             }
-
-            // Assign from option fields
-            DialogueGraphUtility.AssignFromFieldPorts(this, ref _option);
         }
 
         public Option GetInputData()

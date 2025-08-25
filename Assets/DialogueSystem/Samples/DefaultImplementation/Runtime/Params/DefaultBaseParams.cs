@@ -4,7 +4,7 @@ namespace WolverineSoft.DialogueSystem.Default
 {
     public class DefaultBaseParams : BaseParams
     {
-        public DialogueProfile profile;
+        [DialoguePort] public DialogueProfile profile;
         
         public DefaultBaseParams() {}
         

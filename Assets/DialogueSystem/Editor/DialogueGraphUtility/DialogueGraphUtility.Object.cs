@@ -23,15 +23,7 @@ namespace WolverineSoft.DialogueSystem.Editor
         /// Gets a ScriptableObject of type T from a port. 
         /// Object can be retrieved via assignment, IVariableNode, or GenericObjectNode
         /// </summary>
-        public static T GetDialogueObjectValueOrNull<T>(
-            INode node,
-            string portName)
-            where T : ScriptableObject
-        {
-            // Get port for object
-            var port = GetInputPortByName(node, portName);
-            if (port == null) return null;
-
+        public static T GetPortValue<T>(IPort port) {
             // Try to get object value from connected variable
             var connectedPort = port.firstConnectedPort;
             var connectedNode = connectedPort?.GetNode();
@@ -39,13 +31,13 @@ namespace WolverineSoft.DialogueSystem.Editor
             switch (connectedNode)
             {
                 case null:
-                    return port.TryGetValue(out T attachedObject) ? attachedObject : null;
+                    return port.TryGetValue(out T attachedObject) ? attachedObject : default;
                 case IVariableNode variableNode:
-                    return variableNode.variable.TryGetDefaultValue(out T varObject) ? varObject : null;
+                    return variableNode.variable.TryGetDefaultValue(out T varObject) ? varObject : default;
                 case IOutputDataNode<T> dataNode:
                     return dataNode.GetOutputData();
                 default:
-                    return null;
+                    return default;
             }
         }
 
