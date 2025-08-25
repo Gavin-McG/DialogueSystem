@@ -32,7 +32,7 @@ namespace WolverineSoft.DialogueSystem.Editor
             DialogueGraphUtility.DefineDataInputPort(context);
         }
 
-        public ValueEditor GetData(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
+        public ValueEditor GetData()
         {
             var valueEntry = new ValueModifier();
 

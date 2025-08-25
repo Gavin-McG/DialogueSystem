@@ -16,33 +16,41 @@ namespace WolverineSoft.DialogueSystem.Editor
     public abstract class RedirectNode : ContextNode, IDialogueTraceNode
     {
         private const string DefaultPortDisplayName = "Default";
+        private Redirect _redirect;
 
         public abstract bool UsesWeight { get; }
         
         protected sealed override void OnDefinePorts(IPortDefinitionContext context)
         {
             DialogueGraphUtility.DefineNodeInputPort(context);
-
             DialogueGraphUtility.DefineNodeOutputPort(context, DefaultPortDisplayName);
         }
         
-        public abstract ScriptableObject CreateDialogueObject();
+        public abstract Redirect CreateRedirectObject();
 
+        public ScriptableObject CreateDialogueObject()
+        {
+            _redirect = CreateRedirectObject();
+            return _redirect;
+        }
+        
         public void AssignObjectReferences(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
         {
-            var dialogue = DialogueGraphUtility.GetObject<Redirect>(this, dialogueDict);
+            // Set Default nextDialogue for redirect
             var defaultObject = DialogueGraphUtility.GetConnectedTrace(this, dialogueDict);
-            dialogue.defaultDialogue = defaultObject;
+            _redirect.defaultDialogue = defaultObject;
             
-            DialogueGraphUtility.AssignDialogueData(this, dialogue.data, dialogueDict);
+            // Assign Events and ValueEditors
+            DialogueGraphUtility.AssignDialogueData(this, _redirect.data);
 
+            // Assign Options
             var optionNodes = blockNodes.ToList();
-            dialogue.options = new List<Option>();
+            _redirect.options = new List<Option>();
             foreach (var optionNode in optionNodes)
             {
                 var choiceObject = DialogueGraphUtility.GetObjectFromNode<Option>(
                     optionNode , dialogueDict);
-                dialogue.options.Add(choiceObject);
+                _redirect.options.Add(choiceObject);
             }
         }
         

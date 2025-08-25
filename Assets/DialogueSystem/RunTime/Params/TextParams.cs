@@ -55,8 +55,6 @@ namespace WolverineSoft.DialogueSystem
                 var val = valueSO.GetValue(context);
                 return val?.ToString() ?? string.Empty;
             });
-            
-            Debug.Log(text);
         }
     }
 }

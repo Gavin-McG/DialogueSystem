@@ -17,21 +17,21 @@ namespace WolverineSoft.DialogueSystem.Editor
     [Serializable]
     internal class EventNode : Node, IDataNode<DSEventReference>, IErrorNode
     {
-        private const string EventOptionName = "eventObject";
-        private const string ValueOptionName = "value";
+        private INodeOption _eventOption;
+        private INodeOption _valueOption;
 
         protected override void OnDefineOptions(IOptionDefinitionContext context)
         {
-            var eventOption = DialogueGraphUtility.AddNodeOption(context, EventOptionName, typeof(DSEventObject), "Event");
+            _eventOption = DialogueGraphUtility.AddNodeOption(context, "Event", typeof(DSEventObject));
             
-            //add option for event value
-            eventOption.TryGetValue(out DSEventObject eventObject);
+            // Add option based on Type parameter of Event
+            _eventOption.TryGetValue(out DSEventObject eventObject);
             if (eventObject != null)
             {
                 Type valueType = GetEventGenericType(eventObject);
                 if (valueType != null)
                 {
-                    DialogueGraphUtility.AddNodeOption(context, ValueOptionName, valueType, "Value");
+                    _valueOption = DialogueGraphUtility.AddNodeOption(context, "Value", valueType);
                 }
             }
         }
@@ -41,19 +41,18 @@ namespace WolverineSoft.DialogueSystem.Editor
             DialogueGraphUtility.DefineDataInputPort(context);
         }
 
-        public DSEventReference GetData(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
+        public DSEventReference GetData()
         {
-            DSEventObject eventObject = DialogueGraphUtility.GetOptionValueOrDefault<DSEventObject>(this, EventOptionName);
+            _eventOption.TryGetValue(out DSEventObject eventObject);
             if (eventObject == null)
                 return null;
-
+            
+            // Return non-typed event reference if the Event has no type parameter
             Type selectedType = GetEventGenericType(eventObject);
             if (selectedType == null)
                 return GetNonTypedReference(eventObject);
-            else
-            {
-                return GetTypedReference(eventObject, selectedType);
-            }
+            
+            return GetTypedReference(eventObject, selectedType);
         }
 
         public DSEventReference GetNonTypedReference(DSEventObject eventObject)
@@ -70,11 +69,13 @@ namespace WolverineSoft.DialogueSystem.Editor
             Type callerType = typeof(DSEventCaller<>).MakeGenericType(selectedType);
 
             // Get the port value dynamically
-            MethodInfo getPortValue = typeof(DialogueGraphUtility)
-                .GetMethod(nameof(DialogueGraphUtility.GetPortValueOrDefault))
+            MethodInfo getPortValue = typeof(INodeOption)
+                .GetMethod(nameof(INodeOption.TryGetValue))
                 .MakeGenericMethod(selectedType);
-
-            object value = getPortValue.Invoke(null, new object[] { this, ValueOptionName });
+            
+            var args = new object[] { null };
+            getPortValue.Invoke(_valueOption, args);
+            object value = args[0];
 
             // Create caller instance
             object newCaller = Activator.CreateInstance(callerType);
@@ -105,7 +106,7 @@ namespace WolverineSoft.DialogueSystem.Editor
 
         public void DisplayErrors(GraphLogger infos)
         {
-            var eventObject = DialogueGraphUtility.GetOptionValueOrDefault<DSEventObject>(this, EventOptionName);
+            _eventOption.TryGetValue(out DSEventObject eventObject);
             if (eventObject == null)
                 infos.LogWarning("EventNode must have a Event Object Assigned", this);
             

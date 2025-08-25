@@ -48,8 +48,8 @@ namespace WolverineSoft.DialogueSystem.Editor
             var dialogueObject = DialogueGraphUtility.GetConnectedTrace(this, dialogueDict);
             asset.nextDialogue = dialogueObject;
 
-            DialogueGraphUtility.AssignDialogueData(this, asset.data, dialogueDict);
-            DialogueGraphUtility.AssignDialogueData(this, asset.endData, dialogueDict, EndEventPortName);
+            DialogueGraphUtility.AssignDialogueData(this, asset.data);
+            DialogueGraphUtility.AssignDialogueData(this, asset.endData, EndEventPortName);
             
             var settings = (T)asset.settings;
             DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref settings);

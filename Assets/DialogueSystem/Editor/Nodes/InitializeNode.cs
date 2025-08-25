@@ -23,9 +23,9 @@ namespace WolverineSoft.DialogueSystem.Editor
             if (contextNode == null)
                 DialogueGraphUtility.AddNodeOption(context, "button", typeof(bool), displayName: "PRESS -->");
             else
-                DefineFullOptions(context);
+                OnDefineInitializedOptions(context);
         }
 
-        protected virtual void DefineFullOptions(IOptionDefinitionContext context) {}
+        protected virtual void OnDefineInitializedOptions(IOptionDefinitionContext context) {}
     }
 }

@@ -76,7 +76,7 @@ namespace WolverineSoft.DialogueSystem.Editor
             DialogueGraphUtility.DefineDataInputPort(context);
         }
 
-        public ValueEditor GetData(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
+        public ValueEditor GetData()
         {
             // Get user selections from options
             _valueSOOption.TryGetValue<ValueSO>(out var valueSO);

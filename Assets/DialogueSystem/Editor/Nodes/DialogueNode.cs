@@ -20,7 +20,8 @@ namespace WolverineSoft.DialogueSystem.Editor
     where TBaseParams : BaseParams
     {
         private INodeOption _textOption;
-        private List<IPort> valuePorts;
+        private readonly List<IPort> _valuePorts = new();
+        private Dialogue _dialogue;
         
         protected sealed override void OnDefineOptions(IOptionDefinitionContext context)
         {
@@ -30,20 +31,19 @@ namespace WolverineSoft.DialogueSystem.Editor
 
         protected sealed override void OnDefinePorts(IPortDefinitionContext context)
         {
-            //Next/Previous Port
+            // Next/Previous Port
             DialogueGraphUtility.DefineNodeInputPort(context);
             DialogueGraphUtility.DefineNodeOutputPort(context);
             
-            //Param specific ports
+            // Param specific ports
             DialogueGraphUtility.DefineFieldPorts<TBaseParams>(context);
             
-            //value ports
+            // Create input ports for each {bracket} in the text
             _textOption.TryGetValue(out string text);
-            valuePorts = new();
             int index = 0;
             foreach (var value in TextParams.ExtractBracketContents(text))
             {
-                valuePorts.Add(context.AddInputPort<ValueSO>($"value {index++}")
+                _valuePorts.Add(context.AddInputPort<ValueSO>($"value {index++}")
                     .WithDisplayName(value)
                     .Build());
             }
@@ -51,29 +51,34 @@ namespace WolverineSoft.DialogueSystem.Editor
 
         public ScriptableObject CreateDialogueObject()
         {
-            var dialogue = ScriptableObject.CreateInstance<Dialogue>();
-            dialogue.name = "Basic Dialogue";
+            // Create dialogue asset
+            _dialogue = ScriptableObject.CreateInstance<Dialogue>();
+            _dialogue.name = "Basic Dialogue";
             
-            dialogue.baseParams = DialogueGraphUtility.AssignFromFieldOptions<TBaseParams>(this);
-            _textOption.TryGetValue(out dialogue.baseParams.text);
+            // Assign dialogue fields from options
+            _dialogue.baseParams = DialogueGraphUtility.AssignFromFieldOptions<TBaseParams>(this);
+            _textOption.TryGetValue(out _dialogue.baseParams.text);
             
-            return dialogue;
+            return _dialogue;
         }
         
         public void AssignObjectReferences(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
         {
-            var dialogue = DialogueGraphUtility.GetObject<Dialogue>(this, dialogueDict);
+            // Assign next dialogue
             var dialogueTrace = DialogueGraphUtility.GetConnectedTrace(this, dialogueDict);
-            dialogue.nextDialogue = dialogueTrace;
+            _dialogue.nextDialogue = dialogueTrace;
 
-            foreach (var valuePort in valuePorts)
+            // Assign valueSOs
+            foreach (var valuePort in _valuePorts)
             {
-                dialogue.baseParams.values.Add(DialogueGraphUtility.GetPortValueOrDefault<ValueSO>(this, valuePort.name));
+                _dialogue.baseParams.values.Add(DialogueGraphUtility.GetPortValueOrDefault<ValueSO>(this, valuePort.name));
             }
             
-            DialogueGraphUtility.AssignDialogueData(this, dialogue.data, dialogueDict);
+            // Assign events & valueEditors
+            DialogueGraphUtility.AssignDialogueData(this, _dialogue.data);
             
-            var baseParams = (TBaseParams)dialogue.baseParams;
+            // assign BaseParams from ports
+            var baseParams = (TBaseParams)_dialogue.baseParams;
             DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref baseParams);
         }
     }

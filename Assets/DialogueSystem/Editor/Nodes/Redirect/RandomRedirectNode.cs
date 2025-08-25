@@ -15,7 +15,7 @@ namespace WolverineSoft.DialogueSystem.Editor
     {
         public override bool UsesWeight => true;
 
-        public override ScriptableObject CreateDialogueObject()
+        public override Redirect CreateRedirectObject()
         {
             var redirect = ScriptableObject.CreateInstance<RandomRedirect>();
             redirect.name = "Random Redirect Dialogue";

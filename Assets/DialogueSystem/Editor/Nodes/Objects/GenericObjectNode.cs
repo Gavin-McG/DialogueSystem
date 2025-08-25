@@ -18,7 +18,9 @@ namespace WolverineSoft.DialogueSystem.Editor
     /// <typeparam name="T">Type of scriptableObject to create</typeparam>
     public abstract class GenericObjectNode<T> : Node, IDialogueReferenceNode where T : ScriptableObject
     {
-        private static string OutputPortName => typeof(T).Name;
+        private T _object;
+        
+        private static string ObjectName => typeof(T).Name;
         
         protected sealed override void OnDefineOptions(IOptionDefinitionContext context)
         {
@@ -30,25 +32,23 @@ namespace WolverineSoft.DialogueSystem.Editor
             DialogueGraphUtility.DefineFieldPorts<T>(context);
             
             context.AddOutputPort<T>(nameof(T))
-                .WithDisplayName(OutputPortName)
+                .WithDisplayName(ObjectName)
                 .Build();
         }
 
         public ScriptableObject CreateDialogueObject()
         {
-            var obj = ScriptableObject.CreateInstance<T>();
+            _object = ScriptableObject.CreateInstance<T>();
 
-            DialogueGraphUtility.AssignFromFieldOptions(this, ref obj);
-            obj.name = OutputPortName;
+            DialogueGraphUtility.AssignFromFieldOptions(this, ref _object);
+            _object.name = ObjectName;
 
-            return obj;
+            return _object;
         }
 
         public void AssignObjectReferences(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
         {
-            var obj = DialogueGraphUtility.GetObjectFromNode<T>(this, dialogueDict);
-            
-            DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref obj);
+            DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref _object);
         }
     }
 

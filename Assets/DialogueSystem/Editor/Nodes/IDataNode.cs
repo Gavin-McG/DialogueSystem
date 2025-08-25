@@ -15,6 +15,6 @@ namespace WolverineSoft.DialogueSystem.Editor
         /// <summary>
         /// method that is used to retrieve the data that the IDataNode provides
         /// </summary>
-        public T GetData(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict);
+        public T GetData();
     }
 }

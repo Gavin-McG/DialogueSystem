@@ -18,27 +18,23 @@ namespace WolverineSoft.DialogueSystem.Editor
     public abstract class CustomEventNode<T, TEvent> : Node, IDataNode<DSEventReference>, IErrorNode
         where TEvent : DSEvent<T>
     {
-        private const string EventOptionName = "eventObject";
+        private INodeOption _eventOption;
         
         protected sealed override void OnDefineOptions(IOptionDefinitionContext context)
         {
-            DialogueGraphUtility.AddNodeOption(context, 
-                EventOptionName, typeof(TEvent), "Event",
-                tooltip: "Event object to be acted upon when Dialogue is passed");
-            
+            _eventOption = DialogueGraphUtility.AddNodeOption(context, "Event", typeof(TEvent));
             DialogueGraphUtility.DefineFieldOptions<T>(context);
         }
 
         protected sealed override void OnDefinePorts(IPortDefinitionContext context)
         {
             DialogueGraphUtility.DefineDataInputPort(context);
-            
             DialogueGraphUtility.DefineFieldPorts<T>(context);
         }
         
-        public DSEventReference GetData(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
+        public DSEventReference GetData()
         {
-            TEvent dialogueEvent = DialogueGraphUtility.GetOptionValueOrDefault<TEvent>(this, EventOptionName);
+            _eventOption.TryGetValue(out TEvent dialogueEvent);
             T value = DialogueGraphUtility.AssignFromFieldOptions<T>(this);
             return new DSEventCaller<T>()
             {
@@ -49,8 +45,8 @@ namespace WolverineSoft.DialogueSystem.Editor
         
         public void DisplayErrors(GraphLogger infos)
         {
-            var eventObject = DialogueGraphUtility.GetOptionValueOrDefault<TEvent>(this, EventOptionName);
-            if (eventObject == null)
+            _eventOption.TryGetValue(out TEvent dialogueEvent);
+            if (dialogueEvent == null)
                 infos.LogWarning("EventNode must have a Event Object Assigned", this);
             
         }

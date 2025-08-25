@@ -18,7 +18,7 @@ namespace  WolverineSoft.DialogueSystem.Editor
     {
         public override bool UsesWeight => false;
         
-        public override ScriptableObject CreateDialogueObject()
+        public override Redirect CreateRedirectObject()
         {
             var redirect = ScriptableObject.CreateInstance<SequentialRedirect>();
             redirect.name = "Sequential Redirect Dialogue";

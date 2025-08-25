@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.GraphToolkit.Editor;
 using UnityEngine;
 using WolverineSoft.DialogueSystem;
+using WolverineSoft.DialogueSystem.Values;
 
 namespace WolverineSoft.DialogueSystem.Editor
 {
@@ -10,23 +11,36 @@ namespace WolverineSoft.DialogueSystem.Editor
     /// <date>2025-08-23</date>
     
     /// <summary>
-    /// Base class for options which are attached to choice dialogue and redirects.
-    /// Handles logic for displaying node options from redirect weight, option params, and option fields
+    /// Base class for options attached to choice dialogue nodes or redirects.
+    /// Handles logic for displaying node options from redirect weights,
+    /// option parameters, and option fields.
     /// </summary>
-    public abstract class OptionNode<T> : InitializeNode, IDialogueTraceNode
-    where T : Option
+    public abstract class OptionNode<T> : InitializeNode, IDialogueTraceNode, IDataNode<Option>
+        where T : Option
     {
         private const string WeightOptionName = "Weight";
+
+        private INodeOption _textOption;
+        private readonly List<IPort> _valuePorts = new();
+        private T _option;
         
-        //display options when properly initialized
-        protected sealed override void DefineFullOptions(IOptionDefinitionContext context)
+        
+        // ───────────────────────────────────────────────
+        // Node Definition
+        // ───────────────────────────────────────────────
+        
+        protected sealed override void OnDefineInitializedOptions(IOptionDefinitionContext context)
         {
+            // Always add a "Text" option
+            _textOption = DialogueGraphUtility.AddNodeOption(context, "Text", typeof(string));
+
+            // Conditional options depending on node type
             if (contextNode is RedirectNode redirectNode)
-                DefineConditionalOptions(redirectNode, context);
+                DefineRedirectOptions(redirectNode, context);
             else
                 DefineChoiceOptions(context);
-            
-            //define the option fields' options
+
+            // Options from the Option's fields
             DialogueGraphUtility.DefineFieldOptions<T>(context);
         }
 
@@ -34,38 +48,84 @@ namespace WolverineSoft.DialogueSystem.Editor
         {
             DialogueGraphUtility.DefineNodeOutputPort(context);
             
+            // Define ports for optionParams
             if (contextNode is not RedirectNode)
                 DefineChoicePorts(context);
-            
-            //define the option fields' ports
+
+            // Ports from the Option's fields
             DialogueGraphUtility.DefineFieldPorts<T>(context);
+
+            // Create input ports for each {bracket} in the text
+            if (_textOption?.TryGetValue(out string text) ?? false)
+            {
+                int index = 0;
+                foreach (var placeholder in TextParams.ExtractBracketContents(text))
+                {
+                    _valuePorts.Add(
+                        context.AddInputPort<ValueSO>($"value {index++}")
+                            .WithDisplayName(placeholder)
+                            .Build()
+                    );
+                }
+            }
         }
         
-        private static void DefineConditionalOptions(RedirectNode redirect, IOptionDefinitionContext context)
+        
+        // ───────────────────────────────────────────────
+        // Options & Ports
+        // ───────────────────────────────────────────────
+        
+        private static void DefineRedirectOptions(RedirectNode redirect, IOptionDefinitionContext context)
         {
-            //Create option for weight for redirect nodes which require it
+            // Redirect nodes may require a weight option
             if (redirect.UsesWeight)
             {
-                DialogueGraphUtility.AddNodeOption(context,
-                    WeightOptionName, typeof(float), "Weight", 0.5f,
-                    tooltip: "Percent probablility for this option to be chosen on evaluation");
+                DialogueGraphUtility.AddNodeOption(
+                    context,
+                    WeightOptionName,
+                    typeof(float),
+                    displayName: "Weight",
+                    defaultValue: 0.5f,
+                    tooltip: "Percent probability for this option to be chosen during evaluation"
+                );
             }
         }
 
+        private void DefineChoiceOptions(IOptionDefinitionContext context)
+        {
+            if (TryGetOptionParamType(out Type optionParamsType))
+            {
+                DialogueGraphUtility.DefineFieldOptions(context, optionParamsType);
+            }
+        }
+
+        private void DefineChoicePorts(IPortDefinitionContext context)
+        {
+            if (TryGetOptionParamType(out Type optionParamsType))
+            {
+                DialogueGraphUtility.DefineFieldPorts(context, optionParamsType);
+            }
+        }
+        
+        
+        // ───────────────────────────────────────────────
+        // Option Param Type Utilities
+        // ───────────────────────────────────────────────
+        
         /// <summary>
-        /// Gets the type of Option param used by the parent Choice contextNode
+        /// Tries to retrieve the <c>OptionParams</c> type
+        /// from the parent <see cref="ChoiceNode{TChoice,TOption,TOptionParams}"/>.
         /// </summary>
         private bool TryGetOptionParamType(out Type optionParamType)
         {
-            Type current = contextNode?.GetType();
-            
-            //step through inheritance to find ChoiceNode
+            Type current = contextNode.GetType();
+
             while (current != null && current != typeof(object))
             {
-                if (current.IsGenericType && current.GetGenericTypeDefinition() == typeof(ChoiceNode<,,>))
+                if (current.IsGenericType &&
+                    current.GetGenericTypeDefinition() == typeof(ChoiceNode<,,>))
                 {
-                    //TOptionParams is third type parameter in ChoiceNode
-                    optionParamType = current.GetGenericArguments()[2]; 
+                    optionParamType = current.GetGenericArguments()[2]; // TOptionParams
                     return true;
                 }
 
@@ -75,74 +135,82 @@ namespace WolverineSoft.DialogueSystem.Editor
             optionParamType = null!;
             return false;
         }
-
-        private void DefineChoiceOptions(IOptionDefinitionContext context)
-        {
-            //create options for the OptionParams of the choice node
-            if (TryGetOptionParamType(out Type tOptionParams))
-            {
-                DialogueGraphUtility.DefineFieldOptions(context, tOptionParams);
-            }
-        }
-
-        private void DefineChoicePorts(IPortDefinitionContext context)
-        {
-            //create ports for the OptionParams of the choice node
-            if (TryGetOptionParamType(out Type tOptionParams))
-            {
-                DialogueGraphUtility.DefineFieldPorts(context, tOptionParams);
-            }
-        }
-
+        
+        
+        // ───────────────────────────────────────────────
+        // Assignment Helpers
+        // ───────────────────────────────────────────────
+        
         private void AssignFromChoiceOptions(ref T obj)
         {
-            //Assign from the options of the OptionParams
-            if (TryGetOptionParamType(out Type tOptionParams))
+            if (TryGetOptionParamType(out Type optionParamsType))
             {
-                obj.optionParams = (OptionParams)DialogueGraphUtility.AssignFromFieldOptions(this, tOptionParams);
+                obj.optionParams = (OptionParams)DialogueGraphUtility.AssignFromFieldOptions(
+                    this, optionParamsType
+                );
             }
         }
 
         private void AssignFromChoicePorts(ref T obj, Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
         {
-            //Assign from the ports of the OptionParams
-            if (TryGetOptionParamType(out Type tOptionParams))
+            if (TryGetOptionParamType(out Type optionParamsType))
             {
-                obj.optionParams = (OptionParams)DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, obj.optionParams, tOptionParams);
+                obj.optionParams = (OptionParams)DialogueGraphUtility.AssignFromFieldPorts(
+                    this, dialogueDict, obj.optionParams, optionParamsType
+                );
             }
         }
-
+        
+        
+        // ───────────────────────────────────────────────
+        // Dialogue Object Creation
+        // ───────────────────────────────────────────────
+        
         public ScriptableObject CreateDialogueObject()
         {
-            var option = ScriptableObject.CreateInstance<T>();
-            option.name = DialogueGraphUtility.FieldNameToDisplayName(typeof(T).Name);
+            _option = ScriptableObject.CreateInstance<T>();
+            _option.name = DialogueGraphUtility.FieldNameToDisplayName(typeof(T).Name);
 
-            //assign from the respective redirect/choice options
+            // Redirect nodes may need weight assignment
             if (contextNode is RedirectNode redirectNode && redirectNode.UsesWeight)
-                option.weight = DialogueGraphUtility.GetOptionValueOrDefault<float>(this, WeightOptionName);
+                _option.weight = DialogueGraphUtility.GetOptionValueOrDefault<float>(this, WeightOptionName);
             else
-                AssignFromChoiceOptions(ref option);
-            
-            //assign from option fields
-            DialogueGraphUtility.AssignFromFieldOptions(this, ref option);
-        
-            return option;
+                AssignFromChoiceOptions(ref _option);
+
+            // Assign from option fields
+            DialogueGraphUtility.AssignFromFieldOptions(this, ref _option);
+
+            // Assign text parameter
+            _textOption.TryGetValue(out _option.optionParams.text);
+
+            return _option;
         }
 
         public void AssignObjectReferences(Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict)
         {
-            var option = DialogueGraphUtility.GetObject<T>(this, dialogueDict);
-            var nextTrace = DialogueGraphUtility.GetConnectedTrace(this, dialogueDict);
-            option.nextDialogue = nextTrace;
-            
-            //redirect options don't have extra ports
+            // Set next dialogue
+            _option.nextDialogue = DialogueGraphUtility.GetConnectedTrace(this, dialogueDict);
+
             if (contextNode is not RedirectNode)
-                AssignFromChoicePorts(ref option, dialogueDict);
-            
-            DialogueGraphUtility.AssignDialogueData(this, option.data, dialogueDict);
-            
-            //assign from option fields
-            DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref option);
+                AssignFromChoicePorts(ref _option, dialogueDict);
+
+            DialogueGraphUtility.AssignDialogueData(this, _option.data);
+
+            // Assign values for each {bracket} in the text
+            foreach (var valuePort in _valuePorts)
+            {
+                _option.optionParams.values.Add(
+                    DialogueGraphUtility.GetPortValueOrDefault<ValueSO>(this, valuePort.name)
+                );
+            }
+
+            // Assign from option fields
+            DialogueGraphUtility.AssignFromFieldPorts(this, dialogueDict, ref _option);
+        }
+
+        public Option GetData()
+        {
+            return _option;
         }
     }
 }

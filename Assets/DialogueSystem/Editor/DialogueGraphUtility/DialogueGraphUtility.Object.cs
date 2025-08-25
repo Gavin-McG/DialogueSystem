@@ -164,7 +164,6 @@ namespace WolverineSoft.DialogueSystem.Editor
         /// </summary>
         private static List<T> GetDataType<T>(
             INode node,
-            Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict,
             string portName = NextPortName)
         {
             var port = GetOutputPortByName(node, portName);
@@ -179,7 +178,7 @@ namespace WolverineSoft.DialogueSystem.Editor
             {
                 if (connectedNode is IDataNode<T> eventNode)
                 {
-                    var data = eventNode.GetData(dialogueDict);
+                    var data = eventNode.GetData();
                     if (data != null)
                         result.Add(data);
                     else
@@ -196,11 +195,10 @@ namespace WolverineSoft.DialogueSystem.Editor
         public static void AssignDialogueData(
             INode node,
             DialogueData data,
-            Dictionary<IDialogueObjectNode, ScriptableObject> dialogueDict,
             string portName = NextPortName)
         {
-            data.events = GetDataType<DSEventReference>(node, dialogueDict, portName);
-            data.values = GetDataType<ValueEditor>(node, dialogueDict, portName);
+            data.events = GetDataType<DSEventReference>(node, portName);
+            data.values = GetDataType<ValueEditor>(node, portName);
         }
     }
 }
