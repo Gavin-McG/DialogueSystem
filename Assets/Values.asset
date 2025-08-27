@@ -13,6 +13,4 @@ MonoBehaviour:
   m_Name: Values
   m_EditorClassIdentifier: DialogueSystem.Runtime.Values::WolverineSoft.DialogueSystem.Values.ValueHolder
   values:
-  - {fileID: 11400000, guid: 030e7460333e59e458d7f36c9bd48966, type: 2}
   - {fileID: 11400000, guid: 8c9fead316a39424d9e21e56ebd4792f, type: 2}
-  - {fileID: 11400000, guid: bc5c269ab1a9e1e4caada67e2f562d35, type: 2}

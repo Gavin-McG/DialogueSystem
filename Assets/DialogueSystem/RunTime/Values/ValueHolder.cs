@@ -14,7 +14,7 @@ namespace WolverineSoft.DialogueSystem.Values
         {
             foreach (ValueSO value in values)
             {
-                value.ClearScope(context, scope);
+                value?.ClearScope(context, scope);
             }
         }
         

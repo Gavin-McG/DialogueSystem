@@ -12,4 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8282ee55bf049ca8b0e0e3db6c34d7f, type: 3}
   m_Name: MyValue
   m_EditorClassIdentifier: DialogueSystem.Runtime.Values::WolverineSoft.DialogueSystem.Values.ValueSO
-  valueName: MyValue
+  _globalValue:
+    rid: 6376729364099235938
+  references:
+    version: 2
+    RefIds:
+    - rid: 6376729364099235938
+      type: {class: 'SerializedValue`1[[Vector2Wrapper, Assembly-CSharp]]', ns: WolverineSoft.DialogueSystem.Values, asm: DialogueSystem.Runtime.Values}
+      data:
+        Value:
+          x: 4
+          y: 7

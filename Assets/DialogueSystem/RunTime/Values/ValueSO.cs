@@ -171,6 +171,8 @@ namespace WolverineSoft.DialogueSystem.Values
                 Debug.LogWarning("Cannot clear global scope. clearing all lesser scopes");
             }
 
+            _localValues ??= new();
+
             //clear local scopes
             if (_localValues.TryGetValue(context, out var contextValues))
             {

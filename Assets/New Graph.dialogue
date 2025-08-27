@@ -346,4 +346,4 @@ MonoBehaviour:
     - rid: 6376729364099235921
       type: {class: 'Constant`1[[WolverineSoft.DialogueSystem.Values.ValueSO, DialogueSystem.Runtime.Values]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
       data:
-        m_Value: {fileID: 11400000, guid: bc5c269ab1a9e1e4caada67e2f562d35, type: 2}
+        m_Value: {fileID: 11400000, guid: 8c9fead316a39424d9e21e56ebd4792f, type: 2}
