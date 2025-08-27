@@ -15,7 +15,7 @@ namespace WolverineSoft.DialogueSystem.Values
     [CreateAssetMenu(menuName = "Dialogue System/ValueSO")]
     public class ValueSO : ScriptableObject
     {
-        private object _globalValue;
+        [SerializeReference] private SerializedValueBase _globalValue;
         private Dictionary<IValueContext, Dictionary<ValueScope, object>> _localValues = new();
 
         public enum ValueScope { Dialogue = 0, Manager = 1, Global = 2 }
@@ -25,6 +25,22 @@ namespace WolverineSoft.DialogueSystem.Values
         private IEnumerable<ValueScope> LocalScopes => Enum.GetValues(typeof(ValueScope))
             .Cast<ValueScope>()
             .Where(x => x != ValueScope.Global);
+        
+        private object GlobalValue
+        {
+            get => _globalValue?.GetValue();
+            set
+            {
+                if (value == null)
+                {
+                    _globalValue = null;
+                    return;
+                }
+
+                var wrapperType = typeof(SerializedValue<>).MakeGenericType(value.GetType());
+                _globalValue = (SerializedValueBase)System.Activator.CreateInstance(wrapperType, value);
+            }
+        }
 
         
         // Basic Value access / modification
@@ -41,7 +57,7 @@ namespace WolverineSoft.DialogueSystem.Values
             }
             
             //return global scope
-            return _globalValue;
+            return GlobalValue;
         }
         public bool TryGetValue(IValueContext context, out float value)
         {
@@ -64,7 +80,7 @@ namespace WolverineSoft.DialogueSystem.Values
         {
             if (scope == ValueScope.Global)
             {
-                value = _globalValue;
+                value = GlobalValue;
                 return true;
             }
             
@@ -105,7 +121,7 @@ namespace WolverineSoft.DialogueSystem.Values
             //set global value
             if (scope == ValueScope.Global)
             {
-                _globalValue = value;
+                GlobalValue = value;
                 return;
             }
             
