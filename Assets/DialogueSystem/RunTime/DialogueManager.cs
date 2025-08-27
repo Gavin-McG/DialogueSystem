@@ -21,6 +21,8 @@ namespace WolverineSoft.DialogueSystem
         
         //Event invoked when dialogue is started
         public readonly UnityEvent StartedDialogue = new();
+
+        [SerializeField] private ValueHolder values;
         
         private DialogueAsset _currentDialogue;
         private DialogueTrace _currentTrace;
@@ -68,6 +70,12 @@ namespace WolverineSoft.DialogueSystem
                 return;
             }
             
+            //clear values from previous dialogue
+            if (values)
+                values.ClearScope(this, ValueSO.ValueScope.Dialogue);
+            else
+                Debug.LogWarning("No ValueHolder assigned to DialogueManager. Dialogue-scope values will not be cleared");
+
             _currentDialogue = dialogueAsset;
             _currentTrace = dialogueAsset;
             StartedDialogue.Invoke();

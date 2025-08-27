@@ -1,0 +1,37 @@
+﻿using WolverineSoft.DialogueSystem.Values;
+
+namespace WolverineSoft.DialogueSystem.Editor.Values
+{
+    using UnityEditor;
+    using UnityEngine;
+    using System.Collections.Generic;
+
+    [CustomEditor(typeof(ValueHolder))]
+    public class ValueHolderEditor : Editor
+    {
+        public override void OnInspectorGUI()
+        {
+            DrawDefaultInspector();
+
+            ValueHolder holder = (ValueHolder)target;
+
+            if (GUILayout.Button("Populate with all ValueSO assets"))
+            {
+                string[] guids = AssetDatabase.FindAssets("t:ValueSO");
+                List<ValueSO> allValues = new();
+
+                foreach (string guid in guids)
+                {
+                    string path = AssetDatabase.GUIDToAssetPath(guid);
+                    ValueSO asset = AssetDatabase.LoadAssetAtPath<ValueSO>(path);
+                    if (asset != null)
+                        allValues.Add(asset);
+                }
+
+                Undo.RecordObject(holder, "Populate ValueHolder");
+                holder.SetValues(allValues);
+                EditorUtility.SetDirty(holder);
+            }
+        }
+    }
+}

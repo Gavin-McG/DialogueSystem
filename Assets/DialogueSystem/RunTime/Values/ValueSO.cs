@@ -59,6 +59,8 @@ namespace WolverineSoft.DialogueSystem.Values
             //return global scope
             return GlobalValue;
         }
+        
+        
         public bool TryGetValue(IValueContext context, out float value)
         {
             object obj = GetValue(context);
@@ -76,6 +78,8 @@ namespace WolverineSoft.DialogueSystem.Values
                 default: value = 0f; return false;
             }
         }
+        
+        
         public bool TryGetValue(IValueContext context, ValueScope scope, out object value)
         {
             if (scope == ValueScope.Global)
@@ -95,6 +99,8 @@ namespace WolverineSoft.DialogueSystem.Values
             value = null;
             return false;
         }
+        
+        
         public bool TryGetValue<T>(IValueContext context, out T value)
         {
             var obj = GetValue(context);
@@ -106,6 +112,8 @@ namespace WolverineSoft.DialogueSystem.Values
             value = default;
             return false;
         }
+        
+        
         public bool TryGetValue<T>(IValueContext context, ValueScope scope, out T value)
         {
             if (TryGetValue(context, scope, out var obj) && obj is T tObj)
@@ -116,6 +124,8 @@ namespace WolverineSoft.DialogueSystem.Values
             value = default;
             return false;
         }
+        
+        
         public void SetValue(IValueContext context, ValueScope scope, object value)
         {
             //set global value
@@ -134,6 +144,8 @@ namespace WolverineSoft.DialogueSystem.Values
             //set local value
             _localValues[context][scope] = value;
         }
+        
+        
         public ValueScope GetValueScope(IValueContext context)
         {
             //check local scopes for stored value
@@ -149,6 +161,8 @@ namespace WolverineSoft.DialogueSystem.Values
             //default to global scope
             return ValueScope.Global;
         }
+        
+        
         public void ClearScope(IValueContext context, ValueScope scope)
         {
             //warning for global clear
@@ -158,7 +172,7 @@ namespace WolverineSoft.DialogueSystem.Values
             }
 
             //clear local scopes
-            foreach (var contextValues in _localValues.Values)
+            if (_localValues.TryGetValue(context, out var contextValues))
             {
                 foreach (var localScope in LocalScopes)
                 {
@@ -193,10 +207,14 @@ namespace WolverineSoft.DialogueSystem.Values
             result = false;
             return false;
         }
+        
+        
         public bool ValueEquals<T>(IValueContext context, T compValue)
         {
             return TryGetValue<T>(context, out var value) && value.Equals(compValue);
         }
+        
+        
         public bool TryOperateValue(IValueContext context, ValueOperation operation, float otherValue)
         {
             if (TryGetValue(context, out float value))
