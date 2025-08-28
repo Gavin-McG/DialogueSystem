@@ -17,14 +17,18 @@ namespace WolverineSoft.DialogueSystem.ExampleInterface
         {
             choiceUI.SetActive(false);
             choiceText.text = "";
-            choiceAction.action.started -= TriggerButton;
+            
+            if (choiceAction != null)
+                choiceAction.action.started -= TriggerButton;
         }
 
         public void SetText(string text)
         {
             choiceUI.SetActive(true);
             choiceText.text = text;
-            choiceAction.action.started += TriggerButton;
+            
+            if (choiceAction != null)
+                choiceAction.action.started += TriggerButton;
         }
 
         public void AddListener(UnityAction call)

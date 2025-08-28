@@ -10,6 +10,7 @@ namespace WolverineSoft.DialogueSystem.ExampleInterface
 {
     public class ChoiceUIManager : MonoBehaviour
     {
+        [SerializeField] GameObject choiceUI;
         [SerializeField] List<ChoiceUI> choices = new List<ChoiceUI>();
         [SerializeField] ContinueUI continueUI;
         
@@ -25,6 +26,7 @@ namespace WolverineSoft.DialogueSystem.ExampleInterface
         
         public void SetChoiceButtons(List<DefaultOptionParams> options)
         {
+            choiceUI.SetActive(true);
             for (int i=0; i<choices.Count; i++)
             {
                 var choice = choices[i];
@@ -45,6 +47,7 @@ namespace WolverineSoft.DialogueSystem.ExampleInterface
         
         private void DisableChoices()
         {
+            choiceUI.SetActive(false);
             foreach (var choice in choices)
             {
                 choice.Disable();

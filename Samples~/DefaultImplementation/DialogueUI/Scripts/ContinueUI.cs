@@ -15,13 +15,17 @@ namespace WolverineSoft.DialogueSystem.ExampleInterface
         public void Disable()
         {
             continueUI.SetActive(false);
-            continueAction.action.started -= TriggerButton;
+            
+            if (continueAction != null)
+                continueAction.action.started -= TriggerButton;
         }
 
         public void Enable()
         {
             continueUI.SetActive(true);
-            continueAction.action.started += TriggerButton;
+            
+            if (continueAction != null)
+                continueAction.action.started += TriggerButton;
         }
         
         
