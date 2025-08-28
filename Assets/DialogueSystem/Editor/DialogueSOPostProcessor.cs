@@ -1,60 +1,40 @@
-﻿using WolverineSoft.DialogueSystem.Values;
+﻿using UnityEditor;
+using UnityEngine;
+using WolverineSoft.DialogueSystem.Values;
 
 namespace WolverineSoft.DialogueSystem.Editor
 {
-    using UnityEditor;
-    using UnityEngine;
-
-    public class DialogueSOPostprocessor : AssetPostprocessor
+    [InitializeOnLoad]
+    public static class DialogueSOIconInitializer
     {
-        // Load textures from Resources
         private static Texture2D valueSOIcon => Resources.Load<Texture2D>("DialogueValueTexture");
-        private static Texture2D valueHolderIcon => Resources.Load<Texture2D>("DialogueGraphTexture");
-        private static Texture2D dsEventIcon => Resources.Load<Texture2D>("DialogueGraphTexture");
+        private static Texture2D valueHolderIcon => Resources.Load<Texture2D>("DialogueValueHolderTexture");
+        private static Texture2D dsEventIcon => Resources.Load<Texture2D>("DialogueEventTexture");
 
-        static void OnPostprocessAllAssets(
-            string[] importedAssets,
-            string[] deletedAssets,
-            string[] movedAssets,
-            string[] movedFromAssetPaths)
+        static DialogueSOIconInitializer()
         {
-            // Process imported assets
-            foreach (string path in importedAssets)
-            {
-                AssignIcons(path);
-            }
-
-            // Optionally, process moved assets too
-            foreach (string path in movedAssets)
-            {
-                AssignIcons(path);
-            }
+            // Runs when the editor loads
+            EditorApplication.projectChanged += AssignAllIcons;
+            AssignAllIcons();
         }
 
-        private static void AssignIcons(string assetPath)
+        private static void AssignAllIcons()
         {
-            Object obj = AssetDatabase.LoadAssetAtPath<Object>(assetPath);
-            if (obj == null) return;
-
-            // Assign icon for ValueSO
-            if (obj is ValueSO && valueSOIcon != null)
+            string[] guids = AssetDatabase.FindAssets("t:ScriptableObject");
+            foreach (string guid in guids)
             {
-                EditorGUIUtility.SetIconForObject(obj, valueSOIcon);
-                EditorUtility.SetDirty(obj);
-            }
+                string path = AssetDatabase.GUIDToAssetPath(guid);
+                Object obj = AssetDatabase.LoadAssetAtPath<Object>(path);
+                if (obj == null) continue;
 
-            // Assign icon for ValueHolder
-            if (obj is ValueHolder && valueHolderIcon != null)
-            {
-                EditorGUIUtility.SetIconForObject(obj, valueHolderIcon);
-                EditorUtility.SetDirty(obj);
-            }
+                if (obj is ValueSO && valueSOIcon != null)
+                    EditorGUIUtility.SetIconForObject(obj, valueSOIcon);
 
-            // Assign icon for DSEventObject
-            if (obj is DSEventObject && dsEventIcon != null)
-            {
-                EditorGUIUtility.SetIconForObject(obj, dsEventIcon);
-                EditorUtility.SetDirty(obj);
+                else if (obj is ValueHolder && valueHolderIcon != null)
+                    EditorGUIUtility.SetIconForObject(obj, valueHolderIcon);
+
+                else if (obj is DSEventObject && dsEventIcon != null)
+                    EditorGUIUtility.SetIconForObject(obj, dsEventIcon);
             }
         }
     }

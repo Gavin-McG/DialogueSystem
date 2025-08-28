@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b8216768f63420ba3573f7aa627a615, type: 3}
-  m_Name: Values
+  m_Name: ValueHolder
   m_EditorClassIdentifier: DialogueSystem.Runtime.Values::WolverineSoft.DialogueSystem.Values.ValueHolder
   values:
   - {fileID: 11400000, guid: 8c9fead316a39424d9e21e56ebd4792f, type: 2}
+  - {fileID: 11400000, guid: 2c0abbccb29f8574bba2617bea4df7d6, type: 2}
