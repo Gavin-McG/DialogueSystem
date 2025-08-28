@@ -18,5 +18,12 @@
   "author": {
     "name": "Gavin McGinness",
     "email": "gavinmcg@umich.edu"
-  }
+  },
+  "samples": [
+    {
+      "displayName": "Default Implementation",
+      "description": "Basic implementation that can cover most use-cases with slight adjustments. Comes with definition of required parameters, nodes, and a simple DialogueUIManager. Also comes with commonly useful options and events",
+      "path": "Samples~/DefaultImplementation"
+    }
+  ]
 }
