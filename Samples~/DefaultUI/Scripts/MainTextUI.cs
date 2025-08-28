@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace WolverineSoft.DialogueSystem.ExampleInterface
+namespace WolverineSoft.DialogueSystem.DefaultUI
 {
     public class MainTextUI : MonoBehaviour
     {

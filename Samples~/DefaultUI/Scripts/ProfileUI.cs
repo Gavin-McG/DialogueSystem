@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using WolverineSoft.DialogueSystem.Default;
 
-namespace WolverineSoft.DialogueSystem.ExampleInterface
+namespace WolverineSoft.DialogueSystem.DefaultUI
 {
     public class ProfileUI : MonoBehaviour
     {

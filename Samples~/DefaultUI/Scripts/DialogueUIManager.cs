@@ -4,7 +4,7 @@ using UnityEngine;
 using WolverineSoft.DialogueSystem.Default;
 using WolverineSoft.DialogueSystem;
 
-namespace WolverineSoft.DialogueSystem.ExampleInterface
+namespace WolverineSoft.DialogueSystem.DefaultUI
 {
     public class DialogueUIManager : MonoBehaviour
     {
@@ -55,7 +55,6 @@ namespace WolverineSoft.DialogueSystem.ExampleInterface
         private void BeginDialogue()
         {
             currentSettings = dialogueManager.GetSettings<DefaultDialogueSettings>();
-            if (currentSettings.testField) Debug.Log("Hello");
             DisplayDialogue(dialogueManager.AdvanceDialogue());
         }
 

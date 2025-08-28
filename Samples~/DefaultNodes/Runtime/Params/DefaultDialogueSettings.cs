@@ -5,8 +5,5 @@ using WolverineSoft.DialogueSystem;
 namespace WolverineSoft.DialogueSystem.Default
 {
     [Serializable]
-    public class DefaultDialogueSettings : DialogueSettings
-    {
-        public bool testField;
-    }
+    public class DefaultDialogueSettings : DialogueSettings { }
 }

@@ -4,7 +4,7 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-namespace WolverineSoft.DialogueSystem.ExampleInterface
+namespace WolverineSoft.DialogueSystem.DefaultUI
 {
     public class ContinueUI : MonoBehaviour
     {

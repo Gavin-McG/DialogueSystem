@@ -2,7 +2,7 @@
 using UnityEngine;
 using WolverineSoft.DialogueSystem.Default;
 
-namespace WolverineSoft.DialogueSystem.ExampleInterface
+namespace WolverineSoft.DialogueSystem.DefaultUI
 {
     public class ProfileUIManager : MonoBehaviour
     {

@@ -6,7 +6,7 @@ using UnityEngine.Events;
 using WolverineSoft.DialogueSystem.Default;
 using WolverineSoft.DialogueSystem;
 
-namespace WolverineSoft.DialogueSystem.ExampleInterface
+namespace WolverineSoft.DialogueSystem.DefaultUI
 {
     public class ChoiceUIManager : MonoBehaviour
     {

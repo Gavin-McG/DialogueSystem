@@ -21,9 +21,14 @@
   },
   "samples": [
     {
-      "displayName": "Default Implementation",
-      "description": "Basic implementation that can cover most use-cases with slight adjustments. Comes with definition of required parameters, nodes, and a simple DialogueUIManager. Also comes with commonly useful options and events",
-      "path": "Samples~/DefaultImplementation"
+      "displayName": "Default Nodes",
+      "description": "Basic implementation that can cover most use-cases with slight adjustments. Comes with definition of required parameter definitions and nodes. Also comes with commonly useful options and events",
+      "path": "Samples~/DefaultNodes"
+    },
+    {
+      "displayName": "Default UI",
+      "description": "Basic implementation of a frontend UI. Designed for use with the 'Default Nodes' sample parameters",
+      "path": "Samples~/DefaultUI"
     }
   ]
 }
