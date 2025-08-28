@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: MyValue2
   m_EditorClassIdentifier: DialogueSystem.Runtime.Values::WolverineSoft.DialogueSystem.Values.ValueSO
   _globalValue:
-    rid: -2
+    rid: 6376729372959703106
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
+    - rid: 6376729372959703106
+      type: {class: 'SerializedValue`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: WolverineSoft.DialogueSystem.Values, asm: DialogueSystem.Runtime.Values}
+      data:
+        Value: {fileID: 0}

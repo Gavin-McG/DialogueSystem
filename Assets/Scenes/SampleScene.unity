@@ -906,7 +906,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b018be248ad23647a6cfdb5411e86bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: DialogueSystem.Runtime::DialogueSystem.Runtime.DialogueManager
-  values: {fileID: 11400000, guid: 72d96fabfa7d7a2408de760c843dd50e, type: 2}
+  values: {fileID: 11400000, guid: 43bcd397014f4d24aaf45aa73c0e67d8, type: 2}
   optionIndexes: 
 --- !u!4 &846746980
 Transform:

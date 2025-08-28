@@ -19,10 +19,14 @@ namespace WolverineSoft.DialogueSystem.Editor
             // Built-in supported types
             _availableTypes = new List<Type>
             {
+                typeof(SerializedValue<string>),
                 typeof(SerializedValue<int>),
                 typeof(SerializedValue<float>),
-                typeof(SerializedValue<string>),
-                typeof(SerializedValue<bool>)
+                typeof(SerializedValue<bool>),
+                typeof(SerializedValue<Vector2>),
+                typeof(SerializedValue<Vector3>),
+                typeof(SerializedValue<GameObject>),
+                typeof(SerializedValue<AudioClip>),
             };
 
             // Add any custom types marked with [DialogueValueType]
@@ -45,6 +49,13 @@ namespace WolverineSoft.DialogueSystem.Editor
 
             var currentType = property.managedReferenceValue?.GetType();
             int currentIndex = Mathf.Max(0, _availableTypes.IndexOf(currentType));
+
+            // If no type has been assigned yet, default to the first one
+            if (property.managedReferenceValue == null && _availableTypes.Count > 0)
+            {
+                property.managedReferenceValue = Activator.CreateInstance(_availableTypes[0]);
+                currentIndex = 0;
+            }
 
             // Dropdown for selecting type
             Rect dropdownRect = new Rect(

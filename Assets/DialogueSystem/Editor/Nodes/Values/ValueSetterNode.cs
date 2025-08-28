@@ -30,7 +30,6 @@ namespace WolverineSoft.DialogueSystem.Editor
             Bool, 
             Vector2, 
             Vector3, 
-            Vector4, 
             GameObject, 
             AudioClip,
         } 
@@ -43,7 +42,6 @@ namespace WolverineSoft.DialogueSystem.Editor
             { ValueTypes.Bool, typeof(bool)}, 
             { ValueTypes.Vector2, typeof(Vector2)}, 
             { ValueTypes.Vector3, typeof(Vector3)}, 
-            { ValueTypes.Vector4, typeof(Vector4)}, 
             { ValueTypes.GameObject, typeof(GameObject)}, 
             { ValueTypes.AudioClip, typeof(AudioClip)},
         };
