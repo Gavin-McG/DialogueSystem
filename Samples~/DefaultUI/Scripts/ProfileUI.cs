@@ -20,7 +20,7 @@ namespace WolverineSoft.DialogueSystem.DefaultUI
         {
             profileUI.SetActive(true);
             profileImage.sprite = profile.sprite;
-            profileText.text = profile.displayName;
+            profileText.text = profile.characterName;
         }
     }
 }
