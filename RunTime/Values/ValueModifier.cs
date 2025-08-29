@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine.Serialization;
 
 namespace WolverineSoft.DialogueSystem.Values
 {
@@ -11,13 +12,13 @@ namespace WolverineSoft.DialogueSystem.Values
     [Serializable]
     public sealed class ValueModifier : ValueEditor
     {
-        public ValueSO valueSO;
-        public ValueSO.ValueOperation operation;
+        [FormerlySerializedAs("valueSO")] public DSValue dsValue;
+        public DSValue.ValueOperation operation;
         public float otherValue;
 
         public override void SetValue(IValueContext context)
         {
-            valueSO.TryOperateValue(context, this.operation, this.otherValue);
+            dsValue.TryOperateValue(context, this.operation, this.otherValue);
         }
     }
 }

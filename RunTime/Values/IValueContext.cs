@@ -8,6 +8,6 @@
     /// </summary>
     public interface IValueContext
     {
-        
+        public string ContextName { get; }
     }
 }

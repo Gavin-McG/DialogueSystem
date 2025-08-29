@@ -17,7 +17,7 @@ namespace WolverineSoft.DialogueSystem.Editor
     [Serializable]
     internal class ValueSetterNode : Node, IInputDataNode<ValueEditor>, IErrorNode
     {
-        private INodeOption _valueSOOption;
+        private INodeOption _dsValueOption;
         private INodeOption _valueScopeOption;
         private INodeOption _valueTypeOption;
         private INodeOption _valueOption;
@@ -59,8 +59,8 @@ namespace WolverineSoft.DialogueSystem.Editor
         
         protected override void OnDefineOptions(IOptionDefinitionContext context)
         {
-            _valueSOOption = DialogueGraphUtility.AddNodeOption(context, "ValueSO", typeof(ValueSO));
-            _valueScopeOption = DialogueGraphUtility.AddNodeOption(context, "Scope", typeof(ValueSO.ValueScope));
+            _dsValueOption = DialogueGraphUtility.AddNodeOption(context, "DSValue", typeof(DSValue));
+            _valueScopeOption = DialogueGraphUtility.AddNodeOption(context, "Scope", typeof(DSValue.ValueScope));
             _valueTypeOption = DialogueGraphUtility.AddNodeOption(context, "Value Type", typeof(ValueTypes));
             
             //set value option based on selected value type
@@ -77,8 +77,8 @@ namespace WolverineSoft.DialogueSystem.Editor
         public ValueEditor GetInputData()
         {
             // Get user selections from options
-            _valueSOOption.TryGetValue<ValueSO>(out var valueSO);
-            _valueScopeOption.TryGetValue<ValueSO.ValueScope>(out var scope);
+            _dsValueOption.TryGetValue<DSValue>(out var dsValue);
+            _valueScopeOption.TryGetValue<DSValue.ValueScope>(out var scope);
             _valueOption.TryGetValue(out object value);
 
             // Build a ValueSetter<T> for the correct type
@@ -87,7 +87,7 @@ namespace WolverineSoft.DialogueSystem.Editor
             object setterInstance = Activator.CreateInstance(setterType);
 
             // Assign fields
-            setterType.GetField("valueSO")?.SetValue(setterInstance, valueSO);
+            setterType.GetField("dsValue")?.SetValue(setterInstance, dsValue);
             setterType.GetField("scope")?.SetValue(setterInstance, scope);
             setterType.GetField("value")?.SetValue(setterInstance, value);
 
@@ -96,7 +96,7 @@ namespace WolverineSoft.DialogueSystem.Editor
 
         public void DisplayErrors(GraphLogger infos)
         {
-            _valueSOOption.TryGetValue(out ValueSO valueSO);
+            _dsValueOption.TryGetValue(out DSValue valueSO);
             if (valueSO==null)
                 infos.LogWarning("Value should not be null", this);
         }

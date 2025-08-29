@@ -16,14 +16,14 @@ namespace WolverineSoft.DialogueSystem.Editor
     [Serializable]
     internal class ValueModifierNode : Node, IInputDataNode<ValueEditor>, IErrorNode
     {
-        private INodeOption _valueSOOption;
+        private INodeOption _dsValueOption;
         private INodeOption _operationOption;
         private INodeOption _otherValueOption;
 
         protected override void OnDefineOptions(IOptionDefinitionContext context)
         {
-            _valueSOOption = DialogueGraphUtility.AddNodeOption(context, "valueSO", typeof(ValueSO));
-            _operationOption = DialogueGraphUtility.AddNodeOption(context, "Operation", typeof(ValueSO.ValueOperation));
+            _dsValueOption = DialogueGraphUtility.AddNodeOption(context, "DSValue", typeof(DSValue));
+            _operationOption = DialogueGraphUtility.AddNodeOption(context, "Operation", typeof(DSValue.ValueOperation));
             _otherValueOption = DialogueGraphUtility.AddNodeOption(context, "Other Value", typeof(float));
         }
 
@@ -36,7 +36,7 @@ namespace WolverineSoft.DialogueSystem.Editor
         {
             var valueEntry = new ValueModifier();
 
-            _valueSOOption.TryGetValue(out valueEntry.valueSO);
+            _dsValueOption.TryGetValue(out valueEntry.dsValue);
             _operationOption.TryGetValue(out valueEntry.operation);
             _otherValueOption.TryGetValue(out valueEntry.otherValue);
 
@@ -45,8 +45,8 @@ namespace WolverineSoft.DialogueSystem.Editor
         
         public void DisplayErrors(GraphLogger infos)
         {
-            _valueSOOption.TryGetValue(out ValueSO valueSO);
-            if (valueSO==null)
+            _dsValueOption.TryGetValue(out DSValue dsValue);
+            if (dsValue==null)
                 infos.LogWarning("Value should not be null", this);
         }
     }

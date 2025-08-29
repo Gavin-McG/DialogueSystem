@@ -27,7 +27,7 @@ namespace WolverineSoft.DialogueSystem.Editor
                 Object obj = AssetDatabase.LoadAssetAtPath<Object>(path);
                 if (obj == null) continue;
 
-                if (obj is ValueSO && valueSOIcon != null)
+                if (obj is DSValue && valueSOIcon != null)
                     EditorGUIUtility.SetIconForObject(obj, valueSOIcon);
 
                 else if (obj is ValueHolder && valueHolderIcon != null)

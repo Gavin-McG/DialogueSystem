@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using UnityEngine.Serialization;
 
 namespace WolverineSoft.DialogueSystem.Values
 {
@@ -12,16 +13,16 @@ namespace WolverineSoft.DialogueSystem.Values
     [Serializable]
     public sealed class ValueSetter<T> : ValueEditor
     {
-        public ValueSO valueSO;
+        public DSValue dsValue;
 
-        [DefaultValue(ValueSO.ValueScope.Dialogue)]
-        public ValueSO.ValueScope scope;
+        [DefaultValue(DSValue.ValueScope.Dialogue)]
+        public DSValue.ValueScope scope;
         
         public T value;
 
         public override void SetValue(IValueContext context)
         {
-            valueSO.SetValue(context, scope, value);
+            dsValue.SetValue(context, scope, value);
         }
     }
 }

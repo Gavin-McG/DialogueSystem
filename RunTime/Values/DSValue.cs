@@ -12,11 +12,11 @@ namespace WolverineSoft.DialogueSystem.Values
     /// Scriptable Object to identify distinct values. Values previously identified by string, but was changed for
     /// easier refactoring and preventing typo-related issues
     /// </summary>
-    [CreateAssetMenu(menuName = "Dialogue System/ValueSO")]
-    public class ValueSO : ScriptableObject
+    [CreateAssetMenu(menuName = "Dialogue System/Dialogue Value")]
+    public class DSValue : ScriptableObject
     {
         [SerializeReference] private SerializedValueBase _globalValue;
-        private Dictionary<IValueContext, Dictionary<ValueScope, object>> _localValues = new();
+        private Dictionary<string, Dictionary<ValueScope, object>> _localValues = new();
 
         public enum ValueScope { Dialogue = 0, Manager = 1, Global = 2 }
         public enum ValueComp { Equal, NotEqual, GreaterThan, GreaterThanOrEqualTo, LessThan, LessThanOrEqualTo }
@@ -47,7 +47,7 @@ namespace WolverineSoft.DialogueSystem.Values
         public object GetValue(IValueContext context)
         {
             //Check local scopes
-            if (_localValues.TryGetValue(context, out var contextValues))
+            if (_localValues.TryGetValue(context.ContextName, out var contextValues))
             {
                 foreach (var scope in LocalScopes)
                 {
@@ -89,7 +89,7 @@ namespace WolverineSoft.DialogueSystem.Values
             }
             
             //Check local scopes
-            if (_localValues.TryGetValue(context, out var contextValues) &&
+            if (_localValues.TryGetValue(context.ContextName, out var contextValues) &&
                 contextValues.TryGetValue(scope, out value))
             {
                 return true;
@@ -136,20 +136,20 @@ namespace WolverineSoft.DialogueSystem.Values
             }
             
             //add new context if necessary
-            if (!_localValues.ContainsKey(context))
+            if (!_localValues.ContainsKey(context.ContextName))
             {
-                _localValues.Add(context, new Dictionary<ValueScope, object>());
+                _localValues.Add(context.ContextName, new Dictionary<ValueScope, object>());
             }
             
             //set local value
-            _localValues[context][scope] = value;
+            _localValues[context.ContextName][scope] = value;
         }
         
         
         public ValueScope GetValueScope(IValueContext context)
         {
             //check local scopes for stored value
-            if (_localValues.TryGetValue(context, out var contextValues))
+            if (_localValues.TryGetValue(context.ContextName, out var contextValues))
             {
                 foreach (var scope in LocalScopes)
                 {
@@ -174,11 +174,11 @@ namespace WolverineSoft.DialogueSystem.Values
             _localValues ??= new();
 
             //clear local scopes
-            if (_localValues.TryGetValue(context, out var contextValues))
+            if (_localValues.TryGetValue(context.ContextName, out var contextValues))
             {
                 foreach (var localScope in LocalScopes)
                 {
-                    if (localScope <= scope)
+                    if (localScope <= scope) {}
                         contextValues.Remove(localScope);
                 }
             }

@@ -23,6 +23,9 @@ namespace WolverineSoft.DialogueSystem
         public readonly UnityEvent StartedDialogue = new();
 
         [SerializeField] private ValueHolder values;
+        [SerializeField] private string managerName;
+        
+        public string ContextName => managerName;
         
         private DialogueAsset _currentDialogue;
         private DialogueTrace _currentTrace;
@@ -72,7 +75,7 @@ namespace WolverineSoft.DialogueSystem
             
             //clear values from previous dialogue
             if (values)
-                values.ClearScope(this, ValueSO.ValueScope.Dialogue);
+                values.ClearScope(this, DSValue.ValueScope.Dialogue);
             else
                 Debug.LogWarning("No ValueHolder assigned to DialogueManager. Dialogue-scope values will not be cleared");
 
@@ -88,6 +91,12 @@ namespace WolverineSoft.DialogueSystem
         public DialogueParams AdvanceDialogue(AdvanceDialogueContext context)
         {
             current = this;
+
+            if (_currentTrace == null)
+            {
+                Debug.LogWarning("Attempting to Advance Dialogue while no dialogue is active");
+                return null;
+            }
             
             do {
                 _currentTrace = _currentTrace.AdvanceDialogue(context, this);

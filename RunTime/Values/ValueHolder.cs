@@ -6,19 +6,19 @@ namespace WolverineSoft.DialogueSystem.Values
     [CreateAssetMenu(fileName = "Values", menuName = "Dialogue System/Value Holder")]
     public class ValueHolder : ScriptableObject
     {
-        [SerializeField] private List<ValueSO> values = new();
+        [SerializeField] private List<DSValue> values = new();
 
-        public IReadOnlyList<ValueSO> Values => values;
+        public IReadOnlyList<DSValue> Values => values;
         
-        public void ClearScope(IValueContext context, ValueSO.ValueScope scope)
+        public void ClearScope(IValueContext context, DSValue.ValueScope scope)
         {
-            foreach (ValueSO value in values)
+            foreach (DSValue value in values)
             {
                 value?.ClearScope(context, scope);
             }
         }
         
         // internal method to refresh list
-        public void SetValues(List<ValueSO> newValues) => values = newValues;
+        public void SetValues(List<DSValue> newValues) => values = newValues;
     }
 }

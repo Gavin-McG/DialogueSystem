@@ -59,7 +59,7 @@ namespace WolverineSoft.DialogueSystem.Editor
                 foreach (var placeholder in TextParams.ExtractBracketContents(text))
                 {
                     _valuePorts.Add(
-                        context.AddInputPort<ValueSO>($"value {index++}")
+                        context.AddInputPort<DSValue>($"value {index++}")
                             .WithDisplayName(placeholder)
                             .Build()
                     );
@@ -183,7 +183,7 @@ namespace WolverineSoft.DialogueSystem.Editor
             foreach (var valuePort in _valuePorts)
             {
                 _option.optionParams.values.Add(
-                    DialogueGraphUtility.GetPortValueOrDefault<ValueSO>(this, valuePort.name)
+                    DialogueGraphUtility.GetPortValueOrDefault<DSValue>(this, valuePort.name)
                 );
             }
         }
