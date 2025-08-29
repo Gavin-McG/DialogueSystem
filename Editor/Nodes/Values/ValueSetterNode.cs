@@ -80,6 +80,9 @@ namespace WolverineSoft.DialogueSystem.Editor
             _dsValueOption.TryGetValue<DSValue>(out var dsValue);
             _valueScopeOption.TryGetValue<DSValue.ValueScope>(out var scope);
             _valueOption.TryGetValue(out object value);
+            
+            //return null if no value assigned
+            if (dsValue == null) return null;
 
             // Build a ValueSetter<T> for the correct type
             Type selectedType = GetValueType();
@@ -98,7 +101,7 @@ namespace WolverineSoft.DialogueSystem.Editor
         {
             _dsValueOption.TryGetValue(out DSValue valueSO);
             if (valueSO==null)
-                infos.LogWarning("Value should not be null", this);
+                infos.LogError("DSValue should not be null", this);
         }
     }
 }

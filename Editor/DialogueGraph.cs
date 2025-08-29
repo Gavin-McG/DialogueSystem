@@ -78,7 +78,7 @@ namespace WolverineSoft.DialogueSystem.Editor
                 case > 1:
                     foreach (var beginDialogueNode in beginDialogueNodes.Skip(1))
                     {
-                        infos.LogWarning($"DialogueGraph only supports one {nameof(IBeginNode)} by graph. " +
+                        infos.LogError($"DialogueGraph only supports one {nameof(IBeginNode)} by graph. " +
                                          "Only the first created one will be used.", beginDialogueNode);
                     }
                     passedCheck = false;

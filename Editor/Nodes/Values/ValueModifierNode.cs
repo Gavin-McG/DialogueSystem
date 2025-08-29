@@ -39,6 +39,8 @@ namespace WolverineSoft.DialogueSystem.Editor
             _dsValueOption.TryGetValue(out valueEntry.dsValue);
             _operationOption.TryGetValue(out valueEntry.operation);
             _otherValueOption.TryGetValue(out valueEntry.otherValue);
+            
+            if (valueEntry.dsValue==null) return null;
 
             return valueEntry;
         }
