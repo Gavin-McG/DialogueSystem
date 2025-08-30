@@ -1,11 +1,14 @@
 ﻿using WolverineSoft.DialogueSystem.Values;
+using UnityEngine;
+using System.Collections.Generic;
 
 namespace WolverineSoft.DialogueSystem.Editor.Values
 {
     using UnityEditor;
-    using UnityEngine;
-    using System.Collections.Generic;
 
+    /// <summary>
+    /// Editor for ValueHolder. Creates a button to populate values with all <see cref="DSValue"/> currently in the project
+    /// </summary>
     [CustomEditor(typeof(ValueHolder))]
     public class ValueHolderEditor : Editor
     {
@@ -31,6 +34,8 @@ namespace WolverineSoft.DialogueSystem.Editor.Values
                 Undo.RecordObject(holder, "Populate ValueHolder");
                 holder.SetValues(allValues);
                 EditorUtility.SetDirty(holder);
+
+                holder.OnValidate();
             }
         }
     }

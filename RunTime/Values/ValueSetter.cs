@@ -4,9 +4,6 @@ using UnityEngine.Serialization;
 
 namespace WolverineSoft.DialogueSystem.Values
 {
-    /// <author>Gavin McGinness</author>
-    /// <date>2025-08-24</date>
-    
     /// <summary>
     /// ValueEditor representing the assignment of a value
     /// </summary>

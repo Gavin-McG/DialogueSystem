@@ -3,9 +3,6 @@ using UnityEngine.Serialization;
 
 namespace WolverineSoft.DialogueSystem.Values
 {
-    /// <author>Gavin McGinness</author>
-    /// <date>2025-08-24</date>
-    
     /// <summary>
     /// ValueEditor which performs a mathematical operation on a numeric value
     /// </summary>

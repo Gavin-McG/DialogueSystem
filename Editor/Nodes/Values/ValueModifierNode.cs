@@ -7,9 +7,6 @@ using WolverineSoft.DialogueSystem.Values;
 
 namespace WolverineSoft.DialogueSystem.Editor
 {
-    /// <author>Gavin McGinness</author>
-    /// <date>2025-08-24</date>
-    
     /// <summary>
     /// Node for performing operations on existing numeric values. 
     /// </summary>

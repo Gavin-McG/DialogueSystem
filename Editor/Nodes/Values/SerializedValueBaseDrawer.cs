@@ -7,7 +7,11 @@ using WolverineSoft.DialogueSystem.Values;
 
 namespace WolverineSoft.DialogueSystem.Editor
 { 
-    
+    /// <summary>
+    /// PropertyDrawer for <see cref="SerializedValueBase"/>.
+    /// Create a type and value field to create a generic <see cref="SerializedValue{T}"/>
+    /// Value type list is populated from list of defaults and all types marked with <see cref="DialogueValueTypeAttribute"/>
+    /// </summary>
     [CustomPropertyDrawer(typeof(SerializedValueBase), true)]
     public class SerializedValueDrawer : PropertyDrawer
     {

@@ -7,9 +7,6 @@ using WolverineSoft.DialogueSystem.Values;
 
 namespace WolverineSoft.DialogueSystem.Editor
 {
-    /// <author>Gavin McGinness</author>
-    /// <date>2025-08-21</date>
-    
     /// <summary>
     /// Generic Base Class for Custom ValueSetterNodes.
     /// Used for assigning value options which aren't natively supported by Graph Toolkit / <see cref="ValueSetterNode"/> 

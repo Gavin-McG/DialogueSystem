@@ -23,7 +23,7 @@ namespace WolverineSoft.DialogueSystem
         public readonly UnityEvent StartedDialogue = new();
 
         [SerializeField] private ValueHolder values;
-        [SerializeField] private string managerName;
+        [SerializeField, Delayed] private string managerName;
         
         public string ContextName => managerName;
         
@@ -31,7 +31,16 @@ namespace WolverineSoft.DialogueSystem
         private DialogueTrace _currentTrace;
         private AdvanceDialogueContext _previousContext;
         [HideInInspector] public List<int> optionIndexes;
-        
+
+        private void OnValidate()
+        {
+            if (managerName == "Global")
+            {
+                managerName = "";
+                Debug.LogWarning("DialogueManager name cannot be \"Global\"");
+            }
+        }
+
         #region SETTINGS
         
         /// <summary>

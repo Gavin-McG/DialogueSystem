@@ -5,9 +5,6 @@ using UnityEngine;
 
 namespace WolverineSoft.DialogueSystem.Values
 {
-    ///<author>Gavin McGinness</author>
-    /// <date>2025-08-24</date>
-    
     /// <summary>
     /// Scriptable Object to identify distinct values. Values previously identified by string, but was changed for
     /// easier refactoring and preventing typo-related issues
@@ -15,6 +12,8 @@ namespace WolverineSoft.DialogueSystem.Values
     [CreateAssetMenu(menuName = "Dialogue System/Dialogue Value")]
     public class DSValue : ScriptableObject
     {
+        [SerializeField, Delayed] public string valueName;
+        
         [SerializeReference] private SerializedValueBase _globalValue;
         private Dictionary<string, Dictionary<ValueScope, object>> _localValues = new();
 
@@ -42,7 +41,14 @@ namespace WolverineSoft.DialogueSystem.Values
             }
         }
 
-        
+
+        private void OnValidate()
+        {
+            if (string.IsNullOrEmpty(valueName))
+                valueName = name;
+        }
+
+
         // Basic Value access / modification
         public object GetValue(IValueContext context)
         {
@@ -237,6 +243,82 @@ namespace WolverineSoft.DialogueSystem.Values
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// Returns a simple list of all stored values with associated context/scope
+        /// </summary>
+        internal IEnumerable<ValueInstance> GetAllValues()
+        {
+            yield return new ValueInstance()
+            {
+                value = _globalValue,
+                contextName = "Global",
+                scope = ValueScope.Global
+            };
+
+            foreach (var contextKVP in _localValues)
+            {
+                foreach (var scopeKVP in contextKVP.Value)
+                {
+                    var value = scopeKVP.Value;
+                    var wrapperType = typeof(SerializedValue<>).MakeGenericType(value.GetType());
+                    var valueWrapper = (SerializedValueBase)System.Activator.CreateInstance(wrapperType, value);
+
+                    yield return new ValueInstance()
+                    {
+                        value = valueWrapper,
+                        contextName = contextKVP.Key,
+                        scope = scopeKVP.Key
+                    };
+                }
+            }
+        }
+
+        /// <summary>
+        /// Restore the values from a saved List (must have maintained polymorphism if used in a save/serialization system)
+        /// </summary>
+        internal void RestoreValues(IEnumerable<ValueInstance> values)
+        {
+            if (values == null)
+            {
+                Debug.LogWarning("RestoreValues called with null values collection.");
+                return;
+            }
+
+            _localValues.Clear();
+            _globalValue = null;
+
+            foreach (var instance in values)
+            {
+                if (instance == null || instance.value == null)
+                    continue;
+
+                if (instance.scope == ValueScope.Global)
+                {
+                    if (instance.contextName != "Global")
+                    {
+                        Debug.LogWarning(
+                            $"Global value must use contextName='Global' and scope=ValueScope.Global. " +
+                            $"Got context='{instance.contextName}', scope='{instance.scope}'. Resetting global to null."
+                        );
+                        _globalValue = null;
+                        continue;
+                    }
+
+                    _globalValue = instance.value;
+                }
+                else
+                {
+                    if (!_localValues.TryGetValue(instance.contextName, out var contextValues))
+                    {
+                        contextValues = new Dictionary<ValueScope, object>();
+                        _localValues[instance.contextName] = contextValues;
+                    }
+
+                    contextValues[instance.scope] = instance.value.GetValue();
+                }
+            }
         }
     }
 }

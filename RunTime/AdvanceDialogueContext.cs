@@ -2,9 +2,6 @@ using UnityEngine;
 
 namespace WolverineSoft.DialogueSystem
 {
-    /// <author>Gavin McGinness</author>
-    /// <date>2025-08-21</date>
-    
     /// <summary>
     /// Context that is passed into the DialogueManager to retrieve the next dialogue.
     /// Contains values relevant to the player's interaction and is used By redirects to determine next dialogue.

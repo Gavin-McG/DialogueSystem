@@ -5,9 +5,6 @@ using WolverineSoft.DialogueSystem.Values;
 
 namespace WolverineSoft.DialogueSystem
 {
-    /// <author>Gavin McGinness</author>
-    /// <date>2025-08-21</date>
-    
     /// <summary>
     /// Stores all the data about event, keyword, and value operations which are to occur after a given DialogueTrace
     /// Events are called last in case any values or keywords might affect be required for that event
