@@ -1,15 +1,8 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using Unity.GraphToolkit.Editor;
 using UnityEngine;
-using WolverineSoft.DialogueSystem;
 
 namespace  WolverineSoft.DialogueSystem.Editor
 {
-    /// <author>Gavin McGinness</author>
-    /// <date>2025-08-21</date>
-
     /// <summary>
     /// Type of <see cref="RedirectNode"/> which evaluates until it finds a condition that passes.
     /// </summary>

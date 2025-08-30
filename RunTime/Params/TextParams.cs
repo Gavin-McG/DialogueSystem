@@ -6,9 +6,6 @@ using WolverineSoft.DialogueSystem.Values;
 
 namespace WolverineSoft.DialogueSystem
 {
-    /// <author>Gavin McGinness</author>
-    /// <date>2025-08-24</date>
-    /// 
     /// <summary>
     /// Base class for Parameter types which require value replacements
     /// </summary>

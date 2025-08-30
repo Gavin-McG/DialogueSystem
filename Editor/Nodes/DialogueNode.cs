@@ -1,16 +1,11 @@
 using System;
 using System.Collections.Generic;
 using Unity.GraphToolkit.Editor;
-using UnityEditor;
 using UnityEngine;
-using WolverineSoft.DialogueSystem;
 using WolverineSoft.DialogueSystem.Values;
 
 namespace WolverineSoft.DialogueSystem.Editor
 {
-    /// <author>Gavin McGinness</author>
-    /// <date>2025-08-24</date>
-    
     /// <summary>
     /// Generic Base Class for Non-choice dialogue.
     /// </summary>

@@ -1,16 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using Unity.GraphToolkit.Editor;
-using UnityEditor;
 using UnityEditor.AssetImporters;
 using UnityEngine;
-using WolverineSoft.DialogueSystem;
 
 namespace WolverineSoft.DialogueSystem.Editor
 {
-    /// <author>Gavin McGinness</author>
-    /// <date>2025-08-21</date>
-    
     /// <summary>
     /// Custom Importer for the DialogueGraph, expected by the Graph Toolkit
     /// </summary>

@@ -2,14 +2,10 @@
 using System.Collections.Generic;
 using Unity.GraphToolkit.Editor;
 using UnityEngine;
-using WolverineSoft.DialogueSystem;
 using WolverineSoft.DialogueSystem.Values;
 
 namespace WolverineSoft.DialogueSystem.Editor
 {
-    /// <author>Gavin McGinness</author>
-    /// <date>2025-08-23</date>
-    
     /// <summary>
     /// Base class for options attached to choice dialogue nodes or redirects.
     /// Handles logic for displaying node options from redirect weights,
@@ -41,7 +37,7 @@ namespace WolverineSoft.DialogueSystem.Editor
             DialogueGraphUtility.AddTypeOptions<T>(context);
         }
 
-        protected sealed override void OnDefinePorts(IPortDefinitionContext context)
+        protected sealed override void OnDefineInitializedPorts(IPortDefinitionContext context)
         {
             _nextPort = DialogueGraphUtility.AddNextPort(context);
             

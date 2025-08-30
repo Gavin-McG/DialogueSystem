@@ -1,12 +1,7 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace WolverineSoft.DialogueSystem
 {
-    /// <author>Gavin McGinness</author>
-    /// <date>2025-08-21</date>
-    
     /// <summary>
     /// Base class for ScriptableObjects that are part of the path traced by the <see cref="DialogueManager"/>
     /// </summary>

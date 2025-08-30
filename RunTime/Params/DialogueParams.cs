@@ -1,15 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
-using UnityEngine;
 using WolverineSoft.DialogueSystem.Values;
 
 namespace WolverineSoft.DialogueSystem
 {
-    /// <author>Gavin McGinness</author>
-    /// <date>2025-08-24</date>
-    
     /// <summary>
     /// Class used to provide data from the backend of the Dialogue system to the UI.
     /// Uses Getter functions to retrieve params of your derived type

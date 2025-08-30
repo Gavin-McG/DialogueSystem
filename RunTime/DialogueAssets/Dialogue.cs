@@ -1,11 +1,7 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace WolverineSoft.DialogueSystem
 {
-    /// <author>Gavin McGinness</author>
-    /// <date>2025-08-21</date>
-    
     /// <summary>
     /// ScriptableObject representing a regular dialogue
     /// </summary>

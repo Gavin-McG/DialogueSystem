@@ -1,15 +1,9 @@
 using System;
-using System.Collections.Generic;
 using Unity.GraphToolkit.Editor;
-using UnityEditor;
 using UnityEngine;
-using WolverineSoft.DialogueSystem;
 
 namespace WolverineSoft.DialogueSystem.Editor
 {
-    /// <author>Gavin McGinness</author>
-    /// <date>2025-08-21</date>
-    
     /// <summary>
     /// Node which represents the beginning of a dialogue interaction.
     /// Has options corresponding to <see cref="DialogueSettings"/> 

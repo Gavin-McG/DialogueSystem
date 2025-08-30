@@ -1,12 +1,6 @@
-﻿using System.Collections.Generic;
-using WolverineSoft.DialogueSystem;
-using UnityEngine;
-
+﻿
 namespace WolverineSoft.DialogueSystem.Editor
 {
-    /// <author>Gavin McGinness</author>
-    /// <date>2025-08-21</date>
-    
     /// <summary>
     /// Interface for <see cref="IDialogueReferenceNode"/> nodes that are also responsible assigning references to other scriptableObject on its own
     /// </summary>

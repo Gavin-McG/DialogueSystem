@@ -4,9 +4,6 @@ using UnityEngine.Events;
 
 namespace WolverineSoft.DialogueSystem
 {
-    /// <author>Gavin McGinness</author>
-    /// <date>2025-08-21</date>
-    
     /// <summary>
     /// Scriptable Object representing a non-typed Dialogue Event
     /// </summary>
@@ -95,9 +92,6 @@ namespace WolverineSoft.DialogueSystem
         }
     }
 
-    /// <author>Gavin McGinness</author>
-    /// <date>2025-08-21</date>
-    
     /// <summary>
     /// abstract class for Scriptable Object representing a typed Dialogue Event
     /// </summary>

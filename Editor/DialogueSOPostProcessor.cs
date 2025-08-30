@@ -4,6 +4,9 @@ using WolverineSoft.DialogueSystem.Values;
 
 namespace WolverineSoft.DialogueSystem.Editor
 {
+    /// <summary>
+    /// Post-processor for dialogue assets which is used to assign the proper icons
+    /// </summary>
     [InitializeOnLoad]
     public static class DialogueSOIconInitializer
     {

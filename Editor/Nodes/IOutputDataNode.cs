@@ -1,8 +1,6 @@
-﻿namespace WolverineSoft.DialogueSystem.Editor
+﻿
+namespace WolverineSoft.DialogueSystem.Editor
 {
-    /// <author>Gavin McGinness</author>
-    /// <date>2025-08-24</date>
-    
     /// <summary>
     /// Interface for nodes that provide data from an output port.
     /// </summary>

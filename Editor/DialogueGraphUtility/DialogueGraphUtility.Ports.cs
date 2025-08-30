@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Unity.GraphToolkit.Editor;
 
 namespace WolverineSoft.DialogueSystem.Editor

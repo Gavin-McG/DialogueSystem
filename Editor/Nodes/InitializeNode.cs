@@ -1,12 +1,7 @@
-﻿using System;
-using Unity.GraphToolkit.Editor;
-using UnityEditor.Experimental.GraphView;
+﻿using Unity.GraphToolkit.Editor;
 
 namespace WolverineSoft.DialogueSystem.Editor
 {
-    /// <author>Gavin McGinness</author>
-    /// <date>2025-08-23</date>
-    
     /// <summary>
     /// Base class for blockNodes which require access to contextNode on initialization.
     /// contextNode is node available on the first definition, which is a bug with the Graph Toolkit.
@@ -26,6 +21,14 @@ namespace WolverineSoft.DialogueSystem.Editor
                 OnDefineInitializedOptions(context);
         }
 
+        protected sealed override void OnDefinePorts(IPortDefinitionContext context)
+        {
+            if (contextNode != null)
+                OnDefineInitializedPorts(context);
+        }
+
         protected virtual void OnDefineInitializedOptions(IOptionDefinitionContext context) {}
+        
+        protected virtual void OnDefineInitializedPorts(IPortDefinitionContext context) {}
     }
 }

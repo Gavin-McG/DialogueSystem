@@ -4,9 +4,6 @@ using UnityEngine;
 
 namespace WolverineSoft.DialogueSystem
 {
-    /// <author>Gavin McGinness</author>
-    /// <date>2025-08-21</date>
-    
     /// <summary>
     /// Scriptable Object representing a Choice Dialogue
     /// </summary>

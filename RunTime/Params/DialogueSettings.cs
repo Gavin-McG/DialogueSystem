@@ -3,9 +3,6 @@ using UnityEngine;
 
 namespace WolverineSoft.DialogueSystem
 {
-    /// <author>Gavin McGinness</author>
-    /// <date>2025-08-21</date>
-    
     /// <summary>
     /// Base class representing the Settings for an overall interaction.
     /// Provided via the <see cref="DialogueManager"/>

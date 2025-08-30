@@ -2,9 +2,6 @@
 
 namespace WolverineSoft.DialogueSystem
 {
-    /// <author>Gavin McGinness</author>
-    /// <date>2025-08-21</date>
-    
     /// <summary>
     /// Base ScriptableObject class for <see cref="DSEvent{T}"/> and <see cref="DSEvent"/>
     /// </summary>

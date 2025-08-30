@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using WolverineSoft.DialogueSystem;
-using Unity.GraphToolkit.Editor;
-using UnityEngine;
+﻿using Unity.GraphToolkit.Editor;
 using WolverineSoft.DialogueSystem.Values;
 
 namespace WolverineSoft.DialogueSystem.Editor

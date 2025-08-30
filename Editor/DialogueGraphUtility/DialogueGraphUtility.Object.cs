@@ -1,15 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using Unity.GraphToolkit.Editor;
-using UnityEngine;
-using WolverineSoft.DialogueSystem;
 using WolverineSoft.DialogueSystem.Values;
 
 namespace WolverineSoft.DialogueSystem.Editor
 {
-    /// <author>Gavin McGinness</author>
-    /// <date>2025-08-24</date>
-    
     /// <summary>
     /// Helper functions that are commonly used within the DialogueGraph Editor
     /// </summary>

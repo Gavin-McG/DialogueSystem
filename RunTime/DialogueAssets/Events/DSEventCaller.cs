@@ -2,9 +2,6 @@
 
 namespace WolverineSoft.DialogueSystem
 {
-    /// <author>Gavin McGinness</author>
-    /// <date>2025-08-21</date>
-    
     /// <summary>
     /// class Holding information for a call to a non-types DSEvent
     /// </summary>
@@ -24,9 +21,6 @@ namespace WolverineSoft.DialogueSystem
         }
     }
 
-    /// <author>Gavin McGinness</author>
-    /// <date>2025-08-21</date>
-    
     /// <summary>
     /// class Holding information for a call to a non-types DSEvent
     /// </summary>

@@ -1,15 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
 using Unity.GraphToolkit.Editor;
-using UnityEngine;
-using WolverineSoft.DialogueSystem;
 
 namespace WolverineSoft.DialogueSystem.Editor
 {
-    /// <author>Gavin McGinness</author>
-    /// <date>2025-08-21</date>
-    
     /// <summary>
     /// Node used to define where/how events are called in a graph.
     /// Defines a port based on the type parameter T of the assigned DSEvent 

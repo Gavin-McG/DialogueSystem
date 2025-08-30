@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text.RegularExpressions;
-using WolverineSoft.DialogueSystem;
-using Unity.GraphToolkit.Editor;
+﻿using Unity.GraphToolkit.Editor;
 using UnityEngine;
 
 namespace WolverineSoft.DialogueSystem.Editor
 {
-    /// <author>Gavin McGinness</author>
-    /// <date>2025-08-21</date>
-    
     /// <summary>
     /// Generic Base Class for Nodes which can create scriptableObject.
     /// </summary>

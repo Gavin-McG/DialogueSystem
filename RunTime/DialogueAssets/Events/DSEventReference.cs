@@ -1,11 +1,7 @@
 ﻿using System;
-using UnityEngine;
 
 namespace WolverineSoft.DialogueSystem
 {
-    /// <author>Gavin McGinness</author>
-    /// <date>2025-08-21</date>
-    
     /// <summary>
     /// Base class for <see cref="DSEventCaller"/> and <see cref="DSEventCaller{T}"/>
     /// </summary>

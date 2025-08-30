@@ -3,13 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.GraphToolkit.Editor;
 using UnityEditor;
-using UnityEngine;
 
 namespace WolverineSoft.DialogueSystem.Editor
 {
-    /// <author>Gavin McGinness</author>
-    /// <date>2025-08-21</date>
-    
     /// <summary>
     /// Graph Toolkit class for the Dialogue Graph interface.
     /// Handles errors/warning pertaining to the graph as a whole
