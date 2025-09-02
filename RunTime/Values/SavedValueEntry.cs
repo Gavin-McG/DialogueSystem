@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using Unity.Plastic.Newtonsoft.Json;
 
 namespace WolverineSoft.DialogueSystem.Values
 {
     /// <summary>
-    /// Serialization-friendly format for <see cref="DSValue"/> data
+    /// Serialization-friendly format for <see cref="DSValue"/> data. 
+    /// Requires a form of serialization which supports polymorphism, such as NewtonSoft
     /// </summary>
     [Serializable]
-    public struct SavedValueEntry
+    public class SavedValueEntry
     {
         public string ValueId;
-        internal List<ValueInstance> Instances;
+        [JsonProperty] internal List<ValueInstance> Instances;
     }
 }

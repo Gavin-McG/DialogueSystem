@@ -46,11 +46,7 @@ namespace WolverineSoft.DialogueSystem.Values
             var saved = new SavedValueHolder();
             foreach (var value in values)
             {
-                saved.Values.Add(new SavedValueEntry
-                {
-                    ValueId = value.valueName, // or some stable identifier
-                    Instances = value.GetAllValues().ToList()
-                });
+                saved.Values.Add(value.GetSaveData());
             }
             return saved;
         }
@@ -62,7 +58,7 @@ namespace WolverineSoft.DialogueSystem.Values
                 DSValue value = values.FirstOrDefault(v => v.valueName == entry.ValueId);
                 if (value != null)
                 {
-                    value.RestoreValues(entry.Instances);
+                    value.RestoreFromSave(entry);
                 }
             }
         }

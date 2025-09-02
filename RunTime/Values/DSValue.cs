@@ -248,14 +248,17 @@ namespace WolverineSoft.DialogueSystem.Values
         /// <summary>
         /// Returns a simple list of all stored values with associated context/scope
         /// </summary>
-        internal IEnumerable<ValueInstance> GetAllValues()
+        internal SavedValueEntry GetSaveData()
         {
-            yield return new ValueInstance()
+            SavedValueEntry entry = new SavedValueEntry();
+            entry.ValueId = valueName;
+            
+            entry.Instances.Add(new ValueInstance()
             {
                 value = _globalValue,
                 contextName = "Global",
                 scope = ValueScope.Global
-            };
+            });
 
             foreach (var contextKVP in _localValues)
             {
@@ -265,22 +268,31 @@ namespace WolverineSoft.DialogueSystem.Values
                     var wrapperType = typeof(SerializedValue<>).MakeGenericType(value.GetType());
                     var valueWrapper = (SerializedValueBase)System.Activator.CreateInstance(wrapperType, value);
 
-                    yield return new ValueInstance()
+                    entry.Instances.Add(new ValueInstance()
                     {
                         value = valueWrapper,
                         contextName = contextKVP.Key,
                         scope = scopeKVP.Key
-                    };
+                    });
                 }
             }
+
+            return entry;
         }
 
         /// <summary>
         /// Restore the values from a saved List (must have maintained polymorphism if used in a save/serialization system)
         /// </summary>
-        internal void RestoreValues(IEnumerable<ValueInstance> values)
+        internal void RestoreFromSave(SavedValueEntry entry)
         {
-            if (values == null)
+            if (entry.ValueId != valueName)
+            {
+                Debug.LogWarning("Cannot restore value from save because ValueId does not match name. " + "" +
+                                 $"ValueId of save is {entry.ValueId}, valueName of DSValue is {valueName}");
+                return;
+            }
+            
+            if (entry?.Instances == null)
             {
                 Debug.LogWarning("RestoreValues called with null values collection.");
                 return;
@@ -289,7 +301,7 @@ namespace WolverineSoft.DialogueSystem.Values
             _localValues.Clear();
             _globalValue = null;
 
-            foreach (var instance in values)
+            foreach (var instance in entry.Instances)
             {
                 if (instance == null || instance.value == null)
                     continue;

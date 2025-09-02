@@ -1,11 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace WolverineSoft.DialogueSystem.Values
 {
     /// <summary>
-    /// Serialization-friendly format for <see cref="ValueHolder"/> data
+    /// Serialization-friendly format for <see cref="ValueHolder"/> data.
+    /// Requires a form of serialization which supports polymorphism, such as NewtonSoft
     /// </summary>
-    [System.Serializable]
+    [Serializable]
     public class SavedValueHolder
     {
         public List<SavedValueEntry> Values = new();
