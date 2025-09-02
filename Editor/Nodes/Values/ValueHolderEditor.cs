@@ -9,14 +9,14 @@ namespace WolverineSoft.DialogueSystem.Editor.Values
     /// <summary>
     /// Editor for ValueHolder. Creates a button to populate values with all <see cref="DSValue"/> currently in the project
     /// </summary>
-    [CustomEditor(typeof(ValueHolder))]
+    [CustomEditor(typeof(DSValueHolder))]
     public class ValueHolderEditor : Editor
     {
         public override void OnInspectorGUI()
         {
             DrawDefaultInspector();
 
-            ValueHolder holder = (ValueHolder)target;
+            DSValueHolder holder = (DSValueHolder)target;
 
             if (GUILayout.Button("Populate with all ValueSO assets"))
             {

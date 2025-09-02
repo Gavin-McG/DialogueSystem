@@ -24,9 +24,9 @@ namespace WolverineSoft.DialogueSystem.Tests
             return v;
         }
 
-        private ValueHolder CreateHolder(params DSValue[] values)
+        private DSValueHolder CreateHolder(params DSValue[] values)
         {
-            var holder = ScriptableObject.CreateInstance<ValueHolder>();
+            var holder = ScriptableObject.CreateInstance<DSValueHolder>();
             holder.SetValues(new List<DSValue>(values));
             return holder;
         }
@@ -64,12 +64,12 @@ namespace WolverineSoft.DialogueSystem.Tests
             ds.SetValue(ctxC, DSValue.ValueScope.Global, true);
 
             // Save -> JSON roundtrip
-            var save = ds.GetSaveData();
+            var save = ds.GetData();
             var clonedSave = DeepCloneViaJson(save);
             
             // Restore into a fresh DSValue instance with the same name
             var restored = CreateValue("TestValue");
-            restored.RestoreFromSave(clonedSave);
+            restored.RestoreFromData(clonedSave);
 
             // --- Context A expectations ---
             // Lowest scope is Manager (an int 50)
@@ -123,7 +123,7 @@ namespace WolverineSoft.DialogueSystem.Tests
             var holder = CreateHolder(vGold, vName, vAlive);
 
             // Save -> JSON roundtrip
-            var savedHolder = holder.GetSaveData();
+            var savedHolder = holder.GetData();
             var cloned = DeepCloneViaJson(savedHolder);
 
             // Create fresh DSValues with the same names and put them into a new holder
@@ -133,7 +133,7 @@ namespace WolverineSoft.DialogueSystem.Tests
             var newHolder = CreateHolder(newGold, newName, newAlive);
 
             // Restore
-            newHolder.RestoreFromSave(cloned);
+            newHolder.RestoreFromData(cloned);
 
             // Validate restored values
             Assert.IsTrue(newGold.TryGetValue<int>(ctx, out var goldVal));
@@ -144,6 +144,114 @@ namespace WolverineSoft.DialogueSystem.Tests
 
             Assert.IsTrue(newAlive.TryGetValue<bool>(ctx, out var aliveVal));
             Assert.IsTrue(aliveVal);
+        }
+        
+        [Test]
+        public void DSValue_SaveDataString_RoundTrip_Works()
+        {
+            var ctx = new TestContext("Quest");
+
+            var value = CreateValue("QuestProgress");
+            value.SetValue(ctx, DSValue.ValueScope.Global, 3);
+
+            // Save directly to string
+            string saveString = value.GetSaveData();
+
+            // New DSValue, restore from string
+            var restored = CreateValue("QuestProgress");
+            restored.RestoreFromSaveData(saveString);
+
+            Assert.IsTrue(restored.TryGetValue<int>(ctx, out var restoredVal));
+            Assert.AreEqual(3, restoredVal);
+        }
+
+        [Test]
+        public void ValueHolder_SaveDataString_RoundTrip_Works()
+        {
+            var ctx = new TestContext("Gameplay");
+
+            var v1 = CreateValue("Coins");
+            v1.SetValue(ctx, DSValue.ValueScope.Global, 99);
+
+            var v2 = CreateValue("PlayerTitle");
+            v2.SetValue(ctx, DSValue.ValueScope.Manager, "Champion");
+
+            var holder = CreateHolder(v1, v2);
+
+            // Save directly to string
+            string saveString = holder.GetSaveData();
+
+            // New holder with new DSValue instances
+            var newV1 = CreateValue("Coins");
+            var newV2 = CreateValue("PlayerTitle");
+            var newHolder = CreateHolder(newV1, newV2);
+
+            newHolder.RestoreFromSaveData(saveString);
+
+            Assert.IsTrue(newV1.TryGetValue<int>(ctx, out var coins));
+            Assert.AreEqual(99, coins);
+
+            Assert.IsTrue(newV2.TryGetValue<string>(ctx, out var title));
+            Assert.AreEqual("Champion", title);
+        }
+
+        [Test]
+        public void DSValue_RestoreFromSaveData_IgnoresMismatchedId()
+        {
+            var ctx = new TestContext("Test");
+
+            var value = CreateValue("CorrectName");
+            value.SetValue(ctx, DSValue.ValueScope.Global, 42);
+
+            // Save string
+            string saveString = value.GetSaveData();
+
+            // Create a DSValue with a different name
+            var wrong = CreateValue("WrongName");
+            wrong.RestoreFromSaveData(saveString);
+
+            // Should not restore (id mismatch), so no value is set
+            Assert.IsFalse(wrong.TryGetValue<int>(ctx, out _));
+        }
+
+        [Test]
+        public void ValueHolder_RestoreFromSaveData_PartiallyRestores()
+        {
+            var ctx = new TestContext("Partial");
+
+            var v1 = CreateValue("HP");
+            v1.SetValue(ctx, DSValue.ValueScope.Global, 100);
+
+            var v2 = CreateValue("XP");
+            v2.SetValue(ctx, DSValue.ValueScope.Global, 10);
+
+            var holder = CreateHolder(v1, v2);
+
+            // Save string
+            string saveString = holder.GetSaveData();
+
+            // New holder has only one matching value (HP)
+            var newHP = CreateValue("HP");
+            var holder2 = CreateHolder(newHP); // XP missing
+
+            holder2.RestoreFromSaveData(saveString);
+
+            // HP restored, XP ignored gracefully
+            Assert.IsTrue(newHP.TryGetValue<int>(ctx, out var hp));
+            Assert.AreEqual(100, hp);
+        }
+
+        [Test]
+        public void DSValue_RestoreFromSaveData_WithCorruptedJson_DoesNotCrash()
+        {
+            var value = CreateValue("CorruptTest");
+            // Bad JSON input
+            string badJson = "{ not valid json...";
+
+            Assert.DoesNotThrow(() =>
+            {
+                value.RestoreFromSaveData(badJson);
+            }, "RestoreFromSaveData should handle bad JSON without throwing.");
         }
     }
 }

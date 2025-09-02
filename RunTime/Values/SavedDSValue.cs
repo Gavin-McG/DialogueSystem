@@ -9,7 +9,7 @@ namespace WolverineSoft.DialogueSystem.Values
     /// Requires a form of serialization which supports polymorphism, such as NewtonSoft
     /// </summary>
     [Serializable]
-    public class SavedValueEntry
+    public class SavedDSValue
     {
         public string ValueId;
         [JsonProperty] internal List<ValueInstance> Instances = new List<ValueInstance>();

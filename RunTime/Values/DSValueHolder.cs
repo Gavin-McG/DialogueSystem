@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace WolverineSoft.DialogueSystem.Values
@@ -10,7 +11,7 @@ namespace WolverineSoft.DialogueSystem.Values
     /// Primarily useful for clearing value scopes and save system integration.
     /// </summary>
     [CreateAssetMenu(fileName = "Values", menuName = "Dialogue System/Value Holder")]
-    public class ValueHolder : ScriptableObject
+    public class DSValueHolder : ScriptableObject
     {
         [SerializeField] private List<DSValue> values = new();
 
@@ -41,25 +42,55 @@ namespace WolverineSoft.DialogueSystem.Values
         // internal method to refresh list
         public void SetValues(List<DSValue> newValues) => values = newValues;
 
-        public SavedValueHolder GetSaveData()
+        public SavedDSValueHolder GetData()
         {
-            var saved = new SavedValueHolder();
+            var data = new SavedDSValueHolder();
             foreach (var value in values)
             {
-                saved.Values.Add(value.GetSaveData());
+                data.Values.Add(value.GetData());
             }
-            return saved;
+            return data;
         }
 
-        public void RestoreFromSave(SavedValueHolder saved)
+        public void RestoreFromData(SavedDSValueHolder saved)
         {
             foreach (var entry in saved.Values)
             {
                 DSValue value = values.FirstOrDefault(v => v.valueName == entry.ValueId);
                 if (value != null)
                 {
-                    value.RestoreFromSave(entry);
+                    value.RestoreFromData(entry);
                 }
+            }
+        }
+
+        public string GetSaveData()
+        {
+            var data = GetData();
+            var settings = new JsonSerializerSettings()
+            {
+                TypeNameHandling = TypeNameHandling.All,
+                Formatting = Formatting.Indented
+            };
+            var json = JsonConvert.SerializeObject(data, settings);
+            return json;
+        }
+
+        public void RestoreFromSaveData(string saveData)
+        {
+            try
+            {
+                var settings = new JsonSerializerSettings
+                {
+                    TypeNameHandling = TypeNameHandling.All,
+                    Formatting = Formatting.Indented
+                };
+                var data = JsonConvert.DeserializeObject<SavedDSValueHolder>(saveData, settings);
+                RestoreFromData(data);
+            }
+            catch (JsonReaderException e)
+            {
+                Debug.LogWarning($"Could not restore valueHolder {name} due to JSON read error.");
             }
         }
     }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace WolverineSoft.DialogueSystem.Values
@@ -267,9 +268,9 @@ namespace WolverineSoft.DialogueSystem.Values
         /// <summary>
         /// Returns a simple list of all stored values with associated context/scope
         /// </summary>
-        public SavedValueEntry GetSaveData()
+        public SavedDSValue GetData()
         {
-            SavedValueEntry entry = new SavedValueEntry();
+            SavedDSValue entry = new SavedDSValue();
             entry.ValueId = valueName;
 
             if (_globalValue != null)
@@ -307,12 +308,12 @@ namespace WolverineSoft.DialogueSystem.Values
         /// <summary>
         /// Restore the values from a saved List (must have maintained polymorphism if used in a save/serialization system)
         /// </summary>
-        public void RestoreFromSave(SavedValueEntry entry)
+        public void RestoreFromData(SavedDSValue entry)
         {
             if (entry.ValueId != valueName)
             {
                 Debug.LogWarning("Cannot restore value from save because ValueId does not match name. " + "" +
-                                 $"ValueId of save is {entry.ValueId}, valueName of DSValue is {valueName}");
+                                 $"ValueId of save is \"{entry.ValueId}\", valueName of DSValue is \"{valueName}\"");
                 return;
             }
             
@@ -354,6 +355,36 @@ namespace WolverineSoft.DialogueSystem.Values
 
                     contextValues[instance.scope] = instance.value.GetValue();
                 }
+            }
+        }
+        
+        public string GetSaveData()
+        {
+            var data = GetData();
+            var settings = new JsonSerializerSettings()
+            {
+                TypeNameHandling = TypeNameHandling.All,
+                Formatting = Formatting.Indented
+            };
+            var json = JsonConvert.SerializeObject(data, settings);
+            return json;
+        }
+
+        public void RestoreFromSaveData(string saveData)
+        {
+            try
+            {
+                var settings = new JsonSerializerSettings
+                {
+                    TypeNameHandling = TypeNameHandling.All,
+                    Formatting = Formatting.Indented
+                };
+                var data = JsonConvert.DeserializeObject<SavedDSValue>(saveData, settings);
+                RestoreFromData(data);
+            }
+            catch (JsonReaderException e)
+            {
+                Debug.LogWarning($"Could not restore value {valueName} due to JSON read error.");
             }
         }
     }

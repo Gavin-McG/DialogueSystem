@@ -33,7 +33,7 @@ namespace WolverineSoft.DialogueSystem.Editor
                 if (obj is DSValue && valueSOIcon != null)
                     EditorGUIUtility.SetIconForObject(obj, valueSOIcon);
 
-                else if (obj is ValueHolder && valueHolderIcon != null)
+                else if (obj is DSValueHolder && valueHolderIcon != null)
                     EditorGUIUtility.SetIconForObject(obj, valueHolderIcon);
 
                 else if (obj is DSEventObject && dsEventIcon != null)

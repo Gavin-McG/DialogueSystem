@@ -22,7 +22,7 @@ namespace WolverineSoft.DialogueSystem
         //Event invoked when dialogue is started
         public readonly UnityEvent StartedDialogue = new();
 
-        [SerializeField] private ValueHolder values;
+        [SerializeField] private DSValueHolder dsValues;
         [SerializeField, Delayed] private string managerName;
         
         public string ContextName => managerName;
@@ -83,8 +83,8 @@ namespace WolverineSoft.DialogueSystem
             }
             
             //clear values from previous dialogue
-            if (values)
-                values.ClearScope(this, DSValue.ValueScope.Dialogue);
+            if (dsValues)
+                dsValues.ClearScope(this, DSValue.ValueScope.Dialogue);
             else
                 Debug.LogWarning("No ValueHolder assigned to DialogueManager. Dialogue-scope values will not be cleared");
 
