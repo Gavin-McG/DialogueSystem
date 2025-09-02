@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Unity.Plastic.Newtonsoft.Json;
+using Newtonsoft.Json;
 
 namespace WolverineSoft.DialogueSystem.Values
 {
@@ -12,6 +12,6 @@ namespace WolverineSoft.DialogueSystem.Values
     public class SavedValueEntry
     {
         public string ValueId;
-        [JsonProperty] internal List<ValueInstance> Instances;
+        [JsonProperty] internal List<ValueInstance> Instances = new List<ValueInstance>();
     }
 }

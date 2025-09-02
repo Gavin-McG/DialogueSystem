@@ -41,15 +41,16 @@ namespace WolverineSoft.DialogueSystem.Values
             }
         }
 
-
+        //ensures valueName is not empty
         private void OnValidate()
         {
             if (string.IsNullOrEmpty(valueName))
                 valueName = name;
         }
 
-
-        // Basic Value access / modification
+        /// <summary>
+        /// Retrieve the lowest context value stored for context
+        /// </summary>
         public object GetValue(IValueContext context)
         {
             //Check local scopes
@@ -66,7 +67,9 @@ namespace WolverineSoft.DialogueSystem.Values
             return GlobalValue;
         }
         
-        
+        /// <summary>
+        /// Attempts to retrieve a value from the specific context
+        /// </summary>
         public bool TryGetValue(IValueContext context, out float value)
         {
             object obj = GetValue(context);
@@ -85,7 +88,9 @@ namespace WolverineSoft.DialogueSystem.Values
             }
         }
         
-        
+        /// <summary>
+        /// Attempts to retrieve a value from the specific scope and context
+        /// </summary>
         public bool TryGetValue(IValueContext context, ValueScope scope, out object value)
         {
             if (scope == ValueScope.Global)
@@ -106,7 +111,9 @@ namespace WolverineSoft.DialogueSystem.Values
             return false;
         }
         
-        
+        /// <summary>
+        /// Attempts to retrieve a value from the specific context of type T
+        /// </summary>
         public bool TryGetValue<T>(IValueContext context, out T value)
         {
             var obj = GetValue(context);
@@ -119,7 +126,9 @@ namespace WolverineSoft.DialogueSystem.Values
             return false;
         }
         
-        
+        /// <summary>
+        /// Attempts to retrieve a value from the specific scope and context of type T
+        /// </summary>
         public bool TryGetValue<T>(IValueContext context, ValueScope scope, out T value)
         {
             if (TryGetValue(context, scope, out var obj) && obj is T tObj)
@@ -131,7 +140,9 @@ namespace WolverineSoft.DialogueSystem.Values
             return false;
         }
         
-        
+        /// <summary>
+        /// Sets value for the given context and scope
+        /// </summary>
         public void SetValue(IValueContext context, ValueScope scope, object value)
         {
             //set global value
@@ -151,7 +162,9 @@ namespace WolverineSoft.DialogueSystem.Values
             _localValues[context.ContextName][scope] = value;
         }
         
-        
+        /// <summary>
+        /// Gets the lowest scope which a value is stored for the provided context. Global if no context values are stored
+        /// </summary>
         public ValueScope GetValueScope(IValueContext context)
         {
             //check local scopes for stored value
@@ -168,13 +181,15 @@ namespace WolverineSoft.DialogueSystem.Values
             return ValueScope.Global;
         }
         
-        
+        /// <summary>
+        /// CLear all associated vaalues of the given context below the provided scope.
+        /// </summary>
         public void ClearScope(IValueContext context, ValueScope scope)
         {
             //warning for global clear
             if (scope == ValueScope.Global)
             {
-                Debug.LogWarning("Cannot clear global scope. clearing all lesser scopes");
+                GlobalValue = null;
             }
 
             _localValues ??= new();
@@ -184,7 +199,7 @@ namespace WolverineSoft.DialogueSystem.Values
             {
                 foreach (var localScope in LocalScopes)
                 {
-                    if (localScope <= scope) {}
+                    if (localScope <= scope)
                         contextValues.Remove(localScope);
                 }
             }
@@ -216,13 +231,17 @@ namespace WolverineSoft.DialogueSystem.Values
             return false;
         }
         
-        
+        /// <summary>
+        /// Check if the currently stored value matches compValue
+        /// </summary>
         public bool ValueEquals<T>(IValueContext context, T compValue)
         {
             return TryGetValue<T>(context, out var value) && value.Equals(compValue);
         }
         
-        
+        /// <summary>
+        /// Apply a mathematical operation to the stored value of the current lowest scope
+        /// </summary>
         public bool TryOperateValue(IValueContext context, ValueOperation operation, float otherValue)
         {
             if (TryGetValue(context, out float value))
@@ -248,23 +267,28 @@ namespace WolverineSoft.DialogueSystem.Values
         /// <summary>
         /// Returns a simple list of all stored values with associated context/scope
         /// </summary>
-        internal SavedValueEntry GetSaveData()
+        public SavedValueEntry GetSaveData()
         {
             SavedValueEntry entry = new SavedValueEntry();
             entry.ValueId = valueName;
-            
-            entry.Instances.Add(new ValueInstance()
+
+            if (_globalValue != null)
             {
-                value = _globalValue,
-                contextName = "Global",
-                scope = ValueScope.Global
-            });
+                entry.Instances.Add(new ValueInstance()
+                {
+                    value = _globalValue,
+                    contextName = "Global",
+                    scope = ValueScope.Global
+                });
+            }
 
             foreach (var contextKVP in _localValues)
             {
                 foreach (var scopeKVP in contextKVP.Value)
                 {
                     var value = scopeKVP.Value;
+                    if (value == null) continue;
+
                     var wrapperType = typeof(SerializedValue<>).MakeGenericType(value.GetType());
                     var valueWrapper = (SerializedValueBase)System.Activator.CreateInstance(wrapperType, value);
 
@@ -283,7 +307,7 @@ namespace WolverineSoft.DialogueSystem.Values
         /// <summary>
         /// Restore the values from a saved List (must have maintained polymorphism if used in a save/serialization system)
         /// </summary>
-        internal void RestoreFromSave(SavedValueEntry entry)
+        public void RestoreFromSave(SavedValueEntry entry)
         {
             if (entry.ValueId != valueName)
             {

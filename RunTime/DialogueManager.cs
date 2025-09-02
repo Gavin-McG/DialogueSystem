@@ -15,7 +15,7 @@ namespace WolverineSoft.DialogueSystem
     /// <see cref="EndDialogue"/> Is only to be used when ending an interaction prematurely.
     /// Also provides interfaces for values and keywords
     /// </summary>
-    public sealed class DialogueManager : MonoBehaviour, IValueContext
+    public class DialogueManager : MonoBehaviour, IValueContext
     {
         public static DialogueManager current;
         

@@ -1,0 +1,29 @@
+{
+    "name": "WolverineSoft.DialogueSystem.Tests",
+    "rootNamespace": "",
+    "references": [
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner",
+        "DialogueSystem.Runtime",
+        "DialogueSystem.Default.Runtime",
+        "DialogueSystem.Editor",
+        "DialogueSystem.Default.Editor",
+        "DialogueSystem.Runtime.Values"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll",
+        "Newtonsoft.Json.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
