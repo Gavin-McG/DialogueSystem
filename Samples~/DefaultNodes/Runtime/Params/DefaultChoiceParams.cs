@@ -1,16 +1,13 @@
-﻿using WolverineSoft.DialogueSystem;
+﻿using System;
+using WolverineSoft.DialogueSystem;
 
 namespace WolverineSoft.DialogueSystem.Default
 {
+    [Serializable]
     public class DefaultChoiceParams : ChoiceParams
     {
-        public bool hasTimeLimit;
-        public float timeLimitDuration;
-
-        public override ChoiceParams Clone() => new DefaultChoiceParams()
-        {
-            hasTimeLimit = hasTimeLimit,
-            timeLimitDuration = timeLimitDuration
-        };
+        /*
+        PUT PARAMETER FIELDS HERE
+        */
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using WolverineSoft.DialogueSystem.Values;
 
 namespace WolverineSoft.DialogueSystem
@@ -38,9 +39,18 @@ namespace WolverineSoft.DialogueSystem
         public DialogueParams(DialogueParams copyObj)
         {
             dialogueType = copyObj.dialogueType;
-            _baseParams = copyObj._baseParams?.Clone();
-            _choiceParams = copyObj._choiceParams?.Clone();
-            _options = copyObj._options?.Select(option => option.Clone()).ToList();
+            _baseParams = ShallowClone(copyObj._baseParams);
+            _choiceParams = ShallowClone(copyObj._choiceParams);
+            _options = copyObj._options?.Select(ShallowClone).ToList();
+        }
+        
+        private static readonly MethodInfo MemberwiseCloneMethod =
+            typeof(object).GetMethod("MemberwiseClone", BindingFlags.Instance | BindingFlags.NonPublic);
+
+        private static T ShallowClone<T>(T obj) where T : class
+        {
+            if (obj == null) return null;
+            return (T)MemberwiseCloneMethod.Invoke(obj, null);
         }
 
         /// <summary>

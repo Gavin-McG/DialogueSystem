@@ -5,5 +5,10 @@ using WolverineSoft.DialogueSystem;
 namespace WolverineSoft.DialogueSystem.Default
 {
     [Serializable]
-    public class DefaultDialogueSettings : DialogueSettings { }
+    public class DefaultDialogueSettings : DialogueSettings
+    {
+        /*
+        PUT PARAMETER FIELDS HERE
+        */
+    }
 }

@@ -1,18 +1,14 @@
-﻿using WolverineSoft.DialogueSystem;
+﻿using System;
+using WolverineSoft.DialogueSystem;
 
 namespace WolverineSoft.DialogueSystem.Default
 {
+    [Serializable]
     public class DefaultBaseParams : BaseParams
     {
+        /*
+        PUT PARAMETER FIELDS HERE
+        */
         [DialoguePort] public DialogueProfile profile;
-        
-        public DefaultBaseParams() {}
-        
-        protected DefaultBaseParams(DefaultBaseParams other) : base(other)
-        {
-            profile = other.profile;
-        }
-
-        public override BaseParams Clone() => new DefaultBaseParams(this);
     }
 }

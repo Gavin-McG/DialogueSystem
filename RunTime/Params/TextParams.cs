@@ -16,14 +16,6 @@ namespace WolverineSoft.DialogueSystem
         [HideInDialogueGraph] public string text;
         [HideInDialogueGraph] public List<DSValue> values = new List<DSValue>();
         
-        public TextParams() {}
-
-        public TextParams(TextParams other)
-        {
-            text = new string(other.text);
-            values = new List<DSValue>(other.values);
-        }
-        
         public static List<string> ExtractBracketContents(string text)
         {
             List<string> result = new List<string>();

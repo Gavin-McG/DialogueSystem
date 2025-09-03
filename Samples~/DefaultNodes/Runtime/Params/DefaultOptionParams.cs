@@ -1,14 +1,14 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using WolverineSoft.DialogueSystem;
 
 namespace WolverineSoft.DialogueSystem.Default
 {
+    [Serializable]
     public class DefaultOptionParams : OptionParams
     {
-        public DefaultOptionParams() {}
-
-        protected DefaultOptionParams(DefaultOptionParams other) : base(other) { }
-
-        public override OptionParams Clone() => new DefaultOptionParams(this);
+        /*
+        PUT PARAMETER FIELDS HERE
+        */
     }
 }
