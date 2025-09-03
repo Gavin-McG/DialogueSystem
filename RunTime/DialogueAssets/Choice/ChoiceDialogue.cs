@@ -15,7 +15,7 @@ namespace WolverineSoft.DialogueSystem
         public List<Option> options;
         
 
-        protected override DialogueTrace GetNextDialogue(AdvanceDialogueContext context, DialogueManager manager)
+        protected override DialogueTrace GetNextDialogue(AdvanceContext context, DialogueManager manager)
         {
             if (context.timedOut) 
                 return defaultDialogue;
@@ -27,7 +27,7 @@ namespace WolverineSoft.DialogueSystem
             return options[optionIndex];
         }
 
-        public DialogueParams GetDialogueDetails(AdvanceDialogueContext context, DialogueManager manager)
+        public DialogueParams GetDialogueDetails(AdvanceContext context, DialogueManager manager)
         {
             // Get both the option and its original index
             var filteredOptions = options

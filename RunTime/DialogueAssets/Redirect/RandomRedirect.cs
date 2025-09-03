@@ -8,7 +8,7 @@ namespace WolverineSoft.DialogueSystem
     /// </summary>
     public sealed class RandomRedirect : Redirect
     {
-        protected override DialogueTrace GetNextDialogue(AdvanceDialogueContext context, DialogueManager manager)
+        protected override DialogueTrace GetNextDialogue(AdvanceContext context, DialogueManager manager)
         {
             var validOptions = options
                 .Where(option => option.EvaluateCondition(context, manager))

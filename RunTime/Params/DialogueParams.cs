@@ -7,14 +7,17 @@ using WolverineSoft.DialogueSystem.Values;
 namespace WolverineSoft.DialogueSystem
 {
     /// <summary>
+    /// enum to designate the type of Dialogue
+    /// </summary>
+    public enum DialogueType { Basic, Choice }
+    
+    /// <summary>
     /// Class used to provide data from the backend of the Dialogue system to the UI.
     /// Uses Getter functions to retrieve params of your derived type
     /// </summary>
     [Serializable]
     public sealed class DialogueParams
     {
-        public enum DialogueType { Basic, Choice }
-        
         public DialogueType dialogueType;
         private BaseParams _baseParams;
         private ChoiceParams _choiceParams;
@@ -90,6 +93,25 @@ namespace WolverineSoft.DialogueSystem
         {
             _baseParams.ReplaceText(context);
             _options.ForEach(option => option.ReplaceText(context));
+        }
+    }
+
+    public sealed class DialogueParams<TBase, TChoice, TOption>
+        where TBase : BaseParams
+        where TChoice : ChoiceParams
+        where TOption : OptionParams
+    {
+        public DialogueType dialogueType;
+        public TBase BaseParams;
+        public TChoice ChoiceParams;
+        public List<TOption> Options;
+
+        public DialogueParams(DialogueParams copyObj)
+        {
+            dialogueType = copyObj.dialogueType;
+            BaseParams = copyObj.GetBaseParams<TBase>();
+            ChoiceParams = copyObj.GetChoiceParams<TChoice>();
+            Options = copyObj.GetOptions<TOption>();
         }
     }
     

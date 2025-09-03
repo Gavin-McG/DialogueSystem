@@ -7,7 +7,7 @@ namespace WolverineSoft.DialogueSystem
     /// Contains values relevant to the player's interaction and is used By redirects to determine next dialogue.
     /// An instance of AdvanceDialogueContext should be created by your frontend of the Dialogue System
     /// </summary>
-    public class AdvanceDialogueContext
+    public class AdvanceContext
     {
         //Time taken for user input
         public float inputDelay;
@@ -16,14 +16,14 @@ namespace WolverineSoft.DialogueSystem
         //whether the player ran out of time on input
         public bool timedOut;
 
-        public AdvanceDialogueContext()
+        public AdvanceContext()
         {
             inputDelay = 0;
             choice = 0;
             timedOut = false;
         }
 
-        public AdvanceDialogueContext(float inputDelay, int choice, bool timedOut)
+        public AdvanceContext(float inputDelay, int choice, bool timedOut)
         {
             this.inputDelay = inputDelay;
             this.choice = choice;

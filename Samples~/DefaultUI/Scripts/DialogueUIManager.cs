@@ -4,8 +4,11 @@ using UnityEngine;
 using WolverineSoft.DialogueSystem.Default;
 using WolverineSoft.DialogueSystem;
 
+
 namespace WolverineSoft.DialogueSystem.DefaultUI
 {
+    using MyParams = WolverineSoft.DialogueSystem.DialogueParams<DefaultBaseParams, DefaultChoiceParams, DefaultOptionParams>;
+    
     public class DialogueUIManager : MonoBehaviour
     {
 
@@ -21,10 +24,7 @@ namespace WolverineSoft.DialogueSystem.DefaultUI
         private bool dialogueEnabled = false;
         
         private DefaultDialogueSettings currentSettings;
-        private DialogueParams currentParams;
-        private DefaultBaseParams baseParams;
-        private DefaultChoiceParams choiceParams;
-        private List<DefaultOptionParams> optionParams;
+        private MyParams currentParams;
         
         private float timeStarted;
 
@@ -55,10 +55,10 @@ namespace WolverineSoft.DialogueSystem.DefaultUI
         private void BeginDialogue()
         {
             currentSettings = dialogueManager.GetSettings<DefaultDialogueSettings>();
-            DisplayDialogue(dialogueManager.AdvanceDialogue());
+            DisplayDialogue(dialogueManager.AdvanceDialogue<DefaultBaseParams, DefaultChoiceParams, DefaultOptionParams>());
         }
 
-        private void DisplayDialogue(DialogueParams dialogueParams)
+        private void DisplayDialogue(MyParams dialogueParams)
         {
             if (dialogueParams == null)
             {
@@ -70,23 +70,20 @@ namespace WolverineSoft.DialogueSystem.DefaultUI
             dialogueUI.SetActive(true);
             
             currentParams = dialogueParams;
-            baseParams = dialogueParams.GetBaseParams<DefaultBaseParams>();
-            choiceParams = dialogueParams.GetChoiceParams<DefaultChoiceParams>();
-            optionParams = dialogueParams.GetOptions<DefaultOptionParams>();
 
-            mainTextUI.SetText(baseParams.text);
+            mainTextUI.SetText(currentParams.BaseParams.text);
             timeStarted = Time.time;
             EndTimeLimit();
 
-            if (baseParams.profile)
+            if (currentParams.BaseParams.profile)
             {
-                profileUIManager.IntroduceProfile(baseParams.profile);
+                profileUIManager.IntroduceProfile(currentParams.BaseParams.profile);
             }
     
             switch (currentParams.dialogueType)
             {
-                case DialogueParams.DialogueType.Basic: DisplayBasicDialogue(); break;
-                case DialogueParams.DialogueType.Choice: DisplayChoiceDialogue(); break;
+                case DialogueType.Basic: DisplayBasicDialogue(); break;
+                case DialogueType.Choice: DisplayChoiceDialogue(); break;
                 default: break;
             }
         }
@@ -103,12 +100,12 @@ namespace WolverineSoft.DialogueSystem.DefaultUI
 
         private void BeginChoiceTimer()
         {
-            if (currentParams.dialogueType == DialogueParams.DialogueType.Choice)
+            if (currentParams.dialogueType == DialogueType.Choice)
             {
-                choiceUIManager.SetChoiceButtons(optionParams);
-                if (choiceParams.hasTimeLimit)
+                choiceUIManager.SetChoiceButtons(currentParams.Options);
+                if (currentParams.ChoiceParams.hasTimeLimit)
                 {
-                    timeLimitUI.StartTimer(choiceParams.timeLimitDuration);
+                    timeLimitUI.StartTimer(currentParams.ChoiceParams.timeLimitDuration);
                 }
             }
         }
@@ -116,7 +113,7 @@ namespace WolverineSoft.DialogueSystem.DefaultUI
         private void ChoicePressed(int index)
         {
             EndTimeLimit();
-            DisplayDialogue(dialogueManager.AdvanceDialogue(new AdvanceDialogueContext()
+            DisplayDialogue(dialogueManager.AdvanceDialogue<DefaultBaseParams, DefaultChoiceParams, DefaultOptionParams>(new AdvanceContext()
             {
                 choice = index,
                 inputDelay = Time.time - timeStarted,
@@ -132,7 +129,7 @@ namespace WolverineSoft.DialogueSystem.DefaultUI
             }
             else if (mainTextUI.textState == MainTextUI.TextState.Completed)
             {
-                DisplayDialogue(dialogueManager.AdvanceDialogue(new AdvanceDialogueContext()
+                DisplayDialogue(dialogueManager.AdvanceDialogue<DefaultBaseParams, DefaultChoiceParams, DefaultOptionParams>(new AdvanceContext()
                 {
                     choice = 0,
                     inputDelay = Time.time - timeStarted,
@@ -143,10 +140,10 @@ namespace WolverineSoft.DialogueSystem.DefaultUI
 
         private void TimeExpired()
         {
-            DisplayDialogue(dialogueManager.AdvanceDialogue(new AdvanceDialogueContext()
+            DisplayDialogue(dialogueManager.AdvanceDialogue<DefaultBaseParams, DefaultChoiceParams, DefaultOptionParams>(new AdvanceContext()
             {
                 choice = 0,
-                inputDelay = choiceParams.timeLimitDuration,
+                inputDelay = currentParams.ChoiceParams.timeLimitDuration,
                 timedOut = true,
             }));
         }

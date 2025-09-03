@@ -11,7 +11,7 @@ namespace WolverineSoft.DialogueSystem
     
     /// <summary>
     /// Primary Component for operating the Backend of the Dialogue System.
-    /// Primary functions are <see cref="BeginDialogue"/> and <see cref="AdvanceDialogue(AdvanceDialogueContext)"/>.
+    /// Primary functions are <see cref="BeginDialogue"/> and <see cref="AdvanceDialogue(AdvanceContext)"/>.
     /// <see cref="EndDialogue"/> Is only to be used when ending an interaction prematurely.
     /// Also provides interfaces for values and keywords
     /// </summary>
@@ -29,7 +29,7 @@ namespace WolverineSoft.DialogueSystem
         
         private DialogueAsset _currentDialogue;
         private DialogueTrace _currentTrace;
-        private AdvanceDialogueContext _previousContext;
+        private AdvanceContext _previousContext;
         [HideInInspector] public List<int> optionIndexes;
 
         private void OnValidate()
@@ -92,12 +92,15 @@ namespace WolverineSoft.DialogueSystem
             _currentTrace = dialogueAsset;
             StartedDialogue.Invoke();
         }
-
+        
         /// <summary>
-        /// Retrieve the next dialogue using context about the user's interaction.
+        /// Retrieve the next dialogue using context about the user's interaction with strict types.
         /// Returns null if end of dialogue is reached.
         /// </summary>
-        public DialogueParams AdvanceDialogue(AdvanceDialogueContext context)
+        public DialogueParams<TBase, TChoice, TOption> AdvanceDialogue<TBase, TChoice, TOption>(AdvanceContext context)
+            where TBase : BaseParams
+            where TChoice : ChoiceParams
+            where TOption : OptionParams
         {
             current = this;
 
@@ -115,7 +118,7 @@ namespace WolverineSoft.DialogueSystem
             {
                 var details = new DialogueParams(outputDialogue.GetDialogueDetails(context, this));
                 details.ReplaceValues(this);
-                return details;
+                return new DialogueParams<TBase, TChoice, TOption>(details);
             }
             
             EndDialogue();
@@ -123,11 +126,30 @@ namespace WolverineSoft.DialogueSystem
         }
         
         /// <summary>
+        /// Retrieve the next dialogue with strict types using default context.
+        /// Primarily used to get the first dialogue.
+        /// Returns null if end of dialogue is reached.
+        /// </summary>
+        public DialogueParams<TBase, TChoice, TOption> AdvanceDialogue<TBase, TChoice, TOption>()
+            where TBase : BaseParams
+            where TChoice : ChoiceParams
+            where TOption : OptionParams
+        => AdvanceDialogue<TBase, TChoice, TOption>(new AdvanceContext());
+
+        /// <summary>
+        /// Retrieve the next dialogue using context about the user's interaction.
+        /// Returns null if end of dialogue is reached.
+        /// </summary>
+        public DialogueParams<BaseParams, ChoiceParams, OptionParams> AdvanceDialogue(AdvanceContext context)
+            => AdvanceDialogue<BaseParams, ChoiceParams, OptionParams>(context);
+        
+        /// <summary>
         /// Retrieve the next dialogue using default context.
         /// Primarily used to get the first dialogue.
         /// Returns null if end of dialogue is reached.
         /// </summary>
-        public DialogueParams AdvanceDialogue() => AdvanceDialogue(new AdvanceDialogueContext());
+        public DialogueParams<BaseParams, ChoiceParams, OptionParams> AdvanceDialogue() 
+            => AdvanceDialogue(new AdvanceContext());
 
         /// <summary>
         /// Retrieve the information about the current dialogue again.

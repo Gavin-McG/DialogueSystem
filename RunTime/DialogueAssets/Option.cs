@@ -11,7 +11,7 @@ namespace WolverineSoft.DialogueSystem
         [HideInDialogueGraph, SerializeReference] public OptionParams optionParams;
         [HideInDialogueGraph] public float weight = 1;
 
-        protected override DialogueTrace GetNextDialogue(AdvanceDialogueContext context, DialogueManager manager)
+        protected override DialogueTrace GetNextDialogue(AdvanceContext context, DialogueManager manager)
         {
             return nextDialogue;
         }
@@ -19,6 +19,6 @@ namespace WolverineSoft.DialogueSystem
         /// <summary>
         /// Returns true if the condition is passed and the option should be considered by its respective Redirect
         /// </summary>
-        public abstract bool EvaluateCondition(AdvanceDialogueContext context, DialogueManager manager);
+        public abstract bool EvaluateCondition(AdvanceContext context, DialogueManager manager);
     }
 }

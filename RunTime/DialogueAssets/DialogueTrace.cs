@@ -9,13 +9,13 @@ namespace WolverineSoft.DialogueSystem
     {
         [SerializeField] public DialogueData data = new();
 
-        public DialogueTrace AdvanceDialogue(AdvanceDialogueContext context, DialogueManager manager)
+        public DialogueTrace AdvanceDialogue(AdvanceContext context, DialogueManager manager)
         {
             data.RunOperations(manager);
             return GetNextDialogue(context, manager);
         }
         
-        protected abstract DialogueTrace GetNextDialogue(AdvanceDialogueContext context, DialogueManager manager);
+        protected abstract DialogueTrace GetNextDialogue(AdvanceContext context, DialogueManager manager);
     }
 
 }

@@ -13,7 +13,7 @@ namespace WolverineSoft.DialogueSystem.Default
         public ComparisonMode mode;
         public float time;
 
-        public override bool EvaluateCondition(AdvanceDialogueContext context, DialogueManager manager)
+        public override bool EvaluateCondition(AdvanceContext context, DialogueManager manager)
         {
             switch (mode)
             {

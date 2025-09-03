@@ -8,6 +8,8 @@ using WolverineSoft.DialogueSystem;
 
 namespace WolverineSoft.DialogueSystem.DefaultUI
 {
+    using MyParams = WolverineSoft.DialogueSystem.DialogueParams<DefaultBaseParams, DefaultChoiceParams, DefaultOptionParams>;
+    
     public class ChoiceUIManager : MonoBehaviour
     {
         [SerializeField] GameObject choiceUI;
@@ -17,7 +19,7 @@ namespace WolverineSoft.DialogueSystem.DefaultUI
         private readonly Dictionary<UnityAction<int>, List<UnityAction>> storedChoiceListeners = new();
 
         
-        public void SetContinueButton(DialogueParams dialogueParams)
+        public void SetContinueButton(MyParams dialogueParams)
         {
             DisableChoices();
             continueUI.Enable();

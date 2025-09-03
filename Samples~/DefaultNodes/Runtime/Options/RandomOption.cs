@@ -9,7 +9,7 @@ namespace WolverineSoft.DialogueSystem.Default
     {
         public float chance = 0.5f;
 
-        public override bool EvaluateCondition(AdvanceDialogueContext context, DialogueManager manager)
+        public override bool EvaluateCondition(AdvanceContext context, DialogueManager manager)
         {
             return Random.Range(0f, 1f) < chance;
         }

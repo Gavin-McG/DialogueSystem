@@ -6,7 +6,7 @@ namespace WolverineSoft.DialogueSystem
     /// </summary>
     public sealed class SequentialRedirect : Redirect
     {
-        protected override DialogueTrace GetNextDialogue(AdvanceDialogueContext context, DialogueManager manager)
+        protected override DialogueTrace GetNextDialogue(AdvanceContext context, DialogueManager manager)
         {
             foreach (var option in options)
             {
