@@ -7,7 +7,7 @@ namespace WolverineSoft.DialogueSystem
     /// </summary>
     public interface IDialogueOutput
     {
-        public DialogueParams GetDialogueDetails(AdvanceContext context, DialogueManager manager);
+        public DialogueParams GetDialogueDetails(AdvanceParams advanceParams, DialogueManager manager);
     }
 
 }

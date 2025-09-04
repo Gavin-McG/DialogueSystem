@@ -11,7 +11,7 @@ namespace WolverineSoft.DialogueSystem
         [SerializeReference] public DialogueSettings settings;
         public DialogueData endData = new();
         
-        protected override DialogueTrace GetNextDialogue(AdvanceContext context, DialogueManager manager)
+        protected override DialogueTrace GetNextDialogue(AdvanceParams advanceParams, DialogueManager manager)
         {
             return nextDialogue;
         }

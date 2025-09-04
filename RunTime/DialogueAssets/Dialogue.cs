@@ -10,12 +10,12 @@ namespace WolverineSoft.DialogueSystem
         public DialogueTrace nextDialogue;
         [SerializeReference] public BaseParams baseParams;
         
-        protected override DialogueTrace GetNextDialogue(AdvanceContext context, DialogueManager manager)
+        protected override DialogueTrace GetNextDialogue(AdvanceParams advanceParams, DialogueManager manager)
         {
             return nextDialogue;
         }
 
-        public DialogueParams GetDialogueDetails(AdvanceContext context, DialogueManager manager)
+        public DialogueParams GetDialogueDetails(AdvanceParams advanceParams, DialogueManager manager)
         {
             return new DialogueParams(baseParams);
         }

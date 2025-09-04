@@ -6,11 +6,11 @@ namespace WolverineSoft.DialogueSystem
     /// </summary>
     public sealed class SequentialRedirect : Redirect
     {
-        protected override DialogueTrace GetNextDialogue(AdvanceContext context, DialogueManager manager)
+        protected override DialogueTrace GetNextDialogue(AdvanceParams advanceParams, DialogueManager manager)
         {
             foreach (var option in options)
             {
-                if (option.EvaluateCondition(context, manager)) return option;
+                if (option.EvaluateCondition(advanceParams, manager)) return option;
             }
             return defaultDialogue;
         }

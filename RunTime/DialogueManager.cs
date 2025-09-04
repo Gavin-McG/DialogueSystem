@@ -11,7 +11,7 @@ namespace WolverineSoft.DialogueSystem
     
     /// <summary>
     /// Primary Component for operating the Backend of the Dialogue System.
-    /// Primary functions are <see cref="BeginDialogue"/> and <see cref="AdvanceDialogue(AdvanceContext)"/>.
+    /// Primary functions are <see cref="BeginDialogue"/> and <see cref="AdvanceDialogue(AdvanceParams)"/>.
     /// <see cref="EndDialogue"/> Is only to be used when ending an interaction prematurely.
     /// Also provides interfaces for values and keywords
     /// </summary>
@@ -29,7 +29,7 @@ namespace WolverineSoft.DialogueSystem
         
         private DialogueAsset _currentDialogue;
         private DialogueTrace _currentTrace;
-        private AdvanceContext _previousContext;
+        private AdvanceParams _previousParams;
         [HideInInspector] public List<int> optionIndexes;
 
         private void OnValidate()
@@ -97,7 +97,7 @@ namespace WolverineSoft.DialogueSystem
         /// Retrieve the next dialogue using context about the user's interaction with strict types.
         /// Returns null if end of dialogue is reached.
         /// </summary>
-        public DialogueParams<TBase, TChoice, TOption> AdvanceDialogue<TBase, TChoice, TOption>(AdvanceContext context)
+        public DialogueParams<TBase, TChoice, TOption> AdvanceDialogue<TBase, TChoice, TOption>(AdvanceParams advanceParams)
             where TBase : BaseParams
             where TChoice : ChoiceParams
             where TOption : OptionParams
@@ -111,12 +111,12 @@ namespace WolverineSoft.DialogueSystem
             }
             
             do {
-                _currentTrace = _currentTrace.AdvanceDialogue(context, this);
+                _currentTrace = _currentTrace.AdvanceDialogue(advanceParams, this);
             } while (_currentTrace != null && _currentTrace is not IDialogueOutput);
 
             if (_currentTrace is IDialogueOutput outputDialogue)
             {
-                var details = new DialogueParams(outputDialogue.GetDialogueDetails(context, this));
+                var details = new DialogueParams(outputDialogue.GetDialogueDetails(advanceParams, this));
                 details.ReplaceValues(this);
                 return new DialogueParams<TBase, TChoice, TOption>(details);
             }
@@ -134,14 +134,14 @@ namespace WolverineSoft.DialogueSystem
             where TBase : BaseParams
             where TChoice : ChoiceParams
             where TOption : OptionParams
-        => AdvanceDialogue<TBase, TChoice, TOption>(new AdvanceContext());
+        => AdvanceDialogue<TBase, TChoice, TOption>(new AdvanceParams());
 
         /// <summary>
         /// Retrieve the next dialogue using context about the user's interaction.
         /// Returns null if end of dialogue is reached.
         /// </summary>
-        public DialogueParams<BaseParams, ChoiceParams, OptionParams> AdvanceDialogue(AdvanceContext context)
-            => AdvanceDialogue<BaseParams, ChoiceParams, OptionParams>(context);
+        public DialogueParams<BaseParams, ChoiceParams, OptionParams> AdvanceDialogue(AdvanceParams advanceParams)
+            => AdvanceDialogue<BaseParams, ChoiceParams, OptionParams>(advanceParams);
         
         /// <summary>
         /// Retrieve the next dialogue using default context.
@@ -149,7 +149,7 @@ namespace WolverineSoft.DialogueSystem
         /// Returns null if end of dialogue is reached.
         /// </summary>
         public DialogueParams<BaseParams, ChoiceParams, OptionParams> AdvanceDialogue() 
-            => AdvanceDialogue(new AdvanceContext());
+            => AdvanceDialogue(new AdvanceParams());
 
         /// <summary>
         /// Retrieve the information about the current dialogue again.
@@ -163,7 +163,7 @@ namespace WolverineSoft.DialogueSystem
             }
 
             var dialogueOutput = (IDialogueOutput)_currentTrace;
-            var details = new DialogueParams(dialogueOutput.GetDialogueDetails(_previousContext, this));
+            var details = new DialogueParams(dialogueOutput.GetDialogueDetails(_previousParams, this));
             details.ReplaceValues(this);
             return details;
         }

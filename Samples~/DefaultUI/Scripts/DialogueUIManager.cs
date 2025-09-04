@@ -56,6 +56,10 @@ namespace WolverineSoft.DialogueSystem.DefaultUI
         {
             currentSettings = dialogueManager.GetSettings<DefaultDialogueSettings>();
             DisplayDialogue(dialogueManager.AdvanceDialogue<DefaultBaseParams, DefaultChoiceParams, DefaultOptionParams>());
+            
+            MyParams CurrentParams = dialogueManager.AdvanceDialogue<DefaultBaseParams, DefaultChoiceParams, DefaultOptionParams>();
+            Debug.Log(CurrentParams.BaseParams.text);
+            
         }
 
         private void DisplayDialogue(MyParams dialogueParams)
@@ -113,12 +117,11 @@ namespace WolverineSoft.DialogueSystem.DefaultUI
         private void ChoicePressed(int index)
         {
             EndTimeLimit();
-            DisplayDialogue(dialogueManager.AdvanceDialogue<DefaultBaseParams, DefaultChoiceParams, DefaultOptionParams>(new AdvanceContext()
-            {
-                choice = index,
-                inputDelay = Time.time - timeStarted,
-                timedOut = false
-            }));
+            DisplayDialogue(dialogueManager.AdvanceDialogue<DefaultBaseParams, DefaultChoiceParams, DefaultOptionParams>(new DefaultAdvanceParams(
+                inputDelay: Time.time - timeStarted, 
+                choice: index, 
+                timedOut: false
+            )));
         }
 
         private void ContinuePressed()
@@ -129,23 +132,21 @@ namespace WolverineSoft.DialogueSystem.DefaultUI
             }
             else if (mainTextUI.textState == MainTextUI.TextState.Completed)
             {
-                DisplayDialogue(dialogueManager.AdvanceDialogue<DefaultBaseParams, DefaultChoiceParams, DefaultOptionParams>(new AdvanceContext()
-                {
-                    choice = 0,
-                    inputDelay = Time.time - timeStarted,
-                    timedOut = false
-                }));
+                DisplayDialogue(dialogueManager.AdvanceDialogue<DefaultBaseParams, DefaultChoiceParams, DefaultOptionParams>(new DefaultAdvanceParams(
+                    inputDelay: Time.time - timeStarted, 
+                    choice: 0, 
+                    timedOut: false
+                )));
             }
         }
 
         private void TimeExpired()
         {
-            DisplayDialogue(dialogueManager.AdvanceDialogue<DefaultBaseParams, DefaultChoiceParams, DefaultOptionParams>(new AdvanceContext()
-            {
-                choice = 0,
-                inputDelay = currentParams.ChoiceParams.timeLimitDuration,
-                timedOut = true,
-            }));
+            DisplayDialogue(dialogueManager.AdvanceDialogue<DefaultBaseParams, DefaultChoiceParams, DefaultOptionParams>(new DefaultAdvanceParams(
+                inputDelay: currentParams.ChoiceParams.timeLimitDuration, 
+                choice: 0, 
+                timedOut: true
+            )));
         }
 
         private void HideDialogue()

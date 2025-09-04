@@ -8,5 +8,5 @@ namespace WolverineSoft.DialogueSystem
     /// <summary>
     /// Base class representing the Base parameters shared by choice and regular dialogue
     /// </summary>
-    public abstract class BaseParams : TextParams {}
+    public class BaseParams : TextParams {}
 }

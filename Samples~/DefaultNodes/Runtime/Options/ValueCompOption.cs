@@ -8,7 +8,7 @@ namespace WolverineSoft.DialogueSystem.Default
         public DSValue.ValueComp comp;
         public float compValue;
 
-        public override bool EvaluateCondition(AdvanceContext context, DialogueManager manager)
+        public override bool EvaluateCondition(AdvanceParams advanceParams, DialogueManager manager)
         {
             dsValue.TryCompareValue(manager, comp, compValue, out var result);
             return result;

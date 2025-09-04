@@ -8,7 +8,7 @@ using WolverineSoft.DialogueSystem;
 
 namespace WolverineSoft.DialogueSystem.DefaultUI
 {
-    using MyParams = WolverineSoft.DialogueSystem.DialogueParams<DefaultBaseParams, DefaultChoiceParams, DefaultOptionParams>;
+    using MyParams = DialogueParams<DefaultBaseParams, DefaultChoiceParams, DefaultOptionParams>;
     
     public class ChoiceUIManager : MonoBehaviour
     {

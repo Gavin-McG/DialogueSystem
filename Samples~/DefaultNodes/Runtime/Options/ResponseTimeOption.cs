@@ -13,12 +13,14 @@ namespace WolverineSoft.DialogueSystem.Default
         public ComparisonMode mode;
         public float time;
 
-        public override bool EvaluateCondition(AdvanceContext context, DialogueManager manager)
+        public override bool EvaluateCondition(AdvanceParams advanceParams, DialogueManager manager)
         {
+            if (advanceParams is not DefaultAdvanceParams defaultParams) return false;
+            
             switch (mode)
             {
-                case ComparisonMode.LessThan: return context.inputDelay < time;
-                case ComparisonMode.GreaterThan: return context.inputDelay >= time;
+                case ComparisonMode.LessThan: return defaultParams.inputDelay < time;
+                case ComparisonMode.GreaterThan: return defaultParams.inputDelay >= time;
                 default: return false;
             }
         }

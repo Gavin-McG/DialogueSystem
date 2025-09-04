@@ -4,7 +4,7 @@ namespace WolverineSoft.DialogueSystem.Default
 {
     public class BasicOption : Option
     {
-        public override bool EvaluateCondition(AdvanceContext context, DialogueManager manager)
+        public override bool EvaluateCondition(AdvanceParams advanceParams, DialogueManager manager)
         {
             return true;
         }

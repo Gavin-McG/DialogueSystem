@@ -15,24 +15,24 @@ namespace WolverineSoft.DialogueSystem
         public List<Option> options;
         
 
-        protected override DialogueTrace GetNextDialogue(AdvanceContext context, DialogueManager manager)
+        protected override DialogueTrace GetNextDialogue(AdvanceParams advanceParams, DialogueManager manager)
         {
-            if (context.timedOut) 
+            if (advanceParams.timedOut) 
                 return defaultDialogue;
             
-            if (context.choice >= manager.optionIndexes.Count)
+            if (advanceParams.choice >= manager.optionIndexes.Count)
                 throw new System.Exception("Choice out of range");
             
-            int optionIndex = manager.optionIndexes[context.choice];
+            int optionIndex = manager.optionIndexes[advanceParams.choice];
             return options[optionIndex];
         }
 
-        public DialogueParams GetDialogueDetails(AdvanceContext context, DialogueManager manager)
+        public DialogueParams GetDialogueDetails(AdvanceParams advanceParams, DialogueManager manager)
         {
             // Get both the option and its original index
             var filteredOptions = options
                 .Select((option, index) => (option, index))
-                .Where(x => x.option.EvaluateCondition(context, manager))
+                .Where(x => x.option.EvaluateCondition(advanceParams, manager))
                 .ToList();
 
             // Store the indexes in the manager
