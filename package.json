@@ -5,9 +5,7 @@
   "description": "This is a Widely customizable Dialogue System for future use in WolverineSoft Studio projects.",
   "unity": "6000.2",
   "unityRelease": "0f1",
-  "documentationUrl": "https://www.notion.so/8cc50fcdd92a4274ae45aa39976983c8?v=ae7dcbdaeefc4880bfdcbe39924eae56",
-  "changelogUrl": "https://www.notion.so/8cc50fcdd92a4274ae45aa39976983c8?v=ae7dcbdaeefc4880bfdcbe39924eae56",
-  "licensesUrl": "https://www.notion.so/8cc50fcdd92a4274ae45aa39976983c8?v=ae7dcbdaeefc4880bfdcbe39924eae56",
+  "documentationUrl": "https://www.notion.so/Dialogue-System-26e654a5c2b780f08d53f25f6bb4e457",
   "dependencies": {
     "com.unity.graphtoolkit": "0.3.0-exp.1",
     "com.unity.nuget.newtonsoft-json": "3.2.1"
