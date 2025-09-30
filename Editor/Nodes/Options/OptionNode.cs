@@ -28,10 +28,8 @@ namespace WolverineSoft.DialogueSystem.Editor
         protected sealed override void OnDefineInitializedOptions(IOptionDefinitionContext context)
         {
             // Conditional options depending on node type
-            if (contextNode is RedirectNode redirectNode)
-                DefineRedirectOptions(redirectNode, context);
-            else
-                DefineChoiceOptions(context);
+            if (contextNode is OptionContext optionContext)
+                DefineWeightOptions(optionContext, context);
 
             // Options from the Option's fields
             DialogueGraphUtility.AddTypeOptions<T>(context);
@@ -68,16 +66,19 @@ namespace WolverineSoft.DialogueSystem.Editor
         // Options & Ports
         // ───────────────────────────────────────────────
         
-        private void DefineRedirectOptions(RedirectNode redirect, IOptionDefinitionContext context)
+        private void DefineWeightOptions(OptionContext optionContext, IOptionDefinitionContext context)
         {
             // Redirect nodes may require a weight option
-            if (redirect.UsesWeight)
+            if (optionContext.UsesWeight)
             {
                 _weightOption = DialogueGraphUtility.AddNodeOption(context, "Weight", 
                     typeof(float), defaultValue: 0.5f,
                     tooltip: "Percent probability for this option to be chosen during evaluation"
                 );
             }
+            
+            if (contextNode is not RedirectNode)
+                DefineChoiceOptions(context);
         }
 
         private void DefineChoiceOptions(IOptionDefinitionContext context)

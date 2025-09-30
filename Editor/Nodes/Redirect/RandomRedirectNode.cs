@@ -7,7 +7,7 @@ namespace WolverineSoft.DialogueSystem.Editor
     /// Type of <see cref="RedirectNode"/> which evaluates all conditions and randomizes output by assigned weight.
     /// </summary>
     [Serializable]
-    public sealed class RandomRedirectNode : RedirectNode
+    internal class RandomRedirectNode : RedirectNode
     {
         public override bool UsesWeight => true;
 

@@ -1,6 +1,6 @@
 ﻿using WolverineSoft.DialogueSystem.Values;
 
-namespace WolverineSoft.DialogueSystem.Default
+namespace WolverineSoft.DialogueSystem
 {
     public class ValueCompOption : Option
     {

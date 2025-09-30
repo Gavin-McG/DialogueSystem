@@ -1,6 +1,6 @@
 ﻿using WolverineSoft.DialogueSystem;
 
-namespace WolverineSoft.DialogueSystem.Default
+namespace WolverineSoft.DialogueSystem
 {
     public class BasicOption : Option
     {

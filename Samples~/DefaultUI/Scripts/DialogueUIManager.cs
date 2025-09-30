@@ -20,8 +20,6 @@ namespace WolverineSoft.DialogueSystem.DefaultUI
         [SerializeField] private ChoiceUIManager choiceUIManager;
         [SerializeField] private TimeLimitUI timeLimitUI;
         [SerializeField] private ProfileUIManager profileUIManager;
-
-        private bool dialogueEnabled = false;
         
         private DefaultDialogueSettings currentSettings;
         private MyParams currentParams;
@@ -56,10 +54,6 @@ namespace WolverineSoft.DialogueSystem.DefaultUI
         {
             currentSettings = dialogueManager.GetSettings<DefaultDialogueSettings>();
             DisplayDialogue(dialogueManager.AdvanceDialogue<DefaultBaseParams, DefaultChoiceParams, DefaultOptionParams>());
-            
-            MyParams CurrentParams = dialogueManager.AdvanceDialogue<DefaultBaseParams, DefaultChoiceParams, DefaultOptionParams>();
-            Debug.Log(CurrentParams.BaseParams.text);
-            
         }
 
         private void DisplayDialogue(MyParams dialogueParams)
@@ -70,7 +64,6 @@ namespace WolverineSoft.DialogueSystem.DefaultUI
                 return;
             }
             
-            dialogueEnabled = true;
             dialogueUI.SetActive(true);
             
             currentParams = dialogueParams;
@@ -151,7 +144,6 @@ namespace WolverineSoft.DialogueSystem.DefaultUI
 
         private void HideDialogue()
         {
-            dialogueEnabled = false;
             dialogueUI.SetActive(false);
             EndTimeLimit();
         }

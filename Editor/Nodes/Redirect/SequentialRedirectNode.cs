@@ -7,7 +7,7 @@ namespace  WolverineSoft.DialogueSystem.Editor
     /// Type of <see cref="RedirectNode"/> which evaluates until it finds a condition that passes.
     /// </summary>
     [Serializable]
-    public sealed class SequentialRedirectNode : RedirectNode
+    internal class SequentialRedirectNode : RedirectNode
     {
         public override bool UsesWeight => false;
         

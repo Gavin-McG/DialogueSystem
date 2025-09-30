@@ -9,30 +9,26 @@ namespace WolverineSoft.DialogueSystem.Editor
     /// <summary>
     /// Base Class for Redirect Context Nodes. Redirect nodes are responsible for containing <see cref="ConditionalNode{T}"/> 
     /// </summary>
-    public abstract class RedirectNode : ContextNode, IDialogueTraceNode, IInputDataNode<DialogueTrace>
+    internal abstract class RedirectNode : OptionContext
     {
-        private const string DefaultPortDisplayName = "Default";
+        protected override string NextPortName => "Default";
 
-        private IPort _nextPort;
         private Redirect _redirect;
 
-        public abstract bool UsesWeight { get; }
-        
-        protected sealed override void OnDefinePorts(IPortDefinitionContext context)
+        protected override void OnDefinePorts(IPortDefinitionContext context)
         {
-            DialogueGraphUtility.AddPreviousPort(context);
-            _nextPort = DialogueGraphUtility.AddNextPort(context, DefaultPortDisplayName);
+            DefineNextAndPrevious(context);
         }
-        
+
         public abstract Redirect CreateRedirectObject();
 
-        public ScriptableObject CreateDialogueObject()
+        public override ScriptableObject CreateDialogueObject()
         {
             _redirect = CreateRedirectObject();
             return _redirect;
         }
         
-        public void AssignObjectReferences()
+        public override void AssignObjectReferences()
         {
             // Set Default nextDialogue for redirect
             var defaultObject = DialogueGraphUtility.GetTrace(_nextPort);
@@ -42,24 +38,10 @@ namespace WolverineSoft.DialogueSystem.Editor
             DialogueGraphUtility.AssignDialogueData(_redirect.data, _nextPort);
 
             // Assign Options
-            var optionNodes = blockNodes.ToList().OfType<IInputDataNode<Option>>();
-            _redirect.options = new List<Option>();
-            foreach (var optionNode in optionNodes)
-            {
-                var choiceObject = optionNode.GetInputData();
-                _redirect.options.Add(choiceObject);
-            }
+            _redirect.options = Options;
         }
 
-        public DialogueTrace GetInputData() => _redirect;
-        
-        public void DisplayErrors(GraphLogger infos)
-        {
-            DialogueGraphUtility.MultipleOutputsCheck(this, infos);
-            DialogueGraphUtility.CheckPreviousConnection((INode)this, infos);
-            
-            DialogueGraphUtility.HasOptionsCheck(this, infos);
-        }
+        public override DialogueTrace GetInputData() => _redirect;
     }
     
 }
