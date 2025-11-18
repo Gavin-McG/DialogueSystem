@@ -1,24 +1,19 @@
 ﻿using UnityEngine;
+using WolverineSoft.DialogueSystem;
 
-namespace WolverineSoft.DialogueSystem
+public class Option : DialogueTrace
 {
-    /// <summary>
-    /// Base class for Conditional and Choice options. Provides the method used for each to evaluate their conditions
-    /// </summary>
-    public abstract class Option : DialogueTrace
+    [SerializeField] public DialogueTrace nextDialogue;
+    [SerializeField] public TextData textData;
+    [SerializeField] public ResponseData responseData;
+    [SerializeField] public OptionData optionData;
+    public float weight = 1;
+    
+    protected override DialogueTrace GetNextDialogue(AdvanceParams advanceParams, DialogueManager manager)
     {
-        [HideInDialogueGraph] public DialogueTrace nextDialogue;
-        [HideInDialogueGraph, SerializeReference] public OptionParams optionParams;
-        [HideInDialogueGraph] public float weight = 1;
-
-        protected override DialogueTrace GetNextDialogue(AdvanceParams advanceParams, DialogueManager manager)
-        {
-            return nextDialogue;
-        }
-        
-        /// <summary>
-        /// Returns true if the condition is passed and the option should be considered by its respective Redirect
-        /// </summary>
-        public abstract bool EvaluateCondition(AdvanceParams advanceParams, DialogueManager manager);
+        return nextDialogue;
     }
+    
+    public bool EvaluateCondition(AdvanceParams advanceParams, DialogueManager manager) =>
+        optionData.data.EvaluateCondition(advanceParams, manager);
 }

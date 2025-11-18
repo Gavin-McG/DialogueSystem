@@ -12,7 +12,7 @@ namespace WolverineSoft.DialogueSystem.Editor
     /// Node for setting a value from a set of pre-defined existing types. 
     /// </summary>
     [Serializable]
-    internal class ValueSetterNode : Node, IInputDataNode<ValueEditor>, IErrorNode
+    internal class ValueSetterNode : Node, IInputDataNode<ValueEditor>
     {
         private INodeOption _dsValueOption;
         private INodeOption _valueScopeOption;
@@ -92,13 +92,6 @@ namespace WolverineSoft.DialogueSystem.Editor
             setterType.GetField("value")?.SetValue(setterInstance, value);
 
             return (ValueEditor)setterInstance;
-        }
-
-        public void DisplayErrors(GraphLogger infos)
-        {
-            _dsValueOption.TryGetValue(out DSValue valueSO);
-            if (valueSO==null)
-                infos.LogError("DSValue should not be null", this);
         }
     }
 }

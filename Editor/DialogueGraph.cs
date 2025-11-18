@@ -32,11 +32,11 @@ namespace WolverineSoft.DialogueSystem.Editor
         {
             MultipleBeginCheck(infos);
 
-            var errorNodes = GetNodes().OfType<IErrorNode>();
-            foreach (var node in errorNodes)
-            {
-                node.DisplayErrors(infos);
-            }
+            // var errorNodes = GetNodes().OfType<IErrorNode>();
+            // foreach (var node in errorNodes)
+            // {
+            //     node.DisplayErrors(infos);
+            // }
         }
 
         private IEnumerable<INode> GetAllNodes()
@@ -64,7 +64,7 @@ namespace WolverineSoft.DialogueSystem.Editor
         {
             var passedCheck = true;
             
-            var beginDialogueNodes = GetNodes().OfType<IBeginNode>().ToList();
+            var beginDialogueNodes = GetNodes().OfType<BeginNode>().ToList();
             switch (beginDialogueNodes.Count)
             {
                 case 0:
@@ -74,7 +74,7 @@ namespace WolverineSoft.DialogueSystem.Editor
                 case > 1:
                     foreach (var beginDialogueNode in beginDialogueNodes.Skip(1))
                     {
-                        infos.LogError($"DialogueGraph only supports one {nameof(IBeginNode)} by graph. " +
+                        infos.LogError($"DialogueGraph only supports one {nameof(BeginNode)} by graph. " +
                                          "Only the first created one will be used.", beginDialogueNode);
                     }
                     passedCheck = false;

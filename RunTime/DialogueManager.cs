@@ -46,25 +46,25 @@ namespace WolverineSoft.DialogueSystem
         /// <summary>
         /// Gets type of current Dialogue Settings
         /// </summary>
-        public Type GetSettingsType() => _currentDialogue?.settings.GetType();
+        public Type GetSettingsType() => _currentDialogue?.settingsData.GetType();
 
         /// <summary>
         /// Gets the Dialogue Settings for the current dialogue
         /// </summary>
-        public DialogueSettings GetSettings()
+        public SettingsData GetSettings()
         {
-            return _currentDialogue?.settings;
+            return _currentDialogue?.settingsData;
         }
         
         /// <summary>
         /// Gets the Dialogue Settings for the current dialogue
         /// </summary>
-        public T GetSettings<T>() where T : DialogueSettings
+        public T GetSettings<T>() where T : SettingsData
         {
             //null if no dialogue is active
             if (_currentDialogue == null) return null;
             
-            var settings = _currentDialogue.settings;
+            var settings = _currentDialogue.settingsData;
             if (settings is T tSettings) return tSettings;
             return null;
         }
@@ -98,9 +98,9 @@ namespace WolverineSoft.DialogueSystem
         /// Returns null if end of dialogue is reached.
         /// </summary>
         public DialogueParams<TBase, TChoice, TOption> AdvanceDialogue<TBase, TChoice, TOption>(AdvanceParams advanceParams)
-            where TBase : BaseParams
-            where TChoice : ChoiceParams
-            where TOption : OptionParams
+            where TBase : TextData
+            where TChoice : ChoiceData
+            where TOption : ResponseData
         {
             current = this;
 
@@ -131,24 +131,24 @@ namespace WolverineSoft.DialogueSystem
         /// Returns null if end of dialogue is reached.
         /// </summary>
         public DialogueParams<TBase, TChoice, TOption> AdvanceDialogue<TBase, TChoice, TOption>()
-            where TBase : BaseParams
-            where TChoice : ChoiceParams
-            where TOption : OptionParams
+            where TBase : TextData
+            where TChoice : ChoiceData
+            where TOption : ResponseData
         => AdvanceDialogue<TBase, TChoice, TOption>(new AdvanceParams());
 
         /// <summary>
         /// Retrieve the next dialogue using context about the user's interaction.
         /// Returns null if end of dialogue is reached.
         /// </summary>
-        public DialogueParams<BaseParams, ChoiceParams, OptionParams> AdvanceDialogue(AdvanceParams advanceParams)
-            => AdvanceDialogue<BaseParams, ChoiceParams, OptionParams>(advanceParams);
+        public DialogueParams<TextData, ChoiceData, ResponseData> AdvanceDialogue(AdvanceParams advanceParams)
+            => AdvanceDialogue<TextData, ChoiceData, ResponseData>(advanceParams);
         
         /// <summary>
         /// Retrieve the next dialogue using default context.
         /// Primarily used to get the first dialogue.
         /// Returns null if end of dialogue is reached.
         /// </summary>
-        public DialogueParams<BaseParams, ChoiceParams, OptionParams> AdvanceDialogue() 
+        public DialogueParams<TextData, ChoiceData, ResponseData> AdvanceDialogue() 
             => AdvanceDialogue(new AdvanceParams());
 
         /// <summary>

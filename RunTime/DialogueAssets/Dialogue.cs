@@ -7,8 +7,8 @@ namespace WolverineSoft.DialogueSystem
     /// </summary>
     public sealed class Dialogue : DialogueTrace, IDialogueOutput
     {
-        public DialogueTrace nextDialogue;
-        [SerializeReference] public BaseParams baseParams;
+        [SerializeField] public DialogueTrace nextDialogue;
+        [SerializeField] public TextData textData;
         
         protected override DialogueTrace GetNextDialogue(AdvanceParams advanceParams, DialogueManager manager)
         {
@@ -17,7 +17,7 @@ namespace WolverineSoft.DialogueSystem
 
         public DialogueParams GetDialogueDetails(AdvanceParams advanceParams, DialogueManager manager)
         {
-            return new DialogueParams(baseParams);
+            return new DialogueParams(textData);
         }
     }
 

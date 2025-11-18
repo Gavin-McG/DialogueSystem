@@ -9,10 +9,10 @@ namespace WolverineSoft.DialogueSystem
     /// </summary>
     public sealed class ChoiceDialogue : DialogueTrace, IDialogueOutput
     {
-        public DialogueTrace defaultDialogue;
-        [SerializeReference] public BaseParams baseParams;
-        [SerializeReference] public ChoiceParams choiceParams;
-        public List<Option> options;
+        [SerializeField] public DialogueTrace defaultDialogue;
+        [SerializeField] public TextData textData;
+        [SerializeField] public ChoiceData choiceData;
+        [SerializeField] public List<Option> options;
         
 
         protected override DialogueTrace GetNextDialogue(AdvanceParams advanceParams, DialogueManager manager)
@@ -39,8 +39,8 @@ namespace WolverineSoft.DialogueSystem
             manager.optionIndexes = filteredOptions.Select(x => x.index).ToList();
 
             // Build the choice prompts from the filtered options
-            return new DialogueParams(baseParams, choiceParams, 
-                filteredOptions.Select(x => x.option.optionParams).ToList());
+            return new DialogueParams(textData, choiceData, 
+                filteredOptions.Select(x => x.option.responseData).ToList());
         }
     }
 

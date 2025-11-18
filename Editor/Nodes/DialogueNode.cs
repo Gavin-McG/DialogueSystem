@@ -11,71 +11,34 @@ namespace WolverineSoft.DialogueSystem.Editor
     /// </summary>
     /// <typeparam name="TBaseParams">Type of <see cref="BaseParams"/> to be used by the node</typeparam>
     [Serializable]
-    public abstract class DialogueNode<TBaseParams> : Node, IDialogueTraceNode, IInputDataNode<DialogueTrace>
-    where TBaseParams : BaseParams
+    public class DialogueNode : Node, IDialogueTraceNode, IInputDataNode<DialogueTrace>
     {
-        private INodeOption _textOption;
-        private IPort _nextPort;
-        private readonly List<IPort> _valuePorts = new();
-        private Dialogue _dialogue;
+        private Dialogue _asset;
+        private INodeOption _dataOption;
         
         protected sealed override void OnDefineOptions(IOptionDefinitionContext context)
         {
-            _textOption = DialogueGraphUtility.AddNodeOption(context, "Text", typeof(string));
-            DialogueGraphUtility.AddTypeOptions<TBaseParams>(context);
+            _dataOption = context.AddOption<TextData>("Data").Build();
         }
 
         protected sealed override void OnDefinePorts(IPortDefinitionContext context)
         {
-            // Next/Previous Port
-            DialogueGraphUtility.AddPreviousPort(context);
-            _nextPort = DialogueGraphUtility.AddNextPort(context);
             
-            // Param specific ports
-            DialogueGraphUtility.AddTypePorts<TBaseParams>(context);
-            
-            // Create input ports for each {bracket} in the text
-            _textOption.TryGetValue(out string text);
-            int index = 0;
-            foreach (var value in TextParams.ExtractBracketContents(text))
-            {
-                _valuePorts.Add(context.AddInputPort<DSValue>($"value {index++}")
-                    .WithDisplayName(value)
-                    .Build());
-            }
         }
 
         public ScriptableObject CreateDialogueObject()
         {
-            // Create dialogue asset
-            _dialogue = ScriptableObject.CreateInstance<Dialogue>();
-            _dialogue.name = "Basic Dialogue";
-            return _dialogue;
+            _asset = ScriptableObject.CreateInstance<Dialogue>();
+            _asset.name = "Basic Dialogue";
+            return _asset;
         }
         
         public void AssignObjectReferences()
         {
-            // Assign next dialogue
-            var dialogueTrace = DialogueGraphUtility.GetTrace(_nextPort);
-            _dialogue.nextDialogue = dialogueTrace;
-            
-            // Assign events & valueEditors
-            DialogueGraphUtility.AssignDialogueData(_dialogue.data, _nextPort);
-            
-            // Assign BaseParams
-            var baseParams = Activator.CreateInstance<TBaseParams>();
-            DialogueGraphUtility.AssignFromNode(this, ref baseParams);
-            _dialogue.baseParams = baseParams;
-            _textOption.TryGetValue(out _dialogue.baseParams.text);
-            
-            // Assign other BaseParam values
-            foreach (var valuePort in _valuePorts)
-            {
-                _dialogue.baseParams.values.Add(DialogueGraphUtility.GetPortValueOrDefault<DSValue>(this, valuePort.name));
-            }
+            _dataOption.TryGetValue(out _asset.textData);
         }
         
-        public DialogueTrace GetInputData() => _dialogue;
+        public DialogueTrace GetInputData() => _asset;
     }
 
 }

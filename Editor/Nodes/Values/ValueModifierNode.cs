@@ -11,7 +11,7 @@ namespace WolverineSoft.DialogueSystem.Editor
     /// Node for performing operations on existing numeric values. 
     /// </summary>
     [Serializable]
-    internal class ValueModifierNode : Node, IInputDataNode<ValueEditor>, IErrorNode
+    internal class ValueModifierNode : Node, IInputDataNode<ValueEditor>
     {
         private INodeOption _dsValueOption;
         private INodeOption _operationOption;
@@ -40,13 +40,6 @@ namespace WolverineSoft.DialogueSystem.Editor
             if (valueEntry.dsValue==null) return null;
 
             return valueEntry;
-        }
-        
-        public void DisplayErrors(GraphLogger infos)
-        {
-            _dsValueOption.TryGetValue(out DSValue dsValue);
-            if (dsValue==null)
-                infos.LogWarning("Value should not be null", this);
         }
     }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace WolverineSoft.DialogueSystem
 {
@@ -7,9 +8,9 @@ namespace WolverineSoft.DialogueSystem
     /// </summary>
     public sealed class DialogueAsset : DialogueTrace
     {
-        public DialogueTrace nextDialogue;
-        [SerializeReference] public DialogueSettings settings;
-        public DialogueData endData = new();
+        [SerializeField] public DialogueTrace nextDialogue;
+        [SerializeField] public SettingsData settingsData;
+        [SerializeField] public DialogueData endData = new();
         
         protected override DialogueTrace GetNextDialogue(AdvanceParams advanceParams, DialogueManager manager)
         {

@@ -19,31 +19,31 @@ namespace WolverineSoft.DialogueSystem
     public sealed class DialogueParams
     {
         public DialogueType dialogueType;
-        private BaseParams _baseParams;
-        private ChoiceParams _choiceParams;
-        private List<OptionParams> _options;
+        private TextData _baseData;
+        private ChoiceData _choiceData;
+        private List<ResponseData> _options;
 
-        public DialogueParams(BaseParams baseParams)
+        public DialogueParams(TextData baseData)
         {
             dialogueType = DialogueType.Basic;
-            this._baseParams = baseParams;
-            _choiceParams = null;
-            _options = new List<OptionParams>();
+            this._baseData = baseData;
+            _choiceData = null;
+            _options = new List<ResponseData>();
         }
 
-        public DialogueParams(BaseParams baseParams, ChoiceParams choiceParams, List<OptionParams> options)
+        public DialogueParams(TextData baseData, ChoiceData choiceData, List<ResponseData> options)
         {
             this.dialogueType = DialogueType.Choice;
-            this._baseParams = baseParams;
-            this._choiceParams = choiceParams;
+            this._baseData = baseData;
+            this._choiceData = choiceData;
             this._options = options;
         }
 
         public DialogueParams(DialogueParams copyObj)
         {
             dialogueType = copyObj.dialogueType;
-            _baseParams = ShallowClone(copyObj._baseParams);
-            _choiceParams = ShallowClone(copyObj._choiceParams);
+            _baseData = ShallowClone(copyObj._baseData);
+            _choiceData = ShallowClone(copyObj._choiceData);
             _options = copyObj._options?.Select(ShallowClone).ToList();
         }
         
@@ -59,25 +59,25 @@ namespace WolverineSoft.DialogueSystem
         /// <summary>
         /// Returns the Base Parameters of the dialogue as type T
         /// </summary>
-        public T GetBaseParams<T>() where T : BaseParams
+        public T GetBaseParams<T>() where T : TextData
         {
-            if (_baseParams is T tBaseParams) return tBaseParams;
+            if (_baseData is T tBaseParams) return tBaseParams;
             return null;
         }
 
         /// <summary>
         /// Returns the Choice Parameters of the dialogue as type T
         /// </summary>
-        public T GetChoiceParams<T>() where T : ChoiceParams
+        public T GetChoiceParams<T>() where T : ChoiceData
         {
-            if (_choiceParams is T tChoiceParams) return tChoiceParams;
+            if (_choiceData is T tChoiceParams) return tChoiceParams;
             return null;
         }
         
         /// <summary>
         /// Returns the Options Parameters of the dialogue as type T
         /// </summary>
-        public List<T> GetOptions<T>() where T : OptionParams
+        public List<T> GetOptions<T>() where T : ResponseData
         {
             return _options
                 .OfType<T>()
@@ -85,21 +85,21 @@ namespace WolverineSoft.DialogueSystem
         }
         
         //get getters
-        public Type GetBaseParamsType() => _baseParams?.GetType();
-        public Type GetChoiceParamsType() => _choiceParams?.GetType();
+        public Type GetBaseParamsType() => _baseData?.GetType();
+        public Type GetChoiceParamsType() => _choiceData?.GetType();
         public Type GetOptionsType() => _options?.FirstOrDefault()?.GetType();
 
         public void ReplaceValues(IValueContext context)
         {
-            _baseParams.ReplaceText(context);
-            _options.ForEach(option => option.ReplaceText(context));
+            _baseData.ReplaceText(context);
+            //_options.ForEach(option => option.ReplaceText(context));
         }
     }
 
     public sealed class DialogueParams<TBase, TChoice, TOption>
-        where TBase : BaseParams
-        where TChoice : ChoiceParams
-        where TOption : OptionParams
+        where TBase : TextData
+        where TChoice : ChoiceData
+        where TOption : ResponseData
     {
         public DialogueType dialogueType;
         public TBase BaseParams;
