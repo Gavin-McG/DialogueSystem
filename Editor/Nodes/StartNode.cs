@@ -9,6 +9,7 @@ namespace WolverineSoft.DialogueSystem.Editor
     {
         private IPort _nextPort;
         private INodeOption _startNameOption;
+        private INodeOption _paramOption;
 
         protected sealed override void OnDefineOptions(IOptionDefinitionContext context)
         {
@@ -16,6 +17,8 @@ namespace WolverineSoft.DialogueSystem.Editor
                 .WithDisplayName("Id")
                 .WithTooltip("Unique name of this start point (Leave blank for default)")
                 .Build();
+            
+            _paramOption = context.AddOption<ValueHolder<DialogueParameters>>("dialogueParam").Build();
         }
 
         protected sealed override void OnDefinePorts(IPortDefinitionContext context)
@@ -29,6 +32,10 @@ namespace WolverineSoft.DialogueSystem.Editor
             var start = new DialogueStart();
             start.startDialogue = DialogueGraphUtility.GetTrace(_nextPort);
             _startNameOption.TryGetValue(out start.startName);
+            
+            //Get dialogue Parameters
+            _paramOption.TryGetValue(out ValueHolder<DialogueParameters> parameters);
+            start.dialogueParameters = parameters.value1;
             
             return start;
         }

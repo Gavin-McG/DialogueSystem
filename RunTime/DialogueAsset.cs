@@ -11,7 +11,6 @@ namespace WolverineSoft.DialogueSystem
     public sealed class DialogueAsset : ScriptableObject
     {
         [SerializeField] public List<DialogueStart> startPoints;
-        [SerializeField] public SettingsData settingsData;
 
         public DialogueObject GetStartDialogue(string startName)
         {

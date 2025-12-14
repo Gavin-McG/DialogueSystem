@@ -20,54 +20,33 @@ namespace WolverineSoft.DialogueSystem
         
         //Event invoked when dialogue is started
         public readonly UnityEvent StartedDialogue = new();
-
-        [SerializeField, Delayed] private string managerName;
+        
+        private DialogueObject _startObject;
         
         private DialogueAsset _currentDialogue;
-        private DialogueObject _startObject;
         private DialogueObject _currentObject;
+        private DialogueParameters _currentParameters;
+        
         private AdvanceContext _previousContext;
         [HideInInspector] public List<int> optionIndexes;
-
-        private void OnValidate()
+        
+        /// <summary>
+        /// Gets the Dialogue Settings for the current dialogue
+        /// </summary>
+        public T GetDialogueParams<T>() where T : DialogueParameters
         {
-            if (managerName == "Global")
-            {
-                managerName = "";
-                Debug.LogWarning("DialogueManager name cannot be \"Global\"");
-            }
+            //null if no dialogue is active
+            if (_currentParameters == null) return null;
+            
+            if (_currentParameters is T tParams) return tParams;
+            return null;
         }
-
-        #region SETTINGS
         
         /// <summary>
         /// Gets type of current Dialogue Settings
         /// </summary>
-        public Type GetSettingsType() => _currentDialogue?.settingsData.GetType();
-
-        /// <summary>
-        /// Gets the Dialogue Settings for the current dialogue
-        /// </summary>
-        public SettingsData GetSettings()
-        {
-            return _currentDialogue?.settingsData;
-        }
+        public Type GetDialogueParamsType() => _currentParameters?.GetType();
         
-        /// <summary>
-        /// Gets the Dialogue Settings for the current dialogue
-        /// </summary>
-        public T GetSettings<T>() where T : SettingsData
-        {
-            //null if no dialogue is active
-            if (_currentDialogue == null) return null;
-            
-            var settings = _currentDialogue.settingsData;
-            if (settings is T tSettings) return tSettings;
-            return null;
-        }
-        
-        #endregion
-
         /// <summary>
         /// Begin a dialogue using the DialogueAsset to be started
         /// </summary>
@@ -150,6 +129,7 @@ namespace WolverineSoft.DialogueSystem
             if (_currentDialogue == null) return;
             _currentDialogue = null;
             _currentObject = null;
+            _currentParameters = null;
         }
     }
     

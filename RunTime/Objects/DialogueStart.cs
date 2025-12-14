@@ -8,5 +8,6 @@ namespace WolverineSoft.DialogueSystem
     {
         [SerializeField] public DialogueObject startDialogue;
         [SerializeField] public string startName;
+        [SerializeReference] public DialogueParameters dialogueParameters;
     }
 }
