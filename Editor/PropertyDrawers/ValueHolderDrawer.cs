@@ -117,12 +117,12 @@ namespace WolverineSoft.DialogueSystem.Editor
             tab.Add(inspectorContainer);
             
             //Set Root styling based on interface
-            tab.style.width = 270;
+            tab.style.width = 275;
             if (valueProperty.managedReferenceValue is ICustomNodeStyle nodeStyle)
             {
                 tab.style.backgroundColor = nodeStyle.BackgroundColor;
-                SetElementPadding(tab, 4f);
-                SetElementBorder(tab, 1f, nodeStyle.BorderColor, 4f);
+                SetElementPadding(tab, 1f);
+                SetElementBorder(tab, 0f, nodeStyle.BorderColor, 0f);
             }
             
             AddValueInspector(valueProperty, inspectorContainer);

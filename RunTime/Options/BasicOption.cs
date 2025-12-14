@@ -2,7 +2,7 @@
 
 namespace WolverineSoft.DialogueSystem
 {
-    public class BasicOptionType : OptionType
+    public class BasicOption : OptionType
     {
         public override bool EvaluateCondition(AdvanceContext advanceContext, DialogueManager manager)
         {

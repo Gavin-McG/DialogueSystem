@@ -6,7 +6,7 @@ namespace WolverineSoft.DialogueSystem
     public class EventObject : DialogueObject
     {
         [SerializeField] public DialogueObject nextDialogue;
-        [SerializeReference] EventReference eventCaller;
+        [SerializeReference] public EventReference eventCaller;
 
         public override DialogueObject GetNextDialogue(AdvanceContext context, DialogueManager manager)
         {

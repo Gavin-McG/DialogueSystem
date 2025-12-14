@@ -8,9 +8,8 @@ namespace WolverineSoft.DialogueSystem
     /// Base class representing the parameters used by choice options
     /// </summary>
     [Serializable, TabName("Response")]
-    public class ResponseParameters
+    public abstract class ResponseParameters : ICustomNodeStyle
     {
-        [SerializeField] public string text;
-        [SerializeReference] public System.Object data;
-    }
+        public Color BackgroundColor => new Color(0.2f,0.2f,0.4f);
+        public Color BorderColor => new Color(0.3f,0.3f,0.4f);    }
 }
