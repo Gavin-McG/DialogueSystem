@@ -22,22 +22,6 @@ namespace WolverineSoft.DialogueSystem.Editor
         {
             GraphDatabase.PromptInProjectBrowserToCreateNewAsset<DialogueGraph>();
         }
-        
-        public override void OnGraphChanged(GraphLogger infos)
-        {
-            CheckGraphErrors(infos);
-        }
-
-        private void CheckGraphErrors(GraphLogger infos)
-        {
-            MultipleBeginCheck(infos);
-
-            // var errorNodes = GetNodes().OfType<IErrorNode>();
-            // foreach (var node in errorNodes)
-            // {
-            //     node.DisplayErrors(infos);
-            // }
-        }
 
         private IEnumerable<INode> GetAllNodes()
         {
@@ -58,30 +42,6 @@ namespace WolverineSoft.DialogueSystem.Editor
                     yield return blockNode;
                 }
             }
-        }
-
-        private bool MultipleBeginCheck(GraphLogger infos)
-        {
-            var passedCheck = true;
-            
-            var beginDialogueNodes = GetNodes().OfType<BeginNode>().ToList();
-            switch (beginDialogueNodes.Count)
-            {
-                case 0:
-                    infos.LogError("Add a BeginDialogueNode in your Dialogue graph.");
-                    passedCheck = false;
-                    break;
-                case > 1:
-                    foreach (var beginDialogueNode in beginDialogueNodes.Skip(1))
-                    {
-                        infos.LogError($"DialogueGraph only supports one {nameof(BeginNode)} by graph. " +
-                                         "Only the first created one will be used.", beginDialogueNode);
-                    }
-                    passedCheck = false;
-                    break;
-            }
-            
-            return passedCheck;
         }
     }
 

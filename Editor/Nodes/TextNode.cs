@@ -1,31 +1,31 @@
-﻿using System;
+using System;
 using Unity.GraphToolkit.Editor;
 using UnityEngine;
 
 namespace WolverineSoft.DialogueSystem.Editor
 {
     /// <summary>
-    /// class for options attached to choice dialogue nodes or redirects.
-    /// Handles logic for displaying node options from redirect weights,
-    /// option parameters, and option fields.
+    /// Generic Base Class for Non-choice dialogue.
     /// </summary>
+    /// <typeparam name="TBaseParams">Type of <see cref="BaseParams"/> to be used by the node</typeparam>
     [Serializable]
-    [UseWithContext(typeof(ChoiceNode))]
-    public class OptionNode : BlockNode, IDialogueNode
+    [UseWithGraph(typeof(DialogueGraph))]
+    public class TextNode : Node, IDialogueNode
     {
-        private OptionObject _asset;
+        private TextObject _asset;
         private INodeOption _textOption;
         private INodeOption _paramOption;
         private IPort _nextPort;
         
         protected sealed override void OnDefineOptions(IOptionDefinitionContext context)
         {
-            _textOption = context.AddOption<OptionTextHolder>("text").Build();
-            _paramOption = context.AddOption<ValueHolder<OptionType, ResponseParameters>>("params").Build();
+            _textOption = context.AddOption<TextTextHolder>("text").Build();
+            _paramOption = context.AddOption<ValueHolder<TextParameters>>("params").Build();
         }
 
         protected sealed override void OnDefinePorts(IPortDefinitionContext context)
         {
+            DialogueGraphUtility.AddPreviousPort(context);
             _nextPort = DialogueGraphUtility.AddNextPort(context);
         }
   
@@ -35,7 +35,7 @@ namespace WolverineSoft.DialogueSystem.Editor
 
         public ScriptableObject CreateDialogueObject()
         {
-            _asset = ScriptableObject.CreateInstance<OptionObject>();
+            _asset = ScriptableObject.CreateInstance<TextObject>();
             return _asset;
         }
         
@@ -49,9 +49,8 @@ namespace WolverineSoft.DialogueSystem.Editor
             _asset.text = text.text;
             
             //Get Parameters
-            _paramOption.TryGetValue(out ValueHolder<OptionType, ResponseParameters> parameters);
-            _asset.optionType = parameters.value1;
-            _asset.responseParams = parameters.value2;
+            _paramOption.TryGetValue(out ValueHolder<TextParameters> parameters);
+            _asset.textParams = parameters.value1;
         }
 
         public DialogueObject GetData()
@@ -59,4 +58,5 @@ namespace WolverineSoft.DialogueSystem.Editor
             return _asset;
         }
     }
+
 }

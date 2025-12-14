@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using WolverineSoft.DialogueSystem.Values;
 
 namespace WolverineSoft.DialogueSystem
 {
@@ -11,25 +10,23 @@ namespace WolverineSoft.DialogueSystem
     
     /// <summary>
     /// Primary Component for operating the Backend of the Dialogue System.
-    /// Primary functions are <see cref="BeginDialogue"/> and <see cref="AdvanceDialogue(AdvanceParams)"/>.
+    /// Primary functions are <see cref="BeginDialogue"/> and <see cref="AdvanceDialogue(AdvanceContext)"/>.
     /// <see cref="EndDialogue"/> Is only to be used when ending an interaction prematurely.
     /// Also provides interfaces for values and keywords
     /// </summary>
-    public class DialogueManager : MonoBehaviour, IValueContext
+    public class DialogueManager : MonoBehaviour
     {
         public static DialogueManager current;
         
         //Event invoked when dialogue is started
         public readonly UnityEvent StartedDialogue = new();
 
-        [SerializeField] private DSValueHolder dsValues;
         [SerializeField, Delayed] private string managerName;
         
-        public string ContextName => managerName;
-        
         private DialogueAsset _currentDialogue;
-        private DialogueTrace _currentTrace;
-        private AdvanceParams _previousParams;
+        private DialogueObject _startObject;
+        private DialogueObject _currentObject;
+        private AdvanceContext _previousContext;
         [HideInInspector] public List<int> optionIndexes;
 
         private void OnValidate()
@@ -74,7 +71,7 @@ namespace WolverineSoft.DialogueSystem
         /// <summary>
         /// Begin a dialogue using the DialogueAsset to be started
         /// </summary>
-        public void BeginDialogue(DialogueAsset dialogueAsset)
+        public void BeginDialogue(DialogueAsset dialogueAsset, string startName="")
         {
             if (_currentDialogue != null)
             {
@@ -82,14 +79,10 @@ namespace WolverineSoft.DialogueSystem
                 return;
             }
             
-            //clear values from previous dialogue
-            if (dsValues)
-                dsValues.ClearScope(this, DSValue.ValueScope.Dialogue);
-            else
-                Debug.LogWarning("No ValueHolder assigned to DialogueManager. Dialogue-scope values will not be cleared");
-
             _currentDialogue = dialogueAsset;
-            _currentTrace = dialogueAsset;
+            _startObject = dialogueAsset.GetStartDialogue(startName);
+            _currentObject = null;
+
             StartedDialogue.Invoke();
         }
         
@@ -97,28 +90,27 @@ namespace WolverineSoft.DialogueSystem
         /// Retrieve the next dialogue using context about the user's interaction with strict types.
         /// Returns null if end of dialogue is reached.
         /// </summary>
-        public DialogueParams<TBase, TChoice, TOption> AdvanceDialogue<TBase, TChoice, TOption>(AdvanceParams advanceParams)
-            where TBase : TextData
-            where TChoice : ChoiceData
-            where TOption : ResponseData
-        {
+        public DialogueInfo AdvanceDialogue(AdvanceContext context) {
             current = this;
+            _previousContext = context;
 
-            if (_currentTrace == null)
+            if (_currentDialogue == null)
             {
                 Debug.LogWarning("Attempting to Advance Dialogue while no dialogue is active");
                 return null;
             }
             
+            //Advance until finding a Dialogue Object with output
             do {
-                _currentTrace = _currentTrace.AdvanceDialogue(advanceParams, this);
-            } while (_currentTrace != null && _currentTrace is not IDialogueOutput);
+                if (!_currentObject) _currentObject = _startObject; //Use start object if current is null
+                else _currentObject = _currentObject.GetNextDialogue(context, this);
+            } while (_currentObject != null && _currentObject is not IDialogueOutput);
 
-            if (_currentTrace is IDialogueOutput outputDialogue)
+            if (_currentObject is IDialogueOutput outputDialogue)
             {
-                var details = new DialogueParams(outputDialogue.GetDialogueDetails(advanceParams, this));
-                details.ReplaceValues(this);
-                return new DialogueParams<TBase, TChoice, TOption>(details);
+                var details = outputDialogue.GetDialogueDetails(context, this);
+                //TODO replace values in text
+                return details;
             }
             
             EndDialogue();
@@ -130,41 +122,23 @@ namespace WolverineSoft.DialogueSystem
         /// Primarily used to get the first dialogue.
         /// Returns null if end of dialogue is reached.
         /// </summary>
-        public DialogueParams<TBase, TChoice, TOption> AdvanceDialogue<TBase, TChoice, TOption>()
-            where TBase : TextData
-            where TChoice : ChoiceData
-            where TOption : ResponseData
-        => AdvanceDialogue<TBase, TChoice, TOption>(new AdvanceParams());
-
-        /// <summary>
-        /// Retrieve the next dialogue using context about the user's interaction.
-        /// Returns null if end of dialogue is reached.
-        /// </summary>
-        public DialogueParams<TextData, ChoiceData, ResponseData> AdvanceDialogue(AdvanceParams advanceParams)
-            => AdvanceDialogue<TextData, ChoiceData, ResponseData>(advanceParams);
-        
-        /// <summary>
-        /// Retrieve the next dialogue using default context.
-        /// Primarily used to get the first dialogue.
-        /// Returns null if end of dialogue is reached.
-        /// </summary>
-        public DialogueParams<TextData, ChoiceData, ResponseData> AdvanceDialogue() 
-            => AdvanceDialogue(new AdvanceParams());
+        public DialogueInfo AdvanceDialogue()
+        => AdvanceDialogue(new AdvanceContext());
 
         /// <summary>
         /// Retrieve the information about the current dialogue again.
         /// Used if you want to account for changes in conditional choice options
         /// </summary>
-        public DialogueParams RefreshDialogue()
+        public DialogueInfo RefreshDialogue()
         {
             if (_currentDialogue != null)
             {
                 throw new Exception($"Attempted to refresh dialogue while dialogue was not playing");
             }
 
-            var dialogueOutput = (IDialogueOutput)_currentTrace;
-            var details = new DialogueParams(dialogueOutput.GetDialogueDetails(_previousParams, this));
-            details.ReplaceValues(this);
+            var outputDialogue = (IDialogueOutput)_currentObject;
+            var details = outputDialogue.GetDialogueDetails(_previousContext, this);
+            //TODO replace values in text
             return details;
         }
         
@@ -174,11 +148,8 @@ namespace WolverineSoft.DialogueSystem
         public void EndDialogue()
         {
             if (_currentDialogue == null) return;
-            
-            _currentDialogue.RunEndOperations(this);
-            
             _currentDialogue = null;
-            _currentTrace = null;
+            _currentObject = null;
         }
     }
     

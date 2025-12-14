@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Unity.GraphToolkit.Editor;
-using WolverineSoft.DialogueSystem.Values;
 
 namespace WolverineSoft.DialogueSystem.Editor
 {
@@ -29,8 +28,8 @@ namespace WolverineSoft.DialogueSystem.Editor
                     return port.TryGetValue(out T attachedObject) ? attachedObject : default;
                 case IVariableNode variableNode:
                     return variableNode.variable.TryGetDefaultValue(out T varObject) ? varObject : default;
-                case IOutputDataNode<T> dataNode:
-                    return dataNode.GetOutputData();
+                case IDataNode<T> dataNode:
+                    return dataNode.GetData();
                 default:
                     return default;
             }
@@ -47,20 +46,22 @@ namespace WolverineSoft.DialogueSystem.Editor
             
             return connectedPorts
                 .Select(port => port.GetNode())
-                .OfType<IInputDataNode<T>>()
-                .Select(node => node.GetInputData())
+                .OfType<IDataNode<T>>()
+                .Select(node => node.GetData())
                 .Where(data => data != null);
         }
-        public static T GetFirstData<T>(IPort port) => GetAllData<T>(port).FirstOrDefault();
         
-        public static void AssignDialogueData(
-            DialogueData data,
-            IPort port)
-        {
-            data.events = GetAllData<DSEventReference>(port).ToList();
-            data.values = GetAllData<ValueEditor>(port).ToList();
+        public static T GetFirstData<T>(IPort port) where T : class {
+            var connectedPorts = new List<IPort>();
+            port.GetConnectedPorts(connectedPorts);
+
+            return connectedPorts
+                .Select(p => p.GetNode())
+                .OfType<IDataNode<T>>()
+                .FirstOrDefault()
+                ?.GetData();
         }
         
-        public static DialogueTrace GetTrace(IPort port) => GetFirstData<DialogueTrace>(port);
+        public static DialogueObject GetTrace(IPort port) => GetFirstData<DialogueObject>(port);
     }
 }

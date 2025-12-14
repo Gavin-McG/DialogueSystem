@@ -25,40 +25,41 @@ namespace WolverineSoft.DialogueSystem.Editor
             var assetTexture = Resources.Load<Texture2D>("DialogueGraphTexture");
 
             
-            //get list of all IDialogueObject nodes (including block nodes)
-            var graphNodes = graph.GetNodes().OfType<IDialogueObjectNode>().ToList();
-            var dialogueObjectNodes = new List<IDialogueObjectNode>();
+            //get list of all IDialogueNode (including block nodes)
+            var graphNodes = graph.GetNodes().OfType<IDialogueNode>().ToList();
+            var dialogueNodes = new List<IDialogueNode>();
             foreach (var node in graphNodes)
             {
-                dialogueObjectNodes.Add(node);
+                dialogueNodes.Add(node);
                 if (node is not ContextNode contextNode) continue;
                 
-                var blocks = contextNode.blockNodes.OfType<IDialogueObjectNode>();
-                dialogueObjectNodes.AddRange(blocks);
-                
+                var blocks = contextNode.blockNodes.OfType<IDialogueNode>();
+                dialogueNodes.AddRange(blocks);
             }
+            
+            //Create DialogueAsset
+            var asset = ScriptableObject.CreateInstance<DialogueAsset>();
+            ctx.AddObjectToAsset("DialogueAsset", asset, assetTexture);
+            ctx.SetMainObject(asset);
             
             //Create objects for each node
             int nonMainAssetCount = 0;
-            foreach (var objectNode in dialogueObjectNodes)
+            foreach (var objectNode in dialogueNodes)
             {
                 var dialogueObject = objectNode.CreateDialogueObject();
-                
-                if (dialogueObject is DialogueAsset asset)
-                {
-                    ctx.AddObjectToAsset("Main", asset, assetTexture);
-                    ctx.SetMainObject(asset);
-                }
-                else 
-                {
-                    nonMainAssetCount++;
-                    ctx.AddObjectToAsset(nonMainAssetCount.ToString(), dialogueObject);
-                }
+                ctx.AddObjectToAsset(nonMainAssetCount.ToString(), dialogueObject);
+                nonMainAssetCount++;
             }
             
+            //Assign start points
+            asset.startPoints = graph
+                .GetNodes()
+                .OfType<StartNode>()
+                .Select(n => n.GetData())
+                .ToList();
+            
             //assign references between nodes
-            var dialogueReferencNodes = dialogueObjectNodes.OfType<IDialogueReferenceNode>();
-            foreach (var node in dialogueReferencNodes)
+            foreach (var node in dialogueNodes)
             {
                 node.AssignObjectReferences();
             }

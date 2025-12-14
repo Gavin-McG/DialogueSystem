@@ -5,6 +5,13 @@ public abstract class TabGroup {}
 
 
 [Serializable]
+public class TabGroup<T1> : TabGroup
+{
+    public T1 first;
+}
+
+
+[Serializable]
 public class TabGroup<T1, T2> : TabGroup
 {
     public T1 first;
