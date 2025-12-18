@@ -1,12 +1,14 @@
 ﻿using System;
 using Unity.GraphToolkit.Editor;
+using UnityEngine;
 
 namespace WolverineSoft.DialogueSystem.Editor
 {
     [Serializable]
     [UseWithGraph(typeof(DialogueGraph))]
-    public class StartNode : Node, IDataNode<DialogueStart>
+    public class StartNode : Node, IDialogueNode
     {
+        private StartObject _asset;
         private IPort _nextPort;
         private INodeOption _startNameOption;
         private INodeOption _paramOption;
@@ -26,18 +28,33 @@ namespace WolverineSoft.DialogueSystem.Editor
             //Get Next Dialogue
             _nextPort = DialogueGraphUtility.AddNextPort(context);
         }
+        
+        //-------------------------------------------
+        //          DialogueNode Methods
+        //-------------------------------------------
 
-        public DialogueStart GetData()
+        public ScriptableObject CreateDialogueObject()
         {
-            var start = new DialogueStart();
-            start.startDialogue = DialogueGraphUtility.GetTrace(_nextPort);
-            _startNameOption.TryGetValue(out start.startName);
+            _asset = ScriptableObject.CreateInstance<StartObject>();
+            return _asset;
+        }
+        
+        public void AssignObjectReferences()
+        {
+            //Get Next Dialogue
+            _asset.nextDialogue = DialogueGraphUtility.GetTrace(_nextPort);
             
-            //Get dialogue Parameters
+            //Assign name
+            _startNameOption.TryGetValue(out _asset.startName);
+            
+            //Get Parameters
             _paramOption.TryGetValue(out ValueHolder<DialogueParameters> parameters);
-            start.dialogueParameters = parameters.value1;
-            
-            return start;
+            _asset.dialogueParameters = parameters.value1;
+        }
+
+        public DialogueObject GetData()
+        {
+            return _asset;
         }
     }
 }

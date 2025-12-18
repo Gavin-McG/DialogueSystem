@@ -3,11 +3,12 @@ using WolverineSoft.DialogueSystem;
 
 namespace WolverineSoft.DialogueSystem
 {
+    [TypeOption("Constant Random")]
     public class RandomOption : OptionType
     {
         [SerializeField] private float chance;
         
-        public override bool EvaluateCondition(AdvanceContext advanceContext, DialogueManager manager)
+        public override bool EvaluateCondition(AdvanceContext advanceContext, IVariableContext variables)
         {
             return Random.Range(0f, 1f) < chance;
         }

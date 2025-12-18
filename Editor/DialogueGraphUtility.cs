@@ -26,6 +26,15 @@ namespace WolverineSoft.DialogueSystem.Editor
                 .WithConnectorUI(PortConnectorUI.Arrowhead)
                 .Build();
         }
+
+        public static string GetVariableName(IPort port)
+        {
+            var connectedNode = port?.firstConnectedPort.GetNode();            
+            
+            if (connectedNode is not IVariableNode varNode) return null;
+
+            return varNode.variable.name;
+        }
         
         public static IEnumerable<T> GetAllData<T>(IPort port)
         {

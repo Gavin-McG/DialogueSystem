@@ -40,7 +40,7 @@ namespace WolverineSoft.DialogueSystem.Editor
                 return null;
             
             //Get DSEvent<T> template type
-            return GetDSEventValueType(currentEvent.GetType());
+            return GetDSEventValueType(currentEvent?.GetType());
         }
         
         protected override void OnDefineOptions(IOptionDefinitionContext context)
