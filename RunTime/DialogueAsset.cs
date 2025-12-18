@@ -16,8 +16,7 @@ namespace WolverineSoft.DialogueSystem
         public DialogueObject GetStartDialogue(string startName)
         {
             return startPoints
-                .FirstOrDefault(ds => ds.startName==startName)
-                ?.nextDialogue;
+                .FirstOrDefault(ds => ds.startName == startName);
         }
         
         //-----------------------------------------------

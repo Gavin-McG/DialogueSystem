@@ -67,6 +67,7 @@ namespace WolverineSoft.DialogueSystem.Editor
         public ScriptableObject CreateDialogueObject()
         {
             _asset = ScriptableObject.CreateInstance<EventObject>();
+            _asset.name = "Event";
             return _asset;
         }
         

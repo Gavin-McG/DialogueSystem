@@ -37,6 +37,7 @@ namespace WolverineSoft.DialogueSystem.Editor
         public ScriptableObject CreateDialogueObject()
         {
             _asset = ScriptableObject.CreateInstance<OptionObject>();
+            _asset.name = "Option";
             return _asset;
         }
         

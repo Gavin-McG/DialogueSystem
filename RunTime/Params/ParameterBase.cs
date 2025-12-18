@@ -1,4 +1,7 @@
-﻿public class ParameterBase
+﻿namespace WolverineSoft.DialogueSystem
 {
+    public class ParameterBase
+    {
     
+    }
 }

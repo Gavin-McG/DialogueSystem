@@ -19,8 +19,8 @@ namespace WolverineSoft.DialogueSystem
     public class DialogueInfo
     {
         public DialogueType dialogueType;
-        private string text;
-        public TextParameters _textParams;
+        public string text;
+        private TextParameters _textParams;
         private ChoiceParameters _choiceParams;
         public List<ResponseInfo> responses;
 
@@ -42,39 +42,6 @@ namespace WolverineSoft.DialogueSystem
             this.responses = responses;
         }
         
-        private const string RegexPattern = @"\{(.*?)\}";
-        
-        private static List<string> ExtractBracketContents(string text)
-        {
-            List<string> result = new List<string>();
-            foreach (Match match in Regex.Matches(text, RegexPattern))
-            {
-                result.Add(match.Groups[1].Value);
-            }
-            return result.Distinct().ToList();
-        }
-        
-        // internal void ReplaceText(IValueContext context)
-        // {
-        //     var subStrings = ExtractBracketContents(text);
-        //     
-        //     text = Regex.Replace(text, RegexPattern, match =>
-        //     {
-        //         var subString = match.Groups[1].Value;
-        //         int index = subStrings.IndexOf(subString);
-        //         if (index >= values.Count)
-        //             return match.Value; // safeguard: leave the placeholder as-is
-        //
-        //         var valueSO = values[index];
-        //         if (valueSO == null)
-        //             return string.Empty;
-        //
-        //         var val = valueSO.GetValue(context);
-        //         return val?.ToString() ?? string.Empty;
-        //     });
-        // }
-        
-
         /// <summary>
         /// Returns the Base Parameters of the dialogue as type T
         /// </summary>
@@ -96,5 +63,47 @@ namespace WolverineSoft.DialogueSystem
         //type getters
         public Type GetBaseParamsType() => _textParams?.GetType();
         public Type GetChoiceParamsType() => _choiceParams?.GetType();
+        
+        //-----------------------------------------------
+        //           Text Replacement
+        //-----------------------------------------------
+        
+        private const string RegexPattern = @"\{(.*?)\}";
+        
+        private static List<string> ExtractBracketContents(string text)
+        {
+            List<string> result = new List<string>();
+            foreach (Match match in Regex.Matches(text, RegexPattern))
+            {
+                result.Add(match.Groups[1].Value);
+            }
+            return result.Distinct().ToList();
+        }
+        
+        private static string ReplaceText(string text, IVariableContext variables)
+        {
+            var subStrings = ExtractBracketContents(text);
+            
+            return Regex.Replace(text, RegexPattern, match =>
+            {
+                var subString = match.Groups[1].Value;
+
+                if (variables.TryGetVariable(subString, out var variable))
+                    return variable.ToString();
+                
+                return '{' + subString + "}";
+            });
+        }
+
+        internal void ApplyVariables(IVariableContext variables)
+        {
+            text = ReplaceText(text, variables);
+
+            if (dialogueType != DialogueType.Choice || responses == null) 
+                return;
+            
+            foreach (var response in responses)
+                response.text = ReplaceText(response.text, variables);
+        }
     }
 }

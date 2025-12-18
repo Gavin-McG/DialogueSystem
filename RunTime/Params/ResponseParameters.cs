@@ -11,5 +11,6 @@ namespace WolverineSoft.DialogueSystem
     public abstract class ResponseParameters : ParameterBase, ICustomNodeStyle
     {
         public Color BackgroundColor => new Color(0.2f,0.2f,0.4f);
-        public Color BorderColor => new Color(0.3f,0.3f,0.4f);    }
+        public Color BorderColor => new Color(0.3f,0.3f,0.4f);    
+    }
 }

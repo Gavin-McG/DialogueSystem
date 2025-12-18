@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -16,8 +18,8 @@ namespace WolverineSoft.DialogueSystem
         //Event invoked when dialogue is started
         public readonly UnityEvent StartedDialogue = new();
         
-        private DialogueAsset _currentDialogue;
-        private DialogueObject _currentObject;
+        [SerializeField] private DialogueAsset _currentDialogue;
+        [SerializeField] private DialogueObject _currentObject;
         private DialogueParameters _currentParameters;
         
         private AdvanceContext _previousContext;
@@ -80,7 +82,7 @@ namespace WolverineSoft.DialogueSystem
             if (_currentObject is IDialogueOutput outputDialogue)
             {
                 var details = outputDialogue.GetDialogueDetails(context, this);
-                //TODO replace values in text
+                details.ApplyVariables(this);
                 return details;
             }
             
