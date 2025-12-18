@@ -14,5 +14,7 @@ namespace WolverineSoft.DialogueSystem.Editor
         /// Method that is used to assign ScriptableObject references
         /// </summary>
         void AssignObjectReferences();
+
+        void CheckErrors(GraphLogger logger, IVariableContext variables) { }
     }
 }

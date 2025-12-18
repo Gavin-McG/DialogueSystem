@@ -43,17 +43,7 @@ namespace WolverineSoft.DialogueSystem.Editor
             ctx.SetMainObject(asset);
             
             //Assign dialogueAsset's default variable values
-            var variableList = graph.GetVariables()
-                .Select(v =>
-                {
-                    v.TryGetDefaultValue(out Variable defaultValue);
-                    return new KeyValuePair<string, Variable>(v.name, defaultValue);
-                })
-                .Where(entry => entry.Value != null)
-                .GroupBy(entry => entry.Key)
-                .Select(group => group.First());
-            asset.variables = new VariableContainer(variableList, true);
-            
+            asset.variables = new VariableContainer(graph.VariableList, true);
             
             //Create objects for each node
             int nonMainAssetCount = 0;

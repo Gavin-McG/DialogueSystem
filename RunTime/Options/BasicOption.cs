@@ -2,7 +2,7 @@
 
 namespace WolverineSoft.DialogueSystem
 {
-    [TypeOption("Basic")]
+    [TypeOption("Basic", order = -1)]
     public class BasicOption : OptionType
     {
         public override bool EvaluateCondition(AdvanceContext advanceContext, IVariableContext variables)
