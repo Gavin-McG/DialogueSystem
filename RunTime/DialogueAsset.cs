@@ -27,7 +27,9 @@ namespace WolverineSoft.DialogueSystem
 
         public bool TryGetVariable(string name, out Variable variable) =>
             variables.TryGetVariable(name, out variable);
-        
+
+        public void SetVariable(string name, Variable variable) => throw new InvalidOperationException();
+
         //----Set Methods----
 
         public void SetString(string name, string value) => throw new InvalidOperationException();

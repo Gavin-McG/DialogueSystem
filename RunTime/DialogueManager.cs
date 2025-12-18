@@ -111,7 +111,7 @@ namespace WolverineSoft.DialogueSystem
 
             var outputDialogue = (IDialogueOutput)_currentObject;
             var details = outputDialogue.GetDialogueDetails(_previousContext, this);
-            //TODO replace values in text
+            details.ApplyVariables(this);
             return details;
         }
         
@@ -135,6 +135,9 @@ namespace WolverineSoft.DialogueSystem
         public bool TryGetVariable(string name, out Variable variable) =>
              variables.TryGetVariable(name, out variable) || 
              (_currentDialogue?.TryGetVariable(name, out variable) ?? true);
+        
+        public void SetVariable(string name, Variable variable) => 
+            variables.SetVariable(name, variable);
         
         //----Set Methods----
 

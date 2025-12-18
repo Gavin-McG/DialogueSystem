@@ -5,6 +5,7 @@
         public bool IsReadOnly { get; }
         
         public bool TryGetVariable(string name, out Variable variable);
+        public void SetVariable(string name, Variable variable);
         
         //Setters
         public void SetString(string name, string value);

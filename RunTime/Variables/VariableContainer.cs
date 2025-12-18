@@ -46,6 +46,12 @@ namespace WolverineSoft.DialogueSystem
         public bool TryGetVariable(string name, out Variable variable) =>
             variables.TryGetValue(name, out variable);
 
+        public void SetVariable(string name, Variable variable)
+        {
+            EnsureWritable();
+            variables[name] = variable;
+        }
+
         // -----------------------------
         // Set helpers
         // -----------------------------
