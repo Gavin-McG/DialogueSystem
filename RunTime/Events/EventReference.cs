@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace WolverineSoft.DialogueSystem
 {
@@ -8,6 +9,8 @@ namespace WolverineSoft.DialogueSystem
     [Serializable]
     public abstract class EventReference
     {
+        [SerializeField] public DSEventBase dialogueEvent;
+        
         public abstract void Invoke();
         
         public abstract void Invoke(DialogueManager manager);

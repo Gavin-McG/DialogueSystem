@@ -58,6 +58,22 @@ namespace WolverineSoft.DialogueSystem.Editor
         {
             return _asset;
         }
+
+        public void CheckErrors(GraphLogger logger, IVariableContext variables)
+        {
+            //Check that all used variable in text have Default value
+            if (_textOption != null)
+            {
+                _textOption.TryGetValue(out TextHolder text);
+                var variableNames = DialogueGraphUtility.GetVariableNames(text.text);
+                
+                foreach (var variableName in variableNames)
+                    if (!variables.TryGetVariable(variableName, out Variable variable))
+                    {
+                        logger.LogWarning("Variable \"" + variableName + "\" has no default value", this);
+                    }
+            }
+        }
     }
 
 }

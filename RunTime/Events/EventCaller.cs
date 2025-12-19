@@ -8,16 +8,16 @@ namespace WolverineSoft.DialogueSystem
     [Serializable]
     public class EventCaller : EventReference
     {
-        public DSEvent dialogueEvent;
-        
+        private DSEvent Event => dialogueEvent as DSEvent;
+
         public override void Invoke()
         {
-            dialogueEvent.Invoke();
+            Event?.Invoke();
         }
 
         public override void Invoke(DialogueManager manager)
         {
-            dialogueEvent.Invoke(manager);
+            Event?.Invoke(manager);
         }
     }
 
@@ -27,17 +27,18 @@ namespace WolverineSoft.DialogueSystem
     [Serializable]
     public class EventCaller<T> : EventReference
     {
-        public DSEvent<T> dialogueEvent;
         public T value;
+        
+        private DSEvent<T> Event => dialogueEvent as DSEvent<T>;
         
         public override void Invoke()
         {
-            dialogueEvent.Invoke(value);
+            Event?.Invoke(value);
         }
 
         public override void Invoke(DialogueManager manager)
         {
-            dialogueEvent.Invoke(manager, value);
+            Event?.Invoke(manager, value);
         }
     }
 }
