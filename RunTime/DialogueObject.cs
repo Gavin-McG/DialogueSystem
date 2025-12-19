@@ -7,6 +7,8 @@ namespace WolverineSoft.DialogueSystem
     /// </summary>
     public abstract class DialogueObject : ScriptableObject
     {
+        public virtual void EnterState() {}
+        
         public abstract DialogueObject GetNextDialogue(AdvanceContext advanceContext, DialogueManager manager);
     }
 

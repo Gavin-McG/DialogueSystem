@@ -43,8 +43,8 @@ namespace WolverineSoft.DialogueSystem.Editor
             _stallOption.TryGetValue(out bool stall);
 
             _asset = stall ? 
-                ScriptableObject.CreateInstance<EventObject>()
-                : ScriptableObject.CreateInstance<StallObject>();
+                ScriptableObject.CreateInstance<StallObject>() : 
+                ScriptableObject.CreateInstance<EventObject>();
             _asset.name = stall ? "StallEvent" : "Event";
             return _asset;
         }

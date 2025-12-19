@@ -77,6 +77,7 @@ namespace WolverineSoft.DialogueSystem
             //Advance until finding a Dialogue Object with output
             do {
                 _currentObject = _currentObject.GetNextDialogue(context, this);
+                _currentObject?.EnterState();
             } while (_currentObject != null && _currentObject is not IDialogueOutput);
 
             if (_currentObject is IDialogueOutput outputDialogue)

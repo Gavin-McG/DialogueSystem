@@ -8,9 +8,13 @@ namespace WolverineSoft.DialogueSystem
         [SerializeField] public DialogueObject nextDialogue;
         [SerializeReference] public EventReference eventCaller;
 
-        public override DialogueObject GetNextDialogue(AdvanceContext context, DialogueManager manager)
+        public override void EnterState()
         {
             eventCaller.Invoke();
+        }
+
+        public override DialogueObject GetNextDialogue(AdvanceContext context, DialogueManager manager)
+        {
             return nextDialogue;
         }
     }
