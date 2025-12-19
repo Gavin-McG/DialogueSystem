@@ -11,17 +11,27 @@ namespace WolverineSoft.DialogueSystem.Editor
     /// option parameters, and option fields.
     /// </summary>
     [Serializable]
-    [UseWithContext(typeof(ChoiceNode))]
+    [UseWithContext(typeof(OptionContextNode))]
     public class OptionNode : BlockNode, IDialogueNode
     {
         private OptionObject _asset;
         private INodeOption _textOption;
+        private INodeOption _weightOption;
         private INodeOption _paramOption;
         private IPort _nextPort;
         
+        OptionContextNode OptionContext => contextNode as OptionContextNode;
+        
         protected sealed override void OnDefineOptions(IOptionDefinitionContext context)
         {
-            _textOption = context.AddOption<OptionTextHolder>("text").Build();
+            if (contextNode is null)
+            {
+                context.AddOption<bool>("initButton").WithDisplayName("Press This -->").Build();
+                return;
+            }
+            
+            _textOption = OptionContext.UseText ? context.AddOption<OptionTextHolder>("text").Build() : null;
+            _weightOption = OptionContext.UseWeight ? context.AddOption<float>("Weight").Build() : null;
             _paramOption = context.AddOption<ValueHolder<OptionType, ResponseParameters>>("params").Build();
         }
 
@@ -46,9 +56,11 @@ namespace WolverineSoft.DialogueSystem.Editor
             //Get Next Dialogue
             _asset.nextDialogue = DialogueGraphUtility.GetTrace(_nextPort);
             
-            //Assign text
-            _textOption.TryGetValue(out TextHolder text);
-            _asset.text = text.text;
+            //Assign text/weight
+            TextHolder text = null;
+            _textOption?.TryGetValue(out text);
+            _weightOption?.TryGetValue(out _asset.weight);
+            _asset.text = text?.text ?? string.Empty;
             
             //Get Parameters
             _paramOption.TryGetValue(out ValueHolder<OptionType, ResponseParameters> parameters);
@@ -63,18 +75,20 @@ namespace WolverineSoft.DialogueSystem.Editor
 
         public void CheckErrors(GraphLogger logger, IVariableContext variables)
         {
-            _paramOption.TryGetValue(out ValueHolder<OptionType, ResponseParameters> parameters);
-            OptionType optionType = parameters.value1;
-            var requiredVariables = optionType?.CheckVariables;
-            
             //Check any required Variables on OptionType for existing Default value
-            if (requiredVariables != null)
-                foreach (var variableName in requiredVariables)
-                    if (!variables.TryGetVariable(variableName, out Variable variable))
-                    {
-                        logger.LogWarning("Variable \"" + variableName + "\" has no default value", this);
-                    }
+            if (_paramOption != null)
+            {
+                _paramOption.TryGetValue(out ValueHolder<OptionType, ResponseParameters> parameters);
+                OptionType optionType = parameters.value1;
+                var requiredVariables = optionType?.CheckVariables;
             
+                if (requiredVariables != null)
+                    foreach (var variableName in requiredVariables)
+                        if (!variables.TryGetVariable(variableName, out Variable variable))
+                        {
+                            logger.LogWarning("Variable \"" + variableName + "\" has no default value", this);
+                        }
+            }
         }
     }
 }

@@ -112,6 +112,7 @@ namespace WolverineSoft.DialogueSystem
             VariableType.Float => _floatValue.ToString(),
             VariableType.Int => _intValue.ToString(),
             VariableType.Bool => _boolValue.ToString(),
+            _ => String.Empty
         };
         
         //----------------------------------

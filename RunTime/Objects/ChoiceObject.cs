@@ -7,7 +7,7 @@ namespace WolverineSoft.DialogueSystem
     /// <summary>
     /// Scriptable Object representing a Choice Dialogue
     /// </summary>
-    public sealed class ChoiceObject : DialogueObject, IDialogueOutput
+    public class ChoiceObject : DialogueObject, IDialogueOutput
     {
         [SerializeField] public DialogueObject defaultDialogue;
         [SerializeField] public string text;

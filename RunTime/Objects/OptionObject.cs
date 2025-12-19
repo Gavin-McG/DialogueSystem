@@ -6,9 +6,9 @@ public class OptionObject : DialogueObject
 {
     [SerializeField] public DialogueObject nextDialogue;
     [SerializeField] public string text;
+    [SerializeField] public float weight = 1;
     [SerializeReference] public OptionType optionType;
     [SerializeReference] public ResponseParameters responseParams;
-    public float weight = 1;
     
     public override DialogueObject GetNextDialogue(AdvanceContext advanceContext, DialogueManager manager)
     {

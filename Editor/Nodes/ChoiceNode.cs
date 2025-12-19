@@ -10,13 +10,16 @@ namespace WolverineSoft.DialogueSystem.Editor
     /// </summary>
     [Serializable]
     [UseWithGraph(typeof(DialogueGraph))]
-    public class ChoiceNode : ContextNode, IDialogueNode
+    public class ChoiceNode : OptionContextNode
     {
         private ChoiceObject _asset;
         private INodeOption _textOption;
         private INodeOption _paramOption;
         private IPort _nextPort;
-        
+
+        public override bool UseText => true;
+        public override bool UseWeight => false;
+
         protected override void OnDefineOptions(IOptionDefinitionContext context)
         {
             _textOption = context.AddOption<ChoiceTextHolder>("text").Build();
@@ -33,14 +36,14 @@ namespace WolverineSoft.DialogueSystem.Editor
         //          DialogueNode Methods
         //-------------------------------------------
 
-        public ScriptableObject CreateDialogueObject()
+        public override ScriptableObject CreateDialogueObject()
         {
             _asset = ScriptableObject.CreateInstance<ChoiceObject>();
             _asset.name = "Choice";
             return _asset;
         }
         
-        public void AssignObjectReferences()
+        public override void AssignObjectReferences()
         {
             //Get Next Dialogue
             _asset.defaultDialogue = DialogueGraphUtility.GetTrace(_nextPort);
@@ -62,7 +65,7 @@ namespace WolverineSoft.DialogueSystem.Editor
                 .ToList();
         }
 
-        public DialogueObject GetData()
+        public override DialogueObject GetData()
         {
             return _asset;
         }
