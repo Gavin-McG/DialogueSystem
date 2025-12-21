@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,6 +13,11 @@ namespace WolverineSoft.DialogueSystem.Example
         [HideInInspector] public UnityEvent TimeLimitExpired;
         
         private Coroutine timeLimitCoroutine;
+
+        private void OnEnable()
+        {
+            SetBarPercentage(0);
+        }
 
         public void StartTimer(float timeLimit)
         {

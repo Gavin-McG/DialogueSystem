@@ -12,11 +12,14 @@ namespace WolverineSoft.DialogueSystem.Editor
         {
             var root = new VisualElement();
 
-            if (property.managedReferenceValue == null)
+            // Only guard against null for SerializeReference fields
+            if (property.propertyType == SerializedPropertyType.ManagedReference &&
+                property.managedReferenceValue == null)
+            {
                 return root;
+            }
 
             DrawChildren(property, root);
-
             return root;
         }
 
@@ -30,9 +33,7 @@ namespace WolverineSoft.DialogueSystem.Editor
 
             while (!SerializedProperty.EqualContents(iterator, end))
             {
-                var field = new PropertyField(iterator);
-                parent.Add(field);
-
+                parent.Add(new PropertyField(iterator));
                 iterator.NextVisible(false);
             }
         }

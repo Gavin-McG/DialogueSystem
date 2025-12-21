@@ -65,7 +65,7 @@ namespace WolverineSoft.DialogueSystem.Example
             
             mainTextUI.UpdateText(info.text);
             
-            choiceUI.SetChoices(info.responses);
+            choiceUI.SetContinue();
         }
 
         public void ShowStallDialogue(DialogueInfo info)
@@ -89,8 +89,11 @@ namespace WolverineSoft.DialogueSystem.Example
             state = DialogueState.Completed;
             
             var choiceParams = currentInfo.GetChoiceParams<MyChoiceParameters>();
-            if (choiceParams!=null && choiceParams.isTimed)
+            if (choiceParams != null && choiceParams.isTimed)
+            {
+                choiceUI.SetChoices(currentInfo.responses);
                 timeLimitUI.StartTimer(choiceParams.timeLimit);
+            }
         }
 
         private void SelectChoice(int index)

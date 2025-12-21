@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Unity.GraphToolkit.Editor;
+using UnityEngine;
 
 namespace WolverineSoft.DialogueSystem.Editor
 {
@@ -63,6 +64,7 @@ namespace WolverineSoft.DialogueSystem.Editor
         public static List<string> GetVariableNames(string text)
         {
             List<string> result = new List<string>();
+            
             if (text==null) return result;
             
             foreach (Match match in Regex.Matches(text, VariablePattern))
@@ -73,6 +75,12 @@ namespace WolverineSoft.DialogueSystem.Editor
         }
         
         //----------Events---------------
+
+        [Serializable]
+        public class EventValue<T> : ParameterBase
+        {
+            [SerializeField] public T value;
+        }
         
         private static Type GetDSEventValueType(Type type)
         {
@@ -108,8 +116,9 @@ namespace WolverineSoft.DialogueSystem.Editor
         public static INodeOption DefineEventValueOption(Node.IOptionDefinitionContext context, INodeOption eventOption)
         {
             Type valueType = GetEventType(eventOption);
+            Type eventValueType = typeof(EventValue<>).MakeGenericType(valueType);
             if (valueType != null)
-                return context.AddOption("value", valueType).Build();
+                return context.AddOption("value", eventValueType).Build();
             return null;
         }
 
@@ -131,7 +140,8 @@ namespace WolverineSoft.DialogueSystem.Editor
                 // Assign value
                 if (valueOption != null)
                 {
-                    valueOption.TryGetValue(out object value);
+                    valueOption.TryGetValue(out object eventValue);
+                    object value = eventValue.GetType().GetField("value").GetValue(eventValue);
                     callerType
                         .GetField("value")
                         ?.SetValue(caller, value);
