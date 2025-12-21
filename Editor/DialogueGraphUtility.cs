@@ -63,6 +63,8 @@ namespace WolverineSoft.DialogueSystem.Editor
         public static List<string> GetVariableNames(string text)
         {
             List<string> result = new List<string>();
+            if (text==null) return result;
+            
             foreach (Match match in Regex.Matches(text, VariablePattern))
             {
                 result.Add(match.Groups[1].Value);

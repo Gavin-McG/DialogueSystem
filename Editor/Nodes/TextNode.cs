@@ -20,7 +20,7 @@ namespace WolverineSoft.DialogueSystem.Editor
         protected sealed override void OnDefineOptions(IOptionDefinitionContext context)
         {
             _textOption = context.AddOption<TextTextHolder>("text").Build();
-            _paramOption = context.AddOption<ValueHolder<TextParameters>>("params").Build();
+            _paramOption = context.AddOption<GenericValueHolder<TextParameters>>("params").Build();
         }
 
         protected sealed override void OnDefinePorts(IPortDefinitionContext context)
@@ -50,7 +50,7 @@ namespace WolverineSoft.DialogueSystem.Editor
             _asset.text = text.text;
             
             //Get Parameters
-            _paramOption.TryGetValue(out ValueHolder<TextParameters> parameters);
+            _paramOption.TryGetValue(out GenericValueHolder<TextParameters> parameters);
             _asset.textParams = parameters.value1;
         }
 

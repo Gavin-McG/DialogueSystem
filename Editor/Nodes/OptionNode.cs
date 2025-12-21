@@ -32,7 +32,10 @@ namespace WolverineSoft.DialogueSystem.Editor
             
             _textOption = OptionContext.UseText ? context.AddOption<OptionTextHolder>("text").Build() : null;
             _weightOption = OptionContext.UseWeight ? context.AddOption<float>("Weight").Build() : null;
-            _paramOption = context.AddOption<ValueHolder<OptionType, ResponseParameters>>("params").Build();
+
+            _paramOption = OptionContext.UseResponseParameters
+                ? context.AddOption<GenericValueHolder<OptionType, ResponseParameters>>("params").Build()
+                : context.AddOption<GenericValueHolder<OptionType>>("params").Build();
         }
 
         protected sealed override void OnDefinePorts(IPortDefinitionContext context)
@@ -50,6 +53,18 @@ namespace WolverineSoft.DialogueSystem.Editor
             _asset.name = "Option";
             return _asset;
         }
+
+        public OptionType GetOptionType()
+        {
+            //Get The Option type depending on the Context Node
+            OptionType optionType = null;
+            if (_paramOption.TryGetValue(out GenericValueHolder<OptionType, ResponseParameters> choiceParams))
+                optionType = choiceParams.value1;
+            else if (_paramOption.TryGetValue(out GenericValueHolder<OptionType> redirectParams))
+                optionType = redirectParams.value1;
+            
+            return optionType;
+        }
         
         public void AssignObjectReferences()
         {
@@ -63,9 +78,9 @@ namespace WolverineSoft.DialogueSystem.Editor
             _asset.text = text?.text ?? string.Empty;
             
             //Get Parameters
-            _paramOption.TryGetValue(out ValueHolder<OptionType, ResponseParameters> parameters);
-            _asset.optionType = parameters.value1;
-            _asset.responseParams = parameters.value2;
+            _paramOption.TryGetValue(out GenericValueHolder<OptionType, ResponseParameters> parameters);
+            _asset.optionType = GetOptionType();
+            _asset.responseParams = parameters?.value2;
         }
 
         public DialogueObject GetData()
@@ -78,10 +93,10 @@ namespace WolverineSoft.DialogueSystem.Editor
             //Check any required Variables on OptionType for existing Default value
             if (_paramOption != null)
             {
-                _paramOption.TryGetValue(out ValueHolder<OptionType, ResponseParameters> parameters);
-                OptionType optionType = parameters.value1;
+                var optionType = GetOptionType();
+                
+                //Ensure all used Variables by Option type have defined default value
                 var requiredVariables = optionType?.CheckVariables;
-            
                 if (requiredVariables != null)
                     foreach (var variableName in requiredVariables)
                         if (!variables.TryGetVariable(variableName, out Variable variable))

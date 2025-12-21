@@ -20,7 +20,7 @@ namespace WolverineSoft.DialogueSystem.Editor
                 .WithTooltip("Unique name of this start point (Leave blank for default)")
                 .Build();
             
-            _paramOption = context.AddOption<ValueHolder<DialogueParameters>>("dialogueParam").Build();
+            _paramOption = context.AddOption<GenericValueHolder<DialogueParameters>>("dialogueParam").Build();
         }
 
         protected sealed override void OnDefinePorts(IPortDefinitionContext context)
@@ -49,7 +49,7 @@ namespace WolverineSoft.DialogueSystem.Editor
             _startNameOption.TryGetValue(out _asset.startName);
             
             //Get Parameters
-            _paramOption.TryGetValue(out ValueHolder<DialogueParameters> parameters);
+            _paramOption.TryGetValue(out GenericValueHolder<DialogueParameters> parameters);
             _asset.dialogueParameters = parameters.value1;
         }
 

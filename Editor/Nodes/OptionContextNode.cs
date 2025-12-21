@@ -7,6 +7,7 @@ namespace WolverineSoft.DialogueSystem.Editor
     {
         public abstract bool UseText { get; }
         public abstract bool UseWeight { get; }
+        public abstract bool UseResponseParameters { get; }
 
         public abstract ScriptableObject CreateDialogueObject();
         public abstract void AssignObjectReferences();

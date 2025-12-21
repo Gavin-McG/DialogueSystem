@@ -19,11 +19,12 @@ namespace WolverineSoft.DialogueSystem.Editor
 
         public override bool UseText => true;
         public override bool UseWeight => false;
+        public override bool UseResponseParameters => true;
 
         protected override void OnDefineOptions(IOptionDefinitionContext context)
         {
             _textOption = context.AddOption<ChoiceTextHolder>("text").Build();
-            _paramOption = context.AddOption<ValueHolder<TextParameters, ChoiceParameters>>("params").Build();
+            _paramOption = context.AddOption<GenericValueHolder<TextParameters, ChoiceParameters>>("params").Build();
         }
 
         protected override void OnDefinePorts(IPortDefinitionContext context)
@@ -53,7 +54,7 @@ namespace WolverineSoft.DialogueSystem.Editor
             _asset.text = text.text;
             
             //Get Parameters
-            _paramOption.TryGetValue(out ValueHolder<TextParameters, ChoiceParameters> parameters);
+            _paramOption.TryGetValue(out GenericValueHolder<TextParameters, ChoiceParameters> parameters);
             _asset.textParams = parameters.value1;
             _asset.choiceParams = parameters.value2;
             

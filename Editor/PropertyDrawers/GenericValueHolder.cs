@@ -4,23 +4,23 @@ using UnityEngine;
 namespace WolverineSoft.DialogueSystem.Editor
 {
     [Serializable]
-    public abstract class ValueHolder {}
+    public abstract class GenericValueHolder {}
     
     [Serializable]
-    public class ValueHolder<T1> : ValueHolder
+    public class GenericValueHolder<T1> : GenericValueHolder
     {
         [SerializeReference] public T1 value1;
     }
     
     [Serializable]
-    public class ValueHolder<T1, T2> : ValueHolder
+    public class GenericValueHolder<T1, T2> : GenericValueHolder
     {
         [SerializeReference] public T1 value1;
         [SerializeReference] public T2 value2;
     }
     
     [Serializable]
-    public class ValueHolder<T1, T2, T3> : ValueHolder
+    public class GenericValueHolder<T1, T2, T3> : GenericValueHolder
     {
         [SerializeReference] public T1 value1;
         [SerializeReference] public T2 value2;

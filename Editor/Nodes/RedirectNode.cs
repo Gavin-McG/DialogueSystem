@@ -11,6 +11,7 @@ namespace WolverineSoft.DialogueSystem.Editor
         private IPort _nextPort;
 
         public override bool UseText => false;
+        public override bool UseResponseParameters => false;
 
         protected override void OnDefinePorts(IPortDefinitionContext context)
         {

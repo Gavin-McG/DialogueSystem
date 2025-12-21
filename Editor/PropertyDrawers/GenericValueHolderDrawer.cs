@@ -11,8 +11,8 @@ using WolverineSoft.DialogueSystem.Editor;
 
 namespace WolverineSoft.DialogueSystem.Editor
 {
-    [CustomPropertyDrawer(typeof(ValueHolder), true)]
-    public class ValueHolderDrawer : PropertyDrawer
+    [CustomPropertyDrawer(typeof(GenericValueHolder), true)]
+    public class GenericValueHolderDrawer : PropertyDrawer
     {
         private string GetTypeDisplayName(Type t)
         {
@@ -33,8 +33,6 @@ namespace WolverineSoft.DialogueSystem.Editor
         public override VisualElement CreatePropertyGUI(SerializedProperty property)
         {
             var root = new VisualElement();
-            var tabView = new TabView();
-            root.Add(tabView);
             
             // Get the template variable T for the ValueHolder
             Type holderType = fieldInfo.FieldType;
@@ -47,23 +45,45 @@ namespace WolverineSoft.DialogueSystem.Editor
                 .ToList();
 
             // Add a tab for every field
+            List<(Type, VisualElement)> tabs = new();
             foreach (var field in fields)
             {
                 var fieldProperty = property.FindPropertyRelative(field.Name);
                 if (fieldProperty == null)
                     continue;
+
+                var type = field.FieldType;
+                var newTab = GetFieldTab(type, fieldProperty);
+                if (newTab != null) tabs.Add((type, newTab));
+            }
+
+            if (tabs.Count > 1)
+            {
+                var tabView = new TabView();
+                root.Add(tabView);
                 
-                AddFieldTab(tabView, field.FieldType, fieldProperty);
+                //Add tabs to tab view
+                foreach (var tab in tabs)
+                {
+                    var tabContainer = new Tab(GetTabDisplayName(tab.Item1));
+                    tabContainer.Add(tab.Item2);
+                    tabView.Add(tabContainer);
+                }
+            }
+            else
+            {
+                foreach (var tab in tabs)
+                    root.Add(tab.Item2);
             }
             
             return root;
         }
 
-        private void AddFieldTab(VisualElement tabView, Type type, SerializedProperty valueProperty)
+        private VisualElement GetFieldTab(Type type, SerializedProperty valueProperty)
         {
             // Initialize lists of derived Types, sorted by Attribute order
             var types = TypeCache.GetTypesDerivedFrom(type).ToList();
-            if (types.Count == 0) return;
+            if (types.Count == 0) return null;
             
             types.Sort((t1, t2) =>
             {
@@ -87,8 +107,7 @@ namespace WolverineSoft.DialogueSystem.Editor
             int currentIndex = types.IndexOf(currentType);
             
             // Create root & type inspector
-            var tab = new Tab(GetTabDisplayName(type));
-            tabView.Add(tab);
+            var tab = new VisualElement();
             var inspectorContainer = new VisualElement();
 
             //Create type dropdown if multiple available types exist
@@ -126,6 +145,8 @@ namespace WolverineSoft.DialogueSystem.Editor
             }
             
             AddValueInspector(valueProperty, inspectorContainer);
+            
+            return tab;
         }
 
         private void AddValueInspector(SerializedProperty property, VisualElement parent)

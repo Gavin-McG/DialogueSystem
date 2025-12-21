@@ -3,7 +3,7 @@ using WolverineSoft.DialogueSystem;
 
 namespace WolverineSoft.DialogueSystem
 {
-    [TypeOption("Constant Random")]
+    [TypeOption("Random Chance")]
     public class RandomOption : OptionType
     {
         [SerializeField] private float chance;
