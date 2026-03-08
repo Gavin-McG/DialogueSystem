@@ -1,80 +1,53 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.Events;
-using WolverineSoft.DialogueSystem.Values;
 
 namespace WolverineSoft.DialogueSystem
 {
-    /// <author>Gavin McGinness</author>
-    /// <date>2025-08-24</date>
-    
     /// <summary>
     /// Primary Component for operating the Backend of the Dialogue System.
-    /// Primary functions are <see cref="BeginDialogue"/> and <see cref="AdvanceDialogue(AdvanceParams)"/>.
+    /// Primary functions are <see cref="BeginDialogue"/> and <see cref="AdvanceDialogue(AdvanceContext)"/>.
     /// <see cref="EndDialogue"/> Is only to be used when ending an interaction prematurely.
     /// Also provides interfaces for values and keywords
     /// </summary>
-    public class DialogueManager : MonoBehaviour, IValueContext
+    public class DialogueManager : MonoBehaviour, IVariableContext
     {
-        public static DialogueManager current;
-        
         //Event invoked when dialogue is started
         public readonly UnityEvent StartedDialogue = new();
-
-        [SerializeField] private DSValueHolder dsValues;
-        [SerializeField, Delayed] private string managerName;
         
-        public string ContextName => managerName;
+        [SerializeField] private DialogueAsset _currentDialogue;
+        [SerializeField] private DialogueObject _currentObject;
+        private DialogueParameters _currentParameters;
         
-        private DialogueAsset _currentDialogue;
-        private DialogueTrace _currentTrace;
-        private AdvanceParams _previousParams;
+        private AdvanceContext _previousContext;
         [HideInInspector] public List<int> optionIndexes;
 
-        private void OnValidate()
+        [SerializeField] private VariableContainer variables = new ();
+        
+        /// <summary>
+        /// Gets the Dialogue Settings for the current dialogue
+        /// </summary>
+        public T GetDialogueParams<T>() where T : DialogueParameters
         {
-            if (managerName == "Global")
-            {
-                managerName = "";
-                Debug.LogWarning("DialogueManager name cannot be \"Global\"");
-            }
+            //null if no dialogue is active
+            if (_currentParameters == null) return null;
+            
+            if (_currentParameters is T tParams) return tParams;
+            return null;
         }
-
-        #region SETTINGS
         
         /// <summary>
         /// Gets type of current Dialogue Settings
         /// </summary>
-        public Type GetSettingsType() => _currentDialogue?.settings.GetType();
-
-        /// <summary>
-        /// Gets the Dialogue Settings for the current dialogue
-        /// </summary>
-        public DialogueSettings GetSettings()
-        {
-            return _currentDialogue?.settings;
-        }
+        public Type GetDialogueParamsType() => _currentParameters?.GetType();
         
-        /// <summary>
-        /// Gets the Dialogue Settings for the current dialogue
-        /// </summary>
-        public T GetSettings<T>() where T : DialogueSettings
-        {
-            //null if no dialogue is active
-            if (_currentDialogue == null) return null;
-            
-            var settings = _currentDialogue.settings;
-            if (settings is T tSettings) return tSettings;
-            return null;
-        }
-        
-        #endregion
-
         /// <summary>
         /// Begin a dialogue using the DialogueAsset to be started
         /// </summary>
-        public void BeginDialogue(DialogueAsset dialogueAsset)
+        public void BeginDialogue(DialogueAsset dialogueAsset, string startName="")
         {
             if (_currentDialogue != null)
             {
@@ -82,14 +55,9 @@ namespace WolverineSoft.DialogueSystem
                 return;
             }
             
-            //clear values from previous dialogue
-            if (dsValues)
-                dsValues.ClearScope(this, DSValue.ValueScope.Dialogue);
-            else
-                Debug.LogWarning("No ValueHolder assigned to DialogueManager. Dialogue-scope values will not be cleared");
-
             _currentDialogue = dialogueAsset;
-            _currentTrace = dialogueAsset;
+            _currentObject = dialogueAsset.GetStartDialogue(startName);
+
             StartedDialogue.Invoke();
         }
         
@@ -97,28 +65,26 @@ namespace WolverineSoft.DialogueSystem
         /// Retrieve the next dialogue using context about the user's interaction with strict types.
         /// Returns null if end of dialogue is reached.
         /// </summary>
-        public DialogueParams<TBase, TChoice, TOption> AdvanceDialogue<TBase, TChoice, TOption>(AdvanceParams advanceParams)
-            where TBase : BaseParams
-            where TChoice : ChoiceParams
-            where TOption : OptionParams
-        {
-            current = this;
+        public DialogueInfo AdvanceDialogue(AdvanceContext context) {
+            _previousContext = context;
 
-            if (_currentTrace == null)
+            if (_currentDialogue == null)
             {
                 Debug.LogWarning("Attempting to Advance Dialogue while no dialogue is active");
                 return null;
             }
             
+            //Advance until finding a Dialogue Object with output
             do {
-                _currentTrace = _currentTrace.AdvanceDialogue(advanceParams, this);
-            } while (_currentTrace != null && _currentTrace is not IDialogueOutput);
+                _currentObject = _currentObject.GetNextDialogue(context, this);
+                _currentObject?.EnterState();
+            } while (_currentObject != null && _currentObject is not IDialogueOutput);
 
-            if (_currentTrace is IDialogueOutput outputDialogue)
+            if (_currentObject is IDialogueOutput outputDialogue)
             {
-                var details = new DialogueParams(outputDialogue.GetDialogueDetails(advanceParams, this));
-                details.ReplaceValues(this);
-                return new DialogueParams<TBase, TChoice, TOption>(details);
+                var details = outputDialogue.GetDialogueDetails(context, this);
+                details.ApplyVariables(this);
+                return details;
             }
             
             EndDialogue();
@@ -130,41 +96,23 @@ namespace WolverineSoft.DialogueSystem
         /// Primarily used to get the first dialogue.
         /// Returns null if end of dialogue is reached.
         /// </summary>
-        public DialogueParams<TBase, TChoice, TOption> AdvanceDialogue<TBase, TChoice, TOption>()
-            where TBase : BaseParams
-            where TChoice : ChoiceParams
-            where TOption : OptionParams
-        => AdvanceDialogue<TBase, TChoice, TOption>(new AdvanceParams());
-
-        /// <summary>
-        /// Retrieve the next dialogue using context about the user's interaction.
-        /// Returns null if end of dialogue is reached.
-        /// </summary>
-        public DialogueParams<BaseParams, ChoiceParams, OptionParams> AdvanceDialogue(AdvanceParams advanceParams)
-            => AdvanceDialogue<BaseParams, ChoiceParams, OptionParams>(advanceParams);
-        
-        /// <summary>
-        /// Retrieve the next dialogue using default context.
-        /// Primarily used to get the first dialogue.
-        /// Returns null if end of dialogue is reached.
-        /// </summary>
-        public DialogueParams<BaseParams, ChoiceParams, OptionParams> AdvanceDialogue() 
-            => AdvanceDialogue(new AdvanceParams());
+        public DialogueInfo AdvanceDialogue()
+        => AdvanceDialogue(new AdvanceContext());
 
         /// <summary>
         /// Retrieve the information about the current dialogue again.
         /// Used if you want to account for changes in conditional choice options
         /// </summary>
-        public DialogueParams RefreshDialogue()
+        public DialogueInfo RefreshDialogue()
         {
             if (_currentDialogue != null)
             {
                 throw new Exception($"Attempted to refresh dialogue while dialogue was not playing");
             }
 
-            var dialogueOutput = (IDialogueOutput)_currentTrace;
-            var details = new DialogueParams(dialogueOutput.GetDialogueDetails(_previousParams, this));
-            details.ReplaceValues(this);
+            var outputDialogue = (IDialogueOutput)_currentObject;
+            var details = outputDialogue.GetDialogueDetails(_previousContext, this);
+            details.ApplyVariables(this);
             return details;
         }
         
@@ -174,13 +122,74 @@ namespace WolverineSoft.DialogueSystem
         public void EndDialogue()
         {
             if (_currentDialogue == null) return;
-            
-            _currentDialogue.RunEndOperations(this);
-            
             _currentDialogue = null;
-            _currentTrace = null;
+            _currentObject = null;
+            _currentParameters = null;
+        }
+        
+        //-----------------------------------------------
+        //           IVariableContext Implementation
+        //-----------------------------------------------
+
+        public bool IsReadOnly => false;
+
+        public bool TryGetVariable(string name, out Variable variable) =>
+             variables.TryGetVariable(name, out variable) || 
+             (_currentDialogue?.TryGetVariable(name, out variable) ?? true);
+        
+        public void SetVariable(string name, Variable variable) => 
+            variables.SetVariable(name, variable);
+        
+        //----Set Methods----
+
+        public void SetString(string name, string value) => variables.SetString(name, value);
+        public void SetFloat(string name, float value) => variables.SetFloat(name, value);
+        public void SetInt(string name, int value) => variables.SetInt(name, value);
+        public void SetBool(string name, bool value) => variables.SetBool(name, value);
+        
+        //----Get Methods----
+
+        public string GetString(string name)
+        {
+            if (variables.TryGetVariable(name, out Variable variable))
+                return variable.GetString();
+            if (_currentDialogue?.TryGetVariable(name, out variable) ?? false)
+                return variable.GetString();
+            
+            Debug.LogWarning($"No Variable found with name {name}");
+            return null;
+        }
+        
+        public float GetFloat(string name) {
+            if (variables.TryGetVariable(name, out Variable variable))
+                return variable.GetFloat();
+            if (_currentDialogue?.TryGetVariable(name, out variable) ?? false)
+                return variable.GetFloat();
+            
+            Debug.LogWarning($"No Variable found with name {name}");
+            return 0f;
+        }
+        
+        public int GetInt(string name)
+        {
+            if (variables.TryGetVariable(name, out Variable variable))
+                return variable.GetInt();
+            if (_currentDialogue?.TryGetVariable(name, out variable) ?? false)
+                return variable.GetInt();
+            
+            Debug.LogWarning($"No Variable found with name {name}");
+            return 0;
+        }
+        
+        public bool GetBool(string name)
+        {
+            if (variables.TryGetVariable(name, out Variable variable)) 
+                return variable.GetBool();
+            if (_currentDialogue?.TryGetVariable(name, out variable) ?? false) 
+                return variable.GetBool();
+            
+            Debug.LogWarning($"No Variable found with name {name}");
+            return false;
         }
     }
-    
-
 }

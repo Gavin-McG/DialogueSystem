@@ -1,0 +1,75 @@
+using System;
+using System.Linq;
+using Unity.GraphToolkit.Editor;
+using UnityEngine;
+
+namespace WolverineSoft.DialogueSystem.Editor
+{
+    /// <summary>
+    /// Generic Base Class for Choice Dialogue Nodes. 
+    /// </summary>
+    [Serializable]
+    [UseWithGraph(typeof(DialogueGraph))]
+    public class ChoiceNode : OptionContextNode
+    {
+        private ChoiceObject _asset;
+        private INodeOption _textOption;
+        private INodeOption _paramOption;
+        private IPort _nextPort;
+
+        public override bool UseText => true;
+        public override bool UseWeight => false;
+        public override bool UseResponseParameters => true;
+
+        protected override void OnDefineOptions(IOptionDefinitionContext context)
+        {
+            _textOption = context.AddOption<ChoiceTextHolder>("text").Build();
+            _paramOption = context.AddOption<GenericValueHolder<TextParameters, ChoiceParameters>>("params").Build();
+        }
+
+        protected override void OnDefinePorts(IPortDefinitionContext context)
+        {
+            DialogueGraphUtility.AddPreviousPort(context);
+            _nextPort = DialogueGraphUtility.AddNextPort(context, "Default");
+        }
+  
+        //-------------------------------------------
+        //          DialogueNode Methods
+        //-------------------------------------------
+
+        public override ScriptableObject CreateDialogueObject()
+        {
+            _asset = ScriptableObject.CreateInstance<ChoiceObject>();
+            _asset.name = "Choice";
+            return _asset;
+        }
+        
+        public override void AssignObjectReferences()
+        {
+            //Get Next Dialogue
+            _asset.defaultDialogue = DialogueGraphUtility.GetTrace(_nextPort);
+            
+            //Assign text
+            _textOption.TryGetValue(out TextHolder text);
+            _asset.text = text.text;
+            
+            //Get Parameters
+            _paramOption.TryGetValue(out GenericValueHolder<TextParameters, ChoiceParameters> parameters);
+            _asset.textParams = parameters.value1;
+            _asset.choiceParams = parameters.value2;
+            
+            //Get Options
+            _asset.options = blockNodes
+                .OfType<OptionNode>()
+                .Select(n => n.GetData())
+                .OfType<OptionObject>()
+                .ToList();
+        }
+
+        public override DialogueObject GetData()
+        {
+            return _asset;
+        }
+    }
+
+}

@@ -22,22 +22,25 @@ namespace WolverineSoft.DialogueSystem.Editor
         {
             GraphDatabase.PromptInProjectBrowserToCreateNewAsset<DialogueGraph>();
         }
+
+        public override void OnGraphChanged(GraphLogger graphLogger)
+        {
+            var currentVariables = new VariableContainer(VariableList, true);
+            
+            var nodes = GetAllNodes().OfType<IDialogueNode>();
+            foreach (var node in nodes)
+                node.CheckErrors(graphLogger, currentVariables);
+        }
         
-        public override void OnGraphChanged(GraphLogger infos)
-        {
-            CheckGraphErrors(infos);
-        }
-
-        private void CheckGraphErrors(GraphLogger infos)
-        {
-            MultipleBeginCheck(infos);
-
-            var errorNodes = GetNodes().OfType<IErrorNode>();
-            foreach (var node in errorNodes)
+        public IEnumerable<KeyValuePair<string, Variable>> VariableList => GetVariables()
+            .Select(v =>
             {
-                node.DisplayErrors(infos);
-            }
-        }
+                v.TryGetDefaultValue(out Variable defaultValue);
+                return new KeyValuePair<string, Variable>(v.name, defaultValue);
+            })
+            .Where(entry => entry.Value != null)
+            .GroupBy(entry => entry.Key)
+            .Select(group => group.First());
 
         private IEnumerable<INode> GetAllNodes()
         {
@@ -58,30 +61,6 @@ namespace WolverineSoft.DialogueSystem.Editor
                     yield return blockNode;
                 }
             }
-        }
-
-        private bool MultipleBeginCheck(GraphLogger infos)
-        {
-            var passedCheck = true;
-            
-            var beginDialogueNodes = GetNodes().OfType<IBeginNode>().ToList();
-            switch (beginDialogueNodes.Count)
-            {
-                case 0:
-                    infos.LogError("Add a BeginDialogueNode in your Dialogue graph.");
-                    passedCheck = false;
-                    break;
-                case > 1:
-                    foreach (var beginDialogueNode in beginDialogueNodes.Skip(1))
-                    {
-                        infos.LogError($"DialogueGraph only supports one {nameof(IBeginNode)} by graph. " +
-                                         "Only the first created one will be used.", beginDialogueNode);
-                    }
-                    passedCheck = false;
-                    break;
-            }
-            
-            return passedCheck;
         }
     }
 

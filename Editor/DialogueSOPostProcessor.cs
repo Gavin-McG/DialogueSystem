@@ -1,6 +1,5 @@
 ﻿using UnityEditor;
 using UnityEngine;
-using WolverineSoft.DialogueSystem.Values;
 
 namespace WolverineSoft.DialogueSystem.Editor
 {
@@ -30,13 +29,7 @@ namespace WolverineSoft.DialogueSystem.Editor
                 Object obj = AssetDatabase.LoadAssetAtPath<Object>(path);
                 if (obj == null) continue;
 
-                if (obj is DSValue && valueSOIcon != null)
-                    EditorGUIUtility.SetIconForObject(obj, valueSOIcon);
-
-                else if (obj is DSValueHolder && valueHolderIcon != null)
-                    EditorGUIUtility.SetIconForObject(obj, valueHolderIcon);
-
-                else if (obj is DSEventObject && dsEventIcon != null)
+                if (obj is DSEventBase && dsEventIcon != null)
                     EditorGUIUtility.SetIconForObject(obj, dsEventIcon);
             }
         }
