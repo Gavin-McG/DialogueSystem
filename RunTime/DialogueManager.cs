@@ -17,6 +17,8 @@ namespace WolverineSoft.DialogueSystem
     {
         //Event invoked when dialogue is started
         public readonly UnityEvent StartedDialogue = new();
+        public readonly UnityEvent<AdvanceContext> AdvancedDialogue = new();
+        public readonly UnityEvent EndedDialogue = new();
         
         [SerializeField] private DialogueAsset _currentDialogue;
         [SerializeField] private DialogueObject _currentObject;
@@ -87,6 +89,8 @@ namespace WolverineSoft.DialogueSystem
                 return details;
             }
             
+            AdvancedDialogue.Invoke(context);
+            
             EndDialogue();
             return null;
         }
@@ -125,6 +129,8 @@ namespace WolverineSoft.DialogueSystem
             _currentDialogue = null;
             _currentObject = null;
             _currentParameters = null;
+            
+            EndedDialogue.Invoke();
         }
         
         //-----------------------------------------------
