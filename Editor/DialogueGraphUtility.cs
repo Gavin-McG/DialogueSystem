@@ -116,9 +116,13 @@ namespace WolverineSoft.DialogueSystem.Editor
         public static INodeOption DefineEventValueOption(Node.IOptionDefinitionContext context, INodeOption eventOption)
         {
             Type valueType = GetEventType(eventOption);
-            Type eventValueType = typeof(EventValue<>).MakeGenericType(valueType);
+
             if (valueType != null)
+            {
+                Type eventValueType = typeof(EventValue<>).MakeGenericType(valueType);
                 return context.AddOption("value", eventValueType).Build();
+            }
+
             return null;
         }
 
