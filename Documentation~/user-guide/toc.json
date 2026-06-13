@@ -1,0 +1,15 @@
+{
+    "items": [
+        {
+            "name": "Introduction",
+            "href": "DialogueManager.html",
+            "topicHref": "DialogueManager.html"
+        },
+        {
+            "name": "Programming API",
+            "href": "api/WolverineSoft.DialogueSystem.DialogueManager.html",
+            "topicHref": "api/WolverineSoft.DialogueSystem.DialogueManager.html"
+        }
+    ],
+    "pdf": true
+}

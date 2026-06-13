@@ -1,0 +1,310 @@
+### YamlMime:ManagedReference
+items:
+- uid: WolverineSoft.DialogueSystem.Editor.IDialogueNode
+  commentId: T:WolverineSoft.DialogueSystem.Editor.IDialogueNode
+  id: IDialogueNode
+  parent: WolverineSoft.DialogueSystem.Editor
+  children:
+  - WolverineSoft.DialogueSystem.Editor.IDialogueNode.AssignObjectReferences
+  - WolverineSoft.DialogueSystem.Editor.IDialogueNode.CheckErrors(GraphLogger,WolverineSoft.DialogueSystem.IVariableContext)
+  - WolverineSoft.DialogueSystem.Editor.IDialogueNode.CreateDialogueObject
+  langs:
+  - csharp
+  - vb
+  name: IDialogueNode
+  nameWithType: IDialogueNode
+  fullName: WolverineSoft.DialogueSystem.Editor.IDialogueNode
+  type: Interface
+  source:
+    remote:
+      path: Editor/IDialogueNode.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: IDialogueNode
+    path: ../Editor/IDialogueNode.cs
+    startLine: 5
+  namespace: WolverineSoft.DialogueSystem.Editor
+  syntax:
+    content: 'public interface IDialogueNode : IDataNode<DialogueObject>'
+    content.vb: Public Interface IDialogueNode Inherits IDataNode(Of DialogueObject)
+  derivedClasses:
+  - WolverineSoft.DialogueSystem.Editor.ChoiceNode
+  - WolverineSoft.DialogueSystem.Editor.OptionContextNode
+  - WolverineSoft.DialogueSystem.Editor.OptionNode
+  - WolverineSoft.DialogueSystem.Editor.RandomRedirectNode
+  - WolverineSoft.DialogueSystem.Editor.RedirectNode
+  - WolverineSoft.DialogueSystem.Editor.SequentialRedirectNode
+  - WolverineSoft.DialogueSystem.Editor.SetVariableNode
+  - WolverineSoft.DialogueSystem.Editor.StartNode
+  - WolverineSoft.DialogueSystem.Editor.TextNode
+  inheritedMembers:
+  - WolverineSoft.DialogueSystem.Editor.IDataNode{WolverineSoft.DialogueSystem.DialogueObject}.GetData
+- uid: WolverineSoft.DialogueSystem.Editor.IDialogueNode.CreateDialogueObject
+  commentId: M:WolverineSoft.DialogueSystem.Editor.IDialogueNode.CreateDialogueObject
+  id: CreateDialogueObject
+  parent: WolverineSoft.DialogueSystem.Editor.IDialogueNode
+  langs:
+  - csharp
+  - vb
+  name: CreateDialogueObject()
+  nameWithType: IDialogueNode.CreateDialogueObject()
+  fullName: WolverineSoft.DialogueSystem.Editor.IDialogueNode.CreateDialogueObject()
+  type: Method
+  source:
+    remote:
+      path: Editor/IDialogueNode.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: CreateDialogueObject
+    path: ../Editor/IDialogueNode.cs
+    startLine: 10
+  namespace: WolverineSoft.DialogueSystem.Editor
+  summary: Method that creates and returns the node's ScriptableObject
+  example: []
+  syntax:
+    content: ScriptableObject CreateDialogueObject()
+    return:
+      type: ScriptableObject
+    content.vb: Function CreateDialogueObject() As ScriptableObject
+  overload: WolverineSoft.DialogueSystem.Editor.IDialogueNode.CreateDialogueObject*
+- uid: WolverineSoft.DialogueSystem.Editor.IDialogueNode.AssignObjectReferences
+  commentId: M:WolverineSoft.DialogueSystem.Editor.IDialogueNode.AssignObjectReferences
+  id: AssignObjectReferences
+  parent: WolverineSoft.DialogueSystem.Editor.IDialogueNode
+  langs:
+  - csharp
+  - vb
+  name: AssignObjectReferences()
+  nameWithType: IDialogueNode.AssignObjectReferences()
+  fullName: WolverineSoft.DialogueSystem.Editor.IDialogueNode.AssignObjectReferences()
+  type: Method
+  source:
+    remote:
+      path: Editor/IDialogueNode.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: AssignObjectReferences
+    path: ../Editor/IDialogueNode.cs
+    startLine: 15
+  namespace: WolverineSoft.DialogueSystem.Editor
+  summary: Method that is used to assign ScriptableObject references
+  example: []
+  syntax:
+    content: void AssignObjectReferences()
+    content.vb: Sub AssignObjectReferences()
+  overload: WolverineSoft.DialogueSystem.Editor.IDialogueNode.AssignObjectReferences*
+- uid: WolverineSoft.DialogueSystem.Editor.IDialogueNode.CheckErrors(GraphLogger,WolverineSoft.DialogueSystem.IVariableContext)
+  commentId: M:WolverineSoft.DialogueSystem.Editor.IDialogueNode.CheckErrors(GraphLogger,WolverineSoft.DialogueSystem.IVariableContext)
+  id: CheckErrors(GraphLogger,WolverineSoft.DialogueSystem.IVariableContext)
+  parent: WolverineSoft.DialogueSystem.Editor.IDialogueNode
+  langs:
+  - csharp
+  - vb
+  name: CheckErrors(GraphLogger, IVariableContext)
+  nameWithType: IDialogueNode.CheckErrors(GraphLogger, IVariableContext)
+  fullName: WolverineSoft.DialogueSystem.Editor.IDialogueNode.CheckErrors(GraphLogger, WolverineSoft.DialogueSystem.IVariableContext)
+  type: Method
+  source:
+    remote:
+      path: Editor/IDialogueNode.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: CheckErrors
+    path: ../Editor/IDialogueNode.cs
+    startLine: 17
+  namespace: WolverineSoft.DialogueSystem.Editor
+  syntax:
+    content: void CheckErrors(GraphLogger logger, IVariableContext variables)
+    parameters:
+    - id: logger
+      type: GraphLogger
+    - id: variables
+      type: WolverineSoft.DialogueSystem.IVariableContext
+    content.vb: Sub CheckErrors(logger As GraphLogger, variables As IVariableContext)
+  overload: WolverineSoft.DialogueSystem.Editor.IDialogueNode.CheckErrors*
+references:
+- uid: WolverineSoft.DialogueSystem.Editor
+  commentId: N:WolverineSoft.DialogueSystem.Editor
+  href: WolverineSoft.html
+  name: WolverineSoft.DialogueSystem.Editor
+  nameWithType: WolverineSoft.DialogueSystem.Editor
+  fullName: WolverineSoft.DialogueSystem.Editor
+  spec.csharp:
+  - uid: WolverineSoft
+    name: WolverineSoft
+    href: WolverineSoft.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem
+    name: DialogueSystem
+    href: WolverineSoft.DialogueSystem.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem.Editor
+    name: Editor
+    href: WolverineSoft.DialogueSystem.Editor.html
+  spec.vb:
+  - uid: WolverineSoft
+    name: WolverineSoft
+    href: WolverineSoft.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem
+    name: DialogueSystem
+    href: WolverineSoft.DialogueSystem.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem.Editor
+    name: Editor
+    href: WolverineSoft.DialogueSystem.Editor.html
+- uid: WolverineSoft.DialogueSystem.Editor.IDataNode{WolverineSoft.DialogueSystem.DialogueObject}.GetData
+  commentId: M:WolverineSoft.DialogueSystem.Editor.IDataNode{WolverineSoft.DialogueSystem.DialogueObject}.GetData
+  parent: WolverineSoft.DialogueSystem.Editor.IDataNode{WolverineSoft.DialogueSystem.DialogueObject}
+  definition: WolverineSoft.DialogueSystem.Editor.IDataNode`1.GetData
+  href: WolverineSoft.DialogueSystem.Editor.IDataNode-1.html#WolverineSoft_DialogueSystem_Editor_IDataNode_1_GetData
+  name: GetData()
+  nameWithType: IDataNode<DialogueObject>.GetData()
+  fullName: WolverineSoft.DialogueSystem.Editor.IDataNode<WolverineSoft.DialogueSystem.DialogueObject>.GetData()
+  nameWithType.vb: IDataNode(Of DialogueObject).GetData()
+  fullName.vb: WolverineSoft.DialogueSystem.Editor.IDataNode(Of WolverineSoft.DialogueSystem.DialogueObject).GetData()
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.Editor.IDataNode{WolverineSoft.DialogueSystem.DialogueObject}.GetData
+    name: GetData
+    href: WolverineSoft.DialogueSystem.Editor.IDataNode-1.html#WolverineSoft_DialogueSystem_Editor_IDataNode_1_GetData
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.Editor.IDataNode{WolverineSoft.DialogueSystem.DialogueObject}.GetData
+    name: GetData
+    href: WolverineSoft.DialogueSystem.Editor.IDataNode-1.html#WolverineSoft_DialogueSystem_Editor_IDataNode_1_GetData
+  - name: (
+  - name: )
+- uid: WolverineSoft.DialogueSystem.Editor.IDataNode`1.GetData
+  commentId: M:WolverineSoft.DialogueSystem.Editor.IDataNode`1.GetData
+  href: WolverineSoft.DialogueSystem.Editor.IDataNode-1.html#WolverineSoft_DialogueSystem_Editor_IDataNode_1_GetData
+  name: GetData()
+  nameWithType: IDataNode<T>.GetData()
+  fullName: WolverineSoft.DialogueSystem.Editor.IDataNode<T>.GetData()
+  nameWithType.vb: IDataNode(Of T).GetData()
+  fullName.vb: WolverineSoft.DialogueSystem.Editor.IDataNode(Of T).GetData()
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.Editor.IDataNode`1.GetData
+    name: GetData
+    href: WolverineSoft.DialogueSystem.Editor.IDataNode-1.html#WolverineSoft_DialogueSystem_Editor_IDataNode_1_GetData
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.Editor.IDataNode`1.GetData
+    name: GetData
+    href: WolverineSoft.DialogueSystem.Editor.IDataNode-1.html#WolverineSoft_DialogueSystem_Editor_IDataNode_1_GetData
+  - name: (
+  - name: )
+- uid: WolverineSoft.DialogueSystem.Editor.IDataNode{WolverineSoft.DialogueSystem.DialogueObject}
+  commentId: T:WolverineSoft.DialogueSystem.Editor.IDataNode{WolverineSoft.DialogueSystem.DialogueObject}
+  parent: WolverineSoft.DialogueSystem.Editor
+  definition: WolverineSoft.DialogueSystem.Editor.IDataNode`1
+  href: WolverineSoft.DialogueSystem.Editor.IDataNode-1.html
+  name: IDataNode<DialogueObject>
+  nameWithType: IDataNode<DialogueObject>
+  fullName: WolverineSoft.DialogueSystem.Editor.IDataNode<WolverineSoft.DialogueSystem.DialogueObject>
+  nameWithType.vb: IDataNode(Of DialogueObject)
+  fullName.vb: WolverineSoft.DialogueSystem.Editor.IDataNode(Of WolverineSoft.DialogueSystem.DialogueObject)
+  name.vb: IDataNode(Of DialogueObject)
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.Editor.IDataNode`1
+    name: IDataNode
+    href: WolverineSoft.DialogueSystem.Editor.IDataNode-1.html
+  - name: <
+  - uid: WolverineSoft.DialogueSystem.DialogueObject
+    name: DialogueObject
+    href: WolverineSoft.DialogueSystem.DialogueObject.html
+  - name: '>'
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.Editor.IDataNode`1
+    name: IDataNode
+    href: WolverineSoft.DialogueSystem.Editor.IDataNode-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: WolverineSoft.DialogueSystem.DialogueObject
+    name: DialogueObject
+    href: WolverineSoft.DialogueSystem.DialogueObject.html
+  - name: )
+- uid: WolverineSoft.DialogueSystem.Editor.IDataNode`1
+  commentId: T:WolverineSoft.DialogueSystem.Editor.IDataNode`1
+  href: WolverineSoft.DialogueSystem.Editor.IDataNode-1.html
+  name: IDataNode<T>
+  nameWithType: IDataNode<T>
+  fullName: WolverineSoft.DialogueSystem.Editor.IDataNode<T>
+  nameWithType.vb: IDataNode(Of T)
+  fullName.vb: WolverineSoft.DialogueSystem.Editor.IDataNode(Of T)
+  name.vb: IDataNode(Of T)
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.Editor.IDataNode`1
+    name: IDataNode
+    href: WolverineSoft.DialogueSystem.Editor.IDataNode-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.Editor.IDataNode`1
+    name: IDataNode
+    href: WolverineSoft.DialogueSystem.Editor.IDataNode-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: WolverineSoft.DialogueSystem.Editor.IDialogueNode.CreateDialogueObject*
+  commentId: Overload:WolverineSoft.DialogueSystem.Editor.IDialogueNode.CreateDialogueObject
+  href: WolverineSoft.DialogueSystem.Editor.IDialogueNode.html#WolverineSoft_DialogueSystem_Editor_IDialogueNode_CreateDialogueObject
+  name: CreateDialogueObject
+  nameWithType: IDialogueNode.CreateDialogueObject
+  fullName: WolverineSoft.DialogueSystem.Editor.IDialogueNode.CreateDialogueObject
+- uid: ScriptableObject
+  isExternal: true
+  name: ScriptableObject
+  nameWithType: ScriptableObject
+  fullName: ScriptableObject
+- uid: WolverineSoft.DialogueSystem.Editor.IDialogueNode.AssignObjectReferences*
+  commentId: Overload:WolverineSoft.DialogueSystem.Editor.IDialogueNode.AssignObjectReferences
+  href: WolverineSoft.DialogueSystem.Editor.IDialogueNode.html#WolverineSoft_DialogueSystem_Editor_IDialogueNode_AssignObjectReferences
+  name: AssignObjectReferences
+  nameWithType: IDialogueNode.AssignObjectReferences
+  fullName: WolverineSoft.DialogueSystem.Editor.IDialogueNode.AssignObjectReferences
+- uid: WolverineSoft.DialogueSystem.Editor.IDialogueNode.CheckErrors*
+  commentId: Overload:WolverineSoft.DialogueSystem.Editor.IDialogueNode.CheckErrors
+  href: WolverineSoft.DialogueSystem.Editor.IDialogueNode.html#WolverineSoft_DialogueSystem_Editor_IDialogueNode_CheckErrors_GraphLogger_WolverineSoft_DialogueSystem_IVariableContext_
+  name: CheckErrors
+  nameWithType: IDialogueNode.CheckErrors
+  fullName: WolverineSoft.DialogueSystem.Editor.IDialogueNode.CheckErrors
+- uid: GraphLogger
+  isExternal: true
+  name: GraphLogger
+  nameWithType: GraphLogger
+  fullName: GraphLogger
+- uid: WolverineSoft.DialogueSystem.IVariableContext
+  commentId: T:WolverineSoft.DialogueSystem.IVariableContext
+  parent: WolverineSoft.DialogueSystem
+  href: WolverineSoft.DialogueSystem.IVariableContext.html
+  name: IVariableContext
+  nameWithType: IVariableContext
+  fullName: WolverineSoft.DialogueSystem.IVariableContext
+- uid: WolverineSoft.DialogueSystem
+  commentId: N:WolverineSoft.DialogueSystem
+  href: WolverineSoft.html
+  name: WolverineSoft.DialogueSystem
+  nameWithType: WolverineSoft.DialogueSystem
+  fullName: WolverineSoft.DialogueSystem
+  spec.csharp:
+  - uid: WolverineSoft
+    name: WolverineSoft
+    href: WolverineSoft.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem
+    name: DialogueSystem
+    href: WolverineSoft.DialogueSystem.html
+  spec.vb:
+  - uid: WolverineSoft
+    name: WolverineSoft
+    href: WolverineSoft.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem
+    name: DialogueSystem
+    href: WolverineSoft.DialogueSystem.html

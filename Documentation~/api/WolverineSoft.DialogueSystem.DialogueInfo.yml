@@ -1,0 +1,669 @@
+### YamlMime:ManagedReference
+items:
+- uid: WolverineSoft.DialogueSystem.DialogueInfo
+  commentId: T:WolverineSoft.DialogueSystem.DialogueInfo
+  id: DialogueInfo
+  parent: WolverineSoft.DialogueSystem
+  children:
+  - WolverineSoft.DialogueSystem.DialogueInfo.GetBaseParamsType
+  - WolverineSoft.DialogueSystem.DialogueInfo.GetChoiceParamsType
+  - WolverineSoft.DialogueSystem.DialogueInfo.GetChoiceParams``1
+  - WolverineSoft.DialogueSystem.DialogueInfo.GetTextParams``1
+  - WolverineSoft.DialogueSystem.DialogueInfo.dialogueType
+  - WolverineSoft.DialogueSystem.DialogueInfo.responses
+  - WolverineSoft.DialogueSystem.DialogueInfo.text
+  langs:
+  - csharp
+  - vb
+  name: DialogueInfo
+  nameWithType: DialogueInfo
+  fullName: WolverineSoft.DialogueSystem.DialogueInfo
+  type: Class
+  source:
+    remote:
+      path: RunTime/DialogueInfo.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: DialogueInfo
+    path: ../RunTime/DialogueInfo.cs
+    startLine: 17
+  namespace: WolverineSoft.DialogueSystem
+  summary: >-
+    Class used to provide data from the backend of the Dialogue system to the UI.
+
+    Uses Getter functions to retrieve params of your derived type
+  example: []
+  syntax:
+    content: >-
+      [Serializable]
+
+      public class DialogueInfo
+    content.vb: >-
+      <Serializable>
+
+      Public Class DialogueInfo
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: System.SerializableAttribute
+    ctor: System.SerializableAttribute.#ctor
+    arguments: []
+- uid: WolverineSoft.DialogueSystem.DialogueInfo.dialogueType
+  commentId: F:WolverineSoft.DialogueSystem.DialogueInfo.dialogueType
+  id: dialogueType
+  parent: WolverineSoft.DialogueSystem.DialogueInfo
+  langs:
+  - csharp
+  - vb
+  name: dialogueType
+  nameWithType: DialogueInfo.dialogueType
+  fullName: WolverineSoft.DialogueSystem.DialogueInfo.dialogueType
+  type: Field
+  source:
+    remote:
+      path: RunTime/DialogueInfo.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: dialogueType
+    path: ../RunTime/DialogueInfo.cs
+    startLine: 20
+  namespace: WolverineSoft.DialogueSystem
+  syntax:
+    content: public DialogueType dialogueType
+    return:
+      type: WolverineSoft.DialogueSystem.DialogueType
+    content.vb: Public dialogueType As DialogueType
+- uid: WolverineSoft.DialogueSystem.DialogueInfo.text
+  commentId: F:WolverineSoft.DialogueSystem.DialogueInfo.text
+  id: text
+  parent: WolverineSoft.DialogueSystem.DialogueInfo
+  langs:
+  - csharp
+  - vb
+  name: text
+  nameWithType: DialogueInfo.text
+  fullName: WolverineSoft.DialogueSystem.DialogueInfo.text
+  type: Field
+  source:
+    remote:
+      path: RunTime/DialogueInfo.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: text
+    path: ../RunTime/DialogueInfo.cs
+    startLine: 21
+  namespace: WolverineSoft.DialogueSystem
+  syntax:
+    content: public string text
+    return:
+      type: System.String
+    content.vb: Public text As String
+- uid: WolverineSoft.DialogueSystem.DialogueInfo.responses
+  commentId: F:WolverineSoft.DialogueSystem.DialogueInfo.responses
+  id: responses
+  parent: WolverineSoft.DialogueSystem.DialogueInfo
+  langs:
+  - csharp
+  - vb
+  name: responses
+  nameWithType: DialogueInfo.responses
+  fullName: WolverineSoft.DialogueSystem.DialogueInfo.responses
+  type: Field
+  source:
+    remote:
+      path: RunTime/DialogueInfo.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: responses
+    path: ../RunTime/DialogueInfo.cs
+    startLine: 24
+  namespace: WolverineSoft.DialogueSystem
+  syntax:
+    content: public List<ResponseInfo> responses
+    return:
+      type: System.Collections.Generic.List{WolverineSoft.DialogueSystem.ResponseInfo}
+    content.vb: Public responses As List(Of ResponseInfo)
+- uid: WolverineSoft.DialogueSystem.DialogueInfo.GetTextParams``1
+  commentId: M:WolverineSoft.DialogueSystem.DialogueInfo.GetTextParams``1
+  id: GetTextParams``1
+  parent: WolverineSoft.DialogueSystem.DialogueInfo
+  langs:
+  - csharp
+  - vb
+  name: GetTextParams<T>()
+  nameWithType: DialogueInfo.GetTextParams<T>()
+  fullName: WolverineSoft.DialogueSystem.DialogueInfo.GetTextParams<T>()
+  type: Method
+  source:
+    remote:
+      path: RunTime/DialogueInfo.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: GetTextParams
+    path: ../RunTime/DialogueInfo.cs
+    startLine: 56
+  namespace: WolverineSoft.DialogueSystem
+  summary: Returns the Base Parameters of the dialogue as type T
+  example: []
+  syntax:
+    content: 'public T GetTextParams<T>() where T : TextParameters'
+    typeParameters:
+    - id: T
+    return:
+      type: '{T}'
+    content.vb: Public Function GetTextParams(Of T As TextParameters)() As T
+  overload: WolverineSoft.DialogueSystem.DialogueInfo.GetTextParams*
+  nameWithType.vb: DialogueInfo.GetTextParams(Of T)()
+  fullName.vb: WolverineSoft.DialogueSystem.DialogueInfo.GetTextParams(Of T)()
+  name.vb: GetTextParams(Of T)()
+- uid: WolverineSoft.DialogueSystem.DialogueInfo.GetChoiceParams``1
+  commentId: M:WolverineSoft.DialogueSystem.DialogueInfo.GetChoiceParams``1
+  id: GetChoiceParams``1
+  parent: WolverineSoft.DialogueSystem.DialogueInfo
+  langs:
+  - csharp
+  - vb
+  name: GetChoiceParams<T>()
+  nameWithType: DialogueInfo.GetChoiceParams<T>()
+  fullName: WolverineSoft.DialogueSystem.DialogueInfo.GetChoiceParams<T>()
+  type: Method
+  source:
+    remote:
+      path: RunTime/DialogueInfo.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: GetChoiceParams
+    path: ../RunTime/DialogueInfo.cs
+    startLine: 65
+  namespace: WolverineSoft.DialogueSystem
+  summary: Returns the Choice Parameters of the dialogue as type T
+  example: []
+  syntax:
+    content: 'public T GetChoiceParams<T>() where T : ChoiceParameters'
+    typeParameters:
+    - id: T
+    return:
+      type: '{T}'
+    content.vb: Public Function GetChoiceParams(Of T As ChoiceParameters)() As T
+  overload: WolverineSoft.DialogueSystem.DialogueInfo.GetChoiceParams*
+  nameWithType.vb: DialogueInfo.GetChoiceParams(Of T)()
+  fullName.vb: WolverineSoft.DialogueSystem.DialogueInfo.GetChoiceParams(Of T)()
+  name.vb: GetChoiceParams(Of T)()
+- uid: WolverineSoft.DialogueSystem.DialogueInfo.GetBaseParamsType
+  commentId: M:WolverineSoft.DialogueSystem.DialogueInfo.GetBaseParamsType
+  id: GetBaseParamsType
+  parent: WolverineSoft.DialogueSystem.DialogueInfo
+  langs:
+  - csharp
+  - vb
+  name: GetBaseParamsType()
+  nameWithType: DialogueInfo.GetBaseParamsType()
+  fullName: WolverineSoft.DialogueSystem.DialogueInfo.GetBaseParamsType()
+  type: Method
+  source:
+    remote:
+      path: RunTime/DialogueInfo.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: GetBaseParamsType
+    path: ../RunTime/DialogueInfo.cs
+    startLine: 72
+  namespace: WolverineSoft.DialogueSystem
+  syntax:
+    content: public Type GetBaseParamsType()
+    return:
+      type: System.Type
+    content.vb: Public Function GetBaseParamsType() As Type
+  overload: WolverineSoft.DialogueSystem.DialogueInfo.GetBaseParamsType*
+- uid: WolverineSoft.DialogueSystem.DialogueInfo.GetChoiceParamsType
+  commentId: M:WolverineSoft.DialogueSystem.DialogueInfo.GetChoiceParamsType
+  id: GetChoiceParamsType
+  parent: WolverineSoft.DialogueSystem.DialogueInfo
+  langs:
+  - csharp
+  - vb
+  name: GetChoiceParamsType()
+  nameWithType: DialogueInfo.GetChoiceParamsType()
+  fullName: WolverineSoft.DialogueSystem.DialogueInfo.GetChoiceParamsType()
+  type: Method
+  source:
+    remote:
+      path: RunTime/DialogueInfo.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: GetChoiceParamsType
+    path: ../RunTime/DialogueInfo.cs
+    startLine: 73
+  namespace: WolverineSoft.DialogueSystem
+  syntax:
+    content: public Type GetChoiceParamsType()
+    return:
+      type: System.Type
+    content.vb: Public Function GetChoiceParamsType() As Type
+  overload: WolverineSoft.DialogueSystem.DialogueInfo.GetChoiceParamsType*
+references:
+- uid: WolverineSoft.DialogueSystem
+  commentId: N:WolverineSoft.DialogueSystem
+  href: WolverineSoft.html
+  name: WolverineSoft.DialogueSystem
+  nameWithType: WolverineSoft.DialogueSystem
+  fullName: WolverineSoft.DialogueSystem
+  spec.csharp:
+  - uid: WolverineSoft
+    name: WolverineSoft
+    href: WolverineSoft.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem
+    name: DialogueSystem
+    href: WolverineSoft.DialogueSystem.html
+  spec.vb:
+  - uid: WolverineSoft
+    name: WolverineSoft
+    href: WolverineSoft.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem
+    name: DialogueSystem
+    href: WolverineSoft.DialogueSystem.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: WolverineSoft.DialogueSystem.DialogueType
+  commentId: T:WolverineSoft.DialogueSystem.DialogueType
+  parent: WolverineSoft.DialogueSystem
+  href: WolverineSoft.DialogueSystem.DialogueType.html
+  name: DialogueType
+  nameWithType: DialogueType
+  fullName: WolverineSoft.DialogueSystem.DialogueType
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Collections.Generic.List{WolverineSoft.DialogueSystem.ResponseInfo}
+  commentId: T:System.Collections.Generic.List{WolverineSoft.DialogueSystem.ResponseInfo}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<ResponseInfo>
+  nameWithType: List<ResponseInfo>
+  fullName: System.Collections.Generic.List<WolverineSoft.DialogueSystem.ResponseInfo>
+  nameWithType.vb: List(Of ResponseInfo)
+  fullName.vb: System.Collections.Generic.List(Of WolverineSoft.DialogueSystem.ResponseInfo)
+  name.vb: List(Of ResponseInfo)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: WolverineSoft.DialogueSystem.ResponseInfo
+    name: ResponseInfo
+    href: WolverineSoft.DialogueSystem.ResponseInfo.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: WolverineSoft.DialogueSystem.ResponseInfo
+    name: ResponseInfo
+    href: WolverineSoft.DialogueSystem.ResponseInfo.html
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: WolverineSoft.DialogueSystem.DialogueInfo.GetTextParams*
+  commentId: Overload:WolverineSoft.DialogueSystem.DialogueInfo.GetTextParams
+  href: WolverineSoft.DialogueSystem.DialogueInfo.html#WolverineSoft_DialogueSystem_DialogueInfo_GetTextParams__1
+  name: GetTextParams
+  nameWithType: DialogueInfo.GetTextParams
+  fullName: WolverineSoft.DialogueSystem.DialogueInfo.GetTextParams
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: WolverineSoft.DialogueSystem.DialogueInfo.GetChoiceParams*
+  commentId: Overload:WolverineSoft.DialogueSystem.DialogueInfo.GetChoiceParams
+  href: WolverineSoft.DialogueSystem.DialogueInfo.html#WolverineSoft_DialogueSystem_DialogueInfo_GetChoiceParams__1
+  name: GetChoiceParams
+  nameWithType: DialogueInfo.GetChoiceParams
+  fullName: WolverineSoft.DialogueSystem.DialogueInfo.GetChoiceParams
+- uid: WolverineSoft.DialogueSystem.DialogueInfo.GetBaseParamsType*
+  commentId: Overload:WolverineSoft.DialogueSystem.DialogueInfo.GetBaseParamsType
+  href: WolverineSoft.DialogueSystem.DialogueInfo.html#WolverineSoft_DialogueSystem_DialogueInfo_GetBaseParamsType
+  name: GetBaseParamsType
+  nameWithType: DialogueInfo.GetBaseParamsType
+  fullName: WolverineSoft.DialogueSystem.DialogueInfo.GetBaseParamsType
+- uid: System.Type
+  commentId: T:System.Type
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: WolverineSoft.DialogueSystem.DialogueInfo.GetChoiceParamsType*
+  commentId: Overload:WolverineSoft.DialogueSystem.DialogueInfo.GetChoiceParamsType
+  href: WolverineSoft.DialogueSystem.DialogueInfo.html#WolverineSoft_DialogueSystem_DialogueInfo_GetChoiceParamsType
+  name: GetChoiceParamsType
+  nameWithType: DialogueInfo.GetChoiceParamsType
+  fullName: WolverineSoft.DialogueSystem.DialogueInfo.GetChoiceParamsType

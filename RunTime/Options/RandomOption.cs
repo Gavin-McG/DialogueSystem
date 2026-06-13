@@ -6,7 +6,7 @@ namespace WolverineSoft.DialogueSystem
     [TypeOption("Random Chance")]
     public class RandomOption : OptionType
     {
-        [SerializeField] private float chance;
+        [SerializeField, Range(0,1)] private float chance;
         
         public override bool EvaluateCondition(AdvanceContext advanceContext, IVariableContext variables)
         {

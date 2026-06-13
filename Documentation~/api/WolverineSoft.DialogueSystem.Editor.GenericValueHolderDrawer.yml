@@ -1,0 +1,124 @@
+### YamlMime:ManagedReference
+items:
+- uid: WolverineSoft.DialogueSystem.Editor.GenericValueHolderDrawer
+  commentId: T:WolverineSoft.DialogueSystem.Editor.GenericValueHolderDrawer
+  id: GenericValueHolderDrawer
+  parent: WolverineSoft.DialogueSystem.Editor
+  children:
+  - WolverineSoft.DialogueSystem.Editor.GenericValueHolderDrawer.CreatePropertyGUI(SerializedProperty)
+  langs:
+  - csharp
+  - vb
+  name: GenericValueHolderDrawer
+  nameWithType: GenericValueHolderDrawer
+  fullName: WolverineSoft.DialogueSystem.Editor.GenericValueHolderDrawer
+  type: Class
+  source:
+    remote:
+      path: Editor/PropertyDrawers/GenericValueHolderDrawer.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: GenericValueHolderDrawer
+    path: ../Editor/PropertyDrawers/GenericValueHolderDrawer.cs
+    startLine: 13
+  namespace: WolverineSoft.DialogueSystem.Editor
+  syntax:
+    content: 'public class GenericValueHolderDrawer : PropertyDrawer'
+    content.vb: Public Class GenericValueHolderDrawer Inherits PropertyDrawer
+  inheritance:
+  - System.Object
+- uid: WolverineSoft.DialogueSystem.Editor.GenericValueHolderDrawer.CreatePropertyGUI(SerializedProperty)
+  commentId: M:WolverineSoft.DialogueSystem.Editor.GenericValueHolderDrawer.CreatePropertyGUI(SerializedProperty)
+  id: CreatePropertyGUI(SerializedProperty)
+  parent: WolverineSoft.DialogueSystem.Editor.GenericValueHolderDrawer
+  langs:
+  - csharp
+  - vb
+  name: CreatePropertyGUI(SerializedProperty)
+  nameWithType: GenericValueHolderDrawer.CreatePropertyGUI(SerializedProperty)
+  fullName: WolverineSoft.DialogueSystem.Editor.GenericValueHolderDrawer.CreatePropertyGUI(SerializedProperty)
+  type: Method
+  source:
+    remote:
+      path: Editor/PropertyDrawers/GenericValueHolderDrawer.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: CreatePropertyGUI
+    path: ../Editor/PropertyDrawers/GenericValueHolderDrawer.cs
+    startLine: 32
+  namespace: WolverineSoft.DialogueSystem.Editor
+  example: []
+  syntax:
+    content: public override VisualElement CreatePropertyGUI(SerializedProperty property)
+    parameters:
+    - id: property
+      type: SerializedProperty
+    return:
+      type: VisualElement
+    content.vb: Public Overrides Function CreatePropertyGUI([property] As SerializedProperty) As VisualElement
+  overload: WolverineSoft.DialogueSystem.Editor.GenericValueHolderDrawer.CreatePropertyGUI*
+references:
+- uid: WolverineSoft.DialogueSystem.Editor
+  commentId: N:WolverineSoft.DialogueSystem.Editor
+  href: WolverineSoft.html
+  name: WolverineSoft.DialogueSystem.Editor
+  nameWithType: WolverineSoft.DialogueSystem.Editor
+  fullName: WolverineSoft.DialogueSystem.Editor
+  spec.csharp:
+  - uid: WolverineSoft
+    name: WolverineSoft
+    href: WolverineSoft.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem
+    name: DialogueSystem
+    href: WolverineSoft.DialogueSystem.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem.Editor
+    name: Editor
+    href: WolverineSoft.DialogueSystem.Editor.html
+  spec.vb:
+  - uid: WolverineSoft
+    name: WolverineSoft
+    href: WolverineSoft.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem
+    name: DialogueSystem
+    href: WolverineSoft.DialogueSystem.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem.Editor
+    name: Editor
+    href: WolverineSoft.DialogueSystem.Editor.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: WolverineSoft.DialogueSystem.Editor.GenericValueHolderDrawer.CreatePropertyGUI*
+  commentId: Overload:WolverineSoft.DialogueSystem.Editor.GenericValueHolderDrawer.CreatePropertyGUI
+  href: WolverineSoft.DialogueSystem.Editor.GenericValueHolderDrawer.html#WolverineSoft_DialogueSystem_Editor_GenericValueHolderDrawer_CreatePropertyGUI_SerializedProperty_
+  name: CreatePropertyGUI
+  nameWithType: GenericValueHolderDrawer.CreatePropertyGUI
+  fullName: WolverineSoft.DialogueSystem.Editor.GenericValueHolderDrawer.CreatePropertyGUI
+- uid: SerializedProperty
+  isExternal: true
+  name: SerializedProperty
+  nameWithType: SerializedProperty
+  fullName: SerializedProperty
+- uid: VisualElement
+  isExternal: true
+  name: VisualElement
+  nameWithType: VisualElement
+  fullName: VisualElement

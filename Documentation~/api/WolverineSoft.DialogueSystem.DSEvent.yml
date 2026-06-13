@@ -1,0 +1,326 @@
+### YamlMime:ManagedReference
+items:
+- uid: WolverineSoft.DialogueSystem.DSEvent
+  commentId: T:WolverineSoft.DialogueSystem.DSEvent
+  id: DSEvent
+  parent: WolverineSoft.DialogueSystem
+  children:
+  - WolverineSoft.DialogueSystem.DSEvent.AddListener(UnityAction)
+  - WolverineSoft.DialogueSystem.DSEvent.AddListener(WolverineSoft.DialogueSystem.DialogueManager,UnityAction)
+  - WolverineSoft.DialogueSystem.DSEvent.Invoke
+  - WolverineSoft.DialogueSystem.DSEvent.Invoke(WolverineSoft.DialogueSystem.DialogueManager)
+  - WolverineSoft.DialogueSystem.DSEvent.RemoveAllListeners
+  - WolverineSoft.DialogueSystem.DSEvent.RemoveListener(UnityAction)
+  - WolverineSoft.DialogueSystem.DSEvent.RemoveListener(WolverineSoft.DialogueSystem.DialogueManager,UnityAction)
+  langs:
+  - csharp
+  - vb
+  name: DSEvent
+  nameWithType: DSEvent
+  fullName: WolverineSoft.DialogueSystem.DSEvent
+  type: Class
+  source:
+    remote:
+      path: RunTime/Events/DSEvent.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: DSEvent
+    path: ../RunTime/Events/DSEvent.cs
+    startLine: 9
+  namespace: WolverineSoft.DialogueSystem
+  summary: Scriptable Object representing a non-typed Dialogue Event
+  example: []
+  syntax:
+    content: 'public class DSEvent : DSEventBase'
+    content.vb: Public Class DSEvent Inherits DSEventBase
+  inheritance:
+  - System.Object
+  - WolverineSoft.DialogueSystem.DSEventBase
+- uid: WolverineSoft.DialogueSystem.DSEvent.Invoke
+  commentId: M:WolverineSoft.DialogueSystem.DSEvent.Invoke
+  id: Invoke
+  parent: WolverineSoft.DialogueSystem.DSEvent
+  langs:
+  - csharp
+  - vb
+  name: Invoke()
+  nameWithType: DSEvent.Invoke()
+  fullName: WolverineSoft.DialogueSystem.DSEvent.Invoke()
+  type: Method
+  source:
+    remote:
+      path: RunTime/Events/DSEvent.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: Invoke
+    path: ../RunTime/Events/DSEvent.cs
+    startLine: 20
+  namespace: WolverineSoft.DialogueSystem
+  summary: Invoke Event for all listeners
+  example: []
+  syntax:
+    content: public void Invoke()
+    content.vb: Public Sub Invoke()
+  overload: WolverineSoft.DialogueSystem.DSEvent.Invoke*
+- uid: WolverineSoft.DialogueSystem.DSEvent.Invoke(WolverineSoft.DialogueSystem.DialogueManager)
+  commentId: M:WolverineSoft.DialogueSystem.DSEvent.Invoke(WolverineSoft.DialogueSystem.DialogueManager)
+  id: Invoke(WolverineSoft.DialogueSystem.DialogueManager)
+  parent: WolverineSoft.DialogueSystem.DSEvent
+  langs:
+  - csharp
+  - vb
+  name: Invoke(DialogueManager)
+  nameWithType: DSEvent.Invoke(DialogueManager)
+  fullName: WolverineSoft.DialogueSystem.DSEvent.Invoke(WolverineSoft.DialogueSystem.DialogueManager)
+  type: Method
+  source:
+    remote:
+      path: RunTime/Events/DSEvent.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: Invoke
+    path: ../RunTime/Events/DSEvent.cs
+    startLine: 34
+  namespace: WolverineSoft.DialogueSystem
+  summary: >-
+    Invoke Event for all global listeners.
+
+    Listeners assigned with a manager will only be called if the provided manager matches
+  example: []
+  syntax:
+    content: public void Invoke(DialogueManager manager)
+    parameters:
+    - id: manager
+      type: WolverineSoft.DialogueSystem.DialogueManager
+    content.vb: Public Sub Invoke(manager As DialogueManager)
+  overload: WolverineSoft.DialogueSystem.DSEvent.Invoke*
+- uid: WolverineSoft.DialogueSystem.DSEvent.AddListener(UnityAction)
+  commentId: M:WolverineSoft.DialogueSystem.DSEvent.AddListener(UnityAction)
+  id: AddListener(UnityAction)
+  parent: WolverineSoft.DialogueSystem.DSEvent
+  langs:
+  - csharp
+  - vb
+  name: AddListener(UnityAction)
+  nameWithType: DSEvent.AddListener(UnityAction)
+  fullName: WolverineSoft.DialogueSystem.DSEvent.AddListener(UnityAction)
+  type: Method
+  source:
+    remote:
+      path: RunTime/Events/DSEvent.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: AddListener
+    path: ../RunTime/Events/DSEvent.cs
+    startLine: 47
+  namespace: WolverineSoft.DialogueSystem
+  summary: Add a global listener
+  example: []
+  syntax:
+    content: public void AddListener(UnityAction call)
+    parameters:
+    - id: call
+      type: UnityAction
+    content.vb: Public Sub AddListener([call] As UnityAction)
+  overload: WolverineSoft.DialogueSystem.DSEvent.AddListener*
+- uid: WolverineSoft.DialogueSystem.DSEvent.AddListener(WolverineSoft.DialogueSystem.DialogueManager,UnityAction)
+  commentId: M:WolverineSoft.DialogueSystem.DSEvent.AddListener(WolverineSoft.DialogueSystem.DialogueManager,UnityAction)
+  id: AddListener(WolverineSoft.DialogueSystem.DialogueManager,UnityAction)
+  parent: WolverineSoft.DialogueSystem.DSEvent
+  langs:
+  - csharp
+  - vb
+  name: AddListener(DialogueManager, UnityAction)
+  nameWithType: DSEvent.AddListener(DialogueManager, UnityAction)
+  fullName: WolverineSoft.DialogueSystem.DSEvent.AddListener(WolverineSoft.DialogueSystem.DialogueManager, UnityAction)
+  type: Method
+  source:
+    remote:
+      path: RunTime/Events/DSEvent.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: AddListener
+    path: ../RunTime/Events/DSEvent.cs
+    startLine: 55
+  namespace: WolverineSoft.DialogueSystem
+  summary: Add a manager-specific listener
+  example: []
+  syntax:
+    content: public void AddListener(DialogueManager manager, UnityAction call)
+    parameters:
+    - id: manager
+      type: WolverineSoft.DialogueSystem.DialogueManager
+    - id: call
+      type: UnityAction
+    content.vb: Public Sub AddListener(manager As DialogueManager, [call] As UnityAction)
+  overload: WolverineSoft.DialogueSystem.DSEvent.AddListener*
+- uid: WolverineSoft.DialogueSystem.DSEvent.RemoveListener(UnityAction)
+  commentId: M:WolverineSoft.DialogueSystem.DSEvent.RemoveListener(UnityAction)
+  id: RemoveListener(UnityAction)
+  parent: WolverineSoft.DialogueSystem.DSEvent
+  langs:
+  - csharp
+  - vb
+  name: RemoveListener(UnityAction)
+  nameWithType: DSEvent.RemoveListener(UnityAction)
+  fullName: WolverineSoft.DialogueSystem.DSEvent.RemoveListener(UnityAction)
+  type: Method
+  source:
+    remote:
+      path: RunTime/Events/DSEvent.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: RemoveListener
+    path: ../RunTime/Events/DSEvent.cs
+    startLine: 68
+  namespace: WolverineSoft.DialogueSystem
+  summary: Remove a Global listener
+  example: []
+  syntax:
+    content: public void RemoveListener(UnityAction call)
+    parameters:
+    - id: call
+      type: UnityAction
+    content.vb: Public Sub RemoveListener([call] As UnityAction)
+  overload: WolverineSoft.DialogueSystem.DSEvent.RemoveListener*
+- uid: WolverineSoft.DialogueSystem.DSEvent.RemoveListener(WolverineSoft.DialogueSystem.DialogueManager,UnityAction)
+  commentId: M:WolverineSoft.DialogueSystem.DSEvent.RemoveListener(WolverineSoft.DialogueSystem.DialogueManager,UnityAction)
+  id: RemoveListener(WolverineSoft.DialogueSystem.DialogueManager,UnityAction)
+  parent: WolverineSoft.DialogueSystem.DSEvent
+  langs:
+  - csharp
+  - vb
+  name: RemoveListener(DialogueManager, UnityAction)
+  nameWithType: DSEvent.RemoveListener(DialogueManager, UnityAction)
+  fullName: WolverineSoft.DialogueSystem.DSEvent.RemoveListener(WolverineSoft.DialogueSystem.DialogueManager, UnityAction)
+  type: Method
+  source:
+    remote:
+      path: RunTime/Events/DSEvent.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: RemoveListener
+    path: ../RunTime/Events/DSEvent.cs
+    startLine: 76
+  namespace: WolverineSoft.DialogueSystem
+  summary: Remove a manager-specific listener
+  example: []
+  syntax:
+    content: public void RemoveListener(DialogueManager manager, UnityAction call)
+    parameters:
+    - id: manager
+      type: WolverineSoft.DialogueSystem.DialogueManager
+    - id: call
+      type: UnityAction
+    content.vb: Public Sub RemoveListener(manager As DialogueManager, [call] As UnityAction)
+  overload: WolverineSoft.DialogueSystem.DSEvent.RemoveListener*
+- uid: WolverineSoft.DialogueSystem.DSEvent.RemoveAllListeners
+  commentId: M:WolverineSoft.DialogueSystem.DSEvent.RemoveAllListeners
+  id: RemoveAllListeners
+  parent: WolverineSoft.DialogueSystem.DSEvent
+  langs:
+  - csharp
+  - vb
+  name: RemoveAllListeners()
+  nameWithType: DSEvent.RemoveAllListeners()
+  fullName: WolverineSoft.DialogueSystem.DSEvent.RemoveAllListeners()
+  type: Method
+  source:
+    remote:
+      path: RunTime/Events/DSEvent.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: RemoveAllListeners
+    path: ../RunTime/Events/DSEvent.cs
+    startLine: 87
+  namespace: WolverineSoft.DialogueSystem
+  summary: Remove all global and manager-specific listeners
+  example: []
+  syntax:
+    content: public void RemoveAllListeners()
+    content.vb: Public Sub RemoveAllListeners()
+  overload: WolverineSoft.DialogueSystem.DSEvent.RemoveAllListeners*
+references:
+- uid: WolverineSoft.DialogueSystem
+  commentId: N:WolverineSoft.DialogueSystem
+  href: WolverineSoft.html
+  name: WolverineSoft.DialogueSystem
+  nameWithType: WolverineSoft.DialogueSystem
+  fullName: WolverineSoft.DialogueSystem
+  spec.csharp:
+  - uid: WolverineSoft
+    name: WolverineSoft
+    href: WolverineSoft.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem
+    name: DialogueSystem
+    href: WolverineSoft.DialogueSystem.html
+  spec.vb:
+  - uid: WolverineSoft
+    name: WolverineSoft
+    href: WolverineSoft.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem
+    name: DialogueSystem
+    href: WolverineSoft.DialogueSystem.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: WolverineSoft.DialogueSystem.DSEventBase
+  commentId: T:WolverineSoft.DialogueSystem.DSEventBase
+  parent: WolverineSoft.DialogueSystem
+  href: WolverineSoft.DialogueSystem.DSEventBase.html
+  name: DSEventBase
+  nameWithType: DSEventBase
+  fullName: WolverineSoft.DialogueSystem.DSEventBase
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: WolverineSoft.DialogueSystem.DSEvent.Invoke*
+  commentId: Overload:WolverineSoft.DialogueSystem.DSEvent.Invoke
+  href: WolverineSoft.DialogueSystem.DSEvent.html#WolverineSoft_DialogueSystem_DSEvent_Invoke
+  name: Invoke
+  nameWithType: DSEvent.Invoke
+  fullName: WolverineSoft.DialogueSystem.DSEvent.Invoke
+- uid: WolverineSoft.DialogueSystem.DialogueManager
+  commentId: T:WolverineSoft.DialogueSystem.DialogueManager
+  parent: WolverineSoft.DialogueSystem
+  href: WolverineSoft.DialogueSystem.DialogueManager.html
+  name: DialogueManager
+  nameWithType: DialogueManager
+  fullName: WolverineSoft.DialogueSystem.DialogueManager
+- uid: WolverineSoft.DialogueSystem.DSEvent.AddListener*
+  commentId: Overload:WolverineSoft.DialogueSystem.DSEvent.AddListener
+  href: WolverineSoft.DialogueSystem.DSEvent.html#WolverineSoft_DialogueSystem_DSEvent_AddListener_UnityAction_
+  name: AddListener
+  nameWithType: DSEvent.AddListener
+  fullName: WolverineSoft.DialogueSystem.DSEvent.AddListener
+- uid: UnityAction
+  isExternal: true
+  name: UnityAction
+  nameWithType: UnityAction
+  fullName: UnityAction
+- uid: WolverineSoft.DialogueSystem.DSEvent.RemoveListener*
+  commentId: Overload:WolverineSoft.DialogueSystem.DSEvent.RemoveListener
+  href: WolverineSoft.DialogueSystem.DSEvent.html#WolverineSoft_DialogueSystem_DSEvent_RemoveListener_UnityAction_
+  name: RemoveListener
+  nameWithType: DSEvent.RemoveListener
+  fullName: WolverineSoft.DialogueSystem.DSEvent.RemoveListener
+- uid: WolverineSoft.DialogueSystem.DSEvent.RemoveAllListeners*
+  commentId: Overload:WolverineSoft.DialogueSystem.DSEvent.RemoveAllListeners
+  href: WolverineSoft.DialogueSystem.DSEvent.html#WolverineSoft_DialogueSystem_DSEvent_RemoveAllListeners
+  name: RemoveAllListeners
+  nameWithType: DSEvent.RemoveAllListeners
+  fullName: WolverineSoft.DialogueSystem.DSEvent.RemoveAllListeners

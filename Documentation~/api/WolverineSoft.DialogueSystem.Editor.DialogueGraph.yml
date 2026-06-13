@@ -1,0 +1,327 @@
+### YamlMime:ManagedReference
+items:
+- uid: WolverineSoft.DialogueSystem.Editor.DialogueGraph
+  commentId: T:WolverineSoft.DialogueSystem.Editor.DialogueGraph
+  id: DialogueGraph
+  parent: WolverineSoft.DialogueSystem.Editor
+  children:
+  - WolverineSoft.DialogueSystem.Editor.DialogueGraph.AssetExtension
+  - WolverineSoft.DialogueSystem.Editor.DialogueGraph.OnGraphChanged(GraphLogger)
+  - WolverineSoft.DialogueSystem.Editor.DialogueGraph.VariableList
+  langs:
+  - csharp
+  - vb
+  name: DialogueGraph
+  nameWithType: DialogueGraph
+  fullName: WolverineSoft.DialogueSystem.Editor.DialogueGraph
+  type: Class
+  source:
+    remote:
+      path: Editor/DialogueGraph.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: DialogueGraph
+    path: ../Editor/DialogueGraph.cs
+    startLine: 13
+  namespace: WolverineSoft.DialogueSystem.Editor
+  summary: >-
+    Graph Toolkit class for the Dialogue Graph interface.
+
+    Handles errors/warning pertaining to the graph as a whole
+  example: []
+  syntax:
+    content: >-
+      [Serializable]
+
+      public sealed class DialogueGraph : Graph
+    content.vb: >-
+      <Serializable>
+
+      Public NotInheritable Class DialogueGraph Inherits Graph
+  inheritance:
+  - System.Object
+  attributes:
+  - type: System.SerializableAttribute
+    ctor: System.SerializableAttribute.#ctor
+    arguments: []
+- uid: WolverineSoft.DialogueSystem.Editor.DialogueGraph.AssetExtension
+  commentId: F:WolverineSoft.DialogueSystem.Editor.DialogueGraph.AssetExtension
+  id: AssetExtension
+  parent: WolverineSoft.DialogueSystem.Editor.DialogueGraph
+  langs:
+  - csharp
+  - vb
+  name: AssetExtension
+  nameWithType: DialogueGraph.AssetExtension
+  fullName: WolverineSoft.DialogueSystem.Editor.DialogueGraph.AssetExtension
+  type: Field
+  source:
+    remote:
+      path: Editor/DialogueGraph.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: AssetExtension
+    path: ../Editor/DialogueGraph.cs
+    startLine: 17
+  namespace: WolverineSoft.DialogueSystem.Editor
+  syntax:
+    content: public const string AssetExtension = "dialogue"
+    return:
+      type: System.String
+    content.vb: Public Const AssetExtension As String = "dialogue"
+- uid: WolverineSoft.DialogueSystem.Editor.DialogueGraph.OnGraphChanged(GraphLogger)
+  commentId: M:WolverineSoft.DialogueSystem.Editor.DialogueGraph.OnGraphChanged(GraphLogger)
+  id: OnGraphChanged(GraphLogger)
+  parent: WolverineSoft.DialogueSystem.Editor.DialogueGraph
+  langs:
+  - csharp
+  - vb
+  name: OnGraphChanged(GraphLogger)
+  nameWithType: DialogueGraph.OnGraphChanged(GraphLogger)
+  fullName: WolverineSoft.DialogueSystem.Editor.DialogueGraph.OnGraphChanged(GraphLogger)
+  type: Method
+  source:
+    remote:
+      path: Editor/DialogueGraph.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: OnGraphChanged
+    path: ../Editor/DialogueGraph.cs
+    startLine: 25
+  namespace: WolverineSoft.DialogueSystem.Editor
+  example: []
+  syntax:
+    content: public override void OnGraphChanged(GraphLogger graphLogger)
+    parameters:
+    - id: graphLogger
+      type: GraphLogger
+    content.vb: Public Overrides Sub OnGraphChanged(graphLogger As GraphLogger)
+  overload: WolverineSoft.DialogueSystem.Editor.DialogueGraph.OnGraphChanged*
+- uid: WolverineSoft.DialogueSystem.Editor.DialogueGraph.VariableList
+  commentId: P:WolverineSoft.DialogueSystem.Editor.DialogueGraph.VariableList
+  id: VariableList
+  parent: WolverineSoft.DialogueSystem.Editor.DialogueGraph
+  langs:
+  - csharp
+  - vb
+  name: VariableList
+  nameWithType: DialogueGraph.VariableList
+  fullName: WolverineSoft.DialogueSystem.Editor.DialogueGraph.VariableList
+  type: Property
+  source:
+    remote:
+      path: Editor/DialogueGraph.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: VariableList
+    path: ../Editor/DialogueGraph.cs
+    startLine: 34
+  namespace: WolverineSoft.DialogueSystem.Editor
+  syntax:
+    content: public IEnumerable<KeyValuePair<string, Variable>> VariableList { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,WolverineSoft.DialogueSystem.Variable}}
+    content.vb: Public ReadOnly Property VariableList As IEnumerable(Of KeyValuePair(Of String, Variable))
+  overload: WolverineSoft.DialogueSystem.Editor.DialogueGraph.VariableList*
+references:
+- uid: WolverineSoft.DialogueSystem.Editor
+  commentId: N:WolverineSoft.DialogueSystem.Editor
+  href: WolverineSoft.html
+  name: WolverineSoft.DialogueSystem.Editor
+  nameWithType: WolverineSoft.DialogueSystem.Editor
+  fullName: WolverineSoft.DialogueSystem.Editor
+  spec.csharp:
+  - uid: WolverineSoft
+    name: WolverineSoft
+    href: WolverineSoft.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem
+    name: DialogueSystem
+    href: WolverineSoft.DialogueSystem.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem.Editor
+    name: Editor
+    href: WolverineSoft.DialogueSystem.Editor.html
+  spec.vb:
+  - uid: WolverineSoft
+    name: WolverineSoft
+    href: WolverineSoft.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem
+    name: DialogueSystem
+    href: WolverineSoft.DialogueSystem.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem.Editor
+    name: Editor
+    href: WolverineSoft.DialogueSystem.Editor.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: WolverineSoft.DialogueSystem.Editor.DialogueGraph.OnGraphChanged*
+  commentId: Overload:WolverineSoft.DialogueSystem.Editor.DialogueGraph.OnGraphChanged
+  href: WolverineSoft.DialogueSystem.Editor.DialogueGraph.html#WolverineSoft_DialogueSystem_Editor_DialogueGraph_OnGraphChanged_GraphLogger_
+  name: OnGraphChanged
+  nameWithType: DialogueGraph.OnGraphChanged
+  fullName: WolverineSoft.DialogueSystem.Editor.DialogueGraph.OnGraphChanged
+- uid: GraphLogger
+  isExternal: true
+  name: GraphLogger
+  nameWithType: GraphLogger
+  fullName: GraphLogger
+- uid: WolverineSoft.DialogueSystem.Editor.DialogueGraph.VariableList*
+  commentId: Overload:WolverineSoft.DialogueSystem.Editor.DialogueGraph.VariableList
+  href: WolverineSoft.DialogueSystem.Editor.DialogueGraph.html#WolverineSoft_DialogueSystem_Editor_DialogueGraph_VariableList
+  name: VariableList
+  nameWithType: DialogueGraph.VariableList
+  fullName: WolverineSoft.DialogueSystem.Editor.DialogueGraph.VariableList
+- uid: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,WolverineSoft.DialogueSystem.Variable}}
+  commentId: T:System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,WolverineSoft.DialogueSystem.Variable}}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<KeyValuePair<string, Variable>>
+  nameWithType: IEnumerable<KeyValuePair<string, Variable>>
+  fullName: System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string, WolverineSoft.DialogueSystem.Variable>>
+  nameWithType.vb: IEnumerable(Of KeyValuePair(Of String, Variable))
+  fullName.vb: System.Collections.Generic.IEnumerable(Of System.Collections.Generic.KeyValuePair(Of String, WolverineSoft.DialogueSystem.Variable))
+  name.vb: IEnumerable(Of KeyValuePair(Of String, Variable))
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: WolverineSoft.DialogueSystem.Variable
+    name: Variable
+    href: WolverineSoft.DialogueSystem.Variable.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: WolverineSoft.DialogueSystem.Variable
+    name: Variable
+    href: WolverineSoft.DialogueSystem.Variable.html
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic

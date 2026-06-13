@@ -53,7 +53,7 @@ namespace WolverineSoft.DialogueSystem
         {
             if (_currentDialogue != null)
             {
-                Debug.LogWarning($"Attempted to begin dialogue \"{dialogueAsset.name}\" while dialogue was already playing");
+                Debug.LogError($"Attempted to begin dialogue \"{dialogueAsset.name}\" while dialogue was already playing");
                 return;
             }
             
@@ -64,23 +64,25 @@ namespace WolverineSoft.DialogueSystem
         }
         
         /// <summary>
-        /// Retrieve the next dialogue using context about the user's interaction with strict types.
+        /// Retrieve the next dialogue using context about the user's interaction.
         /// Returns null if end of dialogue is reached.
         /// </summary>
         public DialogueInfo AdvanceDialogue(AdvanceContext context) {
-            _previousContext = context;
-
             if (_currentDialogue == null)
             {
-                Debug.LogWarning("Attempting to Advance Dialogue while no dialogue is active");
+                Debug.LogError("Attempting to Advance Dialogue while no dialogue is active");
                 return null;
             }
+            
+            _previousContext = context;
             
             //Advance until finding a Dialogue Object with output
             do {
                 _currentObject = _currentObject.GetNextDialogue(context, this);
                 _currentObject?.EnterState();
             } while (_currentObject != null && _currentObject is not IDialogueOutput);
+            
+            AdvancedDialogue.Invoke(context);
 
             if (_currentObject is IDialogueOutput outputDialogue)
             {
@@ -88,8 +90,6 @@ namespace WolverineSoft.DialogueSystem
                 details.ApplyVariables(this);
                 return details;
             }
-            
-            AdvancedDialogue.Invoke(context);
             
             EndDialogue();
             return null;
@@ -107,17 +107,35 @@ namespace WolverineSoft.DialogueSystem
         /// Retrieve the information about the current dialogue again.
         /// Used if you want to account for changes in conditional choice options
         /// </summary>
-        public DialogueInfo RefreshDialogue()
+        public DialogueInfo RefreshDialogue(AdvanceContext context)
         {
-            if (_currentDialogue != null)
+            if (_currentDialogue == null)
             {
-                throw new Exception($"Attempted to refresh dialogue while dialogue was not playing");
+                Debug.LogError($"Attempted to refresh dialogue while dialogue was not playing");
+                return null;
             }
 
+            if (_currentObject == null)
+            {
+                Debug.LogError($"You must first call AdvanceDialogue before attempting to refresh output");
+                return null;
+            }
+            
+            _previousContext = context;
+
             var outputDialogue = (IDialogueOutput)_currentObject;
-            var details = outputDialogue.GetDialogueDetails(_previousContext, this);
+            var details = outputDialogue.GetDialogueDetails(context, this);
             details.ApplyVariables(this);
             return details;
+        }
+        
+        /// <summary>
+        /// Retrieve the information about the current dialogue again.
+        /// Used if you want to account for changes in conditional choice options
+        /// </summary>
+        public DialogueInfo RefreshDialogue()
+        {
+            return RefreshDialogue(_previousContext);
         }
         
         /// <summary>
@@ -125,7 +143,11 @@ namespace WolverineSoft.DialogueSystem
         /// </summary>
         public void EndDialogue()
         {
-            if (_currentDialogue == null) return;
+            if (_currentDialogue == null)
+            {
+                Debug.LogError("Attempted to end dialogue while no dialogue is active");
+                return;
+            }
             _currentDialogue = null;
             _currentObject = null;
             _currentParameters = null;

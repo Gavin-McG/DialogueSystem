@@ -4,7 +4,7 @@ using UnityEngine;
 namespace WolverineSoft.DialogueSystem
 {
     [Serializable]
-    public class Variable
+    public struct Variable : IEquatable<Variable>
     {
         [SerializeField] private VariableType type;
         [SerializeField] private string _stringValue;
@@ -20,23 +20,35 @@ namespace WolverineSoft.DialogueSystem
         {
             type = VariableType.String;
             _stringValue = stringValue;
+            _floatValue = 0;
+            _intValue = 0;
+            _boolValue = false;
         }
 
         public Variable(float floatValue)
         {
             type = VariableType.Float;
+            _stringValue = null;
             _floatValue = floatValue;
+            _intValue = 0;
+            _boolValue = false;
         }
 
         public Variable(int intValue)
         {
             type = VariableType.Int;
+            _stringValue = null;
+            _floatValue = 0;
             _intValue = intValue;
+            _boolValue = false;
         }
 
         public Variable(bool boolValue)
         {
             type = VariableType.Bool;
+            _stringValue = null;
+            _floatValue = 0;
+            _intValue = 0;
             _boolValue = boolValue;
         }
 
@@ -55,7 +67,6 @@ namespace WolverineSoft.DialogueSystem
 
         public static bool operator==(Variable variable1, Variable variable2)
         {
-            if (variable1 is null || variable2 is null) return false;
             if (variable1.type != variable2.type) return false;
 
             return variable1.type switch
@@ -70,7 +81,6 @@ namespace WolverineSoft.DialogueSystem
         
         public static bool operator!=(Variable variable1, Variable variable2)
         {
-            if (variable1 is null || variable2 is null) return true;
             if (variable1.type != variable2.type) return true;
 
             return variable1.type switch
@@ -85,14 +95,8 @@ namespace WolverineSoft.DialogueSystem
 
         public bool Equals(Variable other)
         {
-            if (other == null) return false;
-            if (ReferenceEquals(this, other)) return true;
-            
             return this == other;
         }
-
-        public override bool Equals(object other) =>
-            other is Variable variable && Equals(variable);
         
         public override int GetHashCode()
         {

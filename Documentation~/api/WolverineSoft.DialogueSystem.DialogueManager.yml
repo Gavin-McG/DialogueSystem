@@ -1,0 +1,1666 @@
+### YamlMime:ManagedReference
+items:
+- uid: WolverineSoft.DialogueSystem.DialogueManager
+  commentId: T:WolverineSoft.DialogueSystem.DialogueManager
+  id: DialogueManager
+  parent: WolverineSoft.DialogueSystem
+  children:
+  - WolverineSoft.DialogueSystem.DialogueManager.AdvanceDialogue
+  - WolverineSoft.DialogueSystem.DialogueManager.AdvanceDialogue(WolverineSoft.DialogueSystem.AdvanceContext)
+  - WolverineSoft.DialogueSystem.DialogueManager.AdvancedDialogue
+  - WolverineSoft.DialogueSystem.DialogueManager.BeginDialogue(WolverineSoft.DialogueSystem.DialogueAsset,System.String)
+  - WolverineSoft.DialogueSystem.DialogueManager.EndDialogue
+  - WolverineSoft.DialogueSystem.DialogueManager.EndedDialogue
+  - WolverineSoft.DialogueSystem.DialogueManager.GetBool(System.String)
+  - WolverineSoft.DialogueSystem.DialogueManager.GetDialogueParamsType
+  - WolverineSoft.DialogueSystem.DialogueManager.GetDialogueParams``1
+  - WolverineSoft.DialogueSystem.DialogueManager.GetFloat(System.String)
+  - WolverineSoft.DialogueSystem.DialogueManager.GetInt(System.String)
+  - WolverineSoft.DialogueSystem.DialogueManager.GetString(System.String)
+  - WolverineSoft.DialogueSystem.DialogueManager.IsReadOnly
+  - WolverineSoft.DialogueSystem.DialogueManager.RefreshDialogue
+  - WolverineSoft.DialogueSystem.DialogueManager.RefreshDialogue(WolverineSoft.DialogueSystem.AdvanceContext)
+  - WolverineSoft.DialogueSystem.DialogueManager.SetBool(System.String,System.Boolean)
+  - WolverineSoft.DialogueSystem.DialogueManager.SetFloat(System.String,System.Single)
+  - WolverineSoft.DialogueSystem.DialogueManager.SetInt(System.String,System.Int32)
+  - WolverineSoft.DialogueSystem.DialogueManager.SetString(System.String,System.String)
+  - WolverineSoft.DialogueSystem.DialogueManager.SetVariable(System.String,WolverineSoft.DialogueSystem.Variable)
+  - WolverineSoft.DialogueSystem.DialogueManager.StartedDialogue
+  - WolverineSoft.DialogueSystem.DialogueManager.TryGetVariable(System.String,WolverineSoft.DialogueSystem.Variable@)
+  - WolverineSoft.DialogueSystem.DialogueManager.optionIndexes
+  langs:
+  - csharp
+  - vb
+  name: DialogueManager
+  nameWithType: DialogueManager
+  fullName: WolverineSoft.DialogueSystem.DialogueManager
+  type: Class
+  source:
+    remote:
+      path: RunTime/DialogueManager.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: DialogueManager
+    path: ../RunTime/DialogueManager.cs
+    startLine: 15
+  namespace: WolverineSoft.DialogueSystem
+  summary: >-
+    Primary Component for operating the Backend of the Dialogue System.
+
+    Primary functions are <xref href="WolverineSoft.DialogueSystem.DialogueManager.BeginDialogue(WolverineSoft.DialogueSystem.DialogueAsset%2cSystem.String)" data-throw-if-not-resolved="false"></xref> and <xref href="WolverineSoft.DialogueSystem.DialogueManager.AdvanceDialogue(WolverineSoft.DialogueSystem.AdvanceContext)" data-throw-if-not-resolved="false"></xref>.
+
+    <xref href="WolverineSoft.DialogueSystem.DialogueManager.EndDialogue" data-throw-if-not-resolved="false"></xref> Is only to be used when ending an interaction prematurely.
+
+    Also provides interfaces for values and keywords
+  example: []
+  syntax:
+    content: 'public class DialogueManager : MonoBehaviour, IVariableContext'
+    content.vb: Public Class DialogueManager Inherits MonoBehaviour Implements IVariableContext
+  inheritance:
+  - System.Object
+  implements:
+  - WolverineSoft.DialogueSystem.IVariableContext
+- uid: WolverineSoft.DialogueSystem.DialogueManager.StartedDialogue
+  commentId: F:WolverineSoft.DialogueSystem.DialogueManager.StartedDialogue
+  id: StartedDialogue
+  parent: WolverineSoft.DialogueSystem.DialogueManager
+  langs:
+  - csharp
+  - vb
+  name: StartedDialogue
+  nameWithType: DialogueManager.StartedDialogue
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.StartedDialogue
+  type: Field
+  source:
+    remote:
+      path: RunTime/DialogueManager.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: StartedDialogue
+    path: ../RunTime/DialogueManager.cs
+    startLine: 18
+  namespace: WolverineSoft.DialogueSystem
+  syntax:
+    content: public readonly UnityEvent StartedDialogue
+    return:
+      type: UnityEvent
+    content.vb: Public ReadOnly StartedDialogue As UnityEvent
+- uid: WolverineSoft.DialogueSystem.DialogueManager.AdvancedDialogue
+  commentId: F:WolverineSoft.DialogueSystem.DialogueManager.AdvancedDialogue
+  id: AdvancedDialogue
+  parent: WolverineSoft.DialogueSystem.DialogueManager
+  langs:
+  - csharp
+  - vb
+  name: AdvancedDialogue
+  nameWithType: DialogueManager.AdvancedDialogue
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.AdvancedDialogue
+  type: Field
+  source:
+    remote:
+      path: RunTime/DialogueManager.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: AdvancedDialogue
+    path: ../RunTime/DialogueManager.cs
+    startLine: 19
+  namespace: WolverineSoft.DialogueSystem
+  syntax:
+    content: public readonly UnityEvent<AdvanceContext> AdvancedDialogue
+    return:
+      type: UnityEvent{WolverineSoft.DialogueSystem.AdvanceContext}
+    content.vb: Public ReadOnly AdvancedDialogue As UnityEvent(Of AdvanceContext)
+- uid: WolverineSoft.DialogueSystem.DialogueManager.EndedDialogue
+  commentId: F:WolverineSoft.DialogueSystem.DialogueManager.EndedDialogue
+  id: EndedDialogue
+  parent: WolverineSoft.DialogueSystem.DialogueManager
+  langs:
+  - csharp
+  - vb
+  name: EndedDialogue
+  nameWithType: DialogueManager.EndedDialogue
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.EndedDialogue
+  type: Field
+  source:
+    remote:
+      path: RunTime/DialogueManager.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: EndedDialogue
+    path: ../RunTime/DialogueManager.cs
+    startLine: 20
+  namespace: WolverineSoft.DialogueSystem
+  syntax:
+    content: public readonly UnityEvent EndedDialogue
+    return:
+      type: UnityEvent
+    content.vb: Public ReadOnly EndedDialogue As UnityEvent
+- uid: WolverineSoft.DialogueSystem.DialogueManager.optionIndexes
+  commentId: F:WolverineSoft.DialogueSystem.DialogueManager.optionIndexes
+  id: optionIndexes
+  parent: WolverineSoft.DialogueSystem.DialogueManager
+  langs:
+  - csharp
+  - vb
+  name: optionIndexes
+  nameWithType: DialogueManager.optionIndexes
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.optionIndexes
+  type: Field
+  source:
+    remote:
+      path: RunTime/DialogueManager.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: optionIndexes
+    path: ../RunTime/DialogueManager.cs
+    startLine: 27
+  namespace: WolverineSoft.DialogueSystem
+  syntax:
+    content: public List<int> optionIndexes
+    return:
+      type: System.Collections.Generic.List{System.Int32}
+    content.vb: Public optionIndexes As List(Of Integer)
+- uid: WolverineSoft.DialogueSystem.DialogueManager.GetDialogueParams``1
+  commentId: M:WolverineSoft.DialogueSystem.DialogueManager.GetDialogueParams``1
+  id: GetDialogueParams``1
+  parent: WolverineSoft.DialogueSystem.DialogueManager
+  langs:
+  - csharp
+  - vb
+  name: GetDialogueParams<T>()
+  nameWithType: DialogueManager.GetDialogueParams<T>()
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.GetDialogueParams<T>()
+  type: Method
+  source:
+    remote:
+      path: RunTime/DialogueManager.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: GetDialogueParams
+    path: ../RunTime/DialogueManager.cs
+    startLine: 34
+  namespace: WolverineSoft.DialogueSystem
+  summary: Gets the Dialogue Settings for the current dialogue
+  example: []
+  syntax:
+    content: 'public T GetDialogueParams<T>() where T : DialogueParameters'
+    typeParameters:
+    - id: T
+    return:
+      type: '{T}'
+    content.vb: Public Function GetDialogueParams(Of T As DialogueParameters)() As T
+  overload: WolverineSoft.DialogueSystem.DialogueManager.GetDialogueParams*
+  nameWithType.vb: DialogueManager.GetDialogueParams(Of T)()
+  fullName.vb: WolverineSoft.DialogueSystem.DialogueManager.GetDialogueParams(Of T)()
+  name.vb: GetDialogueParams(Of T)()
+- uid: WolverineSoft.DialogueSystem.DialogueManager.GetDialogueParamsType
+  commentId: M:WolverineSoft.DialogueSystem.DialogueManager.GetDialogueParamsType
+  id: GetDialogueParamsType
+  parent: WolverineSoft.DialogueSystem.DialogueManager
+  langs:
+  - csharp
+  - vb
+  name: GetDialogueParamsType()
+  nameWithType: DialogueManager.GetDialogueParamsType()
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.GetDialogueParamsType()
+  type: Method
+  source:
+    remote:
+      path: RunTime/DialogueManager.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: GetDialogueParamsType
+    path: ../RunTime/DialogueManager.cs
+    startLine: 46
+  namespace: WolverineSoft.DialogueSystem
+  summary: Gets type of current Dialogue Settings
+  example: []
+  syntax:
+    content: public Type GetDialogueParamsType()
+    return:
+      type: System.Type
+    content.vb: Public Function GetDialogueParamsType() As Type
+  overload: WolverineSoft.DialogueSystem.DialogueManager.GetDialogueParamsType*
+- uid: WolverineSoft.DialogueSystem.DialogueManager.BeginDialogue(WolverineSoft.DialogueSystem.DialogueAsset,System.String)
+  commentId: M:WolverineSoft.DialogueSystem.DialogueManager.BeginDialogue(WolverineSoft.DialogueSystem.DialogueAsset,System.String)
+  id: BeginDialogue(WolverineSoft.DialogueSystem.DialogueAsset,System.String)
+  parent: WolverineSoft.DialogueSystem.DialogueManager
+  langs:
+  - csharp
+  - vb
+  name: BeginDialogue(DialogueAsset, string)
+  nameWithType: DialogueManager.BeginDialogue(DialogueAsset, string)
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.BeginDialogue(WolverineSoft.DialogueSystem.DialogueAsset, string)
+  type: Method
+  source:
+    remote:
+      path: RunTime/DialogueManager.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: BeginDialogue
+    path: ../RunTime/DialogueManager.cs
+    startLine: 51
+  namespace: WolverineSoft.DialogueSystem
+  summary: Begin a dialogue using the DialogueAsset to be started
+  example: []
+  syntax:
+    content: public void BeginDialogue(DialogueAsset dialogueAsset, string startName = "")
+    parameters:
+    - id: dialogueAsset
+      type: WolverineSoft.DialogueSystem.DialogueAsset
+    - id: startName
+      type: System.String
+    content.vb: Public Sub BeginDialogue(dialogueAsset As DialogueAsset, startName As String = "")
+  overload: WolverineSoft.DialogueSystem.DialogueManager.BeginDialogue*
+  nameWithType.vb: DialogueManager.BeginDialogue(DialogueAsset, String)
+  fullName.vb: WolverineSoft.DialogueSystem.DialogueManager.BeginDialogue(WolverineSoft.DialogueSystem.DialogueAsset, String)
+  name.vb: BeginDialogue(DialogueAsset, String)
+- uid: WolverineSoft.DialogueSystem.DialogueManager.AdvanceDialogue(WolverineSoft.DialogueSystem.AdvanceContext)
+  commentId: M:WolverineSoft.DialogueSystem.DialogueManager.AdvanceDialogue(WolverineSoft.DialogueSystem.AdvanceContext)
+  id: AdvanceDialogue(WolverineSoft.DialogueSystem.AdvanceContext)
+  parent: WolverineSoft.DialogueSystem.DialogueManager
+  langs:
+  - csharp
+  - vb
+  name: AdvanceDialogue(AdvanceContext)
+  nameWithType: DialogueManager.AdvanceDialogue(AdvanceContext)
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.AdvanceDialogue(WolverineSoft.DialogueSystem.AdvanceContext)
+  type: Method
+  source:
+    remote:
+      path: RunTime/DialogueManager.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: AdvanceDialogue
+    path: ../RunTime/DialogueManager.cs
+    startLine: 69
+  namespace: WolverineSoft.DialogueSystem
+  summary: >-
+    Retrieve the next dialogue using context about the user's interaction.
+
+    Returns null if end of dialogue is reached.
+  example: []
+  syntax:
+    content: public DialogueInfo AdvanceDialogue(AdvanceContext context)
+    parameters:
+    - id: context
+      type: WolverineSoft.DialogueSystem.AdvanceContext
+    return:
+      type: WolverineSoft.DialogueSystem.DialogueInfo
+    content.vb: Public Function AdvanceDialogue(context As AdvanceContext) As DialogueInfo
+  overload: WolverineSoft.DialogueSystem.DialogueManager.AdvanceDialogue*
+- uid: WolverineSoft.DialogueSystem.DialogueManager.AdvanceDialogue
+  commentId: M:WolverineSoft.DialogueSystem.DialogueManager.AdvanceDialogue
+  id: AdvanceDialogue
+  parent: WolverineSoft.DialogueSystem.DialogueManager
+  langs:
+  - csharp
+  - vb
+  name: AdvanceDialogue()
+  nameWithType: DialogueManager.AdvanceDialogue()
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.AdvanceDialogue()
+  type: Method
+  source:
+    remote:
+      path: RunTime/DialogueManager.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: AdvanceDialogue
+    path: ../RunTime/DialogueManager.cs
+    startLine: 102
+  namespace: WolverineSoft.DialogueSystem
+  summary: >-
+    Retrieve the next dialogue with strict types using default context.
+
+    Primarily used to get the first dialogue.
+
+    Returns null if end of dialogue is reached.
+  example: []
+  syntax:
+    content: public DialogueInfo AdvanceDialogue()
+    return:
+      type: WolverineSoft.DialogueSystem.DialogueInfo
+    content.vb: Public Function AdvanceDialogue() As DialogueInfo
+  overload: WolverineSoft.DialogueSystem.DialogueManager.AdvanceDialogue*
+- uid: WolverineSoft.DialogueSystem.DialogueManager.RefreshDialogue(WolverineSoft.DialogueSystem.AdvanceContext)
+  commentId: M:WolverineSoft.DialogueSystem.DialogueManager.RefreshDialogue(WolverineSoft.DialogueSystem.AdvanceContext)
+  id: RefreshDialogue(WolverineSoft.DialogueSystem.AdvanceContext)
+  parent: WolverineSoft.DialogueSystem.DialogueManager
+  langs:
+  - csharp
+  - vb
+  name: RefreshDialogue(AdvanceContext)
+  nameWithType: DialogueManager.RefreshDialogue(AdvanceContext)
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.RefreshDialogue(WolverineSoft.DialogueSystem.AdvanceContext)
+  type: Method
+  source:
+    remote:
+      path: RunTime/DialogueManager.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: RefreshDialogue
+    path: ../RunTime/DialogueManager.cs
+    startLine: 109
+  namespace: WolverineSoft.DialogueSystem
+  summary: >-
+    Retrieve the information about the current dialogue again.
+
+    Used if you want to account for changes in conditional choice options
+  example: []
+  syntax:
+    content: public DialogueInfo RefreshDialogue(AdvanceContext context)
+    parameters:
+    - id: context
+      type: WolverineSoft.DialogueSystem.AdvanceContext
+    return:
+      type: WolverineSoft.DialogueSystem.DialogueInfo
+    content.vb: Public Function RefreshDialogue(context As AdvanceContext) As DialogueInfo
+  overload: WolverineSoft.DialogueSystem.DialogueManager.RefreshDialogue*
+- uid: WolverineSoft.DialogueSystem.DialogueManager.RefreshDialogue
+  commentId: M:WolverineSoft.DialogueSystem.DialogueManager.RefreshDialogue
+  id: RefreshDialogue
+  parent: WolverineSoft.DialogueSystem.DialogueManager
+  langs:
+  - csharp
+  - vb
+  name: RefreshDialogue()
+  nameWithType: DialogueManager.RefreshDialogue()
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.RefreshDialogue()
+  type: Method
+  source:
+    remote:
+      path: RunTime/DialogueManager.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: RefreshDialogue
+    path: ../RunTime/DialogueManager.cs
+    startLine: 135
+  namespace: WolverineSoft.DialogueSystem
+  summary: >-
+    Retrieve the information about the current dialogue again.
+
+    Used if you want to account for changes in conditional choice options
+  example: []
+  syntax:
+    content: public DialogueInfo RefreshDialogue()
+    return:
+      type: WolverineSoft.DialogueSystem.DialogueInfo
+    content.vb: Public Function RefreshDialogue() As DialogueInfo
+  overload: WolverineSoft.DialogueSystem.DialogueManager.RefreshDialogue*
+- uid: WolverineSoft.DialogueSystem.DialogueManager.EndDialogue
+  commentId: M:WolverineSoft.DialogueSystem.DialogueManager.EndDialogue
+  id: EndDialogue
+  parent: WolverineSoft.DialogueSystem.DialogueManager
+  langs:
+  - csharp
+  - vb
+  name: EndDialogue()
+  nameWithType: DialogueManager.EndDialogue()
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.EndDialogue()
+  type: Method
+  source:
+    remote:
+      path: RunTime/DialogueManager.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: EndDialogue
+    path: ../RunTime/DialogueManager.cs
+    startLine: 143
+  namespace: WolverineSoft.DialogueSystem
+  summary: Prematurely end dialogue
+  example: []
+  syntax:
+    content: public void EndDialogue()
+    content.vb: Public Sub EndDialogue()
+  overload: WolverineSoft.DialogueSystem.DialogueManager.EndDialogue*
+- uid: WolverineSoft.DialogueSystem.DialogueManager.IsReadOnly
+  commentId: P:WolverineSoft.DialogueSystem.DialogueManager.IsReadOnly
+  id: IsReadOnly
+  parent: WolverineSoft.DialogueSystem.DialogueManager
+  langs:
+  - csharp
+  - vb
+  name: IsReadOnly
+  nameWithType: DialogueManager.IsReadOnly
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.IsReadOnly
+  type: Property
+  source:
+    remote:
+      path: RunTime/DialogueManager.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: IsReadOnly
+    path: ../RunTime/DialogueManager.cs
+    startLine: 161
+  namespace: WolverineSoft.DialogueSystem
+  example: []
+  syntax:
+    content: public bool IsReadOnly { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsReadOnly As Boolean
+  overload: WolverineSoft.DialogueSystem.DialogueManager.IsReadOnly*
+  implements:
+  - WolverineSoft.DialogueSystem.IVariableContext.IsReadOnly
+- uid: WolverineSoft.DialogueSystem.DialogueManager.TryGetVariable(System.String,WolverineSoft.DialogueSystem.Variable@)
+  commentId: M:WolverineSoft.DialogueSystem.DialogueManager.TryGetVariable(System.String,WolverineSoft.DialogueSystem.Variable@)
+  id: TryGetVariable(System.String,WolverineSoft.DialogueSystem.Variable@)
+  parent: WolverineSoft.DialogueSystem.DialogueManager
+  langs:
+  - csharp
+  - vb
+  name: TryGetVariable(string, out Variable)
+  nameWithType: DialogueManager.TryGetVariable(string, out Variable)
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.TryGetVariable(string, out WolverineSoft.DialogueSystem.Variable)
+  type: Method
+  source:
+    remote:
+      path: RunTime/DialogueManager.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: TryGetVariable
+    path: ../RunTime/DialogueManager.cs
+    startLine: 163
+  namespace: WolverineSoft.DialogueSystem
+  example: []
+  syntax:
+    content: public bool TryGetVariable(string name, out Variable variable)
+    parameters:
+    - id: name
+      type: System.String
+    - id: variable
+      type: WolverineSoft.DialogueSystem.Variable
+    return:
+      type: System.Boolean
+    content.vb: Public Function TryGetVariable(name As String, variable As Variable) As Boolean
+  overload: WolverineSoft.DialogueSystem.DialogueManager.TryGetVariable*
+  implements:
+  - WolverineSoft.DialogueSystem.IVariableContext.TryGetVariable(System.String,WolverineSoft.DialogueSystem.Variable@)
+  nameWithType.vb: DialogueManager.TryGetVariable(String, Variable)
+  fullName.vb: WolverineSoft.DialogueSystem.DialogueManager.TryGetVariable(String, WolverineSoft.DialogueSystem.Variable)
+  name.vb: TryGetVariable(String, Variable)
+- uid: WolverineSoft.DialogueSystem.DialogueManager.SetVariable(System.String,WolverineSoft.DialogueSystem.Variable)
+  commentId: M:WolverineSoft.DialogueSystem.DialogueManager.SetVariable(System.String,WolverineSoft.DialogueSystem.Variable)
+  id: SetVariable(System.String,WolverineSoft.DialogueSystem.Variable)
+  parent: WolverineSoft.DialogueSystem.DialogueManager
+  langs:
+  - csharp
+  - vb
+  name: SetVariable(string, Variable)
+  nameWithType: DialogueManager.SetVariable(string, Variable)
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.SetVariable(string, WolverineSoft.DialogueSystem.Variable)
+  type: Method
+  source:
+    remote:
+      path: RunTime/DialogueManager.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: SetVariable
+    path: ../RunTime/DialogueManager.cs
+    startLine: 167
+  namespace: WolverineSoft.DialogueSystem
+  example: []
+  syntax:
+    content: public void SetVariable(string name, Variable variable)
+    parameters:
+    - id: name
+      type: System.String
+    - id: variable
+      type: WolverineSoft.DialogueSystem.Variable
+    content.vb: Public Sub SetVariable(name As String, variable As Variable)
+  overload: WolverineSoft.DialogueSystem.DialogueManager.SetVariable*
+  implements:
+  - WolverineSoft.DialogueSystem.IVariableContext.SetVariable(System.String,WolverineSoft.DialogueSystem.Variable)
+  nameWithType.vb: DialogueManager.SetVariable(String, Variable)
+  fullName.vb: WolverineSoft.DialogueSystem.DialogueManager.SetVariable(String, WolverineSoft.DialogueSystem.Variable)
+  name.vb: SetVariable(String, Variable)
+- uid: WolverineSoft.DialogueSystem.DialogueManager.SetString(System.String,System.String)
+  commentId: M:WolverineSoft.DialogueSystem.DialogueManager.SetString(System.String,System.String)
+  id: SetString(System.String,System.String)
+  parent: WolverineSoft.DialogueSystem.DialogueManager
+  langs:
+  - csharp
+  - vb
+  name: SetString(string, string)
+  nameWithType: DialogueManager.SetString(string, string)
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.SetString(string, string)
+  type: Method
+  source:
+    remote:
+      path: RunTime/DialogueManager.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: SetString
+    path: ../RunTime/DialogueManager.cs
+    startLine: 172
+  namespace: WolverineSoft.DialogueSystem
+  example: []
+  syntax:
+    content: public void SetString(string name, string value)
+    parameters:
+    - id: name
+      type: System.String
+    - id: value
+      type: System.String
+    content.vb: Public Sub SetString(name As String, value As String)
+  overload: WolverineSoft.DialogueSystem.DialogueManager.SetString*
+  implements:
+  - WolverineSoft.DialogueSystem.IVariableContext.SetString(System.String,System.String)
+  nameWithType.vb: DialogueManager.SetString(String, String)
+  fullName.vb: WolverineSoft.DialogueSystem.DialogueManager.SetString(String, String)
+  name.vb: SetString(String, String)
+- uid: WolverineSoft.DialogueSystem.DialogueManager.SetFloat(System.String,System.Single)
+  commentId: M:WolverineSoft.DialogueSystem.DialogueManager.SetFloat(System.String,System.Single)
+  id: SetFloat(System.String,System.Single)
+  parent: WolverineSoft.DialogueSystem.DialogueManager
+  langs:
+  - csharp
+  - vb
+  name: SetFloat(string, float)
+  nameWithType: DialogueManager.SetFloat(string, float)
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.SetFloat(string, float)
+  type: Method
+  source:
+    remote:
+      path: RunTime/DialogueManager.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: SetFloat
+    path: ../RunTime/DialogueManager.cs
+    startLine: 173
+  namespace: WolverineSoft.DialogueSystem
+  example: []
+  syntax:
+    content: public void SetFloat(string name, float value)
+    parameters:
+    - id: name
+      type: System.String
+    - id: value
+      type: System.Single
+    content.vb: Public Sub SetFloat(name As String, value As Single)
+  overload: WolverineSoft.DialogueSystem.DialogueManager.SetFloat*
+  implements:
+  - WolverineSoft.DialogueSystem.IVariableContext.SetFloat(System.String,System.Single)
+  nameWithType.vb: DialogueManager.SetFloat(String, Single)
+  fullName.vb: WolverineSoft.DialogueSystem.DialogueManager.SetFloat(String, Single)
+  name.vb: SetFloat(String, Single)
+- uid: WolverineSoft.DialogueSystem.DialogueManager.SetInt(System.String,System.Int32)
+  commentId: M:WolverineSoft.DialogueSystem.DialogueManager.SetInt(System.String,System.Int32)
+  id: SetInt(System.String,System.Int32)
+  parent: WolverineSoft.DialogueSystem.DialogueManager
+  langs:
+  - csharp
+  - vb
+  name: SetInt(string, int)
+  nameWithType: DialogueManager.SetInt(string, int)
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.SetInt(string, int)
+  type: Method
+  source:
+    remote:
+      path: RunTime/DialogueManager.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: SetInt
+    path: ../RunTime/DialogueManager.cs
+    startLine: 174
+  namespace: WolverineSoft.DialogueSystem
+  example: []
+  syntax:
+    content: public void SetInt(string name, int value)
+    parameters:
+    - id: name
+      type: System.String
+    - id: value
+      type: System.Int32
+    content.vb: Public Sub SetInt(name As String, value As Integer)
+  overload: WolverineSoft.DialogueSystem.DialogueManager.SetInt*
+  implements:
+  - WolverineSoft.DialogueSystem.IVariableContext.SetInt(System.String,System.Int32)
+  nameWithType.vb: DialogueManager.SetInt(String, Integer)
+  fullName.vb: WolverineSoft.DialogueSystem.DialogueManager.SetInt(String, Integer)
+  name.vb: SetInt(String, Integer)
+- uid: WolverineSoft.DialogueSystem.DialogueManager.SetBool(System.String,System.Boolean)
+  commentId: M:WolverineSoft.DialogueSystem.DialogueManager.SetBool(System.String,System.Boolean)
+  id: SetBool(System.String,System.Boolean)
+  parent: WolverineSoft.DialogueSystem.DialogueManager
+  langs:
+  - csharp
+  - vb
+  name: SetBool(string, bool)
+  nameWithType: DialogueManager.SetBool(string, bool)
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.SetBool(string, bool)
+  type: Method
+  source:
+    remote:
+      path: RunTime/DialogueManager.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: SetBool
+    path: ../RunTime/DialogueManager.cs
+    startLine: 175
+  namespace: WolverineSoft.DialogueSystem
+  example: []
+  syntax:
+    content: public void SetBool(string name, bool value)
+    parameters:
+    - id: name
+      type: System.String
+    - id: value
+      type: System.Boolean
+    content.vb: Public Sub SetBool(name As String, value As Boolean)
+  overload: WolverineSoft.DialogueSystem.DialogueManager.SetBool*
+  implements:
+  - WolverineSoft.DialogueSystem.IVariableContext.SetBool(System.String,System.Boolean)
+  nameWithType.vb: DialogueManager.SetBool(String, Boolean)
+  fullName.vb: WolverineSoft.DialogueSystem.DialogueManager.SetBool(String, Boolean)
+  name.vb: SetBool(String, Boolean)
+- uid: WolverineSoft.DialogueSystem.DialogueManager.GetString(System.String)
+  commentId: M:WolverineSoft.DialogueSystem.DialogueManager.GetString(System.String)
+  id: GetString(System.String)
+  parent: WolverineSoft.DialogueSystem.DialogueManager
+  langs:
+  - csharp
+  - vb
+  name: GetString(string)
+  nameWithType: DialogueManager.GetString(string)
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.GetString(string)
+  type: Method
+  source:
+    remote:
+      path: RunTime/DialogueManager.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: GetString
+    path: ../RunTime/DialogueManager.cs
+    startLine: 179
+  namespace: WolverineSoft.DialogueSystem
+  example: []
+  syntax:
+    content: public string GetString(string name)
+    parameters:
+    - id: name
+      type: System.String
+    return:
+      type: System.String
+    content.vb: Public Function GetString(name As String) As String
+  overload: WolverineSoft.DialogueSystem.DialogueManager.GetString*
+  implements:
+  - WolverineSoft.DialogueSystem.IVariableContext.GetString(System.String)
+  nameWithType.vb: DialogueManager.GetString(String)
+  fullName.vb: WolverineSoft.DialogueSystem.DialogueManager.GetString(String)
+  name.vb: GetString(String)
+- uid: WolverineSoft.DialogueSystem.DialogueManager.GetFloat(System.String)
+  commentId: M:WolverineSoft.DialogueSystem.DialogueManager.GetFloat(System.String)
+  id: GetFloat(System.String)
+  parent: WolverineSoft.DialogueSystem.DialogueManager
+  langs:
+  - csharp
+  - vb
+  name: GetFloat(string)
+  nameWithType: DialogueManager.GetFloat(string)
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.GetFloat(string)
+  type: Method
+  source:
+    remote:
+      path: RunTime/DialogueManager.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: GetFloat
+    path: ../RunTime/DialogueManager.cs
+    startLine: 190
+  namespace: WolverineSoft.DialogueSystem
+  example: []
+  syntax:
+    content: public float GetFloat(string name)
+    parameters:
+    - id: name
+      type: System.String
+    return:
+      type: System.Single
+    content.vb: Public Function GetFloat(name As String) As Single
+  overload: WolverineSoft.DialogueSystem.DialogueManager.GetFloat*
+  implements:
+  - WolverineSoft.DialogueSystem.IVariableContext.GetFloat(System.String)
+  nameWithType.vb: DialogueManager.GetFloat(String)
+  fullName.vb: WolverineSoft.DialogueSystem.DialogueManager.GetFloat(String)
+  name.vb: GetFloat(String)
+- uid: WolverineSoft.DialogueSystem.DialogueManager.GetInt(System.String)
+  commentId: M:WolverineSoft.DialogueSystem.DialogueManager.GetInt(System.String)
+  id: GetInt(System.String)
+  parent: WolverineSoft.DialogueSystem.DialogueManager
+  langs:
+  - csharp
+  - vb
+  name: GetInt(string)
+  nameWithType: DialogueManager.GetInt(string)
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.GetInt(string)
+  type: Method
+  source:
+    remote:
+      path: RunTime/DialogueManager.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: GetInt
+    path: ../RunTime/DialogueManager.cs
+    startLine: 200
+  namespace: WolverineSoft.DialogueSystem
+  example: []
+  syntax:
+    content: public int GetInt(string name)
+    parameters:
+    - id: name
+      type: System.String
+    return:
+      type: System.Int32
+    content.vb: Public Function GetInt(name As String) As Integer
+  overload: WolverineSoft.DialogueSystem.DialogueManager.GetInt*
+  implements:
+  - WolverineSoft.DialogueSystem.IVariableContext.GetInt(System.String)
+  nameWithType.vb: DialogueManager.GetInt(String)
+  fullName.vb: WolverineSoft.DialogueSystem.DialogueManager.GetInt(String)
+  name.vb: GetInt(String)
+- uid: WolverineSoft.DialogueSystem.DialogueManager.GetBool(System.String)
+  commentId: M:WolverineSoft.DialogueSystem.DialogueManager.GetBool(System.String)
+  id: GetBool(System.String)
+  parent: WolverineSoft.DialogueSystem.DialogueManager
+  langs:
+  - csharp
+  - vb
+  name: GetBool(string)
+  nameWithType: DialogueManager.GetBool(string)
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.GetBool(string)
+  type: Method
+  source:
+    remote:
+      path: RunTime/DialogueManager.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: GetBool
+    path: ../RunTime/DialogueManager.cs
+    startLine: 211
+  namespace: WolverineSoft.DialogueSystem
+  example: []
+  syntax:
+    content: public bool GetBool(string name)
+    parameters:
+    - id: name
+      type: System.String
+    return:
+      type: System.Boolean
+    content.vb: Public Function GetBool(name As String) As Boolean
+  overload: WolverineSoft.DialogueSystem.DialogueManager.GetBool*
+  implements:
+  - WolverineSoft.DialogueSystem.IVariableContext.GetBool(System.String)
+  nameWithType.vb: DialogueManager.GetBool(String)
+  fullName.vb: WolverineSoft.DialogueSystem.DialogueManager.GetBool(String)
+  name.vb: GetBool(String)
+references:
+- uid: WolverineSoft.DialogueSystem.DialogueManager.BeginDialogue(WolverineSoft.DialogueSystem.DialogueAsset,System.String)
+  commentId: M:WolverineSoft.DialogueSystem.DialogueManager.BeginDialogue(WolverineSoft.DialogueSystem.DialogueAsset,System.String)
+  isExternal: true
+  href: WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_BeginDialogue_WolverineSoft_DialogueSystem_DialogueAsset_System_String_
+  name: BeginDialogue(DialogueAsset, string)
+  nameWithType: DialogueManager.BeginDialogue(DialogueAsset, string)
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.BeginDialogue(WolverineSoft.DialogueSystem.DialogueAsset, string)
+  nameWithType.vb: DialogueManager.BeginDialogue(DialogueAsset, String)
+  fullName.vb: WolverineSoft.DialogueSystem.DialogueManager.BeginDialogue(WolverineSoft.DialogueSystem.DialogueAsset, String)
+  name.vb: BeginDialogue(DialogueAsset, String)
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.DialogueManager.BeginDialogue(WolverineSoft.DialogueSystem.DialogueAsset,System.String)
+    name: BeginDialogue
+    href: WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_BeginDialogue_WolverineSoft_DialogueSystem_DialogueAsset_System_String_
+  - name: (
+  - uid: WolverineSoft.DialogueSystem.DialogueAsset
+    name: DialogueAsset
+    href: WolverineSoft.DialogueSystem.DialogueAsset.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.DialogueManager.BeginDialogue(WolverineSoft.DialogueSystem.DialogueAsset,System.String)
+    name: BeginDialogue
+    href: WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_BeginDialogue_WolverineSoft_DialogueSystem_DialogueAsset_System_String_
+  - name: (
+  - uid: WolverineSoft.DialogueSystem.DialogueAsset
+    name: DialogueAsset
+    href: WolverineSoft.DialogueSystem.DialogueAsset.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: WolverineSoft.DialogueSystem.DialogueManager.AdvanceDialogue(WolverineSoft.DialogueSystem.AdvanceContext)
+  commentId: M:WolverineSoft.DialogueSystem.DialogueManager.AdvanceDialogue(WolverineSoft.DialogueSystem.AdvanceContext)
+  href: WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_AdvanceDialogue_WolverineSoft_DialogueSystem_AdvanceContext_
+  name: AdvanceDialogue(AdvanceContext)
+  nameWithType: DialogueManager.AdvanceDialogue(AdvanceContext)
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.AdvanceDialogue(WolverineSoft.DialogueSystem.AdvanceContext)
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.DialogueManager.AdvanceDialogue(WolverineSoft.DialogueSystem.AdvanceContext)
+    name: AdvanceDialogue
+    href: WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_AdvanceDialogue_WolverineSoft_DialogueSystem_AdvanceContext_
+  - name: (
+  - uid: WolverineSoft.DialogueSystem.AdvanceContext
+    name: AdvanceContext
+    href: WolverineSoft.DialogueSystem.AdvanceContext.html
+  - name: )
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.DialogueManager.AdvanceDialogue(WolverineSoft.DialogueSystem.AdvanceContext)
+    name: AdvanceDialogue
+    href: WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_AdvanceDialogue_WolverineSoft_DialogueSystem_AdvanceContext_
+  - name: (
+  - uid: WolverineSoft.DialogueSystem.AdvanceContext
+    name: AdvanceContext
+    href: WolverineSoft.DialogueSystem.AdvanceContext.html
+  - name: )
+- uid: WolverineSoft.DialogueSystem.DialogueManager.EndDialogue
+  commentId: M:WolverineSoft.DialogueSystem.DialogueManager.EndDialogue
+  href: WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_EndDialogue
+  name: EndDialogue()
+  nameWithType: DialogueManager.EndDialogue()
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.EndDialogue()
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.DialogueManager.EndDialogue
+    name: EndDialogue
+    href: WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_EndDialogue
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.DialogueManager.EndDialogue
+    name: EndDialogue
+    href: WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_EndDialogue
+  - name: (
+  - name: )
+- uid: WolverineSoft.DialogueSystem
+  commentId: N:WolverineSoft.DialogueSystem
+  href: WolverineSoft.html
+  name: WolverineSoft.DialogueSystem
+  nameWithType: WolverineSoft.DialogueSystem
+  fullName: WolverineSoft.DialogueSystem
+  spec.csharp:
+  - uid: WolverineSoft
+    name: WolverineSoft
+    href: WolverineSoft.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem
+    name: DialogueSystem
+    href: WolverineSoft.DialogueSystem.html
+  spec.vb:
+  - uid: WolverineSoft
+    name: WolverineSoft
+    href: WolverineSoft.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem
+    name: DialogueSystem
+    href: WolverineSoft.DialogueSystem.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: WolverineSoft.DialogueSystem.IVariableContext
+  commentId: T:WolverineSoft.DialogueSystem.IVariableContext
+  parent: WolverineSoft.DialogueSystem
+  href: WolverineSoft.DialogueSystem.IVariableContext.html
+  name: IVariableContext
+  nameWithType: IVariableContext
+  fullName: WolverineSoft.DialogueSystem.IVariableContext
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: UnityEvent
+  isExternal: true
+  name: UnityEvent
+  nameWithType: UnityEvent
+  fullName: UnityEvent
+- uid: UnityEvent{WolverineSoft.DialogueSystem.AdvanceContext}
+  commentId: '!:UnityEvent{WolverineSoft.DialogueSystem.AdvanceContext}'
+  definition: UnityEvent`1
+  href: WolverineSoft.DialogueSystem.AdvanceContext.html
+  name: UnityEvent<AdvanceContext>
+  nameWithType: UnityEvent<AdvanceContext>
+  fullName: UnityEvent<WolverineSoft.DialogueSystem.AdvanceContext>
+  nameWithType.vb: UnityEvent(Of AdvanceContext)
+  fullName.vb: UnityEvent(Of WolverineSoft.DialogueSystem.AdvanceContext)
+  name.vb: UnityEvent(Of AdvanceContext)
+  spec.csharp:
+  - uid: UnityEvent`1
+    name: UnityEvent
+    isExternal: true
+  - name: <
+  - uid: WolverineSoft.DialogueSystem.AdvanceContext
+    name: AdvanceContext
+    href: WolverineSoft.DialogueSystem.AdvanceContext.html
+  - name: '>'
+  spec.vb:
+  - uid: UnityEvent`1
+    name: UnityEvent
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: WolverineSoft.DialogueSystem.AdvanceContext
+    name: AdvanceContext
+    href: WolverineSoft.DialogueSystem.AdvanceContext.html
+  - name: )
+- uid: UnityEvent`1
+  commentId: '!:UnityEvent`1'
+  isExternal: true
+  name: UnityEvent<>
+  nameWithType: UnityEvent<>
+  fullName: UnityEvent<>
+  nameWithType.vb: UnityEvent(Of )
+  fullName.vb: UnityEvent(Of )
+  name.vb: UnityEvent(Of )
+  spec.csharp:
+  - uid: UnityEvent`1
+    name: UnityEvent
+    isExternal: true
+  - name: <
+  - name: ''
+  - name: '>'
+  spec.vb:
+  - uid: UnityEvent`1
+    name: UnityEvent
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: ''
+  - name: )
+- uid: System.Collections.Generic.List{System.Int32}
+  commentId: T:System.Collections.Generic.List{System.Int32}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<int>
+  nameWithType: List<int>
+  fullName: System.Collections.Generic.List<int>
+  nameWithType.vb: List(Of Integer)
+  fullName.vb: System.Collections.Generic.List(Of Integer)
+  name.vb: List(Of Integer)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: WolverineSoft.DialogueSystem.DialogueManager.GetDialogueParams*
+  commentId: Overload:WolverineSoft.DialogueSystem.DialogueManager.GetDialogueParams
+  href: WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_GetDialogueParams__1
+  name: GetDialogueParams
+  nameWithType: DialogueManager.GetDialogueParams
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.GetDialogueParams
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: WolverineSoft.DialogueSystem.DialogueManager.GetDialogueParamsType*
+  commentId: Overload:WolverineSoft.DialogueSystem.DialogueManager.GetDialogueParamsType
+  href: WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_GetDialogueParamsType
+  name: GetDialogueParamsType
+  nameWithType: DialogueManager.GetDialogueParamsType
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.GetDialogueParamsType
+- uid: System.Type
+  commentId: T:System.Type
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: WolverineSoft.DialogueSystem.DialogueManager.BeginDialogue*
+  commentId: Overload:WolverineSoft.DialogueSystem.DialogueManager.BeginDialogue
+  href: WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_BeginDialogue_WolverineSoft_DialogueSystem_DialogueAsset_System_String_
+  name: BeginDialogue
+  nameWithType: DialogueManager.BeginDialogue
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.BeginDialogue
+- uid: WolverineSoft.DialogueSystem.DialogueAsset
+  commentId: T:WolverineSoft.DialogueSystem.DialogueAsset
+  parent: WolverineSoft.DialogueSystem
+  href: WolverineSoft.DialogueSystem.DialogueAsset.html
+  name: DialogueAsset
+  nameWithType: DialogueAsset
+  fullName: WolverineSoft.DialogueSystem.DialogueAsset
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: WolverineSoft.DialogueSystem.DialogueManager.AdvanceDialogue*
+  commentId: Overload:WolverineSoft.DialogueSystem.DialogueManager.AdvanceDialogue
+  href: WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_AdvanceDialogue_WolverineSoft_DialogueSystem_AdvanceContext_
+  name: AdvanceDialogue
+  nameWithType: DialogueManager.AdvanceDialogue
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.AdvanceDialogue
+- uid: WolverineSoft.DialogueSystem.AdvanceContext
+  commentId: T:WolverineSoft.DialogueSystem.AdvanceContext
+  parent: WolverineSoft.DialogueSystem
+  href: WolverineSoft.DialogueSystem.AdvanceContext.html
+  name: AdvanceContext
+  nameWithType: AdvanceContext
+  fullName: WolverineSoft.DialogueSystem.AdvanceContext
+- uid: WolverineSoft.DialogueSystem.DialogueInfo
+  commentId: T:WolverineSoft.DialogueSystem.DialogueInfo
+  parent: WolverineSoft.DialogueSystem
+  href: WolverineSoft.DialogueSystem.DialogueInfo.html
+  name: DialogueInfo
+  nameWithType: DialogueInfo
+  fullName: WolverineSoft.DialogueSystem.DialogueInfo
+- uid: WolverineSoft.DialogueSystem.DialogueManager.RefreshDialogue*
+  commentId: Overload:WolverineSoft.DialogueSystem.DialogueManager.RefreshDialogue
+  href: WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_RefreshDialogue_WolverineSoft_DialogueSystem_AdvanceContext_
+  name: RefreshDialogue
+  nameWithType: DialogueManager.RefreshDialogue
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.RefreshDialogue
+- uid: WolverineSoft.DialogueSystem.DialogueManager.EndDialogue*
+  commentId: Overload:WolverineSoft.DialogueSystem.DialogueManager.EndDialogue
+  href: WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_EndDialogue
+  name: EndDialogue
+  nameWithType: DialogueManager.EndDialogue
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.EndDialogue
+- uid: WolverineSoft.DialogueSystem.DialogueManager.IsReadOnly*
+  commentId: Overload:WolverineSoft.DialogueSystem.DialogueManager.IsReadOnly
+  href: WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_IsReadOnly
+  name: IsReadOnly
+  nameWithType: DialogueManager.IsReadOnly
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.IsReadOnly
+- uid: WolverineSoft.DialogueSystem.IVariableContext.IsReadOnly
+  commentId: P:WolverineSoft.DialogueSystem.IVariableContext.IsReadOnly
+  parent: WolverineSoft.DialogueSystem.IVariableContext
+  href: WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_IsReadOnly
+  name: IsReadOnly
+  nameWithType: IVariableContext.IsReadOnly
+  fullName: WolverineSoft.DialogueSystem.IVariableContext.IsReadOnly
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: WolverineSoft.DialogueSystem.DialogueManager.TryGetVariable*
+  commentId: Overload:WolverineSoft.DialogueSystem.DialogueManager.TryGetVariable
+  href: WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_TryGetVariable_System_String_WolverineSoft_DialogueSystem_Variable__
+  name: TryGetVariable
+  nameWithType: DialogueManager.TryGetVariable
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.TryGetVariable
+- uid: WolverineSoft.DialogueSystem.IVariableContext.TryGetVariable(System.String,WolverineSoft.DialogueSystem.Variable@)
+  commentId: M:WolverineSoft.DialogueSystem.IVariableContext.TryGetVariable(System.String,WolverineSoft.DialogueSystem.Variable@)
+  parent: WolverineSoft.DialogueSystem.IVariableContext
+  isExternal: true
+  href: WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_TryGetVariable_System_String_WolverineSoft_DialogueSystem_Variable__
+  name: TryGetVariable(string, out Variable)
+  nameWithType: IVariableContext.TryGetVariable(string, out Variable)
+  fullName: WolverineSoft.DialogueSystem.IVariableContext.TryGetVariable(string, out WolverineSoft.DialogueSystem.Variable)
+  nameWithType.vb: IVariableContext.TryGetVariable(String, Variable)
+  fullName.vb: WolverineSoft.DialogueSystem.IVariableContext.TryGetVariable(String, WolverineSoft.DialogueSystem.Variable)
+  name.vb: TryGetVariable(String, Variable)
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.IVariableContext.TryGetVariable(System.String,WolverineSoft.DialogueSystem.Variable@)
+    name: TryGetVariable
+    href: WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_TryGetVariable_System_String_WolverineSoft_DialogueSystem_Variable__
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: WolverineSoft.DialogueSystem.Variable
+    name: Variable
+    href: WolverineSoft.DialogueSystem.Variable.html
+  - name: )
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.IVariableContext.TryGetVariable(System.String,WolverineSoft.DialogueSystem.Variable@)
+    name: TryGetVariable
+    href: WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_TryGetVariable_System_String_WolverineSoft_DialogueSystem_Variable__
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: WolverineSoft.DialogueSystem.Variable
+    name: Variable
+    href: WolverineSoft.DialogueSystem.Variable.html
+  - name: )
+- uid: WolverineSoft.DialogueSystem.Variable
+  commentId: T:WolverineSoft.DialogueSystem.Variable
+  parent: WolverineSoft.DialogueSystem
+  href: WolverineSoft.DialogueSystem.Variable.html
+  name: Variable
+  nameWithType: Variable
+  fullName: WolverineSoft.DialogueSystem.Variable
+- uid: WolverineSoft.DialogueSystem.DialogueManager.SetVariable*
+  commentId: Overload:WolverineSoft.DialogueSystem.DialogueManager.SetVariable
+  href: WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_SetVariable_System_String_WolverineSoft_DialogueSystem_Variable_
+  name: SetVariable
+  nameWithType: DialogueManager.SetVariable
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.SetVariable
+- uid: WolverineSoft.DialogueSystem.IVariableContext.SetVariable(System.String,WolverineSoft.DialogueSystem.Variable)
+  commentId: M:WolverineSoft.DialogueSystem.IVariableContext.SetVariable(System.String,WolverineSoft.DialogueSystem.Variable)
+  parent: WolverineSoft.DialogueSystem.IVariableContext
+  isExternal: true
+  href: WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_SetVariable_System_String_WolverineSoft_DialogueSystem_Variable_
+  name: SetVariable(string, Variable)
+  nameWithType: IVariableContext.SetVariable(string, Variable)
+  fullName: WolverineSoft.DialogueSystem.IVariableContext.SetVariable(string, WolverineSoft.DialogueSystem.Variable)
+  nameWithType.vb: IVariableContext.SetVariable(String, Variable)
+  fullName.vb: WolverineSoft.DialogueSystem.IVariableContext.SetVariable(String, WolverineSoft.DialogueSystem.Variable)
+  name.vb: SetVariable(String, Variable)
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.IVariableContext.SetVariable(System.String,WolverineSoft.DialogueSystem.Variable)
+    name: SetVariable
+    href: WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_SetVariable_System_String_WolverineSoft_DialogueSystem_Variable_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: WolverineSoft.DialogueSystem.Variable
+    name: Variable
+    href: WolverineSoft.DialogueSystem.Variable.html
+  - name: )
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.IVariableContext.SetVariable(System.String,WolverineSoft.DialogueSystem.Variable)
+    name: SetVariable
+    href: WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_SetVariable_System_String_WolverineSoft_DialogueSystem_Variable_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: WolverineSoft.DialogueSystem.Variable
+    name: Variable
+    href: WolverineSoft.DialogueSystem.Variable.html
+  - name: )
+- uid: WolverineSoft.DialogueSystem.DialogueManager.SetString*
+  commentId: Overload:WolverineSoft.DialogueSystem.DialogueManager.SetString
+  href: WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_SetString_System_String_System_String_
+  name: SetString
+  nameWithType: DialogueManager.SetString
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.SetString
+- uid: WolverineSoft.DialogueSystem.IVariableContext.SetString(System.String,System.String)
+  commentId: M:WolverineSoft.DialogueSystem.IVariableContext.SetString(System.String,System.String)
+  parent: WolverineSoft.DialogueSystem.IVariableContext
+  isExternal: true
+  href: WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_SetString_System_String_System_String_
+  name: SetString(string, string)
+  nameWithType: IVariableContext.SetString(string, string)
+  fullName: WolverineSoft.DialogueSystem.IVariableContext.SetString(string, string)
+  nameWithType.vb: IVariableContext.SetString(String, String)
+  fullName.vb: WolverineSoft.DialogueSystem.IVariableContext.SetString(String, String)
+  name.vb: SetString(String, String)
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.IVariableContext.SetString(System.String,System.String)
+    name: SetString
+    href: WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_SetString_System_String_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.IVariableContext.SetString(System.String,System.String)
+    name: SetString
+    href: WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_SetString_System_String_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: WolverineSoft.DialogueSystem.DialogueManager.SetFloat*
+  commentId: Overload:WolverineSoft.DialogueSystem.DialogueManager.SetFloat
+  href: WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_SetFloat_System_String_System_Single_
+  name: SetFloat
+  nameWithType: DialogueManager.SetFloat
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.SetFloat
+- uid: WolverineSoft.DialogueSystem.IVariableContext.SetFloat(System.String,System.Single)
+  commentId: M:WolverineSoft.DialogueSystem.IVariableContext.SetFloat(System.String,System.Single)
+  parent: WolverineSoft.DialogueSystem.IVariableContext
+  isExternal: true
+  href: WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_SetFloat_System_String_System_Single_
+  name: SetFloat(string, float)
+  nameWithType: IVariableContext.SetFloat(string, float)
+  fullName: WolverineSoft.DialogueSystem.IVariableContext.SetFloat(string, float)
+  nameWithType.vb: IVariableContext.SetFloat(String, Single)
+  fullName.vb: WolverineSoft.DialogueSystem.IVariableContext.SetFloat(String, Single)
+  name.vb: SetFloat(String, Single)
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.IVariableContext.SetFloat(System.String,System.Single)
+    name: SetFloat
+    href: WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_SetFloat_System_String_System_Single_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.IVariableContext.SetFloat(System.String,System.Single)
+    name: SetFloat
+    href: WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_SetFloat_System_String_System_Single_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: WolverineSoft.DialogueSystem.DialogueManager.SetInt*
+  commentId: Overload:WolverineSoft.DialogueSystem.DialogueManager.SetInt
+  href: WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_SetInt_System_String_System_Int32_
+  name: SetInt
+  nameWithType: DialogueManager.SetInt
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.SetInt
+- uid: WolverineSoft.DialogueSystem.IVariableContext.SetInt(System.String,System.Int32)
+  commentId: M:WolverineSoft.DialogueSystem.IVariableContext.SetInt(System.String,System.Int32)
+  parent: WolverineSoft.DialogueSystem.IVariableContext
+  isExternal: true
+  href: WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_SetInt_System_String_System_Int32_
+  name: SetInt(string, int)
+  nameWithType: IVariableContext.SetInt(string, int)
+  fullName: WolverineSoft.DialogueSystem.IVariableContext.SetInt(string, int)
+  nameWithType.vb: IVariableContext.SetInt(String, Integer)
+  fullName.vb: WolverineSoft.DialogueSystem.IVariableContext.SetInt(String, Integer)
+  name.vb: SetInt(String, Integer)
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.IVariableContext.SetInt(System.String,System.Int32)
+    name: SetInt
+    href: WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_SetInt_System_String_System_Int32_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.IVariableContext.SetInt(System.String,System.Int32)
+    name: SetInt
+    href: WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_SetInt_System_String_System_Int32_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: WolverineSoft.DialogueSystem.DialogueManager.SetBool*
+  commentId: Overload:WolverineSoft.DialogueSystem.DialogueManager.SetBool
+  href: WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_SetBool_System_String_System_Boolean_
+  name: SetBool
+  nameWithType: DialogueManager.SetBool
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.SetBool
+- uid: WolverineSoft.DialogueSystem.IVariableContext.SetBool(System.String,System.Boolean)
+  commentId: M:WolverineSoft.DialogueSystem.IVariableContext.SetBool(System.String,System.Boolean)
+  parent: WolverineSoft.DialogueSystem.IVariableContext
+  isExternal: true
+  href: WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_SetBool_System_String_System_Boolean_
+  name: SetBool(string, bool)
+  nameWithType: IVariableContext.SetBool(string, bool)
+  fullName: WolverineSoft.DialogueSystem.IVariableContext.SetBool(string, bool)
+  nameWithType.vb: IVariableContext.SetBool(String, Boolean)
+  fullName.vb: WolverineSoft.DialogueSystem.IVariableContext.SetBool(String, Boolean)
+  name.vb: SetBool(String, Boolean)
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.IVariableContext.SetBool(System.String,System.Boolean)
+    name: SetBool
+    href: WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_SetBool_System_String_System_Boolean_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.IVariableContext.SetBool(System.String,System.Boolean)
+    name: SetBool
+    href: WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_SetBool_System_String_System_Boolean_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: WolverineSoft.DialogueSystem.DialogueManager.GetString*
+  commentId: Overload:WolverineSoft.DialogueSystem.DialogueManager.GetString
+  href: WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_GetString_System_String_
+  name: GetString
+  nameWithType: DialogueManager.GetString
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.GetString
+- uid: WolverineSoft.DialogueSystem.IVariableContext.GetString(System.String)
+  commentId: M:WolverineSoft.DialogueSystem.IVariableContext.GetString(System.String)
+  parent: WolverineSoft.DialogueSystem.IVariableContext
+  isExternal: true
+  href: WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_GetString_System_String_
+  name: GetString(string)
+  nameWithType: IVariableContext.GetString(string)
+  fullName: WolverineSoft.DialogueSystem.IVariableContext.GetString(string)
+  nameWithType.vb: IVariableContext.GetString(String)
+  fullName.vb: WolverineSoft.DialogueSystem.IVariableContext.GetString(String)
+  name.vb: GetString(String)
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.IVariableContext.GetString(System.String)
+    name: GetString
+    href: WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_GetString_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.IVariableContext.GetString(System.String)
+    name: GetString
+    href: WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_GetString_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: WolverineSoft.DialogueSystem.DialogueManager.GetFloat*
+  commentId: Overload:WolverineSoft.DialogueSystem.DialogueManager.GetFloat
+  href: WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_GetFloat_System_String_
+  name: GetFloat
+  nameWithType: DialogueManager.GetFloat
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.GetFloat
+- uid: WolverineSoft.DialogueSystem.IVariableContext.GetFloat(System.String)
+  commentId: M:WolverineSoft.DialogueSystem.IVariableContext.GetFloat(System.String)
+  parent: WolverineSoft.DialogueSystem.IVariableContext
+  isExternal: true
+  href: WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_GetFloat_System_String_
+  name: GetFloat(string)
+  nameWithType: IVariableContext.GetFloat(string)
+  fullName: WolverineSoft.DialogueSystem.IVariableContext.GetFloat(string)
+  nameWithType.vb: IVariableContext.GetFloat(String)
+  fullName.vb: WolverineSoft.DialogueSystem.IVariableContext.GetFloat(String)
+  name.vb: GetFloat(String)
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.IVariableContext.GetFloat(System.String)
+    name: GetFloat
+    href: WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_GetFloat_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.IVariableContext.GetFloat(System.String)
+    name: GetFloat
+    href: WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_GetFloat_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: WolverineSoft.DialogueSystem.DialogueManager.GetInt*
+  commentId: Overload:WolverineSoft.DialogueSystem.DialogueManager.GetInt
+  href: WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_GetInt_System_String_
+  name: GetInt
+  nameWithType: DialogueManager.GetInt
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.GetInt
+- uid: WolverineSoft.DialogueSystem.IVariableContext.GetInt(System.String)
+  commentId: M:WolverineSoft.DialogueSystem.IVariableContext.GetInt(System.String)
+  parent: WolverineSoft.DialogueSystem.IVariableContext
+  isExternal: true
+  href: WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_GetInt_System_String_
+  name: GetInt(string)
+  nameWithType: IVariableContext.GetInt(string)
+  fullName: WolverineSoft.DialogueSystem.IVariableContext.GetInt(string)
+  nameWithType.vb: IVariableContext.GetInt(String)
+  fullName.vb: WolverineSoft.DialogueSystem.IVariableContext.GetInt(String)
+  name.vb: GetInt(String)
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.IVariableContext.GetInt(System.String)
+    name: GetInt
+    href: WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_GetInt_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.IVariableContext.GetInt(System.String)
+    name: GetInt
+    href: WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_GetInt_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: WolverineSoft.DialogueSystem.DialogueManager.GetBool*
+  commentId: Overload:WolverineSoft.DialogueSystem.DialogueManager.GetBool
+  href: WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_GetBool_System_String_
+  name: GetBool
+  nameWithType: DialogueManager.GetBool
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.GetBool
+- uid: WolverineSoft.DialogueSystem.IVariableContext.GetBool(System.String)
+  commentId: M:WolverineSoft.DialogueSystem.IVariableContext.GetBool(System.String)
+  parent: WolverineSoft.DialogueSystem.IVariableContext
+  isExternal: true
+  href: WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_GetBool_System_String_
+  name: GetBool(string)
+  nameWithType: IVariableContext.GetBool(string)
+  fullName: WolverineSoft.DialogueSystem.IVariableContext.GetBool(string)
+  nameWithType.vb: IVariableContext.GetBool(String)
+  fullName.vb: WolverineSoft.DialogueSystem.IVariableContext.GetBool(String)
+  name.vb: GetBool(String)
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.IVariableContext.GetBool(System.String)
+    name: GetBool
+    href: WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_GetBool_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.IVariableContext.GetBool(System.String)
+    name: GetBool
+    href: WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_GetBool_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )

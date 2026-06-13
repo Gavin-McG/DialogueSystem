@@ -1,0 +1,124 @@
+### YamlMime:ManagedReference
+items:
+- uid: WolverineSoft.DialogueSystem.Editor.IDataNode`1
+  commentId: T:WolverineSoft.DialogueSystem.Editor.IDataNode`1
+  id: IDataNode`1
+  parent: WolverineSoft.DialogueSystem.Editor
+  children:
+  - WolverineSoft.DialogueSystem.Editor.IDataNode`1.GetData
+  langs:
+  - csharp
+  - vb
+  name: IDataNode<T>
+  nameWithType: IDataNode<T>
+  fullName: WolverineSoft.DialogueSystem.Editor.IDataNode<T>
+  type: Interface
+  source:
+    remote:
+      path: Editor/IDataNode.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: IDataNode
+    path: ../Editor/IDataNode.cs
+    startLine: 7
+  namespace: WolverineSoft.DialogueSystem.Editor
+  summary: Interface for nodes that provide data from a port.
+  example: []
+  syntax:
+    content: public interface IDataNode<out T>
+    typeParameters:
+    - id: T
+      description: Type that the node will provide
+    content.vb: Public Interface IDataNode(Of Out T)
+  derivedClasses:
+  - WolverineSoft.DialogueSystem.Editor.ChoiceNode
+  - WolverineSoft.DialogueSystem.Editor.OptionContextNode
+  - WolverineSoft.DialogueSystem.Editor.OptionNode
+  - WolverineSoft.DialogueSystem.Editor.RandomRedirectNode
+  - WolverineSoft.DialogueSystem.Editor.RedirectNode
+  - WolverineSoft.DialogueSystem.Editor.SequentialRedirectNode
+  - WolverineSoft.DialogueSystem.Editor.SetVariableNode
+  - WolverineSoft.DialogueSystem.Editor.StartNode
+  - WolverineSoft.DialogueSystem.Editor.TextNode
+  nameWithType.vb: IDataNode(Of T)
+  fullName.vb: WolverineSoft.DialogueSystem.Editor.IDataNode(Of T)
+  name.vb: IDataNode(Of T)
+- uid: WolverineSoft.DialogueSystem.Editor.IDataNode`1.GetData
+  commentId: M:WolverineSoft.DialogueSystem.Editor.IDataNode`1.GetData
+  id: GetData
+  parent: WolverineSoft.DialogueSystem.Editor.IDataNode`1
+  langs:
+  - csharp
+  - vb
+  name: GetData()
+  nameWithType: IDataNode<T>.GetData()
+  fullName: WolverineSoft.DialogueSystem.Editor.IDataNode<T>.GetData()
+  type: Method
+  source:
+    remote:
+      path: Editor/IDataNode.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: GetData
+    path: ../Editor/IDataNode.cs
+    startLine: 12
+  namespace: WolverineSoft.DialogueSystem.Editor
+  summary: method that is used to retrieve the data that the node provides
+  example: []
+  syntax:
+    content: T GetData()
+    return:
+      type: '{T}'
+    content.vb: Function GetData() As T
+  overload: WolverineSoft.DialogueSystem.Editor.IDataNode`1.GetData*
+  nameWithType.vb: IDataNode(Of T).GetData()
+  fullName.vb: WolverineSoft.DialogueSystem.Editor.IDataNode(Of T).GetData()
+references:
+- uid: WolverineSoft.DialogueSystem.Editor
+  commentId: N:WolverineSoft.DialogueSystem.Editor
+  href: WolverineSoft.html
+  name: WolverineSoft.DialogueSystem.Editor
+  nameWithType: WolverineSoft.DialogueSystem.Editor
+  fullName: WolverineSoft.DialogueSystem.Editor
+  spec.csharp:
+  - uid: WolverineSoft
+    name: WolverineSoft
+    href: WolverineSoft.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem
+    name: DialogueSystem
+    href: WolverineSoft.DialogueSystem.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem.Editor
+    name: Editor
+    href: WolverineSoft.DialogueSystem.Editor.html
+  spec.vb:
+  - uid: WolverineSoft
+    name: WolverineSoft
+    href: WolverineSoft.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem
+    name: DialogueSystem
+    href: WolverineSoft.DialogueSystem.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem.Editor
+    name: Editor
+    href: WolverineSoft.DialogueSystem.Editor.html
+- uid: WolverineSoft.DialogueSystem.Editor.IDataNode`1.GetData*
+  commentId: Overload:WolverineSoft.DialogueSystem.Editor.IDataNode`1.GetData
+  href: WolverineSoft.DialogueSystem.Editor.IDataNode-1.html#WolverineSoft_DialogueSystem_Editor_IDataNode_1_GetData
+  name: GetData
+  nameWithType: IDataNode<T>.GetData
+  fullName: WolverineSoft.DialogueSystem.Editor.IDataNode<T>.GetData
+  nameWithType.vb: IDataNode(Of T).GetData
+  fullName.vb: WolverineSoft.DialogueSystem.Editor.IDataNode(Of T).GetData
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T

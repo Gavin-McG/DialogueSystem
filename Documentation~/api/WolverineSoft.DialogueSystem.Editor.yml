@@ -1,0 +1,326 @@
+### YamlMime:ManagedReference
+items:
+- uid: WolverineSoft.DialogueSystem.Editor
+  commentId: N:WolverineSoft.DialogueSystem.Editor
+  id: WolverineSoft.DialogueSystem.Editor
+  children:
+  - WolverineSoft.DialogueSystem.Editor.ChoiceNode
+  - WolverineSoft.DialogueSystem.Editor.ChoiceTextHolder
+  - WolverineSoft.DialogueSystem.Editor.DialogueGraph
+  - WolverineSoft.DialogueSystem.Editor.DialogueSOIconInitializer
+  - WolverineSoft.DialogueSystem.Editor.GenericValueHolder
+  - WolverineSoft.DialogueSystem.Editor.GenericValueHolderDrawer
+  - WolverineSoft.DialogueSystem.Editor.GenericValueHolder`1
+  - WolverineSoft.DialogueSystem.Editor.GenericValueHolder`2
+  - WolverineSoft.DialogueSystem.Editor.GenericValueHolder`3
+  - WolverineSoft.DialogueSystem.Editor.IDataNode`1
+  - WolverineSoft.DialogueSystem.Editor.IDialogueNode
+  - WolverineSoft.DialogueSystem.Editor.OptionContextNode
+  - WolverineSoft.DialogueSystem.Editor.OptionNode
+  - WolverineSoft.DialogueSystem.Editor.OptionTextHolder
+  - WolverineSoft.DialogueSystem.Editor.ParameterBaseDrawer
+  - WolverineSoft.DialogueSystem.Editor.RandomRedirectNode
+  - WolverineSoft.DialogueSystem.Editor.RedirectNode
+  - WolverineSoft.DialogueSystem.Editor.SequentialRedirectNode
+  - WolverineSoft.DialogueSystem.Editor.SetVariableNode
+  - WolverineSoft.DialogueSystem.Editor.StartNode
+  - WolverineSoft.DialogueSystem.Editor.TextHolder
+  - WolverineSoft.DialogueSystem.Editor.TextHolderAttribute
+  - WolverineSoft.DialogueSystem.Editor.TextHolderDrawer
+  - WolverineSoft.DialogueSystem.Editor.TextNode
+  - WolverineSoft.DialogueSystem.Editor.TextTextHolder
+  - WolverineSoft.DialogueSystem.Editor.VariableDrawer
+  langs:
+  - csharp
+  - vb
+  name: WolverineSoft.DialogueSystem.Editor
+  nameWithType: WolverineSoft.DialogueSystem.Editor
+  fullName: WolverineSoft.DialogueSystem.Editor
+  type: Namespace
+references:
+- uid: WolverineSoft.DialogueSystem.Editor.DialogueGraph
+  commentId: T:WolverineSoft.DialogueSystem.Editor.DialogueGraph
+  href: WolverineSoft.DialogueSystem.Editor.DialogueGraph.html
+  name: DialogueGraph
+  nameWithType: DialogueGraph
+  fullName: WolverineSoft.DialogueSystem.Editor.DialogueGraph
+- uid: WolverineSoft.DialogueSystem.Editor.DialogueSOIconInitializer
+  commentId: T:WolverineSoft.DialogueSystem.Editor.DialogueSOIconInitializer
+  href: WolverineSoft.DialogueSystem.Editor.DialogueSOIconInitializer.html
+  name: DialogueSOIconInitializer
+  nameWithType: DialogueSOIconInitializer
+  fullName: WolverineSoft.DialogueSystem.Editor.DialogueSOIconInitializer
+- uid: WolverineSoft.DialogueSystem.Editor.IDataNode`1
+  commentId: T:WolverineSoft.DialogueSystem.Editor.IDataNode`1
+  href: WolverineSoft.DialogueSystem.Editor.IDataNode-1.html
+  name: IDataNode<T>
+  nameWithType: IDataNode<T>
+  fullName: WolverineSoft.DialogueSystem.Editor.IDataNode<T>
+  nameWithType.vb: IDataNode(Of T)
+  fullName.vb: WolverineSoft.DialogueSystem.Editor.IDataNode(Of T)
+  name.vb: IDataNode(Of T)
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.Editor.IDataNode`1
+    name: IDataNode
+    href: WolverineSoft.DialogueSystem.Editor.IDataNode-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.Editor.IDataNode`1
+    name: IDataNode
+    href: WolverineSoft.DialogueSystem.Editor.IDataNode-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: WolverineSoft.DialogueSystem.Editor.IDialogueNode
+  commentId: T:WolverineSoft.DialogueSystem.Editor.IDialogueNode
+  parent: WolverineSoft.DialogueSystem.Editor
+  href: WolverineSoft.DialogueSystem.Editor.IDialogueNode.html
+  name: IDialogueNode
+  nameWithType: IDialogueNode
+  fullName: WolverineSoft.DialogueSystem.Editor.IDialogueNode
+- uid: WolverineSoft.DialogueSystem.Editor.ChoiceNode
+  commentId: T:WolverineSoft.DialogueSystem.Editor.ChoiceNode
+  href: WolverineSoft.DialogueSystem.Editor.ChoiceNode.html
+  name: ChoiceNode
+  nameWithType: ChoiceNode
+  fullName: WolverineSoft.DialogueSystem.Editor.ChoiceNode
+- uid: WolverineSoft.DialogueSystem.Editor.OptionContextNode
+  commentId: T:WolverineSoft.DialogueSystem.Editor.OptionContextNode
+  parent: WolverineSoft.DialogueSystem.Editor
+  href: WolverineSoft.DialogueSystem.Editor.OptionContextNode.html
+  name: OptionContextNode
+  nameWithType: OptionContextNode
+  fullName: WolverineSoft.DialogueSystem.Editor.OptionContextNode
+- uid: WolverineSoft.DialogueSystem.Editor.OptionNode
+  commentId: T:WolverineSoft.DialogueSystem.Editor.OptionNode
+  href: WolverineSoft.DialogueSystem.Editor.OptionNode.html
+  name: OptionNode
+  nameWithType: OptionNode
+  fullName: WolverineSoft.DialogueSystem.Editor.OptionNode
+- uid: WolverineSoft.DialogueSystem.Editor.RandomRedirectNode
+  commentId: T:WolverineSoft.DialogueSystem.Editor.RandomRedirectNode
+  href: WolverineSoft.DialogueSystem.Editor.RandomRedirectNode.html
+  name: RandomRedirectNode
+  nameWithType: RandomRedirectNode
+  fullName: WolverineSoft.DialogueSystem.Editor.RandomRedirectNode
+- uid: WolverineSoft.DialogueSystem.Editor.RedirectNode
+  commentId: T:WolverineSoft.DialogueSystem.Editor.RedirectNode
+  parent: WolverineSoft.DialogueSystem.Editor
+  href: WolverineSoft.DialogueSystem.Editor.RedirectNode.html
+  name: RedirectNode
+  nameWithType: RedirectNode
+  fullName: WolverineSoft.DialogueSystem.Editor.RedirectNode
+- uid: WolverineSoft.DialogueSystem.Editor.SequentialRedirectNode
+  commentId: T:WolverineSoft.DialogueSystem.Editor.SequentialRedirectNode
+  href: WolverineSoft.DialogueSystem.Editor.SequentialRedirectNode.html
+  name: SequentialRedirectNode
+  nameWithType: SequentialRedirectNode
+  fullName: WolverineSoft.DialogueSystem.Editor.SequentialRedirectNode
+- uid: WolverineSoft.DialogueSystem.Editor.SetVariableNode
+  commentId: T:WolverineSoft.DialogueSystem.Editor.SetVariableNode
+  href: WolverineSoft.DialogueSystem.Editor.SetVariableNode.html
+  name: SetVariableNode
+  nameWithType: SetVariableNode
+  fullName: WolverineSoft.DialogueSystem.Editor.SetVariableNode
+- uid: WolverineSoft.DialogueSystem.Editor.StartNode
+  commentId: T:WolverineSoft.DialogueSystem.Editor.StartNode
+  href: WolverineSoft.DialogueSystem.Editor.StartNode.html
+  name: StartNode
+  nameWithType: StartNode
+  fullName: WolverineSoft.DialogueSystem.Editor.StartNode
+- uid: WolverineSoft.DialogueSystem.Editor.TextNode
+  commentId: T:WolverineSoft.DialogueSystem.Editor.TextNode
+  href: WolverineSoft.DialogueSystem.Editor.TextNode.html
+  name: TextNode
+  nameWithType: TextNode
+  fullName: WolverineSoft.DialogueSystem.Editor.TextNode
+- uid: WolverineSoft.DialogueSystem.Editor.GenericValueHolder
+  commentId: T:WolverineSoft.DialogueSystem.Editor.GenericValueHolder
+  parent: WolverineSoft.DialogueSystem.Editor
+  href: WolverineSoft.DialogueSystem.Editor.GenericValueHolder.html
+  name: GenericValueHolder
+  nameWithType: GenericValueHolder
+  fullName: WolverineSoft.DialogueSystem.Editor.GenericValueHolder
+- uid: WolverineSoft.DialogueSystem.Editor.GenericValueHolder`1
+  commentId: T:WolverineSoft.DialogueSystem.Editor.GenericValueHolder`1
+  href: WolverineSoft.DialogueSystem.Editor.GenericValueHolder-1.html
+  name: GenericValueHolder<T1>
+  nameWithType: GenericValueHolder<T1>
+  fullName: WolverineSoft.DialogueSystem.Editor.GenericValueHolder<T1>
+  nameWithType.vb: GenericValueHolder(Of T1)
+  fullName.vb: WolverineSoft.DialogueSystem.Editor.GenericValueHolder(Of T1)
+  name.vb: GenericValueHolder(Of T1)
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.Editor.GenericValueHolder`1
+    name: GenericValueHolder
+    href: WolverineSoft.DialogueSystem.Editor.GenericValueHolder-1.html
+  - name: <
+  - name: T1
+  - name: '>'
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.Editor.GenericValueHolder`1
+    name: GenericValueHolder
+    href: WolverineSoft.DialogueSystem.Editor.GenericValueHolder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+- uid: WolverineSoft.DialogueSystem.Editor.GenericValueHolder`2
+  commentId: T:WolverineSoft.DialogueSystem.Editor.GenericValueHolder`2
+  href: WolverineSoft.DialogueSystem.Editor.GenericValueHolder-2.html
+  name: GenericValueHolder<T1, T2>
+  nameWithType: GenericValueHolder<T1, T2>
+  fullName: WolverineSoft.DialogueSystem.Editor.GenericValueHolder<T1, T2>
+  nameWithType.vb: GenericValueHolder(Of T1, T2)
+  fullName.vb: WolverineSoft.DialogueSystem.Editor.GenericValueHolder(Of T1, T2)
+  name.vb: GenericValueHolder(Of T1, T2)
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.Editor.GenericValueHolder`2
+    name: GenericValueHolder
+    href: WolverineSoft.DialogueSystem.Editor.GenericValueHolder-2.html
+  - name: <
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: '>'
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.Editor.GenericValueHolder`2
+    name: GenericValueHolder
+    href: WolverineSoft.DialogueSystem.Editor.GenericValueHolder-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: )
+- uid: WolverineSoft.DialogueSystem.Editor.GenericValueHolder`3
+  commentId: T:WolverineSoft.DialogueSystem.Editor.GenericValueHolder`3
+  href: WolverineSoft.DialogueSystem.Editor.GenericValueHolder-3.html
+  name: GenericValueHolder<T1, T2, T3>
+  nameWithType: GenericValueHolder<T1, T2, T3>
+  fullName: WolverineSoft.DialogueSystem.Editor.GenericValueHolder<T1, T2, T3>
+  nameWithType.vb: GenericValueHolder(Of T1, T2, T3)
+  fullName.vb: WolverineSoft.DialogueSystem.Editor.GenericValueHolder(Of T1, T2, T3)
+  name.vb: GenericValueHolder(Of T1, T2, T3)
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.Editor.GenericValueHolder`3
+    name: GenericValueHolder
+    href: WolverineSoft.DialogueSystem.Editor.GenericValueHolder-3.html
+  - name: <
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: '>'
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.Editor.GenericValueHolder`3
+    name: GenericValueHolder
+    href: WolverineSoft.DialogueSystem.Editor.GenericValueHolder-3.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: )
+- uid: WolverineSoft.DialogueSystem.Editor.GenericValueHolderDrawer
+  commentId: T:WolverineSoft.DialogueSystem.Editor.GenericValueHolderDrawer
+  href: WolverineSoft.DialogueSystem.Editor.GenericValueHolderDrawer.html
+  name: GenericValueHolderDrawer
+  nameWithType: GenericValueHolderDrawer
+  fullName: WolverineSoft.DialogueSystem.Editor.GenericValueHolderDrawer
+- uid: WolverineSoft.DialogueSystem.Editor.ParameterBaseDrawer
+  commentId: T:WolverineSoft.DialogueSystem.Editor.ParameterBaseDrawer
+  href: WolverineSoft.DialogueSystem.Editor.ParameterBaseDrawer.html
+  name: ParameterBaseDrawer
+  nameWithType: ParameterBaseDrawer
+  fullName: WolverineSoft.DialogueSystem.Editor.ParameterBaseDrawer
+- uid: WolverineSoft.DialogueSystem.Editor.TextHolder
+  commentId: T:WolverineSoft.DialogueSystem.Editor.TextHolder
+  parent: WolverineSoft.DialogueSystem.Editor
+  href: WolverineSoft.DialogueSystem.Editor.TextHolder.html
+  name: TextHolder
+  nameWithType: TextHolder
+  fullName: WolverineSoft.DialogueSystem.Editor.TextHolder
+- uid: WolverineSoft.DialogueSystem.Editor.TextTextHolder
+  commentId: T:WolverineSoft.DialogueSystem.Editor.TextTextHolder
+  href: WolverineSoft.DialogueSystem.Editor.TextTextHolder.html
+  name: TextTextHolder
+  nameWithType: TextTextHolder
+  fullName: WolverineSoft.DialogueSystem.Editor.TextTextHolder
+- uid: WolverineSoft.DialogueSystem.Editor.ChoiceTextHolder
+  commentId: T:WolverineSoft.DialogueSystem.Editor.ChoiceTextHolder
+  href: WolverineSoft.DialogueSystem.Editor.ChoiceTextHolder.html
+  name: ChoiceTextHolder
+  nameWithType: ChoiceTextHolder
+  fullName: WolverineSoft.DialogueSystem.Editor.ChoiceTextHolder
+- uid: WolverineSoft.DialogueSystem.Editor.OptionTextHolder
+  commentId: T:WolverineSoft.DialogueSystem.Editor.OptionTextHolder
+  href: WolverineSoft.DialogueSystem.Editor.OptionTextHolder.html
+  name: OptionTextHolder
+  nameWithType: OptionTextHolder
+  fullName: WolverineSoft.DialogueSystem.Editor.OptionTextHolder
+- uid: WolverineSoft.DialogueSystem.Editor.TextHolderAttribute
+  commentId: T:WolverineSoft.DialogueSystem.Editor.TextHolderAttribute
+  parent: WolverineSoft.DialogueSystem.Editor
+  href: WolverineSoft.DialogueSystem.Editor.TextHolderAttribute.html
+  name: TextHolderAttribute
+  nameWithType: TextHolderAttribute
+  fullName: WolverineSoft.DialogueSystem.Editor.TextHolderAttribute
+- uid: WolverineSoft.DialogueSystem.Editor.TextHolderDrawer
+  commentId: T:WolverineSoft.DialogueSystem.Editor.TextHolderDrawer
+  href: WolverineSoft.DialogueSystem.Editor.TextHolderDrawer.html
+  name: TextHolderDrawer
+  nameWithType: TextHolderDrawer
+  fullName: WolverineSoft.DialogueSystem.Editor.TextHolderDrawer
+- uid: WolverineSoft.DialogueSystem.Editor.VariableDrawer
+  commentId: T:WolverineSoft.DialogueSystem.Editor.VariableDrawer
+  href: WolverineSoft.DialogueSystem.Editor.VariableDrawer.html
+  name: VariableDrawer
+  nameWithType: VariableDrawer
+  fullName: WolverineSoft.DialogueSystem.Editor.VariableDrawer
+- uid: WolverineSoft.DialogueSystem.Editor
+  commentId: N:WolverineSoft.DialogueSystem.Editor
+  href: WolverineSoft.html
+  name: WolverineSoft.DialogueSystem.Editor
+  nameWithType: WolverineSoft.DialogueSystem.Editor
+  fullName: WolverineSoft.DialogueSystem.Editor
+  spec.csharp:
+  - uid: WolverineSoft
+    name: WolverineSoft
+    href: WolverineSoft.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem
+    name: DialogueSystem
+    href: WolverineSoft.DialogueSystem.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem.Editor
+    name: Editor
+    href: WolverineSoft.DialogueSystem.Editor.html
+  spec.vb:
+  - uid: WolverineSoft
+    name: WolverineSoft
+    href: WolverineSoft.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem
+    name: DialogueSystem
+    href: WolverineSoft.DialogueSystem.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem.Editor
+    name: Editor
+    href: WolverineSoft.DialogueSystem.Editor.html

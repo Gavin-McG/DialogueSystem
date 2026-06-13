@@ -1,0 +1,124 @@
+### YamlMime:ManagedReference
+items:
+- uid: WolverineSoft.DialogueSystem.Editor.VariableDrawer
+  commentId: T:WolverineSoft.DialogueSystem.Editor.VariableDrawer
+  id: VariableDrawer
+  parent: WolverineSoft.DialogueSystem.Editor
+  children:
+  - WolverineSoft.DialogueSystem.Editor.VariableDrawer.CreatePropertyGUI(SerializedProperty)
+  langs:
+  - csharp
+  - vb
+  name: VariableDrawer
+  nameWithType: VariableDrawer
+  fullName: WolverineSoft.DialogueSystem.Editor.VariableDrawer
+  type: Class
+  source:
+    remote:
+      path: Editor/PropertyDrawers/VariableDrawer.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: VariableDrawer
+    path: ../Editor/PropertyDrawers/VariableDrawer.cs
+    startLine: 9
+  namespace: WolverineSoft.DialogueSystem.Editor
+  syntax:
+    content: 'public class VariableDrawer : PropertyDrawer'
+    content.vb: Public Class VariableDrawer Inherits PropertyDrawer
+  inheritance:
+  - System.Object
+- uid: WolverineSoft.DialogueSystem.Editor.VariableDrawer.CreatePropertyGUI(SerializedProperty)
+  commentId: M:WolverineSoft.DialogueSystem.Editor.VariableDrawer.CreatePropertyGUI(SerializedProperty)
+  id: CreatePropertyGUI(SerializedProperty)
+  parent: WolverineSoft.DialogueSystem.Editor.VariableDrawer
+  langs:
+  - csharp
+  - vb
+  name: CreatePropertyGUI(SerializedProperty)
+  nameWithType: VariableDrawer.CreatePropertyGUI(SerializedProperty)
+  fullName: WolverineSoft.DialogueSystem.Editor.VariableDrawer.CreatePropertyGUI(SerializedProperty)
+  type: Method
+  source:
+    remote:
+      path: Editor/PropertyDrawers/VariableDrawer.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: CreatePropertyGUI
+    path: ../Editor/PropertyDrawers/VariableDrawer.cs
+    startLine: 12
+  namespace: WolverineSoft.DialogueSystem.Editor
+  example: []
+  syntax:
+    content: public override VisualElement CreatePropertyGUI(SerializedProperty property)
+    parameters:
+    - id: property
+      type: SerializedProperty
+    return:
+      type: VisualElement
+    content.vb: Public Overrides Function CreatePropertyGUI([property] As SerializedProperty) As VisualElement
+  overload: WolverineSoft.DialogueSystem.Editor.VariableDrawer.CreatePropertyGUI*
+references:
+- uid: WolverineSoft.DialogueSystem.Editor
+  commentId: N:WolverineSoft.DialogueSystem.Editor
+  href: WolverineSoft.html
+  name: WolverineSoft.DialogueSystem.Editor
+  nameWithType: WolverineSoft.DialogueSystem.Editor
+  fullName: WolverineSoft.DialogueSystem.Editor
+  spec.csharp:
+  - uid: WolverineSoft
+    name: WolverineSoft
+    href: WolverineSoft.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem
+    name: DialogueSystem
+    href: WolverineSoft.DialogueSystem.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem.Editor
+    name: Editor
+    href: WolverineSoft.DialogueSystem.Editor.html
+  spec.vb:
+  - uid: WolverineSoft
+    name: WolverineSoft
+    href: WolverineSoft.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem
+    name: DialogueSystem
+    href: WolverineSoft.DialogueSystem.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem.Editor
+    name: Editor
+    href: WolverineSoft.DialogueSystem.Editor.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: WolverineSoft.DialogueSystem.Editor.VariableDrawer.CreatePropertyGUI*
+  commentId: Overload:WolverineSoft.DialogueSystem.Editor.VariableDrawer.CreatePropertyGUI
+  href: WolverineSoft.DialogueSystem.Editor.VariableDrawer.html#WolverineSoft_DialogueSystem_Editor_VariableDrawer_CreatePropertyGUI_SerializedProperty_
+  name: CreatePropertyGUI
+  nameWithType: VariableDrawer.CreatePropertyGUI
+  fullName: WolverineSoft.DialogueSystem.Editor.VariableDrawer.CreatePropertyGUI
+- uid: SerializedProperty
+  isExternal: true
+  name: SerializedProperty
+  nameWithType: SerializedProperty
+  fullName: SerializedProperty
+- uid: VisualElement
+  isExternal: true
+  name: VisualElement
+  nameWithType: VisualElement
+  fullName: VisualElement
