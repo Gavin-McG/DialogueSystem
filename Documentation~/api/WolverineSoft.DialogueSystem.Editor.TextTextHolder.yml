@@ -18,7 +18,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: TextTextHolder
-    path: ../Editor/PropertyDrawers/TextHolder.cs
+    path: Editor/PropertyDrawers/TextHolder.cs
     startLine: 11
   namespace: WolverineSoft.DialogueSystem.Editor
   syntax:

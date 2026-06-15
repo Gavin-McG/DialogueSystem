@@ -23,7 +23,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: StartNode
-    path: ../Editor/Nodes/StartNode.cs
+    path: Editor/Nodes/StartNode.cs
     startLine: 6
   namespace: WolverineSoft.DialogueSystem.Editor
   syntax:
@@ -61,7 +61,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: OnDefineOptions
-    path: ../Editor/Nodes/StartNode.cs
+    path: Editor/Nodes/StartNode.cs
     startLine: 15
   namespace: WolverineSoft.DialogueSystem.Editor
   example: []
@@ -89,7 +89,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: OnDefinePorts
-    path: ../Editor/Nodes/StartNode.cs
+    path: Editor/Nodes/StartNode.cs
     startLine: 25
   namespace: WolverineSoft.DialogueSystem.Editor
   example: []
@@ -117,7 +117,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: CreateDialogueObject
-    path: ../Editor/Nodes/StartNode.cs
+    path: Editor/Nodes/StartNode.cs
     startLine: 35
   namespace: WolverineSoft.DialogueSystem.Editor
   summary: Method that creates and returns the node's ScriptableObject
@@ -147,7 +147,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: AssignObjectReferences
-    path: ../Editor/Nodes/StartNode.cs
+    path: Editor/Nodes/StartNode.cs
     startLine: 42
   namespace: WolverineSoft.DialogueSystem.Editor
   summary: Method that is used to assign ScriptableObject references
@@ -175,7 +175,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: GetData
-    path: ../Editor/Nodes/StartNode.cs
+    path: Editor/Nodes/StartNode.cs
     startLine: 55
   namespace: WolverineSoft.DialogueSystem.Editor
   summary: method that is used to retrieve the data that the node provides

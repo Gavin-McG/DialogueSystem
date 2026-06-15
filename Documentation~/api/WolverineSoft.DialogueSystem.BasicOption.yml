@@ -19,7 +19,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: BasicOption
-    path: ../RunTime/Options/BasicOption.cs
+    path: RunTime/Options/BasicOption.cs
     startLine: 4
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -77,7 +77,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: EvaluateCondition
-    path: ../RunTime/Options/BasicOption.cs
+    path: RunTime/Options/BasicOption.cs
     startLine: 7
   namespace: WolverineSoft.DialogueSystem
   summary: Returns true if the condition is passed and the option should be considered by its respective Redirect

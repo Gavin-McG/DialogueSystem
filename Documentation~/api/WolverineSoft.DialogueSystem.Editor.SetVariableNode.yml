@@ -24,7 +24,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: SetVariableNode
-    path: ../Editor/Nodes/SetVariableNode.cs
+    path: Editor/Nodes/SetVariableNode.cs
     startLine: 10
   namespace: WolverineSoft.DialogueSystem.Editor
   summary: Generic Base Class for Non-choice dialogue.
@@ -64,7 +64,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: OnDefineOptions
-    path: ../Editor/Nodes/SetVariableNode.cs
+    path: Editor/Nodes/SetVariableNode.cs
     startLine: 19
   namespace: WolverineSoft.DialogueSystem.Editor
   example: []
@@ -92,7 +92,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: OnDefinePorts
-    path: ../Editor/Nodes/SetVariableNode.cs
+    path: Editor/Nodes/SetVariableNode.cs
     startLine: 25
   namespace: WolverineSoft.DialogueSystem.Editor
   example: []
@@ -120,7 +120,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: CreateDialogueObject
-    path: ../Editor/Nodes/SetVariableNode.cs
+    path: Editor/Nodes/SetVariableNode.cs
     startLine: 35
   namespace: WolverineSoft.DialogueSystem.Editor
   summary: Method that creates and returns the node's ScriptableObject
@@ -150,7 +150,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: AssignObjectReferences
-    path: ../Editor/Nodes/SetVariableNode.cs
+    path: Editor/Nodes/SetVariableNode.cs
     startLine: 42
   namespace: WolverineSoft.DialogueSystem.Editor
   summary: Method that is used to assign ScriptableObject references
@@ -178,7 +178,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: GetData
-    path: ../Editor/Nodes/SetVariableNode.cs
+    path: Editor/Nodes/SetVariableNode.cs
     startLine: 52
   namespace: WolverineSoft.DialogueSystem.Editor
   summary: method that is used to retrieve the data that the node provides
@@ -208,7 +208,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: CheckErrors
-    path: ../Editor/Nodes/SetVariableNode.cs
+    path: Editor/Nodes/SetVariableNode.cs
     startLine: 57
   namespace: WolverineSoft.DialogueSystem.Editor
   example: []

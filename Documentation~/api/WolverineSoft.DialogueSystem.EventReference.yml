@@ -21,7 +21,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: EventReference
-    path: ../RunTime/Events/EventReference.cs
+    path: RunTime/Events/EventReference.cs
     startLine: 8
   namespace: WolverineSoft.DialogueSystem
   summary: Base class for <xref href="WolverineSoft.DialogueSystem.EventCaller" data-throw-if-not-resolved="false"></xref> and <xref href="WolverineSoft.DialogueSystem.EventCaller%601" data-throw-if-not-resolved="false"></xref>
@@ -69,7 +69,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: dialogueEvent
-    path: ../RunTime/Events/EventReference.cs
+    path: RunTime/Events/EventReference.cs
     startLine: 11
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -94,7 +94,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: Invoke
-    path: ../RunTime/Events/EventReference.cs
+    path: RunTime/Events/EventReference.cs
     startLine: 13
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -118,7 +118,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: Invoke
-    path: ../RunTime/Events/EventReference.cs
+    path: RunTime/Events/EventReference.cs
     startLine: 15
   namespace: WolverineSoft.DialogueSystem
   syntax:

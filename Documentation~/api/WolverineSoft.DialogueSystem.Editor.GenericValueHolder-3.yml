@@ -21,7 +21,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: GenericValueHolder
-    path: ../Editor/PropertyDrawers/GenericValueHolder.cs
+    path: Editor/PropertyDrawers/GenericValueHolder.cs
     startLine: 21
   namespace: WolverineSoft.DialogueSystem.Editor
   syntax:
@@ -72,7 +72,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: value1
-    path: ../Editor/PropertyDrawers/GenericValueHolder.cs
+    path: Editor/PropertyDrawers/GenericValueHolder.cs
     startLine: 24
   namespace: WolverineSoft.DialogueSystem.Editor
   syntax:
@@ -99,7 +99,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: value2
-    path: ../Editor/PropertyDrawers/GenericValueHolder.cs
+    path: Editor/PropertyDrawers/GenericValueHolder.cs
     startLine: 25
   namespace: WolverineSoft.DialogueSystem.Editor
   syntax:
@@ -126,7 +126,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: value3
-    path: ../Editor/PropertyDrawers/GenericValueHolder.cs
+    path: Editor/PropertyDrawers/GenericValueHolder.cs
     startLine: 26
   namespace: WolverineSoft.DialogueSystem.Editor
   syntax:

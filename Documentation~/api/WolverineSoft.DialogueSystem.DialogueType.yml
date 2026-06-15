@@ -21,7 +21,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: DialogueType
-    path: ../RunTime/DialogueInfo.cs
+    path: RunTime/DialogueInfo.cs
     startLine: 11
   namespace: WolverineSoft.DialogueSystem
   summary: enum to designate the type of Dialogue
@@ -46,7 +46,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: Basic
-    path: ../RunTime/DialogueInfo.cs
+    path: RunTime/DialogueInfo.cs
     startLine: 11
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -70,7 +70,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: Choice
-    path: ../RunTime/DialogueInfo.cs
+    path: RunTime/DialogueInfo.cs
     startLine: 11
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -94,7 +94,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: Stall
-    path: ../RunTime/DialogueInfo.cs
+    path: RunTime/DialogueInfo.cs
     startLine: 11
   namespace: WolverineSoft.DialogueSystem
   syntax:

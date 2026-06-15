@@ -19,7 +19,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: GenericValueHolder
-    path: ../Editor/PropertyDrawers/GenericValueHolder.cs
+    path: Editor/PropertyDrawers/GenericValueHolder.cs
     startLine: 8
   namespace: WolverineSoft.DialogueSystem.Editor
   syntax:
@@ -68,7 +68,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: value1
-    path: ../Editor/PropertyDrawers/GenericValueHolder.cs
+    path: Editor/PropertyDrawers/GenericValueHolder.cs
     startLine: 11
   namespace: WolverineSoft.DialogueSystem.Editor
   syntax:

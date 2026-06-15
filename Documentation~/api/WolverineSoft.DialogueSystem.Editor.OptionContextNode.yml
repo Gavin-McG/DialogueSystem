@@ -24,7 +24,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: OptionContextNode
-    path: ../Editor/Nodes/OptionContextNode.cs
+    path: Editor/Nodes/OptionContextNode.cs
     startLine: 5
   namespace: WolverineSoft.DialogueSystem.Editor
   syntax:
@@ -55,7 +55,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: UseText
-    path: ../Editor/Nodes/OptionContextNode.cs
+    path: Editor/Nodes/OptionContextNode.cs
     startLine: 7
   namespace: WolverineSoft.DialogueSystem.Editor
   syntax:
@@ -82,7 +82,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: UseWeight
-    path: ../Editor/Nodes/OptionContextNode.cs
+    path: Editor/Nodes/OptionContextNode.cs
     startLine: 8
   namespace: WolverineSoft.DialogueSystem.Editor
   syntax:
@@ -109,7 +109,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: UseResponseParameters
-    path: ../Editor/Nodes/OptionContextNode.cs
+    path: Editor/Nodes/OptionContextNode.cs
     startLine: 9
   namespace: WolverineSoft.DialogueSystem.Editor
   syntax:
@@ -136,7 +136,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: CreateDialogueObject
-    path: ../Editor/Nodes/OptionContextNode.cs
+    path: Editor/Nodes/OptionContextNode.cs
     startLine: 11
   namespace: WolverineSoft.DialogueSystem.Editor
   summary: Method that creates and returns the node's ScriptableObject
@@ -166,7 +166,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: AssignObjectReferences
-    path: ../Editor/Nodes/OptionContextNode.cs
+    path: Editor/Nodes/OptionContextNode.cs
     startLine: 12
   namespace: WolverineSoft.DialogueSystem.Editor
   summary: Method that is used to assign ScriptableObject references
@@ -194,7 +194,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: GetData
-    path: ../Editor/Nodes/OptionContextNode.cs
+    path: Editor/Nodes/OptionContextNode.cs
     startLine: 13
   namespace: WolverineSoft.DialogueSystem.Editor
   summary: method that is used to retrieve the data that the node provides

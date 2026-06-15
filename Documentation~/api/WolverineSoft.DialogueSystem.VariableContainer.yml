@@ -31,7 +31,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: VariableContainer
-    path: ../RunTime/Variables/VariableContainer.cs
+    path: RunTime/Variables/VariableContainer.cs
     startLine: 6
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -76,7 +76,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: IsReadOnly
-    path: ../RunTime/Variables/VariableContainer.cs
+    path: RunTime/Variables/VariableContainer.cs
     startLine: 12
   namespace: WolverineSoft.DialogueSystem
   example: []
@@ -106,7 +106,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: .ctor
-    path: ../RunTime/Variables/VariableContainer.cs
+    path: RunTime/Variables/VariableContainer.cs
     startLine: 18
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -138,7 +138,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: .ctor
-    path: ../RunTime/Variables/VariableContainer.cs
+    path: RunTime/Variables/VariableContainer.cs
     startLine: 35
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -168,7 +168,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: TryGetVariable
-    path: ../RunTime/Variables/VariableContainer.cs
+    path: RunTime/Variables/VariableContainer.cs
     startLine: 45
   namespace: WolverineSoft.DialogueSystem
   example: []
@@ -205,7 +205,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: SetVariable
-    path: ../RunTime/Variables/VariableContainer.cs
+    path: RunTime/Variables/VariableContainer.cs
     startLine: 48
   namespace: WolverineSoft.DialogueSystem
   example: []
@@ -240,7 +240,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: SetString
-    path: ../RunTime/Variables/VariableContainer.cs
+    path: RunTime/Variables/VariableContainer.cs
     startLine: 68
   namespace: WolverineSoft.DialogueSystem
   example: []
@@ -275,7 +275,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: SetInt
-    path: ../RunTime/Variables/VariableContainer.cs
+    path: RunTime/Variables/VariableContainer.cs
     startLine: 74
   namespace: WolverineSoft.DialogueSystem
   example: []
@@ -310,7 +310,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: SetFloat
-    path: ../RunTime/Variables/VariableContainer.cs
+    path: RunTime/Variables/VariableContainer.cs
     startLine: 80
   namespace: WolverineSoft.DialogueSystem
   example: []
@@ -345,7 +345,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: SetBool
-    path: ../RunTime/Variables/VariableContainer.cs
+    path: RunTime/Variables/VariableContainer.cs
     startLine: 86
   namespace: WolverineSoft.DialogueSystem
   example: []
@@ -380,7 +380,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: GetString
-    path: ../RunTime/Variables/VariableContainer.cs
+    path: RunTime/Variables/VariableContainer.cs
     startLine: 96
   namespace: WolverineSoft.DialogueSystem
   example: []
@@ -415,7 +415,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: GetInt
-    path: ../RunTime/Variables/VariableContainer.cs
+    path: RunTime/Variables/VariableContainer.cs
     startLine: 113
   namespace: WolverineSoft.DialogueSystem
   example: []
@@ -450,7 +450,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: GetFloat
-    path: ../RunTime/Variables/VariableContainer.cs
+    path: RunTime/Variables/VariableContainer.cs
     startLine: 130
   namespace: WolverineSoft.DialogueSystem
   example: []
@@ -485,7 +485,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: GetBool
-    path: ../RunTime/Variables/VariableContainer.cs
+    path: RunTime/Variables/VariableContainer.cs
     startLine: 147
   namespace: WolverineSoft.DialogueSystem
   example: []

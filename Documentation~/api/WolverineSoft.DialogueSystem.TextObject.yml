@@ -23,7 +23,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: TextObject
-    path: ../RunTime/Objects/TextObject.cs
+    path: RunTime/Objects/TextObject.cs
     startLine: 7
   namespace: WolverineSoft.DialogueSystem
   summary: ScriptableObject representing a regular dialogue
@@ -55,7 +55,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: nextDialogue
-    path: ../RunTime/Objects/TextObject.cs
+    path: RunTime/Objects/TextObject.cs
     startLine: 9
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -80,7 +80,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: text
-    path: ../RunTime/Objects/TextObject.cs
+    path: RunTime/Objects/TextObject.cs
     startLine: 10
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -105,7 +105,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: textParams
-    path: ../RunTime/Objects/TextObject.cs
+    path: RunTime/Objects/TextObject.cs
     startLine: 11
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -130,7 +130,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: GetNextDialogue
-    path: ../RunTime/Objects/TextObject.cs
+    path: RunTime/Objects/TextObject.cs
     startLine: 13
   namespace: WolverineSoft.DialogueSystem
   example: []
@@ -163,7 +163,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: GetDialogueDetails
-    path: ../RunTime/Objects/TextObject.cs
+    path: RunTime/Objects/TextObject.cs
     startLine: 18
   namespace: WolverineSoft.DialogueSystem
   example: []

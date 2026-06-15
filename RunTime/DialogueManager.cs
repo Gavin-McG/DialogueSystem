@@ -160,16 +160,10 @@ namespace WolverineSoft.DialogueSystem
         //-----------------------------------------------
 
         public bool IsReadOnly => false;
-
-        public bool TryGetVariable(string name, out Variable variable) =>
-             variables.TryGetVariable(name, out variable) || 
-             (_currentDialogue?.TryGetVariable(name, out variable) ?? true);
-        
-        public void SetVariable(string name, Variable variable) => 
-            variables.SetVariable(name, variable);
         
         //----Set Methods----
 
+        public void SetVariable(string name, Variable variable) => variables.SetVariable(name, variable);
         public void SetString(string name, string value) => variables.SetString(name, value);
         public void SetFloat(string name, float value) => variables.SetFloat(name, value);
         public void SetInt(string name, int value) => variables.SetInt(name, value);
@@ -177,47 +171,10 @@ namespace WolverineSoft.DialogueSystem
         
         //----Get Methods----
 
-        public string GetString(string name)
-        {
-            if (variables.TryGetVariable(name, out Variable variable))
-                return variable.GetString();
-            if (_currentDialogue?.TryGetVariable(name, out variable) ?? false)
-                return variable.GetString();
-            
-            Debug.LogWarning($"No Variable found with name {name}");
-            return null;
-        }
-        
-        public float GetFloat(string name) {
-            if (variables.TryGetVariable(name, out Variable variable))
-                return variable.GetFloat();
-            if (_currentDialogue?.TryGetVariable(name, out variable) ?? false)
-                return variable.GetFloat();
-            
-            Debug.LogWarning($"No Variable found with name {name}");
-            return 0f;
-        }
-        
-        public int GetInt(string name)
-        {
-            if (variables.TryGetVariable(name, out Variable variable))
-                return variable.GetInt();
-            if (_currentDialogue?.TryGetVariable(name, out variable) ?? false)
-                return variable.GetInt();
-            
-            Debug.LogWarning($"No Variable found with name {name}");
-            return 0;
-        }
-        
-        public bool GetBool(string name)
-        {
-            if (variables.TryGetVariable(name, out Variable variable)) 
-                return variable.GetBool();
-            if (_currentDialogue?.TryGetVariable(name, out variable) ?? false) 
-                return variable.GetBool();
-            
-            Debug.LogWarning($"No Variable found with name {name}");
-            return false;
-        }
+        public bool TryGetVariable(string name, out Variable variable) => variables.TryGetVariable(name, out variable) || (_currentDialogue?.TryGetVariable(name, out variable) ?? false);
+        public bool TryGetString(string name, out string value) => variables.TryGetString(name, out value) || (_currentDialogue?.TryGetString(name, out value) ?? false);
+        public bool TryGetFloat(string name, out float value) => variables.TryGetFloat(name, out value) || (_currentDialogue?.TryGetFloat(name, out value) ?? false);
+        public bool TryGetInt(string name, out int value) => variables.TryGetInt(name, out value) || (_currentDialogue?.TryGetInt(name, out value) ?? false);
+        public bool TryGetBool(string name, out bool value) => variables.TryGetBool(name, out value) || (_currentDialogue?.TryGetBool(name, out value) ?? false);
     }
 }

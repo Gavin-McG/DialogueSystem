@@ -21,7 +21,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: DialogueGraph
-    path: ../Editor/DialogueGraph.cs
+    path: Editor/DialogueGraph.cs
     startLine: 13
   namespace: WolverineSoft.DialogueSystem.Editor
   summary: >-
@@ -61,7 +61,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: AssetExtension
-    path: ../Editor/DialogueGraph.cs
+    path: Editor/DialogueGraph.cs
     startLine: 17
   namespace: WolverineSoft.DialogueSystem.Editor
   syntax:
@@ -86,7 +86,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: OnGraphChanged
-    path: ../Editor/DialogueGraph.cs
+    path: Editor/DialogueGraph.cs
     startLine: 25
   namespace: WolverineSoft.DialogueSystem.Editor
   example: []
@@ -114,7 +114,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: VariableList
-    path: ../Editor/DialogueGraph.cs
+    path: Editor/DialogueGraph.cs
     startLine: 34
   namespace: WolverineSoft.DialogueSystem.Editor
   syntax:

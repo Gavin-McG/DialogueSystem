@@ -20,7 +20,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: RedirectObject
-    path: ../RunTime/Objects/RedirectObject.cs
+    path: RunTime/Objects/RedirectObject.cs
     startLine: 5
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -52,7 +52,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: defaultDialogue
-    path: ../RunTime/Objects/RedirectObject.cs
+    path: RunTime/Objects/RedirectObject.cs
     startLine: 7
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -77,7 +77,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: options
-    path: ../RunTime/Objects/RedirectObject.cs
+    path: RunTime/Objects/RedirectObject.cs
     startLine: 8
   namespace: WolverineSoft.DialogueSystem
   syntax:

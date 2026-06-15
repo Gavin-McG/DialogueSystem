@@ -22,7 +22,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: VariableType
-    path: ../RunTime/Variables/VariableType.cs
+    path: RunTime/Variables/VariableType.cs
     startLine: 2
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -45,7 +45,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: String
-    path: ../RunTime/Variables/VariableType.cs
+    path: RunTime/Variables/VariableType.cs
     startLine: 2
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -69,7 +69,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: Float
-    path: ../RunTime/Variables/VariableType.cs
+    path: RunTime/Variables/VariableType.cs
     startLine: 2
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -93,7 +93,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: Int
-    path: ../RunTime/Variables/VariableType.cs
+    path: RunTime/Variables/VariableType.cs
     startLine: 2
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -117,7 +117,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: Bool
-    path: ../RunTime/Variables/VariableType.cs
+    path: RunTime/Variables/VariableType.cs
     startLine: 2
   namespace: WolverineSoft.DialogueSystem
   syntax:

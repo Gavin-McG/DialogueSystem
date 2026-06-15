@@ -29,7 +29,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: IVariableContext
-    path: ../RunTime/Variables/IVariableContext.cs
+    path: RunTime/Variables/IVariableContext.cs
     startLine: 2
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -56,7 +56,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: IsReadOnly
-    path: ../RunTime/Variables/IVariableContext.cs
+    path: RunTime/Variables/IVariableContext.cs
     startLine: 4
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -83,7 +83,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: TryGetVariable
-    path: ../RunTime/Variables/IVariableContext.cs
+    path: RunTime/Variables/IVariableContext.cs
     startLine: 6
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -117,7 +117,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: SetVariable
-    path: ../RunTime/Variables/IVariableContext.cs
+    path: RunTime/Variables/IVariableContext.cs
     startLine: 7
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -149,7 +149,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: SetString
-    path: ../RunTime/Variables/IVariableContext.cs
+    path: RunTime/Variables/IVariableContext.cs
     startLine: 10
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -181,7 +181,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: SetFloat
-    path: ../RunTime/Variables/IVariableContext.cs
+    path: RunTime/Variables/IVariableContext.cs
     startLine: 11
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -213,7 +213,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: SetInt
-    path: ../RunTime/Variables/IVariableContext.cs
+    path: RunTime/Variables/IVariableContext.cs
     startLine: 12
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -245,7 +245,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: SetBool
-    path: ../RunTime/Variables/IVariableContext.cs
+    path: RunTime/Variables/IVariableContext.cs
     startLine: 13
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -277,7 +277,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: GetString
-    path: ../RunTime/Variables/IVariableContext.cs
+    path: RunTime/Variables/IVariableContext.cs
     startLine: 16
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -309,7 +309,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: GetFloat
-    path: ../RunTime/Variables/IVariableContext.cs
+    path: RunTime/Variables/IVariableContext.cs
     startLine: 17
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -341,7 +341,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: GetInt
-    path: ../RunTime/Variables/IVariableContext.cs
+    path: RunTime/Variables/IVariableContext.cs
     startLine: 18
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -373,7 +373,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: GetBool
-    path: ../RunTime/Variables/IVariableContext.cs
+    path: RunTime/Variables/IVariableContext.cs
     startLine: 19
   namespace: WolverineSoft.DialogueSystem
   syntax:

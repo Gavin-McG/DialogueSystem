@@ -20,7 +20,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: ICustomNodeStyle
-    path: ../RunTime/ICustomNodeStyle.cs
+    path: RunTime/ICustomNodeStyle.cs
     startLine: 5
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -52,7 +52,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: BackgroundColor
-    path: ../RunTime/ICustomNodeStyle.cs
+    path: RunTime/ICustomNodeStyle.cs
     startLine: 7
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -79,7 +79,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: BorderColor
-    path: ../RunTime/ICustomNodeStyle.cs
+    path: RunTime/ICustomNodeStyle.cs
     startLine: 8
   namespace: WolverineSoft.DialogueSystem
   syntax:

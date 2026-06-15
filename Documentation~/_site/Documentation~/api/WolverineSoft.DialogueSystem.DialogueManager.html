@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class DialogueManager | DialogueSystem </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class DialogueManager | DialogueSystem ">
+      
+      <meta name="description" content="Primary Component for operating the Backend of the Dialogue System. Primary functions are  and .  Is only to be used when ending an interaction prematurely. Also provides interfaces for values and keywords">
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Gavin-McG/DialogueSystem/new/docfx/apiSpec/new?filename=WolverineSoft_DialogueSystem_DialogueManager.md&amp;value=---%0Auid%3A%20WolverineSoft.DialogueSystem.DialogueManager%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo.svg" alt="DialogueSystem">
+            DialogueSystem
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="WolverineSoft.DialogueSystem.DialogueManager">
+
+
+
+  <h1 id="WolverineSoft_DialogueSystem_DialogueManager" data-uid="WolverineSoft.DialogueSystem.DialogueManager" class="text-break">
+Class DialogueManager  <a class="header-action link-secondary" title="View source" href="https://github.com/Gavin-McG/DialogueSystem/blob/docfx/RunTime/DialogueManager.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="WolverineSoft.html">WolverineSoft</a>.<a class="xref" href="WolverineSoft.DialogueSystem.html">DialogueSystem</a></dd></dl>
+  
+  </div>
+
+  <div class="markdown summary"><p>Primary Component for operating the Backend of the Dialogue System.
+Primary functions are <a class="xref" href="WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_BeginDialogue_WolverineSoft_DialogueSystem_DialogueAsset_System_String_">BeginDialogue(DialogueAsset, string)</a> and <a class="xref" href="WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_AdvanceDialogue_WolverineSoft_DialogueSystem_AdvanceContext_">AdvanceDialogue(AdvanceContext)</a>.
+<a class="xref" href="WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_EndDialogue">EndDialogue()</a> Is only to be used when ending an interaction prematurely.
+Also provides interfaces for values and keywords</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class DialogueManager : MonoBehaviour, IVariableContext</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">DialogueManager</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="WolverineSoft.DialogueSystem.IVariableContext.html">IVariableContext</a></div>
+    </dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="WolverineSoft_DialogueSystem_DialogueManager_AdvancedDialogue" data-uid="WolverineSoft.DialogueSystem.DialogueManager.AdvancedDialogue">
+  AdvancedDialogue
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gavin-McG/DialogueSystem/blob/docfx/RunTime/DialogueManager.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly UnityEvent&lt;AdvanceContext&gt; AdvancedDialogue</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">UnityEvent</span>&lt;<a class="xref" href="WolverineSoft.DialogueSystem.AdvanceContext.html">AdvanceContext</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="WolverineSoft_DialogueSystem_DialogueManager_EndedDialogue" data-uid="WolverineSoft.DialogueSystem.DialogueManager.EndedDialogue">
+  EndedDialogue
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gavin-McG/DialogueSystem/blob/docfx/RunTime/DialogueManager.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly UnityEvent EndedDialogue</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">UnityEvent</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="WolverineSoft_DialogueSystem_DialogueManager_StartedDialogue" data-uid="WolverineSoft.DialogueSystem.DialogueManager.StartedDialogue">
+  StartedDialogue
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gavin-McG/DialogueSystem/blob/docfx/RunTime/DialogueManager.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly UnityEvent StartedDialogue</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">UnityEvent</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="WolverineSoft_DialogueSystem_DialogueManager_optionIndexes" data-uid="WolverineSoft.DialogueSystem.DialogueManager.optionIndexes">
+  optionIndexes
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gavin-McG/DialogueSystem/blob/docfx/RunTime/DialogueManager.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;int&gt; optionIndexes</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="WolverineSoft_DialogueSystem_DialogueManager_IsReadOnly_" data-uid="WolverineSoft.DialogueSystem.DialogueManager.IsReadOnly*"></a>
+
+  <h3 id="WolverineSoft_DialogueSystem_DialogueManager_IsReadOnly" data-uid="WolverineSoft.DialogueSystem.DialogueManager.IsReadOnly">
+  IsReadOnly
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gavin-McG/DialogueSystem/blob/docfx/RunTime/DialogueManager.cs/#L162"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsReadOnly { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="WolverineSoft_DialogueSystem_DialogueManager_AdvanceDialogue_" data-uid="WolverineSoft.DialogueSystem.DialogueManager.AdvanceDialogue*"></a>
+
+  <h3 id="WolverineSoft_DialogueSystem_DialogueManager_AdvanceDialogue" data-uid="WolverineSoft.DialogueSystem.DialogueManager.AdvanceDialogue">
+  AdvanceDialogue()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gavin-McG/DialogueSystem/blob/docfx/RunTime/DialogueManager.cs/#L103"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieve the next dialogue with strict types using default context.
+Primarily used to get the first dialogue.
+Returns null if end of dialogue is reached.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DialogueInfo AdvanceDialogue()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="WolverineSoft.DialogueSystem.DialogueInfo.html">DialogueInfo</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="WolverineSoft_DialogueSystem_DialogueManager_AdvanceDialogue_" data-uid="WolverineSoft.DialogueSystem.DialogueManager.AdvanceDialogue*"></a>
+
+  <h3 id="WolverineSoft_DialogueSystem_DialogueManager_AdvanceDialogue_WolverineSoft_DialogueSystem_AdvanceContext_" data-uid="WolverineSoft.DialogueSystem.DialogueManager.AdvanceDialogue(WolverineSoft.DialogueSystem.AdvanceContext)">
+  AdvanceDialogue(AdvanceContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gavin-McG/DialogueSystem/blob/docfx/RunTime/DialogueManager.cs/#L70"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieve the next dialogue using context about the user's interaction.
+Returns null if end of dialogue is reached.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DialogueInfo AdvanceDialogue(AdvanceContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="WolverineSoft.DialogueSystem.AdvanceContext.html">AdvanceContext</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="WolverineSoft.DialogueSystem.DialogueInfo.html">DialogueInfo</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="WolverineSoft_DialogueSystem_DialogueManager_BeginDialogue_" data-uid="WolverineSoft.DialogueSystem.DialogueManager.BeginDialogue*"></a>
+
+  <h3 id="WolverineSoft_DialogueSystem_DialogueManager_BeginDialogue_WolverineSoft_DialogueSystem_DialogueAsset_System_String_" data-uid="WolverineSoft.DialogueSystem.DialogueManager.BeginDialogue(WolverineSoft.DialogueSystem.DialogueAsset,System.String)">
+  BeginDialogue(DialogueAsset, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gavin-McG/DialogueSystem/blob/docfx/RunTime/DialogueManager.cs/#L52"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Begin a dialogue using the DialogueAsset to be started</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void BeginDialogue(DialogueAsset dialogueAsset, string startName = &quot;&quot;)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>dialogueAsset</code> <a class="xref" href="WolverineSoft.DialogueSystem.DialogueAsset.html">DialogueAsset</a></dt>
+    <dd></dd>
+    <dt><code>startName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="WolverineSoft_DialogueSystem_DialogueManager_EndDialogue_" data-uid="WolverineSoft.DialogueSystem.DialogueManager.EndDialogue*"></a>
+
+  <h3 id="WolverineSoft_DialogueSystem_DialogueManager_EndDialogue" data-uid="WolverineSoft.DialogueSystem.DialogueManager.EndDialogue">
+  EndDialogue()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gavin-McG/DialogueSystem/blob/docfx/RunTime/DialogueManager.cs/#L144"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Prematurely end dialogue</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void EndDialogue()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="WolverineSoft_DialogueSystem_DialogueManager_GetBool_" data-uid="WolverineSoft.DialogueSystem.DialogueManager.GetBool*"></a>
+
+  <h3 id="WolverineSoft_DialogueSystem_DialogueManager_GetBool_System_String_" data-uid="WolverineSoft.DialogueSystem.DialogueManager.GetBool(System.String)">
+  GetBool(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gavin-McG/DialogueSystem/blob/docfx/RunTime/DialogueManager.cs/#L212"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool GetBool(string name)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="WolverineSoft_DialogueSystem_DialogueManager_GetDialogueParamsType_" data-uid="WolverineSoft.DialogueSystem.DialogueManager.GetDialogueParamsType*"></a>
+
+  <h3 id="WolverineSoft_DialogueSystem_DialogueManager_GetDialogueParamsType" data-uid="WolverineSoft.DialogueSystem.DialogueManager.GetDialogueParamsType">
+  GetDialogueParamsType()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gavin-McG/DialogueSystem/blob/docfx/RunTime/DialogueManager.cs/#L47"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets type of current Dialogue Settings</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Type GetDialogueParamsType()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="WolverineSoft_DialogueSystem_DialogueManager_GetDialogueParams_" data-uid="WolverineSoft.DialogueSystem.DialogueManager.GetDialogueParams*"></a>
+
+  <h3 id="WolverineSoft_DialogueSystem_DialogueManager_GetDialogueParams__1" data-uid="WolverineSoft.DialogueSystem.DialogueManager.GetDialogueParams``1">
+  GetDialogueParams&lt;T&gt;()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gavin-McG/DialogueSystem/blob/docfx/RunTime/DialogueManager.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the Dialogue Settings for the current dialogue</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public T GetDialogueParams&lt;T&gt;() where T : DialogueParameters</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">T</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="WolverineSoft_DialogueSystem_DialogueManager_GetFloat_" data-uid="WolverineSoft.DialogueSystem.DialogueManager.GetFloat*"></a>
+
+  <h3 id="WolverineSoft_DialogueSystem_DialogueManager_GetFloat_System_String_" data-uid="WolverineSoft.DialogueSystem.DialogueManager.GetFloat(System.String)">
+  GetFloat(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gavin-McG/DialogueSystem/blob/docfx/RunTime/DialogueManager.cs/#L191"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float GetFloat(string name)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="WolverineSoft_DialogueSystem_DialogueManager_GetInt_" data-uid="WolverineSoft.DialogueSystem.DialogueManager.GetInt*"></a>
+
+  <h3 id="WolverineSoft_DialogueSystem_DialogueManager_GetInt_System_String_" data-uid="WolverineSoft.DialogueSystem.DialogueManager.GetInt(System.String)">
+  GetInt(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gavin-McG/DialogueSystem/blob/docfx/RunTime/DialogueManager.cs/#L201"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetInt(string name)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="WolverineSoft_DialogueSystem_DialogueManager_GetString_" data-uid="WolverineSoft.DialogueSystem.DialogueManager.GetString*"></a>
+
+  <h3 id="WolverineSoft_DialogueSystem_DialogueManager_GetString_System_String_" data-uid="WolverineSoft.DialogueSystem.DialogueManager.GetString(System.String)">
+  GetString(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gavin-McG/DialogueSystem/blob/docfx/RunTime/DialogueManager.cs/#L180"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetString(string name)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="WolverineSoft_DialogueSystem_DialogueManager_RefreshDialogue_" data-uid="WolverineSoft.DialogueSystem.DialogueManager.RefreshDialogue*"></a>
+
+  <h3 id="WolverineSoft_DialogueSystem_DialogueManager_RefreshDialogue" data-uid="WolverineSoft.DialogueSystem.DialogueManager.RefreshDialogue">
+  RefreshDialogue()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gavin-McG/DialogueSystem/blob/docfx/RunTime/DialogueManager.cs/#L136"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieve the information about the current dialogue again.
+Used if you want to account for changes in conditional choice options</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DialogueInfo RefreshDialogue()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="WolverineSoft.DialogueSystem.DialogueInfo.html">DialogueInfo</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="WolverineSoft_DialogueSystem_DialogueManager_RefreshDialogue_" data-uid="WolverineSoft.DialogueSystem.DialogueManager.RefreshDialogue*"></a>
+
+  <h3 id="WolverineSoft_DialogueSystem_DialogueManager_RefreshDialogue_WolverineSoft_DialogueSystem_AdvanceContext_" data-uid="WolverineSoft.DialogueSystem.DialogueManager.RefreshDialogue(WolverineSoft.DialogueSystem.AdvanceContext)">
+  RefreshDialogue(AdvanceContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gavin-McG/DialogueSystem/blob/docfx/RunTime/DialogueManager.cs/#L110"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieve the information about the current dialogue again.
+Used if you want to account for changes in conditional choice options</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DialogueInfo RefreshDialogue(AdvanceContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="WolverineSoft.DialogueSystem.AdvanceContext.html">AdvanceContext</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="WolverineSoft.DialogueSystem.DialogueInfo.html">DialogueInfo</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="WolverineSoft_DialogueSystem_DialogueManager_SetBool_" data-uid="WolverineSoft.DialogueSystem.DialogueManager.SetBool*"></a>
+
+  <h3 id="WolverineSoft_DialogueSystem_DialogueManager_SetBool_System_String_System_Boolean_" data-uid="WolverineSoft.DialogueSystem.DialogueManager.SetBool(System.String,System.Boolean)">
+  SetBool(string, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gavin-McG/DialogueSystem/blob/docfx/RunTime/DialogueManager.cs/#L176"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetBool(string name, bool value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="WolverineSoft_DialogueSystem_DialogueManager_SetFloat_" data-uid="WolverineSoft.DialogueSystem.DialogueManager.SetFloat*"></a>
+
+  <h3 id="WolverineSoft_DialogueSystem_DialogueManager_SetFloat_System_String_System_Single_" data-uid="WolverineSoft.DialogueSystem.DialogueManager.SetFloat(System.String,System.Single)">
+  SetFloat(string, float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gavin-McG/DialogueSystem/blob/docfx/RunTime/DialogueManager.cs/#L174"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetFloat(string name, float value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="WolverineSoft_DialogueSystem_DialogueManager_SetInt_" data-uid="WolverineSoft.DialogueSystem.DialogueManager.SetInt*"></a>
+
+  <h3 id="WolverineSoft_DialogueSystem_DialogueManager_SetInt_System_String_System_Int32_" data-uid="WolverineSoft.DialogueSystem.DialogueManager.SetInt(System.String,System.Int32)">
+  SetInt(string, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gavin-McG/DialogueSystem/blob/docfx/RunTime/DialogueManager.cs/#L175"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetInt(string name, int value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="WolverineSoft_DialogueSystem_DialogueManager_SetString_" data-uid="WolverineSoft.DialogueSystem.DialogueManager.SetString*"></a>
+
+  <h3 id="WolverineSoft_DialogueSystem_DialogueManager_SetString_System_String_System_String_" data-uid="WolverineSoft.DialogueSystem.DialogueManager.SetString(System.String,System.String)">
+  SetString(string, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gavin-McG/DialogueSystem/blob/docfx/RunTime/DialogueManager.cs/#L173"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetString(string name, string value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="WolverineSoft_DialogueSystem_DialogueManager_SetVariable_" data-uid="WolverineSoft.DialogueSystem.DialogueManager.SetVariable*"></a>
+
+  <h3 id="WolverineSoft_DialogueSystem_DialogueManager_SetVariable_System_String_WolverineSoft_DialogueSystem_Variable_" data-uid="WolverineSoft.DialogueSystem.DialogueManager.SetVariable(System.String,WolverineSoft.DialogueSystem.Variable)">
+  SetVariable(string, Variable)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gavin-McG/DialogueSystem/blob/docfx/RunTime/DialogueManager.cs/#L168"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetVariable(string name, Variable variable)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>variable</code> <a class="xref" href="WolverineSoft.DialogueSystem.Variable.html">Variable</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="WolverineSoft_DialogueSystem_DialogueManager_TryGetVariable_" data-uid="WolverineSoft.DialogueSystem.DialogueManager.TryGetVariable*"></a>
+
+  <h3 id="WolverineSoft_DialogueSystem_DialogueManager_TryGetVariable_System_String_WolverineSoft_DialogueSystem_Variable__" data-uid="WolverineSoft.DialogueSystem.DialogueManager.TryGetVariable(System.String,WolverineSoft.DialogueSystem.Variable@)">
+  TryGetVariable(string, out Variable)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Gavin-McG/DialogueSystem/blob/docfx/RunTime/DialogueManager.cs/#L164"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryGetVariable(string name, out Variable variable)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>variable</code> <a class="xref" href="WolverineSoft.DialogueSystem.Variable.html">Variable</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Gavin-McG/DialogueSystem/blob/docfx/RunTime/DialogueManager.cs/#L16" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

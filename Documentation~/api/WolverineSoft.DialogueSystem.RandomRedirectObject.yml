@@ -19,7 +19,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: RandomRedirectObject
-    path: ../RunTime/Objects/RandomRedirectObject.cs
+    path: RunTime/Objects/RandomRedirectObject.cs
     startLine: 6
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -50,7 +50,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: GetNextDialogue
-    path: ../RunTime/Objects/RandomRedirectObject.cs
+    path: RunTime/Objects/RandomRedirectObject.cs
     startLine: 8
   namespace: WolverineSoft.DialogueSystem
   example: []

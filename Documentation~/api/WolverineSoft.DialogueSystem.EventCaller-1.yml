@@ -21,7 +21,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: EventCaller
-    path: ../RunTime/Events/EventCaller.cs
+    path: RunTime/Events/EventCaller.cs
     startLine: 26
   namespace: WolverineSoft.DialogueSystem
   summary: class Holding information for a call to a non-types DSEvent
@@ -73,7 +73,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: value
-    path: ../RunTime/Events/EventCaller.cs
+    path: RunTime/Events/EventCaller.cs
     startLine: 29
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -100,7 +100,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: Invoke
-    path: ../RunTime/Events/EventCaller.cs
+    path: RunTime/Events/EventCaller.cs
     startLine: 33
   namespace: WolverineSoft.DialogueSystem
   example: []
@@ -128,7 +128,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: Invoke
-    path: ../RunTime/Events/EventCaller.cs
+    path: RunTime/Events/EventCaller.cs
     startLine: 38
   namespace: WolverineSoft.DialogueSystem
   example: []

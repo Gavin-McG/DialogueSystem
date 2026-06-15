@@ -19,7 +19,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: ParameterBaseDrawer
-    path: ../Editor/PropertyDrawers/ParameterBaseDrawer.cs
+    path: Editor/PropertyDrawers/ParameterBaseDrawer.cs
     startLine: 7
   namespace: WolverineSoft.DialogueSystem.Editor
   syntax:
@@ -44,7 +44,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: CreatePropertyGUI
-    path: ../Editor/PropertyDrawers/ParameterBaseDrawer.cs
+    path: Editor/PropertyDrawers/ParameterBaseDrawer.cs
     startLine: 10
   namespace: WolverineSoft.DialogueSystem.Editor
   example: []

@@ -25,7 +25,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: ChoiceObject
-    path: ../RunTime/Objects/ChoiceObject.cs
+    path: RunTime/Objects/ChoiceObject.cs
     startLine: 9
   namespace: WolverineSoft.DialogueSystem
   summary: Scriptable Object representing a Choice Dialogue
@@ -57,7 +57,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: defaultDialogue
-    path: ../RunTime/Objects/ChoiceObject.cs
+    path: RunTime/Objects/ChoiceObject.cs
     startLine: 11
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -82,7 +82,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: text
-    path: ../RunTime/Objects/ChoiceObject.cs
+    path: RunTime/Objects/ChoiceObject.cs
     startLine: 12
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -107,7 +107,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: textParams
-    path: ../RunTime/Objects/ChoiceObject.cs
+    path: RunTime/Objects/ChoiceObject.cs
     startLine: 13
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -132,7 +132,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: choiceParams
-    path: ../RunTime/Objects/ChoiceObject.cs
+    path: RunTime/Objects/ChoiceObject.cs
     startLine: 14
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -157,7 +157,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: options
-    path: ../RunTime/Objects/ChoiceObject.cs
+    path: RunTime/Objects/ChoiceObject.cs
     startLine: 15
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -182,7 +182,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: GetNextDialogue
-    path: ../RunTime/Objects/ChoiceObject.cs
+    path: RunTime/Objects/ChoiceObject.cs
     startLine: 17
   namespace: WolverineSoft.DialogueSystem
   example: []
@@ -215,7 +215,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: GetDialogueDetails
-    path: ../RunTime/Objects/ChoiceObject.cs
+    path: RunTime/Objects/ChoiceObject.cs
     startLine: 29
   namespace: WolverineSoft.DialogueSystem
   example: []

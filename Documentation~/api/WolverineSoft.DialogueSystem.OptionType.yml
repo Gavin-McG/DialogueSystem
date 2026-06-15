@@ -22,7 +22,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: OptionType
-    path: ../RunTime/Params/OptionType.cs
+    path: RunTime/Params/OptionType.cs
     startLine: 9
   namespace: WolverineSoft.DialogueSystem
   summary: Base class for Conditional and Choice options. Provides the method used for each to evaluate their conditions
@@ -83,7 +83,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: BackgroundColor
-    path: ../RunTime/Params/OptionType.cs
+    path: RunTime/Params/OptionType.cs
     startLine: 12
   namespace: WolverineSoft.DialogueSystem
   example: []
@@ -113,7 +113,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: BorderColor
-    path: ../RunTime/Params/OptionType.cs
+    path: RunTime/Params/OptionType.cs
     startLine: 13
   namespace: WolverineSoft.DialogueSystem
   example: []
@@ -143,7 +143,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: EvaluateCondition
-    path: ../RunTime/Params/OptionType.cs
+    path: RunTime/Params/OptionType.cs
     startLine: 18
   namespace: WolverineSoft.DialogueSystem
   summary: Returns true if the condition is passed and the option should be considered by its respective Redirect
@@ -176,7 +176,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: CheckVariables
-    path: ../RunTime/Params/OptionType.cs
+    path: RunTime/Params/OptionType.cs
     startLine: 20
   namespace: WolverineSoft.DialogueSystem
   syntax:

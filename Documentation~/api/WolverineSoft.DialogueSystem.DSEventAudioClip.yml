@@ -18,7 +18,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: DSEventAudioClip
-    path: ../RunTime/Events/DSEventAudioClip.cs
+    path: RunTime/Events/DSEventAudioClip.cs
     startLine: 4
   namespace: WolverineSoft.DialogueSystem
   syntax:

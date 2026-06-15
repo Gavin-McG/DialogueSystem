@@ -19,7 +19,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: IDialogueOutput
-    path: ../RunTime/IDialogueOutput.cs
+    path: RunTime/IDialogueOutput.cs
     startLine: 7
   namespace: WolverineSoft.DialogueSystem
   summary: >-
@@ -51,7 +51,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: GetDialogueDetails
-    path: ../RunTime/IDialogueOutput.cs
+    path: RunTime/IDialogueOutput.cs
     startLine: 9
   namespace: WolverineSoft.DialogueSystem
   syntax:

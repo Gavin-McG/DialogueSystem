@@ -26,7 +26,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: ChoiceNode
-    path: ../Editor/Nodes/ChoiceNode.cs
+    path: Editor/Nodes/ChoiceNode.cs
     startLine: 10
   namespace: WolverineSoft.DialogueSystem.Editor
   summary: Generic Base Class for Choice Dialogue Nodes.
@@ -67,7 +67,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: UseText
-    path: ../Editor/Nodes/ChoiceNode.cs
+    path: Editor/Nodes/ChoiceNode.cs
     startLine: 19
   namespace: WolverineSoft.DialogueSystem.Editor
   example: []
@@ -96,7 +96,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: UseWeight
-    path: ../Editor/Nodes/ChoiceNode.cs
+    path: Editor/Nodes/ChoiceNode.cs
     startLine: 20
   namespace: WolverineSoft.DialogueSystem.Editor
   example: []
@@ -125,7 +125,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: UseResponseParameters
-    path: ../Editor/Nodes/ChoiceNode.cs
+    path: Editor/Nodes/ChoiceNode.cs
     startLine: 21
   namespace: WolverineSoft.DialogueSystem.Editor
   example: []
@@ -154,7 +154,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: OnDefineOptions
-    path: ../Editor/Nodes/ChoiceNode.cs
+    path: Editor/Nodes/ChoiceNode.cs
     startLine: 23
   namespace: WolverineSoft.DialogueSystem.Editor
   example: []
@@ -182,7 +182,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: OnDefinePorts
-    path: ../Editor/Nodes/ChoiceNode.cs
+    path: Editor/Nodes/ChoiceNode.cs
     startLine: 29
   namespace: WolverineSoft.DialogueSystem.Editor
   example: []
@@ -210,7 +210,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: CreateDialogueObject
-    path: ../Editor/Nodes/ChoiceNode.cs
+    path: Editor/Nodes/ChoiceNode.cs
     startLine: 39
   namespace: WolverineSoft.DialogueSystem.Editor
   summary: Method that creates and returns the node's ScriptableObject
@@ -239,7 +239,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: AssignObjectReferences
-    path: ../Editor/Nodes/ChoiceNode.cs
+    path: Editor/Nodes/ChoiceNode.cs
     startLine: 46
   namespace: WolverineSoft.DialogueSystem.Editor
   summary: Method that is used to assign ScriptableObject references
@@ -266,7 +266,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: GetData
-    path: ../Editor/Nodes/ChoiceNode.cs
+    path: Editor/Nodes/ChoiceNode.cs
     startLine: 68
   namespace: WolverineSoft.DialogueSystem.Editor
   summary: method that is used to retrieve the data that the node provides

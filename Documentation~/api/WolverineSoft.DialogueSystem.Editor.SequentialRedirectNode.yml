@@ -20,7 +20,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: SequentialRedirectNode
-    path: ../Editor/Nodes/SequentialRedirectNode.cs
+    path: Editor/Nodes/SequentialRedirectNode.cs
     startLine: 6
   namespace: WolverineSoft.DialogueSystem.Editor
   syntax:
@@ -67,7 +67,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: UseWeight
-    path: ../Editor/Nodes/SequentialRedirectNode.cs
+    path: Editor/Nodes/SequentialRedirectNode.cs
     startLine: 10
   namespace: WolverineSoft.DialogueSystem.Editor
   example: []
@@ -96,7 +96,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: CreateDialogueObject
-    path: ../Editor/Nodes/SequentialRedirectNode.cs
+    path: Editor/Nodes/SequentialRedirectNode.cs
     startLine: 12
   namespace: WolverineSoft.DialogueSystem.Editor
   summary: Method that creates and returns the node's ScriptableObject

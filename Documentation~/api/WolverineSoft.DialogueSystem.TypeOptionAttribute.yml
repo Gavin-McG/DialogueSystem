@@ -21,7 +21,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: TypeOptionAttribute
-    path: ../RunTime/Attributes/TypeOptionAttribute.cs
+    path: RunTime/Attributes/TypeOptionAttribute.cs
     startLine: 4
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -106,7 +106,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: displayName
-    path: ../RunTime/Attributes/TypeOptionAttribute.cs
+    path: RunTime/Attributes/TypeOptionAttribute.cs
     startLine: 7
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -131,7 +131,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: order
-    path: ../RunTime/Attributes/TypeOptionAttribute.cs
+    path: RunTime/Attributes/TypeOptionAttribute.cs
     startLine: 8
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -156,7 +156,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: .ctor
-    path: ../RunTime/Attributes/TypeOptionAttribute.cs
+    path: RunTime/Attributes/TypeOptionAttribute.cs
     startLine: 10
   namespace: WolverineSoft.DialogueSystem
   syntax:

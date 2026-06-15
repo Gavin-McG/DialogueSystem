@@ -1,0 +1,4 @@
+- name: User Guide
+  href: Documentation~/user-guide/DialogueManager.md
+- name: Programming API
+  href: Documentation~/api/WolverineSoft.DialogueSystem.DialogueManager.html

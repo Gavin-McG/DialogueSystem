@@ -20,7 +20,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: ChoiceParameters
-    path: ../RunTime/Params/ChoiceParameters.cs
+    path: RunTime/Params/ChoiceParameters.cs
     startLine: 8
   namespace: WolverineSoft.DialogueSystem
   summary: Base class representing the parameters used by Choice Dialogue
@@ -77,7 +77,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: BackgroundColor
-    path: ../RunTime/Params/ChoiceParameters.cs
+    path: RunTime/Params/ChoiceParameters.cs
     startLine: 11
   namespace: WolverineSoft.DialogueSystem
   example: []
@@ -107,7 +107,7 @@ items:
       branch: docfx
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: BorderColor
-    path: ../RunTime/Params/ChoiceParameters.cs
+    path: RunTime/Params/ChoiceParameters.cs
     startLine: 12
   namespace: WolverineSoft.DialogueSystem
   example: []
