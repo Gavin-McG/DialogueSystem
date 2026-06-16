@@ -16,10 +16,10 @@ items:
   source:
     remote:
       path: Editor/PropertyDrawers/TextHolder.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: TextHolder
-    path: Editor/PropertyDrawers/TextHolder.cs
+    path: ../Editor/PropertyDrawers/TextHolder.cs
     startLine: 5
   namespace: WolverineSoft.DialogueSystem.Editor
   syntax:
@@ -63,10 +63,10 @@ items:
   source:
     remote:
       path: Editor/PropertyDrawers/TextHolder.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: text
-    path: Editor/PropertyDrawers/TextHolder.cs
+    path: ../Editor/PropertyDrawers/TextHolder.cs
     startLine: 8
   namespace: WolverineSoft.DialogueSystem.Editor
   syntax:

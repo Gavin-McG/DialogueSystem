@@ -16,10 +16,10 @@ items:
   source:
     remote:
       path: Editor/PropertyDrawers/GenericValueHolder.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: GenericValueHolder
-    path: Editor/PropertyDrawers/GenericValueHolder.cs
+    path: ../Editor/PropertyDrawers/GenericValueHolder.cs
     startLine: 8
   namespace: WolverineSoft.DialogueSystem.Editor
   syntax:
@@ -65,10 +65,10 @@ items:
   source:
     remote:
       path: Editor/PropertyDrawers/GenericValueHolder.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: value1
-    path: Editor/PropertyDrawers/GenericValueHolder.cs
+    path: ../Editor/PropertyDrawers/GenericValueHolder.cs
     startLine: 11
   namespace: WolverineSoft.DialogueSystem.Editor
   syntax:

@@ -5,16 +5,16 @@ items:
   id: IVariableContext
   parent: WolverineSoft.DialogueSystem
   children:
-  - WolverineSoft.DialogueSystem.IVariableContext.GetBool(System.String)
-  - WolverineSoft.DialogueSystem.IVariableContext.GetFloat(System.String)
-  - WolverineSoft.DialogueSystem.IVariableContext.GetInt(System.String)
-  - WolverineSoft.DialogueSystem.IVariableContext.GetString(System.String)
   - WolverineSoft.DialogueSystem.IVariableContext.IsReadOnly
   - WolverineSoft.DialogueSystem.IVariableContext.SetBool(System.String,System.Boolean)
   - WolverineSoft.DialogueSystem.IVariableContext.SetFloat(System.String,System.Single)
   - WolverineSoft.DialogueSystem.IVariableContext.SetInt(System.String,System.Int32)
   - WolverineSoft.DialogueSystem.IVariableContext.SetString(System.String,System.String)
   - WolverineSoft.DialogueSystem.IVariableContext.SetVariable(System.String,WolverineSoft.DialogueSystem.Variable)
+  - WolverineSoft.DialogueSystem.IVariableContext.TryGetBool(System.String,System.Boolean@)
+  - WolverineSoft.DialogueSystem.IVariableContext.TryGetFloat(System.String,System.Single@)
+  - WolverineSoft.DialogueSystem.IVariableContext.TryGetInt(System.String,System.Int32@)
+  - WolverineSoft.DialogueSystem.IVariableContext.TryGetString(System.String,System.String@)
   - WolverineSoft.DialogueSystem.IVariableContext.TryGetVariable(System.String,WolverineSoft.DialogueSystem.Variable@)
   langs:
   - csharp
@@ -26,10 +26,10 @@ items:
   source:
     remote:
       path: RunTime/Variables/IVariableContext.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: IVariableContext
-    path: RunTime/Variables/IVariableContext.cs
+    path: ../RunTime/Variables/IVariableContext.cs
     startLine: 2
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -53,10 +53,10 @@ items:
   source:
     remote:
       path: RunTime/Variables/IVariableContext.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: IsReadOnly
-    path: RunTime/Variables/IVariableContext.cs
+    path: ../RunTime/Variables/IVariableContext.cs
     startLine: 4
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -80,10 +80,10 @@ items:
   source:
     remote:
       path: RunTime/Variables/IVariableContext.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: TryGetVariable
-    path: RunTime/Variables/IVariableContext.cs
+    path: ../RunTime/Variables/IVariableContext.cs
     startLine: 6
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -114,10 +114,10 @@ items:
   source:
     remote:
       path: RunTime/Variables/IVariableContext.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: SetVariable
-    path: RunTime/Variables/IVariableContext.cs
+    path: ../RunTime/Variables/IVariableContext.cs
     startLine: 7
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -146,10 +146,10 @@ items:
   source:
     remote:
       path: RunTime/Variables/IVariableContext.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: SetString
-    path: RunTime/Variables/IVariableContext.cs
+    path: ../RunTime/Variables/IVariableContext.cs
     startLine: 10
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -178,10 +178,10 @@ items:
   source:
     remote:
       path: RunTime/Variables/IVariableContext.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: SetFloat
-    path: RunTime/Variables/IVariableContext.cs
+    path: ../RunTime/Variables/IVariableContext.cs
     startLine: 11
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -210,10 +210,10 @@ items:
   source:
     remote:
       path: RunTime/Variables/IVariableContext.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: SetInt
-    path: RunTime/Variables/IVariableContext.cs
+    path: ../RunTime/Variables/IVariableContext.cs
     startLine: 12
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -242,10 +242,10 @@ items:
   source:
     remote:
       path: RunTime/Variables/IVariableContext.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: SetBool
-    path: RunTime/Variables/IVariableContext.cs
+    path: ../RunTime/Variables/IVariableContext.cs
     startLine: 13
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -260,134 +260,142 @@ items:
   nameWithType.vb: IVariableContext.SetBool(String, Boolean)
   fullName.vb: WolverineSoft.DialogueSystem.IVariableContext.SetBool(String, Boolean)
   name.vb: SetBool(String, Boolean)
-- uid: WolverineSoft.DialogueSystem.IVariableContext.GetString(System.String)
-  commentId: M:WolverineSoft.DialogueSystem.IVariableContext.GetString(System.String)
-  id: GetString(System.String)
+- uid: WolverineSoft.DialogueSystem.IVariableContext.TryGetString(System.String,System.String@)
+  commentId: M:WolverineSoft.DialogueSystem.IVariableContext.TryGetString(System.String,System.String@)
+  id: TryGetString(System.String,System.String@)
   parent: WolverineSoft.DialogueSystem.IVariableContext
   langs:
   - csharp
   - vb
-  name: GetString(string)
-  nameWithType: IVariableContext.GetString(string)
-  fullName: WolverineSoft.DialogueSystem.IVariableContext.GetString(string)
+  name: TryGetString(string, out string)
+  nameWithType: IVariableContext.TryGetString(string, out string)
+  fullName: WolverineSoft.DialogueSystem.IVariableContext.TryGetString(string, out string)
   type: Method
   source:
     remote:
       path: RunTime/Variables/IVariableContext.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
-    id: GetString
-    path: RunTime/Variables/IVariableContext.cs
+    id: TryGetString
+    path: ../RunTime/Variables/IVariableContext.cs
     startLine: 16
   namespace: WolverineSoft.DialogueSystem
   syntax:
-    content: string GetString(string name)
+    content: bool TryGetString(string name, out string value)
     parameters:
     - id: name
       type: System.String
-    return:
-      type: System.String
-    content.vb: Function GetString(name As String) As String
-  overload: WolverineSoft.DialogueSystem.IVariableContext.GetString*
-  nameWithType.vb: IVariableContext.GetString(String)
-  fullName.vb: WolverineSoft.DialogueSystem.IVariableContext.GetString(String)
-  name.vb: GetString(String)
-- uid: WolverineSoft.DialogueSystem.IVariableContext.GetFloat(System.String)
-  commentId: M:WolverineSoft.DialogueSystem.IVariableContext.GetFloat(System.String)
-  id: GetFloat(System.String)
-  parent: WolverineSoft.DialogueSystem.IVariableContext
-  langs:
-  - csharp
-  - vb
-  name: GetFloat(string)
-  nameWithType: IVariableContext.GetFloat(string)
-  fullName: WolverineSoft.DialogueSystem.IVariableContext.GetFloat(string)
-  type: Method
-  source:
-    remote:
-      path: RunTime/Variables/IVariableContext.cs
-      branch: docfx
-      repo: https://github.com/Gavin-McG/DialogueSystem.git
-    id: GetFloat
-    path: RunTime/Variables/IVariableContext.cs
-    startLine: 17
-  namespace: WolverineSoft.DialogueSystem
-  syntax:
-    content: float GetFloat(string name)
-    parameters:
-    - id: name
-      type: System.String
-    return:
-      type: System.Single
-    content.vb: Function GetFloat(name As String) As Single
-  overload: WolverineSoft.DialogueSystem.IVariableContext.GetFloat*
-  nameWithType.vb: IVariableContext.GetFloat(String)
-  fullName.vb: WolverineSoft.DialogueSystem.IVariableContext.GetFloat(String)
-  name.vb: GetFloat(String)
-- uid: WolverineSoft.DialogueSystem.IVariableContext.GetInt(System.String)
-  commentId: M:WolverineSoft.DialogueSystem.IVariableContext.GetInt(System.String)
-  id: GetInt(System.String)
-  parent: WolverineSoft.DialogueSystem.IVariableContext
-  langs:
-  - csharp
-  - vb
-  name: GetInt(string)
-  nameWithType: IVariableContext.GetInt(string)
-  fullName: WolverineSoft.DialogueSystem.IVariableContext.GetInt(string)
-  type: Method
-  source:
-    remote:
-      path: RunTime/Variables/IVariableContext.cs
-      branch: docfx
-      repo: https://github.com/Gavin-McG/DialogueSystem.git
-    id: GetInt
-    path: RunTime/Variables/IVariableContext.cs
-    startLine: 18
-  namespace: WolverineSoft.DialogueSystem
-  syntax:
-    content: int GetInt(string name)
-    parameters:
-    - id: name
-      type: System.String
-    return:
-      type: System.Int32
-    content.vb: Function GetInt(name As String) As Integer
-  overload: WolverineSoft.DialogueSystem.IVariableContext.GetInt*
-  nameWithType.vb: IVariableContext.GetInt(String)
-  fullName.vb: WolverineSoft.DialogueSystem.IVariableContext.GetInt(String)
-  name.vb: GetInt(String)
-- uid: WolverineSoft.DialogueSystem.IVariableContext.GetBool(System.String)
-  commentId: M:WolverineSoft.DialogueSystem.IVariableContext.GetBool(System.String)
-  id: GetBool(System.String)
-  parent: WolverineSoft.DialogueSystem.IVariableContext
-  langs:
-  - csharp
-  - vb
-  name: GetBool(string)
-  nameWithType: IVariableContext.GetBool(string)
-  fullName: WolverineSoft.DialogueSystem.IVariableContext.GetBool(string)
-  type: Method
-  source:
-    remote:
-      path: RunTime/Variables/IVariableContext.cs
-      branch: docfx
-      repo: https://github.com/Gavin-McG/DialogueSystem.git
-    id: GetBool
-    path: RunTime/Variables/IVariableContext.cs
-    startLine: 19
-  namespace: WolverineSoft.DialogueSystem
-  syntax:
-    content: bool GetBool(string name)
-    parameters:
-    - id: name
+    - id: value
       type: System.String
     return:
       type: System.Boolean
-    content.vb: Function GetBool(name As String) As Boolean
-  overload: WolverineSoft.DialogueSystem.IVariableContext.GetBool*
-  nameWithType.vb: IVariableContext.GetBool(String)
-  fullName.vb: WolverineSoft.DialogueSystem.IVariableContext.GetBool(String)
-  name.vb: GetBool(String)
+    content.vb: Function TryGetString(name As String, value As String) As Boolean
+  overload: WolverineSoft.DialogueSystem.IVariableContext.TryGetString*
+  nameWithType.vb: IVariableContext.TryGetString(String, String)
+  fullName.vb: WolverineSoft.DialogueSystem.IVariableContext.TryGetString(String, String)
+  name.vb: TryGetString(String, String)
+- uid: WolverineSoft.DialogueSystem.IVariableContext.TryGetFloat(System.String,System.Single@)
+  commentId: M:WolverineSoft.DialogueSystem.IVariableContext.TryGetFloat(System.String,System.Single@)
+  id: TryGetFloat(System.String,System.Single@)
+  parent: WolverineSoft.DialogueSystem.IVariableContext
+  langs:
+  - csharp
+  - vb
+  name: TryGetFloat(string, out float)
+  nameWithType: IVariableContext.TryGetFloat(string, out float)
+  fullName: WolverineSoft.DialogueSystem.IVariableContext.TryGetFloat(string, out float)
+  type: Method
+  source:
+    remote:
+      path: RunTime/Variables/IVariableContext.cs
+      branch: main
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: TryGetFloat
+    path: ../RunTime/Variables/IVariableContext.cs
+    startLine: 17
+  namespace: WolverineSoft.DialogueSystem
+  syntax:
+    content: bool TryGetFloat(string name, out float value)
+    parameters:
+    - id: name
+      type: System.String
+    - id: value
+      type: System.Single
+    return:
+      type: System.Boolean
+    content.vb: Function TryGetFloat(name As String, value As Single) As Boolean
+  overload: WolverineSoft.DialogueSystem.IVariableContext.TryGetFloat*
+  nameWithType.vb: IVariableContext.TryGetFloat(String, Single)
+  fullName.vb: WolverineSoft.DialogueSystem.IVariableContext.TryGetFloat(String, Single)
+  name.vb: TryGetFloat(String, Single)
+- uid: WolverineSoft.DialogueSystem.IVariableContext.TryGetInt(System.String,System.Int32@)
+  commentId: M:WolverineSoft.DialogueSystem.IVariableContext.TryGetInt(System.String,System.Int32@)
+  id: TryGetInt(System.String,System.Int32@)
+  parent: WolverineSoft.DialogueSystem.IVariableContext
+  langs:
+  - csharp
+  - vb
+  name: TryGetInt(string, out int)
+  nameWithType: IVariableContext.TryGetInt(string, out int)
+  fullName: WolverineSoft.DialogueSystem.IVariableContext.TryGetInt(string, out int)
+  type: Method
+  source:
+    remote:
+      path: RunTime/Variables/IVariableContext.cs
+      branch: main
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: TryGetInt
+    path: ../RunTime/Variables/IVariableContext.cs
+    startLine: 18
+  namespace: WolverineSoft.DialogueSystem
+  syntax:
+    content: bool TryGetInt(string name, out int value)
+    parameters:
+    - id: name
+      type: System.String
+    - id: value
+      type: System.Int32
+    return:
+      type: System.Boolean
+    content.vb: Function TryGetInt(name As String, value As Integer) As Boolean
+  overload: WolverineSoft.DialogueSystem.IVariableContext.TryGetInt*
+  nameWithType.vb: IVariableContext.TryGetInt(String, Integer)
+  fullName.vb: WolverineSoft.DialogueSystem.IVariableContext.TryGetInt(String, Integer)
+  name.vb: TryGetInt(String, Integer)
+- uid: WolverineSoft.DialogueSystem.IVariableContext.TryGetBool(System.String,System.Boolean@)
+  commentId: M:WolverineSoft.DialogueSystem.IVariableContext.TryGetBool(System.String,System.Boolean@)
+  id: TryGetBool(System.String,System.Boolean@)
+  parent: WolverineSoft.DialogueSystem.IVariableContext
+  langs:
+  - csharp
+  - vb
+  name: TryGetBool(string, out bool)
+  nameWithType: IVariableContext.TryGetBool(string, out bool)
+  fullName: WolverineSoft.DialogueSystem.IVariableContext.TryGetBool(string, out bool)
+  type: Method
+  source:
+    remote:
+      path: RunTime/Variables/IVariableContext.cs
+      branch: main
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: TryGetBool
+    path: ../RunTime/Variables/IVariableContext.cs
+    startLine: 19
+  namespace: WolverineSoft.DialogueSystem
+  syntax:
+    content: bool TryGetBool(string name, out bool value)
+    parameters:
+    - id: name
+      type: System.String
+    - id: value
+      type: System.Boolean
+    return:
+      type: System.Boolean
+    content.vb: Function TryGetBool(name As String, value As Boolean) As Boolean
+  overload: WolverineSoft.DialogueSystem.IVariableContext.TryGetBool*
+  nameWithType.vb: IVariableContext.TryGetBool(String, Boolean)
+  fullName.vb: WolverineSoft.DialogueSystem.IVariableContext.TryGetBool(String, Boolean)
+  name.vb: TryGetBool(String, Boolean)
 references:
 - uid: WolverineSoft.DialogueSystem
   commentId: N:WolverineSoft.DialogueSystem
@@ -511,27 +519,27 @@ references:
   name: SetBool
   nameWithType: IVariableContext.SetBool
   fullName: WolverineSoft.DialogueSystem.IVariableContext.SetBool
-- uid: WolverineSoft.DialogueSystem.IVariableContext.GetString*
-  commentId: Overload:WolverineSoft.DialogueSystem.IVariableContext.GetString
-  href: WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_GetString_System_String_
-  name: GetString
-  nameWithType: IVariableContext.GetString
-  fullName: WolverineSoft.DialogueSystem.IVariableContext.GetString
-- uid: WolverineSoft.DialogueSystem.IVariableContext.GetFloat*
-  commentId: Overload:WolverineSoft.DialogueSystem.IVariableContext.GetFloat
-  href: WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_GetFloat_System_String_
-  name: GetFloat
-  nameWithType: IVariableContext.GetFloat
-  fullName: WolverineSoft.DialogueSystem.IVariableContext.GetFloat
-- uid: WolverineSoft.DialogueSystem.IVariableContext.GetInt*
-  commentId: Overload:WolverineSoft.DialogueSystem.IVariableContext.GetInt
-  href: WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_GetInt_System_String_
-  name: GetInt
-  nameWithType: IVariableContext.GetInt
-  fullName: WolverineSoft.DialogueSystem.IVariableContext.GetInt
-- uid: WolverineSoft.DialogueSystem.IVariableContext.GetBool*
-  commentId: Overload:WolverineSoft.DialogueSystem.IVariableContext.GetBool
-  href: WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_GetBool_System_String_
-  name: GetBool
-  nameWithType: IVariableContext.GetBool
-  fullName: WolverineSoft.DialogueSystem.IVariableContext.GetBool
+- uid: WolverineSoft.DialogueSystem.IVariableContext.TryGetString*
+  commentId: Overload:WolverineSoft.DialogueSystem.IVariableContext.TryGetString
+  href: WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_TryGetString_System_String_System_String__
+  name: TryGetString
+  nameWithType: IVariableContext.TryGetString
+  fullName: WolverineSoft.DialogueSystem.IVariableContext.TryGetString
+- uid: WolverineSoft.DialogueSystem.IVariableContext.TryGetFloat*
+  commentId: Overload:WolverineSoft.DialogueSystem.IVariableContext.TryGetFloat
+  href: WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_TryGetFloat_System_String_System_Single__
+  name: TryGetFloat
+  nameWithType: IVariableContext.TryGetFloat
+  fullName: WolverineSoft.DialogueSystem.IVariableContext.TryGetFloat
+- uid: WolverineSoft.DialogueSystem.IVariableContext.TryGetInt*
+  commentId: Overload:WolverineSoft.DialogueSystem.IVariableContext.TryGetInt
+  href: WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_TryGetInt_System_String_System_Int32__
+  name: TryGetInt
+  nameWithType: IVariableContext.TryGetInt
+  fullName: WolverineSoft.DialogueSystem.IVariableContext.TryGetInt
+- uid: WolverineSoft.DialogueSystem.IVariableContext.TryGetBool*
+  commentId: Overload:WolverineSoft.DialogueSystem.IVariableContext.TryGetBool
+  href: WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_TryGetBool_System_String_System_Boolean__
+  name: TryGetBool
+  nameWithType: IVariableContext.TryGetBool
+  fullName: WolverineSoft.DialogueSystem.IVariableContext.TryGetBool

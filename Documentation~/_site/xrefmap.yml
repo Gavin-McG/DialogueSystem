@@ -383,54 +383,6 @@ references:
   commentId: T:WolverineSoft.DialogueSystem.DialogueAsset
   fullName: WolverineSoft.DialogueSystem.DialogueAsset
   nameWithType: DialogueAsset
-- uid: WolverineSoft.DialogueSystem.DialogueAsset.GetBool(System.String)
-  name: GetBool(string)
-  href: api/WolverineSoft.DialogueSystem.DialogueAsset.html#WolverineSoft_DialogueSystem_DialogueAsset_GetBool_System_String_
-  commentId: M:WolverineSoft.DialogueSystem.DialogueAsset.GetBool(System.String)
-  name.vb: GetBool(String)
-  fullName: WolverineSoft.DialogueSystem.DialogueAsset.GetBool(string)
-  fullName.vb: WolverineSoft.DialogueSystem.DialogueAsset.GetBool(String)
-  nameWithType: DialogueAsset.GetBool(string)
-  nameWithType.vb: DialogueAsset.GetBool(String)
-- uid: WolverineSoft.DialogueSystem.DialogueAsset.GetBool*
-  name: GetBool
-  href: api/WolverineSoft.DialogueSystem.DialogueAsset.html#WolverineSoft_DialogueSystem_DialogueAsset_GetBool_
-  commentId: Overload:WolverineSoft.DialogueSystem.DialogueAsset.GetBool
-  isSpec: "True"
-  fullName: WolverineSoft.DialogueSystem.DialogueAsset.GetBool
-  nameWithType: DialogueAsset.GetBool
-- uid: WolverineSoft.DialogueSystem.DialogueAsset.GetFloat(System.String)
-  name: GetFloat(string)
-  href: api/WolverineSoft.DialogueSystem.DialogueAsset.html#WolverineSoft_DialogueSystem_DialogueAsset_GetFloat_System_String_
-  commentId: M:WolverineSoft.DialogueSystem.DialogueAsset.GetFloat(System.String)
-  name.vb: GetFloat(String)
-  fullName: WolverineSoft.DialogueSystem.DialogueAsset.GetFloat(string)
-  fullName.vb: WolverineSoft.DialogueSystem.DialogueAsset.GetFloat(String)
-  nameWithType: DialogueAsset.GetFloat(string)
-  nameWithType.vb: DialogueAsset.GetFloat(String)
-- uid: WolverineSoft.DialogueSystem.DialogueAsset.GetFloat*
-  name: GetFloat
-  href: api/WolverineSoft.DialogueSystem.DialogueAsset.html#WolverineSoft_DialogueSystem_DialogueAsset_GetFloat_
-  commentId: Overload:WolverineSoft.DialogueSystem.DialogueAsset.GetFloat
-  isSpec: "True"
-  fullName: WolverineSoft.DialogueSystem.DialogueAsset.GetFloat
-  nameWithType: DialogueAsset.GetFloat
-- uid: WolverineSoft.DialogueSystem.DialogueAsset.GetInt(System.String)
-  name: GetInt(string)
-  href: api/WolverineSoft.DialogueSystem.DialogueAsset.html#WolverineSoft_DialogueSystem_DialogueAsset_GetInt_System_String_
-  commentId: M:WolverineSoft.DialogueSystem.DialogueAsset.GetInt(System.String)
-  name.vb: GetInt(String)
-  fullName: WolverineSoft.DialogueSystem.DialogueAsset.GetInt(string)
-  fullName.vb: WolverineSoft.DialogueSystem.DialogueAsset.GetInt(String)
-  nameWithType: DialogueAsset.GetInt(string)
-  nameWithType.vb: DialogueAsset.GetInt(String)
-- uid: WolverineSoft.DialogueSystem.DialogueAsset.GetInt*
-  name: GetInt
-  href: api/WolverineSoft.DialogueSystem.DialogueAsset.html#WolverineSoft_DialogueSystem_DialogueAsset_GetInt_
-  commentId: Overload:WolverineSoft.DialogueSystem.DialogueAsset.GetInt
-  isSpec: "True"
-  fullName: WolverineSoft.DialogueSystem.DialogueAsset.GetInt
-  nameWithType: DialogueAsset.GetInt
 - uid: WolverineSoft.DialogueSystem.DialogueAsset.GetStartDialogue(System.String)
   name: GetStartDialogue(string)
   href: api/WolverineSoft.DialogueSystem.DialogueAsset.html#WolverineSoft_DialogueSystem_DialogueAsset_GetStartDialogue_System_String_
@@ -447,22 +399,6 @@ references:
   isSpec: "True"
   fullName: WolverineSoft.DialogueSystem.DialogueAsset.GetStartDialogue
   nameWithType: DialogueAsset.GetStartDialogue
-- uid: WolverineSoft.DialogueSystem.DialogueAsset.GetString(System.String)
-  name: GetString(string)
-  href: api/WolverineSoft.DialogueSystem.DialogueAsset.html#WolverineSoft_DialogueSystem_DialogueAsset_GetString_System_String_
-  commentId: M:WolverineSoft.DialogueSystem.DialogueAsset.GetString(System.String)
-  name.vb: GetString(String)
-  fullName: WolverineSoft.DialogueSystem.DialogueAsset.GetString(string)
-  fullName.vb: WolverineSoft.DialogueSystem.DialogueAsset.GetString(String)
-  nameWithType: DialogueAsset.GetString(string)
-  nameWithType.vb: DialogueAsset.GetString(String)
-- uid: WolverineSoft.DialogueSystem.DialogueAsset.GetString*
-  name: GetString
-  href: api/WolverineSoft.DialogueSystem.DialogueAsset.html#WolverineSoft_DialogueSystem_DialogueAsset_GetString_
-  commentId: Overload:WolverineSoft.DialogueSystem.DialogueAsset.GetString
-  isSpec: "True"
-  fullName: WolverineSoft.DialogueSystem.DialogueAsset.GetString
-  nameWithType: DialogueAsset.GetString
 - uid: WolverineSoft.DialogueSystem.DialogueAsset.IsReadOnly
   name: IsReadOnly
   href: api/WolverineSoft.DialogueSystem.DialogueAsset.html#WolverineSoft_DialogueSystem_DialogueAsset_IsReadOnly
@@ -556,6 +492,70 @@ references:
   isSpec: "True"
   fullName: WolverineSoft.DialogueSystem.DialogueAsset.SetVariable
   nameWithType: DialogueAsset.SetVariable
+- uid: WolverineSoft.DialogueSystem.DialogueAsset.TryGetBool(System.String,System.Boolean@)
+  name: TryGetBool(string, out bool)
+  href: api/WolverineSoft.DialogueSystem.DialogueAsset.html#WolverineSoft_DialogueSystem_DialogueAsset_TryGetBool_System_String_System_Boolean__
+  commentId: M:WolverineSoft.DialogueSystem.DialogueAsset.TryGetBool(System.String,System.Boolean@)
+  name.vb: TryGetBool(String, Boolean)
+  fullName: WolverineSoft.DialogueSystem.DialogueAsset.TryGetBool(string, out bool)
+  fullName.vb: WolverineSoft.DialogueSystem.DialogueAsset.TryGetBool(String, Boolean)
+  nameWithType: DialogueAsset.TryGetBool(string, out bool)
+  nameWithType.vb: DialogueAsset.TryGetBool(String, Boolean)
+- uid: WolverineSoft.DialogueSystem.DialogueAsset.TryGetBool*
+  name: TryGetBool
+  href: api/WolverineSoft.DialogueSystem.DialogueAsset.html#WolverineSoft_DialogueSystem_DialogueAsset_TryGetBool_
+  commentId: Overload:WolverineSoft.DialogueSystem.DialogueAsset.TryGetBool
+  isSpec: "True"
+  fullName: WolverineSoft.DialogueSystem.DialogueAsset.TryGetBool
+  nameWithType: DialogueAsset.TryGetBool
+- uid: WolverineSoft.DialogueSystem.DialogueAsset.TryGetFloat(System.String,System.Single@)
+  name: TryGetFloat(string, out float)
+  href: api/WolverineSoft.DialogueSystem.DialogueAsset.html#WolverineSoft_DialogueSystem_DialogueAsset_TryGetFloat_System_String_System_Single__
+  commentId: M:WolverineSoft.DialogueSystem.DialogueAsset.TryGetFloat(System.String,System.Single@)
+  name.vb: TryGetFloat(String, Single)
+  fullName: WolverineSoft.DialogueSystem.DialogueAsset.TryGetFloat(string, out float)
+  fullName.vb: WolverineSoft.DialogueSystem.DialogueAsset.TryGetFloat(String, Single)
+  nameWithType: DialogueAsset.TryGetFloat(string, out float)
+  nameWithType.vb: DialogueAsset.TryGetFloat(String, Single)
+- uid: WolverineSoft.DialogueSystem.DialogueAsset.TryGetFloat*
+  name: TryGetFloat
+  href: api/WolverineSoft.DialogueSystem.DialogueAsset.html#WolverineSoft_DialogueSystem_DialogueAsset_TryGetFloat_
+  commentId: Overload:WolverineSoft.DialogueSystem.DialogueAsset.TryGetFloat
+  isSpec: "True"
+  fullName: WolverineSoft.DialogueSystem.DialogueAsset.TryGetFloat
+  nameWithType: DialogueAsset.TryGetFloat
+- uid: WolverineSoft.DialogueSystem.DialogueAsset.TryGetInt(System.String,System.Int32@)
+  name: TryGetInt(string, out int)
+  href: api/WolverineSoft.DialogueSystem.DialogueAsset.html#WolverineSoft_DialogueSystem_DialogueAsset_TryGetInt_System_String_System_Int32__
+  commentId: M:WolverineSoft.DialogueSystem.DialogueAsset.TryGetInt(System.String,System.Int32@)
+  name.vb: TryGetInt(String, Integer)
+  fullName: WolverineSoft.DialogueSystem.DialogueAsset.TryGetInt(string, out int)
+  fullName.vb: WolverineSoft.DialogueSystem.DialogueAsset.TryGetInt(String, Integer)
+  nameWithType: DialogueAsset.TryGetInt(string, out int)
+  nameWithType.vb: DialogueAsset.TryGetInt(String, Integer)
+- uid: WolverineSoft.DialogueSystem.DialogueAsset.TryGetInt*
+  name: TryGetInt
+  href: api/WolverineSoft.DialogueSystem.DialogueAsset.html#WolverineSoft_DialogueSystem_DialogueAsset_TryGetInt_
+  commentId: Overload:WolverineSoft.DialogueSystem.DialogueAsset.TryGetInt
+  isSpec: "True"
+  fullName: WolverineSoft.DialogueSystem.DialogueAsset.TryGetInt
+  nameWithType: DialogueAsset.TryGetInt
+- uid: WolverineSoft.DialogueSystem.DialogueAsset.TryGetString(System.String,System.String@)
+  name: TryGetString(string, out string)
+  href: api/WolverineSoft.DialogueSystem.DialogueAsset.html#WolverineSoft_DialogueSystem_DialogueAsset_TryGetString_System_String_System_String__
+  commentId: M:WolverineSoft.DialogueSystem.DialogueAsset.TryGetString(System.String,System.String@)
+  name.vb: TryGetString(String, String)
+  fullName: WolverineSoft.DialogueSystem.DialogueAsset.TryGetString(string, out string)
+  fullName.vb: WolverineSoft.DialogueSystem.DialogueAsset.TryGetString(String, String)
+  nameWithType: DialogueAsset.TryGetString(string, out string)
+  nameWithType.vb: DialogueAsset.TryGetString(String, String)
+- uid: WolverineSoft.DialogueSystem.DialogueAsset.TryGetString*
+  name: TryGetString
+  href: api/WolverineSoft.DialogueSystem.DialogueAsset.html#WolverineSoft_DialogueSystem_DialogueAsset_TryGetString_
+  commentId: Overload:WolverineSoft.DialogueSystem.DialogueAsset.TryGetString
+  isSpec: "True"
+  fullName: WolverineSoft.DialogueSystem.DialogueAsset.TryGetString
+  nameWithType: DialogueAsset.TryGetString
 - uid: WolverineSoft.DialogueSystem.DialogueAsset.TryGetVariable(System.String,WolverineSoft.DialogueSystem.Variable@)
   name: TryGetVariable(string, out Variable)
   href: api/WolverineSoft.DialogueSystem.DialogueAsset.html#WolverineSoft_DialogueSystem_DialogueAsset_TryGetVariable_System_String_WolverineSoft_DialogueSystem_Variable__
@@ -732,22 +732,6 @@ references:
   commentId: F:WolverineSoft.DialogueSystem.DialogueManager.EndedDialogue
   fullName: WolverineSoft.DialogueSystem.DialogueManager.EndedDialogue
   nameWithType: DialogueManager.EndedDialogue
-- uid: WolverineSoft.DialogueSystem.DialogueManager.GetBool(System.String)
-  name: GetBool(string)
-  href: api/WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_GetBool_System_String_
-  commentId: M:WolverineSoft.DialogueSystem.DialogueManager.GetBool(System.String)
-  name.vb: GetBool(String)
-  fullName: WolverineSoft.DialogueSystem.DialogueManager.GetBool(string)
-  fullName.vb: WolverineSoft.DialogueSystem.DialogueManager.GetBool(String)
-  nameWithType: DialogueManager.GetBool(string)
-  nameWithType.vb: DialogueManager.GetBool(String)
-- uid: WolverineSoft.DialogueSystem.DialogueManager.GetBool*
-  name: GetBool
-  href: api/WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_GetBool_
-  commentId: Overload:WolverineSoft.DialogueSystem.DialogueManager.GetBool
-  isSpec: "True"
-  fullName: WolverineSoft.DialogueSystem.DialogueManager.GetBool
-  nameWithType: DialogueManager.GetBool
 - uid: WolverineSoft.DialogueSystem.DialogueManager.GetDialogueParams*
   name: GetDialogueParams
   href: api/WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_GetDialogueParams_
@@ -777,54 +761,6 @@ references:
   fullName.vb: WolverineSoft.DialogueSystem.DialogueManager.GetDialogueParams(Of T)()
   nameWithType: DialogueManager.GetDialogueParams<T>()
   nameWithType.vb: DialogueManager.GetDialogueParams(Of T)()
-- uid: WolverineSoft.DialogueSystem.DialogueManager.GetFloat(System.String)
-  name: GetFloat(string)
-  href: api/WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_GetFloat_System_String_
-  commentId: M:WolverineSoft.DialogueSystem.DialogueManager.GetFloat(System.String)
-  name.vb: GetFloat(String)
-  fullName: WolverineSoft.DialogueSystem.DialogueManager.GetFloat(string)
-  fullName.vb: WolverineSoft.DialogueSystem.DialogueManager.GetFloat(String)
-  nameWithType: DialogueManager.GetFloat(string)
-  nameWithType.vb: DialogueManager.GetFloat(String)
-- uid: WolverineSoft.DialogueSystem.DialogueManager.GetFloat*
-  name: GetFloat
-  href: api/WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_GetFloat_
-  commentId: Overload:WolverineSoft.DialogueSystem.DialogueManager.GetFloat
-  isSpec: "True"
-  fullName: WolverineSoft.DialogueSystem.DialogueManager.GetFloat
-  nameWithType: DialogueManager.GetFloat
-- uid: WolverineSoft.DialogueSystem.DialogueManager.GetInt(System.String)
-  name: GetInt(string)
-  href: api/WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_GetInt_System_String_
-  commentId: M:WolverineSoft.DialogueSystem.DialogueManager.GetInt(System.String)
-  name.vb: GetInt(String)
-  fullName: WolverineSoft.DialogueSystem.DialogueManager.GetInt(string)
-  fullName.vb: WolverineSoft.DialogueSystem.DialogueManager.GetInt(String)
-  nameWithType: DialogueManager.GetInt(string)
-  nameWithType.vb: DialogueManager.GetInt(String)
-- uid: WolverineSoft.DialogueSystem.DialogueManager.GetInt*
-  name: GetInt
-  href: api/WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_GetInt_
-  commentId: Overload:WolverineSoft.DialogueSystem.DialogueManager.GetInt
-  isSpec: "True"
-  fullName: WolverineSoft.DialogueSystem.DialogueManager.GetInt
-  nameWithType: DialogueManager.GetInt
-- uid: WolverineSoft.DialogueSystem.DialogueManager.GetString(System.String)
-  name: GetString(string)
-  href: api/WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_GetString_System_String_
-  commentId: M:WolverineSoft.DialogueSystem.DialogueManager.GetString(System.String)
-  name.vb: GetString(String)
-  fullName: WolverineSoft.DialogueSystem.DialogueManager.GetString(string)
-  fullName.vb: WolverineSoft.DialogueSystem.DialogueManager.GetString(String)
-  nameWithType: DialogueManager.GetString(string)
-  nameWithType.vb: DialogueManager.GetString(String)
-- uid: WolverineSoft.DialogueSystem.DialogueManager.GetString*
-  name: GetString
-  href: api/WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_GetString_
-  commentId: Overload:WolverineSoft.DialogueSystem.DialogueManager.GetString
-  isSpec: "True"
-  fullName: WolverineSoft.DialogueSystem.DialogueManager.GetString
-  nameWithType: DialogueManager.GetString
 - uid: WolverineSoft.DialogueSystem.DialogueManager.IsReadOnly
   name: IsReadOnly
   href: api/WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_IsReadOnly
@@ -943,6 +879,70 @@ references:
   commentId: F:WolverineSoft.DialogueSystem.DialogueManager.StartedDialogue
   fullName: WolverineSoft.DialogueSystem.DialogueManager.StartedDialogue
   nameWithType: DialogueManager.StartedDialogue
+- uid: WolverineSoft.DialogueSystem.DialogueManager.TryGetBool(System.String,System.Boolean@)
+  name: TryGetBool(string, out bool)
+  href: api/WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_TryGetBool_System_String_System_Boolean__
+  commentId: M:WolverineSoft.DialogueSystem.DialogueManager.TryGetBool(System.String,System.Boolean@)
+  name.vb: TryGetBool(String, Boolean)
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.TryGetBool(string, out bool)
+  fullName.vb: WolverineSoft.DialogueSystem.DialogueManager.TryGetBool(String, Boolean)
+  nameWithType: DialogueManager.TryGetBool(string, out bool)
+  nameWithType.vb: DialogueManager.TryGetBool(String, Boolean)
+- uid: WolverineSoft.DialogueSystem.DialogueManager.TryGetBool*
+  name: TryGetBool
+  href: api/WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_TryGetBool_
+  commentId: Overload:WolverineSoft.DialogueSystem.DialogueManager.TryGetBool
+  isSpec: "True"
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.TryGetBool
+  nameWithType: DialogueManager.TryGetBool
+- uid: WolverineSoft.DialogueSystem.DialogueManager.TryGetFloat(System.String,System.Single@)
+  name: TryGetFloat(string, out float)
+  href: api/WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_TryGetFloat_System_String_System_Single__
+  commentId: M:WolverineSoft.DialogueSystem.DialogueManager.TryGetFloat(System.String,System.Single@)
+  name.vb: TryGetFloat(String, Single)
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.TryGetFloat(string, out float)
+  fullName.vb: WolverineSoft.DialogueSystem.DialogueManager.TryGetFloat(String, Single)
+  nameWithType: DialogueManager.TryGetFloat(string, out float)
+  nameWithType.vb: DialogueManager.TryGetFloat(String, Single)
+- uid: WolverineSoft.DialogueSystem.DialogueManager.TryGetFloat*
+  name: TryGetFloat
+  href: api/WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_TryGetFloat_
+  commentId: Overload:WolverineSoft.DialogueSystem.DialogueManager.TryGetFloat
+  isSpec: "True"
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.TryGetFloat
+  nameWithType: DialogueManager.TryGetFloat
+- uid: WolverineSoft.DialogueSystem.DialogueManager.TryGetInt(System.String,System.Int32@)
+  name: TryGetInt(string, out int)
+  href: api/WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_TryGetInt_System_String_System_Int32__
+  commentId: M:WolverineSoft.DialogueSystem.DialogueManager.TryGetInt(System.String,System.Int32@)
+  name.vb: TryGetInt(String, Integer)
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.TryGetInt(string, out int)
+  fullName.vb: WolverineSoft.DialogueSystem.DialogueManager.TryGetInt(String, Integer)
+  nameWithType: DialogueManager.TryGetInt(string, out int)
+  nameWithType.vb: DialogueManager.TryGetInt(String, Integer)
+- uid: WolverineSoft.DialogueSystem.DialogueManager.TryGetInt*
+  name: TryGetInt
+  href: api/WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_TryGetInt_
+  commentId: Overload:WolverineSoft.DialogueSystem.DialogueManager.TryGetInt
+  isSpec: "True"
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.TryGetInt
+  nameWithType: DialogueManager.TryGetInt
+- uid: WolverineSoft.DialogueSystem.DialogueManager.TryGetString(System.String,System.String@)
+  name: TryGetString(string, out string)
+  href: api/WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_TryGetString_System_String_System_String__
+  commentId: M:WolverineSoft.DialogueSystem.DialogueManager.TryGetString(System.String,System.String@)
+  name.vb: TryGetString(String, String)
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.TryGetString(string, out string)
+  fullName.vb: WolverineSoft.DialogueSystem.DialogueManager.TryGetString(String, String)
+  nameWithType: DialogueManager.TryGetString(string, out string)
+  nameWithType.vb: DialogueManager.TryGetString(String, String)
+- uid: WolverineSoft.DialogueSystem.DialogueManager.TryGetString*
+  name: TryGetString
+  href: api/WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_TryGetString_
+  commentId: Overload:WolverineSoft.DialogueSystem.DialogueManager.TryGetString
+  isSpec: "True"
+  fullName: WolverineSoft.DialogueSystem.DialogueManager.TryGetString
+  nameWithType: DialogueManager.TryGetString
 - uid: WolverineSoft.DialogueSystem.DialogueManager.TryGetVariable(System.String,WolverineSoft.DialogueSystem.Variable@)
   name: TryGetVariable(string, out Variable)
   href: api/WolverineSoft.DialogueSystem.DialogueManager.html#WolverineSoft_DialogueSystem_DialogueManager_TryGetVariable_System_String_WolverineSoft_DialogueSystem_Variable__
@@ -2268,70 +2268,6 @@ references:
   commentId: T:WolverineSoft.DialogueSystem.IVariableContext
   fullName: WolverineSoft.DialogueSystem.IVariableContext
   nameWithType: IVariableContext
-- uid: WolverineSoft.DialogueSystem.IVariableContext.GetBool(System.String)
-  name: GetBool(string)
-  href: api/WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_GetBool_System_String_
-  commentId: M:WolverineSoft.DialogueSystem.IVariableContext.GetBool(System.String)
-  name.vb: GetBool(String)
-  fullName: WolverineSoft.DialogueSystem.IVariableContext.GetBool(string)
-  fullName.vb: WolverineSoft.DialogueSystem.IVariableContext.GetBool(String)
-  nameWithType: IVariableContext.GetBool(string)
-  nameWithType.vb: IVariableContext.GetBool(String)
-- uid: WolverineSoft.DialogueSystem.IVariableContext.GetBool*
-  name: GetBool
-  href: api/WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_GetBool_
-  commentId: Overload:WolverineSoft.DialogueSystem.IVariableContext.GetBool
-  isSpec: "True"
-  fullName: WolverineSoft.DialogueSystem.IVariableContext.GetBool
-  nameWithType: IVariableContext.GetBool
-- uid: WolverineSoft.DialogueSystem.IVariableContext.GetFloat(System.String)
-  name: GetFloat(string)
-  href: api/WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_GetFloat_System_String_
-  commentId: M:WolverineSoft.DialogueSystem.IVariableContext.GetFloat(System.String)
-  name.vb: GetFloat(String)
-  fullName: WolverineSoft.DialogueSystem.IVariableContext.GetFloat(string)
-  fullName.vb: WolverineSoft.DialogueSystem.IVariableContext.GetFloat(String)
-  nameWithType: IVariableContext.GetFloat(string)
-  nameWithType.vb: IVariableContext.GetFloat(String)
-- uid: WolverineSoft.DialogueSystem.IVariableContext.GetFloat*
-  name: GetFloat
-  href: api/WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_GetFloat_
-  commentId: Overload:WolverineSoft.DialogueSystem.IVariableContext.GetFloat
-  isSpec: "True"
-  fullName: WolverineSoft.DialogueSystem.IVariableContext.GetFloat
-  nameWithType: IVariableContext.GetFloat
-- uid: WolverineSoft.DialogueSystem.IVariableContext.GetInt(System.String)
-  name: GetInt(string)
-  href: api/WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_GetInt_System_String_
-  commentId: M:WolverineSoft.DialogueSystem.IVariableContext.GetInt(System.String)
-  name.vb: GetInt(String)
-  fullName: WolverineSoft.DialogueSystem.IVariableContext.GetInt(string)
-  fullName.vb: WolverineSoft.DialogueSystem.IVariableContext.GetInt(String)
-  nameWithType: IVariableContext.GetInt(string)
-  nameWithType.vb: IVariableContext.GetInt(String)
-- uid: WolverineSoft.DialogueSystem.IVariableContext.GetInt*
-  name: GetInt
-  href: api/WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_GetInt_
-  commentId: Overload:WolverineSoft.DialogueSystem.IVariableContext.GetInt
-  isSpec: "True"
-  fullName: WolverineSoft.DialogueSystem.IVariableContext.GetInt
-  nameWithType: IVariableContext.GetInt
-- uid: WolverineSoft.DialogueSystem.IVariableContext.GetString(System.String)
-  name: GetString(string)
-  href: api/WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_GetString_System_String_
-  commentId: M:WolverineSoft.DialogueSystem.IVariableContext.GetString(System.String)
-  name.vb: GetString(String)
-  fullName: WolverineSoft.DialogueSystem.IVariableContext.GetString(string)
-  fullName.vb: WolverineSoft.DialogueSystem.IVariableContext.GetString(String)
-  nameWithType: IVariableContext.GetString(string)
-  nameWithType.vb: IVariableContext.GetString(String)
-- uid: WolverineSoft.DialogueSystem.IVariableContext.GetString*
-  name: GetString
-  href: api/WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_GetString_
-  commentId: Overload:WolverineSoft.DialogueSystem.IVariableContext.GetString
-  isSpec: "True"
-  fullName: WolverineSoft.DialogueSystem.IVariableContext.GetString
-  nameWithType: IVariableContext.GetString
 - uid: WolverineSoft.DialogueSystem.IVariableContext.IsReadOnly
   name: IsReadOnly
   href: api/WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_IsReadOnly
@@ -2425,6 +2361,70 @@ references:
   isSpec: "True"
   fullName: WolverineSoft.DialogueSystem.IVariableContext.SetVariable
   nameWithType: IVariableContext.SetVariable
+- uid: WolverineSoft.DialogueSystem.IVariableContext.TryGetBool(System.String,System.Boolean@)
+  name: TryGetBool(string, out bool)
+  href: api/WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_TryGetBool_System_String_System_Boolean__
+  commentId: M:WolverineSoft.DialogueSystem.IVariableContext.TryGetBool(System.String,System.Boolean@)
+  name.vb: TryGetBool(String, Boolean)
+  fullName: WolverineSoft.DialogueSystem.IVariableContext.TryGetBool(string, out bool)
+  fullName.vb: WolverineSoft.DialogueSystem.IVariableContext.TryGetBool(String, Boolean)
+  nameWithType: IVariableContext.TryGetBool(string, out bool)
+  nameWithType.vb: IVariableContext.TryGetBool(String, Boolean)
+- uid: WolverineSoft.DialogueSystem.IVariableContext.TryGetBool*
+  name: TryGetBool
+  href: api/WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_TryGetBool_
+  commentId: Overload:WolverineSoft.DialogueSystem.IVariableContext.TryGetBool
+  isSpec: "True"
+  fullName: WolverineSoft.DialogueSystem.IVariableContext.TryGetBool
+  nameWithType: IVariableContext.TryGetBool
+- uid: WolverineSoft.DialogueSystem.IVariableContext.TryGetFloat(System.String,System.Single@)
+  name: TryGetFloat(string, out float)
+  href: api/WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_TryGetFloat_System_String_System_Single__
+  commentId: M:WolverineSoft.DialogueSystem.IVariableContext.TryGetFloat(System.String,System.Single@)
+  name.vb: TryGetFloat(String, Single)
+  fullName: WolverineSoft.DialogueSystem.IVariableContext.TryGetFloat(string, out float)
+  fullName.vb: WolverineSoft.DialogueSystem.IVariableContext.TryGetFloat(String, Single)
+  nameWithType: IVariableContext.TryGetFloat(string, out float)
+  nameWithType.vb: IVariableContext.TryGetFloat(String, Single)
+- uid: WolverineSoft.DialogueSystem.IVariableContext.TryGetFloat*
+  name: TryGetFloat
+  href: api/WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_TryGetFloat_
+  commentId: Overload:WolverineSoft.DialogueSystem.IVariableContext.TryGetFloat
+  isSpec: "True"
+  fullName: WolverineSoft.DialogueSystem.IVariableContext.TryGetFloat
+  nameWithType: IVariableContext.TryGetFloat
+- uid: WolverineSoft.DialogueSystem.IVariableContext.TryGetInt(System.String,System.Int32@)
+  name: TryGetInt(string, out int)
+  href: api/WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_TryGetInt_System_String_System_Int32__
+  commentId: M:WolverineSoft.DialogueSystem.IVariableContext.TryGetInt(System.String,System.Int32@)
+  name.vb: TryGetInt(String, Integer)
+  fullName: WolverineSoft.DialogueSystem.IVariableContext.TryGetInt(string, out int)
+  fullName.vb: WolverineSoft.DialogueSystem.IVariableContext.TryGetInt(String, Integer)
+  nameWithType: IVariableContext.TryGetInt(string, out int)
+  nameWithType.vb: IVariableContext.TryGetInt(String, Integer)
+- uid: WolverineSoft.DialogueSystem.IVariableContext.TryGetInt*
+  name: TryGetInt
+  href: api/WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_TryGetInt_
+  commentId: Overload:WolverineSoft.DialogueSystem.IVariableContext.TryGetInt
+  isSpec: "True"
+  fullName: WolverineSoft.DialogueSystem.IVariableContext.TryGetInt
+  nameWithType: IVariableContext.TryGetInt
+- uid: WolverineSoft.DialogueSystem.IVariableContext.TryGetString(System.String,System.String@)
+  name: TryGetString(string, out string)
+  href: api/WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_TryGetString_System_String_System_String__
+  commentId: M:WolverineSoft.DialogueSystem.IVariableContext.TryGetString(System.String,System.String@)
+  name.vb: TryGetString(String, String)
+  fullName: WolverineSoft.DialogueSystem.IVariableContext.TryGetString(string, out string)
+  fullName.vb: WolverineSoft.DialogueSystem.IVariableContext.TryGetString(String, String)
+  nameWithType: IVariableContext.TryGetString(string, out string)
+  nameWithType.vb: IVariableContext.TryGetString(String, String)
+- uid: WolverineSoft.DialogueSystem.IVariableContext.TryGetString*
+  name: TryGetString
+  href: api/WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_TryGetString_
+  commentId: Overload:WolverineSoft.DialogueSystem.IVariableContext.TryGetString
+  isSpec: "True"
+  fullName: WolverineSoft.DialogueSystem.IVariableContext.TryGetString
+  nameWithType: IVariableContext.TryGetString
 - uid: WolverineSoft.DialogueSystem.IVariableContext.TryGetVariable(System.String,WolverineSoft.DialogueSystem.Variable@)
   name: TryGetVariable(string, out Variable)
   href: api/WolverineSoft.DialogueSystem.IVariableContext.html#WolverineSoft_DialogueSystem_IVariableContext_TryGetVariable_System_String_WolverineSoft_DialogueSystem_Variable__
@@ -3457,70 +3457,6 @@ references:
   fullName.vb: WolverineSoft.DialogueSystem.VariableContainer.New
   nameWithType: VariableContainer.VariableContainer
   nameWithType.vb: VariableContainer.New
-- uid: WolverineSoft.DialogueSystem.VariableContainer.GetBool(System.String)
-  name: GetBool(string)
-  href: api/WolverineSoft.DialogueSystem.VariableContainer.html#WolverineSoft_DialogueSystem_VariableContainer_GetBool_System_String_
-  commentId: M:WolverineSoft.DialogueSystem.VariableContainer.GetBool(System.String)
-  name.vb: GetBool(String)
-  fullName: WolverineSoft.DialogueSystem.VariableContainer.GetBool(string)
-  fullName.vb: WolverineSoft.DialogueSystem.VariableContainer.GetBool(String)
-  nameWithType: VariableContainer.GetBool(string)
-  nameWithType.vb: VariableContainer.GetBool(String)
-- uid: WolverineSoft.DialogueSystem.VariableContainer.GetBool*
-  name: GetBool
-  href: api/WolverineSoft.DialogueSystem.VariableContainer.html#WolverineSoft_DialogueSystem_VariableContainer_GetBool_
-  commentId: Overload:WolverineSoft.DialogueSystem.VariableContainer.GetBool
-  isSpec: "True"
-  fullName: WolverineSoft.DialogueSystem.VariableContainer.GetBool
-  nameWithType: VariableContainer.GetBool
-- uid: WolverineSoft.DialogueSystem.VariableContainer.GetFloat(System.String)
-  name: GetFloat(string)
-  href: api/WolverineSoft.DialogueSystem.VariableContainer.html#WolverineSoft_DialogueSystem_VariableContainer_GetFloat_System_String_
-  commentId: M:WolverineSoft.DialogueSystem.VariableContainer.GetFloat(System.String)
-  name.vb: GetFloat(String)
-  fullName: WolverineSoft.DialogueSystem.VariableContainer.GetFloat(string)
-  fullName.vb: WolverineSoft.DialogueSystem.VariableContainer.GetFloat(String)
-  nameWithType: VariableContainer.GetFloat(string)
-  nameWithType.vb: VariableContainer.GetFloat(String)
-- uid: WolverineSoft.DialogueSystem.VariableContainer.GetFloat*
-  name: GetFloat
-  href: api/WolverineSoft.DialogueSystem.VariableContainer.html#WolverineSoft_DialogueSystem_VariableContainer_GetFloat_
-  commentId: Overload:WolverineSoft.DialogueSystem.VariableContainer.GetFloat
-  isSpec: "True"
-  fullName: WolverineSoft.DialogueSystem.VariableContainer.GetFloat
-  nameWithType: VariableContainer.GetFloat
-- uid: WolverineSoft.DialogueSystem.VariableContainer.GetInt(System.String)
-  name: GetInt(string)
-  href: api/WolverineSoft.DialogueSystem.VariableContainer.html#WolverineSoft_DialogueSystem_VariableContainer_GetInt_System_String_
-  commentId: M:WolverineSoft.DialogueSystem.VariableContainer.GetInt(System.String)
-  name.vb: GetInt(String)
-  fullName: WolverineSoft.DialogueSystem.VariableContainer.GetInt(string)
-  fullName.vb: WolverineSoft.DialogueSystem.VariableContainer.GetInt(String)
-  nameWithType: VariableContainer.GetInt(string)
-  nameWithType.vb: VariableContainer.GetInt(String)
-- uid: WolverineSoft.DialogueSystem.VariableContainer.GetInt*
-  name: GetInt
-  href: api/WolverineSoft.DialogueSystem.VariableContainer.html#WolverineSoft_DialogueSystem_VariableContainer_GetInt_
-  commentId: Overload:WolverineSoft.DialogueSystem.VariableContainer.GetInt
-  isSpec: "True"
-  fullName: WolverineSoft.DialogueSystem.VariableContainer.GetInt
-  nameWithType: VariableContainer.GetInt
-- uid: WolverineSoft.DialogueSystem.VariableContainer.GetString(System.String)
-  name: GetString(string)
-  href: api/WolverineSoft.DialogueSystem.VariableContainer.html#WolverineSoft_DialogueSystem_VariableContainer_GetString_System_String_
-  commentId: M:WolverineSoft.DialogueSystem.VariableContainer.GetString(System.String)
-  name.vb: GetString(String)
-  fullName: WolverineSoft.DialogueSystem.VariableContainer.GetString(string)
-  fullName.vb: WolverineSoft.DialogueSystem.VariableContainer.GetString(String)
-  nameWithType: VariableContainer.GetString(string)
-  nameWithType.vb: VariableContainer.GetString(String)
-- uid: WolverineSoft.DialogueSystem.VariableContainer.GetString*
-  name: GetString
-  href: api/WolverineSoft.DialogueSystem.VariableContainer.html#WolverineSoft_DialogueSystem_VariableContainer_GetString_
-  commentId: Overload:WolverineSoft.DialogueSystem.VariableContainer.GetString
-  isSpec: "True"
-  fullName: WolverineSoft.DialogueSystem.VariableContainer.GetString
-  nameWithType: VariableContainer.GetString
 - uid: WolverineSoft.DialogueSystem.VariableContainer.IsReadOnly
   name: IsReadOnly
   href: api/WolverineSoft.DialogueSystem.VariableContainer.html#WolverineSoft_DialogueSystem_VariableContainer_IsReadOnly
@@ -3614,6 +3550,70 @@ references:
   isSpec: "True"
   fullName: WolverineSoft.DialogueSystem.VariableContainer.SetVariable
   nameWithType: VariableContainer.SetVariable
+- uid: WolverineSoft.DialogueSystem.VariableContainer.TryGetBool(System.String,System.Boolean@)
+  name: TryGetBool(string, out bool)
+  href: api/WolverineSoft.DialogueSystem.VariableContainer.html#WolverineSoft_DialogueSystem_VariableContainer_TryGetBool_System_String_System_Boolean__
+  commentId: M:WolverineSoft.DialogueSystem.VariableContainer.TryGetBool(System.String,System.Boolean@)
+  name.vb: TryGetBool(String, Boolean)
+  fullName: WolverineSoft.DialogueSystem.VariableContainer.TryGetBool(string, out bool)
+  fullName.vb: WolverineSoft.DialogueSystem.VariableContainer.TryGetBool(String, Boolean)
+  nameWithType: VariableContainer.TryGetBool(string, out bool)
+  nameWithType.vb: VariableContainer.TryGetBool(String, Boolean)
+- uid: WolverineSoft.DialogueSystem.VariableContainer.TryGetBool*
+  name: TryGetBool
+  href: api/WolverineSoft.DialogueSystem.VariableContainer.html#WolverineSoft_DialogueSystem_VariableContainer_TryGetBool_
+  commentId: Overload:WolverineSoft.DialogueSystem.VariableContainer.TryGetBool
+  isSpec: "True"
+  fullName: WolverineSoft.DialogueSystem.VariableContainer.TryGetBool
+  nameWithType: VariableContainer.TryGetBool
+- uid: WolverineSoft.DialogueSystem.VariableContainer.TryGetFloat(System.String,System.Single@)
+  name: TryGetFloat(string, out float)
+  href: api/WolverineSoft.DialogueSystem.VariableContainer.html#WolverineSoft_DialogueSystem_VariableContainer_TryGetFloat_System_String_System_Single__
+  commentId: M:WolverineSoft.DialogueSystem.VariableContainer.TryGetFloat(System.String,System.Single@)
+  name.vb: TryGetFloat(String, Single)
+  fullName: WolverineSoft.DialogueSystem.VariableContainer.TryGetFloat(string, out float)
+  fullName.vb: WolverineSoft.DialogueSystem.VariableContainer.TryGetFloat(String, Single)
+  nameWithType: VariableContainer.TryGetFloat(string, out float)
+  nameWithType.vb: VariableContainer.TryGetFloat(String, Single)
+- uid: WolverineSoft.DialogueSystem.VariableContainer.TryGetFloat*
+  name: TryGetFloat
+  href: api/WolverineSoft.DialogueSystem.VariableContainer.html#WolverineSoft_DialogueSystem_VariableContainer_TryGetFloat_
+  commentId: Overload:WolverineSoft.DialogueSystem.VariableContainer.TryGetFloat
+  isSpec: "True"
+  fullName: WolverineSoft.DialogueSystem.VariableContainer.TryGetFloat
+  nameWithType: VariableContainer.TryGetFloat
+- uid: WolverineSoft.DialogueSystem.VariableContainer.TryGetInt(System.String,System.Int32@)
+  name: TryGetInt(string, out int)
+  href: api/WolverineSoft.DialogueSystem.VariableContainer.html#WolverineSoft_DialogueSystem_VariableContainer_TryGetInt_System_String_System_Int32__
+  commentId: M:WolverineSoft.DialogueSystem.VariableContainer.TryGetInt(System.String,System.Int32@)
+  name.vb: TryGetInt(String, Integer)
+  fullName: WolverineSoft.DialogueSystem.VariableContainer.TryGetInt(string, out int)
+  fullName.vb: WolverineSoft.DialogueSystem.VariableContainer.TryGetInt(String, Integer)
+  nameWithType: VariableContainer.TryGetInt(string, out int)
+  nameWithType.vb: VariableContainer.TryGetInt(String, Integer)
+- uid: WolverineSoft.DialogueSystem.VariableContainer.TryGetInt*
+  name: TryGetInt
+  href: api/WolverineSoft.DialogueSystem.VariableContainer.html#WolverineSoft_DialogueSystem_VariableContainer_TryGetInt_
+  commentId: Overload:WolverineSoft.DialogueSystem.VariableContainer.TryGetInt
+  isSpec: "True"
+  fullName: WolverineSoft.DialogueSystem.VariableContainer.TryGetInt
+  nameWithType: VariableContainer.TryGetInt
+- uid: WolverineSoft.DialogueSystem.VariableContainer.TryGetString(System.String,System.String@)
+  name: TryGetString(string, out string)
+  href: api/WolverineSoft.DialogueSystem.VariableContainer.html#WolverineSoft_DialogueSystem_VariableContainer_TryGetString_System_String_System_String__
+  commentId: M:WolverineSoft.DialogueSystem.VariableContainer.TryGetString(System.String,System.String@)
+  name.vb: TryGetString(String, String)
+  fullName: WolverineSoft.DialogueSystem.VariableContainer.TryGetString(string, out string)
+  fullName.vb: WolverineSoft.DialogueSystem.VariableContainer.TryGetString(String, String)
+  nameWithType: VariableContainer.TryGetString(string, out string)
+  nameWithType.vb: VariableContainer.TryGetString(String, String)
+- uid: WolverineSoft.DialogueSystem.VariableContainer.TryGetString*
+  name: TryGetString
+  href: api/WolverineSoft.DialogueSystem.VariableContainer.html#WolverineSoft_DialogueSystem_VariableContainer_TryGetString_
+  commentId: Overload:WolverineSoft.DialogueSystem.VariableContainer.TryGetString
+  isSpec: "True"
+  fullName: WolverineSoft.DialogueSystem.VariableContainer.TryGetString
+  nameWithType: VariableContainer.TryGetString
 - uid: WolverineSoft.DialogueSystem.VariableContainer.TryGetVariable(System.String,WolverineSoft.DialogueSystem.Variable@)
   name: TryGetVariable(string, out Variable)
   href: api/WolverineSoft.DialogueSystem.VariableContainer.html#WolverineSoft_DialogueSystem_VariableContainer_TryGetVariable_System_String_WolverineSoft_DialogueSystem_Variable__

@@ -22,10 +22,10 @@ items:
   source:
     remote:
       path: Editor/Nodes/OptionNode.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: OptionNode
-    path: Editor/Nodes/OptionNode.cs
+    path: ../Editor/Nodes/OptionNode.cs
     startLine: 12
   namespace: WolverineSoft.DialogueSystem.Editor
   summary: >-
@@ -67,10 +67,10 @@ items:
   source:
     remote:
       path: Editor/Nodes/OptionNode.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: OnDefineOptions
-    path: Editor/Nodes/OptionNode.cs
+    path: ../Editor/Nodes/OptionNode.cs
     startLine: 24
   namespace: WolverineSoft.DialogueSystem.Editor
   example: []
@@ -95,10 +95,10 @@ items:
   source:
     remote:
       path: Editor/Nodes/OptionNode.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: OnDefinePorts
-    path: Editor/Nodes/OptionNode.cs
+    path: ../Editor/Nodes/OptionNode.cs
     startLine: 40
   namespace: WolverineSoft.DialogueSystem.Editor
   example: []
@@ -123,10 +123,10 @@ items:
   source:
     remote:
       path: Editor/Nodes/OptionNode.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: CreateDialogueObject
-    path: Editor/Nodes/OptionNode.cs
+    path: ../Editor/Nodes/OptionNode.cs
     startLine: 49
   namespace: WolverineSoft.DialogueSystem.Editor
   summary: Method that creates and returns the node's ScriptableObject
@@ -153,10 +153,10 @@ items:
   source:
     remote:
       path: Editor/Nodes/OptionNode.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: GetOptionType
-    path: Editor/Nodes/OptionNode.cs
+    path: ../Editor/Nodes/OptionNode.cs
     startLine: 56
   namespace: WolverineSoft.DialogueSystem.Editor
   syntax:
@@ -179,10 +179,10 @@ items:
   source:
     remote:
       path: Editor/Nodes/OptionNode.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: AssignObjectReferences
-    path: Editor/Nodes/OptionNode.cs
+    path: ../Editor/Nodes/OptionNode.cs
     startLine: 68
   namespace: WolverineSoft.DialogueSystem.Editor
   summary: Method that is used to assign ScriptableObject references
@@ -207,10 +207,10 @@ items:
   source:
     remote:
       path: Editor/Nodes/OptionNode.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: GetData
-    path: Editor/Nodes/OptionNode.cs
+    path: ../Editor/Nodes/OptionNode.cs
     startLine: 85
   namespace: WolverineSoft.DialogueSystem.Editor
   summary: method that is used to retrieve the data that the node provides
@@ -237,10 +237,10 @@ items:
   source:
     remote:
       path: Editor/Nodes/OptionNode.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: CheckErrors
-    path: Editor/Nodes/OptionNode.cs
+    path: ../Editor/Nodes/OptionNode.cs
     startLine: 90
   namespace: WolverineSoft.DialogueSystem.Editor
   example: []

@@ -18,10 +18,10 @@ items:
   source:
     remote:
       path: RunTime/ResponseInfo.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: ResponseInfo
-    path: RunTime/ResponseInfo.cs
+    path: ../RunTime/ResponseInfo.cs
     startLine: 6
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -51,10 +51,10 @@ items:
   source:
     remote:
       path: RunTime/ResponseInfo.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: text
-    path: RunTime/ResponseInfo.cs
+    path: ../RunTime/ResponseInfo.cs
     startLine: 8
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -76,10 +76,10 @@ items:
   source:
     remote:
       path: RunTime/ResponseInfo.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: GetResponseParams
-    path: RunTime/ResponseInfo.cs
+    path: ../RunTime/ResponseInfo.cs
     startLine: 20
   namespace: WolverineSoft.DialogueSystem
   summary: Returns the Choice Parameters of the dialogue as type T
@@ -109,10 +109,10 @@ items:
   source:
     remote:
       path: RunTime/ResponseInfo.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: GetResponseParamsType
-    path: RunTime/ResponseInfo.cs
+    path: ../RunTime/ResponseInfo.cs
     startLine: 26
   namespace: WolverineSoft.DialogueSystem
   syntax:

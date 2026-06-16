@@ -106,7 +106,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "WolverineSoft.DialogueSystem.DSEventAudioClip",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/WolverineSoft.DialogueSystem.DSEventAudioClip.yml\" sourcestartlinenumber=\"1\">Built in implementation for AudioClip events</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -120,7 +120,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "WolverineSoft.DialogueSystem.DSEventBase",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/WolverineSoft.DialogueSystem.DSEventBase.yml\" sourcestartlinenumber=\"1\">Base class for Generic and non-generic DSEvent classes</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -134,7 +134,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "WolverineSoft.DialogueSystem.DSEventBool",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/WolverineSoft.DialogueSystem.DSEventBool.yml\" sourcestartlinenumber=\"1\">Built in implementation for bool events</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -148,7 +148,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "WolverineSoft.DialogueSystem.DSEventFloat",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/WolverineSoft.DialogueSystem.DSEventFloat.yml\" sourcestartlinenumber=\"1\">Built in implementation for float events</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -162,7 +162,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "WolverineSoft.DialogueSystem.DSEventInt",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/WolverineSoft.DialogueSystem.DSEventInt.yml\" sourcestartlinenumber=\"1\">Built in implementation for int events</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -176,7 +176,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "WolverineSoft.DialogueSystem.DSEventString",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/WolverineSoft.DialogueSystem.DSEventString.yml\" sourcestartlinenumber=\"1\">Built in implementation for string events</p>\n"
     },
     {
       "type": "ManagedReference",

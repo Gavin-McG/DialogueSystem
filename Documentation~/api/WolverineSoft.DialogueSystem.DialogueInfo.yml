@@ -22,10 +22,10 @@ items:
   source:
     remote:
       path: RunTime/DialogueInfo.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: DialogueInfo
-    path: RunTime/DialogueInfo.cs
+    path: ../RunTime/DialogueInfo.cs
     startLine: 17
   namespace: WolverineSoft.DialogueSystem
   summary: >-
@@ -70,10 +70,10 @@ items:
   source:
     remote:
       path: RunTime/DialogueInfo.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: dialogueType
-    path: RunTime/DialogueInfo.cs
+    path: ../RunTime/DialogueInfo.cs
     startLine: 20
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -95,10 +95,10 @@ items:
   source:
     remote:
       path: RunTime/DialogueInfo.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: text
-    path: RunTime/DialogueInfo.cs
+    path: ../RunTime/DialogueInfo.cs
     startLine: 21
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -120,10 +120,10 @@ items:
   source:
     remote:
       path: RunTime/DialogueInfo.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: responses
-    path: RunTime/DialogueInfo.cs
+    path: ../RunTime/DialogueInfo.cs
     startLine: 24
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -145,10 +145,10 @@ items:
   source:
     remote:
       path: RunTime/DialogueInfo.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: GetTextParams
-    path: RunTime/DialogueInfo.cs
+    path: ../RunTime/DialogueInfo.cs
     startLine: 56
   namespace: WolverineSoft.DialogueSystem
   summary: Returns the Base Parameters of the dialogue as type T
@@ -178,10 +178,10 @@ items:
   source:
     remote:
       path: RunTime/DialogueInfo.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: GetChoiceParams
-    path: RunTime/DialogueInfo.cs
+    path: ../RunTime/DialogueInfo.cs
     startLine: 65
   namespace: WolverineSoft.DialogueSystem
   summary: Returns the Choice Parameters of the dialogue as type T
@@ -211,10 +211,10 @@ items:
   source:
     remote:
       path: RunTime/DialogueInfo.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: GetBaseParamsType
-    path: RunTime/DialogueInfo.cs
+    path: ../RunTime/DialogueInfo.cs
     startLine: 72
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -237,10 +237,10 @@ items:
   source:
     remote:
       path: RunTime/DialogueInfo.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: GetChoiceParamsType
-    path: RunTime/DialogueInfo.cs
+    path: ../RunTime/DialogueInfo.cs
     startLine: 73
   namespace: WolverineSoft.DialogueSystem
   syntax:

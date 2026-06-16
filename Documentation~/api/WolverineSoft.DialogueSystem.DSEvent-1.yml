@@ -22,10 +22,10 @@ items:
   source:
     remote:
       path: RunTime/Events/DSEvent.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: DSEvent
-    path: RunTime/Events/DSEvent.cs
+    path: ../RunTime/Events/DSEvent.cs
     startLine: 97
   namespace: WolverineSoft.DialogueSystem
   summary: abstract class for Scriptable Object representing a typed Dialogue Event
@@ -61,10 +61,10 @@ items:
   source:
     remote:
       path: RunTime/Events/DSEvent.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: Invoke
-    path: RunTime/Events/DSEvent.cs
+    path: ../RunTime/Events/DSEvent.cs
     startLine: 106
   namespace: WolverineSoft.DialogueSystem
   summary: Invoke Event for all listeners
@@ -92,10 +92,10 @@ items:
   source:
     remote:
       path: RunTime/Events/DSEvent.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: Invoke
-    path: RunTime/Events/DSEvent.cs
+    path: ../RunTime/Events/DSEvent.cs
     startLine: 118
   namespace: WolverineSoft.DialogueSystem
   summary: >-
@@ -128,10 +128,10 @@ items:
   source:
     remote:
       path: RunTime/Events/DSEvent.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: AddListener
-    path: RunTime/Events/DSEvent.cs
+    path: ../RunTime/Events/DSEvent.cs
     startLine: 130
   namespace: WolverineSoft.DialogueSystem
   summary: Add a global listener
@@ -160,10 +160,10 @@ items:
   source:
     remote:
       path: RunTime/Events/DSEvent.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: AddListener
-    path: RunTime/Events/DSEvent.cs
+    path: ../RunTime/Events/DSEvent.cs
     startLine: 138
   namespace: WolverineSoft.DialogueSystem
   summary: Add a manager-specific listener
@@ -194,10 +194,10 @@ items:
   source:
     remote:
       path: RunTime/Events/DSEvent.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: RemoveListener
-    path: RunTime/Events/DSEvent.cs
+    path: ../RunTime/Events/DSEvent.cs
     startLine: 151
   namespace: WolverineSoft.DialogueSystem
   summary: Remove a Global listener
@@ -226,10 +226,10 @@ items:
   source:
     remote:
       path: RunTime/Events/DSEvent.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: RemoveListener
-    path: RunTime/Events/DSEvent.cs
+    path: ../RunTime/Events/DSEvent.cs
     startLine: 159
   namespace: WolverineSoft.DialogueSystem
   summary: Remove a manager-specific listener
@@ -260,10 +260,10 @@ items:
   source:
     remote:
       path: RunTime/Events/DSEvent.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: RemoveAllListeners
-    path: RunTime/Events/DSEvent.cs
+    path: ../RunTime/Events/DSEvent.cs
     startLine: 170
   namespace: WolverineSoft.DialogueSystem
   summary: Remove all global and manager-specific listeners

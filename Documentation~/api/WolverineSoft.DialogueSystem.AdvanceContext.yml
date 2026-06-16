@@ -18,10 +18,10 @@ items:
   source:
     remote:
       path: RunTime/AdvanceContext.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: AdvanceContext
-    path: RunTime/AdvanceContext.cs
+    path: ../RunTime/AdvanceContext.cs
     startLine: 9
   namespace: WolverineSoft.DialogueSystem
   summary: >-
@@ -58,10 +58,10 @@ items:
   source:
     remote:
       path: RunTime/AdvanceContext.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: choice
-    path: RunTime/AdvanceContext.cs
+    path: ../RunTime/AdvanceContext.cs
     startLine: 12
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -83,10 +83,10 @@ items:
   source:
     remote:
       path: RunTime/AdvanceContext.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: .ctor
-    path: RunTime/AdvanceContext.cs
+    path: ../RunTime/AdvanceContext.cs
     startLine: 14
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -110,10 +110,10 @@ items:
   source:
     remote:
       path: RunTime/AdvanceContext.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: .ctor
-    path: RunTime/AdvanceContext.cs
+    path: ../RunTime/AdvanceContext.cs
     startLine: 19
   namespace: WolverineSoft.DialogueSystem
   syntax:

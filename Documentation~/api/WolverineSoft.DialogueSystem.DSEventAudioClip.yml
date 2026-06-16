@@ -15,12 +15,14 @@ items:
   source:
     remote:
       path: RunTime/Events/DSEventAudioClip.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: DSEventAudioClip
-    path: RunTime/Events/DSEventAudioClip.cs
-    startLine: 4
+    path: ../RunTime/Events/DSEventAudioClip.cs
+    startLine: 7
   namespace: WolverineSoft.DialogueSystem
+  summary: Built in implementation for AudioClip events
+  example: []
   syntax:
     content: 'public class DSEventAudioClip : DSEvent<AudioClip>'
     content.vb: Public Class DSEventAudioClip Inherits DSEvent(Of AudioClip)

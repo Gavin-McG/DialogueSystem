@@ -15,12 +15,14 @@ items:
   source:
     remote:
       path: RunTime/Events/DSEventFloat.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: DSEventFloat
-    path: RunTime/Events/DSEventFloat.cs
-    startLine: 4
+    path: ../RunTime/Events/DSEventFloat.cs
+    startLine: 7
   namespace: WolverineSoft.DialogueSystem
+  summary: Built in implementation for float events
+  example: []
   syntax:
     content: 'public class DSEventFloat : DSEvent<float>'
     content.vb: Public Class DSEventFloat Inherits DSEvent(Of Single)

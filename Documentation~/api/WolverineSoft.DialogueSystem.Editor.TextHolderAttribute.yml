@@ -18,10 +18,10 @@ items:
   source:
     remote:
       path: Editor/PropertyDrawers/TextHolderAttribute.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: TextHolderAttribute
-    path: Editor/PropertyDrawers/TextHolderAttribute.cs
+    path: ../Editor/PropertyDrawers/TextHolderAttribute.cs
     startLine: 4
   namespace: WolverineSoft.DialogueSystem.Editor
   syntax:
@@ -106,10 +106,10 @@ items:
   source:
     remote:
       path: Editor/PropertyDrawers/TextHolderAttribute.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: width
-    path: Editor/PropertyDrawers/TextHolderAttribute.cs
+    path: ../Editor/PropertyDrawers/TextHolderAttribute.cs
     startLine: 7
   namespace: WolverineSoft.DialogueSystem.Editor
   syntax:
@@ -131,10 +131,10 @@ items:
   source:
     remote:
       path: Editor/PropertyDrawers/TextHolderAttribute.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: height
-    path: Editor/PropertyDrawers/TextHolderAttribute.cs
+    path: ../Editor/PropertyDrawers/TextHolderAttribute.cs
     startLine: 8
   namespace: WolverineSoft.DialogueSystem.Editor
   syntax:
@@ -156,10 +156,10 @@ items:
   source:
     remote:
       path: Editor/PropertyDrawers/TextHolderAttribute.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: .ctor
-    path: Editor/PropertyDrawers/TextHolderAttribute.cs
+    path: ../Editor/PropertyDrawers/TextHolderAttribute.cs
     startLine: 10
   namespace: WolverineSoft.DialogueSystem.Editor
   syntax:

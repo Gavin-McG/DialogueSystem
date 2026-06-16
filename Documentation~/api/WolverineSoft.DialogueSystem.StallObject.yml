@@ -16,10 +16,10 @@ items:
   source:
     remote:
       path: RunTime/Objects/StallObject.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: StallObject
-    path: RunTime/Objects/StallObject.cs
+    path: ../RunTime/Objects/StallObject.cs
     startLine: 3
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -50,10 +50,10 @@ items:
   source:
     remote:
       path: RunTime/Objects/StallObject.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: GetDialogueDetails
-    path: RunTime/Objects/StallObject.cs
+    path: ../RunTime/Objects/StallObject.cs
     startLine: 5
   namespace: WolverineSoft.DialogueSystem
   example: []

@@ -18,10 +18,10 @@ items:
   source:
     remote:
       path: Editor/DialogueGraph.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: DialogueGraph
-    path: Editor/DialogueGraph.cs
+    path: ../Editor/DialogueGraph.cs
     startLine: 13
   namespace: WolverineSoft.DialogueSystem.Editor
   summary: >-
@@ -58,10 +58,10 @@ items:
   source:
     remote:
       path: Editor/DialogueGraph.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: AssetExtension
-    path: Editor/DialogueGraph.cs
+    path: ../Editor/DialogueGraph.cs
     startLine: 17
   namespace: WolverineSoft.DialogueSystem.Editor
   syntax:
@@ -83,10 +83,10 @@ items:
   source:
     remote:
       path: Editor/DialogueGraph.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: OnGraphChanged
-    path: Editor/DialogueGraph.cs
+    path: ../Editor/DialogueGraph.cs
     startLine: 25
   namespace: WolverineSoft.DialogueSystem.Editor
   example: []
@@ -111,10 +111,10 @@ items:
   source:
     remote:
       path: Editor/DialogueGraph.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: VariableList
-    path: Editor/DialogueGraph.cs
+    path: ../Editor/DialogueGraph.cs
     startLine: 34
   namespace: WolverineSoft.DialogueSystem.Editor
   syntax:

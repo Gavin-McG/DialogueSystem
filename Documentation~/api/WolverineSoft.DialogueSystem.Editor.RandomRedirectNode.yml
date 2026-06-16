@@ -17,10 +17,10 @@ items:
   source:
     remote:
       path: Editor/Nodes/RandomRedirectNode.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: RandomRedirectNode
-    path: Editor/Nodes/RandomRedirectNode.cs
+    path: ../Editor/Nodes/RandomRedirectNode.cs
     startLine: 6
   namespace: WolverineSoft.DialogueSystem.Editor
   syntax:
@@ -64,10 +64,10 @@ items:
   source:
     remote:
       path: Editor/Nodes/RandomRedirectNode.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: UseWeight
-    path: Editor/Nodes/RandomRedirectNode.cs
+    path: ../Editor/Nodes/RandomRedirectNode.cs
     startLine: 10
   namespace: WolverineSoft.DialogueSystem.Editor
   example: []
@@ -93,10 +93,10 @@ items:
   source:
     remote:
       path: Editor/Nodes/RandomRedirectNode.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: CreateDialogueObject
-    path: Editor/Nodes/RandomRedirectNode.cs
+    path: ../Editor/Nodes/RandomRedirectNode.cs
     startLine: 12
   namespace: WolverineSoft.DialogueSystem.Editor
   summary: Method that creates and returns the node's ScriptableObject

@@ -19,10 +19,10 @@ items:
   source:
     remote:
       path: RunTime/Objects/EventObject.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: EventObject
-    path: RunTime/Objects/EventObject.cs
+    path: ../RunTime/Objects/EventObject.cs
     startLine: 5
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -47,10 +47,10 @@ items:
   source:
     remote:
       path: RunTime/Objects/EventObject.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: nextDialogue
-    path: RunTime/Objects/EventObject.cs
+    path: ../RunTime/Objects/EventObject.cs
     startLine: 7
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -72,10 +72,10 @@ items:
   source:
     remote:
       path: RunTime/Objects/EventObject.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: eventCaller
-    path: RunTime/Objects/EventObject.cs
+    path: ../RunTime/Objects/EventObject.cs
     startLine: 8
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -97,10 +97,10 @@ items:
   source:
     remote:
       path: RunTime/Objects/EventObject.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: EnterState
-    path: RunTime/Objects/EventObject.cs
+    path: ../RunTime/Objects/EventObject.cs
     startLine: 10
   namespace: WolverineSoft.DialogueSystem
   example: []
@@ -123,10 +123,10 @@ items:
   source:
     remote:
       path: RunTime/Objects/EventObject.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: GetNextDialogue
-    path: RunTime/Objects/EventObject.cs
+    path: ../RunTime/Objects/EventObject.cs
     startLine: 15
   namespace: WolverineSoft.DialogueSystem
   example: []

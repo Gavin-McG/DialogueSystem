@@ -19,10 +19,10 @@ items:
   source:
     remote:
       path: RunTime/Objects/StartObject.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: StartObject
-    path: RunTime/Objects/StartObject.cs
+    path: ../RunTime/Objects/StartObject.cs
     startLine: 5
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -57,10 +57,10 @@ items:
   source:
     remote:
       path: RunTime/Objects/StartObject.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: nextDialogue
-    path: RunTime/Objects/StartObject.cs
+    path: ../RunTime/Objects/StartObject.cs
     startLine: 8
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -82,10 +82,10 @@ items:
   source:
     remote:
       path: RunTime/Objects/StartObject.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: startName
-    path: RunTime/Objects/StartObject.cs
+    path: ../RunTime/Objects/StartObject.cs
     startLine: 9
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -107,10 +107,10 @@ items:
   source:
     remote:
       path: RunTime/Objects/StartObject.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: dialogueParameters
-    path: RunTime/Objects/StartObject.cs
+    path: ../RunTime/Objects/StartObject.cs
     startLine: 10
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -132,10 +132,10 @@ items:
   source:
     remote:
       path: RunTime/Objects/StartObject.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: GetNextDialogue
-    path: RunTime/Objects/StartObject.cs
+    path: ../RunTime/Objects/StartObject.cs
     startLine: 12
   namespace: WolverineSoft.DialogueSystem
   example: []

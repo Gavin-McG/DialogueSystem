@@ -32,10 +32,10 @@ items:
   source:
     remote:
       path: RunTime/Utility/SerializableDictionary.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: SerializableDictionary
-    path: RunTime/Utility/SerializableDictionary.cs
+    path: ../RunTime/Utility/SerializableDictionary.cs
     startLine: 15
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -87,10 +87,10 @@ items:
   source:
     remote:
       path: RunTime/Utility/SerializableDictionary.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: Count
-    path: RunTime/Utility/SerializableDictionary.cs
+    path: ../RunTime/Utility/SerializableDictionary.cs
     startLine: 26
   namespace: WolverineSoft.DialogueSystem
   summary: Gets the number of elements contained in the <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref>.
@@ -121,10 +121,10 @@ items:
   source:
     remote:
       path: RunTime/Utility/SerializableDictionary.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: IsReadOnly
-    path: RunTime/Utility/SerializableDictionary.cs
+    path: ../RunTime/Utility/SerializableDictionary.cs
     startLine: 27
   namespace: WolverineSoft.DialogueSystem
   summary: Gets a value indicating whether the <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref> is read-only.
@@ -155,10 +155,10 @@ items:
   source:
     remote:
       path: RunTime/Utility/SerializableDictionary.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: Keys
-    path: RunTime/Utility/SerializableDictionary.cs
+    path: ../RunTime/Utility/SerializableDictionary.cs
     startLine: 29
   namespace: WolverineSoft.DialogueSystem
   summary: Gets an <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref> containing the keys of the <xref href="System.Collections.Generic.IDictionary%602" data-throw-if-not-resolved="false"></xref>.
@@ -189,10 +189,10 @@ items:
   source:
     remote:
       path: RunTime/Utility/SerializableDictionary.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: Values
-    path: RunTime/Utility/SerializableDictionary.cs
+    path: ../RunTime/Utility/SerializableDictionary.cs
     startLine: 30
   namespace: WolverineSoft.DialogueSystem
   summary: Gets an <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref> containing the values in the <xref href="System.Collections.Generic.IDictionary%602" data-throw-if-not-resolved="false"></xref>.
@@ -223,10 +223,10 @@ items:
   source:
     remote:
       path: RunTime/Utility/SerializableDictionary.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: Add
-    path: RunTime/Utility/SerializableDictionary.cs
+    path: ../RunTime/Utility/SerializableDictionary.cs
     startLine: 32
   namespace: WolverineSoft.DialogueSystem
   summary: Adds an element with the provided key and value to the <xref href="System.Collections.Generic.IDictionary%602" data-throw-if-not-resolved="false"></xref>.
@@ -270,10 +270,10 @@ items:
   source:
     remote:
       path: RunTime/Utility/SerializableDictionary.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: Add
-    path: RunTime/Utility/SerializableDictionary.cs
+    path: ../RunTime/Utility/SerializableDictionary.cs
     startLine: 33
   namespace: WolverineSoft.DialogueSystem
   summary: Adds an item to the <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref>.
@@ -309,10 +309,10 @@ items:
   source:
     remote:
       path: RunTime/Utility/SerializableDictionary.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: Remove
-    path: RunTime/Utility/SerializableDictionary.cs
+    path: ../RunTime/Utility/SerializableDictionary.cs
     startLine: 35
   namespace: WolverineSoft.DialogueSystem
   summary: Removes the element with the specified key from the <xref href="System.Collections.Generic.IDictionary%602" data-throw-if-not-resolved="false"></xref>.
@@ -353,10 +353,10 @@ items:
   source:
     remote:
       path: RunTime/Utility/SerializableDictionary.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: Remove
-    path: RunTime/Utility/SerializableDictionary.cs
+    path: ../RunTime/Utility/SerializableDictionary.cs
     startLine: 36
   namespace: WolverineSoft.DialogueSystem
   summary: Removes the first occurrence of a specific object from the <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref>.
@@ -395,10 +395,10 @@ items:
   source:
     remote:
       path: RunTime/Utility/SerializableDictionary.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: Clear
-    path: RunTime/Utility/SerializableDictionary.cs
+    path: ../RunTime/Utility/SerializableDictionary.cs
     startLine: 46
   namespace: WolverineSoft.DialogueSystem
   summary: Removes all items from the <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref>.
@@ -429,10 +429,10 @@ items:
   source:
     remote:
       path: RunTime/Utility/SerializableDictionary.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: Contains
-    path: RunTime/Utility/SerializableDictionary.cs
+    path: ../RunTime/Utility/SerializableDictionary.cs
     startLine: 48
   namespace: WolverineSoft.DialogueSystem
   summary: Determines whether the <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref> contains a specific value.
@@ -467,10 +467,10 @@ items:
   source:
     remote:
       path: RunTime/Utility/SerializableDictionary.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: ContainsKey
-    path: RunTime/Utility/SerializableDictionary.cs
+    path: ../RunTime/Utility/SerializableDictionary.cs
     startLine: 49
   namespace: WolverineSoft.DialogueSystem
   summary: Determines whether the <xref href="System.Collections.Generic.IDictionary%602" data-throw-if-not-resolved="false"></xref> contains an element with the specified key.
@@ -508,10 +508,10 @@ items:
   source:
     remote:
       path: RunTime/Utility/SerializableDictionary.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: TryGetValue
-    path: RunTime/Utility/SerializableDictionary.cs
+    path: ../RunTime/Utility/SerializableDictionary.cs
     startLine: 51
   namespace: WolverineSoft.DialogueSystem
   summary: Gets the value associated with the specified key.
@@ -553,10 +553,10 @@ items:
   source:
     remote:
       path: RunTime/Utility/SerializableDictionary.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: this[]
-    path: RunTime/Utility/SerializableDictionary.cs
+    path: ../RunTime/Utility/SerializableDictionary.cs
     startLine: 52
   namespace: WolverineSoft.DialogueSystem
   summary: Gets or sets the element with the specified key.
@@ -601,10 +601,10 @@ items:
   source:
     remote:
       path: RunTime/Utility/SerializableDictionary.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: GetEnumerator
-    path: RunTime/Utility/SerializableDictionary.cs
+    path: ../RunTime/Utility/SerializableDictionary.cs
     startLine: 58
   namespace: WolverineSoft.DialogueSystem
   summary: Returns an enumerator that iterates through the collection.
@@ -634,10 +634,10 @@ items:
   source:
     remote:
       path: RunTime/Utility/SerializableDictionary.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: CopyTo
-    path: RunTime/Utility/SerializableDictionary.cs
+    path: ../RunTime/Utility/SerializableDictionary.cs
     startLine: 61
   namespace: WolverineSoft.DialogueSystem
   summary: Copies the elements of the <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref> to an <xref href="System.Array" data-throw-if-not-resolved="false"></xref>, starting at a particular <xref href="System.Array" data-throw-if-not-resolved="false"></xref> index.
@@ -682,10 +682,10 @@ items:
   source:
     remote:
       path: RunTime/Utility/SerializableDictionary.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: OnBeforeSerialize
-    path: RunTime/Utility/SerializableDictionary.cs
+    path: ../RunTime/Utility/SerializableDictionary.cs
     startLine: 82
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -708,10 +708,10 @@ items:
   source:
     remote:
       path: RunTime/Utility/SerializableDictionary.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: OnAfterDeserialize
-    path: RunTime/Utility/SerializableDictionary.cs
+    path: ../RunTime/Utility/SerializableDictionary.cs
     startLine: 95
   namespace: WolverineSoft.DialogueSystem
   syntax:

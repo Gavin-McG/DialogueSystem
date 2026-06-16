@@ -17,10 +17,10 @@ items:
   source:
     remote:
       path: RunTime/Params/TextParameters.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: TextParameters
-    path: RunTime/Params/TextParameters.cs
+    path: ../RunTime/Params/TextParameters.cs
     startLine: 11
   namespace: WolverineSoft.DialogueSystem
   summary: Base class for Parameter types which require value replacements
@@ -74,10 +74,10 @@ items:
   source:
     remote:
       path: RunTime/Params/TextParameters.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: BackgroundColor
-    path: RunTime/Params/TextParameters.cs
+    path: ../RunTime/Params/TextParameters.cs
     startLine: 14
   namespace: WolverineSoft.DialogueSystem
   example: []
@@ -104,10 +104,10 @@ items:
   source:
     remote:
       path: RunTime/Params/TextParameters.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: BorderColor
-    path: RunTime/Params/TextParameters.cs
+    path: ../RunTime/Params/TextParameters.cs
     startLine: 15
   namespace: WolverineSoft.DialogueSystem
   example: []

@@ -16,10 +16,10 @@ items:
   source:
     remote:
       path: RunTime/Options/RandomOption.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: RandomOption
-    path: RunTime/Options/RandomOption.cs
+    path: ../RunTime/Options/RandomOption.cs
     startLine: 5
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -70,10 +70,10 @@ items:
   source:
     remote:
       path: RunTime/Options/RandomOption.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: EvaluateCondition
-    path: RunTime/Options/RandomOption.cs
+    path: ../RunTime/Options/RandomOption.cs
     startLine: 10
   namespace: WolverineSoft.DialogueSystem
   summary: Returns true if the condition is passed and the option should be considered by its respective Redirect

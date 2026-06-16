@@ -18,10 +18,10 @@ items:
   source:
     remote:
       path: Editor/IDialogueNode.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: IDialogueNode
-    path: Editor/IDialogueNode.cs
+    path: ../Editor/IDialogueNode.cs
     startLine: 5
   namespace: WolverineSoft.DialogueSystem.Editor
   syntax:
@@ -53,10 +53,10 @@ items:
   source:
     remote:
       path: Editor/IDialogueNode.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: CreateDialogueObject
-    path: Editor/IDialogueNode.cs
+    path: ../Editor/IDialogueNode.cs
     startLine: 10
   namespace: WolverineSoft.DialogueSystem.Editor
   summary: Method that creates and returns the node's ScriptableObject
@@ -81,10 +81,10 @@ items:
   source:
     remote:
       path: Editor/IDialogueNode.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: AssignObjectReferences
-    path: Editor/IDialogueNode.cs
+    path: ../Editor/IDialogueNode.cs
     startLine: 15
   namespace: WolverineSoft.DialogueSystem.Editor
   summary: Method that is used to assign ScriptableObject references
@@ -107,10 +107,10 @@ items:
   source:
     remote:
       path: Editor/IDialogueNode.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: CheckErrors
-    path: Editor/IDialogueNode.cs
+    path: ../Editor/IDialogueNode.cs
     startLine: 17
   namespace: WolverineSoft.DialogueSystem.Editor
   syntax:

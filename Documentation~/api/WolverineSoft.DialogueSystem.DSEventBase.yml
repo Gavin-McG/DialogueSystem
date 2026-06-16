@@ -15,12 +15,14 @@ items:
   source:
     remote:
       path: RunTime/Events/DSEventBase.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: DSEventBase
-    path: RunTime/Events/DSEventBase.cs
-    startLine: 5
+    path: ../RunTime/Events/DSEventBase.cs
+    startLine: 8
   namespace: WolverineSoft.DialogueSystem
+  summary: Base class for Generic and non-generic DSEvent classes
+  example: []
   syntax:
     content: 'public abstract class DSEventBase : ScriptableObject'
     content.vb: Public MustInherit Class DSEventBase Inherits ScriptableObject

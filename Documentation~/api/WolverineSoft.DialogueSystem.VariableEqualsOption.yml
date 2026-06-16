@@ -17,10 +17,10 @@ items:
   source:
     remote:
       path: RunTime/Options/VariableEqualsOption.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: VariableEqualsOption
-    path: RunTime/Options/VariableEqualsOption.cs
+    path: ../RunTime/Options/VariableEqualsOption.cs
     startLine: 6
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -70,10 +70,10 @@ items:
   source:
     remote:
       path: RunTime/Options/VariableEqualsOption.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: EvaluateCondition
-    path: RunTime/Options/VariableEqualsOption.cs
+    path: ../RunTime/Options/VariableEqualsOption.cs
     startLine: 15
   namespace: WolverineSoft.DialogueSystem
   summary: Returns true if the condition is passed and the option should be considered by its respective Redirect
@@ -104,10 +104,10 @@ items:
   source:
     remote:
       path: RunTime/Options/VariableEqualsOption.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: CheckVariables
-    path: RunTime/Options/VariableEqualsOption.cs
+    path: ../RunTime/Options/VariableEqualsOption.cs
     startLine: 22
   namespace: WolverineSoft.DialogueSystem
   example: []

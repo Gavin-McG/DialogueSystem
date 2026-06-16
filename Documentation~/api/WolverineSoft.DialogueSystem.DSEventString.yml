@@ -15,12 +15,14 @@ items:
   source:
     remote:
       path: RunTime/Events/DSEventString.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: DSEventString
-    path: RunTime/Events/DSEventString.cs
-    startLine: 4
+    path: ../RunTime/Events/DSEventString.cs
+    startLine: 7
   namespace: WolverineSoft.DialogueSystem
+  summary: Built in implementation for string events
+  example: []
   syntax:
     content: 'public class DSEventString : DSEvent<string>'
     content.vb: Public Class DSEventString Inherits DSEvent(Of String)

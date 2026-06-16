@@ -17,10 +17,10 @@ items:
   source:
     remote:
       path: RunTime/Utility/SerializableDictionary.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: SerializableKeyValuePair
-    path: RunTime/Utility/SerializableDictionary.cs
+    path: ../RunTime/Utility/SerializableDictionary.cs
     startLine: 8
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -63,10 +63,10 @@ items:
   source:
     remote:
       path: RunTime/Utility/SerializableDictionary.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: Key
-    path: RunTime/Utility/SerializableDictionary.cs
+    path: ../RunTime/Utility/SerializableDictionary.cs
     startLine: 11
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -90,10 +90,10 @@ items:
   source:
     remote:
       path: RunTime/Utility/SerializableDictionary.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: Value
-    path: RunTime/Utility/SerializableDictionary.cs
+    path: ../RunTime/Utility/SerializableDictionary.cs
     startLine: 12
   namespace: WolverineSoft.DialogueSystem
   syntax:

@@ -17,10 +17,10 @@ items:
   source:
     remote:
       path: RunTime/Params/DialogueParameters.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: DialogueParameters
-    path: RunTime/Params/DialogueParameters.cs
+    path: ../RunTime/Params/DialogueParameters.cs
     startLine: 9
   namespace: WolverineSoft.DialogueSystem
   summary: >-
@@ -77,10 +77,10 @@ items:
   source:
     remote:
       path: RunTime/Params/DialogueParameters.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: BackgroundColor
-    path: RunTime/Params/DialogueParameters.cs
+    path: ../RunTime/Params/DialogueParameters.cs
     startLine: 12
   namespace: WolverineSoft.DialogueSystem
   example: []
@@ -107,10 +107,10 @@ items:
   source:
     remote:
       path: RunTime/Params/DialogueParameters.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: BorderColor
-    path: RunTime/Params/DialogueParameters.cs
+    path: ../RunTime/Params/DialogueParameters.cs
     startLine: 13
   namespace: WolverineSoft.DialogueSystem
   example: []

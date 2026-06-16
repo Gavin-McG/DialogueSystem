@@ -16,10 +16,10 @@ items:
   source:
     remote:
       path: Editor/PropertyDrawers/TextHolderDrawer.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: TextHolderDrawer
-    path: Editor/PropertyDrawers/TextHolderDrawer.cs
+    path: ../Editor/PropertyDrawers/TextHolderDrawer.cs
     startLine: 8
   namespace: WolverineSoft.DialogueSystem.Editor
   syntax:
@@ -41,10 +41,10 @@ items:
   source:
     remote:
       path: Editor/PropertyDrawers/TextHolderDrawer.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: CreatePropertyGUI
-    path: Editor/PropertyDrawers/TextHolderDrawer.cs
+    path: ../Editor/PropertyDrawers/TextHolderDrawer.cs
     startLine: 14
   namespace: WolverineSoft.DialogueSystem.Editor
   example: []

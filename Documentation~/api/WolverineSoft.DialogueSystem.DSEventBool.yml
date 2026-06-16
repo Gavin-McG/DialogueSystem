@@ -15,12 +15,14 @@ items:
   source:
     remote:
       path: RunTime/Events/DSEventBool.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: DSEventBool
-    path: RunTime/Events/DSEventBool.cs
-    startLine: 4
+    path: ../RunTime/Events/DSEventBool.cs
+    startLine: 7
   namespace: WolverineSoft.DialogueSystem
+  summary: Built in implementation for bool events
+  example: []
   syntax:
     content: 'public class DSEventBool : DSEvent<bool>'
     content.vb: Public Class DSEventBool Inherits DSEvent(Of Boolean)

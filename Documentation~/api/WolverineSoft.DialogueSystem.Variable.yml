@@ -34,10 +34,10 @@ items:
   source:
     remote:
       path: RunTime/Variables/Variable.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: Variable
-    path: RunTime/Variables/Variable.cs
+    path: ../RunTime/Variables/Variable.cs
     startLine: 5
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -74,10 +74,10 @@ items:
   source:
     remote:
       path: RunTime/Variables/Variable.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: .ctor
-    path: RunTime/Variables/Variable.cs
+    path: ../RunTime/Variables/Variable.cs
     startLine: 18
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -104,10 +104,10 @@ items:
   source:
     remote:
       path: RunTime/Variables/Variable.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: .ctor
-    path: RunTime/Variables/Variable.cs
+    path: ../RunTime/Variables/Variable.cs
     startLine: 27
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -134,10 +134,10 @@ items:
   source:
     remote:
       path: RunTime/Variables/Variable.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: .ctor
-    path: RunTime/Variables/Variable.cs
+    path: ../RunTime/Variables/Variable.cs
     startLine: 36
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -164,10 +164,10 @@ items:
   source:
     remote:
       path: RunTime/Variables/Variable.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: .ctor
-    path: RunTime/Variables/Variable.cs
+    path: ../RunTime/Variables/Variable.cs
     startLine: 45
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -194,10 +194,10 @@ items:
   source:
     remote:
       path: RunTime/Variables/Variable.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: .ctor
-    path: RunTime/Variables/Variable.cs
+    path: ../RunTime/Variables/Variable.cs
     startLine: 54
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -224,10 +224,10 @@ items:
   source:
     remote:
       path: RunTime/Variables/Variable.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: op_Equality
-    path: RunTime/Variables/Variable.cs
+    path: ../RunTime/Variables/Variable.cs
     startLine: 67
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -258,10 +258,10 @@ items:
   source:
     remote:
       path: RunTime/Variables/Variable.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: op_Inequality
-    path: RunTime/Variables/Variable.cs
+    path: ../RunTime/Variables/Variable.cs
     startLine: 81
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -292,10 +292,10 @@ items:
   source:
     remote:
       path: RunTime/Variables/Variable.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: Equals
-    path: RunTime/Variables/Variable.cs
+    path: ../RunTime/Variables/Variable.cs
     startLine: 95
   namespace: WolverineSoft.DialogueSystem
   summary: Indicates whether the current object is equal to another object of the same type.
@@ -327,10 +327,10 @@ items:
   source:
     remote:
       path: RunTime/Variables/Variable.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: GetHashCode
-    path: RunTime/Variables/Variable.cs
+    path: ../RunTime/Variables/Variable.cs
     startLine: 100
   namespace: WolverineSoft.DialogueSystem
   summary: Returns the hash code for this instance.
@@ -357,10 +357,10 @@ items:
   source:
     remote:
       path: RunTime/Variables/Variable.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: ToString
-    path: RunTime/Variables/Variable.cs
+    path: ../RunTime/Variables/Variable.cs
     startLine: 112
   namespace: WolverineSoft.DialogueSystem
   summary: Returns the fully qualified type name of this instance.
@@ -387,10 +387,10 @@ items:
   source:
     remote:
       path: RunTime/Variables/Variable.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: Type
-    path: RunTime/Variables/Variable.cs
+    path: ../RunTime/Variables/Variable.cs
     startLine: 125
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -414,10 +414,10 @@ items:
   source:
     remote:
       path: RunTime/Variables/Variable.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: GetString
-    path: RunTime/Variables/Variable.cs
+    path: ../RunTime/Variables/Variable.cs
     startLine: 127
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -440,10 +440,10 @@ items:
   source:
     remote:
       path: RunTime/Variables/Variable.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: GetFloat
-    path: RunTime/Variables/Variable.cs
+    path: ../RunTime/Variables/Variable.cs
     startLine: 128
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -466,10 +466,10 @@ items:
   source:
     remote:
       path: RunTime/Variables/Variable.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: GetInt
-    path: RunTime/Variables/Variable.cs
+    path: ../RunTime/Variables/Variable.cs
     startLine: 129
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -492,10 +492,10 @@ items:
   source:
     remote:
       path: RunTime/Variables/Variable.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: GetBool
-    path: RunTime/Variables/Variable.cs
+    path: ../RunTime/Variables/Variable.cs
     startLine: 130
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -518,10 +518,10 @@ items:
   source:
     remote:
       path: RunTime/Variables/Variable.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: SetValue
-    path: RunTime/Variables/Variable.cs
+    path: ../RunTime/Variables/Variable.cs
     startLine: 136
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -548,10 +548,10 @@ items:
   source:
     remote:
       path: RunTime/Variables/Variable.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: SetValue
-    path: RunTime/Variables/Variable.cs
+    path: ../RunTime/Variables/Variable.cs
     startLine: 142
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -578,10 +578,10 @@ items:
   source:
     remote:
       path: RunTime/Variables/Variable.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: SetValue
-    path: RunTime/Variables/Variable.cs
+    path: ../RunTime/Variables/Variable.cs
     startLine: 148
   namespace: WolverineSoft.DialogueSystem
   syntax:
@@ -608,10 +608,10 @@ items:
   source:
     remote:
       path: RunTime/Variables/Variable.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: SetValue
-    path: RunTime/Variables/Variable.cs
+    path: ../RunTime/Variables/Variable.cs
     startLine: 154
   namespace: WolverineSoft.DialogueSystem
   syntax:

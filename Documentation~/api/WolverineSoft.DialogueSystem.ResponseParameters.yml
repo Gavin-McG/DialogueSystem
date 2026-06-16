@@ -17,10 +17,10 @@ items:
   source:
     remote:
       path: RunTime/Params/ResponseParameters.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: ResponseParameters
-    path: RunTime/Params/ResponseParameters.cs
+    path: ../RunTime/Params/ResponseParameters.cs
     startLine: 9
   namespace: WolverineSoft.DialogueSystem
   summary: Base class representing the parameters used by choice options
@@ -74,10 +74,10 @@ items:
   source:
     remote:
       path: RunTime/Params/ResponseParameters.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: BackgroundColor
-    path: RunTime/Params/ResponseParameters.cs
+    path: ../RunTime/Params/ResponseParameters.cs
     startLine: 12
   namespace: WolverineSoft.DialogueSystem
   example: []
@@ -104,10 +104,10 @@ items:
   source:
     remote:
       path: RunTime/Params/ResponseParameters.cs
-      branch: docfx
+      branch: main
       repo: https://github.com/Gavin-McG/DialogueSystem.git
     id: BorderColor
-    path: RunTime/Params/ResponseParameters.cs
+    path: ../RunTime/Params/ResponseParameters.cs
     startLine: 13
   namespace: WolverineSoft.DialogueSystem
   example: []
