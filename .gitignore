@@ -79,3 +79,7 @@ crashlytics-build.properties
 # Jetbrain Rider Cache
 .idea/
 Assets/Plugins/Editor/JetBrains*
+
+# Docfx Files
+Documentation~/_site/*
+Documentation~/api/*
