@@ -1,0 +1,293 @@
+### YamlMime:ManagedReference
+items:
+- uid: WolverineSoft.DialogueSystem.StartObject
+  commentId: T:WolverineSoft.DialogueSystem.StartObject
+  id: StartObject
+  parent: WolverineSoft.DialogueSystem
+  children:
+  - WolverineSoft.DialogueSystem.StartObject.GetNextDialogue(WolverineSoft.DialogueSystem.AdvanceContext,WolverineSoft.DialogueSystem.DialogueManager)
+  - WolverineSoft.DialogueSystem.StartObject.dialogueParameters
+  - WolverineSoft.DialogueSystem.StartObject.nextDialogue
+  - WolverineSoft.DialogueSystem.StartObject.startName
+  langs:
+  - csharp
+  - vb
+  name: StartObject
+  nameWithType: StartObject
+  fullName: WolverineSoft.DialogueSystem.StartObject
+  type: Class
+  source:
+    remote:
+      path: RunTime/Objects/StartObject.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: StartObject
+    path: RunTime/Objects/StartObject.cs
+    startLine: 5
+  namespace: WolverineSoft.DialogueSystem
+  syntax:
+    content: >-
+      [Serializable]
+
+      public class StartObject : DialogueObject
+    content.vb: >-
+      <Serializable>
+
+      Public Class StartObject Inherits DialogueObject
+  inheritance:
+  - System.Object
+  - WolverineSoft.DialogueSystem.DialogueObject
+  inheritedMembers:
+  - WolverineSoft.DialogueSystem.DialogueObject.EnterState
+  attributes:
+  - type: System.SerializableAttribute
+    ctor: System.SerializableAttribute.#ctor
+    arguments: []
+- uid: WolverineSoft.DialogueSystem.StartObject.nextDialogue
+  commentId: F:WolverineSoft.DialogueSystem.StartObject.nextDialogue
+  id: nextDialogue
+  parent: WolverineSoft.DialogueSystem.StartObject
+  langs:
+  - csharp
+  - vb
+  name: nextDialogue
+  nameWithType: StartObject.nextDialogue
+  fullName: WolverineSoft.DialogueSystem.StartObject.nextDialogue
+  type: Field
+  source:
+    remote:
+      path: RunTime/Objects/StartObject.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: nextDialogue
+    path: RunTime/Objects/StartObject.cs
+    startLine: 8
+  namespace: WolverineSoft.DialogueSystem
+  syntax:
+    content: public DialogueObject nextDialogue
+    return:
+      type: WolverineSoft.DialogueSystem.DialogueObject
+    content.vb: Public nextDialogue As DialogueObject
+- uid: WolverineSoft.DialogueSystem.StartObject.startName
+  commentId: F:WolverineSoft.DialogueSystem.StartObject.startName
+  id: startName
+  parent: WolverineSoft.DialogueSystem.StartObject
+  langs:
+  - csharp
+  - vb
+  name: startName
+  nameWithType: StartObject.startName
+  fullName: WolverineSoft.DialogueSystem.StartObject.startName
+  type: Field
+  source:
+    remote:
+      path: RunTime/Objects/StartObject.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: startName
+    path: RunTime/Objects/StartObject.cs
+    startLine: 9
+  namespace: WolverineSoft.DialogueSystem
+  syntax:
+    content: public string startName
+    return:
+      type: System.String
+    content.vb: Public startName As String
+- uid: WolverineSoft.DialogueSystem.StartObject.dialogueParameters
+  commentId: F:WolverineSoft.DialogueSystem.StartObject.dialogueParameters
+  id: dialogueParameters
+  parent: WolverineSoft.DialogueSystem.StartObject
+  langs:
+  - csharp
+  - vb
+  name: dialogueParameters
+  nameWithType: StartObject.dialogueParameters
+  fullName: WolverineSoft.DialogueSystem.StartObject.dialogueParameters
+  type: Field
+  source:
+    remote:
+      path: RunTime/Objects/StartObject.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: dialogueParameters
+    path: RunTime/Objects/StartObject.cs
+    startLine: 10
+  namespace: WolverineSoft.DialogueSystem
+  syntax:
+    content: public DialogueParameters dialogueParameters
+    return:
+      type: WolverineSoft.DialogueSystem.DialogueParameters
+    content.vb: Public dialogueParameters As DialogueParameters
+- uid: WolverineSoft.DialogueSystem.StartObject.GetNextDialogue(WolverineSoft.DialogueSystem.AdvanceContext,WolverineSoft.DialogueSystem.DialogueManager)
+  commentId: M:WolverineSoft.DialogueSystem.StartObject.GetNextDialogue(WolverineSoft.DialogueSystem.AdvanceContext,WolverineSoft.DialogueSystem.DialogueManager)
+  id: GetNextDialogue(WolverineSoft.DialogueSystem.AdvanceContext,WolverineSoft.DialogueSystem.DialogueManager)
+  parent: WolverineSoft.DialogueSystem.StartObject
+  langs:
+  - csharp
+  - vb
+  name: GetNextDialogue(AdvanceContext, DialogueManager)
+  nameWithType: StartObject.GetNextDialogue(AdvanceContext, DialogueManager)
+  fullName: WolverineSoft.DialogueSystem.StartObject.GetNextDialogue(WolverineSoft.DialogueSystem.AdvanceContext, WolverineSoft.DialogueSystem.DialogueManager)
+  type: Method
+  source:
+    remote:
+      path: RunTime/Objects/StartObject.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: GetNextDialogue
+    path: RunTime/Objects/StartObject.cs
+    startLine: 12
+  namespace: WolverineSoft.DialogueSystem
+  example: []
+  syntax:
+    content: public override DialogueObject GetNextDialogue(AdvanceContext advanceContext, DialogueManager manager)
+    parameters:
+    - id: advanceContext
+      type: WolverineSoft.DialogueSystem.AdvanceContext
+    - id: manager
+      type: WolverineSoft.DialogueSystem.DialogueManager
+    return:
+      type: WolverineSoft.DialogueSystem.DialogueObject
+    content.vb: Public Overrides Function GetNextDialogue(advanceContext As AdvanceContext, manager As DialogueManager) As DialogueObject
+  overridden: WolverineSoft.DialogueSystem.DialogueObject.GetNextDialogue(WolverineSoft.DialogueSystem.AdvanceContext,WolverineSoft.DialogueSystem.DialogueManager)
+  overload: WolverineSoft.DialogueSystem.StartObject.GetNextDialogue*
+references:
+- uid: WolverineSoft.DialogueSystem
+  commentId: N:WolverineSoft.DialogueSystem
+  href: WolverineSoft.html
+  name: WolverineSoft.DialogueSystem
+  nameWithType: WolverineSoft.DialogueSystem
+  fullName: WolverineSoft.DialogueSystem
+  spec.csharp:
+  - uid: WolverineSoft
+    name: WolverineSoft
+    href: WolverineSoft.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem
+    name: DialogueSystem
+    href: WolverineSoft.DialogueSystem.html
+  spec.vb:
+  - uid: WolverineSoft
+    name: WolverineSoft
+    href: WolverineSoft.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem
+    name: DialogueSystem
+    href: WolverineSoft.DialogueSystem.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: WolverineSoft.DialogueSystem.DialogueObject
+  commentId: T:WolverineSoft.DialogueSystem.DialogueObject
+  parent: WolverineSoft.DialogueSystem
+  href: WolverineSoft.DialogueSystem.DialogueObject.html
+  name: DialogueObject
+  nameWithType: DialogueObject
+  fullName: WolverineSoft.DialogueSystem.DialogueObject
+- uid: WolverineSoft.DialogueSystem.DialogueObject.EnterState
+  commentId: M:WolverineSoft.DialogueSystem.DialogueObject.EnterState
+  parent: WolverineSoft.DialogueSystem.DialogueObject
+  href: WolverineSoft.DialogueSystem.DialogueObject.html#WolverineSoft_DialogueSystem_DialogueObject_EnterState
+  name: EnterState()
+  nameWithType: DialogueObject.EnterState()
+  fullName: WolverineSoft.DialogueSystem.DialogueObject.EnterState()
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.DialogueObject.EnterState
+    name: EnterState
+    href: WolverineSoft.DialogueSystem.DialogueObject.html#WolverineSoft_DialogueSystem_DialogueObject_EnterState
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.DialogueObject.EnterState
+    name: EnterState
+    href: WolverineSoft.DialogueSystem.DialogueObject.html#WolverineSoft_DialogueSystem_DialogueObject_EnterState
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: WolverineSoft.DialogueSystem.DialogueParameters
+  commentId: T:WolverineSoft.DialogueSystem.DialogueParameters
+  parent: WolverineSoft.DialogueSystem
+  href: WolverineSoft.DialogueSystem.DialogueParameters.html
+  name: DialogueParameters
+  nameWithType: DialogueParameters
+  fullName: WolverineSoft.DialogueSystem.DialogueParameters
+- uid: WolverineSoft.DialogueSystem.DialogueObject.GetNextDialogue(WolverineSoft.DialogueSystem.AdvanceContext,WolverineSoft.DialogueSystem.DialogueManager)
+  commentId: M:WolverineSoft.DialogueSystem.DialogueObject.GetNextDialogue(WolverineSoft.DialogueSystem.AdvanceContext,WolverineSoft.DialogueSystem.DialogueManager)
+  parent: WolverineSoft.DialogueSystem.DialogueObject
+  href: WolverineSoft.DialogueSystem.DialogueObject.html#WolverineSoft_DialogueSystem_DialogueObject_GetNextDialogue_WolverineSoft_DialogueSystem_AdvanceContext_WolverineSoft_DialogueSystem_DialogueManager_
+  name: GetNextDialogue(AdvanceContext, DialogueManager)
+  nameWithType: DialogueObject.GetNextDialogue(AdvanceContext, DialogueManager)
+  fullName: WolverineSoft.DialogueSystem.DialogueObject.GetNextDialogue(WolverineSoft.DialogueSystem.AdvanceContext, WolverineSoft.DialogueSystem.DialogueManager)
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.DialogueObject.GetNextDialogue(WolverineSoft.DialogueSystem.AdvanceContext,WolverineSoft.DialogueSystem.DialogueManager)
+    name: GetNextDialogue
+    href: WolverineSoft.DialogueSystem.DialogueObject.html#WolverineSoft_DialogueSystem_DialogueObject_GetNextDialogue_WolverineSoft_DialogueSystem_AdvanceContext_WolverineSoft_DialogueSystem_DialogueManager_
+  - name: (
+  - uid: WolverineSoft.DialogueSystem.AdvanceContext
+    name: AdvanceContext
+    href: WolverineSoft.DialogueSystem.AdvanceContext.html
+  - name: ','
+  - name: " "
+  - uid: WolverineSoft.DialogueSystem.DialogueManager
+    name: DialogueManager
+    href: WolverineSoft.DialogueSystem.DialogueManager.html
+  - name: )
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.DialogueObject.GetNextDialogue(WolverineSoft.DialogueSystem.AdvanceContext,WolverineSoft.DialogueSystem.DialogueManager)
+    name: GetNextDialogue
+    href: WolverineSoft.DialogueSystem.DialogueObject.html#WolverineSoft_DialogueSystem_DialogueObject_GetNextDialogue_WolverineSoft_DialogueSystem_AdvanceContext_WolverineSoft_DialogueSystem_DialogueManager_
+  - name: (
+  - uid: WolverineSoft.DialogueSystem.AdvanceContext
+    name: AdvanceContext
+    href: WolverineSoft.DialogueSystem.AdvanceContext.html
+  - name: ','
+  - name: " "
+  - uid: WolverineSoft.DialogueSystem.DialogueManager
+    name: DialogueManager
+    href: WolverineSoft.DialogueSystem.DialogueManager.html
+  - name: )
+- uid: WolverineSoft.DialogueSystem.StartObject.GetNextDialogue*
+  commentId: Overload:WolverineSoft.DialogueSystem.StartObject.GetNextDialogue
+  href: WolverineSoft.DialogueSystem.StartObject.html#WolverineSoft_DialogueSystem_StartObject_GetNextDialogue_WolverineSoft_DialogueSystem_AdvanceContext_WolverineSoft_DialogueSystem_DialogueManager_
+  name: GetNextDialogue
+  nameWithType: StartObject.GetNextDialogue
+  fullName: WolverineSoft.DialogueSystem.StartObject.GetNextDialogue
+- uid: WolverineSoft.DialogueSystem.AdvanceContext
+  commentId: T:WolverineSoft.DialogueSystem.AdvanceContext
+  parent: WolverineSoft.DialogueSystem
+  href: WolverineSoft.DialogueSystem.AdvanceContext.html
+  name: AdvanceContext
+  nameWithType: AdvanceContext
+  fullName: WolverineSoft.DialogueSystem.AdvanceContext
+- uid: WolverineSoft.DialogueSystem.DialogueManager
+  commentId: T:WolverineSoft.DialogueSystem.DialogueManager
+  parent: WolverineSoft.DialogueSystem
+  href: WolverineSoft.DialogueSystem.DialogueManager.html
+  name: DialogueManager
+  nameWithType: DialogueManager
+  fullName: WolverineSoft.DialogueSystem.DialogueManager

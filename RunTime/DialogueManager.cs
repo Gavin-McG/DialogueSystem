@@ -53,7 +53,7 @@ namespace WolverineSoft.DialogueSystem
         {
             if (_currentDialogue != null)
             {
-                Debug.LogWarning($"Attempted to begin dialogue \"{dialogueAsset.name}\" while dialogue was already playing");
+                Debug.LogError($"Attempted to begin dialogue \"{dialogueAsset.name}\" while dialogue was already playing");
                 return;
             }
             
@@ -64,23 +64,25 @@ namespace WolverineSoft.DialogueSystem
         }
         
         /// <summary>
-        /// Retrieve the next dialogue using context about the user's interaction with strict types.
+        /// Retrieve the next dialogue using context about the user's interaction.
         /// Returns null if end of dialogue is reached.
         /// </summary>
         public DialogueInfo AdvanceDialogue(AdvanceContext context) {
-            _previousContext = context;
-
             if (_currentDialogue == null)
             {
-                Debug.LogWarning("Attempting to Advance Dialogue while no dialogue is active");
+                Debug.LogError("Attempting to Advance Dialogue while no dialogue is active");
                 return null;
             }
+            
+            _previousContext = context;
             
             //Advance until finding a Dialogue Object with output
             do {
                 _currentObject = _currentObject.GetNextDialogue(context, this);
                 _currentObject?.EnterState();
             } while (_currentObject != null && _currentObject is not IDialogueOutput);
+            
+            AdvancedDialogue.Invoke(context);
 
             if (_currentObject is IDialogueOutput outputDialogue)
             {
@@ -88,8 +90,6 @@ namespace WolverineSoft.DialogueSystem
                 details.ApplyVariables(this);
                 return details;
             }
-            
-            AdvancedDialogue.Invoke(context);
             
             EndDialogue();
             return null;
@@ -107,17 +107,35 @@ namespace WolverineSoft.DialogueSystem
         /// Retrieve the information about the current dialogue again.
         /// Used if you want to account for changes in conditional choice options
         /// </summary>
-        public DialogueInfo RefreshDialogue()
+        public DialogueInfo RefreshDialogue(AdvanceContext context)
         {
-            if (_currentDialogue != null)
+            if (_currentDialogue == null)
             {
-                throw new Exception($"Attempted to refresh dialogue while dialogue was not playing");
+                Debug.LogError($"Attempted to refresh dialogue while dialogue was not playing");
+                return null;
             }
 
+            if (_currentObject == null)
+            {
+                Debug.LogError($"You must first call AdvanceDialogue before attempting to refresh output");
+                return null;
+            }
+            
+            _previousContext = context;
+
             var outputDialogue = (IDialogueOutput)_currentObject;
-            var details = outputDialogue.GetDialogueDetails(_previousContext, this);
+            var details = outputDialogue.GetDialogueDetails(context, this);
             details.ApplyVariables(this);
             return details;
+        }
+        
+        /// <summary>
+        /// Retrieve the information about the current dialogue again.
+        /// Used if you want to account for changes in conditional choice options
+        /// </summary>
+        public DialogueInfo RefreshDialogue()
+        {
+            return RefreshDialogue(_previousContext);
         }
         
         /// <summary>
@@ -125,7 +143,11 @@ namespace WolverineSoft.DialogueSystem
         /// </summary>
         public void EndDialogue()
         {
-            if (_currentDialogue == null) return;
+            if (_currentDialogue == null)
+            {
+                Debug.LogError("Attempted to end dialogue while no dialogue is active");
+                return;
+            }
             _currentDialogue = null;
             _currentObject = null;
             _currentParameters = null;
@@ -138,16 +160,10 @@ namespace WolverineSoft.DialogueSystem
         //-----------------------------------------------
 
         public bool IsReadOnly => false;
-
-        public bool TryGetVariable(string name, out Variable variable) =>
-             variables.TryGetVariable(name, out variable) || 
-             (_currentDialogue?.TryGetVariable(name, out variable) ?? true);
-        
-        public void SetVariable(string name, Variable variable) => 
-            variables.SetVariable(name, variable);
         
         //----Set Methods----
 
+        public void SetVariable(string name, Variable variable) => variables.SetVariable(name, variable);
         public void SetString(string name, string value) => variables.SetString(name, value);
         public void SetFloat(string name, float value) => variables.SetFloat(name, value);
         public void SetInt(string name, int value) => variables.SetInt(name, value);
@@ -155,47 +171,10 @@ namespace WolverineSoft.DialogueSystem
         
         //----Get Methods----
 
-        public string GetString(string name)
-        {
-            if (variables.TryGetVariable(name, out Variable variable))
-                return variable.GetString();
-            if (_currentDialogue?.TryGetVariable(name, out variable) ?? false)
-                return variable.GetString();
-            
-            Debug.LogWarning($"No Variable found with name {name}");
-            return null;
-        }
-        
-        public float GetFloat(string name) {
-            if (variables.TryGetVariable(name, out Variable variable))
-                return variable.GetFloat();
-            if (_currentDialogue?.TryGetVariable(name, out variable) ?? false)
-                return variable.GetFloat();
-            
-            Debug.LogWarning($"No Variable found with name {name}");
-            return 0f;
-        }
-        
-        public int GetInt(string name)
-        {
-            if (variables.TryGetVariable(name, out Variable variable))
-                return variable.GetInt();
-            if (_currentDialogue?.TryGetVariable(name, out variable) ?? false)
-                return variable.GetInt();
-            
-            Debug.LogWarning($"No Variable found with name {name}");
-            return 0;
-        }
-        
-        public bool GetBool(string name)
-        {
-            if (variables.TryGetVariable(name, out Variable variable)) 
-                return variable.GetBool();
-            if (_currentDialogue?.TryGetVariable(name, out variable) ?? false) 
-                return variable.GetBool();
-            
-            Debug.LogWarning($"No Variable found with name {name}");
-            return false;
-        }
+        public bool TryGetVariable(string name, out Variable variable) => variables.TryGetVariable(name, out variable) || (_currentDialogue?.TryGetVariable(name, out variable) ?? false);
+        public bool TryGetString(string name, out string value) => variables.TryGetString(name, out value) || (_currentDialogue?.TryGetString(name, out value) ?? false);
+        public bool TryGetFloat(string name, out float value) => variables.TryGetFloat(name, out value) || (_currentDialogue?.TryGetFloat(name, out value) ?? false);
+        public bool TryGetInt(string name, out int value) => variables.TryGetInt(name, out value) || (_currentDialogue?.TryGetInt(name, out value) ?? false);
+        public bool TryGetBool(string name, out bool value) => variables.TryGetBool(name, out value) || (_currentDialogue?.TryGetBool(name, out value) ?? false);
     }
 }

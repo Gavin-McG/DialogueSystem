@@ -1,0 +1,24 @@
+items:
+- uid: Dialogue Manager
+  name: Dialogue Manager
+  href: DialogueManager.md
+  items:
+    - uid: Dialogue Info
+      name: Dialogue Info
+      href: DialogueInfo.md
+- uid: Dialogue Graphs
+  name: Dialogue Graphs
+  href: DialogueGraphs.md
+  items:
+    - uid: Redirect Nodes
+      name: Redirect Nodes
+      href: RedirectNodes.md
+    - uid: Set Variable Node
+      name: Set Variable Node
+      href: SetVariableNode.md
+- uid: Custom Parameters
+  name: Custom Parameters
+  href: CustomParameters.md
+- uid: Dialogue Events
+  name: Dialogue Events
+  href: DialogueEvents.md

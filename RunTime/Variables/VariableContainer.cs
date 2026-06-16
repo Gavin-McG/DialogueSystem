@@ -94,72 +94,52 @@ namespace WolverineSoft.DialogueSystem
         // Getters
         // -----------------------------
 
-        public string GetString(string name)
+        public bool TryGetString(string name, out string value)
         {
-            if (!TryGetVariable(name, out Variable variable))
+            if (!TryGetVariable(name, out Variable variable) || variable.Type == VariableType.String)
             {
-                Debug.LogWarning($"No Variable found with name {name}");
-                return null;
-            }
-
-            if (variable.Type != VariableType.String)
-            {
-                Debug.LogWarning($"Variable '{name}' is of type {variable.Type}, not {VariableType.String}.");
-                return null;
-            }
-            
-            return variable.GetString();
-        }
-
-        public int GetInt(string name)
-        {
-            if (!TryGetVariable(name, out Variable variable))
-            {
-                Debug.LogWarning($"No Variable found with name {name}");
-                return 0;
-            }
-
-            if (variable.Type != VariableType.Int)
-            {
-                Debug.LogWarning($"Variable '{name}' is of type {variable.Type}, not {VariableType.Int}.");
-                return 0;
-            }
-            
-            return variable.GetInt();
-        }
-
-        public float GetFloat(string name)
-        {
-            if (!TryGetVariable(name, out Variable variable))
-            {
-                Debug.LogWarning($"No Variable found with name {name}");
-                return 0f;
-            }
-
-            if (variable.Type != VariableType.Float)
-            {
-                Debug.LogWarning($"Variable '{name}' is of type {variable.Type}, not {VariableType.Float}.");
-                return 0f;
-            }
-            
-            return variable.GetFloat();
-        }
-
-        public bool GetBool(string name)
-        {
-            if (!TryGetVariable(name, out Variable variable))
-            {
-                Debug.LogWarning($"No Variable found with name {name}");
-                return false;
-            }
-
-            if (variable.Type != VariableType.Bool)
-            {
-                Debug.LogWarning($"Variable '{name}' is of type {variable.Type}, not {VariableType.Bool}.");
+                value = null;
                 return false;
             }
             
-            return variable.GetBool();
+            value = variable.GetString();
+            return true;
+        }
+
+        public bool TryGetInt(string name, out int value)
+        {
+            if (!TryGetVariable(name, out Variable variable) || variable.Type == VariableType.String)
+            {
+                value = 0;
+                return false;
+            }
+            
+            value = variable.GetInt();
+            return true;
+        }
+
+        public bool TryGetFloat(string name, out float value)
+        {
+            if (!TryGetVariable(name, out Variable variable) || variable.Type == VariableType.String)
+            {
+                value = 0f;
+                return false;
+            }
+            
+            value = variable.GetFloat();
+            return true;
+        }
+
+        public bool TryGetBool(string name, out bool value)
+        {
+            if (!TryGetVariable(name, out Variable variable) || variable.Type == VariableType.String)
+            {
+                value = false;
+                return false;
+            }
+            
+            value = variable.GetBool();
+            return true;
         }
     }
 }

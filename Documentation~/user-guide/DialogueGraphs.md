@@ -1,0 +1,16 @@
+# Dialogue Graphs
+Dialogue Graphs are how dialogue interactions are designed and editted. The tools for this are made with Unity's (relatively) new Graph Toolkit. The Graph Toolkit was added in Unity 6.2 as an experimental package, but was added as a built-in package in Unity 6.4. If you want more detailed information about using the Graph editor you can view [Unity's documentation](https://docs.unity3d.com/6000.4/Documentation/Manual/gtk/gtk-index.html)
+
+## Creating a Dialogue Graph
+
+A new dialogue Graph can be created through the Create menu under `Create -> Dialogue System -> Dialogue Graph`. This will create a new asset which you can name appropriately. Dialogue Graphs are distinguished by the `.dialogue` asset extension. To open the new graph you can double click the newly created asset, which should open a new window in your Unity Editor.
+
+Every Dialogue interaction must begin with a `StartNode`. To create a new node you can right click anywhere in the graph window and select `Add Node`. This will show a list of all available nodes to be added. You will typically begin by adding a `StartNode`. The `StartNode` will have an option for the name of the start point. If your interaction will only have one start pont then you are advised to leave this as an empty string. If you have an `DialogueParameters` defined they will also be added as an option to your `StartNode`s.
+
+Nodes can be connected like any other graph tool, by dragging from a node' port. The connections between nodes represent the control flow of the dialogue. Dialogue Graphs can be read from left to right, two connected nodes represents a possible path for the dialogue to take. Some nodes represent more complex behaviors than others. You should node that the output ports of a node can be connected to multiple other nodes, but this shouldn;t be done. All but one of those connections will be ignored.
+
+The other main nodes are `TextNode`s, `ChoiceNode`s, and `OptionNode`s. Text and Choice nodes represent that two main types of dialogue output. `TextNode`s have only a text output, while `ChoiceNode`s have a text output and provide a decision for the user to make. `OptionNode`s can be attached to `ChoiceNode`s and represent each of the available responses. Connecting the OptionNodes output allows you to choose what will happen is that specific response is selected. The `ChoiceNode` also has a 'Default' output for scenerios where no option was selected.
+
+## Creating new variables
+
+Dialogue Graphs also have their own `Variables`. The Dialogue System is configured to handle variables very similarly to the Unity Animator. `Variables` can be added to a graph by opening the blackboard in the top left corner and selecting the '+' button. You can then configure the `Variable`'s name and assign its default value. `Variables` have multiple uses within a Graph. Firstly, Any text inside a set of curly brackets will be replaced by the value of the variable of that name (i.e. {VarName} -> value of 'VarName'). Certain `OptionType`s also use the value of variables.

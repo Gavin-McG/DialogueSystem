@@ -1,0 +1,668 @@
+### YamlMime:ManagedReference
+items:
+- uid: WolverineSoft.DialogueSystem.DSEventString
+  commentId: T:WolverineSoft.DialogueSystem.DSEventString
+  id: DSEventString
+  parent: WolverineSoft.DialogueSystem
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: DSEventString
+  nameWithType: DSEventString
+  fullName: WolverineSoft.DialogueSystem.DSEventString
+  type: Class
+  source:
+    remote:
+      path: RunTime/Events/DSEventString.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: DSEventString
+    path: RunTime/Events/DSEventString.cs
+    startLine: 4
+  namespace: WolverineSoft.DialogueSystem
+  syntax:
+    content: 'public class DSEventString : DSEvent<string>'
+    content.vb: Public Class DSEventString Inherits DSEvent(Of String)
+  inheritance:
+  - System.Object
+  - WolverineSoft.DialogueSystem.DSEventBase
+  - WolverineSoft.DialogueSystem.DSEvent{System.String}
+  inheritedMembers:
+  - WolverineSoft.DialogueSystem.DSEvent{System.String}.Invoke(System.String)
+  - WolverineSoft.DialogueSystem.DSEvent{System.String}.Invoke(WolverineSoft.DialogueSystem.DialogueManager,System.String)
+  - WolverineSoft.DialogueSystem.DSEvent{System.String}.AddListener(UnityAction{System.String})
+  - WolverineSoft.DialogueSystem.DSEvent{System.String}.AddListener(WolverineSoft.DialogueSystem.DialogueManager,UnityAction{System.String})
+  - WolverineSoft.DialogueSystem.DSEvent{System.String}.RemoveListener(UnityAction{System.String})
+  - WolverineSoft.DialogueSystem.DSEvent{System.String}.RemoveListener(WolverineSoft.DialogueSystem.DialogueManager,UnityAction{System.String})
+  - WolverineSoft.DialogueSystem.DSEvent{System.String}.RemoveAllListeners
+references:
+- uid: WolverineSoft.DialogueSystem
+  commentId: N:WolverineSoft.DialogueSystem
+  href: WolverineSoft.html
+  name: WolverineSoft.DialogueSystem
+  nameWithType: WolverineSoft.DialogueSystem
+  fullName: WolverineSoft.DialogueSystem
+  spec.csharp:
+  - uid: WolverineSoft
+    name: WolverineSoft
+    href: WolverineSoft.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem
+    name: DialogueSystem
+    href: WolverineSoft.DialogueSystem.html
+  spec.vb:
+  - uid: WolverineSoft
+    name: WolverineSoft
+    href: WolverineSoft.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem
+    name: DialogueSystem
+    href: WolverineSoft.DialogueSystem.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: WolverineSoft.DialogueSystem.DSEventBase
+  commentId: T:WolverineSoft.DialogueSystem.DSEventBase
+  parent: WolverineSoft.DialogueSystem
+  href: WolverineSoft.DialogueSystem.DSEventBase.html
+  name: DSEventBase
+  nameWithType: DSEventBase
+  fullName: WolverineSoft.DialogueSystem.DSEventBase
+- uid: WolverineSoft.DialogueSystem.DSEvent{System.String}
+  commentId: T:WolverineSoft.DialogueSystem.DSEvent{System.String}
+  parent: WolverineSoft.DialogueSystem
+  definition: WolverineSoft.DialogueSystem.DSEvent`1
+  href: WolverineSoft.DialogueSystem.DSEvent-1.html
+  name: DSEvent<string>
+  nameWithType: DSEvent<string>
+  fullName: WolverineSoft.DialogueSystem.DSEvent<string>
+  nameWithType.vb: DSEvent(Of String)
+  fullName.vb: WolverineSoft.DialogueSystem.DSEvent(Of String)
+  name.vb: DSEvent(Of String)
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.DSEvent`1
+    name: DSEvent
+    href: WolverineSoft.DialogueSystem.DSEvent-1.html
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.DSEvent`1
+    name: DSEvent
+    href: WolverineSoft.DialogueSystem.DSEvent-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: WolverineSoft.DialogueSystem.DSEvent{System.String}.Invoke(System.String)
+  commentId: M:WolverineSoft.DialogueSystem.DSEvent{System.String}.Invoke(System.String)
+  parent: WolverineSoft.DialogueSystem.DSEvent{System.String}
+  definition: WolverineSoft.DialogueSystem.DSEvent`1.Invoke(`0)
+  href: WolverineSoft.DialogueSystem.DSEvent-1.html#WolverineSoft_DialogueSystem_DSEvent_1_Invoke__0_
+  name: Invoke(string)
+  nameWithType: DSEvent<string>.Invoke(string)
+  fullName: WolverineSoft.DialogueSystem.DSEvent<string>.Invoke(string)
+  nameWithType.vb: DSEvent(Of String).Invoke(String)
+  fullName.vb: WolverineSoft.DialogueSystem.DSEvent(Of String).Invoke(String)
+  name.vb: Invoke(String)
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.DSEvent{System.String}.Invoke(System.String)
+    name: Invoke
+    href: WolverineSoft.DialogueSystem.DSEvent-1.html#WolverineSoft_DialogueSystem_DSEvent_1_Invoke__0_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.DSEvent{System.String}.Invoke(System.String)
+    name: Invoke
+    href: WolverineSoft.DialogueSystem.DSEvent-1.html#WolverineSoft_DialogueSystem_DSEvent_1_Invoke__0_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: WolverineSoft.DialogueSystem.DSEvent{System.String}.Invoke(WolverineSoft.DialogueSystem.DialogueManager,System.String)
+  commentId: M:WolverineSoft.DialogueSystem.DSEvent{System.String}.Invoke(WolverineSoft.DialogueSystem.DialogueManager,System.String)
+  parent: WolverineSoft.DialogueSystem.DSEvent{System.String}
+  definition: WolverineSoft.DialogueSystem.DSEvent`1.Invoke(WolverineSoft.DialogueSystem.DialogueManager,`0)
+  href: WolverineSoft.DialogueSystem.DSEvent-1.html#WolverineSoft_DialogueSystem_DSEvent_1_Invoke_WolverineSoft_DialogueSystem_DialogueManager__0_
+  name: Invoke(DialogueManager, string)
+  nameWithType: DSEvent<string>.Invoke(DialogueManager, string)
+  fullName: WolverineSoft.DialogueSystem.DSEvent<string>.Invoke(WolverineSoft.DialogueSystem.DialogueManager, string)
+  nameWithType.vb: DSEvent(Of String).Invoke(DialogueManager, String)
+  fullName.vb: WolverineSoft.DialogueSystem.DSEvent(Of String).Invoke(WolverineSoft.DialogueSystem.DialogueManager, String)
+  name.vb: Invoke(DialogueManager, String)
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.DSEvent{System.String}.Invoke(WolverineSoft.DialogueSystem.DialogueManager,System.String)
+    name: Invoke
+    href: WolverineSoft.DialogueSystem.DSEvent-1.html#WolverineSoft_DialogueSystem_DSEvent_1_Invoke_WolverineSoft_DialogueSystem_DialogueManager__0_
+  - name: (
+  - uid: WolverineSoft.DialogueSystem.DialogueManager
+    name: DialogueManager
+    href: WolverineSoft.DialogueSystem.DialogueManager.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.DSEvent{System.String}.Invoke(WolverineSoft.DialogueSystem.DialogueManager,System.String)
+    name: Invoke
+    href: WolverineSoft.DialogueSystem.DSEvent-1.html#WolverineSoft_DialogueSystem_DSEvent_1_Invoke_WolverineSoft_DialogueSystem_DialogueManager__0_
+  - name: (
+  - uid: WolverineSoft.DialogueSystem.DialogueManager
+    name: DialogueManager
+    href: WolverineSoft.DialogueSystem.DialogueManager.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: WolverineSoft.DialogueSystem.DSEvent{System.String}.AddListener(UnityAction{System.String})
+  commentId: M:WolverineSoft.DialogueSystem.DSEvent{System.String}.AddListener(UnityAction{System.String})
+  parent: WolverineSoft.DialogueSystem.DSEvent{System.String}
+  definition: WolverineSoft.DialogueSystem.DSEvent`1.AddListener(UnityAction{`0})
+  href: WolverineSoft.DialogueSystem.DSEvent-1.html#WolverineSoft_DialogueSystem_DSEvent_1_AddListener_UnityAction__0__
+  name: AddListener(UnityAction<string>)
+  nameWithType: DSEvent<string>.AddListener(UnityAction<string>)
+  fullName: WolverineSoft.DialogueSystem.DSEvent<string>.AddListener(UnityAction<string>)
+  nameWithType.vb: DSEvent(Of String).AddListener(UnityAction(Of String))
+  fullName.vb: WolverineSoft.DialogueSystem.DSEvent(Of String).AddListener(UnityAction(Of String))
+  name.vb: AddListener(UnityAction(Of String))
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.DSEvent{System.String}.AddListener(UnityAction{System.String})
+    name: AddListener
+    href: WolverineSoft.DialogueSystem.DSEvent-1.html#WolverineSoft_DialogueSystem_DSEvent_1_AddListener_UnityAction__0__
+  - name: (
+  - uid: UnityAction`1
+    name: UnityAction
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.DSEvent{System.String}.AddListener(UnityAction{System.String})
+    name: AddListener
+    href: WolverineSoft.DialogueSystem.DSEvent-1.html#WolverineSoft_DialogueSystem_DSEvent_1_AddListener_UnityAction__0__
+  - name: (
+  - uid: UnityAction`1
+    name: UnityAction
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  - name: )
+- uid: WolverineSoft.DialogueSystem.DSEvent{System.String}.AddListener(WolverineSoft.DialogueSystem.DialogueManager,UnityAction{System.String})
+  commentId: M:WolverineSoft.DialogueSystem.DSEvent{System.String}.AddListener(WolverineSoft.DialogueSystem.DialogueManager,UnityAction{System.String})
+  parent: WolverineSoft.DialogueSystem.DSEvent{System.String}
+  definition: WolverineSoft.DialogueSystem.DSEvent`1.AddListener(WolverineSoft.DialogueSystem.DialogueManager,UnityAction{`0})
+  href: WolverineSoft.DialogueSystem.DSEvent-1.html#WolverineSoft_DialogueSystem_DSEvent_1_AddListener_WolverineSoft_DialogueSystem_DialogueManager_UnityAction__0__
+  name: AddListener(DialogueManager, UnityAction<string>)
+  nameWithType: DSEvent<string>.AddListener(DialogueManager, UnityAction<string>)
+  fullName: WolverineSoft.DialogueSystem.DSEvent<string>.AddListener(WolverineSoft.DialogueSystem.DialogueManager, UnityAction<string>)
+  nameWithType.vb: DSEvent(Of String).AddListener(DialogueManager, UnityAction(Of String))
+  fullName.vb: WolverineSoft.DialogueSystem.DSEvent(Of String).AddListener(WolverineSoft.DialogueSystem.DialogueManager, UnityAction(Of String))
+  name.vb: AddListener(DialogueManager, UnityAction(Of String))
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.DSEvent{System.String}.AddListener(WolverineSoft.DialogueSystem.DialogueManager,UnityAction{System.String})
+    name: AddListener
+    href: WolverineSoft.DialogueSystem.DSEvent-1.html#WolverineSoft_DialogueSystem_DSEvent_1_AddListener_WolverineSoft_DialogueSystem_DialogueManager_UnityAction__0__
+  - name: (
+  - uid: WolverineSoft.DialogueSystem.DialogueManager
+    name: DialogueManager
+    href: WolverineSoft.DialogueSystem.DialogueManager.html
+  - name: ','
+  - name: " "
+  - uid: UnityAction`1
+    name: UnityAction
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.DSEvent{System.String}.AddListener(WolverineSoft.DialogueSystem.DialogueManager,UnityAction{System.String})
+    name: AddListener
+    href: WolverineSoft.DialogueSystem.DSEvent-1.html#WolverineSoft_DialogueSystem_DSEvent_1_AddListener_WolverineSoft_DialogueSystem_DialogueManager_UnityAction__0__
+  - name: (
+  - uid: WolverineSoft.DialogueSystem.DialogueManager
+    name: DialogueManager
+    href: WolverineSoft.DialogueSystem.DialogueManager.html
+  - name: ','
+  - name: " "
+  - uid: UnityAction`1
+    name: UnityAction
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  - name: )
+- uid: WolverineSoft.DialogueSystem.DSEvent{System.String}.RemoveListener(UnityAction{System.String})
+  commentId: M:WolverineSoft.DialogueSystem.DSEvent{System.String}.RemoveListener(UnityAction{System.String})
+  parent: WolverineSoft.DialogueSystem.DSEvent{System.String}
+  definition: WolverineSoft.DialogueSystem.DSEvent`1.RemoveListener(UnityAction{`0})
+  href: WolverineSoft.DialogueSystem.DSEvent-1.html#WolverineSoft_DialogueSystem_DSEvent_1_RemoveListener_UnityAction__0__
+  name: RemoveListener(UnityAction<string>)
+  nameWithType: DSEvent<string>.RemoveListener(UnityAction<string>)
+  fullName: WolverineSoft.DialogueSystem.DSEvent<string>.RemoveListener(UnityAction<string>)
+  nameWithType.vb: DSEvent(Of String).RemoveListener(UnityAction(Of String))
+  fullName.vb: WolverineSoft.DialogueSystem.DSEvent(Of String).RemoveListener(UnityAction(Of String))
+  name.vb: RemoveListener(UnityAction(Of String))
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.DSEvent{System.String}.RemoveListener(UnityAction{System.String})
+    name: RemoveListener
+    href: WolverineSoft.DialogueSystem.DSEvent-1.html#WolverineSoft_DialogueSystem_DSEvent_1_RemoveListener_UnityAction__0__
+  - name: (
+  - uid: UnityAction`1
+    name: UnityAction
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.DSEvent{System.String}.RemoveListener(UnityAction{System.String})
+    name: RemoveListener
+    href: WolverineSoft.DialogueSystem.DSEvent-1.html#WolverineSoft_DialogueSystem_DSEvent_1_RemoveListener_UnityAction__0__
+  - name: (
+  - uid: UnityAction`1
+    name: UnityAction
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  - name: )
+- uid: WolverineSoft.DialogueSystem.DSEvent{System.String}.RemoveListener(WolverineSoft.DialogueSystem.DialogueManager,UnityAction{System.String})
+  commentId: M:WolverineSoft.DialogueSystem.DSEvent{System.String}.RemoveListener(WolverineSoft.DialogueSystem.DialogueManager,UnityAction{System.String})
+  parent: WolverineSoft.DialogueSystem.DSEvent{System.String}
+  definition: WolverineSoft.DialogueSystem.DSEvent`1.RemoveListener(WolverineSoft.DialogueSystem.DialogueManager,UnityAction{`0})
+  href: WolverineSoft.DialogueSystem.DSEvent-1.html#WolverineSoft_DialogueSystem_DSEvent_1_RemoveListener_WolverineSoft_DialogueSystem_DialogueManager_UnityAction__0__
+  name: RemoveListener(DialogueManager, UnityAction<string>)
+  nameWithType: DSEvent<string>.RemoveListener(DialogueManager, UnityAction<string>)
+  fullName: WolverineSoft.DialogueSystem.DSEvent<string>.RemoveListener(WolverineSoft.DialogueSystem.DialogueManager, UnityAction<string>)
+  nameWithType.vb: DSEvent(Of String).RemoveListener(DialogueManager, UnityAction(Of String))
+  fullName.vb: WolverineSoft.DialogueSystem.DSEvent(Of String).RemoveListener(WolverineSoft.DialogueSystem.DialogueManager, UnityAction(Of String))
+  name.vb: RemoveListener(DialogueManager, UnityAction(Of String))
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.DSEvent{System.String}.RemoveListener(WolverineSoft.DialogueSystem.DialogueManager,UnityAction{System.String})
+    name: RemoveListener
+    href: WolverineSoft.DialogueSystem.DSEvent-1.html#WolverineSoft_DialogueSystem_DSEvent_1_RemoveListener_WolverineSoft_DialogueSystem_DialogueManager_UnityAction__0__
+  - name: (
+  - uid: WolverineSoft.DialogueSystem.DialogueManager
+    name: DialogueManager
+    href: WolverineSoft.DialogueSystem.DialogueManager.html
+  - name: ','
+  - name: " "
+  - uid: UnityAction`1
+    name: UnityAction
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.DSEvent{System.String}.RemoveListener(WolverineSoft.DialogueSystem.DialogueManager,UnityAction{System.String})
+    name: RemoveListener
+    href: WolverineSoft.DialogueSystem.DSEvent-1.html#WolverineSoft_DialogueSystem_DSEvent_1_RemoveListener_WolverineSoft_DialogueSystem_DialogueManager_UnityAction__0__
+  - name: (
+  - uid: WolverineSoft.DialogueSystem.DialogueManager
+    name: DialogueManager
+    href: WolverineSoft.DialogueSystem.DialogueManager.html
+  - name: ','
+  - name: " "
+  - uid: UnityAction`1
+    name: UnityAction
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  - name: )
+- uid: WolverineSoft.DialogueSystem.DSEvent{System.String}.RemoveAllListeners
+  commentId: M:WolverineSoft.DialogueSystem.DSEvent{System.String}.RemoveAllListeners
+  parent: WolverineSoft.DialogueSystem.DSEvent{System.String}
+  definition: WolverineSoft.DialogueSystem.DSEvent`1.RemoveAllListeners
+  href: WolverineSoft.DialogueSystem.DSEvent-1.html#WolverineSoft_DialogueSystem_DSEvent_1_RemoveAllListeners
+  name: RemoveAllListeners()
+  nameWithType: DSEvent<string>.RemoveAllListeners()
+  fullName: WolverineSoft.DialogueSystem.DSEvent<string>.RemoveAllListeners()
+  nameWithType.vb: DSEvent(Of String).RemoveAllListeners()
+  fullName.vb: WolverineSoft.DialogueSystem.DSEvent(Of String).RemoveAllListeners()
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.DSEvent{System.String}.RemoveAllListeners
+    name: RemoveAllListeners
+    href: WolverineSoft.DialogueSystem.DSEvent-1.html#WolverineSoft_DialogueSystem_DSEvent_1_RemoveAllListeners
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.DSEvent{System.String}.RemoveAllListeners
+    name: RemoveAllListeners
+    href: WolverineSoft.DialogueSystem.DSEvent-1.html#WolverineSoft_DialogueSystem_DSEvent_1_RemoveAllListeners
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: WolverineSoft.DialogueSystem.DSEvent`1
+  commentId: T:WolverineSoft.DialogueSystem.DSEvent`1
+  href: WolverineSoft.DialogueSystem.DSEvent-1.html
+  name: DSEvent<T>
+  nameWithType: DSEvent<T>
+  fullName: WolverineSoft.DialogueSystem.DSEvent<T>
+  nameWithType.vb: DSEvent(Of T)
+  fullName.vb: WolverineSoft.DialogueSystem.DSEvent(Of T)
+  name.vb: DSEvent(Of T)
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.DSEvent`1
+    name: DSEvent
+    href: WolverineSoft.DialogueSystem.DSEvent-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.DSEvent`1
+    name: DSEvent
+    href: WolverineSoft.DialogueSystem.DSEvent-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: WolverineSoft.DialogueSystem.DSEvent`1.Invoke(`0)
+  commentId: M:WolverineSoft.DialogueSystem.DSEvent`1.Invoke(`0)
+  href: WolverineSoft.DialogueSystem.DSEvent-1.html#WolverineSoft_DialogueSystem_DSEvent_1_Invoke__0_
+  name: Invoke(T)
+  nameWithType: DSEvent<T>.Invoke(T)
+  fullName: WolverineSoft.DialogueSystem.DSEvent<T>.Invoke(T)
+  nameWithType.vb: DSEvent(Of T).Invoke(T)
+  fullName.vb: WolverineSoft.DialogueSystem.DSEvent(Of T).Invoke(T)
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.DSEvent`1.Invoke(`0)
+    name: Invoke
+    href: WolverineSoft.DialogueSystem.DSEvent-1.html#WolverineSoft_DialogueSystem_DSEvent_1_Invoke__0_
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.DSEvent`1.Invoke(`0)
+    name: Invoke
+    href: WolverineSoft.DialogueSystem.DSEvent-1.html#WolverineSoft_DialogueSystem_DSEvent_1_Invoke__0_
+  - name: (
+  - name: T
+  - name: )
+- uid: WolverineSoft.DialogueSystem.DSEvent`1.Invoke(WolverineSoft.DialogueSystem.DialogueManager,`0)
+  commentId: M:WolverineSoft.DialogueSystem.DSEvent`1.Invoke(WolverineSoft.DialogueSystem.DialogueManager,`0)
+  href: WolverineSoft.DialogueSystem.DSEvent-1.html#WolverineSoft_DialogueSystem_DSEvent_1_Invoke_WolverineSoft_DialogueSystem_DialogueManager__0_
+  name: Invoke(DialogueManager, T)
+  nameWithType: DSEvent<T>.Invoke(DialogueManager, T)
+  fullName: WolverineSoft.DialogueSystem.DSEvent<T>.Invoke(WolverineSoft.DialogueSystem.DialogueManager, T)
+  nameWithType.vb: DSEvent(Of T).Invoke(DialogueManager, T)
+  fullName.vb: WolverineSoft.DialogueSystem.DSEvent(Of T).Invoke(WolverineSoft.DialogueSystem.DialogueManager, T)
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.DSEvent`1.Invoke(WolverineSoft.DialogueSystem.DialogueManager,`0)
+    name: Invoke
+    href: WolverineSoft.DialogueSystem.DSEvent-1.html#WolverineSoft_DialogueSystem_DSEvent_1_Invoke_WolverineSoft_DialogueSystem_DialogueManager__0_
+  - name: (
+  - uid: WolverineSoft.DialogueSystem.DialogueManager
+    name: DialogueManager
+    href: WolverineSoft.DialogueSystem.DialogueManager.html
+  - name: ','
+  - name: " "
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.DSEvent`1.Invoke(WolverineSoft.DialogueSystem.DialogueManager,`0)
+    name: Invoke
+    href: WolverineSoft.DialogueSystem.DSEvent-1.html#WolverineSoft_DialogueSystem_DSEvent_1_Invoke_WolverineSoft_DialogueSystem_DialogueManager__0_
+  - name: (
+  - uid: WolverineSoft.DialogueSystem.DialogueManager
+    name: DialogueManager
+    href: WolverineSoft.DialogueSystem.DialogueManager.html
+  - name: ','
+  - name: " "
+  - name: T
+  - name: )
+- uid: WolverineSoft.DialogueSystem.DSEvent`1.AddListener(UnityAction{`0})
+  commentId: M:WolverineSoft.DialogueSystem.DSEvent`1.AddListener(UnityAction{`0})
+  isExternal: true
+  href: WolverineSoft.DialogueSystem.DSEvent-1.html#WolverineSoft_DialogueSystem_DSEvent_1_AddListener_UnityAction__0__
+  name: AddListener(UnityAction<T>)
+  nameWithType: DSEvent<T>.AddListener(UnityAction<T>)
+  fullName: WolverineSoft.DialogueSystem.DSEvent<T>.AddListener(UnityAction<T>)
+  nameWithType.vb: DSEvent(Of T).AddListener(UnityAction(Of T))
+  fullName.vb: WolverineSoft.DialogueSystem.DSEvent(Of T).AddListener(UnityAction(Of T))
+  name.vb: AddListener(UnityAction(Of T))
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.DSEvent`1.AddListener(UnityAction{`0})
+    name: AddListener
+    href: WolverineSoft.DialogueSystem.DSEvent-1.html#WolverineSoft_DialogueSystem_DSEvent_1_AddListener_UnityAction__0__
+  - name: (
+  - uid: UnityAction`1
+    name: UnityAction
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.DSEvent`1.AddListener(UnityAction{`0})
+    name: AddListener
+    href: WolverineSoft.DialogueSystem.DSEvent-1.html#WolverineSoft_DialogueSystem_DSEvent_1_AddListener_UnityAction__0__
+  - name: (
+  - uid: UnityAction`1
+    name: UnityAction
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: WolverineSoft.DialogueSystem.DSEvent`1.AddListener(WolverineSoft.DialogueSystem.DialogueManager,UnityAction{`0})
+  commentId: M:WolverineSoft.DialogueSystem.DSEvent`1.AddListener(WolverineSoft.DialogueSystem.DialogueManager,UnityAction{`0})
+  isExternal: true
+  href: WolverineSoft.DialogueSystem.DSEvent-1.html#WolverineSoft_DialogueSystem_DSEvent_1_AddListener_WolverineSoft_DialogueSystem_DialogueManager_UnityAction__0__
+  name: AddListener(DialogueManager, UnityAction<T>)
+  nameWithType: DSEvent<T>.AddListener(DialogueManager, UnityAction<T>)
+  fullName: WolverineSoft.DialogueSystem.DSEvent<T>.AddListener(WolverineSoft.DialogueSystem.DialogueManager, UnityAction<T>)
+  nameWithType.vb: DSEvent(Of T).AddListener(DialogueManager, UnityAction(Of T))
+  fullName.vb: WolverineSoft.DialogueSystem.DSEvent(Of T).AddListener(WolverineSoft.DialogueSystem.DialogueManager, UnityAction(Of T))
+  name.vb: AddListener(DialogueManager, UnityAction(Of T))
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.DSEvent`1.AddListener(WolverineSoft.DialogueSystem.DialogueManager,UnityAction{`0})
+    name: AddListener
+    href: WolverineSoft.DialogueSystem.DSEvent-1.html#WolverineSoft_DialogueSystem_DSEvent_1_AddListener_WolverineSoft_DialogueSystem_DialogueManager_UnityAction__0__
+  - name: (
+  - uid: WolverineSoft.DialogueSystem.DialogueManager
+    name: DialogueManager
+    href: WolverineSoft.DialogueSystem.DialogueManager.html
+  - name: ','
+  - name: " "
+  - uid: UnityAction`1
+    name: UnityAction
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.DSEvent`1.AddListener(WolverineSoft.DialogueSystem.DialogueManager,UnityAction{`0})
+    name: AddListener
+    href: WolverineSoft.DialogueSystem.DSEvent-1.html#WolverineSoft_DialogueSystem_DSEvent_1_AddListener_WolverineSoft_DialogueSystem_DialogueManager_UnityAction__0__
+  - name: (
+  - uid: WolverineSoft.DialogueSystem.DialogueManager
+    name: DialogueManager
+    href: WolverineSoft.DialogueSystem.DialogueManager.html
+  - name: ','
+  - name: " "
+  - uid: UnityAction`1
+    name: UnityAction
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: WolverineSoft.DialogueSystem.DSEvent`1.RemoveListener(UnityAction{`0})
+  commentId: M:WolverineSoft.DialogueSystem.DSEvent`1.RemoveListener(UnityAction{`0})
+  isExternal: true
+  href: WolverineSoft.DialogueSystem.DSEvent-1.html#WolverineSoft_DialogueSystem_DSEvent_1_RemoveListener_UnityAction__0__
+  name: RemoveListener(UnityAction<T>)
+  nameWithType: DSEvent<T>.RemoveListener(UnityAction<T>)
+  fullName: WolverineSoft.DialogueSystem.DSEvent<T>.RemoveListener(UnityAction<T>)
+  nameWithType.vb: DSEvent(Of T).RemoveListener(UnityAction(Of T))
+  fullName.vb: WolverineSoft.DialogueSystem.DSEvent(Of T).RemoveListener(UnityAction(Of T))
+  name.vb: RemoveListener(UnityAction(Of T))
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.DSEvent`1.RemoveListener(UnityAction{`0})
+    name: RemoveListener
+    href: WolverineSoft.DialogueSystem.DSEvent-1.html#WolverineSoft_DialogueSystem_DSEvent_1_RemoveListener_UnityAction__0__
+  - name: (
+  - uid: UnityAction`1
+    name: UnityAction
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.DSEvent`1.RemoveListener(UnityAction{`0})
+    name: RemoveListener
+    href: WolverineSoft.DialogueSystem.DSEvent-1.html#WolverineSoft_DialogueSystem_DSEvent_1_RemoveListener_UnityAction__0__
+  - name: (
+  - uid: UnityAction`1
+    name: UnityAction
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: WolverineSoft.DialogueSystem.DSEvent`1.RemoveListener(WolverineSoft.DialogueSystem.DialogueManager,UnityAction{`0})
+  commentId: M:WolverineSoft.DialogueSystem.DSEvent`1.RemoveListener(WolverineSoft.DialogueSystem.DialogueManager,UnityAction{`0})
+  isExternal: true
+  href: WolverineSoft.DialogueSystem.DSEvent-1.html#WolverineSoft_DialogueSystem_DSEvent_1_RemoveListener_WolverineSoft_DialogueSystem_DialogueManager_UnityAction__0__
+  name: RemoveListener(DialogueManager, UnityAction<T>)
+  nameWithType: DSEvent<T>.RemoveListener(DialogueManager, UnityAction<T>)
+  fullName: WolverineSoft.DialogueSystem.DSEvent<T>.RemoveListener(WolverineSoft.DialogueSystem.DialogueManager, UnityAction<T>)
+  nameWithType.vb: DSEvent(Of T).RemoveListener(DialogueManager, UnityAction(Of T))
+  fullName.vb: WolverineSoft.DialogueSystem.DSEvent(Of T).RemoveListener(WolverineSoft.DialogueSystem.DialogueManager, UnityAction(Of T))
+  name.vb: RemoveListener(DialogueManager, UnityAction(Of T))
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.DSEvent`1.RemoveListener(WolverineSoft.DialogueSystem.DialogueManager,UnityAction{`0})
+    name: RemoveListener
+    href: WolverineSoft.DialogueSystem.DSEvent-1.html#WolverineSoft_DialogueSystem_DSEvent_1_RemoveListener_WolverineSoft_DialogueSystem_DialogueManager_UnityAction__0__
+  - name: (
+  - uid: WolverineSoft.DialogueSystem.DialogueManager
+    name: DialogueManager
+    href: WolverineSoft.DialogueSystem.DialogueManager.html
+  - name: ','
+  - name: " "
+  - uid: UnityAction`1
+    name: UnityAction
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.DSEvent`1.RemoveListener(WolverineSoft.DialogueSystem.DialogueManager,UnityAction{`0})
+    name: RemoveListener
+    href: WolverineSoft.DialogueSystem.DSEvent-1.html#WolverineSoft_DialogueSystem_DSEvent_1_RemoveListener_WolverineSoft_DialogueSystem_DialogueManager_UnityAction__0__
+  - name: (
+  - uid: WolverineSoft.DialogueSystem.DialogueManager
+    name: DialogueManager
+    href: WolverineSoft.DialogueSystem.DialogueManager.html
+  - name: ','
+  - name: " "
+  - uid: UnityAction`1
+    name: UnityAction
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: WolverineSoft.DialogueSystem.DSEvent`1.RemoveAllListeners
+  commentId: M:WolverineSoft.DialogueSystem.DSEvent`1.RemoveAllListeners
+  href: WolverineSoft.DialogueSystem.DSEvent-1.html#WolverineSoft_DialogueSystem_DSEvent_1_RemoveAllListeners
+  name: RemoveAllListeners()
+  nameWithType: DSEvent<T>.RemoveAllListeners()
+  fullName: WolverineSoft.DialogueSystem.DSEvent<T>.RemoveAllListeners()
+  nameWithType.vb: DSEvent(Of T).RemoveAllListeners()
+  fullName.vb: WolverineSoft.DialogueSystem.DSEvent(Of T).RemoveAllListeners()
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.DSEvent`1.RemoveAllListeners
+    name: RemoveAllListeners
+    href: WolverineSoft.DialogueSystem.DSEvent-1.html#WolverineSoft_DialogueSystem_DSEvent_1_RemoveAllListeners
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.DSEvent`1.RemoveAllListeners
+    name: RemoveAllListeners
+    href: WolverineSoft.DialogueSystem.DSEvent-1.html#WolverineSoft_DialogueSystem_DSEvent_1_RemoveAllListeners
+  - name: (
+  - name: )

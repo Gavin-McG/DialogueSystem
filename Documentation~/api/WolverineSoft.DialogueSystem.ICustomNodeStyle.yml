@@ -1,0 +1,131 @@
+### YamlMime:ManagedReference
+items:
+- uid: WolverineSoft.DialogueSystem.ICustomNodeStyle
+  commentId: T:WolverineSoft.DialogueSystem.ICustomNodeStyle
+  id: ICustomNodeStyle
+  parent: WolverineSoft.DialogueSystem
+  children:
+  - WolverineSoft.DialogueSystem.ICustomNodeStyle.BackgroundColor
+  - WolverineSoft.DialogueSystem.ICustomNodeStyle.BorderColor
+  langs:
+  - csharp
+  - vb
+  name: ICustomNodeStyle
+  nameWithType: ICustomNodeStyle
+  fullName: WolverineSoft.DialogueSystem.ICustomNodeStyle
+  type: Interface
+  source:
+    remote:
+      path: RunTime/ICustomNodeStyle.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: ICustomNodeStyle
+    path: RunTime/ICustomNodeStyle.cs
+    startLine: 5
+  namespace: WolverineSoft.DialogueSystem
+  syntax:
+    content: public interface ICustomNodeStyle
+    content.vb: Public Interface ICustomNodeStyle
+  derivedClasses:
+  - WolverineSoft.DialogueSystem.BasicOption
+  - WolverineSoft.DialogueSystem.ChoiceParameters
+  - WolverineSoft.DialogueSystem.DialogueParameters
+  - WolverineSoft.DialogueSystem.OptionType
+  - WolverineSoft.DialogueSystem.RandomOption
+  - WolverineSoft.DialogueSystem.ResponseParameters
+  - WolverineSoft.DialogueSystem.TextParameters
+  - WolverineSoft.DialogueSystem.VariableEqualsOption
+- uid: WolverineSoft.DialogueSystem.ICustomNodeStyle.BackgroundColor
+  commentId: P:WolverineSoft.DialogueSystem.ICustomNodeStyle.BackgroundColor
+  id: BackgroundColor
+  parent: WolverineSoft.DialogueSystem.ICustomNodeStyle
+  langs:
+  - csharp
+  - vb
+  name: BackgroundColor
+  nameWithType: ICustomNodeStyle.BackgroundColor
+  fullName: WolverineSoft.DialogueSystem.ICustomNodeStyle.BackgroundColor
+  type: Property
+  source:
+    remote:
+      path: RunTime/ICustomNodeStyle.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: BackgroundColor
+    path: RunTime/ICustomNodeStyle.cs
+    startLine: 7
+  namespace: WolverineSoft.DialogueSystem
+  syntax:
+    content: Color BackgroundColor { get; }
+    parameters: []
+    return:
+      type: Color
+    content.vb: ReadOnly Property BackgroundColor As Color
+  overload: WolverineSoft.DialogueSystem.ICustomNodeStyle.BackgroundColor*
+- uid: WolverineSoft.DialogueSystem.ICustomNodeStyle.BorderColor
+  commentId: P:WolverineSoft.DialogueSystem.ICustomNodeStyle.BorderColor
+  id: BorderColor
+  parent: WolverineSoft.DialogueSystem.ICustomNodeStyle
+  langs:
+  - csharp
+  - vb
+  name: BorderColor
+  nameWithType: ICustomNodeStyle.BorderColor
+  fullName: WolverineSoft.DialogueSystem.ICustomNodeStyle.BorderColor
+  type: Property
+  source:
+    remote:
+      path: RunTime/ICustomNodeStyle.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: BorderColor
+    path: RunTime/ICustomNodeStyle.cs
+    startLine: 8
+  namespace: WolverineSoft.DialogueSystem
+  syntax:
+    content: Color BorderColor { get; }
+    parameters: []
+    return:
+      type: Color
+    content.vb: ReadOnly Property BorderColor As Color
+  overload: WolverineSoft.DialogueSystem.ICustomNodeStyle.BorderColor*
+references:
+- uid: WolverineSoft.DialogueSystem
+  commentId: N:WolverineSoft.DialogueSystem
+  href: WolverineSoft.html
+  name: WolverineSoft.DialogueSystem
+  nameWithType: WolverineSoft.DialogueSystem
+  fullName: WolverineSoft.DialogueSystem
+  spec.csharp:
+  - uid: WolverineSoft
+    name: WolverineSoft
+    href: WolverineSoft.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem
+    name: DialogueSystem
+    href: WolverineSoft.DialogueSystem.html
+  spec.vb:
+  - uid: WolverineSoft
+    name: WolverineSoft
+    href: WolverineSoft.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem
+    name: DialogueSystem
+    href: WolverineSoft.DialogueSystem.html
+- uid: WolverineSoft.DialogueSystem.ICustomNodeStyle.BackgroundColor*
+  commentId: Overload:WolverineSoft.DialogueSystem.ICustomNodeStyle.BackgroundColor
+  href: WolverineSoft.DialogueSystem.ICustomNodeStyle.html#WolverineSoft_DialogueSystem_ICustomNodeStyle_BackgroundColor
+  name: BackgroundColor
+  nameWithType: ICustomNodeStyle.BackgroundColor
+  fullName: WolverineSoft.DialogueSystem.ICustomNodeStyle.BackgroundColor
+- uid: Color
+  isExternal: true
+  name: Color
+  nameWithType: Color
+  fullName: Color
+- uid: WolverineSoft.DialogueSystem.ICustomNodeStyle.BorderColor*
+  commentId: Overload:WolverineSoft.DialogueSystem.ICustomNodeStyle.BorderColor
+  href: WolverineSoft.DialogueSystem.ICustomNodeStyle.html#WolverineSoft_DialogueSystem_ICustomNodeStyle_BorderColor
+  name: BorderColor
+  nameWithType: ICustomNodeStyle.BorderColor
+  fullName: WolverineSoft.DialogueSystem.ICustomNodeStyle.BorderColor

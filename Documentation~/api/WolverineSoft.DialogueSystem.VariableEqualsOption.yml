@@ -1,0 +1,595 @@
+### YamlMime:ManagedReference
+items:
+- uid: WolverineSoft.DialogueSystem.VariableEqualsOption
+  commentId: T:WolverineSoft.DialogueSystem.VariableEqualsOption
+  id: VariableEqualsOption
+  parent: WolverineSoft.DialogueSystem
+  children:
+  - WolverineSoft.DialogueSystem.VariableEqualsOption.CheckVariables
+  - WolverineSoft.DialogueSystem.VariableEqualsOption.EvaluateCondition(WolverineSoft.DialogueSystem.AdvanceContext,WolverineSoft.DialogueSystem.IVariableContext)
+  langs:
+  - csharp
+  - vb
+  name: VariableEqualsOption
+  nameWithType: VariableEqualsOption
+  fullName: WolverineSoft.DialogueSystem.VariableEqualsOption
+  type: Class
+  source:
+    remote:
+      path: RunTime/Options/VariableEqualsOption.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: VariableEqualsOption
+    path: RunTime/Options/VariableEqualsOption.cs
+    startLine: 6
+  namespace: WolverineSoft.DialogueSystem
+  syntax:
+    content: >-
+      [TypeOption("Variable Equals", 0)]
+
+      public class VariableEqualsOption : OptionType, ICustomNodeStyle
+    content.vb: >-
+      <TypeOption("Variable Equals", 0)>
+
+      Public Class VariableEqualsOption Inherits OptionType Implements ICustomNodeStyle
+  inheritance:
+  - System.Object
+  - WolverineSoft.DialogueSystem.ParameterBase
+  - WolverineSoft.DialogueSystem.OptionType
+  implements:
+  - WolverineSoft.DialogueSystem.ICustomNodeStyle
+  inheritedMembers:
+  - WolverineSoft.DialogueSystem.OptionType.BackgroundColor
+  - WolverineSoft.DialogueSystem.OptionType.BorderColor
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: WolverineSoft.DialogueSystem.TypeOptionAttribute
+    ctor: WolverineSoft.DialogueSystem.TypeOptionAttribute.#ctor(System.String,System.Int32)
+    arguments:
+    - type: System.String
+      value: Variable Equals
+    - type: System.Int32
+      value: 0
+- uid: WolverineSoft.DialogueSystem.VariableEqualsOption.EvaluateCondition(WolverineSoft.DialogueSystem.AdvanceContext,WolverineSoft.DialogueSystem.IVariableContext)
+  commentId: M:WolverineSoft.DialogueSystem.VariableEqualsOption.EvaluateCondition(WolverineSoft.DialogueSystem.AdvanceContext,WolverineSoft.DialogueSystem.IVariableContext)
+  id: EvaluateCondition(WolverineSoft.DialogueSystem.AdvanceContext,WolverineSoft.DialogueSystem.IVariableContext)
+  parent: WolverineSoft.DialogueSystem.VariableEqualsOption
+  langs:
+  - csharp
+  - vb
+  name: EvaluateCondition(AdvanceContext, IVariableContext)
+  nameWithType: VariableEqualsOption.EvaluateCondition(AdvanceContext, IVariableContext)
+  fullName: WolverineSoft.DialogueSystem.VariableEqualsOption.EvaluateCondition(WolverineSoft.DialogueSystem.AdvanceContext, WolverineSoft.DialogueSystem.IVariableContext)
+  type: Method
+  source:
+    remote:
+      path: RunTime/Options/VariableEqualsOption.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: EvaluateCondition
+    path: RunTime/Options/VariableEqualsOption.cs
+    startLine: 15
+  namespace: WolverineSoft.DialogueSystem
+  summary: Returns true if the condition is passed and the option should be considered by its respective Redirect
+  example: []
+  syntax:
+    content: public override bool EvaluateCondition(AdvanceContext advanceContext, IVariableContext variables)
+    parameters:
+    - id: advanceContext
+      type: WolverineSoft.DialogueSystem.AdvanceContext
+    - id: variables
+      type: WolverineSoft.DialogueSystem.IVariableContext
+    return:
+      type: System.Boolean
+    content.vb: Public Overrides Function EvaluateCondition(advanceContext As AdvanceContext, variables As IVariableContext) As Boolean
+  overridden: WolverineSoft.DialogueSystem.OptionType.EvaluateCondition(WolverineSoft.DialogueSystem.AdvanceContext,WolverineSoft.DialogueSystem.IVariableContext)
+  overload: WolverineSoft.DialogueSystem.VariableEqualsOption.EvaluateCondition*
+- uid: WolverineSoft.DialogueSystem.VariableEqualsOption.CheckVariables
+  commentId: P:WolverineSoft.DialogueSystem.VariableEqualsOption.CheckVariables
+  id: CheckVariables
+  parent: WolverineSoft.DialogueSystem.VariableEqualsOption
+  langs:
+  - csharp
+  - vb
+  name: CheckVariables
+  nameWithType: VariableEqualsOption.CheckVariables
+  fullName: WolverineSoft.DialogueSystem.VariableEqualsOption.CheckVariables
+  type: Property
+  source:
+    remote:
+      path: RunTime/Options/VariableEqualsOption.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: CheckVariables
+    path: RunTime/Options/VariableEqualsOption.cs
+    startLine: 22
+  namespace: WolverineSoft.DialogueSystem
+  example: []
+  syntax:
+    content: public override IEnumerable<string> CheckVariables { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IEnumerable{System.String}
+    content.vb: Public Overrides ReadOnly Property CheckVariables As IEnumerable(Of String)
+  overridden: WolverineSoft.DialogueSystem.OptionType.CheckVariables
+  overload: WolverineSoft.DialogueSystem.VariableEqualsOption.CheckVariables*
+references:
+- uid: WolverineSoft.DialogueSystem
+  commentId: N:WolverineSoft.DialogueSystem
+  href: WolverineSoft.html
+  name: WolverineSoft.DialogueSystem
+  nameWithType: WolverineSoft.DialogueSystem
+  fullName: WolverineSoft.DialogueSystem
+  spec.csharp:
+  - uid: WolverineSoft
+    name: WolverineSoft
+    href: WolverineSoft.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem
+    name: DialogueSystem
+    href: WolverineSoft.DialogueSystem.html
+  spec.vb:
+  - uid: WolverineSoft
+    name: WolverineSoft
+    href: WolverineSoft.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem
+    name: DialogueSystem
+    href: WolverineSoft.DialogueSystem.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: WolverineSoft.DialogueSystem.ParameterBase
+  commentId: T:WolverineSoft.DialogueSystem.ParameterBase
+  parent: WolverineSoft.DialogueSystem
+  href: WolverineSoft.DialogueSystem.ParameterBase.html
+  name: ParameterBase
+  nameWithType: ParameterBase
+  fullName: WolverineSoft.DialogueSystem.ParameterBase
+- uid: WolverineSoft.DialogueSystem.OptionType
+  commentId: T:WolverineSoft.DialogueSystem.OptionType
+  parent: WolverineSoft.DialogueSystem
+  href: WolverineSoft.DialogueSystem.OptionType.html
+  name: OptionType
+  nameWithType: OptionType
+  fullName: WolverineSoft.DialogueSystem.OptionType
+- uid: WolverineSoft.DialogueSystem.ICustomNodeStyle
+  commentId: T:WolverineSoft.DialogueSystem.ICustomNodeStyle
+  parent: WolverineSoft.DialogueSystem
+  href: WolverineSoft.DialogueSystem.ICustomNodeStyle.html
+  name: ICustomNodeStyle
+  nameWithType: ICustomNodeStyle
+  fullName: WolverineSoft.DialogueSystem.ICustomNodeStyle
+- uid: WolverineSoft.DialogueSystem.OptionType.BackgroundColor
+  commentId: P:WolverineSoft.DialogueSystem.OptionType.BackgroundColor
+  parent: WolverineSoft.DialogueSystem.OptionType
+  href: WolverineSoft.DialogueSystem.OptionType.html#WolverineSoft_DialogueSystem_OptionType_BackgroundColor
+  name: BackgroundColor
+  nameWithType: OptionType.BackgroundColor
+  fullName: WolverineSoft.DialogueSystem.OptionType.BackgroundColor
+- uid: WolverineSoft.DialogueSystem.OptionType.BorderColor
+  commentId: P:WolverineSoft.DialogueSystem.OptionType.BorderColor
+  parent: WolverineSoft.DialogueSystem.OptionType
+  href: WolverineSoft.DialogueSystem.OptionType.html#WolverineSoft_DialogueSystem_OptionType_BorderColor
+  name: BorderColor
+  nameWithType: OptionType.BorderColor
+  fullName: WolverineSoft.DialogueSystem.OptionType.BorderColor
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: WolverineSoft.DialogueSystem.OptionType.EvaluateCondition(WolverineSoft.DialogueSystem.AdvanceContext,WolverineSoft.DialogueSystem.IVariableContext)
+  commentId: M:WolverineSoft.DialogueSystem.OptionType.EvaluateCondition(WolverineSoft.DialogueSystem.AdvanceContext,WolverineSoft.DialogueSystem.IVariableContext)
+  parent: WolverineSoft.DialogueSystem.OptionType
+  href: WolverineSoft.DialogueSystem.OptionType.html#WolverineSoft_DialogueSystem_OptionType_EvaluateCondition_WolverineSoft_DialogueSystem_AdvanceContext_WolverineSoft_DialogueSystem_IVariableContext_
+  name: EvaluateCondition(AdvanceContext, IVariableContext)
+  nameWithType: OptionType.EvaluateCondition(AdvanceContext, IVariableContext)
+  fullName: WolverineSoft.DialogueSystem.OptionType.EvaluateCondition(WolverineSoft.DialogueSystem.AdvanceContext, WolverineSoft.DialogueSystem.IVariableContext)
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.OptionType.EvaluateCondition(WolverineSoft.DialogueSystem.AdvanceContext,WolverineSoft.DialogueSystem.IVariableContext)
+    name: EvaluateCondition
+    href: WolverineSoft.DialogueSystem.OptionType.html#WolverineSoft_DialogueSystem_OptionType_EvaluateCondition_WolverineSoft_DialogueSystem_AdvanceContext_WolverineSoft_DialogueSystem_IVariableContext_
+  - name: (
+  - uid: WolverineSoft.DialogueSystem.AdvanceContext
+    name: AdvanceContext
+    href: WolverineSoft.DialogueSystem.AdvanceContext.html
+  - name: ','
+  - name: " "
+  - uid: WolverineSoft.DialogueSystem.IVariableContext
+    name: IVariableContext
+    href: WolverineSoft.DialogueSystem.IVariableContext.html
+  - name: )
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.OptionType.EvaluateCondition(WolverineSoft.DialogueSystem.AdvanceContext,WolverineSoft.DialogueSystem.IVariableContext)
+    name: EvaluateCondition
+    href: WolverineSoft.DialogueSystem.OptionType.html#WolverineSoft_DialogueSystem_OptionType_EvaluateCondition_WolverineSoft_DialogueSystem_AdvanceContext_WolverineSoft_DialogueSystem_IVariableContext_
+  - name: (
+  - uid: WolverineSoft.DialogueSystem.AdvanceContext
+    name: AdvanceContext
+    href: WolverineSoft.DialogueSystem.AdvanceContext.html
+  - name: ','
+  - name: " "
+  - uid: WolverineSoft.DialogueSystem.IVariableContext
+    name: IVariableContext
+    href: WolverineSoft.DialogueSystem.IVariableContext.html
+  - name: )
+- uid: WolverineSoft.DialogueSystem.VariableEqualsOption.EvaluateCondition*
+  commentId: Overload:WolverineSoft.DialogueSystem.VariableEqualsOption.EvaluateCondition
+  href: WolverineSoft.DialogueSystem.VariableEqualsOption.html#WolverineSoft_DialogueSystem_VariableEqualsOption_EvaluateCondition_WolverineSoft_DialogueSystem_AdvanceContext_WolverineSoft_DialogueSystem_IVariableContext_
+  name: EvaluateCondition
+  nameWithType: VariableEqualsOption.EvaluateCondition
+  fullName: WolverineSoft.DialogueSystem.VariableEqualsOption.EvaluateCondition
+- uid: WolverineSoft.DialogueSystem.AdvanceContext
+  commentId: T:WolverineSoft.DialogueSystem.AdvanceContext
+  parent: WolverineSoft.DialogueSystem
+  href: WolverineSoft.DialogueSystem.AdvanceContext.html
+  name: AdvanceContext
+  nameWithType: AdvanceContext
+  fullName: WolverineSoft.DialogueSystem.AdvanceContext
+- uid: WolverineSoft.DialogueSystem.IVariableContext
+  commentId: T:WolverineSoft.DialogueSystem.IVariableContext
+  parent: WolverineSoft.DialogueSystem
+  href: WolverineSoft.DialogueSystem.IVariableContext.html
+  name: IVariableContext
+  nameWithType: IVariableContext
+  fullName: WolverineSoft.DialogueSystem.IVariableContext
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: WolverineSoft.DialogueSystem.OptionType.CheckVariables
+  commentId: P:WolverineSoft.DialogueSystem.OptionType.CheckVariables
+  parent: WolverineSoft.DialogueSystem.OptionType
+  href: WolverineSoft.DialogueSystem.OptionType.html#WolverineSoft_DialogueSystem_OptionType_CheckVariables
+  name: CheckVariables
+  nameWithType: OptionType.CheckVariables
+  fullName: WolverineSoft.DialogueSystem.OptionType.CheckVariables
+- uid: WolverineSoft.DialogueSystem.VariableEqualsOption.CheckVariables*
+  commentId: Overload:WolverineSoft.DialogueSystem.VariableEqualsOption.CheckVariables
+  href: WolverineSoft.DialogueSystem.VariableEqualsOption.html#WolverineSoft_DialogueSystem_VariableEqualsOption_CheckVariables
+  name: CheckVariables
+  nameWithType: VariableEqualsOption.CheckVariables
+  fullName: WolverineSoft.DialogueSystem.VariableEqualsOption.CheckVariables
+- uid: System.Collections.Generic.IEnumerable{System.String}
+  commentId: T:System.Collections.Generic.IEnumerable{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<string>
+  nameWithType: IEnumerable<string>
+  fullName: System.Collections.Generic.IEnumerable<string>
+  nameWithType.vb: IEnumerable(Of String)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of String)
+  name.vb: IEnumerable(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic

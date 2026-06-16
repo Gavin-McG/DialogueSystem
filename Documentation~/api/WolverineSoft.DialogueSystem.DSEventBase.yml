@@ -1,0 +1,72 @@
+### YamlMime:ManagedReference
+items:
+- uid: WolverineSoft.DialogueSystem.DSEventBase
+  commentId: T:WolverineSoft.DialogueSystem.DSEventBase
+  id: DSEventBase
+  parent: WolverineSoft.DialogueSystem
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: DSEventBase
+  nameWithType: DSEventBase
+  fullName: WolverineSoft.DialogueSystem.DSEventBase
+  type: Class
+  source:
+    remote:
+      path: RunTime/Events/DSEventBase.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: DSEventBase
+    path: RunTime/Events/DSEventBase.cs
+    startLine: 5
+  namespace: WolverineSoft.DialogueSystem
+  syntax:
+    content: 'public abstract class DSEventBase : ScriptableObject'
+    content.vb: Public MustInherit Class DSEventBase Inherits ScriptableObject
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - WolverineSoft.DialogueSystem.DSEvent
+  - WolverineSoft.DialogueSystem.DSEvent`1
+references:
+- uid: WolverineSoft.DialogueSystem
+  commentId: N:WolverineSoft.DialogueSystem
+  href: WolverineSoft.html
+  name: WolverineSoft.DialogueSystem
+  nameWithType: WolverineSoft.DialogueSystem
+  fullName: WolverineSoft.DialogueSystem
+  spec.csharp:
+  - uid: WolverineSoft
+    name: WolverineSoft
+    href: WolverineSoft.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem
+    name: DialogueSystem
+    href: WolverineSoft.DialogueSystem.html
+  spec.vb:
+  - uid: WolverineSoft
+    name: WolverineSoft
+    href: WolverineSoft.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem
+    name: DialogueSystem
+    href: WolverineSoft.DialogueSystem.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System

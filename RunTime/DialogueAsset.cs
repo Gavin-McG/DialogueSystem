@@ -39,9 +39,9 @@ namespace WolverineSoft.DialogueSystem
         
         //----Get Methods----
 
-        public string GetString(string name) => variables.GetString(name);
-        public float GetFloat(string name) => variables.GetFloat(name);
-        public int GetInt(string name) => variables.GetInt(name);
-        public bool GetBool(string name) => variables.GetBool(name);
+        public bool TryGetString(string name, out string value) => variables.TryGetString(name, out value);
+        public bool TryGetFloat(string name, out float value) => variables.TryGetFloat(name, out value);
+        public bool TryGetInt(string name, out int value) => variables.TryGetInt(name, out value);
+        public bool TryGetBool(string name, out bool value) => variables.TryGetBool(name, out value);
     }
 }

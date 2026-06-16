@@ -1,0 +1,156 @@
+### YamlMime:ManagedReference
+items:
+- uid: WolverineSoft.DialogueSystem.VariableType
+  commentId: T:WolverineSoft.DialogueSystem.VariableType
+  id: VariableType
+  parent: WolverineSoft.DialogueSystem
+  children:
+  - WolverineSoft.DialogueSystem.VariableType.Bool
+  - WolverineSoft.DialogueSystem.VariableType.Float
+  - WolverineSoft.DialogueSystem.VariableType.Int
+  - WolverineSoft.DialogueSystem.VariableType.String
+  langs:
+  - csharp
+  - vb
+  name: VariableType
+  nameWithType: VariableType
+  fullName: WolverineSoft.DialogueSystem.VariableType
+  type: Enum
+  source:
+    remote:
+      path: RunTime/Variables/VariableType.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: VariableType
+    path: RunTime/Variables/VariableType.cs
+    startLine: 2
+  namespace: WolverineSoft.DialogueSystem
+  syntax:
+    content: public enum VariableType
+    content.vb: Public Enum VariableType
+- uid: WolverineSoft.DialogueSystem.VariableType.String
+  commentId: F:WolverineSoft.DialogueSystem.VariableType.String
+  id: String
+  parent: WolverineSoft.DialogueSystem.VariableType
+  langs:
+  - csharp
+  - vb
+  name: String
+  nameWithType: VariableType.String
+  fullName: WolverineSoft.DialogueSystem.VariableType.String
+  type: Field
+  source:
+    remote:
+      path: RunTime/Variables/VariableType.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: String
+    path: RunTime/Variables/VariableType.cs
+    startLine: 2
+  namespace: WolverineSoft.DialogueSystem
+  syntax:
+    content: String = 0
+    return:
+      type: WolverineSoft.DialogueSystem.VariableType
+- uid: WolverineSoft.DialogueSystem.VariableType.Float
+  commentId: F:WolverineSoft.DialogueSystem.VariableType.Float
+  id: Float
+  parent: WolverineSoft.DialogueSystem.VariableType
+  langs:
+  - csharp
+  - vb
+  name: Float
+  nameWithType: VariableType.Float
+  fullName: WolverineSoft.DialogueSystem.VariableType.Float
+  type: Field
+  source:
+    remote:
+      path: RunTime/Variables/VariableType.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: Float
+    path: RunTime/Variables/VariableType.cs
+    startLine: 2
+  namespace: WolverineSoft.DialogueSystem
+  syntax:
+    content: Float = 1
+    return:
+      type: WolverineSoft.DialogueSystem.VariableType
+- uid: WolverineSoft.DialogueSystem.VariableType.Int
+  commentId: F:WolverineSoft.DialogueSystem.VariableType.Int
+  id: Int
+  parent: WolverineSoft.DialogueSystem.VariableType
+  langs:
+  - csharp
+  - vb
+  name: Int
+  nameWithType: VariableType.Int
+  fullName: WolverineSoft.DialogueSystem.VariableType.Int
+  type: Field
+  source:
+    remote:
+      path: RunTime/Variables/VariableType.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: Int
+    path: RunTime/Variables/VariableType.cs
+    startLine: 2
+  namespace: WolverineSoft.DialogueSystem
+  syntax:
+    content: Int = 2
+    return:
+      type: WolverineSoft.DialogueSystem.VariableType
+- uid: WolverineSoft.DialogueSystem.VariableType.Bool
+  commentId: F:WolverineSoft.DialogueSystem.VariableType.Bool
+  id: Bool
+  parent: WolverineSoft.DialogueSystem.VariableType
+  langs:
+  - csharp
+  - vb
+  name: Bool
+  nameWithType: VariableType.Bool
+  fullName: WolverineSoft.DialogueSystem.VariableType.Bool
+  type: Field
+  source:
+    remote:
+      path: RunTime/Variables/VariableType.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: Bool
+    path: RunTime/Variables/VariableType.cs
+    startLine: 2
+  namespace: WolverineSoft.DialogueSystem
+  syntax:
+    content: Bool = 3
+    return:
+      type: WolverineSoft.DialogueSystem.VariableType
+references:
+- uid: WolverineSoft.DialogueSystem
+  commentId: N:WolverineSoft.DialogueSystem
+  href: WolverineSoft.html
+  name: WolverineSoft.DialogueSystem
+  nameWithType: WolverineSoft.DialogueSystem
+  fullName: WolverineSoft.DialogueSystem
+  spec.csharp:
+  - uid: WolverineSoft
+    name: WolverineSoft
+    href: WolverineSoft.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem
+    name: DialogueSystem
+    href: WolverineSoft.DialogueSystem.html
+  spec.vb:
+  - uid: WolverineSoft
+    name: WolverineSoft
+    href: WolverineSoft.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem
+    name: DialogueSystem
+    href: WolverineSoft.DialogueSystem.html
+- uid: WolverineSoft.DialogueSystem.VariableType
+  commentId: T:WolverineSoft.DialogueSystem.VariableType
+  parent: WolverineSoft.DialogueSystem
+  href: WolverineSoft.DialogueSystem.VariableType.html
+  name: VariableType
+  nameWithType: VariableType
+  fullName: WolverineSoft.DialogueSystem.VariableType

@@ -1,0 +1,375 @@
+### YamlMime:ManagedReference
+items:
+- uid: WolverineSoft.DialogueSystem.Editor.RandomRedirectNode
+  commentId: T:WolverineSoft.DialogueSystem.Editor.RandomRedirectNode
+  id: RandomRedirectNode
+  parent: WolverineSoft.DialogueSystem.Editor
+  children:
+  - WolverineSoft.DialogueSystem.Editor.RandomRedirectNode.CreateDialogueObject
+  - WolverineSoft.DialogueSystem.Editor.RandomRedirectNode.UseWeight
+  langs:
+  - csharp
+  - vb
+  name: RandomRedirectNode
+  nameWithType: RandomRedirectNode
+  fullName: WolverineSoft.DialogueSystem.Editor.RandomRedirectNode
+  type: Class
+  source:
+    remote:
+      path: Editor/Nodes/RandomRedirectNode.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: RandomRedirectNode
+    path: Editor/Nodes/RandomRedirectNode.cs
+    startLine: 6
+  namespace: WolverineSoft.DialogueSystem.Editor
+  syntax:
+    content: >-
+      [Serializable]
+
+      public class RandomRedirectNode : RedirectNode, IDialogueNode, IDataNode<DialogueObject>
+    content.vb: >-
+      <Serializable>
+
+      Public Class RandomRedirectNode Inherits RedirectNode Implements IDialogueNode, IDataNode(Of DialogueObject)
+  inheritance:
+  - System.Object
+  - WolverineSoft.DialogueSystem.Editor.OptionContextNode
+  - WolverineSoft.DialogueSystem.Editor.RedirectNode
+  implements:
+  - WolverineSoft.DialogueSystem.Editor.IDialogueNode
+  - WolverineSoft.DialogueSystem.Editor.IDataNode{WolverineSoft.DialogueSystem.DialogueObject}
+  inheritedMembers:
+  - WolverineSoft.DialogueSystem.Editor.RedirectNode._asset
+  - WolverineSoft.DialogueSystem.Editor.RedirectNode.UseText
+  - WolverineSoft.DialogueSystem.Editor.RedirectNode.UseResponseParameters
+  - WolverineSoft.DialogueSystem.Editor.RedirectNode.OnDefinePorts(IPortDefinitionContext)
+  - WolverineSoft.DialogueSystem.Editor.RedirectNode.AssignObjectReferences
+  - WolverineSoft.DialogueSystem.Editor.RedirectNode.GetData
+  attributes:
+  - type: System.SerializableAttribute
+    ctor: System.SerializableAttribute.#ctor
+    arguments: []
+- uid: WolverineSoft.DialogueSystem.Editor.RandomRedirectNode.UseWeight
+  commentId: P:WolverineSoft.DialogueSystem.Editor.RandomRedirectNode.UseWeight
+  id: UseWeight
+  parent: WolverineSoft.DialogueSystem.Editor.RandomRedirectNode
+  langs:
+  - csharp
+  - vb
+  name: UseWeight
+  nameWithType: RandomRedirectNode.UseWeight
+  fullName: WolverineSoft.DialogueSystem.Editor.RandomRedirectNode.UseWeight
+  type: Property
+  source:
+    remote:
+      path: Editor/Nodes/RandomRedirectNode.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: UseWeight
+    path: Editor/Nodes/RandomRedirectNode.cs
+    startLine: 10
+  namespace: WolverineSoft.DialogueSystem.Editor
+  example: []
+  syntax:
+    content: public override bool UseWeight { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Overrides ReadOnly Property UseWeight As Boolean
+  overridden: WolverineSoft.DialogueSystem.Editor.OptionContextNode.UseWeight
+  overload: WolverineSoft.DialogueSystem.Editor.RandomRedirectNode.UseWeight*
+- uid: WolverineSoft.DialogueSystem.Editor.RandomRedirectNode.CreateDialogueObject
+  commentId: M:WolverineSoft.DialogueSystem.Editor.RandomRedirectNode.CreateDialogueObject
+  id: CreateDialogueObject
+  parent: WolverineSoft.DialogueSystem.Editor.RandomRedirectNode
+  langs:
+  - csharp
+  - vb
+  name: CreateDialogueObject()
+  nameWithType: RandomRedirectNode.CreateDialogueObject()
+  fullName: WolverineSoft.DialogueSystem.Editor.RandomRedirectNode.CreateDialogueObject()
+  type: Method
+  source:
+    remote:
+      path: Editor/Nodes/RandomRedirectNode.cs
+      branch: docfx
+      repo: https://github.com/Gavin-McG/DialogueSystem.git
+    id: CreateDialogueObject
+    path: Editor/Nodes/RandomRedirectNode.cs
+    startLine: 12
+  namespace: WolverineSoft.DialogueSystem.Editor
+  summary: Method that creates and returns the node's ScriptableObject
+  example: []
+  syntax:
+    content: public override ScriptableObject CreateDialogueObject()
+    return:
+      type: ScriptableObject
+    content.vb: Public Overrides Function CreateDialogueObject() As ScriptableObject
+  overridden: WolverineSoft.DialogueSystem.Editor.OptionContextNode.CreateDialogueObject
+  overload: WolverineSoft.DialogueSystem.Editor.RandomRedirectNode.CreateDialogueObject*
+references:
+- uid: WolverineSoft.DialogueSystem.Editor
+  commentId: N:WolverineSoft.DialogueSystem.Editor
+  href: WolverineSoft.html
+  name: WolverineSoft.DialogueSystem.Editor
+  nameWithType: WolverineSoft.DialogueSystem.Editor
+  fullName: WolverineSoft.DialogueSystem.Editor
+  spec.csharp:
+  - uid: WolverineSoft
+    name: WolverineSoft
+    href: WolverineSoft.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem
+    name: DialogueSystem
+    href: WolverineSoft.DialogueSystem.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem.Editor
+    name: Editor
+    href: WolverineSoft.DialogueSystem.Editor.html
+  spec.vb:
+  - uid: WolverineSoft
+    name: WolverineSoft
+    href: WolverineSoft.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem
+    name: DialogueSystem
+    href: WolverineSoft.DialogueSystem.html
+  - name: .
+  - uid: WolverineSoft.DialogueSystem.Editor
+    name: Editor
+    href: WolverineSoft.DialogueSystem.Editor.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: WolverineSoft.DialogueSystem.Editor.OptionContextNode
+  commentId: T:WolverineSoft.DialogueSystem.Editor.OptionContextNode
+  parent: WolverineSoft.DialogueSystem.Editor
+  href: WolverineSoft.DialogueSystem.Editor.OptionContextNode.html
+  name: OptionContextNode
+  nameWithType: OptionContextNode
+  fullName: WolverineSoft.DialogueSystem.Editor.OptionContextNode
+- uid: WolverineSoft.DialogueSystem.Editor.RedirectNode
+  commentId: T:WolverineSoft.DialogueSystem.Editor.RedirectNode
+  parent: WolverineSoft.DialogueSystem.Editor
+  href: WolverineSoft.DialogueSystem.Editor.RedirectNode.html
+  name: RedirectNode
+  nameWithType: RedirectNode
+  fullName: WolverineSoft.DialogueSystem.Editor.RedirectNode
+- uid: WolverineSoft.DialogueSystem.Editor.IDialogueNode
+  commentId: T:WolverineSoft.DialogueSystem.Editor.IDialogueNode
+  parent: WolverineSoft.DialogueSystem.Editor
+  href: WolverineSoft.DialogueSystem.Editor.IDialogueNode.html
+  name: IDialogueNode
+  nameWithType: IDialogueNode
+  fullName: WolverineSoft.DialogueSystem.Editor.IDialogueNode
+- uid: WolverineSoft.DialogueSystem.Editor.IDataNode{WolverineSoft.DialogueSystem.DialogueObject}
+  commentId: T:WolverineSoft.DialogueSystem.Editor.IDataNode{WolverineSoft.DialogueSystem.DialogueObject}
+  parent: WolverineSoft.DialogueSystem.Editor
+  definition: WolverineSoft.DialogueSystem.Editor.IDataNode`1
+  href: WolverineSoft.DialogueSystem.Editor.IDataNode-1.html
+  name: IDataNode<DialogueObject>
+  nameWithType: IDataNode<DialogueObject>
+  fullName: WolverineSoft.DialogueSystem.Editor.IDataNode<WolverineSoft.DialogueSystem.DialogueObject>
+  nameWithType.vb: IDataNode(Of DialogueObject)
+  fullName.vb: WolverineSoft.DialogueSystem.Editor.IDataNode(Of WolverineSoft.DialogueSystem.DialogueObject)
+  name.vb: IDataNode(Of DialogueObject)
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.Editor.IDataNode`1
+    name: IDataNode
+    href: WolverineSoft.DialogueSystem.Editor.IDataNode-1.html
+  - name: <
+  - uid: WolverineSoft.DialogueSystem.DialogueObject
+    name: DialogueObject
+    href: WolverineSoft.DialogueSystem.DialogueObject.html
+  - name: '>'
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.Editor.IDataNode`1
+    name: IDataNode
+    href: WolverineSoft.DialogueSystem.Editor.IDataNode-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: WolverineSoft.DialogueSystem.DialogueObject
+    name: DialogueObject
+    href: WolverineSoft.DialogueSystem.DialogueObject.html
+  - name: )
+- uid: WolverineSoft.DialogueSystem.Editor.RedirectNode._asset
+  commentId: F:WolverineSoft.DialogueSystem.Editor.RedirectNode._asset
+  parent: WolverineSoft.DialogueSystem.Editor.RedirectNode
+  href: WolverineSoft.DialogueSystem.Editor.RedirectNode.html#WolverineSoft_DialogueSystem_Editor_RedirectNode__asset
+  name: _asset
+  nameWithType: RedirectNode._asset
+  fullName: WolverineSoft.DialogueSystem.Editor.RedirectNode._asset
+- uid: WolverineSoft.DialogueSystem.Editor.RedirectNode.UseText
+  commentId: P:WolverineSoft.DialogueSystem.Editor.RedirectNode.UseText
+  parent: WolverineSoft.DialogueSystem.Editor.RedirectNode
+  href: WolverineSoft.DialogueSystem.Editor.RedirectNode.html#WolverineSoft_DialogueSystem_Editor_RedirectNode_UseText
+  name: UseText
+  nameWithType: RedirectNode.UseText
+  fullName: WolverineSoft.DialogueSystem.Editor.RedirectNode.UseText
+- uid: WolverineSoft.DialogueSystem.Editor.RedirectNode.UseResponseParameters
+  commentId: P:WolverineSoft.DialogueSystem.Editor.RedirectNode.UseResponseParameters
+  parent: WolverineSoft.DialogueSystem.Editor.RedirectNode
+  href: WolverineSoft.DialogueSystem.Editor.RedirectNode.html#WolverineSoft_DialogueSystem_Editor_RedirectNode_UseResponseParameters
+  name: UseResponseParameters
+  nameWithType: RedirectNode.UseResponseParameters
+  fullName: WolverineSoft.DialogueSystem.Editor.RedirectNode.UseResponseParameters
+- uid: WolverineSoft.DialogueSystem.Editor.RedirectNode.OnDefinePorts(IPortDefinitionContext)
+  commentId: M:WolverineSoft.DialogueSystem.Editor.RedirectNode.OnDefinePorts(IPortDefinitionContext)
+  parent: WolverineSoft.DialogueSystem.Editor.RedirectNode
+  isExternal: true
+  href: WolverineSoft.DialogueSystem.Editor.RedirectNode.html#WolverineSoft_DialogueSystem_Editor_RedirectNode_OnDefinePorts_IPortDefinitionContext_
+  name: OnDefinePorts(IPortDefinitionContext)
+  nameWithType: RedirectNode.OnDefinePorts(IPortDefinitionContext)
+  fullName: WolverineSoft.DialogueSystem.Editor.RedirectNode.OnDefinePorts(IPortDefinitionContext)
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.Editor.RedirectNode.OnDefinePorts(IPortDefinitionContext)
+    name: OnDefinePorts
+    href: WolverineSoft.DialogueSystem.Editor.RedirectNode.html#WolverineSoft_DialogueSystem_Editor_RedirectNode_OnDefinePorts_IPortDefinitionContext_
+  - name: (
+  - uid: IPortDefinitionContext
+    name: IPortDefinitionContext
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.Editor.RedirectNode.OnDefinePorts(IPortDefinitionContext)
+    name: OnDefinePorts
+    href: WolverineSoft.DialogueSystem.Editor.RedirectNode.html#WolverineSoft_DialogueSystem_Editor_RedirectNode_OnDefinePorts_IPortDefinitionContext_
+  - name: (
+  - uid: IPortDefinitionContext
+    name: IPortDefinitionContext
+    isExternal: true
+  - name: )
+- uid: WolverineSoft.DialogueSystem.Editor.RedirectNode.AssignObjectReferences
+  commentId: M:WolverineSoft.DialogueSystem.Editor.RedirectNode.AssignObjectReferences
+  parent: WolverineSoft.DialogueSystem.Editor.RedirectNode
+  href: WolverineSoft.DialogueSystem.Editor.RedirectNode.html#WolverineSoft_DialogueSystem_Editor_RedirectNode_AssignObjectReferences
+  name: AssignObjectReferences()
+  nameWithType: RedirectNode.AssignObjectReferences()
+  fullName: WolverineSoft.DialogueSystem.Editor.RedirectNode.AssignObjectReferences()
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.Editor.RedirectNode.AssignObjectReferences
+    name: AssignObjectReferences
+    href: WolverineSoft.DialogueSystem.Editor.RedirectNode.html#WolverineSoft_DialogueSystem_Editor_RedirectNode_AssignObjectReferences
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.Editor.RedirectNode.AssignObjectReferences
+    name: AssignObjectReferences
+    href: WolverineSoft.DialogueSystem.Editor.RedirectNode.html#WolverineSoft_DialogueSystem_Editor_RedirectNode_AssignObjectReferences
+  - name: (
+  - name: )
+- uid: WolverineSoft.DialogueSystem.Editor.RedirectNode.GetData
+  commentId: M:WolverineSoft.DialogueSystem.Editor.RedirectNode.GetData
+  parent: WolverineSoft.DialogueSystem.Editor.RedirectNode
+  href: WolverineSoft.DialogueSystem.Editor.RedirectNode.html#WolverineSoft_DialogueSystem_Editor_RedirectNode_GetData
+  name: GetData()
+  nameWithType: RedirectNode.GetData()
+  fullName: WolverineSoft.DialogueSystem.Editor.RedirectNode.GetData()
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.Editor.RedirectNode.GetData
+    name: GetData
+    href: WolverineSoft.DialogueSystem.Editor.RedirectNode.html#WolverineSoft_DialogueSystem_Editor_RedirectNode_GetData
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.Editor.RedirectNode.GetData
+    name: GetData
+    href: WolverineSoft.DialogueSystem.Editor.RedirectNode.html#WolverineSoft_DialogueSystem_Editor_RedirectNode_GetData
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: WolverineSoft.DialogueSystem.Editor.IDataNode`1
+  commentId: T:WolverineSoft.DialogueSystem.Editor.IDataNode`1
+  href: WolverineSoft.DialogueSystem.Editor.IDataNode-1.html
+  name: IDataNode<T>
+  nameWithType: IDataNode<T>
+  fullName: WolverineSoft.DialogueSystem.Editor.IDataNode<T>
+  nameWithType.vb: IDataNode(Of T)
+  fullName.vb: WolverineSoft.DialogueSystem.Editor.IDataNode(Of T)
+  name.vb: IDataNode(Of T)
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.Editor.IDataNode`1
+    name: IDataNode
+    href: WolverineSoft.DialogueSystem.Editor.IDataNode-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.Editor.IDataNode`1
+    name: IDataNode
+    href: WolverineSoft.DialogueSystem.Editor.IDataNode-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: WolverineSoft.DialogueSystem.Editor.OptionContextNode.UseWeight
+  commentId: P:WolverineSoft.DialogueSystem.Editor.OptionContextNode.UseWeight
+  parent: WolverineSoft.DialogueSystem.Editor.OptionContextNode
+  href: WolverineSoft.DialogueSystem.Editor.OptionContextNode.html#WolverineSoft_DialogueSystem_Editor_OptionContextNode_UseWeight
+  name: UseWeight
+  nameWithType: OptionContextNode.UseWeight
+  fullName: WolverineSoft.DialogueSystem.Editor.OptionContextNode.UseWeight
+- uid: WolverineSoft.DialogueSystem.Editor.RandomRedirectNode.UseWeight*
+  commentId: Overload:WolverineSoft.DialogueSystem.Editor.RandomRedirectNode.UseWeight
+  href: WolverineSoft.DialogueSystem.Editor.RandomRedirectNode.html#WolverineSoft_DialogueSystem_Editor_RandomRedirectNode_UseWeight
+  name: UseWeight
+  nameWithType: RandomRedirectNode.UseWeight
+  fullName: WolverineSoft.DialogueSystem.Editor.RandomRedirectNode.UseWeight
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: WolverineSoft.DialogueSystem.Editor.OptionContextNode.CreateDialogueObject
+  commentId: M:WolverineSoft.DialogueSystem.Editor.OptionContextNode.CreateDialogueObject
+  parent: WolverineSoft.DialogueSystem.Editor.OptionContextNode
+  href: WolverineSoft.DialogueSystem.Editor.OptionContextNode.html#WolverineSoft_DialogueSystem_Editor_OptionContextNode_CreateDialogueObject
+  name: CreateDialogueObject()
+  nameWithType: OptionContextNode.CreateDialogueObject()
+  fullName: WolverineSoft.DialogueSystem.Editor.OptionContextNode.CreateDialogueObject()
+  spec.csharp:
+  - uid: WolverineSoft.DialogueSystem.Editor.OptionContextNode.CreateDialogueObject
+    name: CreateDialogueObject
+    href: WolverineSoft.DialogueSystem.Editor.OptionContextNode.html#WolverineSoft_DialogueSystem_Editor_OptionContextNode_CreateDialogueObject
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: WolverineSoft.DialogueSystem.Editor.OptionContextNode.CreateDialogueObject
+    name: CreateDialogueObject
+    href: WolverineSoft.DialogueSystem.Editor.OptionContextNode.html#WolverineSoft_DialogueSystem_Editor_OptionContextNode_CreateDialogueObject
+  - name: (
+  - name: )
+- uid: WolverineSoft.DialogueSystem.Editor.RandomRedirectNode.CreateDialogueObject*
+  commentId: Overload:WolverineSoft.DialogueSystem.Editor.RandomRedirectNode.CreateDialogueObject
+  href: WolverineSoft.DialogueSystem.Editor.RandomRedirectNode.html#WolverineSoft_DialogueSystem_Editor_RandomRedirectNode_CreateDialogueObject
+  name: CreateDialogueObject
+  nameWithType: RandomRedirectNode.CreateDialogueObject
+  fullName: WolverineSoft.DialogueSystem.Editor.RandomRedirectNode.CreateDialogueObject
+- uid: ScriptableObject
+  isExternal: true
+  name: ScriptableObject
+  nameWithType: ScriptableObject
+  fullName: ScriptableObject

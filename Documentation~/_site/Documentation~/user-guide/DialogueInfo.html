@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Dialogue Info | DialogueSystem </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Dialogue Info | DialogueSystem ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Gavin-McG/DialogueSystem/blob/docfx/Documentation~/user-guide/DialogueInfo.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo.svg" alt="DialogueSystem">
+            DialogueSystem
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="dialogue-info">Dialogue Info</h1>
+
+<p><code>DialogueInfo</code> contains all the information pertaining to a specific dialogue output. It is returned by the <code>DialogueManager</code> when advancing or refreshing dialogue via <code>DialogueManager.AdvanceDialogue</code> or <code>DialogueManager.RefreshDialogue</code>. If the returned DialogueInfo is null then the dialogue has ended.</p>
+<p>There are several public fields of the dialoguInfo. The first is the <code>dialogueType</code>, which is an enumerator representing what type of dialogue output this is:</p>
+<ul>
+<li><code>DialogueType.Basic</code> - Regular text dialogue</li>
+<li><code>DialogueType.Choice</code> - Choice dialogue containing response info</li>
+<li><code>DialogueType.Stall</code> - Encountered Event with stall, containing no other info</li>
+</ul>
+<h2 id="text">Text</h2>
+<p>The <code>DialogueInfo.text</code> field contains the string output of the dialogue to be displayed as long as the type is either <code>DialogueType.Basic</code> or <code>DialogueType.Choice</code>. Text inside of brackets <code>{}</code> will be replaced with the current value of a variable. For instance, if the <code>Variable</code> 'myVar' were set to 5, &quot;{myVar}&quot; would be replaced by &quot;5&quot;.</p>
+<h2 id="responseinfo">ResponseInfo</h2>
+<p>The <code>DialogueInfo.responses</code> is a List of <code>ResponseInfo</code> instances. These responses contain the info for each individual response. The field will be null unless the type is <code>DialogueType.Choice</code>.  <code>ResponseInfo</code> has a <code>ResponseInfo.text</code> field which contains the string for that response. Brackets are also used to embed variable values in the same way as the <code>DialogueInfo.text</code>.</p>
+<p>The number of responses available is equal to the length of the list. When advancing the dialogue from a <code>DialogueType.Choice</code> output, the next <code>AdvanceContext</code> should have its <code>AdvanceContext.choice</code> field set to the response selected by the user. The choice should be the response's index in the <code>DialogueInfo.responses</code> list. If <code>AdvanceContext.choice</code> is set to -1, then the 'Default' output of the ChoiceNode will be used instead of any of the options.</p>
+<h2 id="paramaters">Paramaters</h2>
+<p>If the <code>DialogueInfo</code> has any parameters assigned they can be accessed using the following methods:</p>
+<pre><code>// Methods for Text parameters
+Type DialogueInfo.GetBaseParamsType()
+T DialogueInfo.GetTextParams&lt;T&gt;() where T : TextParameters
+
+// Methods for Choice parameters
+Type GetChoiceParamsType()
+T GetChoiceParams&lt;T&gt;() where T : ChoiceParameters
+</code></pre>
+<p>These methods will return null if there is not a corresponding parameter type assigned. Getting the type of the parameter is useful for checking whether the parameter type is present and, if so, what type it is. This can help make the code a bit more clean compared to retrieving the parameters as the base class and attempting to cast to supported derived types.</p>
+<p><code>ResponseInfo</code> also has corresponding methods for getting each response's response parameters:</p>
+<pre><code>// Methods for Response parameters
+Type ResponseInfo.GetResponseParamsType()
+T ResponseInfo.GetResponseParams&lt;T&gt;() where T : ResponseParameters
+</code></pre>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Gavin-McG/DialogueSystem/blob/docfx/Documentation~/user-guide/DialogueInfo.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

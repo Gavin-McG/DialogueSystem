@@ -1,0 +1,1170 @@
+{
+  "source_base_path": "C:/Users/Gavin/Documents/Unity Projects/DialogueSystem/Assets/DialogueSystem/Documentation~",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.AdvanceContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.AdvanceContext.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.AdvanceContext",
+      "Summary": "<p sourcefile=\"api/WolverineSoft.DialogueSystem.AdvanceContext.yml\" sourcestartlinenumber=\"1\">Context that is passed into the DialogueManager to retrieve the next dialogue.\nContains values relevant to the player's interaction and is used By redirects to determine next dialogue.\nAn instance of AdvanceParams should be created by your frontend of the Dialogue System</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.BasicOption.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.BasicOption.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.BasicOption",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.ChoiceObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.ChoiceObject.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.ChoiceObject",
+      "Summary": "<p sourcefile=\"api/WolverineSoft.DialogueSystem.ChoiceObject.yml\" sourcestartlinenumber=\"1\">Scriptable Object representing a Choice Dialogue</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.ChoiceParameters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.ChoiceParameters.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.ChoiceParameters",
+      "Summary": "<p sourcefile=\"api/WolverineSoft.DialogueSystem.ChoiceParameters.yml\" sourcestartlinenumber=\"1\">Base class representing the parameters used by Choice Dialogue</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.DSEvent-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.DSEvent-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.DSEvent<T>",
+      "Summary": "<p sourcefile=\"api/WolverineSoft.DialogueSystem.DSEvent-1.yml\" sourcestartlinenumber=\"1\">abstract class for Scriptable Object representing a typed Dialogue Event</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.DSEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.DSEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.DSEvent",
+      "Summary": "<p sourcefile=\"api/WolverineSoft.DialogueSystem.DSEvent.yml\" sourcestartlinenumber=\"1\">Scriptable Object representing a non-typed Dialogue Event</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.DSEventAudioClip.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.DSEventAudioClip.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.DSEventAudioClip",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.DSEventBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.DSEventBase.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.DSEventBase",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.DSEventBool.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.DSEventBool.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.DSEventBool",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.DSEventFloat.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.DSEventFloat.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.DSEventFloat",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.DSEventInt.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.DSEventInt.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.DSEventInt",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.DSEventString.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.DSEventString.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.DSEventString",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.DialogueAsset.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.DialogueAsset.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.DialogueAsset",
+      "Summary": "<p sourcefile=\"api/WolverineSoft.DialogueSystem.DialogueAsset.yml\" sourcestartlinenumber=\"1\">ScriptableObject representing the main asset of a DialogueGraph and the first Trace when starting a dialogue</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.DialogueInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.DialogueInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.DialogueInfo",
+      "Summary": "<p sourcefile=\"api/WolverineSoft.DialogueSystem.DialogueInfo.yml\" sourcestartlinenumber=\"1\">Class used to provide data from the backend of the Dialogue system to the UI.\nUses Getter functions to retrieve params of your derived type</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.DialogueManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.DialogueManager.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.DialogueManager",
+      "Summary": "<p sourcefile=\"api/WolverineSoft.DialogueSystem.DialogueManager.yml\" sourcestartlinenumber=\"1\">Primary Component for operating the Backend of the Dialogue System.\nPrimary functions are <xref href=\"WolverineSoft.DialogueSystem.DialogueManager.BeginDialogue(WolverineSoft.DialogueSystem.DialogueAsset%2cSystem.String)\" data-throw-if-not-resolved=\"false\"></xref> and <xref href=\"WolverineSoft.DialogueSystem.DialogueManager.AdvanceDialogue(WolverineSoft.DialogueSystem.AdvanceContext)\" data-throw-if-not-resolved=\"false\"></xref>.\n<xref href=\"WolverineSoft.DialogueSystem.DialogueManager.EndDialogue\" data-throw-if-not-resolved=\"false\"></xref> Is only to be used when ending an interaction prematurely.\nAlso provides interfaces for values and keywords</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.DialogueObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.DialogueObject.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.DialogueObject",
+      "Summary": "<p sourcefile=\"api/WolverineSoft.DialogueSystem.DialogueObject.yml\" sourcestartlinenumber=\"1\">Base class for ScriptableObjects that are part of the path traced by the <xref href=\"WolverineSoft.DialogueSystem.DialogueManager\" data-throw-if-not-resolved=\"false\"></xref></p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.DialogueParameters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.DialogueParameters.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.DialogueParameters",
+      "Summary": "<p sourcefile=\"api/WolverineSoft.DialogueSystem.DialogueParameters.yml\" sourcestartlinenumber=\"1\">Base class representing the Settings for an overall interaction.\nProvided via the <xref href=\"WolverineSoft.DialogueSystem.DialogueManager\" data-throw-if-not-resolved=\"false\"></xref></p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.DialogueType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.DialogueType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.DialogueType",
+      "Summary": "<p sourcefile=\"api/WolverineSoft.DialogueSystem.DialogueType.yml\" sourcestartlinenumber=\"1\">enum to designate the type of Dialogue</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.Editor.ChoiceNode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.Editor.ChoiceNode.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.Editor.ChoiceNode",
+      "Summary": "<p sourcefile=\"api/WolverineSoft.DialogueSystem.Editor.ChoiceNode.yml\" sourcestartlinenumber=\"1\">Generic Base Class for Choice Dialogue Nodes.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.Editor.ChoiceTextHolder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.Editor.ChoiceTextHolder.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.Editor.ChoiceTextHolder",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.Editor.DialogueGraph.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.Editor.DialogueGraph.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.Editor.DialogueGraph",
+      "Summary": "<p sourcefile=\"api/WolverineSoft.DialogueSystem.Editor.DialogueGraph.yml\" sourcestartlinenumber=\"1\">Graph Toolkit class for the Dialogue Graph interface.\nHandles errors/warning pertaining to the graph as a whole</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.Editor.DialogueSOIconInitializer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.Editor.DialogueSOIconInitializer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.Editor.DialogueSOIconInitializer",
+      "Summary": "<p sourcefile=\"api/WolverineSoft.DialogueSystem.Editor.DialogueSOIconInitializer.yml\" sourcestartlinenumber=\"1\">Post-processor for dialogue assets which is used to assign the proper icons</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.Editor.GenericValueHolder-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.Editor.GenericValueHolder-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.Editor.GenericValueHolder<T1>",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.Editor.GenericValueHolder-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.Editor.GenericValueHolder-2.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.Editor.GenericValueHolder<T1, T2>",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.Editor.GenericValueHolder-3.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.Editor.GenericValueHolder-3.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.Editor.GenericValueHolder<T1, T2, T3>",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.Editor.GenericValueHolder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.Editor.GenericValueHolder.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.Editor.GenericValueHolder",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.Editor.GenericValueHolderDrawer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.Editor.GenericValueHolderDrawer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.Editor.GenericValueHolderDrawer",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.Editor.IDataNode-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.Editor.IDataNode-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.Editor.IDataNode<T>",
+      "Summary": "<p sourcefile=\"api/WolverineSoft.DialogueSystem.Editor.IDataNode-1.yml\" sourcestartlinenumber=\"1\">Interface for nodes that provide data from a port.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.Editor.IDialogueNode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.Editor.IDialogueNode.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.Editor.IDialogueNode",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.Editor.OptionContextNode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.Editor.OptionContextNode.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.Editor.OptionContextNode",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.Editor.OptionNode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.Editor.OptionNode.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.Editor.OptionNode",
+      "Summary": "<p sourcefile=\"api/WolverineSoft.DialogueSystem.Editor.OptionNode.yml\" sourcestartlinenumber=\"1\">class for options attached to choice dialogue nodes or redirects.\nHandles logic for displaying node options from redirect weights,\noption parameters, and option fields.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.Editor.OptionTextHolder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.Editor.OptionTextHolder.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.Editor.OptionTextHolder",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.Editor.ParameterBaseDrawer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.Editor.ParameterBaseDrawer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.Editor.ParameterBaseDrawer",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.Editor.RandomRedirectNode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.Editor.RandomRedirectNode.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.Editor.RandomRedirectNode",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.Editor.RedirectNode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.Editor.RedirectNode.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.Editor.RedirectNode",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.Editor.SequentialRedirectNode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.Editor.SequentialRedirectNode.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.Editor.SequentialRedirectNode",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.Editor.SetVariableNode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.Editor.SetVariableNode.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.Editor.SetVariableNode",
+      "Summary": "<p sourcefile=\"api/WolverineSoft.DialogueSystem.Editor.SetVariableNode.yml\" sourcestartlinenumber=\"1\">Generic Base Class for Non-choice dialogue.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.Editor.StartNode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.Editor.StartNode.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.Editor.StartNode",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.Editor.TextHolder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.Editor.TextHolder.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.Editor.TextHolder",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.Editor.TextHolderAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.Editor.TextHolderAttribute.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.Editor.TextHolderAttribute",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.Editor.TextHolderDrawer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.Editor.TextHolderDrawer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.Editor.TextHolderDrawer",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.Editor.TextNode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.Editor.TextNode.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.Editor.TextNode",
+      "Summary": "<p sourcefile=\"api/WolverineSoft.DialogueSystem.Editor.TextNode.yml\" sourcestartlinenumber=\"1\">Generic Base Class for Non-choice dialogue.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.Editor.TextTextHolder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.Editor.TextTextHolder.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.Editor.TextTextHolder",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.Editor.VariableDrawer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.Editor.VariableDrawer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.Editor.VariableDrawer",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.Editor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.Editor.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.Editor",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.EventCaller-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.EventCaller-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.EventCaller<T>",
+      "Summary": "<p sourcefile=\"api/WolverineSoft.DialogueSystem.EventCaller-1.yml\" sourcestartlinenumber=\"1\">class Holding information for a call to a non-types DSEvent</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.EventCaller.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.EventCaller.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.EventCaller",
+      "Summary": "<p sourcefile=\"api/WolverineSoft.DialogueSystem.EventCaller.yml\" sourcestartlinenumber=\"1\">class Holding information for a call to a non-types DSEvent</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.EventObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.EventObject.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.EventObject",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.EventReference.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.EventReference.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.EventReference",
+      "Summary": "<p sourcefile=\"api/WolverineSoft.DialogueSystem.EventReference.yml\" sourcestartlinenumber=\"1\">Base class for <xref href=\"WolverineSoft.DialogueSystem.EventCaller\" data-throw-if-not-resolved=\"false\"></xref> and <xref href=\"WolverineSoft.DialogueSystem.EventCaller%601\" data-throw-if-not-resolved=\"false\"></xref></p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.ICustomNodeStyle.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.ICustomNodeStyle.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.ICustomNodeStyle",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.IDialogueOutput.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.IDialogueOutput.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.IDialogueOutput",
+      "Summary": "<p sourcefile=\"api/WolverineSoft.DialogueSystem.IDialogueOutput.yml\" sourcestartlinenumber=\"1\">Interface for DialogueTrace classes which are meant to provide an output to AdvanceDialogue\nCurrently limited to <xref href=\"WolverineSoft.DialogueSystem.TextObject\" data-throw-if-not-resolved=\"false\"></xref> and <xref href=\"WolverineSoft.DialogueSystem.ChoiceObject\" data-throw-if-not-resolved=\"false\"></xref></p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.IVariableContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.IVariableContext.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.IVariableContext",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.OptionType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.OptionType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.OptionType",
+      "Summary": "<p sourcefile=\"api/WolverineSoft.DialogueSystem.OptionType.yml\" sourcestartlinenumber=\"1\">Base class for Conditional and Choice options. Provides the method used for each to evaluate their conditions</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.ParameterBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.ParameterBase.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.ParameterBase",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.RandomOption.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.RandomOption.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.RandomOption",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.RandomRedirectObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.RandomRedirectObject.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.RandomRedirectObject",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.RedirectObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.RedirectObject.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.RedirectObject",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.ResponseInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.ResponseInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.ResponseInfo",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.ResponseParameters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.ResponseParameters.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.ResponseParameters",
+      "Summary": "<p sourcefile=\"api/WolverineSoft.DialogueSystem.ResponseParameters.yml\" sourcestartlinenumber=\"1\">Base class representing the parameters used by choice options</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.SequentialRedirectObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.SequentialRedirectObject.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.SequentialRedirectObject",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.SerializableDictionary-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.SerializableDictionary-2.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.SerializableDictionary<TKey, TValue>",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.SerializableKeyValuePair-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.SerializableKeyValuePair-2.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.SerializableKeyValuePair<TKey, TValue>",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.SetVariableObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.SetVariableObject.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.SetVariableObject",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.StallObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.StallObject.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.StallObject",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.StartObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.StartObject.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.StartObject",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.TextObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.TextObject.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.TextObject",
+      "Summary": "<p sourcefile=\"api/WolverineSoft.DialogueSystem.TextObject.yml\" sourcestartlinenumber=\"1\">ScriptableObject representing a regular dialogue</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.TextParameters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.TextParameters.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.TextParameters",
+      "Summary": "<p sourcefile=\"api/WolverineSoft.DialogueSystem.TextParameters.yml\" sourcestartlinenumber=\"1\">Base class for Parameter types which require value replacements</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.TypeOptionAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.TypeOptionAttribute.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.TypeOptionAttribute",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.Variable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.Variable.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.Variable",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.VariableContainer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.VariableContainer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.VariableContainer",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.VariableEqualsOption.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.VariableEqualsOption.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.VariableEqualsOption",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.VariableType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.VariableType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem.VariableType",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WolverineSoft.DialogueSystem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WolverineSoft.DialogueSystem.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "WolverineSoft.DialogueSystem",
+      "Summary": null
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "readme.md",
+      "output": {
+        ".html": {
+          "relative_path": "readme.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "user-guide/CustomParameters.md",
+      "output": {
+        ".html": {
+          "relative_path": "user-guide/CustomParameters.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "user-guide/DialogueEvents.md",
+      "output": {
+        ".html": {
+          "relative_path": "user-guide/DialogueEvents.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "user-guide/DialogueGraphs.md",
+      "output": {
+        ".html": {
+          "relative_path": "user-guide/DialogueGraphs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "user-guide/DialogueInfo.md",
+      "output": {
+        ".html": {
+          "relative_path": "user-guide/DialogueInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "user-guide/DialogueManager.md",
+      "output": {
+        ".html": {
+          "relative_path": "user-guide/DialogueManager.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "user-guide/RedirectNodes.md",
+      "output": {
+        ".html": {
+          "relative_path": "user-guide/RedirectNodes.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "user-guide/SetVariableNode.md",
+      "output": {
+        ".html": {
+          "relative_path": "user-guide/SetVariableNode.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "user-guide/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "user-guide/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "user-guide/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "user-guide/toc.html"
+        },
+        ".json": {
+          "relative_path": "user-guide/toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

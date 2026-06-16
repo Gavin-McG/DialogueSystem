@@ -14,9 +14,9 @@
         public void SetBool(string name, bool value);
         
         //Getters
-        public string GetString(string name);
-        public float GetFloat(string name);
-        public int GetInt(string name);
-        public bool GetBool(string name);
+        public bool TryGetString(string name, out string value);
+        public bool TryGetFloat(string name, out float value);
+        public bool TryGetInt(string name, out int value);
+        public bool TryGetBool(string name, out bool value);
     }
 }
