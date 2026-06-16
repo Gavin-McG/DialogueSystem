@@ -2,7 +2,7 @@
   "name": "com.wolverinesoft.dialoguesystem",
   "version": "2.1.0",
   "displayName": "Dialogue System",
-  "description": "Widely Customizeable Dialogue System dramework. Supports multiple dialogue types, events, redirects, and variable-driven content.",
+  "description": "Widely Customizeable Dialogue System framework. Supports multiple dialogue types, events, redirects, and variable-driven content.",
   "unity": "6000.2",
   "unityRelease": "0f1",
   "documentationUrl": "https://gavin-mcg.github.io/DialogueSystem/",
