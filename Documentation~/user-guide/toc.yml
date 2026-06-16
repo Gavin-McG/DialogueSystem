@@ -1,4 +1,7 @@
 items:
+- uid: Installation
+  name: Installation
+  href: Installation.md
 - uid: Dialogue Manager
   name: Dialogue Manager
   href: DialogueManager.md

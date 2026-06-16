@@ -1,0 +1,14 @@
+# Developer Notes
+
+Author: Gavin McGinness
+
+Some quirks exist within this Dialogue System, many of which are a result of using the Graph Toolkit which is still in the experimental stage. There are several features I’d like to change or have and intend to implement if they become available.
+
+- **Node Display Names** Nodes having the exact name of their class can be unintuitive. The class names have tried to be selected such that they are clear enough both for developers and for designers using the system, but would it would be ideal to have them with separate names.
+- **Node Colors** Like Display Names, this would just be easier for visually understanding a graph
+- **Option Initialization** Currently when creating a new Option it prompts with a button to initialize the Node. This is necessary because the parameters of an Option depend on the parent ContextNode. Unfortunately a current bug doesn’t allow the BlockNode to access its ContextNode on first initialization. Changing the boolean option prompts a second init. This bug has been fixed in later versions of the GTK for Unity 6.5 and 6.6 have resolved this issue.
+- **Node hierarchy** Currently when creating a new node they are only grouped by Regular Nodes and Context Nodes. This is a bit inconvenient and I’d prefer to be able to define a custom menu hierarchy like can be done in the regular Create Menu, but unfortunately this cannot be done in the Graph Toolkit as of 0.4.0-exp.2. This has been added as a feature to version of the GTK for newer version of Unity
+- **Multiple Node Outputs** A Dialogue Port can currently be connected to multiple other ports. As it is, this properly displays an error as a single Dialogue should not be connected to multiple. Were it to be made an option within the GTK, I'd like to disallow the connecting of multiple ports all together.
+- **Component Structure** Custom data within dialogue nodes are currently managed by different parameter types owned by different types of nodes. While this provides a key aspect of flexility for this system, A node-independant component structure might be more intuitive for those experienced with Unity and be more flexible. It would make having 4 different parameter types redundant as well.  
+
+Several of these points could be addressed by updating to more recent versions of Unity such as 6.4, 6.5 or 6.6, where the Graph Toolkit has been made into a built-in package and has more features. Doing this would require removing graph Toolkit as a dependancy of this package. I have refrained from doing so thus far, as many current projects rely on Unity 6.3

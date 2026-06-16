@@ -1,4 +1,10 @@
 - name: User Guide
-  href: user-guide/DialogueManager.md
+  href: user-guide/Installation.md
 - name: Programming API
   href: api/WolverineSoft.DialogueSystem.DialogueManager.html
+- name: Samples
+  href: samples/Example.md
+- name: Changelog
+  href: changelog.md
+- name: Developer Notes
+  href: DeveloperNotes.md
