@@ -95,12 +95,3 @@ Custom parameter classes must be marked `[Serializable]` and optionally use `[Ty
 - Use reusable events and conditional logic to build interactive game systems.
 - Add custom data and behavior that integrates cleanly with dialogue nodes.
 
-## What to explore next
-
-- `DialogueGraphs.md` — how to create and edit dialogue graphs
-- `DialogueManager.md` — runtime API and dialogue lifecycle
-- `DialogueInfo.md` — how dialogue output is represented
-- `DialogueEvents.md` — creating and invoking events from dialogue
-- `CustomParameters.md` — defining custom data for dialogue nodes
-- `RedirectNodes.md` — conditional and random branching behavior
-- `SetVariableNode.md` — modifying variables during dialogue
