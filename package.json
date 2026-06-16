@@ -2,10 +2,10 @@
   "name": "com.wolverinesoft.dialoguesystem",
   "version": "2.1.0",
   "displayName": "Dialogue System",
-  "description": "This is a Widely customizable Dialogue System for future use in WolverineSoft Studio projects.",
+  "description": "Widely Customizeable Dialogue System dramework. Supports multiple dialogue types, events, redirects, and variable-driven content.",
   "unity": "6000.2",
   "unityRelease": "0f1",
-  "documentationUrl": "https://www.notion.so/Dialogue-System-26e654a5c2b780f08d53f25f6bb4e457",
+  "documentationUrl": "https://gavin-mcg.github.io/DialogueSystem/",
   "dependencies": {
     "com.unity.graphtoolkit": "0.4.0-exp.2",
     "com.unity.nuget.newtonsoft-json": "3.2.1"
